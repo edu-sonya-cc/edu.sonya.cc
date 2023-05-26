@@ -1,0 +1,6 @@
+{
+  "editor.formatOnSaveMode": "modificationsIfAvailable",
+  "editor.minimap.maxColumn": 240,
+  "prettier.printWidth": 100,
+  "scssFormatter.printWidth": 240
+}

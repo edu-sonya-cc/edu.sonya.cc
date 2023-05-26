@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "target": "es3",
+    "module": "ES6",
+    "lib": ["ES6", "dom", "dom.iterable", "scripthost"],
+    "outDir": "../tools/tsc/jsTsc/",
+    "rootDir": "./ts/",
+
+    "strict": true,
+    "strictNullChecks": true,
+    "alwaysStrict": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "noEmitHelpers": true,
+    "importHelpers": true
+  },
+  "include": [
+    "ts/*.ts",
+    "ts/actualPage/*.ts",
+    "ts/bricks/*.ts",
+    "ts/data/*.ts"
+  ],
+  "exclude": ["node_modules"]
+}

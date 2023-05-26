@@ -1,0 +1,54 @@
+
+"use strict";
+// import { REPORT_PROPERTY, LANG_PROPERTY, PAPER_SIZE_PROPERTY } from '../const';
+// import { I18nable, createElement, getHtmlElement, getHeadElement, getBodyElement, getTitleElement, getMainElement, getHeaderElement, getFooterElement } from '../dom';
+// import { Language, getCurrentLang } from '../storage';
+// import { ActualPageBase } from './actualPageBase';
+/// <reference path='../../types/const.d.ts' />
+/// <reference path='../../types/dom.d.ts' />
+/// <reference path='../../types/storage.d.ts' />
+/// <reference path='../../types/actualPageBase.d.ts' />
+
+"use strict";
+// import { SITE_IMAGE_PATH, PageSize } from '../const';
+// import { stories, storiesPageMainImageVersion } from '../data/data';
+// import { createElement, getTitleElement, getMainElement, showBlock, hide, stopEventBubble, getI18nInnerHTML, getI18nInnerHTMLFromDate } from '../dom';
+// import { pcGlobal } from '../pcGlobal';
+// import { ActualPageBase } from './actualPageBase';
+/// <reference path='../../types/const.d.ts' />
+/// <reference path='../../types/data.d.ts' />
+/// <reference path='../../types/dom.d.ts' />
+/// <reference path='../../types/pcGlobal.d.ts' />
+/// <reference path='../../types/actualPageBase.d.ts' />
+
+export var 
+
+
+^"use strict";$\n
+^// import \{.+$\n
+^/// <reference .+$\n
+^// // import \{.+$\n
+
+^export var 
+var 
+
+export const 
+const 
+
+export function 
+function 
+
+
+^export \{ .+$\n
+^export default .+$\n
+
+Equals to/µÈÓÚ/µÈì¶
+^export \{ ActualPageBase \};$\n
+^export \{ DPIHelper \};$\n
+export \{ BrickBase \};
+export \{ CopybookBase \};
+export \{ BoxBase \};
+export \{ DiceBase \};
+
+export default svgSpace\.edu\.sonya\.cc;
+export default edu\.sonya\.cc;

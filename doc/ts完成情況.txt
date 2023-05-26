@@ -1,0 +1,29 @@
+初步完成
+	const.ts
+	dom.ts
+	main.ts
+	storage.ts
+	global.ts
+	pcGlobal.ts
+	
+未開始
+	actualPage\home.ts
+	
+需大量刪減
+	
+需大量修改
+	
+
+HOME_URL.length;
+\nconst HOME_URL_LENGTH = HOME_URL.length;
+
+
+1	小学字帖生成器
+2	数学五分钟闯关
+【ok】3	英文扑克
+4	扑克盒或骰子 P:\ecs_person\websites\sonya.cc\www\96_codes\00005_pokerBox
+【ok】5	拼音扑克
+6	拼音骰子
+【ok】7	数学扑克  Tens
+【ok】8	拉密  Rummikub
+9 骰子 Dice

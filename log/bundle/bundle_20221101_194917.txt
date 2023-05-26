@@ -1,0 +1,2 @@
+[0m[32mBundle[0m file:///P:/ecs_person/websites/sonya.cc/edu_git/src/ts/actualPage/brick.ts
+[0m[32mEmit[0m "src\\js\\brick.js" ([0m[38;5;245m62.95KB[0m)

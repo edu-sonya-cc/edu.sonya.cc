@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html edu-lang="zh_cn">
+<head>
+  <title>24-sides-dices</title>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta id="viewportMeta" name="viewport"
+    content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,viewport-fit=cover,minimal-ui">
+  <link rel="icon" href="favicon.ico">
+	<style>
+    @media print { @page { size: A4 landscape; } }  /*landscape 横向 portrait 纵向*/ 
+    page:not(page:last-child){page-break-after:always;}
+	page {width:270mm;height:190mm;display:block;padding-top:15mm; }
+	
+	</style>
+</head>
+<body style="margin:0;padding:0em;">
+  <header></header><main></main><footer></footer>
+  <script>
+function getBodyElement() {
+    return document.getElementsByTagName('body')[0];
+}
+function getNumbersArray(min, max) {
+  const array = [];
+  for(let i = min; i <= max; ++i) {
+    array.push(i.toString());
+  }
+
+  return array;
+}
+  </script>
+  <script charset="utf-8" src="dice.js"></script>
+	<script>
+		const diceGenerator = new edu.sonya.cc.DiceGenerator();
+		const DiceKind = edu.sonya.cc.DiceKind;
+		const body = getBodyElement();
+		let svgId = 0;
+		
+		function appendPageAndSvg(svg) {
+			const page = document.createElement('page');
+			body.appendChild(page);
+			
+			page.appendChild(svg);
+		}
+	</script>
+	
+	<script>
+		appendPageAndSvg(diceGenerator.create({
+				id: `svg_${svgId++}`,
+				diceKind: DiceKind.twentyFour,
+				sideLength: 20,
+				contents: getNumbersArray(1, 24),
+				outerLineStyle: 'stroke:#555;stroke-width:0.2mm;',
+				innerLineStyle: 'stroke:#888;stroke-width:0.1mm;stroke-dasharray:3 2;',
+				textStyle: 'font-size:12mm;font-family:"kaiti";',
+				options: {
+						withHole: false
+				}
+		}).svg);
+		appendPageAndSvg(diceGenerator.create({
+				id: `svg_${svgId++}`,
+				diceKind: DiceKind.twentyFour,
+				sideLength: 25,
+				contents: getNumbersArray(0, 23),
+				outerLineStyle: 'stroke:#555;stroke-width:0.2mm;',
+				innerLineStyle: 'stroke:#888;stroke-width:0.1mm;stroke-dasharray:3 2;',
+				textStyle: 'font-size:12mm;font-family:"kaiti";',
+				options: {
+						withHole: false
+				}
+		}).svg);
+		appendPageAndSvg(diceGenerator.create({
+				id: `svg_${svgId++}`,
+				diceKind: DiceKind.twentyFour,
+				sideLength: 25,
+				contents: '立春、雨水、惊蛰、春分、清明、谷雨、立夏、小满、芒种、夏至、小暑、大暑、立秋、处暑、白露、秋分、寒露、霜降、立冬、小雪、大雪、冬至、小寒、大寒'.split('、'),
+				outerLineStyle: 'stroke:#555;stroke-width:0.2mm;',
+				innerLineStyle: 'stroke:#888;stroke-width:0.1mm;stroke-dasharray:3 2;',
+				textStyle: 'font-size:10.5mm;font-family:"KaiTi";',
+				options: {
+						withHole: false
+				}
+		}).svg);
+		appendPageAndSvg(diceGenerator.create({
+				id: `svg_${svgId++}`,
+				diceKind: DiceKind.twentyFour,
+				sideLength: 25,
+				contents: 'b,p,m,f,d,t,n,l,g,k,h,j,q,x,zh,ch,sh,r,z,c,s,y,w,'.replace(/a/g, 'ɑ').replace(/g/g, 'ɡ').split(','),
+				outerLineStyle: 'stroke:#555;stroke-width:0.2mm;',
+				innerLineStyle: 'stroke:#888;stroke-width:0.1mm;stroke-dasharray:3 2;',
+				// textStyle: 'font-size:12mm;font-family:"PinYinok";',
+				textStyle: 'font-size:12mm;font-family:"kaiti";',
+				options: {
+						withHole: false
+				}
+		}).svg);
+		appendPageAndSvg(diceGenerator.create({
+				id: `svg_${svgId++}`,
+				diceKind: DiceKind.twentyFour,
+				sideLength: 25,
+				contents: 'a,o,e,i,u,ü,ai,ei,ui,ao,ou,iu,ie,üe,er,an,en,in,un,ün,ang,eng,ing,ong'.replace(/a/g, 'ɑ').replace(/g/g, 'ɡ').split(','),
+				outerLineStyle: 'stroke:#555;stroke-width:0.2mm;',
+				innerLineStyle: 'stroke:#888;stroke-width:0.1mm;stroke-dasharray:3 2;',
+				// textStyle: 'font-size:12mm;font-family:"PinYinok";',
+				textStyle: 'font-size:12mm;font-family:"kaiti";',
+				options: {
+						withHole: false
+				}
+		}).svg);
+		appendPageAndSvg(diceGenerator.create({
+				id: `svg_${svgId++}`,
+				diceKind: DiceKind.twentyFour,
+				sideLength: 25,
+				contents: 'zhi,chi,shi,ri,zi,ci,si,yi,wu,yu,ye,yue,yuan,yin,yun,ying,,,,,,,,'.replace(/a/g, 'ɑ').replace(/g/g, 'ɡ').split(','),
+				outerLineStyle: 'stroke:#555;stroke-width:0.2mm;',
+				innerLineStyle: 'stroke:#888;stroke-width:0.1mm;stroke-dasharray:3 2;',
+				// textStyle: 'font-size:12mm;font-family:"PinYinok";',
+				textStyle: 'font-size:12mm;font-family:"kaiti";',
+				options: {
+						withHole: false
+				}
+		}).svg);
+		appendPageAndSvg(diceGenerator.create({
+				id: `svg_${svgId++}`,
+				diceKind: DiceKind.twentyFour,
+				sideLength: 25,
+				contents: 'ā,á,ǎ,à,ō,ó,ǒ,ò,ē,é,ě,è,ī,í,ǐ,ì,ū,ú,ǔ,ù,ǖ,ǘ,ǚ,ǜ'.split(','),
+				outerLineStyle: 'stroke:#555;stroke-width:0.2mm;',
+				innerLineStyle: 'stroke:#888;stroke-width:0.1mm;stroke-dasharray:3 2;',
+				textStyle: 'font-size:12mm;font-family:"Kaiti";font-weight:normal;',
+				options: {
+						withHole: false
+				}
+		}).svg);
+	</script>
+</body>
+</html>

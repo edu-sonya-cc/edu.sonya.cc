@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html edu-lang="zh_cn">
+<head>
+  <title>edu.sonya.cc_骰子（12面，边长25毫米）</title>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta id="viewportMeta" name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,viewport-fit=cover,minimal-ui">
+  <link rel="icon" href="favicon.ico">
+	<style>
+    @media print { @page { size: A4 portrait;  margin:10mm; /* margin:10mm; */ } }  /*landscape 横向 portrait 纵向*/ 
+    @media print { @page:top {  } }
+		body{width:277mm;overflow-x:hidden;overflow-y:auto;}
+    /* page:not(page:last-child){page-break-after:always;} */
+		/* page:not(page:last-child){page-break-after:avoid;}*/
+		body{page-break-inside:avoid;}
+		
+		/* page {width:270mm;height:190mm;display:block;padding-top:15mm;padding-left:10mm;} */
+	</style>
+</head>
+<body style="margin:0;padding:0em;">
+  <script>
+function getBodyElement() {
+    return document.getElementsByTagName('body')[0];
+}
+function getNumbersArray(min, max) {
+  const array = [];
+  for(let i = min; i <= max; ++i) {
+    array.push(i.toString());
+  }
+
+  return array;
+}
+  </script>
+  <script charset="utf-8" src="dice.js"></script>
+	<script>
+		const diceGenerator = new edu.sonya.cc.DiceGenerator();
+		const DiceKind = edu.sonya.cc.DiceKind;
+		const body = getBodyElement();
+		let svgId = 0;
+	</script>
+	
+	<script>
+		body.appendChild(diceGenerator.create({
+				id: `svg_${svgId++}`,
+				diceKind: DiceKind.twelve,
+				sideLength: 25,
+				contents: ',,,,,,,,,,,'.split(','),
+				outerLineStyle: 'stroke:#555;stroke-width:0.2mm;',
+				innerLineStyle: 'stroke:#888;stroke-width:0.1mm;stroke-dasharray:3 2;',
+				textStyle: 'font-size:12mm;font-family:"kaiti";',
+				options: {
+						withHole: true
+				}
+		}).svg);
+		body.appendChild(diceGenerator.create({
+				id: `svg_${svgId++}`,
+				diceKind: DiceKind.twelve,
+				sideLength: 20,
+				contents: ',,,,,,,,,,,'.split(','),
+				outerLineStyle: 'stroke:#555;stroke-width:0.2mm;',
+				innerLineStyle: 'stroke:#888;stroke-width:0.1mm;stroke-dasharray:3 2;',
+				textStyle: 'font-size:12mm;font-family:"kaiti";',
+				options: {
+						withHole: true
+				}
+		}).svg);
+		body.appendChild(diceGenerator.create({
+				id: `svg_${svgId++}`,
+				diceKind: DiceKind.twelve,
+				sideLength: 15,
+				contents: ',,,,,,,,,,,'.split(','),
+				outerLineStyle: 'stroke:#555;stroke-width:0.2mm;',
+				innerLineStyle: 'stroke:#888;stroke-width:0.1mm;stroke-dasharray:3 2;',
+				textStyle: 'font-size:12mm;font-family:"kaiti";',
+				options: {
+						withHole: true
+				}
+		}).svg);
+		body.appendChild(diceGenerator.create({
+				id: `svg_${svgId++}`,
+				diceKind: DiceKind.twelve,
+				sideLength: 10,
+				contents: ',,,,,,,,,,,'.split(','),
+				outerLineStyle: 'stroke:#555;stroke-width:0.2mm;',
+				innerLineStyle: 'stroke:#888;stroke-width:0.1mm;stroke-dasharray:3 2;',
+				textStyle: 'font-size:12mm;font-family:"kaiti";',
+				options: {
+						withHole: true
+				}
+		}).svg);
+	</script>
+	
+	<script>
+		body.appendChild(diceGenerator.create({
+				id: `svg_${svgId++}`,
+				diceKind: DiceKind.twelve,
+				sideLength: 25,
+				contents: getNumbersArray(1, 12),
+				outerLineStyle: 'stroke:#555;stroke-width:0.2mm;',
+				innerLineStyle: 'stroke:#888;stroke-width:0.1mm;stroke-dasharray:3 2;',
+				textStyle: 'font-size:12mm;font-family:"kaiti";',
+				options: {
+						withHole: false
+				}
+		}).svg);
+		body.appendChild(diceGenerator.create({
+				id: `svg_${svgId++}`,
+				diceKind: DiceKind.twelve,
+				sideLength: 25,
+				contents: '子丑寅卯辰巳午未申酉戌亥'.split(''),
+				outerLineStyle: 'stroke:#555;stroke-width:0.2mm;',
+				innerLineStyle: 'stroke:#888;stroke-width:0.1mm;stroke-dasharray:3 2;',
+				textStyle: 'font-size:12mm;font-family:"kaiti";',
+				options: {
+						withHole: false
+				}
+		}).svg);
+		// body.appendChild(diceGenerator.create({
+		// 		id: `svg_${svgId++}`,
+		// 		diceKind: DiceKind.twelve,
+		// 		sideLength: 25,
+		// 		// contents: '子<br/><small>23-1点</small>,丑<br/><small>1-3点</small>,寅<br/><small>3-5点</small>,卯<br/><small>5-7点</small>,辰<br/><small>7-9点</small>,巳<br/><small>9-11</small>,午<br/><small>11-13点</small>,未<br/><small>13-15点</small>,申<br/><small>15-17点</small>,酉<br/><small>17-19点</small>,戌<br/><small>19-21点</small>,亥<br/><small>21-23点</small>'.split(','),
+		// 		// contents: '子\n23-1点,丑\n1-3点,寅\n3-5点,卯\n5-7点,辰\n7-9点,巳\n9-11,午\n11-13点,未\n13-15点,申\n15-17点,酉\n17-19点,戌\n19-21点,亥\n21-23点'.split(','),
+		// 		contents: [
+		// 			  '<tspan>子</tspan><tspan dx="0" dy="10" style="font-size:0.75em;">23-1</tspan>',
+		// 			, '<tspan>丑</tspan><tspan dx="0" dy="10" style="font-size:0.75em;">1-3</tspan>',
+		// 			, '<tspan>寅</tspan><tspan dx="0" dy="10" style="font-size:0.75em;">3-5</tspan>',
+		// 			, '<tspan>卯</tspan><tspan dx="0" dy="10" style="font-size:0.75em;">5-7</tspan>',
+		// 			, '<tspan>辰</tspan><tspan dx="0" dy="10" style="font-size:0.75em;">7-9</tspan>',
+		// 			, '<tspan>巳</tspan><tspan dx="0" dy="10" style="font-size:0.75em;">9-11</tspan>',
+		// 			, '<tspan>午</tspan><tspan dx="0" dy="10" style="font-size:0.75em;">11-13</tspan>',
+		// 			, '<tspan>未</tspan><tspan dx="0" dy="10" style="font-size:0.75em;">13-15</tspan>',
+		// 			, '<tspan>申</tspan><tspan dx="0" dy="10" style="font-size:0.75em;">15-17</tspan>',
+		// 			, '<tspan>酉</tspan><tspan dx="0" dy="10" style="font-size:0.75em;">17-19</tspan>',
+		// 			, '<tspan>戌</tspan><tspan dx="0" dy="10" style="font-size:0.75em;">19-21</tspan>',
+		// 			, '<tspan>亥</tspan><tspan dx="0" dy="10" style="font-size:0.75em;">21-23</tspan>'
+		// 		],
+		// 		outerLineStyle: 'stroke:#555;stroke-width:0.2mm;',
+		// 		innerLineStyle: 'stroke:#888;stroke-width:0.1mm;stroke-dasharray:3 2;',
+		// 		textStyle: 'font-size:12mm;font-family:"kaiti";',
+		// 		options: {
+		// 				withHole: false
+		// 		}
+		// }).svg);
+		body.appendChild(diceGenerator.create({
+				id: `svg_${svgId++}`,
+				diceKind: DiceKind.twelve,
+				sideLength: 25,
+				contents: '鼠牛虎兔龙蛇马羊猴鸡狗猪'.split(''),
+				outerLineStyle: 'stroke:#555;stroke-width:0.2mm;',
+				innerLineStyle: 'stroke:#888;stroke-width:0.1mm;stroke-dasharray:3 2;',
+				textStyle: 'font-size:12mm;font-family:"kaiti";',
+				options: {
+						withHole: false
+				}
+		}).svg);
+		body.appendChild(diceGenerator.create({
+				id: `svg_${svgId++}`,
+				diceKind: DiceKind.twelve,
+				sideLength: 25,
+				contents: '鼠牛虎兔龍蛇馬羊猴雞狗猪'.split(''),
+				outerLineStyle: 'stroke:#555;stroke-width:0.2mm;',
+				innerLineStyle: 'stroke:#888;stroke-width:0.1mm;stroke-dasharray:3 2;',
+				textStyle: 'font-size:12mm;font-family:"kaiti";',
+				options: {
+						withHole: false
+				}
+		}).svg);
+		body.appendChild(diceGenerator.create({
+				id: `svg_${svgId++}`,
+				diceKind: DiceKind.twelve,
+				sideLength: 25,
+				contents: [
+						'January',
+						'February',
+						'March',
+						'April',
+						'May',
+						'June',
+						'July',
+						'August',
+						'September',
+						'October',
+						'November',
+						'December'
+				],
+				outerLineStyle: 'stroke:#555;stroke-width:0.2mm;',
+				innerLineStyle: 'stroke:#888;stroke-width:0.1mm;stroke-dasharray:3 2;',
+				textStyle: 'font-size:7.5mm;font-family:"Times New Roman";',
+				options: {
+						withHole: false
+				}
+		}).svg);
+		body.appendChild(diceGenerator.create({
+				id: `svg_${svgId++}`,
+				diceKind: DiceKind.twelve,
+				sideLength: 25,
+				contents: [
+						'一月',
+						'二月',
+						'三月',
+						'四月',
+						'五月',
+						'六月',
+						'七月',
+						'八月',
+						'九月',
+						'十月',
+						'十一月',
+						'十二月'
+				],
+				outerLineStyle: 'stroke:#555;stroke-width:0.2mm;',
+				innerLineStyle: 'stroke:#888;stroke-width:0.1mm;stroke-dasharray:3 2;',
+				textStyle: 'font-size:10.5mm;font-family:"kaiti";',
+				options: {
+						withHole: false
+				}
+		}).svg);
+		body.appendChild(diceGenerator.create({
+				id: `svg_${svgId++}`,
+				diceKind: DiceKind.twelve,
+				sideLength: 25,
+				contents: [
+						'Jan.',
+						'Feb.',
+						'Mar.',
+						'Apr.',
+						'May.',
+						'Jun.',
+						'Jul.',
+						'Aug.',
+						'Sep.',
+						'Oct.',
+						'Nov.',
+						'Dec.'
+				],
+				outerLineStyle: 'stroke:#555;stroke-width:0.2mm;',
+				innerLineStyle: 'stroke:#888;stroke-width:0.1mm;stroke-dasharray:3 2;',
+				textStyle: 'font-size:12mm;font-family:"Times New Roman";',
+				options: {
+						withHole: false
+				}
+		}).svg);
+		body.appendChild(diceGenerator.create({
+				id: `svg_${svgId++}`,
+				diceKind: DiceKind.twelve,
+				sideLength: 25,
+				contents: [
+						'1月',
+						'2月',
+						'3月',
+						'4月',
+						'5月',
+						'6月',
+						'7月',
+						'8月',
+						'9月',
+						'10月',
+						'11月',
+						'12月'
+				],
+				outerLineStyle: 'stroke:#555;stroke-width:0.2mm;',
+				innerLineStyle: 'stroke:#888;stroke-width:0.1mm;stroke-dasharray:3 2;',
+				textStyle: 'font-size:10.5mm;font-family:"kaiti";',
+				options: {
+						withHole: false
+				}
+		}).svg);
+		body.appendChild(diceGenerator.create({
+				id: `svg_${svgId++}`,
+				diceKind: DiceKind.twelve,
+				sideLength: 25,
+				contents: [
+						'正月',
+						'二月',
+						'三月',
+						'四月',
+						'五月',
+						'六月',
+						'七月',
+						'八月',
+						'九月',
+						'十月',
+						'冬月',
+						'腊月'
+				],
+				outerLineStyle: 'stroke:#555;stroke-width:0.2mm;',
+				innerLineStyle: 'stroke:#888;stroke-width:0.1mm;stroke-dasharray:3 2;',
+				textStyle: 'font-size:10.5mm;font-family:"kaiti";',
+				options: {
+						withHole: false
+				}
+		}).svg);
+		body.appendChild(diceGenerator.create({
+				id: `svg_${svgId++}`,
+				diceKind: DiceKind.twelve,
+				sideLength: 25,
+				contents: getNumbersArray(0, 11),
+				outerLineStyle: 'stroke:#555;stroke-width:0.2mm;',
+				innerLineStyle: 'stroke:#888;stroke-width:0.1mm;stroke-dasharray:3 2;',
+				textStyle: 'font-size:12mm;font-family:"kaiti";',
+				options: {
+						withHole: false
+				}
+		}).svg);
+	</script>
+</body>
+</html>
