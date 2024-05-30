@@ -1,0 +1,1 @@
+call ..\..\_common\createJson.core.bat server min cuboid_with_square_section_a3 server.min

@@ -1,0 +1,14 @@
+en, zh_cn, zh_tw{display:inline;}
+button{cursor:pointer;}
+html[lang='en'] zh_cn, html[lang='en'] zh_tw, html[lang='en'] button[onclick="setLang('en')"]{display:none;}
+html[lang='zh_cn'] en, html[lang='zh_cn'] zh_tw, html[lang='zh_cn'] button[onclick="setLang('zh_cn')"]{display:none;}
+html[lang='zh_tw'] en, html[lang='zh_tw'] zh_cn, html[lang='zh_tw'] button[onclick="setLang('zh_tw')"]{display:none;}
+
+html[lang='en'] button[onclick="setLang('zh_cn')"] en, html[lang='en'] button[onclick="setLang('zh_tw')"] en,
+html[lang='zh_cn'] button[onclick="setLang('en')"] zh_cn, html[lang='zh_cn'] button[onclick="setLang('zh_tw')"] zh_cn,
+html[lang='zh_tw'] button[onclick="setLang('en')"] zh_tw, html[lang='zh_tw'] button[onclick="setLang('zh_cn')"] zh_tw
+{display:none;}
+
+html[lang='en'] button[onclick="setLang('zh_cn')"] zh_cn, html[lang='en'] button[onclick="setLang('zh_tw')"] zh_tw{display:inline;}
+html[lang='zh_cn'] button[onclick="setLang('en')"] en, html[lang='zh_cn'] button[onclick="setLang('zh_tw')"] zh_tw{display:inline;}
+html[lang='zh_tw'] button[onclick="setLang('en')"] en, html[lang='zh_tw'] button[onclick="setLang('zh_cn')"] zh_cn{display:inline;}

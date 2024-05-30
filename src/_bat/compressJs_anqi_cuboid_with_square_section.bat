@@ -1,0 +1,1 @@
+@call compressJs_onlyOne anqi_cuboid_with_square_section.js

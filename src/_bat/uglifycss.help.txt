@@ -1,0 +1,11 @@
+Usage: uglifycss [options] file1.css [file2.css [...]] > output
+options:
+--max-line-len n  add a newline every n characters
+--expand-vars     expand variables
+--ugly-comments   remove newlines within preserved comments
+--cute-comments   preserve newlines within and around preserved comments
+--convert-urls d  convert relative urls using the d directory as location target
+--debug           print full error stack on error
+--output f        put the result in f file
+--help            show this help
+--version         display version number

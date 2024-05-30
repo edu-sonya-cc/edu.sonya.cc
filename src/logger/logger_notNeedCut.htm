@@ -1,0 +1,253 @@
+<html>
+  <head>
+    <!-- anqisoft@gmail.com 2023-09-21 -->
+    <meta charset="utf-8" />
+    <!-- It's useless? -->
+    <meta http-equiv="Permissions-Policy" content="interest-cohort=()" />
+    <meta
+      id="viewportMeta"
+      name="viewport"
+      content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,viewport-fit=cover,minimal-ui"
+    />
+    <title>日志</title>
+    <style>
+      @media print {
+        @page {
+          size: A4 landscape;
+        }
+      } /*landscape横向 portrait 纵向*/
+      * {
+        margin: 0;
+        border: 0;
+        padding: 0;
+      }
+      line {
+        stroke-width: 0.1mm;
+        stroke: #999999;
+      }
+      line.vertical {
+        stroke-width: 0.01mm;
+        stroke: #bbbbbb;
+      }
+
+      text {
+        font-family: 'Times New Roman', '楷体';
+        font-size: 12px;
+        fill: #000000;
+        dominant-baseline: middle;
+        text-anchor: middle;
+      }
+      text.row-no {
+        font-size: 15px;
+        fill: #999999;
+      }
+
+      /* https://www.w3.org/TR/SVG/text.html#DominantBaselineProperty */
+      text.left {
+        text-anchor: start;
+      }
+      text.center {
+        text-anchor: middle;
+      }
+      text.right {
+        text-anchor: end;
+      }
+
+      page:not(:last-child) {
+        page-break-after: always;
+      }
+    </style>
+    <script>
+      // logger.htm?name=日志&start=1&end=4&vLine=false&withoutLineNo=true
+      const PAGE_WIDTH = 297;
+      const PAGE_HEIGHT = 210;
+
+      const HEADER_OR_FOOTER_LEFT = 4;
+      const HEADER_TOP = 6;
+      const HEADER_OR_FOOTER_RIGHT = PAGE_WIDTH - HEADER_OR_FOOTER_LEFT;
+      const FOOTER_BOTTOM = PAGE_HEIGHT - HEADER_TOP;
+
+      const CON_HORIZONTAL_LINE_WIDTH = 130;
+      const CON_HORIZONTAL_LINE_HALF_WIDTH = CON_HORIZONTAL_LINE_WIDTH * 0.5;
+      const CON_VERTICAL_LINE_HEIGTH = 190;
+      const ROW_COUNT = 30;
+      const ROW_HEIGHT = CON_VERTICAL_LINE_HEIGTH / ROW_COUNT;
+
+      const MAIN_START_X = 6;
+      const ROW_NO_WIDTH = 5;
+      const START_Y = (PAGE_HEIGHT - CON_VERTICAL_LINE_HEIGTH) * 0.5;
+      const END_Y = START_Y + CON_VERTICAL_LINE_HEIGTH;
+
+      function count() {
+        const url = window.location.href.replace('?', '&');
+
+        const name = decodeURI(
+          url.concat('&name=日志').replace('&name=', '厶').split('厶')[1].split('&')[0],
+        );
+
+        let start = Math.max(
+          1,
+          parseInt(url.concat('&start=1').replace('&start=', '厶').split('厶')[1].split('&')[0]),
+        );
+        start = Math.floor((start + 3) / 4) * 4 - 3;
+
+        let end = Math.max(
+          start,
+          parseInt(url.concat('&end=100').replace('&end=', '厶').split('厶')[1].split('&')[0]),
+        );
+        end = Math.floor((end + 3) / 4) * 4;
+        const PAGE_SET_COUNT = (end - start + 1) / 4;
+
+        const vLine =
+          url.concat('&vLine=true').replace('&vLine=', '厶').split('厶')[1].split('&')[0] ===
+          'true';
+        const withoutLineNo =
+          url
+            .concat('&withoutLineNo=true')
+            .replace('&withoutLineNo=', '厶')
+            .split('厶')[1]
+            .split('&')[0] === 'true';
+
+        let title = name;
+        title = title.concat(start.toString(), '-', end.toString());
+        document.getElementsByTagName('title')[0].innerHTML = title;
+
+        let html = '';
+        for (let pageSetIndex = 0; pageSetIndex < PAGE_SET_COUNT; ++pageSetIndex) {
+          const START_PAGE_NO = start + pageSetIndex * 4;
+
+          // 每组两页A4
+          for (let pageIndex = 0; pageIndex < 2; ++pageIndex) {
+            let svgHtml = '';
+
+            // 左右页眉、页脚，fill="#000"
+            svgHtml += '<text class="left" x="'.concat(
+              HEADER_OR_FOOTER_LEFT,
+              'mm" y="',
+              HEADER_TOP,
+              'mm">',
+              name,
+              '</text>',
+            );
+            svgHtml += '<text class="right" x="'.concat(
+              HEADER_OR_FOOTER_RIGHT,
+              'mm" y="',
+              HEADER_TOP,
+              'mm">',
+              name,
+              '</text>',
+            );
+
+            svgHtml += '<text class="left" x="'.concat(
+              HEADER_OR_FOOTER_LEFT,
+              'mm" y="',
+              FOOTER_BOTTOM,
+              'mm">',
+              START_PAGE_NO + (pageIndex === 0 ? 3 : 1),
+              '</text>',
+            );
+            svgHtml += '<text class="right" x="'.concat(
+              HEADER_OR_FOOTER_RIGHT,
+              'mm" y="',
+              FOOTER_BOTTOM,
+              'mm">',
+              START_PAGE_NO + (pageIndex === 0 ? 0 : 2),
+              '</text>',
+            );
+
+            for (let leftOrRightIndex = 0; leftOrRightIndex < 2; ++leftOrRightIndex) {
+              const START_X =
+                leftOrRightIndex === 0
+                  ? MAIN_START_X
+                  : PAGE_WIDTH - MAIN_START_X - ROW_NO_WIDTH - CON_HORIZONTAL_LINE_WIDTH;
+              const ROW_NO_X = START_X + ROW_NO_WIDTH * 0.5;
+              const HORIZONTAL_LINE_START_X = START_X + ROW_NO_WIDTH;
+              const HORIZONTAL_LINE_END_X = HORIZONTAL_LINE_START_X + CON_HORIZONTAL_LINE_WIDTH;
+              const VERTICAL_LINE_X = HORIZONTAL_LINE_START_X + CON_HORIZONTAL_LINE_HALF_WIDTH;
+
+              if (vLine) {
+                svgHtml += '<line class="vertical" x1="'.concat(
+                  VERTICAL_LINE_X,
+                  'mm" x2="',
+                  VERTICAL_LINE_X,
+                  'mm" y1="',
+                  START_Y,
+                  'mm" y2="',
+                  END_Y,
+                  'mm" />',
+                );
+              }
+
+              svgHtml += '<line x1="'.concat(
+                HORIZONTAL_LINE_START_X,
+                'mm" x2="',
+                HORIZONTAL_LINE_END_X,
+                'mm" y1="',
+                START_Y,
+                'mm" y2="',
+                START_Y,
+                'mm" />',
+              );
+              for (let rowIndex = 0; rowIndex < ROW_COUNT; ++rowIndex) {
+                const ROW_NO = rowIndex + 1;
+                const LINE_Y = START_Y + ROW_HEIGHT * ROW_NO;
+                if (!withoutLineNo) {
+                  svgHtml += '<text class="center row-no" x="'.concat(
+                    ROW_NO_X,
+                    'mm" y="',
+                    LINE_Y - ROW_HEIGHT * 0.25,
+                    'mm">',
+                    ROW_NO,
+                    '</text>',
+                  );
+                }
+                svgHtml += '<line x1="'.concat(
+                  HORIZONTAL_LINE_START_X,
+                  'mm" x2="',
+                  HORIZONTAL_LINE_END_X,
+                  'mm" y1="',
+                  LINE_Y,
+                  'mm" y2="',
+                  LINE_Y,
+                  'mm" />',
+                );
+              }
+            }
+
+            html = html.concat(
+              '<page><svg version="1.1" xmlns="http://www.w3.org/2000/svg" ',
+              'style="width:297mm;height:208mm;"',
+              '>',
+              svgHtml,
+              '</svg></page>',
+            );
+          }
+        }
+
+        document.getElementsByTagName('body')[0].innerHTML = html;
+
+        window.print();
+      }
+
+      window.onload = count;
+
+      document.onkeyup = function (e) {
+        // 27 ESC
+        // alert(e.keyCode);
+        // var html = ''; for (var p in e) { html += p.concat('=>', e[p], '<br/>'); } document.getElementsByTagName('body')[0].innerHTML = html;
+        switch (e.keyCode) {
+          case 112: // F1
+            alert('?name=日志&start=1&end=4&vLine=false&withoutLineNo=true');
+            e.preventDefault();
+            e.stopPropagation();
+            break;
+          default:
+            break;
+        }
+
+        return false;
+      };
+    </script>
+  </head>
+  <body></body>
+</html>

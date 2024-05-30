@@ -1,0 +1,157 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      id="viewportMeta"
+      name="viewport"
+      content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,viewport-fit=cover,minimal-ui"
+    />
+    <title>box</title>
+    <style id="style"></style>
+  </head>
+  <body>
+  <script src="../js/anqi_utils.js"></script>
+  <script src="../js/anqi_svg_utils.js"></script>
+  <script src="../js/anqi_express_box.js"></script>
+  <script>
+    function createSvgElementNew({ html, width, height }) {
+      return createSvgElement(html, width, height);
+    }
+
+    // box.htm?top=4&left=3.5&landscape=false&a3=true
+    function draw() {
+      const url = window.location.href.replace('?', '&');
+      parsePageParamsFromUrl(url);
+      parseExpressBoxParamsFromUrl(url);
+
+      const body = document.getElementsByTagName('body')[0];
+
+      const pageElement = createPageElement();
+      body.appendChild(pageElement);
+
+      let svgElementInfo, svgElement, svgWidth, svgHeight, svgStyle;
+
+      let boxLong, boxWidth, boxHeight, boxExtend;
+
+      // boxLong = 80, boxWidth = 60, boxHeight = 50, boxExtend = 5;
+      (boxLong = 80), (boxWidth = 60), (boxHeight = 48), (boxExtend = 5);
+      svgElementInfo = createSvgElementNew(
+        getExpressBoxSvgHtml(boxLong, boxWidth, boxHeight, boxExtend),
+      );
+      svgElement = svgElementInfo.svgElement;
+      pageElement.appendChild(svgElement);
+      svgWidth = svgElementInfo.width;
+      svgHeight = svgElementInfo.height;
+      svgStyle = svgElement.style;
+      svgStyle.position = 'absolute';
+      svgStyle.left = '7.5mm';
+      svgStyle.top = '3.5mm';
+
+      const MIDDLE_BOTTOM = '3.5mm';
+      const MIDDLE_FIRST_LEFT = '16mm'; // 3.5  18
+      const MIDDLE_SECOND_RIGHT = '12mm'; // 0
+
+      // boxLong = 40, boxWidth = 30, boxHeight = 25, boxExtend = 5;
+      (boxLong = 40), (boxWidth = 30), (boxHeight = 24), (boxExtend = 5);
+      for (let i = 0; i < 2; ++i) {
+        svgElementInfo = createSvgElementNew(
+          getExpressBoxSvgHtml(boxLong, boxWidth, boxHeight, boxExtend),
+        );
+        svgElement = svgElementInfo.svgElement;
+        pageElement.appendChild(svgElement);
+        svgWidth = svgElementInfo.width;
+        svgHeight = svgElementInfo.height;
+        svgStyle = svgElement.style;
+        svgStyle.position = 'absolute';
+        svgStyle.bottom = MIDDLE_BOTTOM;
+        if (i === 0) {
+          svgStyle.left = MIDDLE_FIRST_LEFT;
+        } else if (i === 1) {
+          svgStyle.right = MIDDLE_SECOND_RIGHT;
+          svgStyle.transform = 'rotate(180deg)';
+        }
+      }
+
+      // boxLong = 20, boxWidth = 15, boxHeight = 12.5, boxExtend = 3;
+      (boxLong = 20), (boxWidth = 15), (boxHeight = 12), (boxExtend = 3);
+
+      const SMALL_TOP_ROW1 = '3.5mm';
+      const SMALL_LEFT_ROW1 = '3.5mm';
+      const SMALL_RIGHT_ROW1 = '0mm';
+      for (let i = 0; i < 2; ++i) {
+        svgElementInfo = createSvgElementNew(
+          getExpressBoxSvgHtml(boxLong, boxWidth, boxHeight, boxExtend),
+        );
+        svgElement = svgElementInfo.svgElement;
+        pageElement.appendChild(svgElement);
+        svgWidth = svgElementInfo.width;
+        svgHeight = svgElementInfo.height;
+        svgStyle = svgElement.style;
+        svgStyle.position = 'absolute';
+        svgStyle.top = SMALL_TOP_ROW1;
+        if (i === 0) {
+          svgStyle.left = SMALL_LEFT_ROW1;
+          svgStyle.transform = 'rotate(180deg)';
+        } else if (i === 1) {
+          svgStyle.right = SMALL_RIGHT_ROW1;
+          svgStyle.transform = 'rotate(180deg)';
+        }
+      }
+
+      const SMALL_TOP_ROW2 = '90mm';
+      for (let i = 0; i < 2; ++i) {
+        svgElementInfo = createSvgElementNew(
+          getExpressBoxSvgHtml(boxLong, boxWidth, boxHeight, boxExtend),
+        );
+        svgElement = svgElementInfo.svgElement;
+        pageElement.appendChild(svgElement);
+        svgWidth = svgElementInfo.width;
+        svgHeight = svgElementInfo.height;
+        svgStyle = svgElement.style;
+        svgStyle.position = 'absolute';
+        svgStyle.top = SMALL_TOP_ROW2;
+        if (i === 0) {
+          svgStyle.left = SMALL_LEFT_ROW1;
+          // svgStyle.transform = 'rotate(180deg)';
+        } else if (i === 1) {
+          svgStyle.right = SMALL_RIGHT_ROW1;
+          // svgStyle.transform = 'rotate(180deg)';
+        }
+      }
+
+      const SMALL_BOTTOM_ROW3 = '130mm';
+      const SMALL_LEFT_ROW3 = '3mm';
+      const SMALL_RIGHT_ROW3 = '0mm';
+      for (let i = 0; i < 2; ++i) {
+        svgElementInfo = createSvgElementNew(
+          getExpressBoxSvgHtml(boxLong, boxWidth, boxHeight, boxExtend),
+        );
+        svgElement = svgElementInfo.svgElement;
+        pageElement.appendChild(svgElement);
+        svgWidth = svgElementInfo.width;
+        svgHeight = svgElementInfo.height;
+        svgStyle = svgElement.style;
+        svgStyle.position = 'absolute';
+        svgStyle.bottom = SMALL_BOTTOM_ROW3;
+        if (i === 0) {
+          svgStyle.left = SMALL_LEFT_ROW3;
+          // svgStyle.transform = 'rotate(180deg)';
+        } else if (i === 1) {
+          svgStyle.right = SMALL_RIGHT_ROW3;
+          // svgStyle.transform = 'rotate(180deg)';
+        }
+      }
+      document.getElementById('style').innerHTML = getPageCss(
+        A3,
+        LANDSCAPE,
+        PAGE_PADDING_TOP,
+        PAGE_PADDING_LEFT,
+      );
+
+      // window.print();
+    }
+
+    draw();
+  </script>
+  </body>
+</html>

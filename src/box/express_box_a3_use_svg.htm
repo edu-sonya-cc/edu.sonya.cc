@@ -1,0 +1,256 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <!-- It's useless? -->
+    <meta http-equiv="Permissions-Policy" content="interest-cohort=()" />
+    <meta
+      id="viewportMeta"
+      name="viewport"
+      content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,viewport-fit=cover,minimal-ui"
+    />
+    <title>A3 Express Box (body -> page -> svg)</title>
+    <style id="style"></style>
+  </head>
+  <body></body>
+  <script charset="utf-8" src="../js/anqi_utils.js"></script>
+  <script charset="utf-8" src="../js/anqi_svg_utils.js"></script>
+  <script charset="utf-8" src="../js/anqi_express_box.js"></script>
+  <script>
+    // ?top=4&left=3.5&landscape=false&a3=true
+    function draw() {
+      setF1Content('?top=3.5&left=3.5&landscape=false&a3=true');
+
+      const url = window.location.href.replace('?', '&');
+      parsePageParamsFromUrl(url);
+      parseExpressBoxParamsFromUrl(url);
+
+      // document.getElementById('style').innerHTML = getPageCss();
+      document.getElementById('style').innerHTML = getSvgCss();
+
+      const body = document.getElementsByTagName('body')[0];
+
+      // const topElement = createPageElement();
+      const topElement = createTopSvgElement();
+      body.appendChild(topElement);
+
+      appendExpressBoxes(topElement);
+
+      window.print();
+    }
+
+    function appendBigExpressBoxes(topElement) {
+      const BOX_LONG = 80,
+        BOX_WIDTH = 60,
+        BOX_HEIGHT = 48, // 50
+        BOX_EXTEND = 5;
+
+      const TOP = 3.5;
+      const LEFT = 7;
+      appendSvgAndG(
+        topElement,
+        createSvgAndGElement(getExpressBoxSvgHtml(BOX_LONG, BOX_WIDTH, BOX_HEIGHT, BOX_EXTEND)),
+        {
+          left: LEFT,
+          top: TOP,
+        },
+      );
+    }
+
+    function appendMiddleExpressBoxes(topElement) {
+      const BOX_LONG = 40,
+        BOX_WIDTH = 30,
+        BOX_HEIGHT = 24, // 25
+        BOX_EXTEND = 5;
+
+      // const BOTTOM = 3.5;
+      const TOP = 280;
+
+      const FIRST_LEFT = 12; // 16
+      const SECOND_RIGHT = 15; // 13
+
+      [
+        {
+          // bottom: BOTTOM,
+          top: TOP,
+          left: FIRST_LEFT,
+        },
+        {
+          // bottom: BOTTOM,
+          top: TOP,
+
+          right: SECOND_RIGHT,
+          degree: DEGREE_180,
+        },
+      ].forEach(options => {
+        appendSvgAndG(
+          topElement,
+          createSvgAndGElement(getExpressBoxSvgHtml(BOX_LONG, BOX_WIDTH, BOX_HEIGHT, BOX_EXTEND)),
+          options,
+        );
+      });
+    }
+
+    function appendSmallExpressBoxes(topElement) {
+      const BOX_LONG = 20,
+        BOX_WIDTH = 15,
+        BOX_HEIGHT = 12, // 12.5
+        BOX_EXTEND = 3;
+
+      const ROW1_TOP = 3.5;
+      const ROW1_FIRST_LEFT = 3.5;
+      const ROW1_SECOND_RIGHT = 0;
+
+      const ROW2_TOP = 94.5;
+
+      // const ROW3_BOTTOM = 131.5;
+      const ROW3_TOP = 219;
+      const ROW3_FIRST_LEFT = 3;
+      const ROW3_SECOND_RIGHT = 3; // 0;
+
+      [
+        // ROW1
+        {
+          top: ROW1_TOP,
+          left: ROW1_FIRST_LEFT, // + 3,
+          degree: DEGREE_180,
+        },
+        {
+          top: ROW1_TOP,
+          right: ROW1_SECOND_RIGHT,
+          degree: DEGREE_180,
+        },
+
+        // ROW2
+        {
+          top: ROW2_TOP,
+          left: ROW1_FIRST_LEFT,
+        },
+        {
+          top: ROW2_TOP,
+          right: ROW1_SECOND_RIGHT,
+          degree: DEGREE_180,
+        },
+
+        // ROW3
+        {
+          // bottom: ROW3_BOTTOM,
+          top: ROW3_TOP,
+          left: ROW3_FIRST_LEFT,
+        },
+        {
+          // bottom: ROW3_BOTTOM,
+          top: ROW3_TOP,
+          right: ROW3_SECOND_RIGHT,
+        },
+      ].forEach(options => {
+        appendSvgAndG(
+          topElement,
+          createSvgAndGElement(getExpressBoxSvgHtml(BOX_LONG, BOX_WIDTH, BOX_HEIGHT, BOX_EXTEND)),
+          options,
+        );
+      });
+    }
+
+    function appendXSmallExpressBoxes(topElement) {
+      const BOX_LONG = 10,
+        BOX_WIDTH = 7.5,
+        BOX_HEIGHT = 6, // 6.25
+        BOX_EXTEND = 2;
+
+      const ROW1_TOP = 65;
+      const ROW1_FIRST_LEFT = 0;
+      const ROW1_SECOND_RIGHT = 0;
+
+      const ROW2_TOP = 282;
+      const ROW2_FIRST_LEFT = 3; // 3;
+      const ROW2_SECOND_LEFT = 116; // 120;
+      const ROW2_THIRD_RIGHT = 0;
+
+      const ROW3_TOP = 315;
+      const ROW3_FIRST_LEFT = 3; // 3;
+
+      const ROW4_TOP = 328;
+      const ROW4_FIRST_RIGHT = 0;
+
+      const ROW5_TOP = 353;
+      const ROW5_FIRST_RIGHT = 11;
+
+      const ROW6_TOP = 378;
+      const ROW6_FIRST_RIGHT = 0;
+
+      [
+        // ROW1
+        {
+          top: ROW1_TOP,
+          left: ROW1_FIRST_LEFT,
+          degree: DEGREE_90,
+        },
+        {
+          top: ROW1_TOP,
+          right: ROW1_SECOND_RIGHT,
+          degree: DEGREE_90_COUNTERCLOCKWISE,
+        },
+
+        // ROW2
+        {
+          top: ROW2_TOP,
+          left: ROW2_FIRST_LEFT,
+          degree: DEGREE_90,
+        },
+        {
+          top: ROW2_TOP - 11,
+          left: ROW2_SECOND_LEFT,
+          degree: DEGREE_90,
+        },
+        {
+          top: ROW2_TOP - 4.5,
+          right: ROW2_THIRD_RIGHT,
+          degree: DEGREE_90_COUNTERCLOCKWISE,
+        },
+
+        // ROW3
+        {
+          top: ROW3_TOP,
+          left: ROW3_FIRST_LEFT,
+          degree: DEGREE_90_COUNTERCLOCKWISE,
+        },
+
+        // ROW4
+        {
+          top: ROW4_TOP,
+          right: ROW4_FIRST_RIGHT,
+          degree: DEGREE_90_COUNTERCLOCKWISE,
+        },
+
+        // ROW5
+        {
+          top: ROW5_TOP,
+          right: ROW5_FIRST_RIGHT,
+          degree: DEGREE_90,
+        },
+
+        // ROW6
+        {
+          top: ROW6_TOP,
+          right: ROW6_FIRST_RIGHT,
+          degree: DEGREE_90_COUNTERCLOCKWISE,
+        },
+      ].forEach(options => {
+        appendSvgAndG(
+          topElement,
+          createSvgAndGElement(getExpressBoxSvgHtml(BOX_LONG, BOX_WIDTH, BOX_HEIGHT, BOX_EXTEND)),
+          options,
+        );
+      });
+    }
+
+    function appendExpressBoxes(topElement) {
+      appendBigExpressBoxes(topElement);
+      appendMiddleExpressBoxes(topElement);
+      appendSmallExpressBoxes(topElement);
+      appendXSmallExpressBoxes(topElement);
+    }
+
+    draw();
+  </script>
+</html>

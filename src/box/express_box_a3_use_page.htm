@@ -1,0 +1,275 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <!-- It's useless? -->
+    <meta http-equiv="Permissions-Policy" content="interest-cohort=()" />
+    <meta
+      id="viewportMeta"
+      name="viewport"
+      content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,viewport-fit=cover,minimal-ui"
+    />
+    <title>A3 Express Box (body -> page -> svg)</title>
+    <style id="style"></style>
+  </head>
+  <body></body>
+  <script charset="utf-8" src="../js/anqi_utils.js"></script>
+  <script charset="utf-8" src="../js/anqi_svg_utils.js"></script>
+  <script charset="utf-8" src="../js/anqi_express_box.js"></script>
+  <script>
+    function createSvgElementNew({ html, width, height }) {
+      return createSvgElement(html, width, height);
+    }
+
+    // ?top=4&left=3.5&landscape=false&a3=true
+    function draw() {
+      setF1Content('?top=4&left=3.5&landscape=false&a3=true');
+
+      const url = window.location.href.replace('?', '&');
+      parsePageParamsFromUrl(url);
+      parseExpressBoxParamsFromUrl(url);
+
+      document.getElementById('style').innerHTML = getPageCss(
+        A3,
+        LANDSCAPE,
+        PAGE_PADDING_TOP,
+        PAGE_PADDING_LEFT,
+      );
+
+      const body = document.getElementsByTagName('body')[0];
+
+      const pageElement = createPageElement();
+      body.appendChild(pageElement);
+
+      appendExpressBoxes(pageElement);
+
+      window.print();
+    }
+
+    function appendExpressBoxes(pageElement) {
+      let svgElementInfo, svgElement, svgWidth, svgHeight, svgStyle;
+
+      let boxLong, boxWidth, boxHeight, boxExtend;
+
+      // boxLong = 80, boxWidth = 60, boxHeight = 50, boxExtend = 5;
+      (boxLong = 80), (boxWidth = 60), (boxHeight = 48), (boxExtend = 5);
+      svgElementInfo = createSvgElementNew(
+        getExpressBoxSvgHtml(boxLong, boxWidth, boxHeight, boxExtend),
+      );
+      svgElement = svgElementInfo.svgElement;
+      pageElement.appendChild(svgElement);
+      // svgWidth = svgElementInfo.width;
+      // svgHeight = svgElementInfo.height;
+      svgStyle = svgElement.style;
+      svgStyle.position = 'absolute';
+      svgStyle.left = '7.5mm';
+      svgStyle.top = '3.5mm';
+
+      const MIDDLE_BOTTOM = '3.5mm';
+      const MIDDLE_FIRST_LEFT = '16mm'; // 3.5  18
+      const MIDDLE_SECOND_RIGHT = '13mm'; // 0
+
+      // boxLong = 40, boxWidth = 30, boxHeight = 25, boxExtend = 5;
+      (boxLong = 40), (boxWidth = 30), (boxHeight = 24), (boxExtend = 5);
+      for (let i = 0; i < 2; ++i) {
+        svgElementInfo = createSvgElementNew(
+          getExpressBoxSvgHtml(boxLong, boxWidth, boxHeight, boxExtend),
+        );
+        svgElement = svgElementInfo.svgElement;
+        pageElement.appendChild(svgElement);
+        svgStyle = svgElement.style;
+        svgStyle.position = 'absolute';
+        svgStyle.bottom = MIDDLE_BOTTOM;
+        if (i === 0) {
+          svgStyle.left = MIDDLE_FIRST_LEFT;
+        } else if (i === 1) {
+          svgStyle.right = MIDDLE_SECOND_RIGHT;
+          svgStyle.transform = 'rotate(180deg)';
+        }
+      }
+
+      // boxLong = 20, boxWidth = 15, boxHeight = 12.5, boxExtend = 3;
+      (boxLong = 20), (boxWidth = 15), (boxHeight = 12), (boxExtend = 3);
+
+      const SMALL_TOP_ROW1 = '3.5mm';
+      const SMALL_LEFT_ROW1 = '3.5mm';
+      const SMALL_RIGHT_ROW1 = '0mm';
+      for (let i = 0; i < 2; ++i) {
+        svgElementInfo = createSvgElementNew(
+          getExpressBoxSvgHtml(boxLong, boxWidth, boxHeight, boxExtend),
+        );
+        svgElement = svgElementInfo.svgElement;
+        pageElement.appendChild(svgElement);
+        svgStyle = svgElement.style;
+        svgStyle.position = 'absolute';
+        svgStyle.top = SMALL_TOP_ROW1;
+        if (i === 0) {
+          svgStyle.left = SMALL_LEFT_ROW1;
+          svgStyle.transform = 'rotate(180deg)';
+        } else if (i === 1) {
+          svgStyle.right = SMALL_RIGHT_ROW1;
+          svgStyle.transform = 'rotate(180deg)';
+        }
+      }
+
+      const SMALL_TOP_ROW2 = '93mm';
+      for (let i = 0; i < 2; ++i) {
+        svgElementInfo = createSvgElementNew(
+          getExpressBoxSvgHtml(boxLong, boxWidth, boxHeight, boxExtend),
+        );
+        svgElement = svgElementInfo.svgElement;
+        pageElement.appendChild(svgElement);
+        svgStyle = svgElement.style;
+        svgStyle.position = 'absolute';
+        svgStyle.top = SMALL_TOP_ROW2;
+        if (i === 0) {
+          svgStyle.left = SMALL_LEFT_ROW1;
+          // svgStyle.transform = 'rotate(180deg)';
+        } else if (i === 1) {
+          svgStyle.right = SMALL_RIGHT_ROW1;
+          // svgStyle.transform = 'rotate(180deg)';
+        }
+      }
+
+      const SMALL_BOTTOM_ROW3 = '131.5mm';
+      const SMALL_LEFT_ROW3 = '3mm';
+      const SMALL_RIGHT_ROW3 = '3mm';
+      for (let i = 0; i < 2; ++i) {
+        svgElementInfo = createSvgElementNew(
+          getExpressBoxSvgHtml(boxLong, boxWidth, boxHeight, boxExtend),
+        );
+        svgElement = svgElementInfo.svgElement;
+        pageElement.appendChild(svgElement);
+        svgStyle = svgElement.style;
+        svgStyle.position = 'absolute';
+        svgStyle.bottom = SMALL_BOTTOM_ROW3;
+        if (i === 0) {
+          svgStyle.left = SMALL_LEFT_ROW3;
+          // svgStyle.transform = 'rotate(180deg)';
+        } else if (i === 1) {
+          svgStyle.right = SMALL_RIGHT_ROW3;
+          // svgStyle.transform = 'rotate(180deg)';
+        }
+      }
+
+      (boxLong = 10), (boxWidth = 7.5), (boxHeight = 6), (boxExtend = 2);
+
+      const X_SMALL_TOP_ROW1 = '65mm';
+      const X_SMALL_LEFT_ROW1 = '0mm';
+      const X_SMALL_RIGHT_ROW1 = '0mm';
+      for (let i = 0; i < 2; ++i) {
+        svgElementInfo = createSvgElementNew(
+          getExpressBoxSvgHtml(boxLong, boxWidth, boxHeight, boxExtend),
+        );
+        svgElement = svgElementInfo.svgElement;
+        pageElement.appendChild(svgElement);
+        svgStyle = svgElement.style;
+        svgStyle.position = 'absolute';
+        svgStyle.zIndex = 1;
+        svgStyle.top = X_SMALL_TOP_ROW1;
+        if (i === 0) {
+          svgStyle.left = X_SMALL_LEFT_ROW1;
+          svgStyle.transform = 'rotate(90deg)';
+        } else if (i === 1) {
+          svgStyle.right = X_SMALL_RIGHT_ROW1;
+          svgStyle.transform = 'rotate(-90deg)';
+        }
+      }
+
+      const X_SMALL_TOP_ROW2 = 282;
+      const X_SMALL_LEFT_ROW2 = '3mm';
+      const X_SMALL_MIDDLE_ROW2 = '120mm';
+      const X_SMALL_RIGHT_ROW2 = '-2mm';
+      for (let i = 0; i < 3; ++i) {
+        svgElementInfo = createSvgElementNew(
+          getExpressBoxSvgHtml(boxLong, boxWidth, boxHeight, boxExtend),
+        );
+        svgElement = svgElementInfo.svgElement;
+        pageElement.appendChild(svgElement);
+        svgStyle = svgElement.style;
+        svgStyle.position = 'absolute';
+        svgStyle.top = `${X_SMALL_TOP_ROW2}mm`;
+        if (i === 0) {
+          svgStyle.left = X_SMALL_LEFT_ROW2;
+          svgStyle.transform = 'rotate(90deg)';
+        } else if (i === 1) {
+          svgStyle.top = `${X_SMALL_TOP_ROW2 - 10}mm`;
+          svgStyle.left = X_SMALL_MIDDLE_ROW2;
+          svgStyle.transform = 'rotate(90deg)';
+        } else if (i === 2) {
+          svgStyle.top = `${X_SMALL_TOP_ROW2 - 4.5}mm`;
+          svgStyle.right = X_SMALL_RIGHT_ROW2;
+          svgStyle.transform = 'rotate(-90deg)';
+        }
+      }
+
+      const X_SMALL_TOP_ROW3 = '315mm';
+      const X_SMALL_LEFT_ROW3 = '3mm';
+      svgElementInfo = createSvgElementNew(
+        getExpressBoxSvgHtml(boxLong, boxWidth, boxHeight, boxExtend),
+      );
+      svgElement = svgElementInfo.svgElement;
+      pageElement.appendChild(svgElement);
+      svgStyle = svgElement.style;
+      svgStyle.position = 'absolute';
+      svgStyle.top = X_SMALL_TOP_ROW3;
+      svgStyle.left = X_SMALL_LEFT_ROW3;
+      svgStyle.transform = 'rotate(-90deg)';
+
+      const X_SMALL_TOP_ROW4 = '328mm';
+      const X_SMALL_RIGHT_ROW4 = '-2mm';
+      svgElementInfo = createSvgElementNew(
+        getExpressBoxSvgHtml(boxLong, boxWidth, boxHeight, boxExtend),
+      );
+      svgElement = svgElementInfo.svgElement;
+      pageElement.appendChild(svgElement);
+      svgStyle = svgElement.style;
+      svgStyle.position = 'absolute';
+      svgStyle.top = X_SMALL_TOP_ROW4;
+      svgStyle.right = X_SMALL_RIGHT_ROW4;
+      svgStyle.transform = 'rotate(-90deg)';
+
+      const X_SMALL_TOP_ROW5 = '355mm';
+      const X_SMALL_RIGHT_ROW5 = '6mm';
+      svgElementInfo = createSvgElementNew(
+        getExpressBoxSvgHtml(boxLong, boxWidth, boxHeight, boxExtend),
+      );
+      svgElement = svgElementInfo.svgElement;
+      pageElement.appendChild(svgElement);
+      svgStyle = svgElement.style;
+      svgStyle.position = 'absolute';
+      svgStyle.top = X_SMALL_TOP_ROW5;
+      svgStyle.right = X_SMALL_RIGHT_ROW5;
+      svgStyle.transform = 'rotate(90deg)';
+
+      const X_SMALL_TOP_ROW7 = '383mm';
+      const X_SMALL_RIGHT_ROW7 = '0mm';
+      svgElementInfo = createSvgElementNew(
+        getExpressBoxSvgHtml(boxLong, boxWidth, boxHeight, boxExtend),
+      );
+      svgElement = svgElementInfo.svgElement;
+      pageElement.appendChild(svgElement);
+      svgStyle = svgElement.style;
+      svgStyle.position = 'absolute';
+      svgStyle.top = X_SMALL_TOP_ROW7;
+      svgStyle.right = X_SMALL_RIGHT_ROW7;
+
+      // (boxLong = 5), (boxWidth = 3.75), (boxHeight = 3), (boxExtend = 2);
+      (boxLong = 6), (boxWidth = 6), (boxHeight = 6), (boxExtend = 2);
+
+      const XX_SMALL_TOP_ROW2 = '381.5mm';
+      const XX_SMALL_LEFT_ROW2 = '3mm';
+      svgElementInfo = createSvgElementNew(
+        getExpressBoxSvgHtml(boxLong, boxWidth, boxHeight, boxExtend),
+      );
+      svgElement = svgElementInfo.svgElement;
+      pageElement.appendChild(svgElement);
+      svgStyle = svgElement.style;
+      svgStyle.position = 'absolute';
+      svgStyle.top = XX_SMALL_TOP_ROW2;
+      svgStyle.left = XX_SMALL_LEFT_ROW2;
+      svgStyle.transform = 'rotate(90deg)';
+    }
+
+    draw();
+  </script>
+</html>

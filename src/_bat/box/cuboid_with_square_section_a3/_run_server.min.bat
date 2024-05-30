@@ -1,0 +1,1 @@
+@call ..\..\_common\run.core.bat server min
