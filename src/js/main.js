@@ -790,9 +790,9 @@ System.register("const", [], function (exports_1, context_1) {
       //   "file:///P:/ecs_person/websites/sonya.cc/edu_git/src/index.htm" :
       //   "http://edu.sonya.cc/");
       // alert(CURRENT_URL.substring(0, CURRENT_URL.indexOf('index.htm') + 9));
-        exports_1("HOME_URL", HOME_URL = CURRENT_URL.startsWith("file:///")
-         ? CURRENT_URL.substring(0, CURRENT_URL.indexOf('index.htm') + 9)
-         : CURRENT_URL.substring(0, CURRENT_URL.lastIndexOf('/') + 1);
+      exports_1("HOME_URL", HOME_URL = CURRENT_URL.startsWith("file:///") ?
+        CURRENT_URL.substring(0, CURRENT_URL.indexOf('index.htm') + 9) :
+        CURRENT_URL.substring(0, CURRENT_URL.lastIndexOf('/') + 1));
       (function () {
         var myWindow = window;
         if (!myWindow.top || CURRENT_URL.startsWith("file:///"))
