@@ -185,103 +185,103 @@ System.register("data", [], function (exports_1, context_1) {
         execute: function () {
             exports_1("treasures", treasures = [
                 {
-                    image: "0001.jpg",
+                    image: '0001.jpg',
                     link: [
-                        "https://tv.cctv.com/2017/03/04/VIDEhOELsnCYlUtKhOmfO4Qu170304.shtml",
-                        "https://tv.cctv.com/2019/04/08/VIDEK0hxH6lJEgOJTBnd6Zxd190408.shtml",
-                        "https://tv.cctv.com/2020/05/25/VIDE3JWBNMchRN5x8IBwxTAU200525.shtml",
+                        'https://tv.cctv.com/2017/03/04/VIDEhOELsnCYlUtKhOmfO4Qu170304.shtml',
+                        'https://tv.cctv.com/2019/04/08/VIDEK0hxH6lJEgOJTBnd6Zxd190408.shtml',
+                        'https://tv.cctv.com/2020/05/25/VIDE3JWBNMchRN5x8IBwxTAU200525.shtml',
                     ],
                     title: {
-                        en_us: "Aerial photography of China",
-                        zh_cn: "航拍中国",
-                        zh_tw: "航拍中國"
+                        en_us: 'Aerial photography of China',
+                        zh_cn: '航拍中国',
+                        zh_tw: '航拍中國'
                     },
                     summary: {
                         en_us: 'The large-scale aerial documentary "Aerial China", produced by CCTV and produced by CCTV Record International Media Co., Ltd., is a documentary that looks down on China from an aerial perspective and comprehensively and stereoscopically demonstrates China\'s historical and cultural landscape, natural and geographical features, and economic and social development and changes.',
-                        zh_cn: "由中央电视台出品，央视纪录国际传媒有限公司承制的大型航拍纪录片《航拍中国》是一部以空中视角俯瞰中国，全方位、立体化展示中国历史人文景观、自然地理风貌及经济社会发展变化的纪录片。",
-                        zh_tw: "由中央電視臺出品，央視紀錄國際傳媒有限公司承制的大型航拍紀錄片《航拍中國》是一部以空中視角俯瞰中國，全方位、立體化展示中國歷史人文景觀、自然地理風貌及經濟社會發展變化的紀錄片。"
+                        zh_cn: '由中央电视台出品，央视纪录国际传媒有限公司承制的大型航拍纪录片《航拍中国》是一部以空中视角俯瞰中国，全方位、立体化展示中国历史人文景观、自然地理风貌及经济社会发展变化的纪录片。',
+                        zh_tw: '由中央電視臺出品，央視紀錄國際傳媒有限公司承制的大型航拍紀錄片《航拍中國》是一部以空中視角俯瞰中國，全方位、立體化展示中國歷史人文景觀、自然地理風貌及經濟社會發展變化的紀錄片。'
                     }
                 },
                 {
-                    image: "0002.jpg",
+                    image: '0002.jpg',
                     link: [
-                        "http://www.docuchina.cn/2021/10/14/VIDACIKE9BTRYjQ9vgb42Em5211014.shtml",
-                        "http://www.docuchina.cn/2022/08/08/VIDAjijG5w3t2oRoMOPBUFX3220808.shtml",
+                        'http://www.docuchina.cn/2021/10/14/VIDACIKE9BTRYjQ9vgb42Em5211014.shtml',
+                        'http://www.docuchina.cn/2022/08/08/VIDAjijG5w3t2oRoMOPBUFX3220808.shtml',
                     ],
                     title: {
-                        en_us: "China",
-                        zh_cn: "中国",
-                        zh_tw: "中國"
+                        en_us: 'China',
+                        zh_cn: '中国',
+                        zh_tw: '中國'
                     },
                     summary: {
                         en_us: 'Five thousand years ago, China is a great country. The large-scale cultural and historical documentary "China" explores people and things that have a profound impact on today\'s China from Chinese historical stories, tells Chinese stories, spreads the voice of China, and demonstrates the great evolution of Chinese civilization',
-                        zh_cn: "溯五千年，泱泱中华，何以《中国》。大型人文历史纪录片《中国》从中国历史故事中，挖掘对今日中国影响深远的人和事，讲中国故事，传中国之声，展中华文明演进的伟大历程。",
-                        zh_tw: "溯五千年，泱泱中華，何以《中國》。 大型人文歷史紀錄片《中國》從中國歷史故事中，挖掘對今日中國影響深遠的人和事，講中國故事，傳中國之聲，展中華文明演進的偉大歷程"
+                        zh_cn: '溯五千年，泱泱中华，何以《中国》。大型人文历史纪录片《中国》从中国历史故事中，挖掘对今日中国影响深远的人和事，讲中国故事，传中国之声，展中华文明演进的伟大历程。',
+                        zh_tw: '溯五千年，泱泱中華，何以《中國》。 大型人文歷史紀錄片《中國》從中國歷史故事中，挖掘對今日中國影響深遠的人和事，講中國故事，傳中國之聲，展中華文明演進的偉大歷程'
                     }
                 },
                 {
-                    image: "0003.jpg",
-                    link: "https://www.bilibili.com/video/BV12S4y1u75V/",
+                    image: '0003.jpg',
+                    link: 'https://www.bilibili.com/video/BV12S4y1u75V/',
                     title: {
-                        en_us: "Chinese Poetry Choir",
-                        zh_cn: "中国唱诗班",
-                        zh_tw: "中國唱詩班"
+                        en_us: 'Chinese Poetry Choir',
+                        zh_cn: '中国唱诗班',
+                        zh_tw: '中國唱詩班'
                     },
                     summary: {
                         en_us: 'The animation series of "Chinese Choir" was invested and produced by the Propaganda Department of the CPC Jiading District Committee. The animation was completely original and hand-painted by the Chinese youth team. The stories, scenes, characters and costumes were repeatedly researched and modified according to historical documents, with a view to restoring the historical scene at that time to the greatest extent in detail, making the film not only a cartoon with a story, but also a painting volume that can provide a glimpse of the style of an era.',
-                        zh_cn: "“中国唱诗班”系列动画由中共嘉定区委宣传部投资出品，动画完全由中国青年团队独立原创手绘，在故事、场景、人物、服饰方面都根据历史文献，进行反复考证修改，以期能在细节上最大程度还原当时历史情景，使影片不仅成为一个有故事的动画作品，更成为一个可以管窥一个时代风貌的绘卷。",
-                        zh_tw: "“中國唱詩班”系列動畫由中共嘉定區委宣傳部投資出品，動畫完全由中國青年團隊獨立原創手繪，在故事、場景、人物、服飾方面都根據歷史文獻，進行反復考證修改，以期能在細節上最大程度還原當時歷史情景，使影片不僅成為一個有故事的動畫作品，更成為一個可以管窺一個時代風貌的繪卷。"
+                        zh_cn: '“中国唱诗班”系列动画由中共嘉定区委宣传部投资出品，动画完全由中国青年团队独立原创手绘，在故事、场景、人物、服饰方面都根据历史文献，进行反复考证修改，以期能在细节上最大程度还原当时历史情景，使影片不仅成为一个有故事的动画作品，更成为一个可以管窥一个时代风貌的绘卷。',
+                        zh_tw: '“中國唱詩班”系列動畫由中共嘉定區委宣傳部投資出品，動畫完全由中國青年團隊獨立原創手繪，在故事、場景、人物、服飾方面都根據歷史文獻，進行反復考證修改，以期能在細節上最大程度還原當時歷史情景，使影片不僅成為一個有故事的動畫作品，更成為一個可以管窺一個時代風貌的繪卷。'
                     }
                 },
                 {
-                    image: "0004.jpg",
-                    link: "https://tv.cctv.com/2021/02/08/VIDAHc9krezHR6EXJAq7w0nM210208.shtml",
+                    image: '0004.jpg',
+                    link: 'https://tv.cctv.com/2021/02/08/VIDAHc9krezHR6EXJAq7w0nM210208.shtml',
                     title: {
-                        en_us: "A Brief Reading of China",
-                        zh_cn: "书简阅中国",
-                        zh_tw: "書簡閱中國"
+                        en_us: 'A Brief Reading of China',
+                        zh_cn: '书简阅中国',
+                        zh_tw: '書簡閱中國'
                     },
                     summary: {
                         en_us: 'The six episode documentary "Reading about China" has collected 30 letters from the ancients, focusing on digging out the stories and historical details of the characters from the letters, exploring the ups and downs of the individuals and the times behind the letters, and understanding the wisdom of the sages hidden in the letters. It is hoped that the philosophic thoughts precipitated for thousands of years can enlighten us at present; I hope that the truth of history will become more vivid in the description of these individuals.',
-                        zh_cn: "六集纪录片《书简阅中国》收集了30封古人的书信，着重从书信中挖掘人物故事和历史细节，去窥探书信背后个体与时代的沉浮，去领悟潜藏在书信中的先贤智慧。希望沉淀千年的哲思，可以给当下的我们以启发；希望历史的真相，在这些个体的描述中，变得更加生动。",
-                        zh_tw: "六集紀錄片《書簡閱中國》收集了30封古人的書信，著重從書信中挖掘人物故事和歷史細節，去窺探書信背後個體與時代的沉浮，去領悟潜藏在書信中的先賢智慧。 希望沉澱千年的哲思，可以給當下的我們以啟發； 希望歷史的真相，在這些個體的描述中，變得更加生動。"
+                        zh_cn: '六集纪录片《书简阅中国》收集了30封古人的书信，着重从书信中挖掘人物故事和历史细节，去窥探书信背后个体与时代的沉浮，去领悟潜藏在书信中的先贤智慧。希望沉淀千年的哲思，可以给当下的我们以启发；希望历史的真相，在这些个体的描述中，变得更加生动。',
+                        zh_tw: '六集紀錄片《書簡閱中國》收集了30封古人的書信，著重從書信中挖掘人物故事和歷史細節，去窺探書信背後個體與時代的沉浮，去領悟潜藏在書信中的先賢智慧。 希望沉澱千年的哲思，可以給當下的我們以啟發； 希望歷史的真相，在這些個體的描述中，變得更加生動。'
                     }
                 },
                 {
-                    image: "0005.jpg",
-                    link: "https://tv.cctv.com/2022/04/04/VIDACO0Ql6L8Q7t41qzriSTy220404.shtml",
+                    image: '0005.jpg',
+                    link: 'https://tv.cctv.com/2022/04/04/VIDACO0Ql6L8Q7t41qzriSTy220404.shtml',
                     title: {
-                        en_us: "Word never met you",
-                        zh_cn: "字从遇见你",
-                        zh_tw: "字從遇見你"
+                        en_us: 'Word never met you',
+                        zh_cn: '字从遇见你',
+                        zh_tw: '字從遇見你'
                     },
                     summary: {
-                        en_us: "The program starts with the most basic Chinese characters, tells stories about the origin of Chinese characters and their cultural development, excavates the cultural code behind Chinese characters, presents the beauty of Chinese characters, and unifies the image, philosophy and artistry of Chinese characters.",
-                        zh_cn: "节目从最基本的汉字开始，故事化的讲述汉字的造型来源及文化发展，挖掘汉字背后的文化密码，呈现汉字之美，将汉字的形象性、哲理性和艺术性统一表现。",
-                        zh_tw: "節目從最基本的漢字開始，故事化的講述漢字的造型來源及文化發展，挖掘漢字背後的文化密碼，呈現漢字之美，將漢字的形象性、哲理性和藝術性統一表現。"
+                        en_us: 'The program starts with the most basic Chinese characters, tells stories about the origin of Chinese characters and their cultural development, excavates the cultural code behind Chinese characters, presents the beauty of Chinese characters, and unifies the image, philosophy and artistry of Chinese characters.',
+                        zh_cn: '节目从最基本的汉字开始，故事化的讲述汉字的造型来源及文化发展，挖掘汉字背后的文化密码，呈现汉字之美，将汉字的形象性、哲理性和艺术性统一表现。',
+                        zh_tw: '節目從最基本的漢字開始，故事化的講述漢字的造型來源及文化發展，挖掘漢字背後的文化密碼，呈現漢字之美，將漢字的形象性、哲理性和藝術性統一表現。'
                     }
                 },
                 {
-                    image: "0006.jpg",
-                    link: "http://tv.cctv.com/2017/12/21/VIDAWE377ZDQH69msDk6KUle171221.shtml",
+                    image: '0006.jpg',
+                    link: 'http://tv.cctv.com/2017/12/21/VIDAWE377ZDQH69msDk6KUle171221.shtml',
                     title: {
-                        en_us: "If the national treasure can speak",
-                        zh_cn: "如果国宝会说话",
-                        zh_tw: "如果國寶會說話"
+                        en_us: 'If the national treasure can speak',
+                        zh_cn: '如果国宝会说话',
+                        zh_tw: '如果國寶會說話'
                     },
                     summary: {
                         en_us: '100 pieces of national treasures tell about the creativity of ancient Chinese people, and each episode of the documentary "If the National Treasure Can Speak" takes 5 minutes to understand Chinese culture from a new perspective. From the Neolithic Age to the Song, Yuan, Ming and Qing Dynasties, the 100 episode documentary "If a National Treasure Can Speak" has a vision spanning eight thousand years. The production team has traveled all over the country, shooting nearly 100 museums and archaeological research institutes, more than 50 archaeological sites, and more than 1000 cultural relics. It is the first time to talk about cultural relics with cultural relics and comb civilization with cultural relics.',
-                        zh_cn: "100件国宝述说中国古人的创造力，百集纪录片《如果国宝会说话》每集5分钟以全新视角认识读懂中华文化。从新石器时代到宋元明清，百集纪录片《如果国宝会说话》目光跨越八千年，摄制组足迹遍布全国，拍摄了近百家博物馆和考古研究所，五十余处考古遗址，千余件文物。首次用文物讲文物，用文物梳理文明。",
-                        zh_tw: "100件國寶述說中國古人的創造力，百集紀錄片《如果國寶會說話》每集5分鐘以全新視角認識讀懂中華文化。從新石器時代到宋元明清，百集紀錄片《如果國寶會說話》目光跨越八千年，攝製組足迹遍佈全國，拍攝了近百家博物館和考古研究所，五十餘處考古遺址，千餘件文物。 首次用文物講文物，用文物梳理文明。"
+                        zh_cn: '100件国宝述说中国古人的创造力，百集纪录片《如果国宝会说话》每集5分钟以全新视角认识读懂中华文化。从新石器时代到宋元明清，百集纪录片《如果国宝会说话》目光跨越八千年，摄制组足迹遍布全国，拍摄了近百家博物馆和考古研究所，五十余处考古遗址，千余件文物。首次用文物讲文物，用文物梳理文明。',
+                        zh_tw: '100件國寶述說中國古人的創造力，百集紀錄片《如果國寶會說話》每集5分鐘以全新視角認識讀懂中華文化。從新石器時代到宋元明清，百集紀錄片《如果國寶會說話》目光跨越八千年，攝製組足迹遍佈全國，拍攝了近百家博物館和考古研究所，五十餘處考古遺址，千餘件文物。 首次用文物講文物，用文物梳理文明。'
                     }
                 },
             ]);
             exports_1("bricks", bricks = [
                 {
                     id: 1,
-                    subKind: "01_chinese",
-                    version: "20221220",
-                    image: "00001.jpg",
+                    subKind: '01_chinese',
+                    version: '20221220',
+                    image: '00001.jpg',
                     title: {
                         en_us: "Phonetic Notation and Writing",
                         zh_cn: "\u6CE8\u97F3\u4E0E\u5199\u5B57",
@@ -295,9 +295,9 @@ System.register("data", [], function (exports_1, context_1) {
                 },
                 {
                     id: 2,
-                    subKind: "02_math",
-                    version: "20221220",
-                    image: "00002.jpg",
+                    subKind: '02_math',
+                    version: '20221220',
+                    image: '00002.jpg',
                     title: {
                         en_us: "Math Challenge",
                         zh_cn: "\u6570\u5B66\u95EF\u5173",
@@ -311,9 +311,9 @@ System.register("data", [], function (exports_1, context_1) {
                 },
                 {
                     id: 3,
-                    subKind: "03_english",
-                    version: "20221220",
-                    image: "00003.jpg",
+                    subKind: '03_english',
+                    version: '20221220',
+                    image: '00003.jpg',
                     title: {
                         en_us: "English Poker",
                         zh_cn: "\u82F1\u6587\u6251\u514B",
@@ -327,9 +327,9 @@ System.register("data", [], function (exports_1, context_1) {
                 },
                 {
                     id: 4,
-                    subKind: "04_programming",
-                    version: "20221220",
-                    image: "00004.jpg",
+                    subKind: '04_programming',
+                    version: '20221220',
+                    image: '00004.jpg',
                     title: {
                         en_us: "Poker boxes/boxes",
                         zh_cn: "\u6251\u514B\u76D2/\u76D2\u5B50",
@@ -343,9 +343,9 @@ System.register("data", [], function (exports_1, context_1) {
                 },
                 {
                     id: 5,
-                    subKind: "01_chinese",
-                    version: "20221220",
-                    image: "00005.jpg",
+                    subKind: '01_chinese',
+                    version: '20221220',
+                    image: '00005.jpg',
                     title: {
                         en_us: "Pinyin Poker",
                         zh_cn: "\u62FC\u97F3\u6251\u514B",
@@ -359,9 +359,9 @@ System.register("data", [], function (exports_1, context_1) {
                 },
                 {
                     id: 6,
-                    subKind: "02_math",
-                    version: "20221220",
-                    image: "00006.jpg",
+                    subKind: '02_math',
+                    version: '20221220',
+                    image: '00006.jpg',
                     title: {
                         en_us: "Gustavo block",
                         zh_cn: "\u53E4\u6C0F\u79EF\u6728",
@@ -375,9 +375,9 @@ System.register("data", [], function (exports_1, context_1) {
                 },
                 {
                     id: 7,
-                    subKind: "02_math",
-                    version: "20221220",
-                    image: "00007.jpg",
+                    subKind: '02_math',
+                    version: '20221220',
+                    image: '00007.jpg',
                     title: {
                         en_us: "Mathematical Poker",
                         zh_cn: "\u6570\u5B66\u6251\u514B",
@@ -391,9 +391,9 @@ System.register("data", [], function (exports_1, context_1) {
                 },
                 {
                     id: 8,
-                    subKind: "02_math",
-                    version: "20221220",
-                    image: "00008.jpg",
+                    subKind: '02_math',
+                    version: '20221220',
+                    image: '00008.jpg',
                     title: {
                         en_us: "Rummikub",
                         zh_cn: "\u62C9\u5BC6",
@@ -407,25 +407,25 @@ System.register("data", [], function (exports_1, context_1) {
                 },
                 {
                     id: 9,
-                    subKind: "02_math",
-                    version: "20221220",
-                    image: "00009.jpg",
+                    subKind: '02_math',
+                    version: '20221220',
+                    image: '00009.jpg',
                     title: {
                         en_us: "Dices",
                         zh_cn: "\u9AB0\u5B50",
                         zh_tw: "\u9AB0\u5B50"
                     },
                     summary: {
-                        en_us: "Random algorithm, dice first. Plato's regular polyhedron is especially suitable for four, six, eight, twelve, and twenty sided dice.<br/>\nThe online shop bought ten and twenty dice, and then obtained Archimedes' polyhedron pictures, adding twenty-four dice.",
-                        zh_cn: "\u968F\u673A\u7B97\u6CD5\uFF0C\u9AB0\u5B50\u5148\u884C\u3002\u67CF\u62C9\u56FE\u6B63\u591A\u9762\u4F53\uFF0C\u5C24\u5176\u9002\u5408\uFF0C\u6545\u5F97\u56DB\u9762\u3001\u516D\u9762\u3001\u516B\u9762\u3001\u5341\u4E8C\u9762\u3001\u4E8C\u5341\u9762\u9AB0\u5B50\u3002<br/>\n\u7F51\u5E97\u8D2D\u5F97\u5341\u9762\u3001\u4E8C\u5341\u9762\u9AB0\u5B50\uFF0C\u540E\u5F97\u963F\u57FA\u7C73\u5FB7\u591A\u9762\u4F53\u56FE\u7247\uFF0C\u589E\u52A0\u4E8C\u5341\u56DB\u9762\u9AB0\u5B50\u3002",
-                        zh_tw: "\u96A8\u6A5F\u7B97\u704B\uFF0C\u9AB0\u5B50\u5148\u884C\u3002\u67CF\u62C9\u5716\u6B63\u591A\u9762\u9AD4\uFF0C\u5C24\u5176\u9069\u5408\uFF0C\u6545\u5F97\u56DB\u9762\u3001\u516D\u9762\u3001\u516B\u9762\u3001\u5341\u4E8C\u9762\u3001\u4E8C\u5341\u9762\u9AB0\u5B50\u3002<br/>\n\u7DB2\u5E97\u8CFC\u5F97\u5341\u9762\u3001\u4E8C\u5341\u9762\u9AB0\u5B50\uFF0C\u5F8C\u5F97\u963F\u57FA\u7C73\u5FB7\u591A\u9762\u9AD4\u5716\u7247\uFF0C\u65B0\u589E\u4E8C\u5341\u56DB\u9762\u9AB0\u5B50\u3002"
+                        en_us: "Random algorithm, dice first. Plato's regular polyhedron is especially suitable for four, six, eight, ten, twelve, twenty, and twenty-four sided dice.<br/>\nThe online shop bought ten and twenty dice, and then obtained Archimedes' polyhedron pictures, adding twenty-four dice.",
+                        zh_cn: "\u968F\u673A\u7B97\u6CD5\uFF0C\u9AB0\u5B50\u5148\u884C\u3002\u67CF\u62C9\u56FE\u6B63\u591A\u9762\u4F53\uFF0C\u5C24\u5176\u9002\u5408\uFF0C\u6545\u5F97\u56DB\u9762\u3001\u516D\u9762\u3001\u516B\u9762\u3001\u5341\u9762\u3001\u5341\u4E8C\u9762\u3001\u4E8C\u5341\u9762\u3001\u4E8C\u5341\u56DB\u9762\u9AB0\u5B50\u3002<br/>\n\u7F51\u5E97\u8D2D\u5F97\u5341\u9762\u3001\u4E8C\u5341\u9762\u9AB0\u5B50\uFF0C\u540E\u5F97\u963F\u57FA\u7C73\u5FB7\u591A\u9762\u4F53\u56FE\u7247\uFF0C\u589E\u52A0\u4E8C\u5341\u56DB\u9762\u9AB0\u5B50\u3002",
+                        zh_tw: "\u96A8\u6A5F\u7B97\u704B\uFF0C\u9AB0\u5B50\u5148\u884C\u3002\u67CF\u62C9\u5716\u6B63\u591A\u9762\u9AD4\uFF0C\u5C24\u5176\u9069\u5408\uFF0C\u6545\u5F97\u56DB\u9762\u3001\u516D\u9762\u3001\u516B\u9762\u3001\u5341\u9762\u3001\u5341\u4E8C\u9762\u3001\u4E8C\u5341\u9762\u3001\u4E8C\u5341\u56DB\u9762\u9AB0\u5B50\u3002<br/>\n\u7DB2\u5E97\u8CFC\u5F97\u5341\u9762\u3001\u4E8C\u5341\u9762\u9AB0\u5B50\uFF0C\u5F8C\u5F97\u963F\u57FA\u7C73\u5FB7\u591A\u9762\u9AD4\u5716\u7247\uFF0C\u65B0\u589E\u4E8C\u5341\u56DB\u9762\u9AB0\u5B50\u3002"
                     }
                 },
                 {
                     id: 10,
-                    subKind: "02_math",
-                    version: "20221220",
-                    image: "00010.jpg",
+                    subKind: '02_math',
+                    version: '20221220',
+                    image: '00010.jpg',
                     title: {
                         en_us: "Hundred grids",
                         zh_cn: "\u767E\u6570\u683C",
@@ -439,9 +439,9 @@ System.register("data", [], function (exports_1, context_1) {
                 },
                 {
                     id: 11,
-                    subKind: "02_math",
-                    version: "20221220",
-                    image: "00011.jpg",
+                    subKind: '02_math',
+                    version: '20221220',
+                    image: '00011.jpg',
                     title: {
                         en_us: "Football",
                         zh_cn: "\u8DB3\u7403",
@@ -455,9 +455,9 @@ System.register("data", [], function (exports_1, context_1) {
                 },
                 {
                     id: 12,
-                    subKind: "02_math",
-                    version: "20221220",
-                    image: "00012.jpg",
+                    subKind: '02_math',
+                    version: '20221220',
+                    image: '00012.jpg',
                     title: {
                         en_us: "Multiplication table",
                         zh_cn: "\u4E58\u6CD5\u53E3\u8BC0\u8868",
@@ -475,7 +475,7 @@ System.register("data", [], function (exports_1, context_1) {
                     id: 1,
                     date: new Date(2014, 0, 1, 0, 0, 0),
                     isTop: true,
-                    version: "20221222A",
+                    version: '20221222A',
                     title: {
                         en_us: "Sonya was born",
                         zh_cn: "sonya\u51FA\u751F",
@@ -496,7 +496,7 @@ System.register("data", [], function (exports_1, context_1) {
                     id: 2,
                     date: new Date(2017, 0, 1, 0, 0, 0),
                     isTop: true,
-                    version: "20221222A",
+                    version: '20221222A',
                     title: {
                         en_us: "Start to collect various resources",
                         zh_cn: "\u5F00\u59CB\u6536\u96C6\u5404\u7C7B\u8D44\u6E90",
@@ -517,7 +517,7 @@ System.register("data", [], function (exports_1, context_1) {
                     id: 3,
                     date: new Date(2020, 11, 31, 0, 0, 0),
                     isTop: true,
-                    version: "20221222A",
+                    version: '20221222A',
                     title: {
                         en_us: "Successfully registered the sonya.cc domain name",
                         zh_cn: "sonya.cc\u57DF\u540D\u6CE8\u518C\u6210\u529F",
@@ -538,7 +538,7 @@ System.register("data", [], function (exports_1, context_1) {
                     id: 4,
                     date: new Date(2022, 2, 2, 0, 0, 0),
                     isTop: true,
-                    version: "20221222A",
+                    version: '20221222A',
                     title: {
                         en_us: "First edition website sharing",
                         zh_cn: "\u521D\u7248\u7F51\u7AD9\u5206\u4EAB",
@@ -559,7 +559,7 @@ System.register("data", [], function (exports_1, context_1) {
                     id: 5,
                     date: new Date(2022, 8, 28, 0, 0, 0),
                     isTop: true,
-                    version: "20221222A",
+                    version: '20221222A',
                     title: {
                         en_us: "A new round of revision begins",
                         zh_cn: "\u65B0\u4E00\u8F6E\u6539\u7248\u5F00\u59CB",
@@ -580,7 +580,7 @@ System.register("data", [], function (exports_1, context_1) {
                     id: 6,
                     date: new Date(2022, 11, 22, 0, 0, 0),
                     isTop: true,
-                    version: "20221222A",
+                    version: '20221222A',
                     title: {
                         en_us: "Computer browser version is initially launched",
                         zh_cn: "\u7535\u8111\u6D4F\u89C8\u5668\u7248\u521D\u6B65\u4E0A\u7EBF",
@@ -604,18 +604,18 @@ System.register("data", [], function (exports_1, context_1) {
             });
             exports_1("teachers", teachers = [
                 {
-                    name: "deno",
-                    link: "https://deno.land/",
+                    name: 'deno',
+                    link: 'https://deno.land/',
                     i18n: { en_us: "Deno", zh_cn: "deno\u9996\u9875", zh_tw: "deno\u9996\u9801" }
                 },
                 {
-                    name: "khanacademy",
-                    link: "https://www.khanacademy.org/",
+                    name: 'khanacademy',
+                    link: 'https://www.khanacademy.org/',
                     i18n: { en_us: "Khan Academy", zh_cn: "\u53EF\u6C57\u5B66\u9662", zh_tw: "\u53EF\u6C57\u5B78\u9662" }
                 },
                 {
-                    name: "canonCreativePark",
-                    link: "https://creativepark.canon/sc/",
+                    name: 'canonCreativePark',
+                    link: 'https://creativepark.canon/sc/',
                     i18n: {
                         en_us: "Canon free paper mold printing",
                         zh_cn: "\u4F73\u80FD\u514D\u8D39\u7EB8\u6A21\u6253\u5370",
@@ -623,8 +623,8 @@ System.register("data", [], function (exports_1, context_1) {
                     }
                 },
                 {
-                    name: "unicef",
-                    link: "https://www.unicef.cn/",
+                    name: 'unicef',
+                    link: 'https://www.unicef.cn/',
                     i18n: {
                         en_us: "UNICEF (China)",
                         zh_cn: "\u8054\u5408\u56FD\u513F\u7AE5\u57FA\u91D1\u4F1A\uFF08\u4E2D\u56FD\uFF09",
@@ -632,8 +632,8 @@ System.register("data", [], function (exports_1, context_1) {
                     }
                 },
                 {
-                    name: "cctf",
-                    link: "https://www.cctf.org.cn/",
+                    name: 'cctf',
+                    link: 'https://www.cctf.org.cn/',
                     i18n: {
                         en_us: "China Children's Fund",
                         zh_cn: "\u4E2D\u56FD\u513F\u7AE5\u5C11\u5E74\u57FA\u91D1\u4F1A",
@@ -641,8 +641,8 @@ System.register("data", [], function (exports_1, context_1) {
                     }
                 },
                 {
-                    name: "kidsNationalGeographic",
-                    link: "https://kids.nationalgeographic.com/",
+                    name: 'kidsNationalGeographic',
+                    link: 'https://kids.nationalgeographic.com/',
                     i18n: {
                         en_us: "National Geographic Children's Edition",
                         zh_cn: "\u56FD\u5BB6\u5730\u7406\u513F\u7AE5\u7248",
@@ -650,8 +650,8 @@ System.register("data", [], function (exports_1, context_1) {
                     }
                 },
                 {
-                    name: "mozilla",
-                    link: "https://developer.mozilla.org/en_us-US/",
+                    name: 'mozilla',
+                    link: 'https://developer.mozilla.org/en_us-US/',
                     i18n: {
                         en_us: "Mozilla Developer Community",
                         zh_cn: "mozilla\u5F00\u53D1\u8005\u793E\u533A",
@@ -659,8 +659,8 @@ System.register("data", [], function (exports_1, context_1) {
                     }
                 },
                 {
-                    name: "typescript",
-                    link: "https://www.typescriptlang.org/",
+                    name: 'typescript',
+                    link: 'https://www.typescriptlang.org/',
                     i18n: {
                         en_us: "Microsoft typescript",
                         zh_cn: "\u5FAE\u8F6Ftypescript\u9996\u9875",
@@ -668,18 +668,18 @@ System.register("data", [], function (exports_1, context_1) {
                     }
                 },
                 {
-                    name: "vuejs",
-                    link: "https://vuejs.org/",
+                    name: 'vuejs',
+                    link: 'https://vuejs.org/',
                     i18n: { en_us: "vue3", zh_cn: "vue3\u9996\u9875", zh_tw: "vue3\u9996\u9801" }
                 },
                 {
-                    name: "threejs",
-                    link: "https://threejs.org/",
+                    name: 'threejs',
+                    link: 'https://threejs.org/',
                     i18n: { en_us: "threejs", zh_cn: "threejs\u9996\u9875", zh_tw: "threejs\u9996\u9801" }
                 },
                 {
-                    name: "fontawesome",
-                    link: "https://fontawesome.com/",
+                    name: 'fontawesome',
+                    link: 'https://fontawesome.com/',
                     i18n: {
                         en_us: "fontawesome",
                         zh_cn: "fontawesome\u9996\u9875",
@@ -687,8 +687,8 @@ System.register("data", [], function (exports_1, context_1) {
                     }
                 },
                 {
-                    name: "echarts",
-                    link: "https://echarts.apache.org/",
+                    name: 'echarts',
+                    link: 'https://echarts.apache.org/',
                     i18n: {
                         en_us: "Baidu Echarts",
                         zh_cn: "\u767E\u5EA6\u56FE\u8868echarts",
@@ -696,8 +696,8 @@ System.register("data", [], function (exports_1, context_1) {
                     }
                 },
                 {
-                    name: "element-plus",
-                    link: "https://element-plus.gitee.io/en_us-US/",
+                    name: 'element-plus',
+                    link: 'https://element-plus.gitee.io/en_us-US/',
                     i18n: {
                         en_us: "element-plus",
                         zh_cn: "\u997F\u4E86\u4E48vue3\u7248\u7EC4\u4EF6",
@@ -706,9 +706,9 @@ System.register("data", [], function (exports_1, context_1) {
                 },
             ]);
             exports_1("searchSources", searchSources = bricks.map(function (brick) {
-                return __assign({ kind: "brick" }, brick);
+                return __assign({ kind: 'brick' }, brick);
             }).concat(treasures.map(function (treasure) {
-                return __assign({ kind: "treasure" }, treasure);
+                return __assign({ kind: 'treasure' }, treasure);
             })));
             exports_1("PageSize", PageSize = {
                 homePage: {

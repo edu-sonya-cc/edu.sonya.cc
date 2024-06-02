@@ -1,9 +1,15 @@
 @ECHO OFF
 
 SET currentPath=%cd%
+::if exists ..\es3_*.ts (DEL /Q ..\es3_*.ts)
+::if exists ..\..\..\src\js\*.js (DEL /Q ..\..\..\src\js\*.js)
+::if exists ..\..\..\src\js\brick\*.js (DEL /Q ..\..\..\src\js\brick\*.js)
+
 DEL /Q ..\es3_*.ts
+DEL /S/Q ..\..\..\src\*.dev.js
 DEL /Q ..\..\..\src\js\*.js
 DEL /Q ..\..\..\src\js\brick\*.js
+::pause
 
 call bundle_0_0_1_1_const.bat
 call bundle_0_0_1_2_dom.bat

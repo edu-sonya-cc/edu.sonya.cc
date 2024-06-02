@@ -7,22 +7,34 @@
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+            ({
+                    __proto__: []
+                }
+                instanceof Array && function (d, b) {
+                    d.__proto__ = b;
+                }) ||
+            function (d, b) {
+                for (var p in b)
+                    if (b.hasOwnProperty(p)) d[p] = b[p];
+            };
         return extendStatics(d, b);
     };
     return function (d, b) {
         extendStatics(d, b);
-        function __() { this.constructor = d; }
+
+        function __() {
+            this.constructor = d;
+        }
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
 var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
+    __assign = Object.assign || function (t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
             s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
+            for (var p in s)
+                if (Object.prototype.hasOwnProperty.call(s, p))
+                    t[p] = s[p];
         }
         return t;
     };
@@ -36,6 +48,7 @@ var __assign = (this && this.__assign) || function () {
 /// <reference path='../../types/version.d.ts' />
 var StoriesPage = /** @class */ (function (_super) {
     __extends(StoriesPage, _super);
+
     function StoriesPage() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
         _this.mainContentElement = createElement("div");
@@ -47,7 +60,12 @@ var StoriesPage = /** @class */ (function (_super) {
             var PAGE_NAME = "storiesPage";
             var mainElement = getMainElement();
             mainElement.id = PAGE_NAME + "Main";
-            var _a = _this, mainContentElement = _a.mainContentElement, topImageElement = _a.topImageElement, pageSubjectElement = _a.pageSubjectElement, listElement = _a.listElement, paginationElement = _a.paginationElement;
+            var _a = _this,
+                mainContentElement = _a.mainContentElement,
+                topImageElement = _a.topImageElement,
+                pageSubjectElement = _a.pageSubjectElement,
+                listElement = _a.listElement,
+                paginationElement = _a.paginationElement;
             mainElement.appendChild(topImageElement);
             mainElement.appendChild(mainContentElement);
             mainContentElement.id = PAGE_NAME + "MainContent";
@@ -66,13 +84,15 @@ var StoriesPage = /** @class */ (function (_super) {
                 var image = createElement('img');
                 // image.setAttribute('class', `${PAGE_NAME}SubjectImage`);
                 image.setAttribute('class', 'pageSubject');
-                var src = "./images/0common/" + lang + "/5stories.png";
+                var src = "images/0common/" + lang + "/5stories.png";
                 image.src = src;
                 image.alt = src;
                 span.appendChild(image);
             });
             pcGlobal.fillListAndPagination(listElement, paginationElement, PageSize.storiesPage, stories.map(function (item, index) {
-                return __assign({ id: index + 1 }, item);
+                return __assign({
+                    id: index + 1
+                }, item);
             }), PAGE_NAME, function (itemElement, data, init) {
                 if (init) {
                     var titleElement = createElement("div");
@@ -90,8 +110,7 @@ var StoriesPage = /** @class */ (function (_super) {
                     var hrElement = createElement("hr");
                     itemElement.appendChild(hrElement);
                     hrElement.className = PAGE_NAME + "Hr";
-                }
-                else if (data === null) {
+                } else if (data === null) {
                     var titleElement = itemElement.children[0];
                     titleElement.innerHTML = "";
                     var summaryAndDateElement = itemElement
@@ -107,10 +126,13 @@ var StoriesPage = /** @class */ (function (_super) {
                     itemElement.onclick = function (event) {
                         return stopEventBubble(event);
                     };
-                }
-                else {
+                } else {
                     // const {isTop, version} = data;
-                    var _a = data, id_1 = _a.id, date = _a.date, title = _a.title, summary = _a.summary;
+                    var _a = data,
+                        id_1 = _a.id,
+                        date = _a.date,
+                        title = _a.title,
+                        summary = _a.summary;
                     var titleElement = itemElement.children[0];
                     titleElement.innerHTML = getI18nInnerHTML(title);
                     var summaryAndDateElement = itemElement

@@ -292,7 +292,7 @@ var edu;
                     }
                     infos.forEach(function (_a) {
                         var content = _a.content, x = _a.x, y = _a.y, rotate = _a.rotate;
-                        _this.appendText(svg, TEXT_STYLE, content, x, y, rotate, null);
+                        _this.appendText(svg, TEXT_STYLE, content, x, y, rotate, null, diceKind === DiceKind.ten);
                     });
                     var width = viewBox.right + "mm";
                     var height = viewBox.bottom + "mm";
@@ -528,7 +528,7 @@ var edu;
                 };
                 DiceGenerator.prototype.drawGraphsOfTenSidedDice = function (svg, SIDE_LENGTH, INNER_LINE_STYLE, OUTER_LINE_STYLE, viewBox, OPTIONS, mmToPxScale) {
                     var max = Math.max, min = Math.min, sin = Math.sin, cos = Math.cos, tan = Math.tan, atan = Math.atan, PI = Math.PI, abs = Math.abs;
-                    var _a = this, SIDE_LENGTH = _a.SIDE_LENGTH, svg = _a.svg, viewBox = _a.viewBox, appendLine = _a.appendLine, OUTER_LINE_STYLE = _a.OUTER_LINE_STYLE, INNER_LINE_STYLE = _a.INNER_LINE_STYLE;
+                    var appendLine = this.appendLine;
                     var PASTE_SCALE = SIDE_LENGTH < 3
                         ? 1
                         : SIDE_LENGTH <= 10
@@ -779,6 +779,12 @@ var edu;
                         Y_K2: Y_K2,
                         ANGLE_SMALL_DEGREE: ANGLE_SMALL_DEGREE
                     };
+                    var MAX_X = max(X_A1, X_B1, X_C1, X_D1, X_E1, X_F1, X_G1, X_H1, X_I1, X_J1, X_K1, X_A2, X_B2, X_C2, X_D2, X_E2, X_F2, X_G2, X_H2, X_I2, X_J2, X_K2, X_F1E2, X_F1E1, X_E1E2, X_E1E1) + SIDE_LENGTH * 0.1;
+                    var MIN_X = min(X_A1, X_B1, X_C1, X_D1, X_E1, X_F1, X_G1, X_H1, X_I1, X_J1, X_K1, X_A2, X_B2, X_C2, X_D2, X_E2, X_F2, X_G2, X_H2, X_I2, X_J2, X_K2);
+                    var MAX_Y = max(Y_A1, Y_B1, Y_C1, Y_D1, Y_E1, Y_F1, Y_G1, Y_H1, Y_I1, Y_J1, Y_K1, Y_A2, Y_B2, Y_C2, Y_D2, Y_E2, Y_F2, Y_G2, Y_H2, Y_I2, Y_J2, Y_K2);
+                    var MIN_Y = min(Y_A1, Y_B1, Y_C1, Y_D1, Y_E1, Y_F1, Y_G1, Y_H1, Y_I1, Y_J1, Y_K1, Y_A2, Y_B2, Y_C2, Y_D2, Y_E2, Y_F2, Y_G2, Y_H2, Y_I2, Y_J2, Y_K2);
+                    viewBox.right = MAX_X;
+                    viewBox.bottom = MAX_Y;
                 };
                 DiceGenerator.prototype.drawTextsOfTenSidedDice = function (infos, SIDE_LENGTH) {
                     var setSvgTextInfo = this.setSvgTextInfo;
@@ -1608,17 +1614,19 @@ var edu;
                     tspan.innerHTML = CHAR;
                     text.appendChild(tspan);
                 };
-                DiceGenerator.prototype.appendText = function (svg, STYLE, CONTENT, x, y, rotate, viewBox) {
+                DiceGenerator.prototype.appendText = function (svg, STYLE, CONTENT, x, y, rotate, viewBox, notUseG) {
                     var _this = this;
-                    var g = document.createElementNS(SVG_NS, "g");
-                    if (rotate) {
-                        g.setAttribute("style", "transform: rotate(" + rotate + "deg);transform-origin: 50% 50%;");
+                    if (notUseG === void 0) { notUseG = false; }
+                    if (!notUseG) {
+                        var g = document.createElementNS(SVG_NS, "g");
+                        if (rotate && !notUseG) {
+                            g.setAttribute("style", "transform: rotate(" + rotate + "deg);transform-origin: 50% 50%;");
+                        }
+                        svg.appendChild(g);
                     }
-                    svg.appendChild(g);
                     var text = document.createElementNS(SVG_NS, "text");
                     text.setAttribute("x", x + "mm");
                     text.setAttribute("y", y + "mm");
-                    text.setAttribute("style", "dominant-baseline:middle;text-anchor:middle;");
                     if (CONTENT.indexOf("<") > -1) {
                         text.innerHTML = CONTENT;
                     }
@@ -1627,7 +1635,12 @@ var edu;
                             _this.appendTspan(text, "", char, 0, 0, 0);
                         });
                     }
-                    g.appendChild(text);
+                    if (!notUseG) {
+                        g.appendChild(text);
+                    }
+                    else {
+                        svg.appendChild(text);
+                    }
                     if (viewBox) {
                         var clientRects = text.getClientRects();
                         var _a = (clientRects.length
@@ -1638,7 +1651,7 @@ var edu;
                         viewBox.top = Math.min(viewBox.top, y1, y2);
                         viewBox.bottom = Math.max(viewBox.bottom, y1, y2);
                     }
-                    text.setAttribute("style", STYLE);
+                    text.setAttribute("style", STYLE.concat("dominant-baseline:middle;text-anchor:middle;"));
                 };
                 DiceGenerator.prototype.setSvgTextInfo = function (info, x, y, rotate) {
                     info.x = x;

@@ -385,6 +385,9 @@ namespace edu {
             default:
               break;
           }
+          // if(diceKind === DiceKind.ten) {
+          //   alert('diceKind === DiceKind.ten');
+          // }
           infos.forEach(({ content, x, y, rotate }) => {
             this.appendText(
               svg,
@@ -394,6 +397,7 @@ namespace edu {
               y,
               rotate,
               null,
+              diceKind === DiceKind.ten,
             );
           });
 
@@ -1126,12 +1130,12 @@ namespace edu {
           // this.fixTextStyle(0.45);
           const { max, min, sin, cos, tan, atan, PI, abs } = Math;
           const {
-            SIDE_LENGTH,
-            svg,
-            viewBox,
+            // SIDE_LENGTH,
+            // svg,
+            // viewBox,
             appendLine,
-            OUTER_LINE_STYLE,
-            INNER_LINE_STYLE,
+            // OUTER_LINE_STYLE,
+            // INNER_LINE_STYLE,
           } = this;
           const PASTE_SCALE = SIDE_LENGTH < 3
             ? 1
@@ -1603,6 +1607,20 @@ namespace edu {
           };
           // viewBox.right = SIDE_LENGTH * 3.5 + EXTNED_LENGTH;
           // viewBox.bottom = BOTTOM;
+
+
+  const MAX_X = max(X_A1, X_B1, X_C1, X_D1, X_E1, X_F1, X_G1, X_H1, X_I1, X_J1, X_K1,
+    X_A2, X_B2, X_C2, X_D2, X_E2, X_F2, X_G2, X_H2, X_I2, X_J2, X_K2,
+    X_F1E2, X_F1E1, X_E1E2, X_E1E1,
+  ) + SIDE_LENGTH * 0.1;
+  const MIN_X = min(X_A1, X_B1, X_C1, X_D1, X_E1, X_F1, X_G1, X_H1, X_I1, X_J1, X_K1,
+    X_A2, X_B2, X_C2, X_D2, X_E2, X_F2, X_G2, X_H2, X_I2, X_J2, X_K2);
+  const MAX_Y = max(Y_A1, Y_B1, Y_C1, Y_D1, Y_E1, Y_F1, Y_G1, Y_H1, Y_I1, Y_J1, Y_K1,
+    Y_A2, Y_B2, Y_C2, Y_D2, Y_E2, Y_F2, Y_G2, Y_H2, Y_I2, Y_J2, Y_K2);
+  const MIN_Y = min(Y_A1, Y_B1, Y_C1, Y_D1, Y_E1, Y_F1, Y_G1, Y_H1, Y_I1, Y_J1, Y_K1,
+    Y_A2, Y_B2, Y_C2, Y_D2, Y_E2, Y_F2, Y_G2, Y_H2, Y_I2, Y_J2, Y_K2);
+    viewBox.right = MAX_X;
+    viewBox.bottom = MAX_Y;
         }
 
         private drawTextsOfTenSidedDice(
@@ -3460,12 +3478,14 @@ namespace edu {
           y: number,
           rotate: RotateType,
           viewBox: ViewBoxType | null,
+          notUseG: boolean = false,
         ) {
+          if(!notUseG) {
           const g = document.createElementNS(SVG_NS, "g") as SVGGElement;
           // g.setAttribute('x', `${x}mm`);
           // g.setAttribute('y', `${y}mm`);
           // g.setAttribute('style', 'display:flex;justify-content:center;align-items:center;overflow:hidden;');
-          if (rotate) {
+          if (rotate && !notUseG) {
             g.setAttribute(
               "style",
               `transform: rotate(${rotate}deg);transform-origin: 50% 50%;`,
@@ -3473,6 +3493,7 @@ namespace edu {
           }
 
           svg.appendChild(g);
+        }
 
           const text = document.createElementNS(
             SVG_NS,
@@ -3480,10 +3501,10 @@ namespace edu {
           ) as SVGTextElement;
           text.setAttribute("x", `${x}mm`);
           text.setAttribute("y", `${y}mm`);
-          text.setAttribute(
-            "style",
-            "dominant-baseline:middle;text-anchor:middle;",
-          );
+          // text.setAttribute(
+          //   "style",
+          //   "dominant-baseline:middle;text-anchor:middle;".concat(rotate && notUseG ? `transform: rotate(${rotate}deg);transform-origin: 50% 50%;` : ''),
+          // );
           // text.setAttribute('dx', '0');
           // text.setAttribute('dy', '0');
           // text.setAttribute('rotate', rotate.toString());
@@ -3496,7 +3517,34 @@ namespace edu {
             });
           }
 
-          g.appendChild(text);
+          if(!notUseG) {
+            g.appendChild(text);
+          } else {
+            // const innerSvg = document.createElementNS(SVG_NS, "svg");
+            // svg.setAttribute("version", "1.1");
+            // svg.setAttribute("xmlns", SVG_NS);
+            // svg.setAttribute("xmlns:xlink", SVG_XLINKNS);
+            // svg.appendChild(innerSvg);
+
+            // text.setAttribute("x", `${x}mm`);
+            // text.setAttribute("y", `${y}mm`);
+            // // if(rotate) {
+            // //   innerSvg.setAttribute("x", `${x}mm`);
+            // //   innerSvg.setAttribute("y", `${y}mm`);
+
+            // //   text.setAttribute("x", `0mm`);
+            // //   text.setAttribute("y", `0mm`);
+
+            // //   // innerSvg.setAttribute(
+            // //   //   "style",
+            // //   //   `transform: rotate(${rotate}deg);transform-origin: 50% 50%;`,
+            // //   // );
+            // // }
+            // innerSvg.appendChild(text);
+
+            svg.appendChild(text);
+
+          }
 
           if (viewBox) {
             // left/top/right/bottom/width/height
@@ -3511,7 +3559,8 @@ namespace edu {
             viewBox.bottom = Math.max(viewBox.bottom, y1, y2);
           }
 
-          text.setAttribute("style", STYLE);
+          // text.setAttribute("style", STYLE.concat("dominant-baseline:middle;text-anchor:middle;",rotate && notUseG ? `transform: rotate(${rotate}deg);transform-origin: 50% 50%;` : ''));
+          text.setAttribute("style", STYLE.concat("dominant-baseline:middle;text-anchor:middle;"));
         }
 
         setSvgTextInfo(

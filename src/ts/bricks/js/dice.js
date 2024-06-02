@@ -137,14 +137,7 @@ var edu;
                  */
                 DiceGenerator.prototype.create = function (_a) {
                     var _this = this;
-                    var id = _a.id,
-                        diceKind = _a.diceKind,
-                        SIDE_LENGTH = _a.sideLength,
-                        CONTENTS = _a.contents,
-                        OUTER_LINE_STYLE = _a.outerLineStyle,
-                        INNER_LINE_STYLE = _a.innerLineStyle,
-                        TEXT_STYLE = _a.textStyle,
-                        OPTIONS = _a.options;
+                    var id = _a.id, diceKind = _a.diceKind, SIDE_LENGTH = _a.sideLength, CONTENTS = _a.contents, OUTER_LINE_STYLE = _a.outerLineStyle, INNER_LINE_STYLE = _a.innerLineStyle, TEXT_STYLE = _a.textStyle, OPTIONS = _a.options;
                     if (id.length === 0)
                         id = "svg_0";
                     var FIXED_SIDE_LENGTH = SIDE_LENGTH;
@@ -170,33 +163,23 @@ var edu;
                         case DiceKind.four:
                             CONTENTS.forEach(function (content) {
                                 for (var i = 0; i < 3; ++i) {
-                                    infos.push({
-                                        content: content,
-                                        x: 0,
-                                        y: 0,
-                                        rotate: 0
-                                    });
+                                    infos.push({ content: content, x: 0, y: 0, rotate: 0 });
                                 }
                             });
                             break;
-                            // case DiceKind.six:
-                            //   break;
-                            // case DiceKind.eight:
-                            //   break;
-                            // case DiceKind.twelve:
-                            //   break;
-                            // case DiceKind.twenty:
-                            //   break;
-                            // case DiceKind.twentyFour:
-                            //   break;
+                        // case DiceKind.six:
+                        //   break;
+                        // case DiceKind.eight:
+                        //   break;
+                        // case DiceKind.twelve:
+                        //   break;
+                        // case DiceKind.twenty:
+                        //   break;
+                        // case DiceKind.twentyFour:
+                        //   break;
                         default:
                             CONTENTS.forEach(function (content) {
-                                infos.push({
-                                    content: content,
-                                    x: 0,
-                                    y: 0,
-                                    rotate: 0
-                                });
+                                infos.push({ content: content, x: 0, y: 0, rotate: 0 });
                             });
                             break;
                     }
@@ -233,12 +216,12 @@ var edu;
                         default:
                             break;
                     }
+                    // if(diceKind === DiceKind.ten) {
+                    //   alert('diceKind === DiceKind.ten');
+                    // }
                     infos.forEach(function (_a) {
-                        var content = _a.content,
-                            x = _a.x,
-                            y = _a.y,
-                            rotate = _a.rotate;
-                        _this.appendText(svg, TEXT_STYLE, content, x, y, rotate, null);
+                        var content = _a.content, x = _a.x, y = _a.y, rotate = _a.rotate;
+                        _this.appendText(svg, TEXT_STYLE, content, x, y, rotate, null, diceKind === DiceKind.ten);
                     });
                     var width = viewBox.right + "mm";
                     var height = viewBox.bottom + "mm";
@@ -260,19 +243,12 @@ var edu;
                         svg.setAttribute("transform-origin", "center");
                     }
                     var css = "page,wrap{page-break-inside:avoid;}wrap{display:inline-flex;}";
-                    return {
-                        id: id,
-                        svg: nested ? outerSvg : svg,
-                        css: css
-                    };
+                    return { id: id, svg: nested ? outerSvg : svg, css: css };
                 };
                 DiceGenerator.prototype.drawGraphsOfFourSidedDice = function (svg, SIDE_LENGTH, INNER_LINE_STYLE, OUTER_LINE_STYLE, viewBox, OPTIONS, mmToPxScale) {
                     var HEIGHT_OF_ONE = SIDE_LENGTH * 1.732 * 0.5;
                     var HEIGHT_OF_TWO = HEIGHT_OF_ONE * 2;
-                    var x1 = 0,
-                        x2 = 0,
-                        y1 = 0,
-                        y2 = 0;
+                    var x1 = 0, x2 = 0, y1 = 0, y2 = 0;
                     // 内部横线
                     x1 = SIDE_LENGTH * 0.5,
                         x2 = x1 + SIDE_LENGTH,
@@ -360,7 +336,8 @@ var edu;
                         this.setSvgTextInfo(infos[9], SIDE_LENGTH * 27.5 / 25, SIDE_LENGTH * 25.0 / 25, 180);
                         this.setSvgTextInfo(infos[10], SIDE_LENGTH * 8.0 / 25, SIDE_LENGTH * 35.0 / 25, -120);
                         this.setSvgTextInfo(infos[11], SIDE_LENGTH * 42.0 / 25, SIDE_LENGTH * 36.0 / 25, 120);
-                    } else {
+                    }
+                    else {
                         this.setSvgTextInfo(infos[0], SIDE_LENGTH * 24.5 / 25, SIDE_LENGTH * 19.0 / 25, 0);
                         this.setSvgTextInfo(infos[1], SIDE_LENGTH * 21.0 / 25, SIDE_LENGTH * 10.5 / 25, -120);
                         this.setSvgTextInfo(infos[2], SIDE_LENGTH * 30.0 / 25, SIDE_LENGTH * 12.5 / 25, 120);
@@ -391,24 +368,12 @@ var edu;
                     path.setAttribute("fill", "none");
                     path.setAttribute("stroke", "#000000");
                     path.setAttribute("d", ("M 0, " + (duckTongueHeightPx + SIDE_LENGTH_PX) + " ")
-                        .concat("h " + SIDE_LENGTH_PX * 2 + " ", "l " + offsetX + ", -" + pasteRegionHeightPx + " ", "h " + pasteRegionWidth + " ", "l " + offsetX + ", " + pasteRegionHeightPx + " ", "v -" + SIDE_LENGTH_PX + " ", "l " + offsetX + ", -" + duckTongueHeightPx + " ", "h " + pasteRegionWidth + " ", "l " + offsetX + ", " + duckTongueHeightPx + " ", "v " + SIDE_LENGTH_PX + " ", "l " + offsetX + ", -" + pasteRegionHeightPx + " ", "h " + pasteRegionWidth + " ", "l " + offsetX + ", " + pasteRegionHeightPx + " ",
-                            // `h ${SIDE_LENGTH_PX} `,
-                            "v " + SIDE_LENGTH_PX + " ", "h -" + SIDE_LENGTH_PX * 2 + " ", "l -" + offsetX + ", " + pasteRegionHeightPx + " ", "h -" + pasteRegionWidth + " ", "l -" + offsetX + ", -" + pasteRegionHeightPx + " ", "v " + SIDE_LENGTH_PX + " ", "l -" + offsetX + ", " + duckTongueHeightPx + " ", "h -" + pasteRegionWidth + " ", "l -" + offsetX + ", -" + duckTongueHeightPx + " ", "v -" + SIDE_LENGTH_PX + " ", "l -" + offsetX + ", " + pasteRegionHeightPx + " ", "h -" + pasteRegionWidth + " ", "l -" + offsetX + ", -" + pasteRegionHeightPx + " ", " z"));
+                        .concat("h " + SIDE_LENGTH_PX * 2 + " ", "l " + offsetX + ", -" + pasteRegionHeightPx + " ", "h " + pasteRegionWidth + " ", "l " + offsetX + ", " + pasteRegionHeightPx + " ", "v -" + SIDE_LENGTH_PX + " ", "l " + offsetX + ", -" + duckTongueHeightPx + " ", "h " + pasteRegionWidth + " ", "l " + offsetX + ", " + duckTongueHeightPx + " ", "v " + SIDE_LENGTH_PX + " ", "l " + offsetX + ", -" + pasteRegionHeightPx + " ", "h " + pasteRegionWidth + " ", "l " + offsetX + ", " + pasteRegionHeightPx + " ", 
+                    // `h ${SIDE_LENGTH_PX} `,
+                    "v " + SIDE_LENGTH_PX + " ", "h -" + SIDE_LENGTH_PX * 2 + " ", "l -" + offsetX + ", " + pasteRegionHeightPx + " ", "h -" + pasteRegionWidth + " ", "l -" + offsetX + ", -" + pasteRegionHeightPx + " ", "v " + SIDE_LENGTH_PX + " ", "l -" + offsetX + ", " + duckTongueHeightPx + " ", "h -" + pasteRegionWidth + " ", "l -" + offsetX + ", -" + duckTongueHeightPx + " ", "v -" + SIDE_LENGTH_PX + " ", "l -" + offsetX + ", " + pasteRegionHeightPx + " ", "h -" + pasteRegionWidth + " ", "l -" + offsetX + ", -" + pasteRegionHeightPx + " ", " z"));
                     svg.appendChild(path);
-                    var X1 = 0,
-                        X2 = SIDE_LENGTH * 1,
-                        X3 = SIDE_LENGTH * 2,
-                        X4 = SIDE_LENGTH * 3,
-                        X5 = SIDE_LENGTH * 4,
-                        X6 = SIDE_LENGTH * 5;
-                    var Y1 = 0,
-                        Y2 = duckTongueHeight,
-                        Y4 = Y2 + SIDE_LENGTH,
-                        Y5 = Y4 + SIDE_LENGTH,
-                        Y7 = Y5 + SIDE_LENGTH,
-                        Y8 = Y7 + duckTongueHeight,
-                        Y3 = Y4 - pasteRegionHeight,
-                        Y6 = Y5 + pasteRegionHeight;
+                    var X1 = 0, X2 = SIDE_LENGTH * 1, X3 = SIDE_LENGTH * 2, X4 = SIDE_LENGTH * 3, X5 = SIDE_LENGTH * 4, X6 = SIDE_LENGTH * 5;
+                    var Y1 = 0, Y2 = duckTongueHeight, Y4 = Y2 + SIDE_LENGTH, Y5 = Y4 + SIDE_LENGTH, Y7 = Y5 + SIDE_LENGTH, Y8 = Y7 + duckTongueHeight, Y3 = Y4 - pasteRegionHeight, Y6 = Y5 + pasteRegionHeight;
                     // 内部线
                     // this.appendLine(svg, INNER_LINE_STYLE, X3, X4, Y2, Y2, null);
                     // this.appendLine(svg, INNER_LINE_STYLE, X2, X5, Y4, Y4, null);
@@ -465,10 +430,7 @@ var edu;
                     var EXTNED_LENGTH = EXTNED_SCALE * SIDE_LENGTH;
                     var OFFSET_X = EXTNED_LENGTH * 0.5;
                     var OFFSET_Y = EXTNED_LENGTH * Math.cos(30 / 180 * Math.PI);
-                    var x1 = 0,
-                        x2 = 0,
-                        y1 = 0,
-                        y2 = 0;
+                    var x1 = 0, x2 = 0, y1 = 0, y2 = 0;
                     // 外部线
                     x1 = 0,
                         x2 = OFFSET_X,
@@ -545,26 +507,17 @@ var edu;
                 };
                 DiceGenerator.prototype.drawGraphsOfTenSidedDice = function (svg, SIDE_LENGTH, INNER_LINE_STYLE, OUTER_LINE_STYLE, viewBox, OPTIONS, mmToPxScale) {
                     // this.fixTextStyle(0.45);
-                    var max = Math.max,
-                        min = Math.min,
-                        sin = Math.sin,
-                        cos = Math.cos,
-                        tan = Math.tan,
-                        atan = Math.atan,
-                        PI = Math.PI,
-                        abs = Math.abs;
-                    var _a = this,
-                        SIDE_LENGTH = _a.SIDE_LENGTH,
-                        svg = _a.svg,
-                        viewBox = _a.viewBox,
-                        appendLine = _a.appendLine,
-                        OUTER_LINE_STYLE = _a.OUTER_LINE_STYLE,
-                        INNER_LINE_STYLE = _a.INNER_LINE_STYLE;
-                    var PASTE_SCALE = SIDE_LENGTH < 3 ?
-                        1 :
-                        SIDE_LENGTH <= 10 ?
-                        0.5 :
-                        0.25;
+                    var max = Math.max, min = Math.min, sin = Math.sin, cos = Math.cos, tan = Math.tan, atan = Math.atan, PI = Math.PI, abs = Math.abs;
+                    var 
+                    // SIDE_LENGTH,
+                    // svg,
+                    // viewBox,
+                    appendLine = this.appendLine;
+                    var PASTE_SCALE = SIDE_LENGTH < 3
+                        ? 1
+                        : SIDE_LENGTH <= 10
+                            ? 0.5
+                            : 0.25;
                     var PASTE_WIDTH = SIDE_LENGTH * PASTE_SCALE;
                     var X_O1 = SIDE_LENGTH * 2.55;
                     var Y_O1 = SIDE_LENGTH * 2.55;
@@ -583,14 +536,11 @@ var edu;
                     var SIDE_V2 = SIDE_LONG * sin(ANGLE_B1);
                     var SIZE_LONG_MIDLINE = SIDE_V1 + SIDE_V2;
                     var ANGLE_A1 = HALF_ANGLE_SMALL;
-                    var X_B1 = X_O1,
-                        Y_B1 = Y_O1 + SIZE_LONG_MIDLINE;
+                    var X_B1 = X_O1, Y_B1 = Y_O1 + SIZE_LONG_MIDLINE;
                     var X_A1_DELTA = SIDE_LONG * sin(ANGLE_A1);
                     var Y_A1_DELTA = SIDE_LONG * cos(ANGLE_A1);
-                    var X_A1 = X_O1 - X_A1_DELTA,
-                        X_C1 = X_O1 + X_A1_DELTA;
-                    var Y_A1 = Y_O1 + Y_A1_DELTA,
-                        Y_C1 = Y_O1 + Y_A1_DELTA;
+                    var X_A1 = X_O1 - X_A1_DELTA, X_C1 = X_O1 + X_A1_DELTA;
+                    var Y_A1 = Y_O1 + Y_A1_DELTA, Y_C1 = Y_O1 + Y_A1_DELTA;
                     var ANGLE_D1 = ANGLE_SMALL;
                     var X_D1 = X_O1 + SIZE_LONG_MIDLINE * sin(ANGLE_D1);
                     var Y_D1 = Y_O1 + SIZE_LONG_MIDLINE * cos(ANGLE_D1);
@@ -617,12 +567,9 @@ var edu;
                     var Y_K1 = Y_O1 - SIDE_LONG * cos(ANGLE_K1);
                     var X_O2 = X_A1 + X_B1 - X_O1;
                     var Y_O2 = Y_A1 + Y_B1 - Y_O1;
-                    var X_B2 = X_A1,
-                        Y_B2 = Y_A1;
-                    var X_C2 = X_B1,
-                        Y_C2 = Y_B1;
-                    var X_A2 = X_O2 * 2 - X_C2,
-                        Y_A2 = Y_C2;
+                    var X_B2 = X_A1, Y_B2 = Y_A1;
+                    var X_C2 = X_B1, Y_C2 = Y_B1;
+                    var X_A2 = X_O2 * 2 - X_C2, Y_A2 = Y_C2;
                     var ANGLE_D2 = ANGLE_SMALL;
                     var X_D2 = X_O2 + SIZE_LONG_MIDLINE * sin(ANGLE_D2);
                     var Y_D2 = Y_O2 - SIZE_LONG_MIDLINE * cos(ANGLE_D2);
@@ -818,36 +765,19 @@ var edu;
                     };
                     // viewBox.right = SIDE_LENGTH * 3.5 + EXTNED_LENGTH;
                     // viewBox.bottom = BOTTOM;
+                    var MAX_X = max(X_A1, X_B1, X_C1, X_D1, X_E1, X_F1, X_G1, X_H1, X_I1, X_J1, X_K1, X_A2, X_B2, X_C2, X_D2, X_E2, X_F2, X_G2, X_H2, X_I2, X_J2, X_K2, X_F1E2, X_F1E1, X_E1E2, X_E1E1) + SIDE_LENGTH * 0.1;
+                    var MIN_X = min(X_A1, X_B1, X_C1, X_D1, X_E1, X_F1, X_G1, X_H1, X_I1, X_J1, X_K1, X_A2, X_B2, X_C2, X_D2, X_E2, X_F2, X_G2, X_H2, X_I2, X_J2, X_K2);
+                    var MAX_Y = max(Y_A1, Y_B1, Y_C1, Y_D1, Y_E1, Y_F1, Y_G1, Y_H1, Y_I1, Y_J1, Y_K1, Y_A2, Y_B2, Y_C2, Y_D2, Y_E2, Y_F2, Y_G2, Y_H2, Y_I2, Y_J2, Y_K2);
+                    var MIN_Y = min(Y_A1, Y_B1, Y_C1, Y_D1, Y_E1, Y_F1, Y_G1, Y_H1, Y_I1, Y_J1, Y_K1, Y_A2, Y_B2, Y_C2, Y_D2, Y_E2, Y_F2, Y_G2, Y_H2, Y_I2, Y_J2, Y_K2);
+                    viewBox.right = MAX_X;
+                    viewBox.bottom = MAX_Y;
                 };
                 DiceGenerator.prototype.drawTextsOfTenSidedDice = function (infos, SIDE_LENGTH) {
                     var setSvgTextInfo = this.setSvgTextInfo;
                     var textData = this.textData;
-                    var X_A1 = textData.X_A1,
-                        X_A2 = textData.X_A2,
-                        X_C1 = textData.X_C1,
-                        X_C2 = textData.X_C2,
-                        X_E1 = textData.X_E1,
-                        X_E2 = textData.X_E2,
-                        X_G1 = textData.X_G1,
-                        X_G2 = textData.X_G2,
-                        X_I1 = textData.X_I1,
-                        X_I2 = textData.X_I2,
-                        X_K1 = textData.X_K1,
-                        X_K2 = textData.X_K2,
-                        Y_A1 = textData.Y_A1,
-                        Y_A2 = textData.Y_A2,
-                        Y_C1 = textData.Y_C1,
-                        Y_C2 = textData.Y_C2,
-                        Y_E1 = textData.Y_E1,
-                        Y_E2 = textData.Y_E2,
-                        Y_G1 = textData.Y_G1,
-                        Y_G2 = textData.Y_G2,
-                        Y_I1 = textData.Y_I1,
-                        Y_I2 = textData.Y_I2,
-                        Y_K1 = textData.Y_K1,
-                        Y_K2 = textData.Y_K2,
-                        ANGLE_SMALL_DEGREE = textData.ANGLE_SMALL_DEGREE;
-                    [{
+                    var X_A1 = textData.X_A1, X_A2 = textData.X_A2, X_C1 = textData.X_C1, X_C2 = textData.X_C2, X_E1 = textData.X_E1, X_E2 = textData.X_E2, X_G1 = textData.X_G1, X_G2 = textData.X_G2, X_I1 = textData.X_I1, X_I2 = textData.X_I2, X_K1 = textData.X_K1, X_K2 = textData.X_K2, Y_A1 = textData.Y_A1, Y_A2 = textData.Y_A2, Y_C1 = textData.Y_C1, Y_C2 = textData.Y_C2, Y_E1 = textData.Y_E1, Y_E2 = textData.Y_E2, Y_G1 = textData.Y_G1, Y_G2 = textData.Y_G2, Y_I1 = textData.Y_I1, Y_I2 = textData.Y_I2, Y_K1 = textData.Y_K1, Y_K2 = textData.Y_K2, ANGLE_SMALL_DEGREE = textData.ANGLE_SMALL_DEGREE;
+                    [
+                        {
                             x: (X_A2 + X_C2) * 0.5,
                             y: (Y_A2 + Y_C2) * 0.5,
                             rotate: 0
@@ -898,9 +828,7 @@ var edu;
                             rotate: 360 - ANGLE_SMALL_DEGREE * 2
                         },
                     ].map(function (_a, n) {
-                        var x = _a.x,
-                            y = _a.y,
-                            rotate = _a.rotate;
+                        var x = _a.x, y = _a.y, rotate = _a.rotate;
                         setSvgTextInfo(infos[n], x, y, rotate);
                     });
                 };
@@ -937,46 +865,26 @@ var edu;
                     for (var groupIndex = 0; groupIndex < 2; ++groupIndex) {
                         var LEFT = (groupIndex === 0 ? 0 : SECOND_GROUP_OFFSET) +
                             SIN72_MULTIPLY_QUARTER_SIDE_LENGTH;
-                        var A1x = 0,
-                            A1y = 0;
-                        var A2x = 0,
-                            A2y = 0;
-                        var A3x = 0,
-                            A3y = 0;
-                        var A4x = 0,
-                            A4y = 0;
-                        var A5x = 0,
-                            A5y = 0;
-                        var B1x = 0,
-                            B1y = 0;
-                        var B2x = 0,
-                            B2y = 0;
-                        var B5x = 0,
-                            B5y = 0;
-                        var C1x = 0,
-                            C1y = 0;
-                        var C2x = 0,
-                            C2y = 0;
-                        var C5x = 0,
-                            C5y = 0;
-                        var D1x = 0,
-                            D1y = 0;
-                        var D2x = 0,
-                            D2y = 0;
-                        var D5x = 0,
-                            D5y = 0;
-                        var E1x = 0,
-                            E1y = 0;
-                        var E2x = 0,
-                            E2y = 0;
-                        var E5x = 0,
-                            E5y = 0;
-                        var F1x = 0,
-                            F1y = 0;
-                        var F2x = 0,
-                            F2y = 0;
-                        var F5x = 0,
-                            F5y = 0;
+                        var A1x = 0, A1y = 0;
+                        var A2x = 0, A2y = 0;
+                        var A3x = 0, A3y = 0;
+                        var A4x = 0, A4y = 0;
+                        var A5x = 0, A5y = 0;
+                        var B1x = 0, B1y = 0;
+                        var B2x = 0, B2y = 0;
+                        var B5x = 0, B5y = 0;
+                        var C1x = 0, C1y = 0;
+                        var C2x = 0, C2y = 0;
+                        var C5x = 0, C5y = 0;
+                        var D1x = 0, D1y = 0;
+                        var D2x = 0, D2y = 0;
+                        var D5x = 0, D5y = 0;
+                        var E1x = 0, E1y = 0;
+                        var E2x = 0, E2y = 0;
+                        var E5x = 0, E5y = 0;
+                        var F1x = 0, F1y = 0;
+                        var F2x = 0, F2y = 0;
+                        var F5x = 0, F5y = 0;
                         if (groupIndex === 0) {
                             A1x = LEFT +
                                 SIN18 * (SIDE_LENGTH + SIN18_MULTIPLY_SIDE_LENGTH * 2) +
@@ -1020,7 +928,8 @@ var edu;
                             F1y = A4y;
                             F2y = A2y;
                             F5y = D2y;
-                        } else {
+                        }
+                        else {
                             A1x = LEFT + LONG_SIDE_LENGTH + SIDE_LENGTH;
                             A2x = A1x + SIN18_MULTIPLY_SIDE_LENGTH;
                             A3x = A1x - HALF_SIDE_LENGTH;
@@ -1062,9 +971,9 @@ var edu;
                             F2y = C5y;
                             F5y = A4y;
                         }
-                        var LINE_STYLE = groupIndex === 0 ?
-                            INNER_LINE_STYLE :
-                            OUTER_LINE_STYLE;
+                        var LINE_STYLE = groupIndex === 0
+                            ? INNER_LINE_STYLE
+                            : OUTER_LINE_STYLE;
                         this.appendLine(svg, LINE_STYLE, A1x, A2x, A1y, A2y, viewBox);
                         this.appendLine(svg, LINE_STYLE, A2x, A3x, A2y, A3y, viewBox);
                         this.appendLine(svg, LINE_STYLE, A3x, A4x, A3y, A4y, viewBox);
@@ -1090,46 +999,26 @@ var edu;
                         this.appendLine(svg, LINE_STYLE, E1x, E5x, E1y, E5y, viewBox);
                         this.appendLine(svg, LINE_STYLE, F1x, F2x, F1y, F2y, viewBox);
                         this.appendLine(svg, LINE_STYLE, F1x, F5x, F1y, F5y, viewBox);
-                        var B6x = 0,
-                            B6y = 0;
-                        var B7x = 0,
-                            B7y = 0;
-                        var B8x = 0,
-                            B8y = 0;
-                        var B9x = 0,
-                            B9y = 0;
-                        var C6x = 0,
-                            C6y = 0;
-                        var C7x = 0,
-                            C7y = 0;
-                        var C8x = 0,
-                            C8y = 0;
-                        var C9x = 0,
-                            C9y = 0;
-                        var D6x = 0,
-                            D6y = 0;
-                        var D7x = 0,
-                            D7y = 0;
-                        var D8x = 0,
-                            D8y = 0;
-                        var D9x = 0,
-                            D9y = 0;
-                        var E6x = 0,
-                            E6y = 0;
-                        var E7x = 0,
-                            E7y = 0;
-                        var E8x = 0,
-                            E8y = 0;
-                        var E9x = 0,
-                            E9y = 0;
-                        var F6x = 0,
-                            F6y = 0;
-                        var F7x = 0,
-                            F7y = 0;
-                        var F8x = 0,
-                            F8y = 0;
-                        var F9x = 0,
-                            F9y = 0;
+                        var B6x = 0, B6y = 0;
+                        var B7x = 0, B7y = 0;
+                        var B8x = 0, B8y = 0;
+                        var B9x = 0, B9y = 0;
+                        var C6x = 0, C6y = 0;
+                        var C7x = 0, C7y = 0;
+                        var C8x = 0, C8y = 0;
+                        var C9x = 0, C9y = 0;
+                        var D6x = 0, D6y = 0;
+                        var D7x = 0, D7y = 0;
+                        var D8x = 0, D8y = 0;
+                        var D9x = 0, D9y = 0;
+                        var E6x = 0, E6y = 0;
+                        var E7x = 0, E7y = 0;
+                        var E8x = 0, E8y = 0;
+                        var E9x = 0, E9y = 0;
+                        var F6x = 0, F6y = 0;
+                        var F7x = 0, F7y = 0;
+                        var F8x = 0, F8y = 0;
+                        var F9x = 0, F9y = 0;
                         // const SIN18_MULTIPLY_QUARTER_SIDE_LENGTH = QUARTER_SIDE_LENGTH * SIN18;
                         // const SIN36_MULTIPLY_QUARTER_SIDE_LENGTH = QUARTER_SIDE_LENGTH * SIN36;
                         // const SIN54_MULTIPLY_QUARTER_SIDE_LENGTH = QUARTER_SIDE_LENGTH * SIN54;
@@ -1268,18 +1157,12 @@ var edu;
                             this.appendLine(svg, OUTER_LINE_STYLE, F2x, B5x, F2y, B5y, viewBox);
                         }
                         if (OPTIONS.withHole) {
-                            var CC1x = (A1x + A2x + A3x + A4x + A5x) * 0.2,
-                                CC1y = (A1y + A2y + A3y + A4y + A5y) * 0.2;
-                            var CC2x = (A1x + A5x + B1x + B2x + B5x) * 0.2,
-                                CC2y = (A1y + A5y + B1y + B2y + B5y) * 0.2;
-                            var CC3x = (A1x + A2x + C1x + C2x + C5x) * 0.2,
-                                CC3y = (A1y + A2y + C1y + C2y + C5y) * 0.2;
-                            var CC4x = (A2x + A3x + D1x + D2x + D5x) * 0.2,
-                                CC4y = (A2y + A3y + D1y + D2y + D5y) * 0.2;
-                            var CC5x = (A3x + A4x + E1x + E2x + E5x) * 0.2,
-                                CC5y = (A3y + A4y + E1y + E2y + E5y) * 0.2;
-                            var CC6x = (A4x + A5x + F1x + F2x + F5x) * 0.2,
-                                CC6y = (A4y + A5y + F1y + F2y + F5y) * 0.2;
+                            var CC1x = (A1x + A2x + A3x + A4x + A5x) * 0.2, CC1y = (A1y + A2y + A3y + A4y + A5y) * 0.2;
+                            var CC2x = (A1x + A5x + B1x + B2x + B5x) * 0.2, CC2y = (A1y + A5y + B1y + B2y + B5y) * 0.2;
+                            var CC3x = (A1x + A2x + C1x + C2x + C5x) * 0.2, CC3y = (A1y + A2y + C1y + C2y + C5y) * 0.2;
+                            var CC4x = (A2x + A3x + D1x + D2x + D5x) * 0.2, CC4y = (A2y + A3y + D1y + D2y + D5y) * 0.2;
+                            var CC5x = (A3x + A4x + E1x + E2x + E5x) * 0.2, CC5y = (A3y + A4y + E1y + E2y + E5y) * 0.2;
+                            var CC6x = (A4x + A5x + F1x + F2x + F5x) * 0.2, CC6y = (A4y + A5y + F1y + F2y + F5y) * 0.2;
                             this.appendCircle(svg, INNER_LINE_STYLE, CC1x, CC1y, RADIUS, null);
                             this.appendCircle(svg, INNER_LINE_STYLE, CC2x, CC2y, RADIUS, null);
                             this.appendCircle(svg, INNER_LINE_STYLE, CC3x, CC3y, RADIUS, null);
@@ -1320,10 +1203,7 @@ var edu;
                     var pasteRegionLongBiasY = pasteRegionLongBias * SIN60;
                     var TwoY = OneY * 2;
                     var ThreeY = OneY * 3;
-                    var x1 = 0,
-                        x2 = 0,
-                        y1 = 0,
-                        y2 = 0;
+                    var x1 = 0, x2 = 0, y1 = 0, y2 = 0;
                     var FIVE_SIDE = SIDE_LENGTH * 5;
                     x1 = pasteRegionLongBiasX + pasteRegion, x2 = x1 + FIVE_SIDE;
                     y1 = OneY, y2 = y1;
@@ -1366,7 +1246,7 @@ var edu;
                     path.setAttribute("stroke", "#000000");
                     path.setAttribute("d", ("M 0, " + (OneYPx + pasteRegionLongBiasYPx) + " ")
                         .concat("l " + pasteRegionLongBiasXPx + ", -" + pasteRegionLongBiasYPx, "h " + pasteRegionPx, "l " + OneXPx + ", -" + OneYPx, "h " + pasteRegionPx, "l " + pasteRegionLongBiasXPx + ", " + pasteRegionLongBiasYPx, "l -" + pasteRegionShortBiasXPx + ", " + pasteRegionShortBiasYPx, "l " + OneXPx + ", -" + OneYPx, "h " + pasteRegionPx, "l " + pasteRegionLongBiasXPx + ", " + pasteRegionLongBiasYPx, "l -" + pasteRegionShortBiasXPx + ", " + pasteRegionShortBiasYPx, "l " + OneXPx + ", -" + OneYPx, "h " + pasteRegionPx, "l " + pasteRegionLongBiasXPx + ", " + pasteRegionLongBiasYPx, "l -" + pasteRegionShortBiasXPx + ", " + pasteRegionShortBiasYPx, "l " + OneXPx + ", -" + OneYPx, "h " + pasteRegionPx, "l " + pasteRegionLongBiasXPx + ", " + pasteRegionLongBiasYPx, "l -" + pasteRegionShortBiasXPx + ", " + pasteRegionShortBiasYPx, "l " + OneXPx + ", -" + OneYPx, "h " + pasteRegionPx, "l " + pasteRegionLongBiasXPx + ", " + pasteRegionLongBiasYPx, "l -" + (pasteRegionShortBiasXPx +
-                            OneXPx * 2) + ", " + (pasteRegionShortBiasYPx + OneYPx * 2), "h -" + pasteRegionPx, "l -" + pasteRegionLongBiasXPx + ", -" + pasteRegionLongBiasYPx, "l " + pasteRegionShortBiasXPx + ", -" + pasteRegionShortBiasYPx, "l -" + OneXPx + ", " + OneYPx, "h -" + pasteRegionPx, "l -" + pasteRegionLongBiasXPx + ", -" + pasteRegionLongBiasYPx, "l " + pasteRegionShortBiasXPx + ", -" + pasteRegionShortBiasYPx, "l -" + OneXPx + ", " + OneYPx, "h -" + pasteRegionPx, "l -" + pasteRegionLongBiasXPx + ", -" + pasteRegionLongBiasYPx, "l " + pasteRegionShortBiasXPx + ", -" + pasteRegionShortBiasYPx, "l -" + OneXPx + ", " + OneYPx, "h -" + pasteRegionPx, "l -" + pasteRegionLongBiasXPx + ", -" + pasteRegionLongBiasYPx, "l " + pasteRegionShortBiasXPx + ", -" + pasteRegionShortBiasYPx, "l -" + OneXPx + ", " + OneYPx, "h -" + pasteRegionPx, "l -" + pasteRegionLongBiasXPx + ", -" + pasteRegionLongBiasYPx, "l " + pasteRegionShortBiasXPx + ", -" + pasteRegionShortBiasYPx, " z"));
+                        OneXPx * 2) + ", " + (pasteRegionShortBiasYPx + OneYPx * 2), "h -" + pasteRegionPx, "l -" + pasteRegionLongBiasXPx + ", -" + pasteRegionLongBiasYPx, "l " + pasteRegionShortBiasXPx + ", -" + pasteRegionShortBiasYPx, "l -" + OneXPx + ", " + OneYPx, "h -" + pasteRegionPx, "l -" + pasteRegionLongBiasXPx + ", -" + pasteRegionLongBiasYPx, "l " + pasteRegionShortBiasXPx + ", -" + pasteRegionShortBiasYPx, "l -" + OneXPx + ", " + OneYPx, "h -" + pasteRegionPx, "l -" + pasteRegionLongBiasXPx + ", -" + pasteRegionLongBiasYPx, "l " + pasteRegionShortBiasXPx + ", -" + pasteRegionShortBiasYPx, "l -" + OneXPx + ", " + OneYPx, "h -" + pasteRegionPx, "l -" + pasteRegionLongBiasXPx + ", -" + pasteRegionLongBiasYPx, "l " + pasteRegionShortBiasXPx + ", -" + pasteRegionShortBiasYPx, "l -" + OneXPx + ", " + OneYPx, "h -" + pasteRegionPx, "l -" + pasteRegionLongBiasXPx + ", -" + pasteRegionLongBiasYPx, "l " + pasteRegionShortBiasXPx + ", -" + pasteRegionShortBiasYPx, " z"));
                     svg.appendChild(path);
                     viewBox.right = SIDE_LENGTH * 5 + OneX + pasteRegion;
                     viewBox.bottom = OneY * 3;
@@ -1403,77 +1283,40 @@ var edu;
                 // fixContent(content)  { return content.toString().replace(/([69])/gi, '<font style="text-decoration:underline;">$1</font>'); }
                 DiceGenerator.prototype.drawGraphsOfTwentyFourSidedDice = function (svg, SIDE_LENGTH, INNER_LINE_STYLE, OUTER_LINE_STYLE, viewBox, OPTIONS, mmToPxScale) {
                     var ANGLE = 48.275;
-                    var _a = this,
-                        getSinByAngle = _a.getSinByAngle,
-                        getCosByAngle = _a.getCosByAngle;
+                    var _a = this, getSinByAngle = _a.getSinByAngle, getCosByAngle = _a.getCosByAngle;
                     var TEXT_OFFSET_SCALE = 0.2;
                     var BIGER_ANGLE = 180 - ANGLE * 2;
                     var SMALL_ANGLE_COS = Math.cos(ANGLE * Math.PI / 180);
                     var HALF_LONG_SIDE_LENGTH = 50 * 0.5;
                     var SHORT_SIDE_LENGTH = HALF_LONG_SIDE_LENGTH / SMALL_ANGLE_COS;
-                    var ax = 0,
-                        ay = 0,
-                        bx = 0,
-                        by = 0,
-                        cx = 0,
-                        cy = 0,
-                        dx = 0,
-                        dy = 0,
-                        ex = 0,
-                        ey = 0,
-                        fx = 0,
-                        fy = 0;
-                    var aax = 0,
-                        aay = 0,
-                        bbx = 0,
-                        bby = 0,
-                        ddx = 0,
-                        ddy = 0,
-                        eex = 0,
-                        eey = 0,
-                        ffx = 0,
-                        ffy = 0,
-                        fffx = 0,
-                        fffy = 0;
-                    var content_offset_top = -3,
-                        content_offset_left = -2;
+                    var ax = 0, ay = 0, bx = 0, by = 0, cx = 0, cy = 0, dx = 0, dy = 0, ex = 0, ey = 0, fx = 0, fy = 0;
+                    var aax = 0, aay = 0, bbx = 0, bby = 0, ddx = 0, ddy = 0, eex = 0, eey = 0, ffx = 0, ffy = 0, fffx = 0, fffy = 0;
+                    var content_offset_top = -3, content_offset_left = -2;
                     content_offset_top *= 1.5, content_offset_left *= 1.5;
                     var OFFSET_X = -23.0805019730301175;
                     // 080501973030115 1.7763568394002505e-14mm
                     // 08050197303012 -1.0658141036401503e-14mm
                     var X_VALUE = 150;
                     // const ax1 = 150, ay1 = 0;
-                    var ax1 = X_VALUE + OFFSET_X,
-                        ay1 = 0;
-                    var bx1 = ax1 + 50,
-                        by1 = 0;
-                    var cx1 = ax1 + HALF_LONG_SIDE_LENGTH,
-                        cy1 = SHORT_SIDE_LENGTH * getSinByAngle(ANGLE);
+                    var ax1 = X_VALUE + OFFSET_X, ay1 = 0;
+                    var bx1 = ax1 + 50, by1 = 0;
+                    var cx1 = ax1 + HALF_LONG_SIDE_LENGTH, cy1 = SHORT_SIDE_LENGTH * getSinByAngle(ANGLE);
                     var angle_cd1 = BIGER_ANGLE - ANGLE;
-                    var dx1 = cx1 - SHORT_SIDE_LENGTH * getCosByAngle(angle_cd1),
-                        dy1 = cy1 + SHORT_SIDE_LENGTH * getSinByAngle(angle_cd1);
+                    var dx1 = cx1 - SHORT_SIDE_LENGTH * getCosByAngle(angle_cd1), dy1 = cy1 + SHORT_SIDE_LENGTH * getSinByAngle(angle_cd1);
                     var angle_ce1 = 180 - BIGER_ANGLE - angle_cd1;
-                    var ex1 = cx1 + SHORT_SIDE_LENGTH * getCosByAngle(angle_ce1),
-                        ey1 = cy1 + SHORT_SIDE_LENGTH * getSinByAngle(angle_ce1);
+                    var ex1 = cx1 + SHORT_SIDE_LENGTH * getCosByAngle(angle_ce1), ey1 = cy1 + SHORT_SIDE_LENGTH * getSinByAngle(angle_ce1);
                     var angle_cf1 = BIGER_ANGLE - angle_ce1;
-                    var fx1 = cx1 + SHORT_SIDE_LENGTH * getCosByAngle(angle_cf1),
-                        fy1 = cy1 - SHORT_SIDE_LENGTH * getSinByAngle(angle_cf1);
+                    var fx1 = cx1 + SHORT_SIDE_LENGTH * getCosByAngle(angle_cf1), fy1 = cy1 - SHORT_SIDE_LENGTH * getSinByAngle(angle_cf1);
                     var c_mirror_ad_x1 = X_VALUE + dx1 - cx1;
                     var c_mirror_ad_y1 = 0 + dy1 - cy1;
-                    var aax1 = X_VALUE + (c_mirror_ad_x1 - X_VALUE) * 0.3 + OFFSET_X,
-                        aay1 = 0 + (c_mirror_ad_y1 - 0) * 0.3;
-                    var bbx1 = 0,
-                        bby1 = 0;
-                    var ddx1 = dx1 + (c_mirror_ad_x1 - dx1) * 0.3,
-                        ddy1 = dy1 + (c_mirror_ad_y1 - dy1) * 0.3;
-                    var ffx1 = bx1 + (cx1 - bx1) * 0.3,
-                        ffy1 = 0 + (cy1 - 0) * 0.3;
+                    var aax1 = X_VALUE + (c_mirror_ad_x1 - X_VALUE) * 0.3 + OFFSET_X, aay1 = 0 + (c_mirror_ad_y1 - 0) * 0.3;
+                    var bbx1 = 0, bby1 = 0;
+                    var ddx1 = dx1 + (c_mirror_ad_x1 - dx1) * 0.3, ddy1 = dy1 + (c_mirror_ad_y1 - dy1) * 0.3;
+                    var ffx1 = bx1 + (cx1 - bx1) * 0.3, ffy1 = 0 + (cy1 - 0) * 0.3;
                     var c_mirror_ef_x1 = ex1 + fx1 - cx1;
                     var c_mirror_ef_y1 = ey1 + fy1 - cy1;
-                    var eex1 = ex1 + (c_mirror_ef_x1 - ex1) * 0.3,
-                        eey1 = ey1 + (c_mirror_ef_y1 - ey1) * 0.3;
-                    var fffx1 = fx1 + (c_mirror_ef_x1 - fx1) * 0.3,
-                        fffy1 = fy1 + (c_mirror_ef_y1 - fy1) * 0.3;
+                    var eex1 = ex1 + (c_mirror_ef_x1 - ex1) * 0.3, eey1 = ey1 + (c_mirror_ef_y1 - ey1) * 0.3;
+                    var fffx1 = fx1 + (c_mirror_ef_x1 - fx1) * 0.3, fffy1 = fy1 + (c_mirror_ef_y1 - fy1) * 0.3;
                     ax = ax1,
                         ay = ay1,
                         bx = bx1,
@@ -1514,12 +1357,9 @@ var edu;
                     this.appendLine(svg, OUTER_LINE_STYLE, eex, fffx, eey, fffy, viewBox);
                     this.appendLine(svg, OUTER_LINE_STYLE, ex, eex, ey, eey, viewBox);
                     this.appendLine(svg, OUTER_LINE_STYLE, fx, fffx, fy, fffy, viewBox);
-                    var cx4 = dx1 + ex1 - cx1,
-                        cy4 = dy1 + ey1 - cy1;
-                    var ax4 = ex1,
-                        ay4 = ey1;
-                    var dx4 = dx1,
-                        dy4 = dy1;
+                    var cx4 = dx1 + ex1 - cx1, cy4 = dy1 + ey1 - cy1;
+                    var ax4 = ex1, ay4 = ey1;
+                    var dx4 = dx1, dy4 = dy1;
                     var angle_cd4 = Math.atan((cy4 - dy4) / (cx4 - dx4)) * 180 /
                         Math.PI;
                     var angle_ce4 = BIGER_ANGLE - angle_cd4;
@@ -1532,8 +1372,7 @@ var edu;
                     var fy4 = cy4 + SHORT_SIDE_LENGTH * getCosByAngle(angle_cf4);
                     var bx4 = cx4 + SHORT_SIDE_LENGTH * getCosByAngle(angle_cb4);
                     var by4 = cy4 + SHORT_SIDE_LENGTH * getSinByAngle(angle_cb4);
-                    var ffx4 = bx4 + (cx4 - bx4) * 0.3,
-                        ffy4 = by4 + (cy4 - by4) * 0.3;
+                    var ffx4 = bx4 + (cx4 - bx4) * 0.3, ffy4 = by4 + (cy4 - by4) * 0.3;
                     ax = ax4,
                         ay = ay4,
                         bx = bx4,
@@ -1556,12 +1395,9 @@ var edu;
                     this.appendLine(svg, INNER_LINE_STYLE, dx, ex, dy, ey, viewBox);
                     this.appendLine(svg, INNER_LINE_STYLE, ex, fx, ey, fy, viewBox);
                     this.appendLine(svg, OUTER_LINE_STYLE, fx, ffx, fy, ffy, viewBox);
-                    var cx5 = ax4 + bx4 - cx4,
-                        cy5 = ay4 + by4 - cy4;
-                    var dx5 = ax4,
-                        dy5 = ay4;
-                    var ex5 = bx4,
-                        ey5 = by4;
+                    var cx5 = ax4 + bx4 - cx4, cy5 = ay4 + by4 - cy4;
+                    var dx5 = ax4, dy5 = ay4;
+                    var ex5 = bx4, ey5 = by4;
                     var angle_cd5 = Math.atan((cy5 - dy5) / (cx5 - dx5)) * 180 /
                         Math.PI;
                     var angle_ce5 = BIGER_ANGLE - angle_cd5;
@@ -1574,14 +1410,10 @@ var edu;
                     var by5 = cy5 + SHORT_SIDE_LENGTH * getSinByAngle(angle_cb5);
                     var fx5 = cx5 + SHORT_SIDE_LENGTH * getSinByAngle(angle_cf5);
                     var fy5 = cy5 + SHORT_SIDE_LENGTH * getCosByAngle(angle_cf5);
-                    var ffx5 = bx5 + (cx5 - bx5) * 0.3,
-                        ffy5 = by5 + (cy5 - by5) * 0.3;
-                    var c_mirror_ab_x5 = ax5 + bx5 - cx5,
-                        c_mirror_ab_y5 = ay5 + by5 - cy5;
-                    var aax5 = ax5 + (c_mirror_ab_x5 - ax5) * 0.3,
-                        aay5 = ay5 + (c_mirror_ab_y5 - ay5) * 0.3;
-                    var bbx5 = bx5 + (c_mirror_ab_x5 - bx5) * 0.3,
-                        bby5 = by5 + (c_mirror_ab_y5 - by5) * 0.3;
+                    var ffx5 = bx5 + (cx5 - bx5) * 0.3, ffy5 = by5 + (cy5 - by5) * 0.3;
+                    var c_mirror_ab_x5 = ax5 + bx5 - cx5, c_mirror_ab_y5 = ay5 + by5 - cy5;
+                    var aax5 = ax5 + (c_mirror_ab_x5 - ax5) * 0.3, aay5 = ay5 + (c_mirror_ab_y5 - ay5) * 0.3;
+                    var bbx5 = bx5 + (c_mirror_ab_x5 - bx5) * 0.3, bby5 = by5 + (c_mirror_ab_y5 - by5) * 0.3;
                     ax = ax5,
                         ay = ay5,
                         bx = bx5,
@@ -1613,12 +1445,9 @@ var edu;
                     this.appendLine(svg, OUTER_LINE_STYLE, ax, aax, ay, aay, viewBox);
                     this.appendLine(svg, OUTER_LINE_STYLE, bx, bbx, by, bby, viewBox);
                     this.appendLine(svg, OUTER_LINE_STYLE, aax, bbx, aay, bby, viewBox);
-                    var cx6 = ex4 + fx4 - cx4,
-                        cy6 = ey4 + fy4 - cy4;
-                    var dx6 = fx4,
-                        dy6 = fy4;
-                    var ex6 = ex4,
-                        ey6 = ey4;
+                    var cx6 = ex4 + fx4 - cx4, cy6 = ey4 + fy4 - cy4;
+                    var dx6 = fx4, dy6 = fy4;
+                    var ex6 = ex4, ey6 = ey4;
                     var angle_cd6 = Math.atan((cy6 - dy6) / (dx6 - cx6)) * 180 /
                         Math.PI;
                     var angle_ce6 = Math.atan((cy6 - ey6) / (cx6 - ex6)) * 180 /
@@ -1632,20 +1461,13 @@ var edu;
                     var by6 = cy6 + SHORT_SIDE_LENGTH * getCosByAngle(angle_cb6);
                     var fx6 = cx6 - SHORT_SIDE_LENGTH * getCosByAngle(angle_cf6);
                     var fy6 = cy6 + SHORT_SIDE_LENGTH * getSinByAngle(angle_cf6);
-                    var ffx6 = bx6 + (cx6 - bx6) * 0.3,
-                        ffy6 = by6 + (cy6 - by6) * 0.3;
-                    var c_mirror_ad_x6 = ax6 + dx6 - cx6,
-                        c_mirror_ad_y6 = ay6 + dy6 - cy6;
-                    var aax6 = ax6 + (c_mirror_ad_x6 - ax6) * 0.3,
-                        aay6 = ay6 + (c_mirror_ad_y6 - ay6) * 0.3;
-                    var ddx6 = dx6 + (c_mirror_ad_x6 - dx6) * 0.3,
-                        ddy6 = dy6 + (c_mirror_ad_y6 - dy6) * 0.3;
-                    var c_mirror_ef_x6 = ex6 + fx6 - cx6,
-                        c_mirror_ef_y6 = ey6 + fy6 - cy6;
-                    var eex6 = ex6 + (c_mirror_ef_x6 - ex6) * 0.3,
-                        eey6 = ey6 + (c_mirror_ef_y6 - ey6) * 0.3;
-                    var fffx6 = fx6 + (c_mirror_ef_x6 - fx6) * 0.3,
-                        fffy6 = fy6 + (c_mirror_ef_y6 - fy6) * 0.3;
+                    var ffx6 = bx6 + (cx6 - bx6) * 0.3, ffy6 = by6 + (cy6 - by6) * 0.3;
+                    var c_mirror_ad_x6 = ax6 + dx6 - cx6, c_mirror_ad_y6 = ay6 + dy6 - cy6;
+                    var aax6 = ax6 + (c_mirror_ad_x6 - ax6) * 0.3, aay6 = ay6 + (c_mirror_ad_y6 - ay6) * 0.3;
+                    var ddx6 = dx6 + (c_mirror_ad_x6 - dx6) * 0.3, ddy6 = dy6 + (c_mirror_ad_y6 - dy6) * 0.3;
+                    var c_mirror_ef_x6 = ex6 + fx6 - cx6, c_mirror_ef_y6 = ey6 + fy6 - cy6;
+                    var eex6 = ex6 + (c_mirror_ef_x6 - ex6) * 0.3, eey6 = ey6 + (c_mirror_ef_y6 - ey6) * 0.3;
+                    var fffx6 = fx6 + (c_mirror_ef_x6 - fx6) * 0.3, fffy6 = fy6 + (c_mirror_ef_y6 - fy6) * 0.3;
                     ax = ax6,
                         ay = ay6,
                         bx = bx6,
@@ -1683,12 +1505,9 @@ var edu;
                     this.appendLine(svg, OUTER_LINE_STYLE, eex, fffx, eey, fffy, viewBox);
                     this.appendLine(svg, OUTER_LINE_STYLE, ex, eex, ey, eey, viewBox);
                     this.appendLine(svg, OUTER_LINE_STYLE, fx, fffx, fy, fffy, viewBox);
-                    var cx3 = dx4 + ex4 - cx4,
-                        cy3 = dy4 + ey4 - cy4;
-                    var fx3 = dx4,
-                        fy3 = dy4;
-                    var ex3 = ex4,
-                        ey3 = ey4;
+                    var cx3 = dx4 + ex4 - cx4, cy3 = dy4 + ey4 - cy4;
+                    var fx3 = dx4, fy3 = dy4;
+                    var ex3 = ex4, ey3 = ey4;
                     var angle_cf3 = Math.atan((cy3 - fy3) / (fx3 - cx3)) * 180 /
                         Math.PI;
                     var angle_ce3 = BIGER_ANGLE - angle_cf3;
@@ -1701,8 +1520,7 @@ var edu;
                     var by3 = cy3 - SHORT_SIDE_LENGTH * getCosByAngle(angle_cb3);
                     var dx3 = cx3 - SHORT_SIDE_LENGTH * getCosByAngle(angle_cd3);
                     var dy3 = cy3 + SHORT_SIDE_LENGTH * getSinByAngle(angle_cd3);
-                    var ffx3 = bx3 + (cx3 - bx3) * 0.3,
-                        ffy3 = by3 + (cy3 - by3) * 0.3;
+                    var ffx3 = bx3 + (cx3 - bx3) * 0.3, ffy3 = by3 + (cy3 - by3) * 0.3;
                     ax = ax3,
                         ay = ay3,
                         bx = bx3,
@@ -1726,12 +1544,9 @@ var edu;
                     this.appendLine(svg, OUTER_LINE_STYLE, dx, ex, dy, ey, viewBox);
                     this.appendLine(svg, INNER_LINE_STYLE, ex, fx, ey, fy, viewBox);
                     this.appendLine(svg, OUTER_LINE_STYLE, fx, ffx, fy, ffy, viewBox);
-                    var cx2 = ax3 + dx3 - cx3,
-                        cy2 = ay3 + dy3 - cy3;
-                    var fx2 = ax3,
-                        fy2 = ay3;
-                    var ex2 = dx3,
-                        ey2 = dy3;
+                    var cx2 = ax3 + dx3 - cx3, cy2 = ay3 + dy3 - cy3;
+                    var fx2 = ax3, fy2 = ay3;
+                    var ex2 = dx3, ey2 = dy3;
                     var angle_cf2 = Math.atan((cy2 - fy2) / (fx2 - cx2)) * 180 /
                         Math.PI;
                     var angle_ce2 = BIGER_ANGLE - angle_cf2;
@@ -1744,20 +1559,13 @@ var edu;
                     var by2 = cy2 - SHORT_SIDE_LENGTH * getCosByAngle(angle_cb2);
                     var dx2 = cx2 - SHORT_SIDE_LENGTH * getCosByAngle(angle_cd2);
                     var dy2 = cy2 + SHORT_SIDE_LENGTH * getSinByAngle(angle_cd2);
-                    var ffx2 = bx2 + (cx2 - bx2) * 0.3,
-                        ffy2 = by2 + (cy2 - by2) * 0.3;
-                    var c_mirror_ab_x2 = ax2 + bx2 - cx2,
-                        c_mirror_ab_y2 = ay2 + by2 - cy2;
-                    var aax2 = ax2 + (c_mirror_ab_x2 - ax2) * 0.3,
-                        aay2 = ay2 + (c_mirror_ab_y2 - ay2) * 0.3;
-                    var bbx2 = bx2 + (c_mirror_ab_x2 - bx2) * 0.3,
-                        bby2 = by2 + (c_mirror_ab_y2 - by2) * 0.3;
-                    var c_mirror_de_x2 = dx2 + ex2 - cx2,
-                        c_mirror_de_y2 = dy2 + ey2 - cy2;
-                    var ddx2 = dx2 + (c_mirror_de_x2 - dx2) * 0.3,
-                        ddy2 = dy2 + (c_mirror_de_y2 - dy2) * 0.3;
-                    var eex2 = ex2 + (c_mirror_de_x2 - ex2) * 0.3,
-                        eey2 = ey2 + (c_mirror_de_y2 - ey2) * 0.3;
+                    var ffx2 = bx2 + (cx2 - bx2) * 0.3, ffy2 = by2 + (cy2 - by2) * 0.3;
+                    var c_mirror_ab_x2 = ax2 + bx2 - cx2, c_mirror_ab_y2 = ay2 + by2 - cy2;
+                    var aax2 = ax2 + (c_mirror_ab_x2 - ax2) * 0.3, aay2 = ay2 + (c_mirror_ab_y2 - ay2) * 0.3;
+                    var bbx2 = bx2 + (c_mirror_ab_x2 - bx2) * 0.3, bby2 = by2 + (c_mirror_ab_y2 - by2) * 0.3;
+                    var c_mirror_de_x2 = dx2 + ex2 - cx2, c_mirror_de_y2 = dy2 + ey2 - cy2;
+                    var ddx2 = dx2 + (c_mirror_de_x2 - dx2) * 0.3, ddy2 = dy2 + (c_mirror_de_y2 - dy2) * 0.3;
+                    var eex2 = ex2 + (c_mirror_de_x2 - ex2) * 0.3, eey2 = ey2 + (c_mirror_de_y2 - ey2) * 0.3;
                     ax = ax2,
                         ay = ay2,
                         bx = bx2,
@@ -1888,47 +1696,74 @@ var edu;
                     tspan.innerHTML = CHAR;
                     text.appendChild(tspan);
                 };
-                DiceGenerator.prototype.appendText = function (svg, STYLE, CONTENT, x, y, rotate, viewBox) {
+                DiceGenerator.prototype.appendText = function (svg, STYLE, CONTENT, x, y, rotate, viewBox, notUseG) {
                     var _this = this;
-                    var g = document.createElementNS(SVG_NS, "g");
-                    // g.setAttribute('x', `${x}mm`);
-                    // g.setAttribute('y', `${y}mm`);
-                    // g.setAttribute('style', 'display:flex;justify-content:center;align-items:center;overflow:hidden;');
-                    if (rotate) {
-                        g.setAttribute("style", "transform: rotate(" + rotate + "deg);transform-origin: 50% 50%;");
+                    if (notUseG === void 0) { notUseG = false; }
+                    if (!notUseG) {
+                        var g = document.createElementNS(SVG_NS, "g");
+                        // g.setAttribute('x', `${x}mm`);
+                        // g.setAttribute('y', `${y}mm`);
+                        // g.setAttribute('style', 'display:flex;justify-content:center;align-items:center;overflow:hidden;');
+                        if (rotate && !notUseG) {
+                            g.setAttribute("style", "transform: rotate(" + rotate + "deg);transform-origin: 50% 50%;");
+                        }
+                        svg.appendChild(g);
                     }
-                    svg.appendChild(g);
                     var text = document.createElementNS(SVG_NS, "text");
                     text.setAttribute("x", x + "mm");
                     text.setAttribute("y", y + "mm");
-                    text.setAttribute("style", "dominant-baseline:middle;text-anchor:middle;");
+                    // text.setAttribute(
+                    //   "style",
+                    //   "dominant-baseline:middle;text-anchor:middle;".concat(rotate && notUseG ? `transform: rotate(${rotate}deg);transform-origin: 50% 50%;` : ''),
+                    // );
                     // text.setAttribute('dx', '0');
                     // text.setAttribute('dy', '0');
                     // text.setAttribute('rotate', rotate.toString());
                     if (CONTENT.indexOf("<") > -1) {
                         text.innerHTML = CONTENT;
-                    } else {
+                    }
+                    else {
                         CONTENT.split("").forEach(function (char, index) {
                             _this.appendTspan(text, "", char, 0, 0, 0);
                         });
                     }
-                    g.appendChild(text);
+                    if (!notUseG) {
+                        g.appendChild(text);
+                    }
+                    else {
+                        // const innerSvg = document.createElementNS(SVG_NS, "svg");
+                        // svg.setAttribute("version", "1.1");
+                        // svg.setAttribute("xmlns", SVG_NS);
+                        // svg.setAttribute("xmlns:xlink", SVG_XLINKNS);
+                        // svg.appendChild(innerSvg);
+                        // text.setAttribute("x", `${x}mm`);
+                        // text.setAttribute("y", `${y}mm`);
+                        // // if(rotate) {
+                        // //   innerSvg.setAttribute("x", `${x}mm`);
+                        // //   innerSvg.setAttribute("y", `${y}mm`);
+                        // //   text.setAttribute("x", `0mm`);
+                        // //   text.setAttribute("y", `0mm`);
+                        // //   // innerSvg.setAttribute(
+                        // //   //   "style",
+                        // //   //   `transform: rotate(${rotate}deg);transform-origin: 50% 50%;`,
+                        // //   // );
+                        // // }
+                        // innerSvg.appendChild(text);
+                        svg.appendChild(text);
+                    }
                     if (viewBox) {
                         // left/top/right/bottom/width/height
                         var clientRects = text.getClientRects();
-                        var _a = (clientRects.length ?
-                                clientRects.item(0) :
-                                text.getBoundingClientRect()),
-                            x1 = _a.left,
-                            x2 = _a.right,
-                            y1 = _a.top,
-                            y2 = _a.bottom;
+                        var _a = (clientRects.length
+                            ? clientRects.item(0)
+                            : text.getBoundingClientRect()), x1 = _a.left, x2 = _a.right, y1 = _a.top, y2 = _a.bottom;
                         viewBox.left = Math.min(viewBox.left, x1, x2);
                         viewBox.right = Math.max(viewBox.right, x1, x2);
                         viewBox.top = Math.min(viewBox.top, y1, y2);
                         viewBox.bottom = Math.max(viewBox.bottom, y1, y2);
                     }
-                    text.setAttribute("style", STYLE);
+                    // text.setAttribute("style", STYLE.concat("dominant-baseline:middle;text-anchor:middle;",rotate && notUseG ? `transform: rotate(${rotate}deg);transform-origin: 50% 50%;` : ''));
+                    text.setAttribute("style", STYLE.concat("dominant-baseline:middle;text-anchor:middle;"));
                 };
                 DiceGenerator.prototype.setSvgTextInfo = function (info, x, y, rotate) {
                     info.x = x;

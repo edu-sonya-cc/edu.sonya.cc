@@ -6,22 +6,34 @@
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+            ({
+                    __proto__: []
+                }
+                instanceof Array && function (d, b) {
+                    d.__proto__ = b;
+                }) ||
+            function (d, b) {
+                for (var p in b)
+                    if (b.hasOwnProperty(p)) d[p] = b[p];
+            };
         return extendStatics(d, b);
     };
     return function (d, b) {
         extendStatics(d, b);
-        function __() { this.constructor = d; }
+
+        function __() {
+            this.constructor = d;
+        }
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
 var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
+    __assign = Object.assign || function (t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
             s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
+            for (var p in s)
+                if (Object.prototype.hasOwnProperty.call(s, p))
+                    t[p] = s[p];
         }
         return t;
     };
@@ -34,12 +46,12 @@ var __assign = (this && this.__assign) || function () {
 /// <reference path='../../types/actualPageBase.d.ts' />
 var HomePage = /** @class */ (function (_super) {
     __extends(HomePage, _super);
+
     function HomePage() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
         _this.topImageElement = createElement("img");
         _this.TEACHER_COUNT_PER_PAGE = PageSize.homePage.teachers;
-        _this.sectionList = [
-            {
+        _this.sectionList = [{
                 id: "homePageAbout",
                 "class": "leftAndRightSidesTextAndImage",
                 title: {
@@ -132,14 +144,24 @@ var HomePage = /** @class */ (function (_super) {
         ];
         _this.initMainElement = function () {
             var mainElement = getMainElement();
-            var _a = _this, topImageElement = _a.topImageElement, sectionList = _a.sectionList, TEACHER_COUNT_PER_PAGE = _a.TEACHER_COUNT_PER_PAGE;
+            var _a = _this,
+                topImageElement = _a.topImageElement,
+                sectionList = _a.sectionList,
+                TEACHER_COUNT_PER_PAGE = _a.TEACHER_COUNT_PER_PAGE;
             mainElement.appendChild(topImageElement);
             var topImageUrl = SITE_IMAGE_PATH.concat("1home/topImage.jpg");
             topImageElement.setAttribute("id", "topImage");
             topImageElement.setAttribute("src", topImageUrl);
             topImageElement.setAttribute("alt", topImageUrl);
             sectionList.forEach(function (_a, sectionIndex) {
-                var id = _a.id, sectionClass = _a["class"], title = _a.title, summary = _a.summary, image = _a.image, subjectImage = _a.subjectImage, items = _a.items, moreLink = _a.moreLink;
+                var id = _a.id,
+                    sectionClass = _a["class"],
+                    title = _a.title,
+                    summary = _a.summary,
+                    image = _a.image,
+                    subjectImage = _a.subjectImage,
+                    items = _a.items,
+                    moreLink = _a.moreLink;
                 var sectionWrapElement = createElement("div");
                 mainElement.appendChild(sectionWrapElement);
                 sectionWrapElement.setAttribute("id", id);
@@ -153,7 +175,7 @@ var HomePage = /** @class */ (function (_super) {
                     var image = createElement('img');
                     // image.setAttribute("class", "homePageSubjectImage");
                     image.setAttribute('class', 'pageSubject');
-                    var src = "./images/0common/" + lang + "/" + subjectImage;
+                    var src = "images/0common/" + lang + "/" + subjectImage;
                     image.src = src;
                     image.alt = src;
                     span.appendChild(image);
@@ -168,8 +190,7 @@ var HomePage = /** @class */ (function (_super) {
                         if (sectionIndex % 2 === 0) {
                             sectionWrapElement.appendChild(imageElementInTextAndImage);
                             sectionWrapElement.appendChild(textWrapElementInTextAndImage);
-                        }
-                        else {
+                        } else {
                             sectionWrapElement.appendChild(textWrapElementInTextAndImage);
                             sectionWrapElement.appendChild(imageElementInTextAndImage);
                         }
@@ -185,9 +206,9 @@ var HomePage = /** @class */ (function (_super) {
                         textWrapElementInTextAndImage.appendChild(moreElement);
                         imageElementInTextAndImage.onclick = textWrapElementInTextAndImage
                             .onclick = function (event) {
-                            window.location.href = moreLink;
-                            return stopEventBubble(event);
-                        };
+                                window.location.href = moreLink;
+                                return stopEventBubble(event);
+                            };
                         break;
                     case "leftAndRightSidesList":
                         sectionWrapElement.appendChild(sectionSubjectElement);
@@ -211,9 +232,9 @@ var HomePage = /** @class */ (function (_super) {
                                 return -1;
                             if (prev.isTop && !next.isTop)
                                 return 1;
-                            return (prev.date === next.date)
-                                ? 0
-                                : (prev.date === next.date ? -1 : 0);
+                            return (prev.date === next.date) ?
+                                0 :
+                                (prev.date === next.date ? -1 : 0);
                         });
                         var _loop_1 = function (i) {
                             var storyWrapElement = createElement("div");
@@ -221,7 +242,11 @@ var HomePage = /** @class */ (function (_super) {
                             // ((i % 2 === 0) ? leftAreaElement : rightAreaElement).appendChild(storyWrapElement);
                             leftAreaOfLeftAndRightSidesListWrapElement.appendChild(storyWrapElement);
                             // const { isTop, date, version, title, summary } = storiesOfFirstPage[i];
-                            var _a = storiesOfFirstPage[i], id_1 = _a.id, date = _a.date, title_1 = _a.title, summary_1 = _a.summary;
+                            var _a = storiesOfFirstPage[i],
+                                id_1 = _a.id,
+                                date = _a.date,
+                                title_1 = _a.title,
+                                summary_1 = _a.summary;
                             // console.log(id , date , title , summary, storiesOfFirstPage[i]);
                             var storyTitleAndTimeElement = createElement("div");
                             storyTitleAndTimeElement.className = "homePageStoryTitleAndTime";
@@ -307,20 +332,21 @@ var HomePage = /** @class */ (function (_super) {
                         var gotoPage = function (pageIndex) {
                             if (pageIndex > maxTeacherPageIndex_1) {
                                 pageIndex = maxTeacherPageIndex_1;
-                            }
-                            else if (pageIndex < 0)
+                            } else if (pageIndex < 0)
                                 pageIndex = 0;
                             if (currentPage_1 === pageIndex)
                                 return;
-                            var teacherCountOfCurrentPage = pageIndex < maxTeacherPageIndex_1
-                                ? TEACHER_COUNT_PER_PAGE
-                                : teacherCountOfLastPage_1;
+                            var teacherCountOfCurrentPage = pageIndex < maxTeacherPageIndex_1 ?
+                                TEACHER_COUNT_PER_PAGE :
+                                teacherCountOfLastPage_1;
                             var indexOffset = TEACHER_COUNT_PER_PAGE * pageIndex;
                             for (var i = 0; i < teacherCountOfCurrentPage; ++i) {
                                 var aElement = flippableCardsElement_1
                                     .children[i];
                                 var teacher = teachers[indexOffset + i];
-                                var name = teacher.name, link = teacher.link, i18n = teacher.i18n;
+                                var name = teacher.name,
+                                    link = teacher.link,
+                                    i18n = teacher.i18n;
                                 aElement.setAttribute("href", link);
                                 var wrap = aElement.children[0];
                                 showFlex(wrap);
@@ -345,22 +371,19 @@ var HomePage = /** @class */ (function (_super) {
                             currentPage_1 = pageIndex;
                             if (pageIndex === 0) {
                                 leftArrowElement_1.setAttribute("disabled", "");
-                            }
-                            else if (leftArrowElement_1.hasAttribute("disabled")) {
+                            } else if (leftArrowElement_1.hasAttribute("disabled")) {
                                 leftArrowElement_1.removeAttribute("disabled");
                             }
                             if (pageIndex === maxTeacherPageIndex_1) {
                                 rightArrowElement_1.setAttribute("disabled", "");
-                            }
-                            else if (rightArrowElement_1.hasAttribute("disabled")) {
+                            } else if (rightArrowElement_1.hasAttribute("disabled")) {
                                 rightArrowElement_1.removeAttribute("disabled");
                             }
                         };
                         if (teacherPageCount < 2) {
                             leftArrowElement_1.setAttribute("disabled", "");
                             rightArrowElement_1.setAttribute("disabled", "");
-                        }
-                        else {
+                        } else {
                             leftArrowElement_1.onclick = function (event) {
                                 gotoPage(currentPage_1 - 1);
                                 return stopEventBubble(event);

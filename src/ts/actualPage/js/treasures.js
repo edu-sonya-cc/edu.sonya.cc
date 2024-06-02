@@ -7,13 +7,24 @@
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+            ({
+                    __proto__: []
+                }
+                instanceof Array && function (d, b) {
+                    d.__proto__ = b;
+                }) ||
+            function (d, b) {
+                for (var p in b)
+                    if (b.hasOwnProperty(p)) d[p] = b[p];
+            };
         return extendStatics(d, b);
     };
     return function (d, b) {
         extendStatics(d, b);
-        function __() { this.constructor = d; }
+
+        function __() {
+            this.constructor = d;
+        }
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
@@ -25,6 +36,7 @@ var __extends = (this && this.__extends) || (function () {
 /// <reference path='../../types/version.d.ts' />
 var TreasuresPage = /** @class */ (function (_super) {
     __extends(TreasuresPage, _super);
+
     function TreasuresPage() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
         _this.mainContentElement = createElement("div");
@@ -36,7 +48,12 @@ var TreasuresPage = /** @class */ (function (_super) {
             var PAGE_NAME = "treasuresPage";
             var mainElement = getMainElement();
             mainElement.id = PAGE_NAME + "Main";
-            var _a = _this, mainContentElement = _a.mainContentElement, topImageElement = _a.topImageElement, pageSubjectElement = _a.pageSubjectElement, listElement = _a.listElement, paginationElement = _a.paginationElement;
+            var _a = _this,
+                mainContentElement = _a.mainContentElement,
+                topImageElement = _a.topImageElement,
+                pageSubjectElement = _a.pageSubjectElement,
+                listElement = _a.listElement,
+                paginationElement = _a.paginationElement;
             mainElement.appendChild(topImageElement);
             mainElement.appendChild(mainContentElement);
             mainContentElement.id = PAGE_NAME + "MainContent";
@@ -55,59 +72,62 @@ var TreasuresPage = /** @class */ (function (_super) {
                 var image = createElement('img');
                 // image.setAttribute('class', `${PAGE_NAME}SubjectImage`);
                 image.setAttribute('class', 'pageSubject');
-                var src = "./images/0common/" + lang + "/4treasures.png";
+                var src = "images/0common/" + lang + "/4treasures.png";
                 image.src = src;
                 image.alt = src;
                 span.appendChild(image);
             });
             pcGlobal.fillListAndPagination(listElement, paginationElement, PageSize.treasuresPage, treasures, // .map((item: object, index: number) => { return {id: index, ...item }} ),
-            PAGE_NAME, function (itemElement, data, init) {
-                if (init) {
-                    var aElement = createElement("a");
-                    itemElement.appendChild(aElement);
-                    aElement.target = "_blank";
-                    aElement.className = PAGE_NAME + "ItemWrap";
-                    var imageElement = createElement("img");
-                    var rightWrapElement = createElement("div");
-                    aElement.appendChild(imageElement);
-                    aElement.appendChild(rightWrapElement);
-                    imageElement.className = PAGE_NAME + "ItemImage";
-                    rightWrapElement.className = PAGE_NAME + "ItemRightWrap";
-                    var titleElement = createElement("div");
-                    titleElement.className = PAGE_NAME + "ItemTitle";
-                    rightWrapElement.appendChild(titleElement);
-                    var hrElement = createElement("hr");
-                    hrElement.className = PAGE_NAME + "ItemHr";
-                    rightWrapElement.appendChild(hrElement);
-                    var summaryElement = createElement("span");
-                    summaryElement.className = PAGE_NAME + "ItemSummary";
-                    rightWrapElement.appendChild(summaryElement);
-                    var moreElement = createElement("div");
-                    moreElement.className = "moreButton primary";
-                    moreElement.innerHTML = MORE_BUTTON_HTML;
-                    rightWrapElement.appendChild(moreElement);
-                }
-                else if (data === null) {
-                    hide(itemElement);
-                }
-                else {
-                    showBlock(itemElement);
-                    var _a = data, image = _a.image, link = _a.link, title = _a.title, summary = _a.summary;
-                    var aElement = itemElement.children[0];
-                    var imageElement = aElement.children[0];
-                    var rightWrapElement = aElement.children[1];
-                    var imageUrl = SITE_IMAGE_PATH + "4treasures/" + image;
-                    imageElement.src = imageUrl;
-                    imageElement.alt = imageUrl;
-                    var titleElement = rightWrapElement.children[0];
-                    titleElement.innerHTML = getI18nInnerHTML(title);
-                    // const hrElement = rightWrapElement.children[1] as HTMLHRElement;
-                    var summaryElement = rightWrapElement
-                        .children[2];
-                    summaryElement.innerHTML = getI18nInnerHTML(summary);
-                    aElement.href = link;
-                }
-            });
+                PAGE_NAME,
+                function (itemElement, data, init) {
+                    if (init) {
+                        var aElement = createElement("a");
+                        itemElement.appendChild(aElement);
+                        aElement.target = "_blank";
+                        aElement.className = PAGE_NAME + "ItemWrap";
+                        var imageElement = createElement("img");
+                        var rightWrapElement = createElement("div");
+                        aElement.appendChild(imageElement);
+                        aElement.appendChild(rightWrapElement);
+                        imageElement.className = PAGE_NAME + "ItemImage";
+                        rightWrapElement.className = PAGE_NAME + "ItemRightWrap";
+                        var titleElement = createElement("div");
+                        titleElement.className = PAGE_NAME + "ItemTitle";
+                        rightWrapElement.appendChild(titleElement);
+                        var hrElement = createElement("hr");
+                        hrElement.className = PAGE_NAME + "ItemHr";
+                        rightWrapElement.appendChild(hrElement);
+                        var summaryElement = createElement("span");
+                        summaryElement.className = PAGE_NAME + "ItemSummary";
+                        rightWrapElement.appendChild(summaryElement);
+                        var moreElement = createElement("div");
+                        moreElement.className = "moreButton primary";
+                        moreElement.innerHTML = MORE_BUTTON_HTML;
+                        rightWrapElement.appendChild(moreElement);
+                    } else if (data === null) {
+                        hide(itemElement);
+                    } else {
+                        showBlock(itemElement);
+                        var _a = data,
+                            image = _a.image,
+                            link = _a.link,
+                            title = _a.title,
+                            summary = _a.summary;
+                        var aElement = itemElement.children[0];
+                        var imageElement = aElement.children[0];
+                        var rightWrapElement = aElement.children[1];
+                        var imageUrl = SITE_IMAGE_PATH + "4treasures/" + image;
+                        imageElement.src = imageUrl;
+                        imageElement.alt = imageUrl;
+                        var titleElement = rightWrapElement.children[0];
+                        titleElement.innerHTML = getI18nInnerHTML(title);
+                        // const hrElement = rightWrapElement.children[1] as HTMLHRElement;
+                        var summaryElement = rightWrapElement
+                            .children[2];
+                        summaryElement.innerHTML = getI18nInnerHTML(summary);
+                        aElement.href = link;
+                    }
+                });
         };
         _this.init = function () {
             _super.prototype.init.call(_this);
