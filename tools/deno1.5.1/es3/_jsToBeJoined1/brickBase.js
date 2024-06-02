@@ -8,13 +8,25 @@ System.register("brickBase", [], function (exports_1, context_1) {
             BrickBase = (function () {
                 function BrickBase(appendData, otherComputedData, newPageSizeArray) {
                     var _this = this;
-                    if (newPageSizeArray === void 0) { newPageSizeArray = ["A3", "A4"]; }
+                    if (newPageSizeArray === void 0) {
+                        newPageSizeArray = ["A3", "A4"];
+                    }
                     this.brickBaseIdPrefix = "brickPageBase";
                     this.reporterKindProperty = "unknown";
-                    this.download = function () { };
-                    this.print = function () { };
+                    this.download = function () {};
+                    this.print = function () {};
                     this.download2PDF = function () {
-                        var _a = _this, _b = _a.data, paperSize = _b.paperSize, isLandscape = _b.isLandscape, pageMarginTop = _b.pageMarginTop, pageMarginBottom = _b.pageMarginBottom, pageMarginLeft = _b.pageMarginLeft, pageMarginRight = _b.pageMarginRight, _c = _a.computedData, css = _c.css, html = _c.html;
+                        var _a = _this,
+                            _b = _a.data,
+                            paperSize = _b.paperSize,
+                            isLandscape = _b.isLandscape,
+                            pageMarginTop = _b.pageMarginTop,
+                            pageMarginBottom = _b.pageMarginBottom,
+                            pageMarginLeft = _b.pageMarginLeft,
+                            pageMarginRight = _b.pageMarginRight,
+                            _c = _a.computedData,
+                            css = _c.css,
+                            html = _c.html;
                         var title = _this.computedData.title[getCurrentLang()];
                         var headElement = getHeadElement();
                         var body = getBodyElement();
@@ -50,6 +62,7 @@ System.register("brickBase", [], function (exports_1, context_1) {
                                 break;
                         }
                         var pdfPageData = [];
+
                         function addPdfPage(printableArray) {
                             var scale = 1;
                             var page = new Promise(function (resolve, reject) {
@@ -95,7 +108,9 @@ System.register("brickBase", [], function (exports_1, context_1) {
                             pdfPageData.forEach(function (pageData, pageIndex) {
                                 if (pageIndex > 0)
                                     pdf.addPage();
-                                var img = pageData.img, width = pageData.width, height = pageData.height;
+                                var img = pageData.img,
+                                    width = pageData.width,
+                                    height = pageData.height;
                                 var left = pageMarginLeft;
                                 var top = pageMarginTop;
                                 pdf.addImage(img, PDF_IMAGE_IMAGE_EXTENSTION, left, top, width, height);
@@ -109,12 +124,16 @@ System.register("brickBase", [], function (exports_1, context_1) {
                             reportHtmlElement.remove();
                         });
                     };
-                    this.updateOtherData = function (newData) { };
-                    this.initCoreElements = function () { };
-                    this.initOtherElements = function () { };
-                    this.onPageSizeChanged = function (newPageSize) { };
-                    this.getCss = function () { return _this.computedData.css; };
-                    this.getHtml = function () { return _this.computedData.html; };
+                    this.updateOtherData = function (newData) {};
+                    this.initCoreElements = function () {};
+                    this.initOtherElements = function () {};
+                    this.onPageSizeChanged = function (newPageSize) {};
+                    this.getCss = function () {
+                        return _this.computedData.css;
+                    };
+                    this.getHtml = function () {
+                        return _this.computedData.html;
+                    };
                     this.data = {
                         paperSize: "A4",
                         isLandscape: false,
@@ -128,7 +147,7 @@ System.register("brickBase", [], function (exports_1, context_1) {
                     this.DEFAULT_DATA_JSON = "";
                     this.computedData = {
                         title: {
-                            en: "",
+                            en_us: "",
                             zh_cn: "",
                             zh_tw: ""
                         },
@@ -138,11 +157,13 @@ System.register("brickBase", [], function (exports_1, context_1) {
                     this.pageSizeArray = [];
                     this.configCoreElement = getElementById("brickPageConfigCore");
                     this.init = function () {
-                        var _a = _this, configCoreElement = _a.configCoreElement, brickBaseIdPrefix = _a.brickBaseIdPrefix;
+                        var _a = _this,
+                            configCoreElement = _a.configCoreElement,
+                            brickBaseIdPrefix = _a.brickBaseIdPrefix;
                         configCoreElement.setAttribute(REPORT_KIND_PROPERTY, _this.reporterKindProperty);
                         var getWrapElement = _this.getWrapElement;
                         var wrapElement = getWrapElement({
-                            en: "Paper",
+                            en_us: "Paper",
                             zh_cn: "纸张",
                             zh_tw: "紙張"
                         });
@@ -150,7 +171,7 @@ System.register("brickBase", [], function (exports_1, context_1) {
                         _this.initPaperSizeElements(wrapElement);
                         _this.initIsLandscapeElements(wrapElement);
                         wrapElement = getWrapElement({
-                            en: "Margin of page",
+                            en_us: "Margin of page",
                             zh_cn: "页边距",
                             zh_tw: "頁邊距"
                         });
@@ -163,7 +184,9 @@ System.register("brickBase", [], function (exports_1, context_1) {
                         _this.initOtherElements();
                         global.bindChangeLangEventForI18nElements();
                         updateUIByCurrentLang();
-                        getChangeLangNotifyArrayOfCurrentPage().push(function () { return _this.build(); });
+                        getChangeLangNotifyArrayOfCurrentPage().push(function () {
+                            return _this.build();
+                        });
                     };
                     this.getWrapElement = function (strongI18n) {
                         var configCoreElement = _this.configCoreElement;
@@ -175,7 +198,7 @@ System.register("brickBase", [], function (exports_1, context_1) {
                         wrapElement.appendChild(strongElement);
                         return wrapElement;
                     };
-                    this.onRadioOptionChanged = function (propertyName, value) { };
+                    this.onRadioOptionChanged = function (propertyName, value) {};
                     this.initTextboxElement = function (labelI18n, propertyName, textboxElement, wrapElement) {
                         if (labelI18n) {
                             var label = createElement("label");
@@ -210,7 +233,8 @@ System.register("brickBase", [], function (exports_1, context_1) {
                     this.initRadioGroupByStringValue = function (radiosInfoArray, propertyName, radioElementArray, wrapElement) {
                         var currentValue = _this.data[propertyName];
                         radiosInfoArray.forEach(function (_a) {
-                            var value = _a.value, i18nHtml = _a.i18nHtml;
+                            var value = _a.value,
+                                i18nHtml = _a.i18nHtml;
                             var radioElement = createElement("input");
                             radioElement.type = "radio";
                             radioElement.name = propertyName;
@@ -240,7 +264,8 @@ System.register("brickBase", [], function (exports_1, context_1) {
                     this.initRadioGroupByBooleanOrNumberValue = function (radiosInfoArray, propertyName, radioElementArray, wrapElement) {
                         var currentValue = _this.data[propertyName];
                         radiosInfoArray.forEach(function (_a) {
-                            var value = _a.value, i18nHtml = _a.i18nHtml;
+                            var value = _a.value,
+                                i18nHtml = _a.i18nHtml;
                             var radioElement = createElement("input");
                             radioElement.type = "radio";
                             radioElement.name = propertyName;
@@ -269,14 +294,17 @@ System.register("brickBase", [], function (exports_1, context_1) {
                     };
                     this.paperSizeRadioArray = [];
                     this.initPaperSizeElements = function (wrapElement) {
-                        var _a = _this, paperSize = _a.data.paperSize, paperSizeRadioArray = _a.paperSizeRadioArray, brickBaseIdPrefix = _a.brickBaseIdPrefix;
+                        var _a = _this,
+                            paperSize = _a.data.paperSize,
+                            paperSizeRadioArray = _a.paperSizeRadioArray,
+                            brickBaseIdPrefix = _a.brickBaseIdPrefix;
                         var span = createElement("span");
                         span.id = brickBaseIdPrefix + "PaperSizeWrap";
                         wrapElement.appendChild(span);
                         var labelElement = createElement("label");
                         span.appendChild(labelElement);
                         labelElement.innerHTML = getI18nInnerHTML({
-                            en: "Size:",
+                            en_us: "Size:",
                             zh_cn: "纸型：",
                             zh_tw: "紙型："
                         });
@@ -306,14 +334,17 @@ System.register("brickBase", [], function (exports_1, context_1) {
                     };
                     this.isLandscapeRadioArray = [];
                     this.initIsLandscapeElements = function (wrapElement) {
-                        var _a = _this, isLandscape = _a.data.isLandscape, isLandscapeRadioArray = _a.isLandscapeRadioArray, brickBaseIdPrefix = _a.brickBaseIdPrefix;
+                        var _a = _this,
+                            isLandscape = _a.data.isLandscape,
+                            isLandscapeRadioArray = _a.isLandscapeRadioArray,
+                            brickBaseIdPrefix = _a.brickBaseIdPrefix;
                         var span = createElement("span");
                         span.id = brickBaseIdPrefix + "PaperDirectionWrap";
                         wrapElement.appendChild(span);
                         var labelElement = createElement("label");
                         span.appendChild(labelElement);
                         labelElement.innerHTML = getI18nInnerHTML({
-                            en: "Orientation:",
+                            en_us: "Orientation:",
                             zh_cn: "方向：",
                             zh_tw: "方向："
                         });
@@ -327,14 +358,14 @@ System.register("brickBase", [], function (exports_1, context_1) {
                                 radioElement.checked = true;
                             }
                             var spanElement = createElement("span");
-                            spanElement.innerHTML = getI18nInnerHTML(isLandscapeValue
-                                ? {
-                                    en: "landscape",
+                            spanElement.innerHTML = getI18nInnerHTML(isLandscapeValue ?
+                                {
+                                    en_us: "landscape",
                                     zh_cn: "横向",
                                     zh_tw: "橫向"
-                                }
-                                : {
-                                    en: "portrait",
+                                } :
+                                {
+                                    en_us: "portrait",
                                     zh_cn: "纵向",
                                     zh_tw: "縱向"
                                 });
@@ -352,11 +383,13 @@ System.register("brickBase", [], function (exports_1, context_1) {
                     };
                     this.pageMarginTopElement = createElement("input");
                     this.initPageMarginTopElements = function (wrapElement) {
-                        var _a = _this, pageMarginTop = _a.data.pageMarginTop, pageMarginTopElement = _a.pageMarginTopElement;
+                        var _a = _this,
+                            pageMarginTop = _a.data.pageMarginTop,
+                            pageMarginTopElement = _a.pageMarginTopElement;
                         var labelElement = createElement("label");
                         wrapElement.appendChild(labelElement);
                         labelElement.innerHTML = getI18nInnerHTML({
-                            en: "Top:",
+                            en_us: "Top:",
                             zh_cn: "上：",
                             zh_tw: "上："
                         });
@@ -374,11 +407,13 @@ System.register("brickBase", [], function (exports_1, context_1) {
                     };
                     this.pageMarginBottomElement = createElement("input");
                     this.initPageMarginBottomElements = function (wrapElement) {
-                        var _a = _this, pageMarginBottom = _a.data.pageMarginBottom, pageMarginBottomElement = _a.pageMarginBottomElement;
+                        var _a = _this,
+                            pageMarginBottom = _a.data.pageMarginBottom,
+                            pageMarginBottomElement = _a.pageMarginBottomElement;
                         var labelElement = createElement("label");
                         wrapElement.appendChild(labelElement);
                         labelElement.innerHTML = getI18nInnerHTML({
-                            en: "Bottom:",
+                            en_us: "Bottom:",
                             zh_cn: "下：",
                             zh_tw: "下："
                         });
@@ -396,11 +431,13 @@ System.register("brickBase", [], function (exports_1, context_1) {
                     };
                     this.pageMarginLeftElement = createElement("input");
                     this.initPageMarginLeftElements = function (wrapElement) {
-                        var _a = _this, pageMarginLeft = _a.data.pageMarginLeft, pageMarginLeftElement = _a.pageMarginLeftElement;
+                        var _a = _this,
+                            pageMarginLeft = _a.data.pageMarginLeft,
+                            pageMarginLeftElement = _a.pageMarginLeftElement;
                         var labelElement = createElement("label");
                         wrapElement.appendChild(labelElement);
                         labelElement.innerHTML = getI18nInnerHTML({
-                            en: "Left:",
+                            en_us: "Left:",
                             zh_cn: "左：",
                             zh_tw: "左："
                         });
@@ -418,11 +455,13 @@ System.register("brickBase", [], function (exports_1, context_1) {
                     };
                     this.pageMarginRightElement = createElement("input");
                     this.initPageMarginRightElements = function (wrapElement) {
-                        var _a = _this, pageMarginRight = _a.data.pageMarginRight, pageMarginRightElement = _a.pageMarginRightElement;
+                        var _a = _this,
+                            pageMarginRight = _a.data.pageMarginRight,
+                            pageMarginRightElement = _a.pageMarginRightElement;
                         var labelElement = createElement("label");
                         wrapElement.appendChild(labelElement);
                         labelElement.innerHTML = getI18nInnerHTML({
-                            en: "Right:",
+                            en_us: "Right:",
                             zh_cn: "右：",
                             zh_tw: "右："
                         });
@@ -440,7 +479,15 @@ System.register("brickBase", [], function (exports_1, context_1) {
                     };
                     this.build = function () {
                         var _a, _b;
-                        var _c = _this.data, paperSize = _c.paperSize, isLandscape = _c.isLandscape, maxX = _c.maxX, maxY = _c.maxY, pageMarginTop = _c.pageMarginTop, pageMarginBottom = _c.pageMarginBottom, pageMarginLeft = _c.pageMarginLeft, pageMarginRight = _c.pageMarginRight;
+                        var _c = _this.data,
+                            paperSize = _c.paperSize,
+                            isLandscape = _c.isLandscape,
+                            maxX = _c.maxX,
+                            maxY = _c.maxY,
+                            pageMarginTop = _c.pageMarginTop,
+                            pageMarginBottom = _c.pageMarginBottom,
+                            pageMarginLeft = _c.pageMarginLeft,
+                            pageMarginRight = _c.pageMarginRight;
                         var PAPER_WIDTH_A3 = 297;
                         var PAPER_HEIGHT_A3 = 420;
                         var PAPER_WIDTH_A4 = 210;
@@ -473,8 +520,7 @@ System.register("brickBase", [], function (exports_1, context_1) {
                         if (isLandscape) {
                             maxX = paperHeight - pageMarginHorizontal;
                             maxY = paperWidth - pageMarginVertical;
-                        }
-                        else {
+                        } else {
                             maxX = paperWidth - pageMarginHorizontal;
                             maxY = paperHeight - pageMarginVertical;
                         }
@@ -488,7 +534,9 @@ System.register("brickBase", [], function (exports_1, context_1) {
                         var titleElement = getTitleElement();
                         titleElement.i18n = title;
                         titleElement.innerHTML = title[getCurrentLang()];
-                        var _d = _this, getHtml = _d.getHtml, getCss = _d.getCss;
+                        var _d = _this,
+                            getHtml = _d.getHtml,
+                            getCss = _d.getCss;
                         var html = getHtml();
                         var css = getCss();
                         (_b = getElementById("brickPageIframe").contentWindow) === null || _b === void 0 ? void 0 : _b.postMessage({
@@ -531,8 +579,20 @@ System.register("brickBase", [], function (exports_1, context_1) {
                         _this.build();
                     };
                     this.updateData = function (newData) {
-                        var paperSize = newData.paperSize, isLandscape = newData.isLandscape, pageMarginTop = newData.pageMarginTop, pageMarginBottom = newData.pageMarginBottom, pageMarginLeft = newData.pageMarginLeft, pageMarginRight = newData.pageMarginRight, diceKind = newData.diceKind;
-                        var _a = _this, paperSizeRadioArray = _a.paperSizeRadioArray, isLandscapeRadioArray = _a.isLandscapeRadioArray, pageMarginTopElement = _a.pageMarginTopElement, pageMarginBottomElement = _a.pageMarginBottomElement, pageMarginLeftElement = _a.pageMarginLeftElement, pageMarginRightElement = _a.pageMarginRightElement;
+                        var paperSize = newData.paperSize,
+                            isLandscape = newData.isLandscape,
+                            pageMarginTop = newData.pageMarginTop,
+                            pageMarginBottom = newData.pageMarginBottom,
+                            pageMarginLeft = newData.pageMarginLeft,
+                            pageMarginRight = newData.pageMarginRight,
+                            diceKind = newData.diceKind;
+                        var _a = _this,
+                            paperSizeRadioArray = _a.paperSizeRadioArray,
+                            isLandscapeRadioArray = _a.isLandscapeRadioArray,
+                            pageMarginTopElement = _a.pageMarginTopElement,
+                            pageMarginBottomElement = _a.pageMarginBottomElement,
+                            pageMarginLeftElement = _a.pageMarginLeftElement,
+                            pageMarginRightElement = _a.pageMarginRightElement;
                         paperSizeRadioArray.forEach(function (element) {
                             element.checked = element.value === paperSize;
                         });
@@ -553,7 +613,9 @@ System.register("brickBase", [], function (exports_1, context_1) {
                         _this.build();
                     };
                     this.getAutomaticPaginationHtmlFromChildList = function (list, MAX_X, MAX_Y, pageClass) {
-                        if (pageClass === void 0) { pageClass = ""; }
+                        if (pageClass === void 0) {
+                            pageClass = "";
+                        }
                         if (list.length === 0)
                             return "";
                         var html = pageClass.length ? "<page class=\"" + pageClass + "\">" : "<page>";
@@ -561,12 +623,12 @@ System.register("brickBase", [], function (exports_1, context_1) {
                         var usedY = 0;
                         var currentRowHeight = 0;
                         list.forEach(function (child) {
-                            var WIDTH = 0, HEIGHT = 0;
+                            var WIDTH = 0,
+                                HEIGHT = 0;
                             if (child instanceof SVGElement) {
                                 WIDTH = parseFloat(child.getAttribute("width").replace("mm", ""));
                                 HEIGHT = parseFloat(child.getAttribute("height").replace("mm", ""));
-                            }
-                            else {
+                            } else {
                                 var style = child.getAttribute("style");
                                 if (style.indexOf("width:") > -1) {
                                     WIDTH = parseFloat(style.split("width:")[1].split(";")[0].replace("mm", ""));
@@ -581,8 +643,7 @@ System.register("brickBase", [], function (exports_1, context_1) {
                                 usedY += currentRowHeight;
                                 if (usedY + HEIGHT > MAX_Y) {
                                     newPage = true;
-                                }
-                                else {
+                                } else {
                                     newRow = true;
                                 }
                             }
@@ -591,8 +652,7 @@ System.register("brickBase", [], function (exports_1, context_1) {
                                 usedX = 0;
                                 usedY = 0;
                                 currentRowHeight = 0;
-                            }
-                            else if (newRow) {
+                            } else if (newRow) {
                                 usedX = 0;
                                 currentRowHeight = 0;
                             }
@@ -612,12 +672,12 @@ System.register("brickBase", [], function (exports_1, context_1) {
                         var usedY = 0;
                         var currentRowHeight = 0;
                         list.forEach(function (child) {
-                            var WIDTH = 0, HEIGHT = 0;
+                            var WIDTH = 0,
+                                HEIGHT = 0;
                             if (child instanceof SVGElement) {
                                 WIDTH = parseFloat(child.getAttribute("width").replace("mm", ""));
                                 HEIGHT = parseFloat(child.getAttribute("height").replace("mm", ""));
-                            }
-                            else {
+                            } else {
                                 var style = child.getAttribute("style");
                                 if (style.indexOf("width:") > -1) {
                                     WIDTH = parseFloat(style.split("width:")[1].split(";")[0].replace("mm", ""));
@@ -632,8 +692,7 @@ System.register("brickBase", [], function (exports_1, context_1) {
                                 usedY += currentRowHeight;
                                 if (usedY + HEIGHT > MAX_Y) {
                                     newPage = true;
-                                }
-                                else {
+                                } else {
                                     newRow = true;
                                 }
                             }
@@ -643,8 +702,7 @@ System.register("brickBase", [], function (exports_1, context_1) {
                                 usedX = 0;
                                 usedY = 0;
                                 currentRowHeight = 0;
-                            }
-                            else if (newRow) {
+                            } else if (newRow) {
                                 usedX = 0;
                                 currentRowHeight = 0;
                             }
@@ -678,4 +736,3 @@ System.register("brickBase", [], function (exports_1, context_1) {
 
 __exp = __instantiate("brickBase", false);
 const BrickBase = __exp["BrickBase"];
-

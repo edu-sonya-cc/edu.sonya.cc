@@ -9,9 +9,9 @@
 /// <reference path='../types/pcGlobal.d.ts' />
 
 /**
- * <en>According to the website parameter go, it will be converted to each page: home page,
+ * <en_us>According to the website parameter go, it will be converted to each page: home page,
  * throw a brick to attract jade(list, details), natural treasures, growth footprint(list, details),
- * Sparks of Fire (about us), and report form.</en>
+ * Sparks of Fire (about us), and report form.</en_us>
  * <zh_cn>根据网址参数go转为各页面：首页、抛砖引玉（列表、详情）、物华天宝、成长足迹（列表、详情）、星星之火（关于我们）、报表</zh_cn>
  * <zh_tw>根據網址參數go轉為各頁面：首頁、抛磚引玉（清單、詳情）、物華天寶、成長足跡（清單、詳情）、星星之火（關於我們）、報表</zh_tw>
  */

@@ -213,7 +213,7 @@ System.register("boxBase", [], function (exports_1, context_1) {
                         var _a = _this, configCoreElement = _a.configCoreElement, getWrapElement = _a.getWrapElement, idOrClassPrefix = _a.idOrClassPrefix;
                         var wrapElement;
                         wrapElement = getWrapElement({
-                            en: 'Top Half Circle',
+                            en_us: 'Top Half Circle',
                             zh_cn: '顶部半圆',
                             zh_tw: '頂部半圓'
                         });
@@ -221,11 +221,11 @@ System.register("boxBase", [], function (exports_1, context_1) {
                         _this.initRadioGroupByBooleanOrNumberValue([
                             {
                                 value: false,
-                                i18nHtml: getI18nInnerHTML({ en: 'Hide', zh_cn: '无', zh_tw: '無' })
+                                i18nHtml: getI18nInnerHTML({ en_us: 'Hide', zh_cn: '无', zh_tw: '無' })
                             },
                             {
                                 value: true,
-                                i18nHtml: getI18nInnerHTML({ en: 'Show', zh_cn: '有', zh_tw: '有' })
+                                i18nHtml: getI18nInnerHTML({ en_us: 'Show', zh_cn: '有', zh_tw: '有' })
                             },
                         ], 'topWithoutHalfCircle', _this.topWithoutHalfCircleRadioArray, wrapElement);
                     };
@@ -257,10 +257,10 @@ System.register("boxBase", [], function (exports_1, context_1) {
                             svgList.push(svg);
                             css += svgCss;
                         });
-                        var en = FILENAME_POSTFIX + "Boxs";
+                        var en_us = FILENAME_POSTFIX + "Boxs";
                         var zh_cn = FILENAME_POSTFIX + "\u76D2\u5B50";
                         var zh_tw = FILENAME_POSTFIX + "\u76D2\u5B50";
-                        computedData.title = { en: en, zh_cn: zh_cn, zh_tw: zh_tw };
+                        computedData.title = { en_us: en_us, zh_cn: zh_cn, zh_tw: zh_tw };
                         computedData.css = css;
                         computedData.html = _this.getAutomaticPaginationHtmlFromChildList(svgList, MAX_X, MAX_Y);
                     };
@@ -271,14 +271,14 @@ System.register("boxBase", [], function (exports_1, context_1) {
                         var usableList = [];
                         usableBoxs.forEach(function (_a) {
                             var name = _a.name, infos = _a.infos;
-                            var strongI18n = { en: name, zh_cn: name, zh_tw: name };
+                            var strongI18n = { en_us: name, zh_cn: name, zh_tw: name };
                             var buttonList = [];
                             infos.forEach(function (info) {
                                 var captionI18n = info.captionI18n;
                                 buttonList.push({
                                     nameI18n: typeof captionI18n === 'string'
                                         ? {
-                                            en: captionI18n,
+                                            en_us: captionI18n,
                                             zh_cn: captionI18n,
                                             zh_tw: captionI18n
                                         }
@@ -304,7 +304,7 @@ System.register("boxBase", [], function (exports_1, context_1) {
                         var move = false;
                         var otherSize = 10;
                         var topWithoutHalfCircle = false;
-                        var i18nContentsOfRummikub = getArrayRepeatSameValue(getI18nInnerHTML({ en: 'Rummikub', zh_cn: '拉密', zh_tw: '拉密' }), 6);
+                        var i18nContentsOfRummikub = getArrayRepeatSameValue(getI18nInnerHTML({ en_us: 'Rummikub', zh_cn: '拉密', zh_tw: '拉密' }), 6);
                         var infosCuboid = [];
                         var infosCuboidCoverOnTheSameSide = [];
                         [
@@ -329,12 +329,12 @@ System.register("boxBase", [], function (exports_1, context_1) {
                                 contents: i18nContentsOfRummikub,
                                 textStyle: textStyleBig,
                                 captionI18n: {
-                                    en: '&nbsp;&nbsp;18<br/>×50<br/>×25<br/>Rummikub',
+                                    en_us: '&nbsp;&nbsp;18<br/>×50<br/>×25<br/>Rummikub',
                                     zh_cn: '&nbsp;&nbsp;18<br/>×50<br/>×25<br/>拉密',
                                     zh_tw: '&nbsp;&nbsp;18<br/>×50<br/>×25<br/>拉密'
                                 },
                                 captionI18nSameSide: {
-                                    en: "&nbsp;&nbsp;18<br/>\u00D750<br/>\u00D725<br/>+" + otherSize + "<br/>Rummikub",
+                                    en_us: "&nbsp;&nbsp;18<br/>\u00D750<br/>\u00D725<br/>+" + otherSize + "<br/>Rummikub",
                                     zh_cn: "&nbsp;&nbsp;18<br/>\u00D750<br/>\u00D725<br/>+" + otherSize + "<br/>\u62C9\u5BC6",
                                     zh_tw: "&nbsp;&nbsp;18<br/>\u00D750<br/>\u00D725<br/>+" + otherSize + "<br/>\u62C9\u5BC6"
                                 },
@@ -345,12 +345,12 @@ System.register("boxBase", [], function (exports_1, context_1) {
                                 contents: i18nContentsOfRummikub,
                                 textStyle: textStyleBig,
                                 captionI18n: {
-                                    en: '&nbsp;&nbsp;20<br/>×50<br/>×28<br/>Rummikub',
+                                    en_us: '&nbsp;&nbsp;20<br/>×50<br/>×28<br/>Rummikub',
                                     zh_cn: '&nbsp;&nbsp;20<br/>×50<br/>×28<br/>拉密',
                                     zh_tw: '&nbsp;&nbsp;20<br/>×50<br/>×28<br/>拉密'
                                 },
                                 captionI18nSameSide: {
-                                    en: "&nbsp;&nbsp;20<br/>\u00D750<br/>\u00D728<br/>+" + otherSize + "<br/>Rummikub",
+                                    en_us: "&nbsp;&nbsp;20<br/>\u00D750<br/>\u00D728<br/>+" + otherSize + "<br/>Rummikub",
                                     zh_cn: "&nbsp;&nbsp;20<br/>\u00D750<br/>\u00D728<br/>+" + otherSize + "<br/>\u62C9\u5BC6",
                                     zh_tw: "&nbsp;&nbsp;20<br/>\u00D750<br/>\u00D728<br/>+" + otherSize + "<br/>\u62C9\u5BC6"
                                 },
@@ -513,7 +513,7 @@ System.register("boxBase", [], function (exports_1, context_1) {
                         });
                         usableBoxs.push({
                             name: getI18nInnerHTML({
-                                en: 'Cuboid',
+                                en_us: 'Cuboid',
                                 zh_cn: '异侧',
                                 zh_tw: '異側'
                             }),
@@ -521,7 +521,7 @@ System.register("boxBase", [], function (exports_1, context_1) {
                         });
                         usableBoxs.push({
                             name: getI18nInnerHTML({
-                                en: 'Cuboid which cover on the same side',
+                                en_us: 'Cuboid which cover on the same side',
                                 zh_cn: '盖子同侧',
                                 zh_tw: '蓋子同側'
                             }),
@@ -529,7 +529,7 @@ System.register("boxBase", [], function (exports_1, context_1) {
                         });
                         usableBoxs.push({
                             name: getI18nInnerHTML({
-                                en: 'Cuboid without top',
+                                en_us: 'Cuboid without top',
                                 zh_cn: '异侧无顶',
                                 zh_tw: '異側無頂'
                             }),
@@ -537,7 +537,7 @@ System.register("boxBase", [], function (exports_1, context_1) {
                         });
                         usableBoxs.push({
                             name: getI18nInnerHTML({
-                                en: 'Cuboid without bottom',
+                                en_us: 'Cuboid without bottom',
                                 zh_cn: '异侧无底',
                                 zh_tw: '異側無底'
                             }),
@@ -545,7 +545,7 @@ System.register("boxBase", [], function (exports_1, context_1) {
                         });
                         usableBoxs.push({
                             name: getI18nInnerHTML({
-                                en: 'Cuboid which cover on the same side and without top',
+                                en_us: 'Cuboid which cover on the same side and without top',
                                 zh_cn: '盖子同侧无顶',
                                 zh_tw: '蓋子同側無頂'
                             }),
@@ -553,7 +553,7 @@ System.register("boxBase", [], function (exports_1, context_1) {
                         });
                         usableBoxs.push({
                             name: getI18nInnerHTML({
-                                en: 'Cuboid which cover on the same side and without bottom',
+                                en_us: 'Cuboid which cover on the same side and without bottom',
                                 zh_cn: '盖子同侧无底',
                                 zh_tw: '蓋子同側無底'
                             }),
@@ -576,29 +576,29 @@ System.register("boxBase", [], function (exports_1, context_1) {
                     };
                     _this.initTableHead = function () {
                         _this.appendTableHeadCell({
-                            en: 'Relevant length, such as length, width and height',
+                            en_us: 'Relevant length, such as length, width and height',
                             zh_cn: '相关长度，如长宽高',
                             zh_tw: '相關長度，如長寬高'
                         });
                         _this.appendTableHeadCell({
-                            en: 'Contents of all sides',
+                            en_us: 'Contents of all sides',
                             zh_cn: '各面内容',
                             zh_tw: '各面內容'
                         });
-                        _this.appendTableHeadCell({ en: 'Rotate', zh_cn: '旋转', zh_tw: '旋轉' });
-                        _this.appendTableHeadCell({ en: 'Move', zh_cn: '上移', zh_tw: '上移' });
+                        _this.appendTableHeadCell({ en_us: 'Rotate', zh_cn: '旋转', zh_tw: '旋轉' });
+                        _this.appendTableHeadCell({ en_us: 'Move', zh_cn: '上移', zh_tw: '上移' });
                         _this.appendTableHeadCell({
-                            en: 'Outside Boundary Line Style',
+                            en_us: 'Outside Boundary Line Style',
                             zh_cn: '外边界线样式',
                             zh_tw: '外邊界線樣式'
                         });
                         _this.appendTableHeadCell({
-                            en: 'Interior Line Style',
+                            en_us: 'Interior Line Style',
                             zh_cn: '内部线样式',
                             zh_tw: '內部線樣式'
                         });
                         _this.appendTableHeadCell({
-                            en: 'Text Style',
+                            en_us: 'Text Style',
                             zh_cn: '文本样式',
                             zh_tw: '文字樣式'
                         });
@@ -641,7 +641,7 @@ System.register("boxBase", [], function (exports_1, context_1) {
                         var div = createElement('div');
                         td.appendChild(div);
                         div.className = idOrClassPrefix + "ContentValueWrap";
-                        var i18nNameArray = ['en', 'zh_cn', 'zh_tw'];
+                        var i18nNameArray = ['en_us', 'zh_cn', 'zh_tw'];
                         var emptyArray = [];
                         pushSameValueTimes(emptyArray, '\n', count);
                         var isText = typeof contents[0] === 'string';

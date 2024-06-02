@@ -7,13 +7,13 @@
 /// <reference path='../../types/brickBase.d.ts' />
 
 /**
- * <en>
+ * <en_us>
  * Function:
  * Create:
  * History:
  * Reference:
  * Description:
- * </en>
+ * </en_us>
  *
  * <zh_cn>
  * 功能：注音写字生成小工具
@@ -58,20 +58,20 @@ export abstract class CopybookBase extends BrickBase {
   }
 
   /**
-   * <en>Synchronize new data related to copybook.</en>
+   * <en_us>Synchronize new data related to copybook.</en_us>
    * <zh_cn>同步字帖相关新数据</zh_cn>
    * <zh_tw>同步字帖相關新數據</zh_tw>
    * @param _newData
-   * <en>New data related to copybook.</en>
+   * <en_us>New data related to copybook.</en_us>
    * <zh_cn>字帖相关新数据</zh_cn>
    * <zh_tw>字帖相關新數據</zh_tw>
    */
   protected updateOtherDataOfCopybook = (_newData: any): void => {};
 
   /**
-   * <en>
+   * <en_us>
    * Array: check box corresponding to the selectable copybook set leaf node set.
-   * </en>
+   * </en_us>
    * <zh_cn>
    * 数组：可选择的字帖叶结点集合对应的复选框。
    * </zh_cn>
@@ -84,13 +84,13 @@ export abstract class CopybookBase extends BrickBase {
   > = [];
 
   /**
-   * <en>
+   * <en_us>
    * Array: Array: optional copybook collection.
    * Level 3: semester, unit and class. Skip the third level at present. terms -> units [-> lessions]
    * In the first semester of the first grade, the contents of the writing table were all included in the literacy table;
    * In the second semester of the first year, there are two parts: the character recognition table and the writing table.
    * From the second grade, there are three parts: literacy table, writing table and words.
-   * </en>
+   * </en_us>
    * <zh_cn>
    * 数组：可选择的字帖集。三级：学期、单元、课。目前略过第三级。
    * 一年级上，写字表内容全部包含于识字表中；一年级下，分识字表与写字表两部分。二年级开始，分识字表、写字表、词语三部分。
@@ -106,19 +106,19 @@ export abstract class CopybookBase extends BrickBase {
   }> = [];
 
   /**
-   * <en>Typebook Kind radio button element array.</en>
+   * <en_us>Typebook Kind radio button element array.</en_us>
    * <zh_cn>字帖类型单选按钮数组</zh_cn>
    * <zh_tw>字帖類型單選按鈕數組</zh_tw>
    */
   protected kindElementArray: Array<HTMLInputElement> = [];
   /**
-   * <en>Init typebook kind radio button element array.</en>
+   * <en_us>Init typebook kind radio button element array.</en_us>
    * <zh_cn>初始化字帖类型单选按钮数组</zh_cn>
    * <zh_tw>初始化字帖類型單選按鈕數組</zh_tw>
    */
   protected initKindElements = (): void => {
     const wrapLabelI18n = {
-      en: `Typebook Kind`,
+      en_us: `Typebook Kind`,
       zh_cn: `字帖类型`,
       zh_tw: `字帖類型`,
     };
@@ -126,7 +126,7 @@ export abstract class CopybookBase extends BrickBase {
       {
         value: `pinyinToChinese`,
         i18nHtml: getI18nInnerHTML({
-          en: `Reading Pinyin and Writing Chinese Characters`,
+          en_us: `Reading Pinyin and Writing Chinese Characters`,
           zh_cn: `看拼音写汉字`,
           zh_tw: `看拼音寫漢字`,
         }),
@@ -134,7 +134,7 @@ export abstract class CopybookBase extends BrickBase {
       {
         value: `chineseToPinyin`,
         i18nHtml: getI18nInnerHTML({
-          en: `Look at Chinese characters and write pinyin`,
+          en_us: `Look at Chinese characters and write pinyin`,
           zh_cn: `看汉字写拼音`,
           zh_tw: `看漢字寫拼音`,
         }),
@@ -150,19 +150,19 @@ export abstract class CopybookBase extends BrickBase {
   };
 
   /**
-   * <en>Entry method radio button element array.</en>
+   * <en_us>Entry method radio button element array.</en_us>
    * <zh_cn>录入方式单选按钮数组</zh_cn>
    * <zh_tw>錄入方式單選按鈕數組</zh_tw>
    */
   protected inputMethodElementArray: Array<HTMLInputElement> = [];
   /**
-   * <en>Init entry method radio button element array.</en>
+   * <en_us>Init entry method radio button element array.</en_us>
    * <zh_cn>初始化录入方式单选按钮数组</zh_cn>
    * <zh_tw>初始化錄入方式單選按鈕數組</zh_tw>
    */
   protected initInputMethodElements = (): void => {
     const wrapLabelI18n = {
-      en: `Entry method`,
+      en_us: `Entry method`,
       zh_cn: `录入方式`,
       zh_tw: `錄入方式`,
     };
@@ -170,7 +170,7 @@ export abstract class CopybookBase extends BrickBase {
       {
         value: `select`,
         i18nHtml: getI18nInnerHTML({
-          en: `Select`,
+          en_us: `Select`,
           zh_cn: `选择`,
           zh_tw: `選擇`,
         }),
@@ -178,7 +178,7 @@ export abstract class CopybookBase extends BrickBase {
       {
         value: `manualInput`,
         i18nHtml: getI18nInnerHTML({
-          en: `Manual input`,
+          en_us: `Manual input`,
           zh_cn: `手动输入`,
           zh_tw: `手動輸入`,
         }),
@@ -194,19 +194,19 @@ export abstract class CopybookBase extends BrickBase {
   };
 
   /**
-   * <en>Font Size radio button element array.</en>
+   * <en_us>Font Size radio button element array.</en_us>
    * <zh_cn>字号单选按钮数组</zh_cn>
    * <zh_tw>字型大小單選按鈕數組</zh_tw>
    */
   protected fontSizeElementArray: Array<HTMLInputElement> = [];
   /**
-   * <en>Init font size radio button element array.</en>
+   * <en_us>Init font size radio button element array.</en_us>
    * <zh_cn>初始化字号单选按钮数组</zh_cn>
    * <zh_tw>初始化字型大小單選按鈕數組</zh_tw>
    */
   protected initFontSizeElements = (): void => {
     const wrapLabelI18n = {
-      en: `Font Size`,
+      en_us: `Font Size`,
       zh_cn: `字号`,
       zh_tw: `字型大小`,
     };
@@ -214,7 +214,7 @@ export abstract class CopybookBase extends BrickBase {
       {
         value: `small`,
         i18nHtml: getI18nInnerHTML({
-          en: `Small`,
+          en_us: `Small`,
           zh_cn: `小`,
           zh_tw: `小`,
         }),
@@ -222,7 +222,7 @@ export abstract class CopybookBase extends BrickBase {
       {
         value: `middle`,
         i18nHtml: getI18nInnerHTML({
-          en: `Middle`,
+          en_us: `Middle`,
           zh_cn: `中`,
           zh_tw: `中`,
         }),
@@ -230,7 +230,7 @@ export abstract class CopybookBase extends BrickBase {
       {
         value: `big`,
         i18nHtml: getI18nInnerHTML({
-          en: `Big`,
+          en_us: `Big`,
           zh_cn: `大`,
           zh_tw: `大`,
         }),
@@ -246,19 +246,19 @@ export abstract class CopybookBase extends BrickBase {
   };
 
   /**
-   * <en>Color radio button element array.</en>
+   * <en_us>Color radio button element array.</en_us>
    * <zh_cn>颜色单选按钮数组</zh_cn>
    * <zh_tw>顏色單選按鈕數組</zh_tw>
    */
   protected colorElementArray: Array<HTMLInputElement> = [];
   /**
-   * <en>Init color radio button element array.</en>
+   * <en_us>Init color radio button element array.</en_us>
    * <zh_cn>初始化颜色单选按钮数组</zh_cn>
    * <zh_tw>初始化顏色單選按鈕數組</zh_tw>
    */
   protected initColorElements = (): void => {
     const wrapLabelI18n = {
-      en: `Color`,
+      en_us: `Color`,
       zh_cn: `颜色`,
       zh_tw: `顏色`,
     };
@@ -266,7 +266,7 @@ export abstract class CopybookBase extends BrickBase {
       {
         value: `blackOnGreen`,
         i18nHtml: getI18nInnerHTML({
-          en: `Green line and black characters.`,
+          en_us: `Green line and black characters.`,
           zh_cn: `绿线黑字`,
           zh_tw: `綠線黑字`,
         }),
@@ -274,7 +274,7 @@ export abstract class CopybookBase extends BrickBase {
       {
         value: `redOnBlack`,
         i18nHtml: getI18nInnerHTML({
-          en: `Black line and red characters.`,
+          en_us: `Black line and red characters.`,
           zh_cn: `黑线红字`,
           zh_tw: `黑線紅字`,
         }),
@@ -282,7 +282,7 @@ export abstract class CopybookBase extends BrickBase {
       {
         value: `blackOnRed`,
         i18nHtml: getI18nInnerHTML({
-          en: `Red line and black characters.`,
+          en_us: `Red line and black characters.`,
           zh_cn: `红线黑字`,
           zh_tw: `紅線黑字`,
         }),
@@ -301,7 +301,7 @@ export abstract class CopybookBase extends BrickBase {
   // private pinyinArrayWithoutToneLength5 = ['chɑnɡ', 'chenɡ', 'chonɡ', 'chuɑi', 'chuɑn', 'ɡuɑnɡ', 'huɑnɡ', 'jiɑnɡ', 'jionɡ', 'kuɑnɡ', 'liɑnɡ', 'niɑnɡ', 'qiɑnɡ', 'qionɡ', 'shɑnɡ', 'shenɡ', 'shuɑi', 'shuɑn', 'xiɑnɡ', 'xionɡ', 'zhɑnɡ', 'zhenɡ', 'zhonɡ', 'zhuɑi', 'zhuɑn'];
   // private pinyinArrayWithoutToneLength4 = ['bɑnɡ', 'benɡ', 'biɑn', 'biɑo', 'binɡ', 'cɑnɡ', 'cenɡ', 'chɑi', 'chɑn', 'chɑo', 'chen', 'chou', 'chuɑ', 'chui', 'chun', 'chuo', 'conɡ', 'cuɑn', 'dɑnɡ', 'denɡ', 'diɑn', 'diɑo', 'dinɡ', 'donɡ', 'duɑn', 'fɑnɡ', 'fenɡ', 'fiɑo', 'ɡɑnɡ', 'ɡenɡ', 'ɡonɡ', 'ɡuɑi', 'ɡuɑn', 'hɑnɡ', 'henɡ', 'honɡ', 'huɑi', 'huɑn', 'jiɑn', 'jiɑo', 'jinɡ', 'juɑn', 'kɑnɡ', 'kenɡ', 'konɡ', 'kuɑi', 'kuɑn', 'lɑnɡ', 'lenɡ', 'liɑn', 'liɑo', 'linɡ', 'lonɡ', 'luɑn', 'mɑnɡ', 'menɡ', 'miɑn', 'miɑo', 'minɡ', 'nɑnɡ', 'nenɡ', 'niɑn', 'niɑo', 'ninɡ', 'nonɡ', 'nuɑn', 'pɑnɡ', 'penɡ', 'piɑn', 'piɑo', 'pinɡ', 'qiɑn', 'qiɑo', 'qinɡ', 'quɑn', 'rɑnɡ', 'renɡ', 'ronɡ', 'ruɑn', 'sɑnɡ', 'senɡ', 'shɑi', 'shɑn', 'shɑo', 'shei', 'shen', 'shou', 'shuɑ', 'shui', 'shun', 'shuo', 'sonɡ', 'suɑn', 'tɑnɡ', 'tenɡ', 'tiɑn', 'tiɑo', 'tinɡ', 'tonɡ', 'tuɑn', 'wɑnɡ', 'wenɡ', 'xiɑn', 'xiɑo', 'xinɡ', 'xuɑn', 'yɑnɡ', 'yinɡ', 'yonɡ', 'yuɑn', 'zɑnɡ', 'zenɡ', 'zhɑi', 'zhɑn', 'zhɑo', 'zhei', 'zhen', 'zhou', 'zhuɑ', 'zhui', 'zhun', 'zhuo', 'zonɡ', 'zuɑn'];
   // private pinyinArrayWithoutToneLength3 = ['ɑnɡ', 'bɑi', 'bɑn', 'bɑo', 'bei', 'ben', 'bie', 'bin', 'cɑi', 'cɑn', 'cɑo', 'cen', 'chɑ', 'che', 'chi', 'chu', 'cou', 'cui', 'cun', 'cuo', 'dɑi', 'dɑn', 'dɑo', 'dei', 'den', 'diɑ', 'die', 'diu', 'dou', 'dui', 'dun', 'duo', 'enɡ', 'fɑn', 'fei', 'fen', 'fou', 'ɡɑi', 'ɡɑn', 'ɡɑo', 'ɡei', 'ɡen', 'ɡou', 'ɡuɑ', 'ɡui', 'ɡun', 'ɡuo', 'hɑi', 'hɑn', 'hɑo', 'hei', 'hen', 'hou', 'huɑ', 'hui', 'hun', 'huo', 'jiɑ', 'jie', 'jin', 'jiu', 'jue', 'jun', 'kɑi', 'kɑn', 'kɑo', 'kei', 'ken', 'kou', 'kuɑ', 'kui', 'kun', 'kuo', 'lɑi', 'lɑn', 'lɑo', 'lei', 'liɑ', 'lie', 'lin', 'liu', 'lou', 'lue', 'lun', 'luo', 'mɑi', 'mɑn', 'mɑo', 'mei', 'men', 'mie', 'min', 'miu', 'mou', 'nɑi', 'nɑn', 'nɑo', 'nei', 'nen', 'nie', 'nin', 'niu', 'nou', 'nue', 'nun', 'nuo', 'pɑi', 'pɑn', 'pɑo', 'pei', 'pen', 'pie', 'pin', 'pou', 'qiɑ', 'qie', 'qin', 'qiu', 'que', 'qun', 'rɑn', 'rɑo', 'ren', 'rou', 'ruɑ', 'rui', 'run', 'ruo', 'sɑi', 'sɑn', 'sɑo', 'sen', 'shɑ', 'she', 'shi', 'shu', 'sou', 'sui', 'sun', 'suo', 'tɑi', 'tɑn', 'tɑo', 'tei', 'tie', 'tou', 'tui', 'tun', 'tuo', 'wɑi', 'wɑn', 'wei', 'wen', 'xiɑ', 'xie', 'xin', 'xiu', 'xue', 'xun', 'yɑn', 'yɑo', 'yin', 'you', 'yue', 'yun', 'zɑi', 'zɑn', 'zɑo', 'zei', 'zen', 'zhɑ', 'zhe', 'zhi', 'zhu', 'zou', 'zui', 'zun', 'zuo'];
-  // private pinyinArrayWithoutToneLength2 = ['ɑi', 'ɑn', 'ɑo', 'bɑ', 'bi', 'bo', 'bu', 'cɑ', 'ce', 'ci', 'cu', 'dɑ', 'de', 'di', 'du', 'ei', 'en', 'er', 'fɑ', 'fo', 'fu', 'ɡɑ', 'ɡe', 'ɡu', 'hɑ', 'he', 'hu', 'ji', 'ju', 'kɑ', 'ke', 'ku', 'lɑ', 'le', 'li', 'lo', 'lu', 'lü', 'mɑ', 'me', 'mi', 'mo', 'mu', 'nɑ', 'ne', 'ni', 'nu', 'nü', 'ou', 'pɑ', 'pi', 'po', 'pu', 'qi', 'qu', 're', 'ri', 'ru', 'sɑ', 'se', 'si', 'su', 'tɑ', 'te', 'ti', 'tu', 'wɑ', 'wo', 'wu', 'xi', 'xu', 'yɑ', 'ye', 'yi', 'yo', 'yu', 'zɑ', 'ze', 'zi', 'zu'];
+  // private pinyinArrayWithoutToneLength2 = ['ɑi', 'ɑn', 'ɑo', 'bɑ', 'bi', 'bo', 'bu', 'cɑ', 'ce', 'ci', 'cu', 'dɑ', 'de', 'di', 'du', 'ei', 'en_us', 'er', 'fɑ', 'fo', 'fu', 'ɡɑ', 'ɡe', 'ɡu', 'hɑ', 'he', 'hu', 'ji', 'ju', 'kɑ', 'ke', 'ku', 'lɑ', 'le', 'li', 'lo', 'lu', 'lü', 'mɑ', 'me', 'mi', 'mo', 'mu', 'nɑ', 'ne', 'ni', 'nu', 'nü', 'ou', 'pɑ', 'pi', 'po', 'pu', 'qi', 'qu', 're', 'ri', 'ru', 'sɑ', 'se', 'si', 'su', 'tɑ', 'te', 'ti', 'tu', 'wɑ', 'wo', 'wu', 'xi', 'xu', 'yɑ', 'ye', 'yi', 'yo', 'yu', 'zɑ', 'ze', 'zi', 'zu'];
   // private pinyinArrayWithoutToneLength1 = ['ɑ', 'e', 'o'];
   private pinyinArrayWithoutTone = [
     'chuɑnɡ',
@@ -650,7 +650,7 @@ export abstract class CopybookBase extends BrickBase {
     'di',
     'du',
     'ei',
-    'en',
+    'en_us',
     'er',
     'fɑ',
     'fo',
@@ -991,24 +991,24 @@ export abstract class CopybookBase extends BrickBase {
 
     const LANG = getCurrentLang();
     const i18nAnswerFlag: any = {
-      en: 'Answer',
+      en_us: 'Answer',
       zh_cn: '答案',
       zh_tw: '答案',
     };
     // const i18nSubject: any = {
-    // 	en: 'Phonetic Notation and Writing',
+    // 	en_us: 'Phonetic Notation and Writing',
     // 	zh_cn: '注音与写字',
     // 	zh_tw: '注音與寫字',
     // };
     const i18nSubject: any =
       data.kind === 'pinyinToChinese'
         ? {
-            en: 'Writing',
+            en_us: 'Writing',
             zh_cn: '写字',
             zh_tw: '寫字',
           }
         : {
-            en: 'Phonetic Notation',
+            en_us: 'Phonetic Notation',
             zh_cn: '注音',
             zh_tw: '注音',
           };
@@ -1022,7 +1022,7 @@ export abstract class CopybookBase extends BrickBase {
             )[0] as any
           ).names
         : {
-            en: '',
+            en_us: '',
             zh_cn: '',
             zh_tw: '',
           };
@@ -1180,10 +1180,10 @@ export abstract class CopybookBase extends BrickBase {
       .replace(/~reporterPageCount~/g, questionPageCount)
       .concat(answerHtml.replace(/~reporterPageCount~/g, answerPageCount));
 
-    const en = `${FILENAME_POSTFIX}Copybooks_chineseAndPinyin`;
+    const en_us = `${FILENAME_POSTFIX}Copybooks_chineseAndPinyin`;
     const zh_cn = `${FILENAME_POSTFIX}简体汉字与拼音`;
     const zh_tw = `${FILENAME_POSTFIX}簡體漢字與拼音`;
-    computedData.title = { en, zh_cn, zh_tw };
+    computedData.title = { en_us, zh_cn, zh_tw };
 
     computedData.css = css;
     computedData.html = html;
@@ -1290,7 +1290,7 @@ export abstract class CopybookBase extends BrickBase {
 
     const strongElement = createElement('strong') as HTMLElement;
     strongElement.innerHTML = getI18nInnerHTML({
-      en: `Textbook (People's Education Edition)`,
+      en_us: `Textbook (People's Education Edition)`,
       zh_cn: '课本（人教版）',
       zh_tw: '課本（人教版）',
     });
@@ -1408,7 +1408,7 @@ export abstract class CopybookBase extends BrickBase {
 
     const copybookInputStrongElement = createElement('strong') as HTMLElement;
     copybookInputStrongElement.innerHTML = getI18nInnerHTML({
-      en: `Entry area`,
+      en_us: `Entry area`,
       zh_cn: '录入区',
       zh_tw: '錄入區',
     });
@@ -1427,7 +1427,7 @@ export abstract class CopybookBase extends BrickBase {
     textareaChinese.setAttribute(
       'i18n-placeholder',
       JSON.stringify({
-        en: `Input Chinese words, one for each line.`,
+        en_us: `Input Chinese words, one for each line.`,
         zh_cn: '输入汉字词语，每行一条。',
         zh_tw: '輸入漢字詞語，每行一條。',
       }),
@@ -1442,7 +1442,7 @@ export abstract class CopybookBase extends BrickBase {
     textareaPinyin.setAttribute(
       'i18n-placeholder',
       JSON.stringify({
-        en: `Input the corresponding pinyin of Chinese words, separated by '/'. One for each line.`,
+        en_us: `Input the corresponding pinyin of Chinese words, separated by '/'. One for each line.`,
         zh_cn: '输入汉字词语对应拼音，使用/分隔。每行一条。',
         zh_tw: '輸入漢字詞語對應拼音，使用/分隔。每行一條。',
       }),
@@ -1461,7 +1461,7 @@ export abstract class CopybookBase extends BrickBase {
     textareaChineseAndPinyin.setAttribute(
       'i18n-placeholder',
       JSON.stringify({
-        en: `Input Chinese words and corresponding pinyin, and pinyin is separated by '/'. One for each line.`,
+        en_us: `Input Chinese words and corresponding pinyin, and pinyin is separated by '/'. One for each line.`,
         zh_cn: '输入汉字词语及对应拼音，拼音使用/分隔。每行一条。',
         zh_tw: '輸入漢字詞語及對應拼音，拼音使用/分隔。每行一條。',
       }),
@@ -1643,10 +1643,10 @@ export abstract class CopybookBase extends BrickBase {
     const { usableCopybooksPeopleEducationEdition } = this;
 
     usableCopybooksPeopleEducationEdition.push({
-      termI18n: { en: `K1T1`, zh_cn: `一年级上`, zh_tw: `一年級上` },
+      termI18n: { en_us: `K1T1`, zh_cn: `一年级上`, zh_tw: `一年級上` },
       units: [
         {
-          names: { en: `Unit 1`, zh_cn: `第一单元`, zh_tw: `第一单元` },
+          names: { en_us: `Unit 1`, zh_cn: `第一单元`, zh_tw: `第一单元` },
           words: [
             { chinese: `天`, pinyin: `tiān` },
             { chinese: `地`, pinyin: `dì` },
@@ -1690,7 +1690,7 @@ export abstract class CopybookBase extends BrickBase {
           ],
         },
         {
-          names: { en: `Unit 2`, zh_cn: `第二单元`, zh_tw: `第二单元` },
+          names: { en_us: `Unit 2`, zh_cn: `第二单元`, zh_tw: `第二单元` },
           words: [
             { chinese: `爸`, pinyin: `bà` },
             { chinese: `妈`, pinyin: `mā` },
@@ -1712,7 +1712,7 @@ export abstract class CopybookBase extends BrickBase {
           ],
         },
         {
-          names: { en: `Unit 3`, zh_cn: `第三单元`, zh_tw: `第三单元` },
+          names: { en_us: `Unit 3`, zh_cn: `第三单元`, zh_tw: `第三单元` },
           words: [
             { chinese: `妹`, pinyin: `mèi` },
             { chinese: `奶`, pinyin: `nǎi` },
@@ -1731,7 +1731,7 @@ export abstract class CopybookBase extends BrickBase {
           ],
         },
         {
-          names: { en: `Unit 4`, zh_cn: `第四单元`, zh_tw: `第四单元` },
+          names: { en_us: `Unit 4`, zh_cn: `第四单元`, zh_tw: `第四单元` },
           words: [
             { chinese: `秋`, pinyin: `qiū` },
             { chinese: `气`, pinyin: `qì` },
@@ -1772,7 +1772,7 @@ export abstract class CopybookBase extends BrickBase {
           ],
         },
         {
-          names: { en: `Unit 5`, zh_cn: `第五单元`, zh_tw: `第五单元` },
+          names: { en_us: `Unit 5`, zh_cn: `第五单元`, zh_tw: `第五单元` },
           words: [
             { chinese: `远`, pinyin: `yuǎn` },
             { chinese: `有`, pinyin: `yǒu` },
@@ -1826,7 +1826,7 @@ export abstract class CopybookBase extends BrickBase {
           ],
         },
         {
-          names: { en: `Unit 6`, zh_cn: `第六单元`, zh_tw: `第六单元` },
+          names: { en_us: `Unit 6`, zh_cn: `第六单元`, zh_tw: `第六单元` },
           words: [
             { chinese: `影`, pinyin: `yǐng` },
             { chinese: `前后`, pinyin: `qián'hòu` },
@@ -1868,7 +1868,7 @@ export abstract class CopybookBase extends BrickBase {
           ],
         },
         {
-          names: { en: `Unit 7`, zh_cn: `第七单元`, zh_tw: `第七单元` },
+          names: { en_us: `Unit 7`, zh_cn: `第七单元`, zh_tw: `第七单元` },
           words: [
             { chinese: `睡`, pinyin: `shuì` },
             { chinese: `那`, pinyin: `nà` },
@@ -1906,7 +1906,7 @@ export abstract class CopybookBase extends BrickBase {
           ],
         },
         {
-          names: { en: `Unit 8`, zh_cn: `第八单元`, zh_tw: `第八单元` },
+          names: { en_us: `Unit 8`, zh_cn: `第八单元`, zh_tw: `第八单元` },
           words: [
             { chinese: `群`, pinyin: `qún` },
             { chinese: `竹`, pinyin: `zhú` },
@@ -1951,10 +1951,10 @@ export abstract class CopybookBase extends BrickBase {
     const { usableCopybooksPeopleEducationEdition } = this;
 
     usableCopybooksPeopleEducationEdition.push({
-      termI18n: { en: `K1T2`, zh_cn: `一年级下`, zh_tw: `一年級下` },
+      termI18n: { en_us: `K1T2`, zh_cn: `一年级下`, zh_tw: `一年級下` },
       units: [
         {
-          names: { en: `Literacy 1`, zh_cn: `识字表1`, zh_tw: `識字錶1` },
+          names: { en_us: `Literacy 1`, zh_cn: `识字表1`, zh_tw: `識字錶1` },
           words: [
             { chinese: `霜`, pinyin: `shuāng` },
             { chinese: `吹`, pinyin: `chuī` },
@@ -2000,7 +2000,7 @@ export abstract class CopybookBase extends BrickBase {
           ],
         },
         {
-          names: { en: `Literacy 2`, zh_cn: `识字表2`, zh_tw: `識字錶2` },
+          names: { en_us: `Literacy 2`, zh_cn: `识字表2`, zh_tw: `識字錶2` },
           words: [
             { chinese: `吃`, pinyin: `chī` },
             { chinese: `忘`, pinyin: `wàng` },
@@ -2050,7 +2050,7 @@ export abstract class CopybookBase extends BrickBase {
           ],
         },
         {
-          names: { en: `Literacy 3`, zh_cn: `识字表3`, zh_tw: `識字錶3` },
+          names: { en_us: `Literacy 3`, zh_cn: `识字表3`, zh_tw: `識字錶3` },
           words: [
             { chinese: `块`, pinyin: `kuài` },
             { chinese: `捉`, pinyin: `zhuō` },
@@ -2088,7 +2088,7 @@ export abstract class CopybookBase extends BrickBase {
           ],
         },
         {
-          names: { en: `Literacy 4`, zh_cn: `识字表4`, zh_tw: `識字錶4` },
+          names: { en_us: `Literacy 4`, zh_cn: `识字表4`, zh_tw: `識字錶4` },
           words: [
             { chinese: `夜`, pinyin: `yè` },
             { chinese: `思`, pinyin: `sī` },
@@ -2145,7 +2145,7 @@ export abstract class CopybookBase extends BrickBase {
           ],
         },
         {
-          names: { en: `Literacy 5`, zh_cn: `识字表5`, zh_tw: `識字錶5` },
+          names: { en_us: `Literacy 5`, zh_cn: `识字表5`, zh_tw: `識字錶5` },
           words: [
             { chinese: `蜻蜓`, pinyin: `qīng'tíng` },
             { chinese: `迷`, pinyin: `mí` },
@@ -2195,7 +2195,7 @@ export abstract class CopybookBase extends BrickBase {
           ],
         },
         {
-          names: { en: `Literacy 6`, zh_cn: `识字表6`, zh_tw: `識字錶6` },
+          names: { en_us: `Literacy 6`, zh_cn: `识字表6`, zh_tw: `識字錶6` },
           words: [
             { chinese: `首`, pinyin: `shǒu` },
             { chinese: `踪迹`, pinyin: `zōng'jì` },
@@ -2238,7 +2238,7 @@ export abstract class CopybookBase extends BrickBase {
           ],
         },
         {
-          names: { en: `Literacy 7`, zh_cn: `识字表7`, zh_tw: `識字錶7` },
+          names: { en_us: `Literacy 7`, zh_cn: `识字表7`, zh_tw: `識字錶7` },
           words: [
             { chinese: `具`, pinyin: `jù` },
             { chinese: `次`, pinyin: `cì` },
@@ -2296,7 +2296,7 @@ export abstract class CopybookBase extends BrickBase {
           ],
         },
         {
-          names: { en: `Literacy 8`, zh_cn: `识字表8`, zh_tw: `識字錶8` },
+          names: { en_us: `Literacy 8`, zh_cn: `识字表8`, zh_tw: `識字錶8` },
           words: [
             { chinese: `棉`, pinyin: `mián` },
             { chinese: `娘`, pinyin: `niáng` },
@@ -2345,7 +2345,7 @@ export abstract class CopybookBase extends BrickBase {
           ],
         },
         {
-          names: { en: `Writing 1`, zh_cn: `写字表1`, zh_tw: `寫字錶1` },
+          names: { en_us: `Writing 1`, zh_cn: `写字表1`, zh_tw: `寫字錶1` },
           words: [
             { chinese: `春`, pinyin: `chūn` },
             { chinese: `冬`, pinyin: `dōng` },
@@ -2373,7 +2373,7 @@ export abstract class CopybookBase extends BrickBase {
           ],
         },
         {
-          names: { en: `Writing 2`, zh_cn: `写字表2`, zh_tw: `寫字錶2` },
+          names: { en_us: `Writing 2`, zh_cn: `写字表2`, zh_tw: `寫字錶2` },
           words: [
             { chinese: `吃`, pinyin: `chī` },
             { chinese: `叫`, pinyin: `jiào` },
@@ -2399,7 +2399,7 @@ export abstract class CopybookBase extends BrickBase {
           ],
         },
         {
-          names: { en: `Writing 3`, zh_cn: `写字表3`, zh_tw: `寫字錶3` },
+          names: { en_us: `Writing 3`, zh_cn: `写字表3`, zh_tw: `寫字錶3` },
           words: [
             { chinese: `他`, pinyin: `tā` },
             { chinese: `地`, pinyin: `dì` },
@@ -2422,7 +2422,7 @@ export abstract class CopybookBase extends BrickBase {
           ],
         },
         {
-          names: { en: `Writing 4`, zh_cn: `写字表4`, zh_tw: `寫字錶4` },
+          names: { en_us: `Writing 4`, zh_cn: `写字表4`, zh_tw: `寫字錶4` },
           words: [
             { chinese: `思`, pinyin: `sī` },
             { chinese: `床`, pinyin: `chuáng` },
@@ -2452,7 +2452,7 @@ export abstract class CopybookBase extends BrickBase {
           ],
         },
         {
-          names: { en: `Writing 5`, zh_cn: `写字表5`, zh_tw: `寫字錶5` },
+          names: { en_us: `Writing 5`, zh_cn: `写字表5`, zh_tw: `寫字錶5` },
           words: [
             { chinese: `间`, pinyin: `jiān` },
             { chinese: `迷`, pinyin: `mí` },
@@ -2483,7 +2483,7 @@ export abstract class CopybookBase extends BrickBase {
           ],
         },
         {
-          names: { en: `Writing 6`, zh_cn: `写字表6`, zh_tw: `寫字錶6` },
+          names: { en_us: `Writing 6`, zh_cn: `写字表6`, zh_tw: `寫字錶6` },
           words: [
             { chinese: `首`, pinyin: `shǒu` },
             { chinese: `采`, pinyin: `cǎi` },
@@ -2508,7 +2508,7 @@ export abstract class CopybookBase extends BrickBase {
           ],
         },
         {
-          names: { en: `Writing 7`, zh_cn: `写字表7`, zh_tw: `寫字錶7` },
+          names: { en_us: `Writing 7`, zh_cn: `写字表7`, zh_tw: `寫字錶7` },
           words: [
             { chinese: `文`, pinyin: `wén` },
             { chinese: `次`, pinyin: `cì` },
@@ -2539,7 +2539,7 @@ export abstract class CopybookBase extends BrickBase {
           ],
         },
         {
-          names: { en: `Writing 8`, zh_cn: `写字表8`, zh_tw: `寫字錶8` },
+          names: { en_us: `Writing 8`, zh_cn: `写字表8`, zh_tw: `寫字錶8` },
           words: [
             { chinese: `病`, pinyin: `bìng` },
             { chinese: `医`, pinyin: `yī` },
@@ -2573,14 +2573,14 @@ export abstract class CopybookBase extends BrickBase {
 
     usableCopybooksPeopleEducationEdition.push({
       termI18n: {
-        en: `K2T1`,
+        en_us: `K2T1`,
         zh_cn: `二年级上`,
         zh_tw: `二年級上`,
       },
       units: [
         {
           names: {
-            en: `Literacy 1`,
+            en_us: `Literacy 1`,
             zh_cn: `识字表1`,
             zh_tw: `識字錶1`,
           },
@@ -2789,7 +2789,7 @@ export abstract class CopybookBase extends BrickBase {
         },
         {
           names: {
-            en: `Literacy 2`,
+            en_us: `Literacy 2`,
             zh_cn: `识字表2`,
             zh_tw: `識字錶2`,
           },
@@ -2998,7 +2998,7 @@ export abstract class CopybookBase extends BrickBase {
         },
         {
           names: {
-            en: `Literacy 3`,
+            en_us: `Literacy 3`,
             zh_cn: `识字表3`,
             zh_tw: `識字錶3`,
           },
@@ -3279,7 +3279,7 @@ export abstract class CopybookBase extends BrickBase {
         },
         {
           names: {
-            en: `Literacy 4`,
+            en_us: `Literacy 4`,
             zh_cn: `识字表4`,
             zh_tw: `識字錶4`,
           },
@@ -3520,7 +3520,7 @@ export abstract class CopybookBase extends BrickBase {
         },
         {
           names: {
-            en: `Literacy 5`,
+            en_us: `Literacy 5`,
             zh_cn: `识字表5`,
             zh_tw: `識字錶5`,
           },
@@ -3697,7 +3697,7 @@ export abstract class CopybookBase extends BrickBase {
         },
         {
           names: {
-            en: `Literacy 6`,
+            en_us: `Literacy 6`,
             zh_cn: `识字表6`,
             zh_tw: `識字錶6`,
           },
@@ -3918,7 +3918,7 @@ export abstract class CopybookBase extends BrickBase {
         },
         {
           names: {
-            en: `Literacy 7`,
+            en_us: `Literacy 7`,
             zh_cn: `识字表7`,
             zh_tw: `識字錶7`,
           },
@@ -4107,7 +4107,7 @@ export abstract class CopybookBase extends BrickBase {
         },
         {
           names: {
-            en: `Literacy 8`,
+            en_us: `Literacy 8`,
             zh_cn: `识字表8`,
             zh_tw: `識字錶8`,
           },
@@ -4308,7 +4308,7 @@ export abstract class CopybookBase extends BrickBase {
         },
         {
           names: {
-            en: `Writing 1`,
+            en_us: `Writing 1`,
             zh_cn: `写字表1`,
             zh_tw: `寫字錶1`,
           },
@@ -4421,7 +4421,7 @@ export abstract class CopybookBase extends BrickBase {
         },
         {
           names: {
-            en: `Writing 2`,
+            en_us: `Writing 2`,
             zh_cn: `写字表2`,
             zh_tw: `寫字錶2`,
           },
@@ -4566,7 +4566,7 @@ export abstract class CopybookBase extends BrickBase {
         },
         {
           names: {
-            en: `Writing 3`,
+            en_us: `Writing 3`,
             zh_cn: `写字表3`,
             zh_tw: `寫字錶3`,
           },
@@ -4703,7 +4703,7 @@ export abstract class CopybookBase extends BrickBase {
         },
         {
           names: {
-            en: `Writing 4`,
+            en_us: `Writing 4`,
             zh_cn: `写字表4`,
             zh_tw: `寫字錶4`,
           },
@@ -4844,7 +4844,7 @@ export abstract class CopybookBase extends BrickBase {
         },
         {
           names: {
-            en: `Writing 5`,
+            en_us: `Writing 5`,
             zh_cn: `写字表5`,
             zh_tw: `寫字錶5`,
           },
@@ -4957,7 +4957,7 @@ export abstract class CopybookBase extends BrickBase {
         },
         {
           names: {
-            en: `Writing 6`,
+            en_us: `Writing 6`,
             zh_cn: `写字表6`,
             zh_tw: `寫字錶6`,
           },
@@ -5074,7 +5074,7 @@ export abstract class CopybookBase extends BrickBase {
         },
         {
           names: {
-            en: `Writing 7`,
+            en_us: `Writing 7`,
             zh_cn: `写字表7`,
             zh_tw: `寫字錶7`,
           },
@@ -5167,7 +5167,7 @@ export abstract class CopybookBase extends BrickBase {
         },
         {
           names: {
-            en: `Writing 8`,
+            en_us: `Writing 8`,
             zh_cn: `写字表8`,
             zh_tw: `寫字錶8`,
           },
@@ -5264,7 +5264,7 @@ export abstract class CopybookBase extends BrickBase {
         },
 
         {
-          names: { en: `Words 1`, zh_cn: `词语1`, zh_tw: `詞語1` },
+          names: { en_us: `Words 1`, zh_cn: `词语1`, zh_tw: `詞語1` },
           words: [
             { chinese: `看见`, pinyin: `kàn'jiàn` },
             { chinese: `哪里`, pinyin: `nǎ'lǐ` },
@@ -5308,7 +5308,7 @@ export abstract class CopybookBase extends BrickBase {
           ],
         },
         {
-          names: { en: `Words 2`, zh_cn: `词语2`, zh_tw: `詞語2` },
+          names: { en_us: `Words 2`, zh_cn: `词语2`, zh_tw: `詞語2` },
           words: [
             { chinese: `花园`, pinyin: `huā'yuán` },
             { chinese: `石桥`, pinyin: `shí'qiáo` },
@@ -5352,7 +5352,7 @@ export abstract class CopybookBase extends BrickBase {
           ],
         },
         {
-          names: { en: `Words 3`, zh_cn: `词语3`, zh_tw: `詞語3` },
+          names: { en_us: `Words 3`, zh_cn: `词语3`, zh_tw: `詞語3` },
           words: [
             { chinese: `一同`, pinyin: `yì'tóng` },
             { chinese: `柱子`, pinyin: `zhù'zi` },
@@ -5411,7 +5411,7 @@ export abstract class CopybookBase extends BrickBase {
         },
 
         {
-          names: { en: `Words 4`, zh_cn: `词语4`, zh_tw: `詞語4` },
+          names: { en_us: `Words 4`, zh_cn: `词语4`, zh_tw: `詞語4` },
           words: [
             { chinese: `依照`, pinyin: `yīzhào` },
             { chinese: `尽头`, pinyin: `jìntóu` },
@@ -5467,7 +5467,7 @@ export abstract class CopybookBase extends BrickBase {
         },
 
         {
-          names: { en: `Words 5`, zh_cn: `词语5`, zh_tw: `詞語5` },
+          names: { en_us: `Words 5`, zh_cn: `词语5`, zh_tw: `詞語5` },
           words: [
             { chinese: `坐井观天`, pinyin: `zuò'jǐng'guān'tiān` },
             { chinese: `井沿`, pinyin: `jǐng'yán` },
@@ -5509,7 +5509,7 @@ export abstract class CopybookBase extends BrickBase {
         },
 
         {
-          names: { en: `Words 6`, zh_cn: `词语6`, zh_tw: `詞語6` },
+          names: { en_us: `Words 6`, zh_cn: `词语6`, zh_tw: `詞語6` },
           words: [
             { chinese: `八角楼`, pinyin: `bā'jiǎo'lóu` },
             { chinese: `深夜`, pinyin: `shēn'yè` },
@@ -5558,7 +5558,7 @@ export abstract class CopybookBase extends BrickBase {
         },
 
         {
-          names: { en: `Words 7`, zh_cn: `词语7`, zh_tw: `詞語7` },
+          names: { en_us: `Words 7`, zh_cn: `词语7`, zh_tw: `詞語7` },
           words: [
             { chinese: `安危`, pinyin: `ānwēi` },
             { chinese: `不敢`, pinyin: `bùgǎn` },
@@ -5599,7 +5599,7 @@ export abstract class CopybookBase extends BrickBase {
         },
 
         {
-          names: { en: `Words 8`, zh_cn: `词语8`, zh_tw: `詞語8` },
+          names: { en_us: `Words 8`, zh_cn: `词语8`, zh_tw: `詞語8` },
           words: [
             { chinese: `食物`, pinyin: `shí'wù` },
             { chinese: `身边`, pinyin: `shēn'biān` },

@@ -1,5 +1,5 @@
 /**
- * <en>
+ * <en_us>
  * Function:
  * Initial construction:
  * History: On November 18, 2022
@@ -8,7 +8,7 @@
  * 						2021-10-05 Anqi P:\0\000007\_Learning\Chinese\Pinyin\Pinyin dice
  * 						https://www.sohu.com/a/273872389_141060(1-15,18,20,30,50,100)
  *            https://www.darlang.com/2017/11/css-media-print-page-print-another-of-style-writing/
- * </en>
+ * </en_us>
  *
  * <zh_cn>
  * 功能：

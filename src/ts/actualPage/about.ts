@@ -17,7 +17,7 @@ class AboutPage extends ActualPageBase {
   public initTitleElement(): void {
     const titleElement = getTitleElement();
     titleElement.i18n = {
-      en: "Sparks of Fire",
+      en_us: "Sparks of Fire",
       zh_cn: "星星之火",
       zh_tw: "星星之火",
     };
@@ -30,7 +30,7 @@ class AboutPage extends ActualPageBase {
     const {
       mainContentElement,
       topImageElement,
-      pageSubjectElement, 
+      pageSubjectElement,
     } = this;
     mainElement.appendChild(topImageElement);
     mainElement.appendChild(mainContentElement);
@@ -46,7 +46,7 @@ class AboutPage extends ActualPageBase {
     pageSubjectElement.id = `${PAGE_NAME}Subject`;
     pageSubjectElement.className = "pageSubject";
 
-    ['en', 'zh_cn', 'zh_tw'].forEach((lang: string) => {
+    ['en_us', 'zh_cn', 'zh_tw'].forEach((lang: string) => {
       const span = createElement(lang) as HTMLSpanElement;
       pageSubjectElement.appendChild(span);
 
@@ -64,7 +64,7 @@ class AboutPage extends ActualPageBase {
     // const imageWrap = createElement('div') as HTMLDivElement;
     // mainElement.appendChild(imageWrap);
 
-    // ['en', 'zh_cn', 'zh_tw'].forEach((lang) => {
+    // ['en_us', 'zh_cn', 'zh_tw'].forEach((lang) => {
     // 	const span = createElement(lang) as HTMLSpanElement;
     // 	imageWrap.appendChild(span);
 
@@ -81,7 +81,7 @@ class AboutPage extends ActualPageBase {
 
     [
       {
-        lang: "en",
+        lang: "en_us",
         html: `<h3>Seed germination: pure kindness</h3>
 	<p>Sonya: "When I grow up, I will be a biologist, astronomer and teacher at the same time... to protect the lovely animals and plants and lead the students to protect our beautiful home - the earth."</p>
 	<p></p>

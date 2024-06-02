@@ -51,7 +51,7 @@ export abstract class BoxBase extends BrickWithTableBase {
     let wrapElement: HTMLDivElement;
 
     wrapElement = getWrapElement({
-      en: 'Top Half Circle',
+      en_us: 'Top Half Circle',
       zh_cn: '顶部半圆',
       zh_tw: '頂部半圓',
     });
@@ -61,11 +61,11 @@ export abstract class BoxBase extends BrickWithTableBase {
       [
         {
           value: false,
-          i18nHtml: getI18nInnerHTML({ en: 'Hide', zh_cn: '无', zh_tw: '無' }),
+          i18nHtml: getI18nInnerHTML({ en_us: 'Hide', zh_cn: '无', zh_tw: '無' }),
         },
         {
           value: true,
-          i18nHtml: getI18nInnerHTML({ en: 'Show', zh_cn: '有', zh_tw: '有' }),
+          i18nHtml: getI18nInnerHTML({ en_us: 'Show', zh_cn: '有', zh_tw: '有' }),
         },
       ],
       'topWithoutHalfCircle',
@@ -155,10 +155,10 @@ export abstract class BoxBase extends BrickWithTableBase {
       },
     );
 
-    const en = `${FILENAME_POSTFIX}Boxs`;
+    const en_us = `${FILENAME_POSTFIX}Boxs`;
     const zh_cn = `${FILENAME_POSTFIX}盒子`;
     const zh_tw = `${FILENAME_POSTFIX}盒子`;
-    computedData.title = { en, zh_cn, zh_tw };
+    computedData.title = { en_us, zh_cn, zh_tw };
 
     computedData.css = css;
     // computedData.html = html;
@@ -190,7 +190,7 @@ export abstract class BoxBase extends BrickWithTableBase {
         name: string;
         infos: Array<BoxParameter & { captionI18n: I18nable }>;
       }) => {
-        const strongI18n = { en: name, zh_cn: name, zh_tw: name };
+        const strongI18n = { en_us: name, zh_cn: name, zh_tw: name };
         const buttonList: Array<{ nameI18n: I18nable; info: BoxParameter }> = [];
 
         infos.forEach((info: BoxParameter & { captionI18n: I18nable }) => {
@@ -200,7 +200,7 @@ export abstract class BoxBase extends BrickWithTableBase {
             nameI18n:
               typeof captionI18n === 'string'
                 ? {
-                    en: captionI18n,
+                    en_us: captionI18n,
                     zh_cn: captionI18n,
                     zh_tw: captionI18n,
                   }
@@ -237,7 +237,7 @@ export abstract class BoxBase extends BrickWithTableBase {
     const topWithoutHalfCircle = false;
 
     const i18nContentsOfRummikub = getArrayRepeatSameValue(
-      getI18nInnerHTML({ en: 'Rummikub', zh_cn: '拉密', zh_tw: '拉密' }),
+      getI18nInnerHTML({ en_us: 'Rummikub', zh_cn: '拉密', zh_tw: '拉密' }),
       6,
     );
 
@@ -265,12 +265,12 @@ export abstract class BoxBase extends BrickWithTableBase {
         contents: i18nContentsOfRummikub,
         textStyle: textStyleBig,
         captionI18n: {
-          en: '&nbsp;&nbsp;18<br/>×50<br/>×25<br/>Rummikub',
+          en_us: '&nbsp;&nbsp;18<br/>×50<br/>×25<br/>Rummikub',
           zh_cn: '&nbsp;&nbsp;18<br/>×50<br/>×25<br/>拉密',
           zh_tw: '&nbsp;&nbsp;18<br/>×50<br/>×25<br/>拉密',
         },
         captionI18nSameSide: {
-          en: `&nbsp;&nbsp;18<br/>×50<br/>×25<br/>+${otherSize}<br/>Rummikub`,
+          en_us: `&nbsp;&nbsp;18<br/>×50<br/>×25<br/>+${otherSize}<br/>Rummikub`,
           zh_cn: `&nbsp;&nbsp;18<br/>×50<br/>×25<br/>+${otherSize}<br/>拉密`,
           zh_tw: `&nbsp;&nbsp;18<br/>×50<br/>×25<br/>+${otherSize}<br/>拉密`,
         },
@@ -281,12 +281,12 @@ export abstract class BoxBase extends BrickWithTableBase {
         contents: i18nContentsOfRummikub,
         textStyle: textStyleBig,
         captionI18n: {
-          en: '&nbsp;&nbsp;20<br/>×50<br/>×28<br/>Rummikub',
+          en_us: '&nbsp;&nbsp;20<br/>×50<br/>×28<br/>Rummikub',
           zh_cn: '&nbsp;&nbsp;20<br/>×50<br/>×28<br/>拉密',
           zh_tw: '&nbsp;&nbsp;20<br/>×50<br/>×28<br/>拉密',
         },
         captionI18nSameSide: {
-          en: `&nbsp;&nbsp;20<br/>×50<br/>×28<br/>+${otherSize}<br/>Rummikub`,
+          en_us: `&nbsp;&nbsp;20<br/>×50<br/>×28<br/>+${otherSize}<br/>Rummikub`,
           zh_cn: `&nbsp;&nbsp;20<br/>×50<br/>×28<br/>+${otherSize}<br/>拉密`,
           zh_tw: `&nbsp;&nbsp;20<br/>×50<br/>×28<br/>+${otherSize}<br/>拉密`,
         },
@@ -458,7 +458,7 @@ export abstract class BoxBase extends BrickWithTableBase {
 
     usableBoxs.push({
       name: getI18nInnerHTML({
-        en: 'Cuboid',
+        en_us: 'Cuboid',
         zh_cn: '异侧',
         zh_tw: '異側',
       }),
@@ -467,7 +467,7 @@ export abstract class BoxBase extends BrickWithTableBase {
 
     usableBoxs.push({
       name: getI18nInnerHTML({
-        en: 'Cuboid which cover on the same side',
+        en_us: 'Cuboid which cover on the same side',
         zh_cn: '盖子同侧',
         zh_tw: '蓋子同側',
       }),
@@ -476,7 +476,7 @@ export abstract class BoxBase extends BrickWithTableBase {
 
     usableBoxs.push({
       name: getI18nInnerHTML({
-        en: 'Cuboid without top',
+        en_us: 'Cuboid without top',
         zh_cn: '异侧无顶',
         zh_tw: '異側無頂',
       }),
@@ -485,7 +485,7 @@ export abstract class BoxBase extends BrickWithTableBase {
 
     usableBoxs.push({
       name: getI18nInnerHTML({
-        en: 'Cuboid without bottom',
+        en_us: 'Cuboid without bottom',
         zh_cn: '异侧无底',
         zh_tw: '異側無底',
       }),
@@ -494,7 +494,7 @@ export abstract class BoxBase extends BrickWithTableBase {
 
     usableBoxs.push({
       name: getI18nInnerHTML({
-        en: 'Cuboid which cover on the same side and without top',
+        en_us: 'Cuboid which cover on the same side and without top',
         zh_cn: '盖子同侧无顶',
         zh_tw: '蓋子同側無頂',
       }),
@@ -503,7 +503,7 @@ export abstract class BoxBase extends BrickWithTableBase {
 
     usableBoxs.push({
       name: getI18nInnerHTML({
-        en: 'Cuboid which cover on the same side and without bottom',
+        en_us: 'Cuboid which cover on the same side and without bottom',
         zh_cn: '盖子同侧无底',
         zh_tw: '蓋子同側無底',
       }),
@@ -547,36 +547,36 @@ export abstract class BoxBase extends BrickWithTableBase {
    * 初始化表头
    */
   protected initTableHead = (): void => {
-    // this.appendTableHeadCell({ en: 'Id', zh_cn: 'id', zh_tw: 'id' });
-    // this.appendTableHeadCell({ en: 'Box Type', zh_cn: '盒子类型', zh_tw: '骰子類型' });
+    // this.appendTableHeadCell({ en_us: 'Id', zh_cn: 'id', zh_tw: 'id' });
+    // this.appendTableHeadCell({ en_us: 'Box Type', zh_cn: '盒子类型', zh_tw: '骰子類型' });
     this.appendTableHeadCell({
-      en: 'Relevant length, such as length, width and height',
+      en_us: 'Relevant length, such as length, width and height',
       zh_cn: '相关长度，如长宽高',
       zh_tw: '相關長度，如長寬高',
     });
     this.appendTableHeadCell({
-      en: 'Contents of all sides',
+      en_us: 'Contents of all sides',
       zh_cn: '各面内容',
       zh_tw: '各面內容',
     });
-    this.appendTableHeadCell({ en: 'Rotate', zh_cn: '旋转', zh_tw: '旋轉' });
-    this.appendTableHeadCell({ en: 'Move', zh_cn: '上移', zh_tw: '上移' });
+    this.appendTableHeadCell({ en_us: 'Rotate', zh_cn: '旋转', zh_tw: '旋轉' });
+    this.appendTableHeadCell({ en_us: 'Move', zh_cn: '上移', zh_tw: '上移' });
     this.appendTableHeadCell({
-      en: 'Outside Boundary Line Style',
+      en_us: 'Outside Boundary Line Style',
       zh_cn: '外边界线样式',
       zh_tw: '外邊界線樣式',
     });
     this.appendTableHeadCell({
-      en: 'Interior Line Style',
+      en_us: 'Interior Line Style',
       zh_cn: '内部线样式',
       zh_tw: '內部線樣式',
     });
     this.appendTableHeadCell({
-      en: 'Text Style',
+      en_us: 'Text Style',
       zh_cn: '文本样式',
       zh_tw: '文字樣式',
     });
-    // this.appendTableHeadCell({ en: 'Other parameters', zh_cn: '其它参数', zh_tw: '其它參數' });
+    // this.appendTableHeadCell({ en_us: 'Other parameters', zh_cn: '其它参数', zh_tw: '其它參數' });
   };
 
   // private appendBoxKindTd = (tr: HTMLTableRowElement, box: {boxKind: boxSpace.edu.sonya.cc.BoxKind }):void => {
@@ -592,7 +592,7 @@ export abstract class BoxBase extends BrickWithTableBase {
   //   switch(box.boxKind) {
   //     case BoxKind.cuboid:
   //       value = getI18nInnerHTML({
-  //         en: 'Cuboid',
+  //         en_us: 'Cuboid',
   //         zh_cn: '长方体',
   //         zh_tw: '長方體',
   //       });
@@ -666,7 +666,7 @@ export abstract class BoxBase extends BrickWithTableBase {
     td.appendChild(div);
     div.className = `${idOrClassPrefix}ContentValueWrap`;
 
-    const i18nNameArray = ['en', 'zh_cn', 'zh_tw'];
+    const i18nNameArray = ['en_us', 'zh_cn', 'zh_tw'];
     const emptyArray: Array<string> = [];
     pushSameValueTimes(emptyArray, '\n', count);
     const isText = typeof contents[0] === 'string';

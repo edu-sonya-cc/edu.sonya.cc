@@ -14,7 +14,7 @@ class StoryPage extends ActualPageBase {
   public initTitleElement(): void {
     const titleElement = getTitleElement();
     titleElement.i18n = {
-      en: "Growing",
+      en_us: "Growing",
       zh_cn: "成长足迹",
       zh_tw: "成長足跡",
     };

@@ -202,7 +202,7 @@ var BrickWithTableBase = (function (_super) {
             tableElement.appendChild(tableBodyElement);
             tableHeadElement.appendChild(trHead);
             _this.appendTableHeadCell({
-                en: "Operations",
+                en_us: "Operations",
                 zh_cn: "操作",
                 zh_tw: "操作"
             });

@@ -11,49 +11,49 @@ namespace boxSpace {
     export namespace sonya {
       export namespace cc {
         /**
-         * <en>Box Type</en>
+         * <en_us>Box Type</en_us>
          * <zh_cn>盒子类型</zh_cn>
          * <zh_tw>骰子類型</zh_tw>
          */
         export enum BoxKind {
           /**
-           * <en>None</en>
+           * <en_us>None</en_us>
            * <zh_cn>无</zh_cn>
            * <zh_tw>無</zh_tw>
            */
           none = 0,
           /**
-           * <en>Cuboid</en>
+           * <en_us>Cuboid</en_us>
            * <zh_cn>长方体</zh_cn>
            * <zh_tw>長方體</zh_tw>
            */
           cuboid = 1,
           /**
-           * <en>Cuboid without top</en>
+           * <en_us>Cuboid without top</en_us>
            * <zh_cn>无顶长方体</zh_cn>
            * <zh_tw>無頂長方體</zh_tw>
            */
           cuboidWithoutTop = 2,
           /**
-           * <en>Cuboid without bottom</en>
+           * <en_us>Cuboid without bottom</en_us>
            * <zh_cn>无底长方体</zh_cn>
            * <zh_tw>無底長方體</zh_tw>
            */
           cuboidWithoutBottom = 3,
           /**
-           * <en>Cuboid which cover on the same side</en>
+           * <en_us>Cuboid which cover on the same side</en_us>
            * <zh_cn>盖子同侧长方体</zh_cn>
            * <zh_tw>蓋子同側長方體</zh_tw>
            */
           cuboidCoverOnTheSameSide = 4,
           /**
-           * <en>Cuboid which cover on the same side and without top</en>
+           * <en_us>Cuboid which cover on the same side and without top</en_us>
            * <zh_cn>盖子同侧无顶长方体</zh_cn>
            * <zh_tw>蓋子同側無頂長方體</zh_tw>
            */
           cuboidCoverOnTheSameSideWithoutTop = 5,
           /**
-           * <en>Cuboid which cover on the same side and without bottom</en>
+           * <en_us>Cuboid which cover on the same side and without bottom</en_us>
            * <zh_cn>盖子同侧无底长方体</zh_cn>
            * <zh_tw>蓋子同側無底長方體</zh_tw>
            */
@@ -61,83 +61,83 @@ namespace boxSpace {
         }
 
         /**
-         * <en>Box Generation Parameters</en>
+         * <en_us>Box Generation Parameters</en_us>
          * <zh_cn>盒子生成参数</zh_cn>
          * <zh_tw>盒子生成參數</zh_tw>
          */
         export interface BoxParameter {
           /**
-           * <en>Id</en>
+           * <en_us>Id</en_us>
            * <zh_cn>id</zh_cn>
            * <zh_tw>id</zh_tw>
            */
           id: string;
 
           /**
-           * <en>Box Type</en>
+           * <en_us>Box Type</en_us>
            * <zh_cn>盒子类型</zh_cn>
            * <zh_tw>骰子類型</zh_tw>
            */
           boxKind: BoxKind;
 
           /**
-           * <en>Relevant length, such as length, width and height</en>
+           * <en_us>Relevant length, such as length, width and height</en_us>
            * <zh_cn>相关长度，如长宽高</zh_cn>
            * <zh_tw>相關長度，如長寬高</zh_tw>
            */
           lengths: Array<number>;
 
           /**
-           * <en>Contents of all sides</en>
+           * <en_us>Contents of all sides</en_us>
            * <zh_cn>各面内容</zh_cn>
            * <zh_tw>各面內容</zh_tw>
            */
           contents: Array<I18nable | string>;
 
           /**
-           * <en>Outside Boundary Line Style</en>
+           * <en_us>Outside Boundary Line Style</en_us>
            * <zh_cn>外边界线样式</zh_cn>
            * <zh_tw>外邊界線樣式</zh_tw>
            */
           outerLineStyle: string;
 
           /**
-           * <en>Interior Line Style</en>
+           * <en_us>Interior Line Style</en_us>
            * <zh_cn>内部线样式</zh_cn>
            * <zh_tw>內部線樣式</zh_tw>
            */
           innerLineStyle: string;
 
           /**
-           * <en>Text Style</en>
+           * <en_us>Text Style</en_us>
            * <zh_cn>文本样式</zh_cn>
            * <zh_tw>文字樣式</zh_tw>
            */
           textStyle: string;
 
           /**
-           * <en>Rotate</en>
+           * <en_us>Rotate</en_us>
            * <zh_cn>旋转</zh_cn>
            * <zh_tw>旋轉</zh_tw>
            */
           rotate: boolean;
 
           /**
-           * <en>Move Up</en>
+           * <en_us>Move Up</en_us>
            * <zh_cn>上移</zh_cn>
            * <zh_tw>上移</zh_tw>
            */
           move: boolean;
 
           /**
-           * <en>Hide the half cirlce of box top</en>
+           * <en_us>Hide the half cirlce of box top</en_us>
            * <zh_cn>隐藏盒顶半圆</zh_cn>
            * <zh_tw>隱藏盒頂半圓</zh_tw>
            */
           topWithoutHalfCircle: boolean;
 
           /**
-           * <en>Other parameters</en>
+           * <en_us>Other parameters</en_us>
            * <zh_cn>其它参数</zh_cn>
            * <zh_tw>其它參數</zh_tw>
            */
@@ -145,27 +145,27 @@ namespace boxSpace {
         }
 
         /**
-         * <en>Box Generation Result</en>
+         * <en_us>Box Generation Result</en_us>
          * <zh_cn>盒子生成结果</zh_cn>
          * <zh_tw>盒子生成結果</zh_tw>
          */
         export interface BoxResult {
           /**
-           * <en>Svg Element Id</en>
+           * <en_us>Svg Element Id</en_us>
            * <zh_cn>svg元素编号</zh_cn>
            * <zh_tw>svg元素編號</zh_tw>
            */
           id: string;
 
           /**
-           * <en>Svg Element</en>
+           * <en_us>Svg Element</en_us>
            * <zh_cn>svg元素</zh_cn>
            * <zh_tw>svg元素</zh_tw>
            */
           svg: SVGElement;
 
           /**
-           * <en>css</en>
+           * <en_us>css</en_us>
            * <zh_cn>样式表</zh_cn>
            * <zh_tw>樣式表</zh_tw>
            */
@@ -177,21 +177,21 @@ namespace boxSpace {
         const SVG_XLINKNS = "http://www.w3.org/1999/xlink";
 
         /**
-         * <en>Box Generator</en>
+         * <en_us>Box Generator</en_us>
          * <zh_cn>盒子生成器</zh_cn>
          * <zh_tw>盒子生成器</zh_tw>
          */
         export class BoxGenerator {
           /**
-           * <en>Generate box in batch</en>
+           * <en_us>Generate box in batch</en_us>
            * <zh_cn>批量生成盒子</zh_cn>
            * <zh_tw>批量生成盒子</zh_tw>
            * @param createParameters
-           * <en>Arrays: creating parameters</en>
+           * <en_us>Arrays: creating parameters</en_us>
            * <zh_cn>数组：创建参数</zh_cn>
            * <zh_tw>數組：創建參數</zh_tw>
            * @returns
-           * <en>Generate results in array format, used to combine complete html</en>
+           * <en_us>Generate results in array format, used to combine complete html</en_us>
            * <zh_cn>生成结果，为数组格式，用于组合完整的html</zh_cn>
            * <zh_tw>生成結果，為數組格式，用於組合完整的html</zh_tw>
            */
@@ -210,15 +210,15 @@ namespace boxSpace {
           }
 
           /**
-           * <en>Generate a single box</en>
+           * <en_us>Generate a single box</en_us>
            * <zh_cn>生成单个盒子</zh_cn>
            * <zh_tw>生成單個盒子</zh_tw>
            * @param param0
-           * <en>Deconstructed creation parameters</en>
+           * <en_us>Deconstructed creation parameters</en_us>
            * <zh_cn>已解构的创建参数</zh_cn>
            * <zh_tw>已解構的創建參數</zh_tw>
            * @returns
-           * <en>Generate results, used to combine complete html</en>
+           * <en_us>Generate results, used to combine complete html</en_us>
            * <zh_cn>生成结果，用于组合完整的html</zh_cn>
            * <zh_tw>生成結果，用於組合完整的html</zh_tw>
            */

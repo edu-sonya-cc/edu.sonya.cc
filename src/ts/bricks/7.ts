@@ -1,12 +1,12 @@
 /**
- * <en>
+ * <en_us>
  * Function: Generate Math Poker
  * Initial: 2021-10-04 Anqi
  * History: On November 2, 2022
  * Function: generate mathematical poker
  * Reference: skipped
  * Description: 1-9 (default), 1-5, 0-9, 0-20+- × ÷、1-100
- * </en>
+ * </en_us>
  *
  * <zh_cn>
  * 功能：生成数学扑克
@@ -41,43 +41,43 @@
 /// <reference path='../../types/IBrickCore.d.ts' />
 
 /**
- * <en>Mathematical Poker Type</en>
+ * <en_us>Mathematical Poker Type</en_us>
  * <zh_cn>数学扑克类型</zh_cn>
  * <zh_tw>數學撲克類型</zh_tw>
  */
 enum MathPokerKind {
   /**
-   * <en></en>
+   * <en_us></en_us>
    * <zh_cn></zh_cn>
    * <zh_tw></zh_tw>
    */
   none = 0,
   /**
-   * <en>1-9 make up ten</en>
+   * <en_us>1-9 make up ten</en_us>
    * <zh_cn>1-9凑十</zh_cn>
    * <zh_tw>1-9凑十</zh_tw>
    */
   tens = 1,
   /**
-   * <en>1-5</en>
+   * <en_us>1-5</en_us>
    * <zh_cn>1-5</zh_cn>
    * <zh_tw>1-5</zh_tw>
    */
   oneToFive = 2,
   /**
-   * <en>0-9</en>
+   * <en_us>0-9</en_us>
    * <zh_cn>0-9</zh_cn>
    * <zh_tw>0-9</zh_tw>
    */
   zeroToNine = 4,
   /**
-   * <en>0-20+-×÷</en>
+   * <en_us>0-20+-×÷</en_us>
    * <zh_cn>0-20+-×÷</zh_cn>
    * <zh_tw>0-20+-×÷</zh_tw>
    */
   zeroToTwentyAndFourSymbols = 8,
   /**
-   * <en>1-100</en>
+   * <en_us>1-100</en_us>
    * <zh_cn>1-100</zh_cn>
    * <zh_tw>1-100</zh_tw>
    */
@@ -260,19 +260,19 @@ class BrickCore extends PokerBase implements IBrickCore {
   };
 
   /**
-   * <en>Array: 1-9 make up ten</en>
+   * <en_us>Array: 1-9 make up ten</en_us>
    * <zh_cn>数组：1-9凑十</zh_cn>
    * <zh_tw>數組：1-9凑十</zh_tw>
    */
   private TENS_ARRAY = "1,1,1,1,2,3,4,5,6,7,8,9".split(",");
   /**
-   * <en>Times of 1-9 make up ten</en>
+   * <en_us>Times of 1-9 make up ten</en_us>
    * <zh_cn>份数：1-9凑十</zh_cn>
    * <zh_tw>份數：1-9凑十</zh_tw>
    */
   private TENS_TIMES = 4;
   /**
-   * <en>Tips of 1-9 make up ten</en>
+   * <en_us>Tips of 1-9 make up ten</en_us>
    * <zh_cn>提示：1-9凑十</zh_cn>
    * <zh_tw>提示：1-9凑十</zh_tw>
    */
@@ -280,45 +280,45 @@ class BrickCore extends PokerBase implements IBrickCore {
     "<div><span><p>&nbsp;10&nbsp;</p><p>=1+9</p><p>=2+8</p><p>=3+7</p><p>=4+6</p><p>=5+5</p><p>&nbsp;</p></span><span><p>&nbsp;20&nbsp;&nbsp;&nbsp;</p><p>=2+9+9</p><p>=3+8+9</p><p>=4+8+8</p><p>=4+7+9</p><p>=5+6+9</p><p>=5+7+8</p></span></div>";
 
   /**
-   * <en>Array: 1-5</en>
+   * <en_us>Array: 1-5</en_us>
    * <zh_cn>数组：1-5</zh_cn>
    * <zh_tw>數組：1-5</zh_tw>
    */
   private ONE_TO_FIVE_ARRAY = "1,2,3,4,5".split(",");
   /**
-   * <en>Times of 1-5</en>
+   * <en_us>Times of 1-5</en_us>
    * <zh_cn>份数：1-5</zh_cn>
    * <zh_tw>份數：1-5</zh_tw>
    */
   private ONE_TO_FIVE_TIMES = 5;
   /**
-   * <en>Tips of 1-5</en>
+   * <en_us>Tips of 1-5</en_us>
    * <zh_cn>提示：1-5</zh_cn>
    * <zh_tw>提示：1-5</zh_tw>
    */
   private ONE_TO_FIVE_CENTER_TEXT = "";
 
   /**
-   * <en>Array: 0-9</en>
+   * <en_us>Array: 0-9</en_us>
    * <zh_cn>数组：0-9</zh_cn>
    * <zh_tw>數組：0-9</zh_tw>
    */
   private ZERO_TO_NINE_ARRAY = "0,1,2,3,4,5,6,7,8,9".split(",");
   /**
-   * <en>Times of 0-9</en>
+   * <en_us>Times of 0-9</en_us>
    * <zh_cn>份数：0-9</zh_cn>
    * <zh_tw>份數：0-9</zh_tw>
    */
   private ZERO_TO_NINE_TIMES = 9;
   /**
-   * <en>Tips of 0-9</en>
+   * <en_us>Tips of 0-9</en_us>
    * <zh_cn>提示：0-9</zh_cn>
    * <zh_tw>提示：0-9</zh_tw>
    */
   private ZERO_TO_NINE_CENTER_TEXT = "";
 
   /**
-   * <en>Array: 0-20+-×÷</en>
+   * <en_us>Array: 0-20+-×÷</en_us>
    * <zh_cn>数组：0-20+-×÷</zh_cn>
    * <zh_tw>數組：0-20+-×÷</zh_tw>
    */
@@ -331,32 +331,32 @@ class BrickCore extends PokerBase implements IBrickCore {
     ],
   );
   /**
-   * <en>Times of 0-20+-×÷</en>
+   * <en_us>Times of 0-20+-×÷</en_us>
    * <zh_cn>份数：0-20+-×÷</zh_cn>
    * <zh_tw>份數：0-20+-×÷</zh_tw>
    */
   private ZERO_TO_TWENTY_AND_FOUR_SYMBOLS_TIMES = 3;
   /**
-   * <en>Tips of 0-20+-×÷</en>
+   * <en_us>Tips of 0-20+-×÷</en_us>
    * <zh_cn>提示：0-20+-×÷</zh_cn>
    * <zh_tw>提示：0-20+-×÷</zh_tw>
    */
   private ZERO_TO_TWENTY_AND_FOUR_SYMBOLS_CENTER_TEXT = "";
 
   /**
-   * <en>Array: 1-100</en>
+   * <en_us>Array: 1-100</en_us>
    * <zh_cn>数组：1-100</zh_cn>
    * <zh_tw>數組：1-100</zh_tw>
    */
   private ONE_TO_HUNDRED_ARRAY = getNumbersArray(1, 100);
   /**
-   * <en>Times of 1-100</en>
+   * <en_us>Times of 1-100</en_us>
    * <zh_cn>份数：1-100</zh_cn>
    * <zh_tw>份數：1-100</zh_tw>
    */
   private ONE_TO_HUNDRED_TIMES = 4;
   /**
-   * <en>Tips of 1-100</en>
+   * <en_us>Tips of 1-100</en_us>
    * <zh_cn>提示：1-100</zh_cn>
    * <zh_tw>提示：1-100</zh_tw>
    */
@@ -368,11 +368,11 @@ class BrickCore extends PokerBase implements IBrickCore {
   ): void => {
     if (pokerKind === 0) pokerKind = DefaultMathPokerKind;
 
-    const en = `${FILENAME_POSTFIX}Math Poker`;
+    const en_us = `${FILENAME_POSTFIX}Math Poker`;
     const zh_cn = `${FILENAME_POSTFIX}数学扑克`;
     const zh_tw = `${FILENAME_POSTFIX}數學撲克`;
 
-    const enBackCover = en.split("_").join("<br />");
+    const enBackCover = en_us.split("_").join("<br />");
     const zh_cnBackCover = zh_cn.split("_").join("<br />");
     const zh_twBackCover = zh_tw.split("_").join("<br />");
 
@@ -382,7 +382,7 @@ class BrickCore extends PokerBase implements IBrickCore {
     const zh_twArray: Array<string> = [];
 
     let backCover = "";
-    let title = { en, zh_cn, zh_tw };
+    let title = { en_us, zh_cn, zh_tw };
     const CENTER_TEXTS: Array<string> = [];
     const BACK_COVERS: Array<string> = [];
     const CHARS: Array<string> = [];
@@ -512,7 +512,7 @@ class BrickCore extends PokerBase implements IBrickCore {
     switch (enArray.length) {
       case 0:
         backCover = getI18nInnerHTML({
-          en: enBackCover,
+          en_us: enBackCover,
           zh_cn: zh_cnBackCover,
           zh_tw: zh_twBackCover,
         });
@@ -523,29 +523,29 @@ class BrickCore extends PokerBase implements IBrickCore {
         const zh_twFirstItem = zh_twArray[0];
 
         backCover = getI18nInnerHTML({
-          en: enBackCover.concat("<br /><br />", enFirstItem),
+          en_us: enBackCover.concat("<br /><br />", enFirstItem),
           zh_cn: zh_cnBackCover.concat("<br /><br />", zh_cnFirstItem),
           zh_tw: zh_twBackCover.concat("<br /><br />", zh_twFirstItem),
         });
 
-        title.en += "_".concat(enFullArray[0]);
+        title.en_us += "_".concat(enFullArray[0]);
         title.zh_cn += "_".concat(zh_cnFirstItem);
         title.zh_tw += "_".concat(zh_twFirstItem);
         break;
       default:
         if (enArray.length === MathPokerKindCount) {
           backCover = getI18nInnerHTML({
-            en: enBackCover,
+            en_us: enBackCover,
             zh_cn: zh_cnBackCover,
             zh_tw: zh_twBackCover,
           });
 
-          title.en += " Mixed_ALL";
+          title.en_us += " Mixed_ALL";
           title.zh_cn += "混合_所有";
           title.zh_tw += "混合_所有";
         } else {
           backCover = getI18nInnerHTML({
-            en: enBackCover.concat(
+            en_us: enBackCover.concat(
               "<br /><br /><small>",
               enArray.join("<br />"),
               "</small>",
@@ -562,7 +562,7 @@ class BrickCore extends PokerBase implements IBrickCore {
             ),
           });
 
-          title.en += " Mixed_".concat(enFullArray.join("_"));
+          title.en_us += " Mixed_".concat(enFullArray.join("_"));
           title.zh_cn += "混合_".concat(zh_cnArray.join("_"));
           title.zh_tw += "混合_".concat(zh_twArray.join("_"));
         }
@@ -618,7 +618,7 @@ class BrickCore extends PokerBase implements IBrickCore {
 
   protected initOtherElements = (): void => {
     let wrapElement = this.getWrapElement({
-      en: "Tens show tips",
+      en_us: "Tens show tips",
       zh_cn: "凑十显示提示",
       zh_tw: "湊十顯示提示",
     });
@@ -634,34 +634,34 @@ class BrickCore extends PokerBase implements IBrickCore {
     // const labelElement = createElement('label') as HTMLLabelElement;
     // wrapElement.appendChild(labelElement);
     // labelElement.innerHTML = getI18nInnerHTML({
-    //   en: '',
+    //   en_us: '',
     //   zh_cn: '',
     //   zh_tw: '',
     // });
 
     const pokerKindI18nHtmlArray = [
       getI18nInnerHTML({
-        en: "1-9 make up ten",
+        en_us: "1-9 make up ten",
         zh_cn: "1-9凑十",
         zh_tw: "1-9凑十",
       }),
       getI18nInnerHTML({
-        en: "1-5",
+        en_us: "1-5",
         zh_cn: "1-5",
         zh_tw: "1-5",
       }),
       getI18nInnerHTML({
-        en: "0-9",
+        en_us: "0-9",
         zh_cn: "0-9",
         zh_tw: "0-9",
       }),
       getI18nInnerHTML({
-        en: "0-20+-×÷",
+        en_us: "0-20+-×÷",
         zh_cn: "0-20+-×÷",
         zh_tw: "0-20+-×÷",
       }),
       getI18nInnerHTML({
-        en: "1-100",
+        en_us: "1-100",
         zh_cn: "1-100",
         zh_tw: "1-100",
       }),
@@ -718,7 +718,7 @@ class BrickCore extends PokerBase implements IBrickCore {
     // const labelElement = createElement('label') as HTMLLabelElement;
     // wrapElement.appendChild(labelElement);
     // labelElement.innerHTML = getI18nInnerHTML({
-    //   en: '',
+    //   en_us: '',
     //   zh_cn: '',
     //   zh_tw: '',
     // });
@@ -726,12 +726,12 @@ class BrickCore extends PokerBase implements IBrickCore {
 
     const i18nHtmlArray = [
       getI18nInnerHTML({
-        en: "Yes",
+        en_us: "Yes",
         zh_cn: "是",
         zh_tw: "是",
       }),
       getI18nInnerHTML({
-        en: "No",
+        en_us: "No",
         zh_cn: "否",
         zh_tw: "否",
       }),
@@ -773,7 +773,7 @@ class BrickCore extends PokerBase implements IBrickCore {
     enFullArray: string[],
     zh_cnArray: string[],
     zh_twArray: string[],
-    en: string,
+    en_us: string,
     zh_cn: string,
     zh_tw: string,
     CENTER_TEXTS: string[],
@@ -789,7 +789,7 @@ class BrickCore extends PokerBase implements IBrickCore {
     zh_twArray.push(zh_twAppend);
 
     let notSameBackCover = getI18nInnerHTML({
-      en: en.concat("<br /><small>", enAppend, "</small>"),
+      en_us: en_us.concat("<br /><small>", enAppend, "</small>"),
       zh_cn: zh_cn.concat("<br />", zh_cnAppend),
       zh_tw: zh_tw.concat("<br />", zh_twAppend),
     });

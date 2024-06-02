@@ -9,7 +9,7 @@
 /// <reference path='../../types/IBrickCore.d.ts' />
 
 /**
- * <en>
+ * <en_us>
  * Function: Generate various dice, such as Platonic regular polyhedron (4, 6, 8, 12, 20) and others (24)
  * Initial construction: Anqi, October 5, 2021
  * History: On November 2, 2022
@@ -18,7 +18,7 @@
  * 						2021-10-05 Anqi P:\0\000007\_Learning\Chinese\Pinyin\Pinyin dice
  * 						https://www.sohu.com/a/273872389_141060(1-15,18,20,30,50,100)
  *            https://www.darlang.com/2017/11/css-media-print-page-print-another-of-style-writing/
- * </en>
+ * </en_us>
  *
  * <zh_cn>
  * 功能：生成各种骰子，如柏拉图正多面体（4面、6面、8面、12面、20面）和其它（24面）

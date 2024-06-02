@@ -4,18 +4,30 @@
 
 class BrickCore extends BrickWithTableBase {
     idOrClassPrefix = 'brickPageMultiplicationTable';
-    constructor(){
+    constructor() {
         super({}, {});
     }
-    countDataAndComputedData = ()=>{
+    countDataAndComputedData = () => {
         this.countDataAndComputedDataInBrickWithTableBase();
-        const { computedData , mmToPxScale  } = this;
-        const { paperSize , isLandscape , maxX: MAX_X , maxY: MAX_Y , pageMarginTop , pageMarginBottom , pageMarginLeft , pageMarginRight  } = this.data;
+        const {
+            computedData,
+            mmToPxScale
+        } = this;
+        const {
+            paperSize,
+            isLandscape,
+            maxX: MAX_X,
+            maxY: MAX_Y,
+            pageMarginTop,
+            pageMarginBottom,
+            pageMarginLeft,
+            pageMarginRight
+        } = this.data;
         const css = `
 		* { margin:0;border:0;padding:0; }
 		* { box-sizing:border-box; }
 
-		/* landscape 横向 portrait 纵向*/ 
+		/* landscape 横向 portrait 纵向*/
 		@media print { @page { size: ${paperSize} ${isLandscape ? 'landscape' : 'portrait'}; margin:${pageMarginTop}mm ${pageMarginRight}mm ${pageMarginBottom}mm ${pageMarginLeft}mm; } }
 		page:not(page:last-child){page-break-after:always;}
 
@@ -24,7 +36,7 @@ class BrickCore extends BrickWithTableBase {
 		/* page { height:${MAX_Y}mm; } */
 		page { width:${MAX_X}mm;margin-left:${pageMarginLeft}mm;margin-top:${pageMarginTop}mm; }
 		/* [edu-mirror="horizonal"] svg text{transform:rotateY(180deg);} */
-		
+
     /* black/red/orange/yellow/green/Cyan/blue/purple/pink/Light green */
     /* 黑/红/橙/黄/绿/青/蓝/紫/粉/淡绿/	*/
     /* 黑/紅/橙/黃/綠/青/藍/紫/粉/淡綠/	*/
@@ -40,40 +52,48 @@ class BrickCore extends BrickWithTableBase {
     [edu-color="10"]{color:#6B8E23;}
 		`;
         computedData.css = css;
-        const { formatCentile  } = this;
+        const {
+            formatCentile
+        } = this;
         const list = [];
-        JSON.parse(JSON.stringify(this.data.list)).forEach((item)=>{
+        JSON.parse(JSON.stringify(this.data.list)).forEach((item) => {
             list.push(item);
         });
-        list.forEach((item)=>item.length = formatCentile(item.length));
+        list.forEach((item) => item.length = formatCentile(item.length));
         const elementList = [];
         const latticeKindArray = [
             'vertical',
             'horizontal'
         ];
-        list.filter(({ kind  })=>latticeKindArray.indexOf(kind) > -1).forEach((item)=>this.getLatticeOutSvgList(item, MAX_X, MAX_Y, mmToPxScale).forEach((element)=>{
-                elementList.push(element);
-            }));
-        const { getAutomaticPaginationHtmlFromChildList  } = this;
+        list.filter(({
+            kind
+        }) => latticeKindArray.indexOf(kind) > -1).forEach((item) => this.getLatticeOutSvgList(item, MAX_X, MAX_Y, mmToPxScale).forEach((element) => {
+            elementList.push(element);
+        }));
+        const {
+            getAutomaticPaginationHtmlFromChildList
+        } = this;
         const latticeHtml = getAutomaticPaginationHtmlFromChildList(elementList.splice(0, elementList.length / 2), MAX_X, MAX_Y);
         const latticeHtmlMirror = getAutomaticPaginationHtmlFromChildList(elementList, MAX_X, MAX_Y).replace(/<page>/g, '<page style="flex-direction:row-reverse;">');
         elementList.length = 0;
-        list.filter(({ kind  })=>latticeKindArray.indexOf(kind) === -1).forEach((item)=>this.getPokerSvgList(item, MAX_X, MAX_Y, mmToPxScale).forEach((element)=>{
-                elementList.push(element);
-            }));
+        list.filter(({
+            kind
+        }) => latticeKindArray.indexOf(kind) === -1).forEach((item) => this.getPokerSvgList(item, MAX_X, MAX_Y, mmToPxScale).forEach((element) => {
+            elementList.push(element);
+        }));
         const pokerHtml = getAutomaticPaginationHtmlFromChildList(elementList, MAX_X, MAX_Y);
         computedData.html = latticeHtml.concat(latticeHtmlMirror, pokerHtml, pokerHtml.replace(/<page>/g, '<page style="flex-direction:row-reverse;">'));
-        const en = `${FILENAME_POSTFIX}multiplicationtable`;
+        const en_us = `${FILENAME_POSTFIX}multiplicationtable`;
         const zh_cn = `${FILENAME_POSTFIX}乘法口诀表`;
         const zh_tw = `${FILENAME_POSTFIX}乘法口訣表`;
         computedData.title = {
-            en,
+            en_us,
             zh_cn,
             zh_tw
         };
     };
-    getElementList = (item, mmToPxScale, PAPER_WIDTH, PAPER_HEIGHT)=>{
-        switch(item.kind){
+    getElementList = (item, mmToPxScale, PAPER_WIDTH, PAPER_HEIGHT) => {
+        switch (item.kind) {
             case 'vertical':
             case 'horizontal':
                 return this.getLatticeOutSvgList(item, PAPER_WIDTH, PAPER_HEIGHT, mmToPxScale);
@@ -86,11 +106,27 @@ class BrickCore extends BrickWithTableBase {
                 return [];
         }
     };
-    getPokerSvgList = (item, PAPER_WIDTH, PAPER_HEIGHT, mmToPxScale)=>{
+    getPokerSvgList = (item, PAPER_WIDTH, PAPER_HEIGHT, mmToPxScale) => {
         const list = [];
-        const { createSvg , createSvgPath , appendText , getTextStyleFontSizePatchCss  } = svgSpace.edu.sonya.cc.SvgHelper;
-        const { formatMillimeter  } = this;
-        const { length: width , scope , kind , pokerIncludeZero , copies , innerLineStyle , outerLineStyle , textStyle  } = item;
+        const {
+            createSvg,
+            createSvgPath,
+            appendText,
+            getTextStyleFontSizePatchCss
+        } = svgSpace.edu.sonya.cc.SvgHelper;
+        const {
+            formatMillimeter
+        } = this;
+        const {
+            length: width,
+            scope,
+            kind,
+            pokerIncludeZero,
+            copies,
+            innerLineStyle,
+            outerLineStyle,
+            textStyle
+        } = item;
         const stroke = innerLineStyle.indexOf('stroke:') ? innerLineStyle.split('stroke:')[1].split(';')[0] : '#888';
         const height = formatMillimeter(width * 1.414);
         const WIDTH_PX = formatMillimeter(width * mmToPxScale);
@@ -119,9 +155,9 @@ class BrickCore extends BrickWithTableBase {
         const contents = [];
         const MIN = pokerIncludeZero ? 0 : 1;
         const MAX = scope === 'chinese' ? 9 : scope === 'west' ? 12 : 19;
-        for(let i = MIN; i <= MAX; ++i){
+        for (let i = MIN; i <= MAX; ++i) {
             const iStr = isChinese ? chars[i] : i.toString();
-            for(let j = isFull ? MIN : i; j <= MAX; ++j){
+            for (let j = isFull ? MIN : i; j <= MAX; ++j) {
                 const product = i * j;
                 let jStr = '';
                 let productStr = '';
@@ -171,8 +207,8 @@ class BrickCore extends BrickWithTableBase {
             'fill:#FF00FF;'
         ];
         const fontSize = !isChinese || textStyle.indexOf('font-size:') === -1 ? 0 : parseFloat(textStyle.split('font-size:')[1].split('mm;')[0]);
-        for(let copyLoop = 0; copyLoop < copies; ++copyLoop){
-            contents.forEach((content, index)=>{
+        for (let copyLoop = 0; copyLoop < copies; ++copyLoop) {
+            contents.forEach((content, index) => {
                 const svg = createSvg();
                 const contentRowCount = content.split('<br/>').length - 1;
                 this.appendSvgPath(createSvgPath, stroke, RADIUS_PX, WIDTH_SUBTRACT_DIAMETER_PX, HEIGHT_SUBTRACT_DIAMETER_PX, svg);
@@ -187,7 +223,7 @@ class BrickCore extends BrickWithTableBase {
         const pokerCountHasNumber = contents.length * copies;
         const totalCount = Math.ceil(pokerCountHasNumber / COUNT_PER_PAGE) * COUNT_PER_PAGE;
         const emptyCount = totalCount - pokerCountHasNumber;
-        for(let i1 = 0; i1 < emptyCount; ++i1){
+        for (let i1 = 0; i1 < emptyCount; ++i1) {
             const svg = createSvg();
             this.appendSvgPath(createSvgPath, stroke, RADIUS_PX, WIDTH_SUBTRACT_DIAMETER_PX, HEIGHT_SUBTRACT_DIAMETER_PX, svg);
             svg.setAttribute('width', `${width}mm`);
@@ -196,18 +232,33 @@ class BrickCore extends BrickWithTableBase {
         }
         return list;
     };
-    getLatticeOutSvgList = (item, PAPER_WIDTH, PAPER_HEIGHT, mmToPxScale)=>{
+    getLatticeOutSvgList = (item, PAPER_WIDTH, PAPER_HEIGHT, mmToPxScale) => {
         const list = [];
-        const { createSvg , createSvgPath , appendText , getTextStyleFontSizePatchCss  } = svgSpace.edu.sonya.cc.SvgHelper;
-        const { formatMillimeter  } = this;
-        const { length: SIDE_LENGTH , kind , scope , copies , innerLineStyle , outerLineStyle , textStyle  } = item;
+        const {
+            createSvg,
+            createSvgPath,
+            appendText,
+            getTextStyleFontSizePatchCss
+        } = svgSpace.edu.sonya.cc.SvgHelper;
+        const {
+            formatMillimeter
+        } = this;
+        const {
+            length: SIDE_LENGTH,
+            kind,
+            scope,
+            copies,
+            innerLineStyle,
+            outerLineStyle,
+            textStyle
+        } = item;
         const isVertical = kind === 'vertical';
         const COL_COUNT = Math.floor(PAPER_WIDTH / SIDE_LENGTH);
         const ROW_COUNT = Math.floor(PAPER_HEIGHT / SIDE_LENGTH);
         const NUMBER_SERIES = [];
         const OTHER_NUMBER_SERIES = [];
         let maxNumber = 9;
-        switch(scope){
+        switch (scope) {
             case 'chinese':
                 this.fillChineseNumberSeries(ROW_COUNT, NUMBER_SERIES, OTHER_NUMBER_SERIES);
                 break;
@@ -224,9 +275,9 @@ class BrickCore extends BrickWithTableBase {
         }
         const NORMAL_NUMBERS = [];
         const OTHER_NUMBERS = [];
-        NUMBER_SERIES.forEach((series)=>{
-            for(let digit = maxNumber; digit > 0; --digit){
-                for(let copyLoop = 0; copyLoop < copies; ++copyLoop){
+        NUMBER_SERIES.forEach((series) => {
+            for (let digit = maxNumber; digit > 0; --digit) {
+                for (let copyLoop = 0; copyLoop < copies; ++copyLoop) {
                     NORMAL_NUMBERS.push({
                         digit,
                         series
@@ -234,9 +285,9 @@ class BrickCore extends BrickWithTableBase {
                 }
             }
         });
-        OTHER_NUMBER_SERIES.forEach((rowCount)=>{
-            for(let digit = maxNumber; digit > 0; --digit){
-                for(let copyLoop = 0; copyLoop < copies; ++copyLoop){
+        OTHER_NUMBER_SERIES.forEach((rowCount) => {
+            for (let digit = maxNumber; digit > 0; --digit) {
+                for (let copyLoop = 0; copyLoop < copies; ++copyLoop) {
                     OTHER_NUMBERS.push({
                         digit,
                         rowCount
@@ -247,7 +298,7 @@ class BrickCore extends BrickWithTableBase {
         const pages = [];
         const outerLineStroke = outerLineStyle.indexOf('stroke:') ? outerLineStyle.split('stroke:')[1].split(';')[0] : '#888';
         if (NORMAL_NUMBERS) {
-            while(true){
+            while (true) {
                 const currentPage = {
                     mainWrapper: createElement('div'),
                     mainWrapperColCount: 0,
@@ -265,10 +316,12 @@ class BrickCore extends BrickWithTableBase {
                 this.appendNormalNumbersToPage(SIDE_LENGTH, firstItem, currentPage, innerLineStyle, outerLineStroke, textStyle, mmToPxScale, isVertical);
                 let remainingColCount = COL_COUNT - currentPage.mainWrapperColCount;
                 let searchMax = Math.min(maxNumber, remainingColCount);
-                while(remainingColCount > 0){
+                while (remainingColCount > 0) {
                     let find = false;
-                    for(let findNum = searchMax; findNum > 0; --findNum){
-                        const filterResult = NORMAL_NUMBERS.filter(({ digit  })=>digit === findNum);
+                    for (let findNum = searchMax; findNum > 0; --findNum) {
+                        const filterResult = NORMAL_NUMBERS.filter(({
+                            digit
+                        }) => digit === findNum);
                         if (filterResult.length) {
                             const nextItem = filterResult[0];
                             this.appendNormalNumbersToPage(SIDE_LENGTH, nextItem, currentPage, innerLineStyle, outerLineStroke, textStyle, mmToPxScale, isVertical);
@@ -297,7 +350,7 @@ class BrickCore extends BrickWithTableBase {
                 this.appendOtherNumbers(SIDE_LENGTH, ROW_COUNT, OTHER_NUMBERS, lastPage, innerLineStyle, outerLineStroke, textStyle, mmToPxScale, maxNumber, remainingColCount1, true, isVertical);
             }
         }
-        while(OTHER_NUMBERS.length){
+        while (OTHER_NUMBERS.length) {
             const lastPage1 = {
                 mainWrapper: createElement('div'),
                 mainWrapperColCount: 0,
@@ -315,8 +368,14 @@ class BrickCore extends BrickWithTableBase {
         }
         const cssHeight = `${SIDE_LENGTH * ROW_COUNT}mm`;
         const cssFlex = 'display:flex;flex-wrap:wrap;';
-        pages.forEach((page)=>{
-            const { mainWrapper , mainWrapperColCount , otherWrapper , mainWrapperMirror , otherWrapperMirror  } = page;
+        pages.forEach((page) => {
+            const {
+                mainWrapper,
+                mainWrapperColCount,
+                otherWrapper,
+                mainWrapperMirror,
+                otherWrapperMirror
+            } = page;
             const otherWrapperColCount = COL_COUNT - mainWrapperColCount;
             page.otherWrapperColCount = otherWrapperColCount;
             const mainWrapperCss = `width:${SIDE_LENGTH * mainWrapperColCount}mm;height:${cssHeight};${cssFlex}`;
@@ -331,31 +390,39 @@ class BrickCore extends BrickWithTableBase {
             }
         });
         console.log('first list.length:', list.length);
-        pages.forEach(({ mainWrapperMirror , otherWrapperMirror , otherWrapperColCount  })=>{
+        pages.forEach(({
+            mainWrapperMirror,
+            otherWrapperMirror,
+            otherWrapperColCount
+        }) => {
             list.push(mainWrapperMirror);
             if (otherWrapperColCount) list.push(otherWrapperMirror);
         });
         console.log('second list.length:', list.length);
         return list;
     };
-    appendOtherNumbers = (SIDE_LENGTH, ROW_COUNT, OTHER_NUMBERS, currentPage, innerLineStyle, stroke, textStyle, mmToPxScale, maxNumber, remainingColCount, isOtherWrapper, isVertical)=>{
+    appendOtherNumbers = (SIDE_LENGTH, ROW_COUNT, OTHER_NUMBERS, currentPage, innerLineStyle, stroke, textStyle, mmToPxScale, maxNumber, remainingColCount, isOtherWrapper, isVertical) => {
         const list = [];
-        OTHER_NUMBERS.forEach((item)=>list.push(item));
-        list.sort((prev, next)=>next.rowCount * 100 + next.digit - (prev.rowCount * 100 + prev.digit));
+        OTHER_NUMBERS.forEach((item) => list.push(item));
+        list.sort((prev, next) => next.rowCount * 100 + next.digit - (prev.rowCount * 100 + prev.digit));
         const colCountArray = [];
-        list.forEach(({ rowCount  })=>{
+        list.forEach(({
+            rowCount
+        }) => {
             if (colCountArray.indexOf(rowCount) === -1) colCountArray.push(rowCount);
         });
         let fixedMaxNumber = maxNumber === 9 ? 10 : maxNumber;
         let searchMax = Math.min(fixedMaxNumber, remainingColCount);
         const subWrapperHeight = SIDE_LENGTH * ROW_COUNT;
         const colCountCount = colCountArray.length;
-        while(remainingColCount > 0){
+        while (remainingColCount > 0) {
             let find = false;
-            for(let i = 0; i < colCountCount; ++i){
+            for (let i = 0; i < colCountCount; ++i) {
                 const findNum = colCountArray[i];
                 if (findNum > searchMax) continue;
-                const filterResult = list.filter(({ rowCount  })=>rowCount === findNum);
+                const filterResult = list.filter(({
+                    rowCount
+                }) => rowCount === findNum);
                 if (filterResult.length) {
                     find = true;
                     const firstItem = filterResult[0];
@@ -400,14 +467,18 @@ class BrickCore extends BrickWithTableBase {
     fillHorizontalSubWrapper(subWrapperRemainRow, maxColCount, list, OTHER_NUMBERS, SIDE_LENGTH, subWrapper, subWrapperMirror, innerLineStyle, stroke, textStyle, mmToPxScale, colCountArray, isVertical) {
         if (subWrapperRemainRow === 0) return;
         const colCountCount = colCountArray.length;
-        for(let i = 0; i < colCountCount; ++i){
+        for (let i = 0; i < colCountCount; ++i) {
             const searchRowCount = colCountArray[i];
             if (searchRowCount > maxColCount) continue;
-            const others = list.filter(({ rowCount  })=>rowCount === searchRowCount);
+            const others = list.filter(({
+                rowCount
+            }) => rowCount === searchRowCount);
             const count = others.length;
-            for(let i1 = 0; i1 < count; ++i1){
+            for (let i1 = 0; i1 < count; ++i1) {
                 const item = others[i1];
-                const { digit  } = item;
+                const {
+                    digit
+                } = item;
                 if (subWrapperRemainRow >= digit) {
                     OTHER_NUMBERS.splice(OTHER_NUMBERS.indexOf(item), 1);
                     list.splice(list.indexOf(item), 1);
@@ -418,14 +489,25 @@ class BrickCore extends BrickWithTableBase {
             }
         }
     }
-    appendOtherNumberItem = (SIDE_LENGTH, item, subWrapper, subWrapperMirror, innerLineStyle, stroke, textStyle, mmToPxScale, isVertical)=>{
-        const { createSvg , createSvgPath , appendLine , appendText , getTextStyleFontSizePatchCss  } = svgSpace.edu.sonya.cc.SvgHelper;
-        const { formatMillimeter  } = this;
+    appendOtherNumberItem = (SIDE_LENGTH, item, subWrapper, subWrapperMirror, innerLineStyle, stroke, textStyle, mmToPxScale, isVertical) => {
+        const {
+            createSvg,
+            createSvgPath,
+            appendLine,
+            appendText,
+            getTextStyleFontSizePatchCss
+        } = svgSpace.edu.sonya.cc.SvgHelper;
+        const {
+            formatMillimeter
+        } = this;
         const svg = createSvg();
         subWrapper.appendChild(svg);
         const svgMirror = createSvg();
         subWrapperMirror.appendChild(svgMirror);
-        const { digit , rowCount: trueColCount  } = item;
+        const {
+            digit,
+            rowCount: trueColCount
+        } = item;
         const digitCss = this.textFillStyleArray[(digit - 1) % 10];
         const RADIUS_PX = formatMillimeter(SIDE_LENGTH * 0.2 * mmToPxScale);
         const DIAMETER_PX = RADIUS_PX * 2;
@@ -443,21 +525,21 @@ class BrickCore extends BrickWithTableBase {
         svgMirror.setAttribute('height', mmSvgHeight);
         this.appendSvgPath(createSvgPath, stroke, RADIUS_PX, WIDTH_SUBTRACT_DIAMETER_PX, HEIGHT_SUBTRACT_DIAMETER_PX, svg);
         this.appendSvgPath(createSvgPath, stroke, RADIUS_PX, WIDTH_SUBTRACT_DIAMETER_PX, HEIGHT_SUBTRACT_DIAMETER_PX, svgMirror);
-        for(let colIndex = 1; colIndex < trueColCount; ++colIndex){
+        for (let colIndex = 1; colIndex < trueColCount; ++colIndex) {
             const X = SIDE_LENGTH * colIndex;
             appendLine(svg, innerLineStyle, X, X, 0, height, null);
             appendLine(svgMirror, innerLineStyle, X, X, 0, height, null);
         }
-        for(let rowIndex = 1; rowIndex < digit; ++rowIndex){
+        for (let rowIndex = 1; rowIndex < digit; ++rowIndex) {
             const Y = height - SIDE_LENGTH * rowIndex;
             appendLine(svg, innerLineStyle, 0, width, Y, Y, null);
             appendLine(svgMirror, innerLineStyle, 0, width, Y, Y, null);
         }
         const textXOrY = SIDE_LENGTH * 0.5;
         const mmSubSvgWidthOrHeight = `${SIDE_LENGTH}mm`;
-        for(let colIndex1 = 0; colIndex1 < trueColCount; ++colIndex1){
+        for (let colIndex1 = 0; colIndex1 < trueColCount; ++colIndex1) {
             const mmX = `${SIDE_LENGTH * colIndex1}mm`;
-            for(let rowIndex1 = 0; rowIndex1 < digit; ++rowIndex1){
+            for (let rowIndex1 = 0; rowIndex1 < digit; ++rowIndex1) {
                 const mmY = `${height - SIDE_LENGTH * rowIndex1 - SIDE_LENGTH}mm`;
                 const subSvg = createSvg();
                 svg.appendChild(subSvg);
@@ -499,17 +581,31 @@ class BrickCore extends BrickWithTableBase {
         'fill:#F19EC2;',
         'fill:#6B8E23;'
     ];
-    appendNormalNumbersToPage = (SIDE_LENGTH, { digit , series  }, currentPage, innerLineStyle, stroke, textStyle, mmToPxScale, isVertical)=>{
+    appendNormalNumbersToPage = (SIDE_LENGTH, {
+        digit,
+        series
+    }, currentPage, innerLineStyle, stroke, textStyle, mmToPxScale, isVertical) => {
         currentPage.mainWrapperColCount += digit;
         const digitCss = this.textFillStyleArray[(digit - 1) % 10];
-        const { createSvg , createSvgPath , appendLine , appendText , getTextStyleFontSizePatchCss  } = svgSpace.edu.sonya.cc.SvgHelper;
-        const { formatMillimeter  } = this;
+        const {
+            createSvg,
+            createSvgPath,
+            appendLine,
+            appendText,
+            getTextStyleFontSizePatchCss
+        } = svgSpace.edu.sonya.cc.SvgHelper;
+        const {
+            formatMillimeter
+        } = this;
         const width = SIDE_LENGTH * digit;
         const WIDTH_PX = formatMillimeter(width * mmToPxScale);
         const RADIUS_PX = formatMillimeter(SIDE_LENGTH * 0.2 * mmToPxScale);
         const DIAMETER_PX = RADIUS_PX * 2;
         const WIDTH_SUBTRACT_DIAMETER_PX = WIDTH_PX - DIAMETER_PX;
-        const { mainWrapper , mainWrapperMirror  } = currentPage;
+        const {
+            mainWrapper,
+            mainWrapperMirror
+        } = currentPage;
         const mainWrapperSub = createElement('div');
         mainWrapper.appendChild(mainWrapperSub);
         const mainWrapperSubMirror = createElement('div');
@@ -517,7 +613,7 @@ class BrickCore extends BrickWithTableBase {
         const css = 'display:flex;flex-direction:column;';
         mainWrapperSub.setAttribute('style', css);
         mainWrapperSubMirror.setAttribute('style', css);
-        series.forEach((rowCount)=>{
+        series.forEach((rowCount) => {
             const height = SIDE_LENGTH * rowCount;
             const HEIGHT_PX = formatMillimeter(height * mmToPxScale);
             const HEIGHT_SUBTRACT_DIAMETER_PX = HEIGHT_PX - DIAMETER_PX;
@@ -532,22 +628,22 @@ class BrickCore extends BrickWithTableBase {
             svgMirror.setAttribute('width', mmWidth);
             svgMirror.setAttribute('height', mmHeight);
             this.appendSvgPath(createSvgPath, stroke, RADIUS_PX, WIDTH_SUBTRACT_DIAMETER_PX, HEIGHT_SUBTRACT_DIAMETER_PX, svg);
-            for(let colIndex = 1; colIndex < digit; ++colIndex){
+            for (let colIndex = 1; colIndex < digit; ++colIndex) {
                 const X = SIDE_LENGTH * colIndex;
                 appendLine(svg, innerLineStyle, X, X, 0, height, null);
                 appendLine(svgMirror, innerLineStyle, X, X, 0, height, null);
             }
-            for(let rowIndex = 1; rowIndex < rowCount; ++rowIndex){
+            for (let rowIndex = 1; rowIndex < rowCount; ++rowIndex) {
                 const lineY = height - SIDE_LENGTH * rowIndex;
                 appendLine(svg, innerLineStyle, 0, width, lineY, lineY, null);
                 appendLine(svgMirror, innerLineStyle, 0, width, lineY, lineY, null);
             }
             const mmSubSvgWidthOrHeight = `${SIDE_LENGTH}mm`;
             const textXOrY = SIDE_LENGTH * 0.5;
-            for(let rowIndex1 = 0; rowIndex1 < rowCount; ++rowIndex1){
+            for (let rowIndex1 = 0; rowIndex1 < rowCount; ++rowIndex1) {
                 const mmY = `${height - SIDE_LENGTH * rowIndex1 - SIDE_LENGTH}mm`;
                 const numberOffset = digit * (isVertical ? rowCount - rowIndex1 - 1 : rowIndex1);
-                for(let colIndex1 = 0; colIndex1 < digit; ++colIndex1){
+                for (let colIndex1 = 0; colIndex1 < digit; ++colIndex1) {
                     const mmX = `${SIDE_LENGTH * colIndex1}mm`;
                     const subSvg = createSvg();
                     svg.appendChild(subSvg);
@@ -577,11 +673,10 @@ class BrickCore extends BrickWithTableBase {
             }
         });
     };
-    kindTableColumnInfo = [
-        {
+    kindTableColumnInfo = [{
             value: 'numberPoker',
             captions: {
-                en: 'Number Poker',
+                en_us: 'Number Poker',
                 zh_cn: '数字扑克',
                 zh_tw: '數位撲克'
             }
@@ -589,7 +684,7 @@ class BrickCore extends BrickWithTableBase {
         {
             value: 'chinesePoker',
             captions: {
-                en: 'Chinese Poker',
+                en_us: 'Chinese Poker',
                 zh_cn: '汉字扑克',
                 zh_tw: '漢字撲克'
             }
@@ -597,7 +692,7 @@ class BrickCore extends BrickWithTableBase {
         {
             value: 'numberPokerFull',
             captions: {
-                en: 'Number Poker Full',
+                en_us: 'Number Poker Full',
                 zh_cn: '完整数字扑克',
                 zh_tw: '完整數位撲克'
             }
@@ -605,7 +700,7 @@ class BrickCore extends BrickWithTableBase {
         {
             value: 'chinesePokerFull',
             captions: {
-                en: 'Chinese Poker Full',
+                en_us: 'Chinese Poker Full',
                 zh_cn: '完整汉字扑克',
                 zh_tw: '完整漢字撲克'
             }
@@ -613,7 +708,7 @@ class BrickCore extends BrickWithTableBase {
         {
             value: 'vertical',
             captions: {
-                en: 'Vertical',
+                en_us: 'Vertical',
                 zh_cn: '竖格',
                 zh_tw: '豎格'
             }
@@ -621,17 +716,16 @@ class BrickCore extends BrickWithTableBase {
         {
             value: 'horizontal',
             captions: {
-                en: 'Horizontal',
+                en_us: 'Horizontal',
                 zh_cn: '横格',
                 zh_tw: '橫格'
             }
         }
     ];
-    scopeTableColumnInfo = [
-        {
+    scopeTableColumnInfo = [{
             value: 'chinese',
             captions: {
-                en: 'Chinese',
+                en_us: 'Chinese',
                 zh_cn: '中式9×9',
                 zh_tw: '中式9×9'
             }
@@ -639,7 +733,7 @@ class BrickCore extends BrickWithTableBase {
         {
             value: 'west',
             captions: {
-                en: 'West',
+                en_us: 'West',
                 zh_cn: '西式12×12',
                 zh_tw: '西式12×12'
             }
@@ -647,15 +741,26 @@ class BrickCore extends BrickWithTableBase {
         {
             value: 'india',
             captions: {
-                en: 'India',
+                en_us: 'India',
                 zh_cn: '印式19×19',
                 zh_tw: '印式19×19'
             }
         }
     ];
-    createTableBodyRow = (item)=>{
-        const { length , scope , kind , pokerIncludeZero , copies , innerLineStyle , outerLineStyle , textStyle  } = item;
-        const { tableBodyElement  } = this;
+    createTableBodyRow = (item) => {
+        const {
+            length,
+            scope,
+            kind,
+            pokerIncludeZero,
+            copies,
+            innerLineStyle,
+            outerLineStyle,
+            textStyle
+        } = item;
+        const {
+            tableBodyElement
+        } = this;
         const tr = createElement('tr');
         tableBodyElement.appendChild(tr);
         this.appendOperationTd(tr, item);
@@ -668,61 +773,68 @@ class BrickCore extends BrickWithTableBase {
         this.appendTextareaTd(tr, outerLineStyle, item, 'outerLineStyle', 'string');
         this.appendTextareaTd(tr, textStyle, item, 'textStyle', 'string');
     };
-    initTableHead = ()=>{
+    initTableHead = () => {
         this.appendTableHeadCell({
-            en: 'Length',
+            en_us: 'Length',
             zh_cn: '边长',
             zh_tw: '邊長'
         });
         this.appendTableHeadCell({
-            en: 'Scope',
+            en_us: 'Scope',
             zh_cn: '范围',
             zh_tw: '範圍'
         });
         this.appendTableHeadCell({
-            en: 'Kind',
+            en_us: 'Kind',
             zh_cn: '类型',
             zh_tw: '類型'
         });
         this.appendTableHeadCell({
-            en: 'Poker Include Zero',
+            en_us: 'Poker Include Zero',
             zh_cn: '扑克带零',
             zh_tw: '撲克帶零'
         });
         this.appendTableHeadCell({
-            en: 'Copies',
+            en_us: 'Copies',
             zh_cn: '份数',
             zh_tw: '份數'
         });
         this.appendTableHeadCell({
-            en: 'Inner Line Style',
+            en_us: 'Inner Line Style',
             zh_cn: '内部线样式',
             zh_tw: '內部線樣式'
         });
         this.appendTableHeadCell({
-            en: 'Outer Line Style',
+            en_us: 'Outer Line Style',
             zh_cn: '外边线样式',
             zh_tw: '外邊線樣式'
         });
         this.appendTableHeadCell({
-            en: 'Text Style',
+            en_us: 'Text Style',
             zh_cn: '文本样式',
             zh_tw: '文字樣式'
         });
     };
-    getUsableList = ()=>{
+    getUsableList = () => {
         const innerLineStyle = 'stroke:#888;stroke-width:0.1mm;stroke-dasharray:3 2;';
         const outerLineStyle = 'stroke:#000;stroke-width:0.2mm;';
         const textStyle = 'font-size:6mm;';
         const textStyleOfNumberPoker = 'font-size:7.5mm;';
         const textStyleOfChinesePoker = 'font-size:6.5mm;';
-        const kinds = this.kindTableColumnInfo.map(({ value  })=>value);
-        const kindI18n = this.kindTableColumnInfo.map(({ captions  })=>captions);
+        const kinds = this.kindTableColumnInfo.map(({
+            value
+        }) => value);
+        const kindI18n = this.kindTableColumnInfo.map(({
+            captions
+        }) => captions);
         const usableList = [];
-        this.scopeTableColumnInfo.forEach(({ value , captions  })=>{
+        this.scopeTableColumnInfo.forEach(({
+            value,
+            captions
+        }) => {
             const scope = value;
             const buttonList = [];
-            kinds.forEach((kind, index)=>{
+            kinds.forEach((kind, index) => {
                 buttonList.push({
                     nameI18n: kindI18n[index],
                     info: {
@@ -753,7 +865,7 @@ class BrickCore extends BrickWithTableBase {
         svg.appendChild(path);
     }
     fillIndiaNumberSeries(ROW_COUNT, NUMBER_SERIES, OTHER_NUMBER_SERIES) {
-        switch(ROW_COUNT){
+        switch (ROW_COUNT) {
             case 29:
                 NUMBER_SERIES.push([
                     19,
@@ -787,7 +899,7 @@ class BrickCore extends BrickWithTableBase {
                     3,
                     2,
                     1
-                ].forEach((number)=>OTHER_NUMBER_SERIES.push(number));
+                ].forEach((number) => OTHER_NUMBER_SERIES.push(number));
                 break;
             case 28:
                 NUMBER_SERIES.push([
@@ -861,7 +973,7 @@ class BrickCore extends BrickWithTableBase {
                 ]);
                 [
                     1
-                ].forEach((number)=>OTHER_NUMBER_SERIES.push(number));
+                ].forEach((number) => OTHER_NUMBER_SERIES.push(number));
                 break;
             case 26:
                 NUMBER_SERIES.push([
@@ -898,7 +1010,7 @@ class BrickCore extends BrickWithTableBase {
                     4,
                     3,
                     1
-                ].forEach((number)=>OTHER_NUMBER_SERIES.push(number));
+                ].forEach((number) => OTHER_NUMBER_SERIES.push(number));
                 break;
             case 25:
                 NUMBER_SERIES.push([
@@ -1016,7 +1128,7 @@ class BrickCore extends BrickWithTableBase {
                     3,
                     2,
                     1
-                ].forEach((number)=>OTHER_NUMBER_SERIES.push(number));
+                ].forEach((number) => OTHER_NUMBER_SERIES.push(number));
                 break;
             case 22:
                 NUMBER_SERIES.push([
@@ -1055,7 +1167,7 @@ class BrickCore extends BrickWithTableBase {
                     11,
                     2,
                     1
-                ].forEach((number)=>OTHER_NUMBER_SERIES.push(number));
+                ].forEach((number) => OTHER_NUMBER_SERIES.push(number));
                 break;
             case 21:
                 NUMBER_SERIES.push([
@@ -1096,7 +1208,7 @@ class BrickCore extends BrickWithTableBase {
                 ]);
                 [
                     1
-                ].forEach((number)=>OTHER_NUMBER_SERIES.push(number));
+                ].forEach((number) => OTHER_NUMBER_SERIES.push(number));
                 break;
             case 20:
                 NUMBER_SERIES.push([
@@ -1137,7 +1249,7 @@ class BrickCore extends BrickWithTableBase {
                 ]);
                 [
                     10
-                ].forEach((number)=>OTHER_NUMBER_SERIES.push(number));
+                ].forEach((number) => OTHER_NUMBER_SERIES.push(number));
                 break;
             case 19:
                 NUMBER_SERIES.push([
@@ -1185,7 +1297,7 @@ class BrickCore extends BrickWithTableBase {
         }
     }
     fillWestNumberSeries(ROW_COUNT, NUMBER_SERIES, OTHER_NUMBER_SERIES) {
-        switch(ROW_COUNT){
+        switch (ROW_COUNT) {
             case 29:
                 NUMBER_SERIES.push([
                     12,
@@ -1294,7 +1406,7 @@ class BrickCore extends BrickWithTableBase {
                 ]);
                 [
                     3
-                ].forEach((number)=>OTHER_NUMBER_SERIES.push(number));
+                ].forEach((number) => OTHER_NUMBER_SERIES.push(number));
                 break;
             case 24:
                 NUMBER_SERIES.push([
@@ -1316,7 +1428,7 @@ class BrickCore extends BrickWithTableBase {
                 [
                     2,
                     4
-                ].forEach((number)=>OTHER_NUMBER_SERIES.push(number));
+                ].forEach((number) => OTHER_NUMBER_SERIES.push(number));
                 break;
             case 23:
                 NUMBER_SERIES.push([
@@ -1441,7 +1553,7 @@ class BrickCore extends BrickWithTableBase {
                 ]);
                 [
                     2
-                ].forEach((number)=>OTHER_NUMBER_SERIES.push(number));
+                ].forEach((number) => OTHER_NUMBER_SERIES.push(number));
                 break;
             case 18:
                 NUMBER_SERIES.push([
@@ -1465,7 +1577,7 @@ class BrickCore extends BrickWithTableBase {
                     3,
                     2,
                     1
-                ].forEach((number)=>OTHER_NUMBER_SERIES.push(number));
+                ].forEach((number) => OTHER_NUMBER_SERIES.push(number));
                 break;
             case 17:
                 NUMBER_SERIES.push([
@@ -1489,7 +1601,7 @@ class BrickCore extends BrickWithTableBase {
                     3,
                     2,
                     1
-                ].forEach((number)=>OTHER_NUMBER_SERIES.push(number));
+                ].forEach((number) => OTHER_NUMBER_SERIES.push(number));
                 break;
             case 16:
                 NUMBER_SERIES.push([
@@ -1521,7 +1633,7 @@ class BrickCore extends BrickWithTableBase {
         }
     }
     fillChineseNumberSeries(ROW_COUNT, NUMBER_SERIES, OTHER_NUMBER_SERIES) {
-        switch(ROW_COUNT){
+        switch (ROW_COUNT) {
             case 29:
                 NUMBER_SERIES.push([
                     10,
@@ -1573,7 +1685,7 @@ class BrickCore extends BrickWithTableBase {
                 ]);
                 [
                     1
-                ].forEach((number)=>OTHER_NUMBER_SERIES.push(number));
+                ].forEach((number) => OTHER_NUMBER_SERIES.push(number));
                 break;
             case 26:
                 NUMBER_SERIES.push([
@@ -1591,7 +1703,7 @@ class BrickCore extends BrickWithTableBase {
                 [
                     2,
                     1
-                ].forEach((number)=>OTHER_NUMBER_SERIES.push(number));
+                ].forEach((number) => OTHER_NUMBER_SERIES.push(number));
                 break;
             case 25:
                 NUMBER_SERIES.push([
@@ -1609,7 +1721,7 @@ class BrickCore extends BrickWithTableBase {
                 [
                     3,
                     2
-                ].forEach((number)=>OTHER_NUMBER_SERIES.push(number));
+                ].forEach((number) => OTHER_NUMBER_SERIES.push(number));
                 break;
             case 24:
                 NUMBER_SERIES.push([
@@ -1627,7 +1739,7 @@ class BrickCore extends BrickWithTableBase {
                     4,
                     2,
                     1
-                ].forEach((number)=>OTHER_NUMBER_SERIES.push(number));
+                ].forEach((number) => OTHER_NUMBER_SERIES.push(number));
                 break;
             case 23:
                 NUMBER_SERIES.push([
@@ -1645,7 +1757,7 @@ class BrickCore extends BrickWithTableBase {
                     5,
                     3,
                     1
-                ].forEach((number)=>OTHER_NUMBER_SERIES.push(number));
+                ].forEach((number) => OTHER_NUMBER_SERIES.push(number));
                 break;
             case 22:
                 NUMBER_SERIES.push([
@@ -1663,7 +1775,7 @@ class BrickCore extends BrickWithTableBase {
                     5,
                     4,
                     2
-                ].forEach((number)=>OTHER_NUMBER_SERIES.push(number));
+                ].forEach((number) => OTHER_NUMBER_SERIES.push(number));
                 break;
             case 21:
                 NUMBER_SERIES.push([
@@ -1681,7 +1793,7 @@ class BrickCore extends BrickWithTableBase {
                     4,
                     3,
                     1
-                ].forEach((number)=>OTHER_NUMBER_SERIES.push(number));
+                ].forEach((number) => OTHER_NUMBER_SERIES.push(number));
                 break;
             case 20:
                 NUMBER_SERIES.push([
@@ -1739,7 +1851,7 @@ class BrickCore extends BrickWithTableBase {
                 ]);
                 [
                     1
-                ].forEach((number)=>OTHER_NUMBER_SERIES.push(number));
+                ].forEach((number) => OTHER_NUMBER_SERIES.push(number));
                 break;
             case 17:
                 NUMBER_SERIES.push([
@@ -1759,7 +1871,7 @@ class BrickCore extends BrickWithTableBase {
                 [
                     3,
                     1
-                ].forEach((number)=>OTHER_NUMBER_SERIES.push(number));
+                ].forEach((number) => OTHER_NUMBER_SERIES.push(number));
                 break;
             case 16:
                 NUMBER_SERIES.push([
@@ -1779,7 +1891,7 @@ class BrickCore extends BrickWithTableBase {
                     4,
                     2,
                     1
-                ].forEach((number)=>OTHER_NUMBER_SERIES.push(number));
+                ].forEach((number) => OTHER_NUMBER_SERIES.push(number));
                 break;
             default:
                 break;

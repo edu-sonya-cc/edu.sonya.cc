@@ -239,7 +239,7 @@ var svgSpace;
                         text.setAttribute("x", x + "mm");
                         text.setAttribute("y", y + "mm");
                         text.setAttribute("style", "dominant-baseline:middle;text-anchor:middle;");
-                        if (CONTENT.indexOf("<en>") > -1) {
+                        if (CONTENT.indexOf("<en_us>") > -1) {
                             var lang = getCurrentLang();
                             var startTag = "<" + lang + ">";
                             var endTag = "</" + lang + ">";

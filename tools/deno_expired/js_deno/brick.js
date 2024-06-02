@@ -7,18 +7,23 @@ class BrickPage extends ActualPageBase {
     pageSummaryElement = createElement('div');
     mainContentElement = createElement('div');
     feedbackElement = createElement('div');
-    initTitleElement = ()=>{
+    initTitleElement = () => {
         const titleElement = getTitleElement();
         titleElement.i18n = {
-            en: 'Throwing a brick to attract jade',
+            en_us: 'Throwing a brick to attract jade',
             zh_cn: '抛砖引玉',
             zh_tw: '抛磚引玉'
         };
     };
     PAGE_NAME = 'brickPage';
-    initMainElement = ()=>{
+    initMainElement = () => {
         this.appendMainElements();
-        const { PAGE_NAME , mainContentElement , previewRegionElement , configRegionElement  } = this;
+        const {
+            PAGE_NAME,
+            mainContentElement,
+            previewRegionElement,
+            configRegionElement
+        } = this;
         mainContentElement.appendChild(previewRegionElement);
         mainContentElement.appendChild(configRegionElement);
         previewRegionElement.id = `${PAGE_NAME}PreviewRegion`;
@@ -26,7 +31,12 @@ class BrickPage extends ActualPageBase {
         this.appendRegionSubjects(previewRegionElement, configRegionElement);
         this.appendPreviewRegionOtherElements();
         this.appendConfigRegionOtherElements();
-        const { downloadAreaElement , shareAreaElement , sponsorElement , wechatShareElement  } = this;
+        const {
+            downloadAreaElement,
+            shareAreaElement,
+            sponsorElement,
+            wechatShareElement
+        } = this;
         mainContentElement.appendChild(downloadAreaElement);
         mainContentElement.appendChild(shareAreaElement);
         mainContentElement.appendChild(sponsorElement);
@@ -40,7 +50,13 @@ class BrickPage extends ActualPageBase {
         this.loadScript(PAGE_NAME);
     };
     appendMainElements() {
-        const { PAGE_NAME , pageSubjectElement , pageSummaryElement , mainContentElement , feedbackElement  } = this;
+        const {
+            PAGE_NAME,
+            pageSubjectElement,
+            pageSummaryElement,
+            mainContentElement,
+            feedbackElement
+        } = this;
         const mainElement = getMainElement();
         mainElement.id = `${PAGE_NAME}Main`;
         mainElement.appendChild(pageSubjectElement);
@@ -49,19 +65,22 @@ class BrickPage extends ActualPageBase {
         mainElement.appendChild(feedbackElement);
         pageSubjectElement.id = `${PAGE_NAME}Subject`;
         pageSubjectElement.className = 'pageSubject';
-        const brick = bricks.filter((item)=>item.id === PAGE_ID)[0] || {
+        const brick = bricks.filter((item) => item.id === PAGE_ID)[0] || {
             title: {
-                en: 'Unknown',
+                en_us: 'Unknown',
                 zh_cn: '未知',
                 zh_tw: '未知'
             },
             summary: {
-                en: 'The id is wrong, please check it.',
+                en_us: 'The id is wrong, please check it.',
                 zh_cn: '编号错误，请检查。',
                 zh_tw: '編號錯誤，請檢查。'
             }
         };
-        const { title , summary  } = brick;
+        const {
+            title,
+            summary
+        } = brick;
         const subjectTextElement = createElement('div');
         subjectTextElement.id = `${PAGE_NAME}SubjectText`;
         subjectTextElement.innerHTML = getI18nInnerHTML(title);
@@ -72,18 +91,20 @@ class BrickPage extends ActualPageBase {
         feedbackElement.id = `${PAGE_NAME}Feedback`;
     }
     appendRegionSubjects(previewRegionElement, configRegionElement) {
-        const { PAGE_NAME  } = this;
+        const {
+            PAGE_NAME
+        } = this;
         const previewRegionSubjectElement = createElement('div');
         const configRegionSubjectElement = createElement('div');
         previewRegionSubjectElement.className = `${PAGE_NAME}MainContentSubject`;
         configRegionSubjectElement.className = `${PAGE_NAME}MainContentSubject`;
         previewRegionSubjectElement.innerHTML = getI18nInnerHTML({
-            en: 'Preivew',
+            en_us: 'Preivew',
             zh_cn: '预览',
             zh_tw: '預覽'
         });
         configRegionSubjectElement.innerHTML = getI18nInnerHTML({
-            en: 'Config',
+            en_us: 'Config',
             zh_cn: '设置',
             zh_tw: '設置'
         });
@@ -100,12 +121,16 @@ class BrickPage extends ActualPageBase {
     configCoreWrapElement = createElement('div');
     configCoreToolbarElement = createElement('div');
     appendPreviewRegionOtherElements() {
-        const { PAGE_NAME , previewIframe , previewRegionElement  } = this;
+        const {
+            PAGE_NAME,
+            previewIframe,
+            previewRegionElement
+        } = this;
         previewIframe.id = `${PAGE_NAME}Iframe`;
         previewIframe.src = `?go=report`;
         previewIframe.setAttribute('frameBorder', '0');
         previewRegionElement.appendChild(previewIframe);
-        getChangeLangNotifyArrayOfCurrentPage().push((lang)=>{
+        getChangeLangNotifyArrayOfCurrentPage().push((lang) => {
             previewIframe.contentWindow?.postMessage({
                 command: 'changeLang',
                 data: {
@@ -113,21 +138,23 @@ class BrickPage extends ActualPageBase {
                 }
             }, '*');
         });
-        const buildFirst = ()=>{
+        const buildFirst = () => {
             this.reporterPageInited = true;
             const brickCore = window.brickCore;
             if (brickCore && this.brickCorePageInited) {
                 brickCore.loadConfig();
             }
         };
-        previewIframe.onload = previewIframe.onreadystatechange = function() {
-            const { readyState  } = this;
+        previewIframe.onload = previewIframe.onreadystatechange = function () {
+            const {
+                readyState
+            } = this;
             console.log('iframe onreadystatechange', readyState);
             if (!readyState) {
                 buildFirst();
                 return;
             }
-            switch(readyState){
+            switch (readyState) {
                 case 'loaded':
                 case 'complete':
                     buildFirst();
@@ -140,29 +167,28 @@ class BrickPage extends ActualPageBase {
         toolbarElement.id = `${PAGE_NAME}Toolbar`;
         previewRegionElement.appendChild(toolbarElement);
         const imageUrlPrefix = `${SITE_IMAGE_PATH}3brick/`;
-        const toolbarItemI18nArray = [
-            {
-                en: 'download',
+        const toolbarItemI18nArray = [{
+                en_us: 'download',
                 zh_cn: '下载',
                 zh_tw: '下載'
             },
             {
-                en: 'print',
+                en_us: 'print',
                 zh_cn: '打印',
                 zh_tw: '列印'
             },
             {
-                en: 'share',
+                en_us: 'share',
                 zh_cn: '分享',
                 zh_tw: '分享'
             },
             {
-                en: 'sponsor',
+                en_us: 'sponsor',
                 zh_cn: '赞助',
                 zh_tw: '贊助'
             }
         ];
-        'download,print,share,sponsor'.split(',').forEach((name, index)=>{
+        'download,print,share,sponsor'.split(',').forEach((name, index) => {
             const spanElement = createElement('span');
             spanElement.className = `${PAGE_NAME}ToolbarItem`;
             const imageSrc = `${imageUrlPrefix}${name}.png`;
@@ -176,36 +202,42 @@ class BrickPage extends ActualPageBase {
             spanElement.appendChild(imageElement);
             spanElement.appendChild(textElement);
             toolbarElement.appendChild(spanElement);
-            spanElement.onclick = (event)=>{
+            spanElement.onclick = (event) => {
                 this.emit(name);
                 return stopEventBubble(event);
             };
         });
     }
     appendConfigRegionOtherElements() {
-        const { PAGE_NAME , configRegionElement , configCoreWrapElement , configCoreToolbarElement , appendConfigToolbar  } = this;
+        const {
+            PAGE_NAME,
+            configRegionElement,
+            configCoreWrapElement,
+            configCoreToolbarElement,
+            appendConfigToolbar
+        } = this;
         const configCoreElement = createElement('div');
         configCoreWrapElement.id = `${PAGE_NAME}ConfigCoreWrap`;
         configCoreElement.id = `${PAGE_NAME}ConfigCore`;
         configCoreToolbarElement.id = `${PAGE_NAME}ConfigCoreToolbar`;
         configRegionElement.setAttribute(ID_PROPERTY, PAGE_ID.toString());
         appendConfigToolbar('Build', 'build', {
-            en: 'Build',
+            en_us: 'Build',
             zh_cn: '生成',
             zh_tw: '生成'
         });
         appendConfigToolbar('LoadDefaultConfig', 'loadDefaultConfig', {
-            en: 'Use Default',
+            en_us: 'Use Default',
             zh_cn: '还原',
             zh_tw: '還原'
         });
         appendConfigToolbar('LoadConfigFromLocal', 'loadConfigFromLocal', {
-            en: 'Load',
+            en_us: 'Load',
             zh_cn: '加载',
             zh_tw: '加載'
         });
         appendConfigToolbar('SaveConfigToLocal', 'saveConfigToLocal', {
-            en: 'Save',
+            en_us: 'Save',
             zh_cn: '保存',
             zh_tw: '保存'
         });
@@ -213,13 +245,16 @@ class BrickPage extends ActualPageBase {
         configCoreWrapElement.appendChild(configCoreElement);
         configCoreWrapElement.appendChild(configCoreToolbarElement);
     }
-    appendConfigToolbar = (idPostfix, eventName, i18n)=>{
-        const { PAGE_NAME , configCoreToolbarElement  } = this;
+    appendConfigToolbar = (idPostfix, eventName, i18n) => {
+        const {
+            PAGE_NAME,
+            configCoreToolbarElement
+        } = this;
         const buildElement = createElement('span');
         buildElement.id = `${PAGE_NAME}${idPostfix}`;
         buildElement.className = 'moreButton primary';
         buildElement.innerHTML = getI18nInnerHTML(i18n);
-        buildElement.onclick = (event)=>{
+        buildElement.onclick = (event) => {
             this.emit(eventName);
             return stopEventBubble(event);
         };
@@ -228,7 +263,7 @@ class BrickPage extends ActualPageBase {
     fileReaderElement = createElement('input');
     emit(eventName) {
         const core = window.brickCore;
-        switch(eventName){
+        switch (eventName) {
             case 'download':
                 core.download();
                 break;
@@ -285,8 +320,10 @@ class BrickPage extends ActualPageBase {
     }
     brickCorePageInited = false;
     reporterPageInited = false;
-    loadScript = (PAGE_NAME)=>{
-        const version = (bricks.filter(({ id  })=>id === PAGE_ID)[0] || {
+    loadScript = (PAGE_NAME) => {
+        const version = (bricks.filter(({
+            id
+        }) => id === PAGE_ID)[0] || {
             version: 'unknown'
         }).version;
         const scriptElement = createElement('script');
@@ -294,7 +331,7 @@ class BrickPage extends ActualPageBase {
         scriptElement.setAttribute('charset', 'utf-8');
         scriptElement.setAttribute('src', `js/brick/${PAGE_ID}.js?${version}`);
         getHeadElement().appendChild(scriptElement);
-        const initCore = ()=>{
+        const initCore = () => {
             this.brickCorePageInited = true;
             const brickCore = window.brickCore;
             brickCore.init(this.configCoreWrapElement);
@@ -302,14 +339,16 @@ class BrickPage extends ActualPageBase {
                 brickCore.loadConfig();
             }
         };
-        scriptElement.onload = scriptElement.onreadystatechange = function() {
-            const { readyState  } = this;
+        scriptElement.onload = scriptElement.onreadystatechange = function () {
+            const {
+                readyState
+            } = this;
             console.log('onreadystatechange', readyState);
             if (!readyState) {
                 initCore();
                 return;
             }
-            switch(readyState){
+            switch (readyState) {
                 case 'loaded':
                 case 'complete':
                     initCore();
@@ -319,23 +358,28 @@ class BrickPage extends ActualPageBase {
             }
         };
     };
-    init = ()=>{
-        const loadConfigFromLocalCallback = (newData)=>{
+    init = () => {
+        const loadConfigFromLocalCallback = (newData) => {
             const core = window.brickCore;
             core.setData(newData);
         };
-        const { fileReaderElement  } = this;
+        const {
+            fileReaderElement
+        } = this;
         fileReaderElement.type = 'file';
-        fileReaderElement.onchange = ()=>{
+        fileReaderElement.onchange = () => {
             if (!fileReaderElement.files) {
                 return;
             }
             const selectedFile = fileReaderElement.files[0];
-            const { name , size  } = selectedFile;
+            const {
+                name,
+                size
+            } = selectedFile;
             console.log('read file:', name, size);
             const reader = new FileReader();
             reader.readAsText(selectedFile);
-            reader.onload = function() {
+            reader.onload = function () {
                 const result = this.result;
                 const object = JSON.parse(result);
                 console.log(result, object);

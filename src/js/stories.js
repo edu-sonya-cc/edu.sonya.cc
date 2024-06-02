@@ -202,7 +202,7 @@ var StoriesPage = (function (_super) {
                 SITE_IMAGE_PATH + "5stories/topImage.jpg?" + mainImageVersions.stories;
             pageSubjectElement.id = PAGE_NAME + "Subject";
             pageSubjectElement.className = "pageSubject";
-            ['en', 'zh_cn', 'zh_tw'].forEach(function (lang) {
+            ['en_us', 'zh_cn', 'zh_tw'].forEach(function (lang) {
                 var span = createElement(lang);
                 pageSubjectElement.appendChild(span);
                 var image = createElement('img');
@@ -278,7 +278,7 @@ var StoriesPage = (function (_super) {
     StoriesPage.prototype.initTitleElement = function () {
         var titleElement = getTitleElement();
         titleElement.i18n = {
-            en: "Growing List",
+            en_us: "Growing List",
             zh_cn: "成长足迹清单",
             zh_tw: "成長足迹清單"
         };

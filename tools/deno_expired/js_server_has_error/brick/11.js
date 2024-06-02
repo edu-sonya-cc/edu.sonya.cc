@@ -4,18 +4,30 @@
 
 class BrickCore extends BrickWithTableBase {
     idOrClassPrefix = 'brickPageFootball';
-    constructor(){
+    constructor() {
         super({}, {});
     }
-    countDataAndComputedData = ()=>{
+    countDataAndComputedData = () => {
         this.countDataAndComputedDataInBrickWithTableBase();
-        const { computedData , mmToPxScale  } = this;
-        const { paperSize , isLandscape , maxX: MAX_X , maxY: MAX_Y , pageMarginTop , pageMarginBottom , pageMarginLeft , pageMarginRight  } = this.data;
+        const {
+            computedData,
+            mmToPxScale
+        } = this;
+        const {
+            paperSize,
+            isLandscape,
+            maxX: MAX_X,
+            maxY: MAX_Y,
+            pageMarginTop,
+            pageMarginBottom,
+            pageMarginLeft,
+            pageMarginRight
+        } = this.data;
         const css = `/* common.css */
 		* { margin:0;border:0;padding:0; }
 		* { box-sizing:border-box; }
 
-		/* landscape 横向 portrait 纵向*/ 
+		/* landscape 横向 portrait 纵向*/
 		@media print { @page { size: ${paperSize} ${isLandscape ? 'landscape' : 'portrait'}; margin:${pageMarginTop}mm ${pageMarginRight}mm ${pageMarginBottom}mm ${pageMarginLeft}mm; } }
 		page:not(page:last-child){page-break-after:always;}
 
@@ -25,23 +37,27 @@ class BrickCore extends BrickWithTableBase {
 		page { width:${MAX_X}mm;margin-left:${pageMarginLeft}mm;margin-top:${pageMarginTop}mm; }
 		`;
         const list = [];
-        JSON.parse(JSON.stringify(this.data.list)).forEach((item)=>{
+        JSON.parse(JSON.stringify(this.data.list)).forEach((item) => {
             list.push(item);
         });
         let html = '';
         const elementList = [];
-        list.filter(({ rowCount  })=>rowCount === 0).forEach((item)=>{
+        list.filter(({
+            rowCount
+        }) => rowCount === 0).forEach((item) => {
             const element = this.getElement(item, mmToPxScale, MAX_X, MAX_Y);
             html += `<page>${element.outerHTML}</page>`;
         });
-        list.filter(({ rowCount  })=>rowCount > 0).forEach((item)=>{
-            switch(item.kind){
+        list.filter(({
+            rowCount
+        }) => rowCount > 0).forEach((item) => {
+            switch (item.kind) {
                 case 'interlacedHexagon':
                     elementList.push(this.getElement(item, mmToPxScale, MAX_X, MAX_Y));
                     break;
                 default:
                     let fixedRowCount = 1;
-                    switch(item.kind){
+                    switch (item.kind) {
                         case 'hollowOut':
                         case 'hollowOutWithHole':
                             fixedRowCount = 0;
@@ -51,7 +67,7 @@ class BrickCore extends BrickWithTableBase {
                             break;
                     }
                     const rowCount = item.rowCount;
-                    for(let i = 0; i < rowCount; ++i){
+                    for (let i = 0; i < rowCount; ++i) {
                         elementList.push(this.getElement({
                             ...item,
                             rowCount: fixedRowCount
@@ -61,21 +77,23 @@ class BrickCore extends BrickWithTableBase {
             }
         });
         html += this.getAutomaticPaginationHtmlFromChildList(elementList, MAX_X, MAX_Y);
-        const en = `${FILENAME_POSTFIX}football`;
+        const en_us = `${FILENAME_POSTFIX}football`;
         const zh_cn = `${FILENAME_POSTFIX}足球`;
         const zh_tw = `${FILENAME_POSTFIX}足球`;
         computedData.title = {
-            en,
+            en_us,
             zh_cn,
             zh_tw
         };
         computedData.css = css;
         computedData.html = html;
     };
-    getElement = (item, mmToPxScale, PAPER_WIDTH, PAPER_HEIGHT)=>{
-        const { createSvg  } = svgSpace.edu.sonya.cc.SvgHelper;
+    getElement = (item, mmToPxScale, PAPER_WIDTH, PAPER_HEIGHT) => {
+        const {
+            createSvg
+        } = svgSpace.edu.sonya.cc.SvgHelper;
         const svg = createSvg();
-        switch(item.kind){
+        switch (item.kind) {
             case 'hollowOut':
                 this.countHollowOutSvg(svg, item, PAPER_WIDTH, PAPER_HEIGHT, 0);
                 break;
@@ -97,14 +115,25 @@ class BrickCore extends BrickWithTableBase {
             default:
                 break;
         }
-        const { widthMm , heightMm  } = svg;
+        const {
+            widthMm,
+            heightMm
+        } = svg;
         svg.setAttribute('width', `${widthMm}mm`);
         svg.setAttribute('height', `${heightMm}mm`);
         return svg;
     };
-    countHollowOutSvg = (svg, item, PAPER_WIDTH, PAPER_HEIGHT, HOLLOW_STYLE)=>{
-        const { appendLine , appendCircle  } = svgSpace.edu.sonya.cc.SvgHelper;
-        const { length: SIDE_LENGTH , innerLineStyle , outerLineStyle , cutLineStyle  } = item;
+    countHollowOutSvg = (svg, item, PAPER_WIDTH, PAPER_HEIGHT, HOLLOW_STYLE) => {
+        const {
+            appendLine,
+            appendCircle
+        } = svgSpace.edu.sonya.cc.SvgHelper;
+        const {
+            length: SIDE_LENGTH,
+            innerLineStyle,
+            outerLineStyle,
+            cutLineStyle
+        } = item;
         const ANGLE30 = Math.PI * 30 / 180;
         const ANGLE60 = Math.PI * 60 / 180;
         const SIN30 = Math.sin(ANGLE30);
@@ -121,20 +150,26 @@ class BrickCore extends BrickWithTableBase {
         const ROW_COUNT = Math.floor(Math.floor(PAPER_HEIGHT / ROW_HEIGHT) / 9) * 9;
         const WIDTH_OF_ONE = SIDE_LENGTH + LONG_LINE_LENGTH;
         const COL_GROUP_COUNT = Math.floor(PAPER_WIDTH / WIDTH_OF_ONE / 6);
-        for(let rowIndex = 0; rowIndex < ROW_COUNT; ++rowIndex){
+        for (let rowIndex = 0; rowIndex < ROW_COUNT; ++rowIndex) {
             const rowGroupIndex = rowIndex === 0 ? 0 : Math.floor((rowIndex - 1) / 8);
             const TOP = ROW_HEIGHT * rowIndex;
             const rowIndexInGroup = rowIndex - rowGroupIndex * 8;
-            for(let groupIndex = 0; groupIndex < COL_GROUP_COUNT; ++groupIndex){
+            for (let groupIndex = 0; groupIndex < COL_GROUP_COUNT; ++groupIndex) {
                 const LEFT_GROUP = SIDE_LENGTH * SIN30 + (rowIndex % 2 === 0 ? 0 : SIDE_LENGTH + SIN30_MULTIPLY_SIDE_LENGTH) + WIDTH_OF_ONE * 6 * groupIndex;
-                for(let colIndex = 0; colIndex < 6; ++colIndex){
+                for (let colIndex = 0; colIndex < 6; ++colIndex) {
                     const LEFT = LEFT_GROUP + WIDTH_OF_ONE * colIndex;
-                    let Ax = 0, Ay = 0;
-                    let Bx = 0, By = 0;
-                    let Cx = 0, Cy = 0;
-                    let Dx = 0, Dy = 0;
-                    let Ex = 0, Ey = 0;
-                    let Fx = 0, Fy = 0;
+                    let Ax = 0,
+                        Ay = 0;
+                    let Bx = 0,
+                        By = 0;
+                    let Cx = 0,
+                        Cy = 0;
+                    let Dx = 0,
+                        Dy = 0;
+                    let Ex = 0,
+                        Ey = 0;
+                    let Fx = 0,
+                        Fy = 0;
                     Ax = LEFT + SIN30_MULTIPLY_SIDE_LENGTH;
                     Bx = Ax + SIDE_LENGTH;
                     Cx = LEFT + LONG_LINE_LENGTH;
@@ -244,13 +279,13 @@ class BrickCore extends BrickWithTableBase {
                             appendLine(svg, isBoundary ? outerLineStyle : innerLineStyle, Fx, Ax, Fy, Ay, null);
                         }
                     }
-                    switch(rowIndexInGroup){
+                    switch (rowIndexInGroup) {
                         case 2:
                         case 5:
                             if (rowIndexInGroup === 2 || rowIndexInGroup === 5) {
                                 const circleX = (Ax + Bx + Cx + Dx + Ex + Fx) / 6;
                                 const circleY = (Ay + By + Cy + Dy + Ey + Fy) / 6;
-                                switch(HOLLOW_STYLE){
+                                switch (HOLLOW_STYLE) {
                                     case 0:
                                         if (rowIndexInGroup === 2 && colIndex > 0 || rowIndexInGroup === 5 && colIndex % 6 < 5) {
                                             appendLine(svg, cutLineStyle, Ax, Bx, Ay, By, null);
@@ -270,7 +305,7 @@ class BrickCore extends BrickWithTableBase {
                                         appendLine(svg, cutLineStyle, Dx, Ex, Dy, Ey, null);
                                         appendLine(svg, cutLineStyle, Ex, Fx, Ey, Fy, null);
                                         appendLine(svg, cutLineStyle, Fx, Ax, Fy, Ay, null);
-                                        switch(rowIndexInGroup){
+                                        switch (rowIndexInGroup) {
                                             case 2:
                                                 appendLine(svg, outerLineStyle, Bx, circleX, By, circleY, null);
                                                 appendLine(svg, outerLineStyle, Ax, circleX, Ay, circleY, null);
@@ -284,7 +319,7 @@ class BrickCore extends BrickWithTableBase {
                                         }
                                         break;
                                     case 2:
-                                        switch(rowIndexInGroup){
+                                        switch (rowIndexInGroup) {
                                             case 2:
                                                 appendLine(svg, outerLineStyle, Bx, circleX, By, circleY, null);
                                                 appendLine(svg, outerLineStyle, Ax, circleX, Ay, circleY, null);
@@ -321,9 +356,17 @@ class BrickCore extends BrickWithTableBase {
         svg.widthMm = widthMm;
         svg.heightMm = heightMm;
     };
-    countInterlacedHexagonSvg = (svg, item, PAPER_WIDTH, PAPER_HEIGHT)=>{
-        const { appendLine  } = svgSpace.edu.sonya.cc.SvgHelper;
-        const { length: SIDE_LENGTH , rowCount , innerLineStyle , outerLineStyle , cutLineStyle  } = item;
+    countInterlacedHexagonSvg = (svg, item, PAPER_WIDTH, PAPER_HEIGHT) => {
+        const {
+            appendLine
+        } = svgSpace.edu.sonya.cc.SvgHelper;
+        const {
+            length: SIDE_LENGTH,
+            rowCount,
+            innerLineStyle,
+            outerLineStyle,
+            cutLineStyle
+        } = item;
         const ANGLE30 = Math.PI * 30 / 180;
         const ANGLE60 = Math.PI * 60 / 180;
         const SIN30 = Math.sin(ANGLE30);
@@ -337,16 +380,22 @@ class BrickCore extends BrickWithTableBase {
         const ROW_COUNT = rowCount ? rowCount * 2 : Math.floor(PAPER_HEIGHT / ROW_HEIGHT);
         const WIDTH_OF_ONE = SIDE_LENGTH + LONG_LINE_LENGTH;
         const COL_COUNT = Math.floor(PAPER_WIDTH / WIDTH_OF_ONE);
-        for(let rowIndex = 0; rowIndex < ROW_COUNT; ++rowIndex){
+        for (let rowIndex = 0; rowIndex < ROW_COUNT; ++rowIndex) {
             const TOP = ROW_HEIGHT * rowIndex;
-            for(let colIndex = 0; colIndex < COL_COUNT; ++colIndex){
+            for (let colIndex = 0; colIndex < COL_COUNT; ++colIndex) {
                 const LEFT = SIDE_LENGTH * SIN30 + WIDTH_OF_ONE * colIndex + (rowIndex % 2 === 0 ? 0 : SIDE_LENGTH + SIN30_MULTIPLY_SIDE_LENGTH);
-                let Ax = 0, Ay = 0;
-                let Bx = 0, By = 0;
-                let Cx = 0, Cy = 0;
-                let Dx = 0, Dy = 0;
-                let Ex = 0, Ey = 0;
-                let Fx = 0, Fy = 0;
+                let Ax = 0,
+                    Ay = 0;
+                let Bx = 0,
+                    By = 0;
+                let Cx = 0,
+                    Cy = 0;
+                let Dx = 0,
+                    Dy = 0;
+                let Ex = 0,
+                    Ey = 0;
+                let Fx = 0,
+                    Fy = 0;
                 Ax = LEFT + SIN30_MULTIPLY_SIDE_LENGTH;
                 Bx = Ax + SIDE_LENGTH;
                 Cx = LEFT + LONG_LINE_LENGTH;
@@ -378,9 +427,16 @@ class BrickCore extends BrickWithTableBase {
         svg.widthMm = widthMm;
         svg.heightMm = heightMm;
     };
-    countPentagonSvg = (svg, item, PAPER_WIDTH, PAPER_HEIGHT)=>{
-        const { appendLine  } = svgSpace.edu.sonya.cc.SvgHelper;
-        const { length: SIDE_LENGTH , rowCount , innerLineStyle , outerLineStyle  } = item;
+    countPentagonSvg = (svg, item, PAPER_WIDTH, PAPER_HEIGHT) => {
+        const {
+            appendLine
+        } = svgSpace.edu.sonya.cc.SvgHelper;
+        const {
+            length: SIDE_LENGTH,
+            rowCount,
+            innerLineStyle,
+            outerLineStyle
+        } = item;
         const OUTSIDE_SCALE = 0.4;
         const ANGLE18 = Math.PI * 18 / 180;
         const ANGLE36 = Math.PI * 36 / 180;
@@ -401,25 +457,40 @@ class BrickCore extends BrickWithTableBase {
         const ROW_COUNT = rowCount ? Math.min(ROW_COUNT_PER_PAGE, rowCount) : ROW_COUNT_PER_PAGE;
         const WIDTH_OF_ONE = SIDE_LENGTH * 2.4;
         const COL_COUNT = Math.floor(PAPER_WIDTH / WIDTH_OF_ONE);
-        for(let rowIndex = 0; rowIndex < ROW_COUNT; ++rowIndex){
+        for (let rowIndex = 0; rowIndex < ROW_COUNT; ++rowIndex) {
             const TOP = ROW_HEIGHT * rowIndex;
-            for(let colIndex = 0; colIndex < COL_COUNT; ++colIndex){
+            for (let colIndex = 0; colIndex < COL_COUNT; ++colIndex) {
                 const LEFT = WIDTH_OF_ONE * colIndex;
-                let A1x = 0, A1y = 0;
-                let A2x = 0, A2y = 0;
-                let A3x = 0, A3y = 0;
-                let B1x = 0, B1y = 0;
-                let B2x = 0, B2y = 0;
-                let B3x = 0, B3y = 0;
-                let C1x = 0, C1y = 0;
-                let C2x = 0, C2y = 0;
-                let C3x = 0, C3y = 0;
-                let D1x = 0, D1y = 0;
-                let D2x = 0, D2y = 0;
-                let D3x = 0, D3y = 0;
-                let E1x = 0, E1y = 0;
-                let E2x = 0, E2y = 0;
-                let E3x = 0, E3y = 0;
+                let A1x = 0,
+                    A1y = 0;
+                let A2x = 0,
+                    A2y = 0;
+                let A3x = 0,
+                    A3y = 0;
+                let B1x = 0,
+                    B1y = 0;
+                let B2x = 0,
+                    B2y = 0;
+                let B3x = 0,
+                    B3y = 0;
+                let C1x = 0,
+                    C1y = 0;
+                let C2x = 0,
+                    C2y = 0;
+                let C3x = 0,
+                    C3y = 0;
+                let D1x = 0,
+                    D1y = 0;
+                let D2x = 0,
+                    D2y = 0;
+                let D3x = 0,
+                    D3y = 0;
+                let E1x = 0,
+                    E1y = 0;
+                let E2x = 0,
+                    E2y = 0;
+                let E3x = 0,
+                    E3y = 0;
                 A1x = LEFT + SIN18 * (SIDE_LENGTH + SIN18_MULTIPLY_SIDE_LENGTH * 2) + LONG_SIDE_LENGTH * 0.5;
                 B1x = A1x + SIN54_MULTIPLY_SIDE_LENGTH;
                 E1x = A1x - SIN54_MULTIPLY_SIDE_LENGTH;
@@ -477,9 +548,17 @@ class BrickCore extends BrickWithTableBase {
         svg.widthMm = widthMm;
         svg.heightMm = heightMm;
     };
-    countHexagonSvg = (svg, item, PAPER_WIDTH, PAPER_HEIGHT)=>{
-        const { appendLine  } = svgSpace.edu.sonya.cc.SvgHelper;
-        const { length: SIDE_LENGTH , rowCount , innerLineStyle , outerLineStyle , cutLineStyle  } = item;
+    countHexagonSvg = (svg, item, PAPER_WIDTH, PAPER_HEIGHT) => {
+        const {
+            appendLine
+        } = svgSpace.edu.sonya.cc.SvgHelper;
+        const {
+            length: SIDE_LENGTH,
+            rowCount,
+            innerLineStyle,
+            outerLineStyle,
+            cutLineStyle
+        } = item;
         const ANGLE30 = Math.PI * 30 / 180;
         const ANGLE60 = Math.PI * 60 / 180;
         const SIN30 = Math.sin(ANGLE30);
@@ -491,9 +570,9 @@ class BrickCore extends BrickWithTableBase {
         const ROW_COUNT = rowCount ? rowCount : Math.floor(PAPER_HEIGHT / ROW_HEIGHT);
         const WIDTH_OF_ONE = LONG_LINE_LENGTH;
         const COL_COUNT = Math.floor(PAPER_WIDTH / WIDTH_OF_ONE);
-        for(let rowIndex = 0; rowIndex < ROW_COUNT; ++rowIndex){
+        for (let rowIndex = 0; rowIndex < ROW_COUNT; ++rowIndex) {
             const TOP = ROW_HEIGHT * rowIndex;
-            for(let colIndex = 0; colIndex < COL_COUNT; ++colIndex){
+            for (let colIndex = 0; colIndex < COL_COUNT; ++colIndex) {
                 const LEFT = WIDTH_OF_ONE * colIndex;
                 const Ax = LEFT + SIN30_MULTIPLY_SIDE_LENGTH;
                 const Bx = Ax + SIDE_LENGTH;
@@ -520,8 +599,10 @@ class BrickCore extends BrickWithTableBase {
         svg.widthMm = widthMm;
         svg.heightMm = heightMm;
     };
-    appendPentagon = (svg, SIDE_LENGTH, innerLineStyle, outerLineStyle, TOP, LEFT, kind, mirror, viewBox)=>{
-        const { appendLine  } = svgSpace.edu.sonya.cc.SvgHelper;
+    appendPentagon = (svg, SIDE_LENGTH, innerLineStyle, outerLineStyle, TOP, LEFT, kind, mirror, viewBox) => {
+        const {
+            appendLine
+        } = svgSpace.edu.sonya.cc.SvgHelper;
         const OUTSIDE_SCALE = 0.4;
         const ANGLE18 = Math.PI * 18 / 180;
         const ANGLE36 = Math.PI * 36 / 180;
@@ -588,8 +669,10 @@ class BrickCore extends BrickWithTableBase {
             appendLine(svg, outerLineStyle, E3x, A2x, E3y, A2y, viewBox);
         }
     };
-    appendHexagon = (svg, SIDE_LENGTH, LINE_STYLE, TOP, LEFT, ROTATE, viewBox)=>{
-        const { appendLine  } = svgSpace.edu.sonya.cc.SvgHelper;
+    appendHexagon = (svg, SIDE_LENGTH, LINE_STYLE, TOP, LEFT, ROTATE, viewBox) => {
+        const {
+            appendLine
+        } = svgSpace.edu.sonya.cc.SvgHelper;
         const ANGLE30 = Math.PI * 30 / 180;
         const SIN30 = Math.sin(ANGLE30);
         const SIN30_MULTIPLY_SIDE_LENGTH = SIDE_LENGTH * SIN30;
@@ -617,10 +700,20 @@ class BrickCore extends BrickWithTableBase {
         appendLine(svg, LINE_STYLE, Ex, Fx, Ey, Fy, viewBox);
         appendLine(svg, LINE_STYLE, Fx, Ax, Fy, Ay, viewBox);
     };
-    countUnifySvg = (svg, item, PAPER_WIDTH, PAPER_HEIGHT)=>{
-        const { appendLine  } = svgSpace.edu.sonya.cc.SvgHelper;
-        const { length: SIDE_LENGTH , rowCount , innerLineStyle: INNER_LINE_STYLE , outerLineStyle: OUTER_LINE_STYLE  } = item;
-        const { appendHexagon , appendPentagon  } = this;
+    countUnifySvg = (svg, item, PAPER_WIDTH, PAPER_HEIGHT) => {
+        const {
+            appendLine
+        } = svgSpace.edu.sonya.cc.SvgHelper;
+        const {
+            length: SIDE_LENGTH,
+            rowCount,
+            innerLineStyle: INNER_LINE_STYLE,
+            outerLineStyle: OUTER_LINE_STYLE
+        } = item;
+        const {
+            appendHexagon,
+            appendPentagon
+        } = this;
         const ANGLE30 = Math.PI * 30 / 180;
         const SIN30 = Math.sin(ANGLE30);
         const SIN30_MULTIPLY_SIDE_LENGTH = SIDE_LENGTH * SIN30;
@@ -655,7 +748,7 @@ class BrickCore extends BrickWithTableBase {
         const HEXAGON_Y2 = TOP + HEXAGON_HEIGHT;
         const HEXAGON_Y3 = TOP + HEXAGON_HEIGHT * 1.5;
         const HEXAGON_Y4 = TOP + HEXAGON_HEIGHT * 2.5;
-        for(let i = 0; i < 5; ++i){
+        for (let i = 0; i < 5; ++i) {
             const left = LEFT + COLUMN_SPACE * i;
             appendHexagon(svg, SIDE_LENGTH, OUTER_LINE_STYLE, HEXAGON_Y1, left, 0, viewBox);
             appendHexagon(svg, SIDE_LENGTH, OUTER_LINE_STYLE, HEXAGON_Y2, left, 0, viewBox);
@@ -670,7 +763,7 @@ class BrickCore extends BrickWithTableBase {
             }
             let skipAboveLines = false;
             let skipBelowLines = false;
-            switch(i){
+            switch (i) {
                 case 3:
                     skipBelowLines = true;
                     break;
@@ -681,16 +774,26 @@ class BrickCore extends BrickWithTableBase {
                     break;
             }
             if (!skipAboveLines) {
-                const X1 = left + SIDE_LENGTH * 0.5, Y1 = HEXAGON_Y1;
-                const X2 = X1 + HEXAGON_OUTSIDE_X, Y2 = Y1 - HEXAGON_OUTSIDE_Y;
-                const X4 = X1 + SIDE_LENGTH, Y4 = Y1;
-                const X3 = X4 - HEXAGON_OUTSIDE_X, Y3 = Y2;
-                const X5 = X4 + HEXAGON_OUTSIDE, Y5 = Y1;
-                const X7 = X4 + SIN30_MULTIPLY_SIDE_LENGTH, Y7 = Y4 + SIN60_MULTIPLY_SIDE_LENGTH;
-                const X6 = X7 + HEXAGON_OUTSIDE_X, Y6 = Y7 - HEXAGON_OUTSIDE_Y;
-                const X8 = X1 - SIN30_MULTIPLY_SIDE_LENGTH, Y8 = Y1 + SIN60_MULTIPLY_SIDE_LENGTH;
-                const X9 = X8 - HEXAGON_OUTSIDE_X, Y9 = Y8 - HEXAGON_OUTSIDE_Y;
-                const X10 = X1 - HEXAGON_OUTSIDE, Y10 = Y1;
+                const X1 = left + SIDE_LENGTH * 0.5,
+                    Y1 = HEXAGON_Y1;
+                const X2 = X1 + HEXAGON_OUTSIDE_X,
+                    Y2 = Y1 - HEXAGON_OUTSIDE_Y;
+                const X4 = X1 + SIDE_LENGTH,
+                    Y4 = Y1;
+                const X3 = X4 - HEXAGON_OUTSIDE_X,
+                    Y3 = Y2;
+                const X5 = X4 + HEXAGON_OUTSIDE,
+                    Y5 = Y1;
+                const X7 = X4 + SIN30_MULTIPLY_SIDE_LENGTH,
+                    Y7 = Y4 + SIN60_MULTIPLY_SIDE_LENGTH;
+                const X6 = X7 + HEXAGON_OUTSIDE_X,
+                    Y6 = Y7 - HEXAGON_OUTSIDE_Y;
+                const X8 = X1 - SIN30_MULTIPLY_SIDE_LENGTH,
+                    Y8 = Y1 + SIN60_MULTIPLY_SIDE_LENGTH;
+                const X9 = X8 - HEXAGON_OUTSIDE_X,
+                    Y9 = Y8 - HEXAGON_OUTSIDE_Y;
+                const X10 = X1 - HEXAGON_OUTSIDE,
+                    Y10 = Y1;
                 appendLine(svg, OUTER_LINE_STYLE, X1, X2, Y1, Y2, viewBox);
                 appendLine(svg, OUTER_LINE_STYLE, X2, X3, Y2, Y3, viewBox);
                 appendLine(svg, OUTER_LINE_STYLE, X3, X4, Y3, Y4, viewBox);
@@ -701,25 +804,38 @@ class BrickCore extends BrickWithTableBase {
                 appendLine(svg, OUTER_LINE_STYLE, X9, X10, Y9, Y10, viewBox);
                 appendLine(svg, OUTER_LINE_STYLE, X10, X1, Y10, Y1, viewBox);
                 if (i === 0) {
-                    const X11 = X9, Y11 = Y8 + HEXAGON_OUTSIDE_Y;
-                    const X13 = X8 + SIN30_MULTIPLY_SIDE_LENGTH, Y13 = Y8 + SIN60_MULTIPLY_SIDE_LENGTH;
-                    const X12 = X13 - HEXAGON_OUTSIDE, Y12 = Y13;
+                    const X11 = X9,
+                        Y11 = Y8 + HEXAGON_OUTSIDE_Y;
+                    const X13 = X8 + SIN30_MULTIPLY_SIDE_LENGTH,
+                        Y13 = Y8 + SIN60_MULTIPLY_SIDE_LENGTH;
+                    const X12 = X13 - HEXAGON_OUTSIDE,
+                        Y12 = Y13;
                     appendLine(svg, OUTER_LINE_STYLE, X8, X11, Y8, Y11, viewBox);
                     appendLine(svg, OUTER_LINE_STYLE, X11, X12, Y11, Y12, viewBox);
                     appendLine(svg, OUTER_LINE_STYLE, X12, X13, Y12, Y13, viewBox);
                 }
             }
             if (!skipBelowLines) {
-                const X14 = leftOfBelow + SIDE_LENGTH * 0.5, Y14 = HEXAGON_Y4 + HEXAGON_HEIGHT;
-                const X21 = X14 + HEXAGON_OUTSIDE_X, Y21 = Y14 + HEXAGON_OUTSIDE_Y;
-                const X41 = X14 + SIDE_LENGTH, Y41 = Y14;
-                const X31 = X41 - HEXAGON_OUTSIDE_X, Y31 = Y21;
-                const X51 = X41 + HEXAGON_OUTSIDE, Y51 = Y14;
-                const X71 = X41 + SIN30_MULTIPLY_SIDE_LENGTH, Y71 = Y41 - SIN60_MULTIPLY_SIDE_LENGTH;
-                const X61 = X71 + HEXAGON_OUTSIDE_X, Y61 = Y71 + HEXAGON_OUTSIDE_Y;
-                const X81 = X14 - SIN30_MULTIPLY_SIDE_LENGTH, Y81 = Y14 - SIN60_MULTIPLY_SIDE_LENGTH;
-                const X91 = X81 - HEXAGON_OUTSIDE_X, Y91 = Y81 + HEXAGON_OUTSIDE_Y;
-                const X101 = X14 - HEXAGON_OUTSIDE, Y101 = Y14;
+                const X14 = leftOfBelow + SIDE_LENGTH * 0.5,
+                    Y14 = HEXAGON_Y4 + HEXAGON_HEIGHT;
+                const X21 = X14 + HEXAGON_OUTSIDE_X,
+                    Y21 = Y14 + HEXAGON_OUTSIDE_Y;
+                const X41 = X14 + SIDE_LENGTH,
+                    Y41 = Y14;
+                const X31 = X41 - HEXAGON_OUTSIDE_X,
+                    Y31 = Y21;
+                const X51 = X41 + HEXAGON_OUTSIDE,
+                    Y51 = Y14;
+                const X71 = X41 + SIN30_MULTIPLY_SIDE_LENGTH,
+                    Y71 = Y41 - SIN60_MULTIPLY_SIDE_LENGTH;
+                const X61 = X71 + HEXAGON_OUTSIDE_X,
+                    Y61 = Y71 + HEXAGON_OUTSIDE_Y;
+                const X81 = X14 - SIN30_MULTIPLY_SIDE_LENGTH,
+                    Y81 = Y14 - SIN60_MULTIPLY_SIDE_LENGTH;
+                const X91 = X81 - HEXAGON_OUTSIDE_X,
+                    Y91 = Y81 + HEXAGON_OUTSIDE_Y;
+                const X101 = X14 - HEXAGON_OUTSIDE,
+                    Y101 = Y14;
                 appendLine(svg, OUTER_LINE_STYLE, X14, X21, Y14, Y21, viewBox);
                 appendLine(svg, OUTER_LINE_STYLE, X21, X31, Y21, Y31, viewBox);
                 appendLine(svg, OUTER_LINE_STYLE, X31, X41, Y31, Y41, viewBox);
@@ -730,9 +846,12 @@ class BrickCore extends BrickWithTableBase {
                 appendLine(svg, OUTER_LINE_STYLE, X91, X101, Y91, Y101, viewBox);
                 appendLine(svg, OUTER_LINE_STYLE, X101, X14, Y101, Y14, viewBox);
                 if (i === 4) {
-                    const X111 = X61, Y111 = Y71 - HEXAGON_OUTSIDE_Y;
-                    const X131 = X71 - SIN30_MULTIPLY_SIDE_LENGTH, Y131 = Y71 - SIN60_MULTIPLY_SIDE_LENGTH;
-                    const X121 = X131 + HEXAGON_OUTSIDE, Y121 = Y131;
+                    const X111 = X61,
+                        Y111 = Y71 - HEXAGON_OUTSIDE_Y;
+                    const X131 = X71 - SIN30_MULTIPLY_SIDE_LENGTH,
+                        Y131 = Y71 - SIN60_MULTIPLY_SIDE_LENGTH;
+                    const X121 = X131 + HEXAGON_OUTSIDE,
+                        Y121 = Y131;
                     appendLine(svg, OUTER_LINE_STYLE, X71, X111, Y71, Y111, viewBox);
                     appendLine(svg, OUTER_LINE_STYLE, X111, X121, Y111, Y121, viewBox);
                     appendLine(svg, OUTER_LINE_STYLE, X121, X131, Y121, Y131, viewBox);
@@ -742,18 +861,26 @@ class BrickCore extends BrickWithTableBase {
         svg.widthMm = viewBox.right;
         svg.heightMm = viewBox.bottom;
     };
-    createTableBodyRow = (item)=>{
-        const { length , kind , rowCount , innerLineStyle , outerLineStyle , cutLineStyle  } = item;
-        const { tableBodyElement  } = this;
+    createTableBodyRow = (item) => {
+        const {
+            length,
+            kind,
+            rowCount,
+            innerLineStyle,
+            outerLineStyle,
+            cutLineStyle
+        } = item;
+        const {
+            tableBodyElement
+        } = this;
         const tr = createElement('tr');
         tableBodyElement.appendChild(tr);
         this.appendOperationTd(tr, item);
         this.appendNumberTd(tr, length, item, 'length', 1, null, 1);
-        this.appendSelectTd(tr, kind, item, 'kind', [
-            {
+        this.appendSelectTd(tr, kind, item, 'kind', [{
                 value: 'hollowOut',
                 captions: {
-                    en: 'Hollow Out',
+                    en_us: 'Hollow Out',
                     zh_cn: '镂空',
                     zh_tw: '鏤空'
                 }
@@ -761,7 +888,7 @@ class BrickCore extends BrickWithTableBase {
             {
                 value: 'hollowOutWithHole',
                 captions: {
-                    en: 'Hollow Out with Hole',
+                    en_us: 'Hollow Out with Hole',
                     zh_cn: '镂空带孔',
                     zh_tw: '鏤空帶孔'
                 }
@@ -769,7 +896,7 @@ class BrickCore extends BrickWithTableBase {
             {
                 value: 'pentagon',
                 captions: {
-                    en: 'Pentagon',
+                    en_us: 'Pentagon',
                     zh_cn: '五边形',
                     zh_tw: '五邊形'
                 }
@@ -777,7 +904,7 @@ class BrickCore extends BrickWithTableBase {
             {
                 value: 'hexagon',
                 captions: {
-                    en: 'Hexagon',
+                    en_us: 'Hexagon',
                     zh_cn: '六边形',
                     zh_tw: '六邊形'
                 }
@@ -785,7 +912,7 @@ class BrickCore extends BrickWithTableBase {
             {
                 value: 'interlacedHexagon',
                 captions: {
-                    en: 'Interlaced Hexagon',
+                    en_us: 'Interlaced Hexagon',
                     zh_cn: '交错六边形',
                     zh_tw: '交錯六邊形'
                 }
@@ -793,7 +920,7 @@ class BrickCore extends BrickWithTableBase {
             {
                 value: 'unify',
                 captions: {
-                    en: 'Unify',
+                    en_us: 'Unify',
                     zh_cn: '整体',
                     zh_tw: '整體'
                 }
@@ -804,46 +931,45 @@ class BrickCore extends BrickWithTableBase {
         this.appendTextareaTd(tr, outerLineStyle, item, 'outerLineStyle', 'string');
         this.appendTextareaTd(tr, cutLineStyle, item, 'cutLineStyle', 'string');
     };
-    initTableHead = ()=>{
+    initTableHead = () => {
         this.appendTableHeadCell({
-            en: 'Length',
+            en_us: 'Length',
             zh_cn: '边长',
             zh_tw: '邊長'
         });
         this.appendTableHeadCell({
-            en: 'Kind',
+            en_us: 'Kind',
             zh_cn: '类型',
             zh_tw: '類型'
         });
         this.appendTableHeadCell({
-            en: 'Row Count',
+            en_us: 'Row Count',
             zh_cn: '行数',
             zh_tw: '數量'
         });
         this.appendTableHeadCell({
-            en: 'Inner Line Style',
+            en_us: 'Inner Line Style',
             zh_cn: '内部线样式',
             zh_tw: '內部線樣式'
         });
         this.appendTableHeadCell({
-            en: 'Outer Line Style',
+            en_us: 'Outer Line Style',
             zh_cn: '外边线样式',
             zh_tw: '外邊線樣式'
         });
         this.appendTableHeadCell({
-            en: 'Cut Line Style',
+            en_us: 'Cut Line Style',
             zh_cn: '剪切线样式',
             zh_tw: '剪切線樣式'
         });
     };
-    getUsableList = ()=>{
+    getUsableList = () => {
         const innerLineStyle = 'stroke:#888;stroke-width:0.1mm;stroke-dasharray:3 2;';
         const outerLineStyle = 'stroke:#000;stroke-width:0.2mm;';
         const cutLineStyle = 'stroke:#FF0000;stroke-width:0.1mm;';
-        const buttonList = [
-            {
+        const buttonList = [{
                 nameI18n: {
-                    en: 'Hollow Out',
+                    en_us: 'Hollow Out',
                     zh_cn: '镂空',
                     zh_tw: '鏤空'
                 },
@@ -859,7 +985,7 @@ class BrickCore extends BrickWithTableBase {
             },
             {
                 nameI18n: {
-                    en: 'Hollow Out with Hole',
+                    en_us: 'Hollow Out with Hole',
                     zh_cn: '镂空带孔',
                     zh_tw: '鏤空帶孔'
                 },
@@ -875,7 +1001,7 @@ class BrickCore extends BrickWithTableBase {
             },
             {
                 nameI18n: {
-                    en: 'Pentagon',
+                    en_us: 'Pentagon',
                     zh_cn: '五边形',
                     zh_tw: '五邊形'
                 },
@@ -891,7 +1017,7 @@ class BrickCore extends BrickWithTableBase {
             },
             {
                 nameI18n: {
-                    en: 'Hexagon',
+                    en_us: 'Hexagon',
                     zh_cn: '六边形',
                     zh_tw: '六邊形'
                 },
@@ -907,7 +1033,7 @@ class BrickCore extends BrickWithTableBase {
             },
             {
                 nameI18n: {
-                    en: 'Interlaced Hexagon',
+                    en_us: 'Interlaced Hexagon',
                     zh_cn: '交错六边形',
                     zh_tw: '交錯六邊形'
                 },
@@ -923,7 +1049,7 @@ class BrickCore extends BrickWithTableBase {
             },
             {
                 nameI18n: {
-                    en: 'Unify',
+                    en_us: 'Unify',
                     zh_cn: '整体',
                     zh_tw: '整體'
                 },
@@ -939,16 +1065,14 @@ class BrickCore extends BrickWithTableBase {
             }
         ];
         const strongI18n = {
-            en: 'Shortcuts',
+            en_us: 'Shortcuts',
             zh_cn: '快捷按钮',
             zh_tw: '快捷按鈕'
         };
-        return [
-            {
-                strongI18n,
-                buttonList
-            }
-        ];
+        return [{
+            strongI18n,
+            buttonList
+        }];
     };
 }
 const brickCore = new BrickCore();

@@ -22,7 +22,7 @@ class TreasuresPage extends ActualPageBase {
   public initTitleElement(): void {
     const titleElement = getTitleElement();
     titleElement.i18n = {
-      en: "Natural Treasures List",
+      en_us: "Natural Treasures List",
       zh_cn: "物华天宝清单",
       zh_tw: "物華天寶清單",
     };
@@ -55,8 +55,8 @@ class TreasuresPage extends ActualPageBase {
 
     pageSubjectElement.id = `${PAGE_NAME}Subject`;
     pageSubjectElement.className = "pageSubject";
-    
-    ['en', 'zh_cn', 'zh_tw'].forEach((lang: string) => {
+
+    ['en_us', 'zh_cn', 'zh_tw'].forEach((lang: string) => {
       const span = createElement(lang) as HTMLSpanElement;
       pageSubjectElement.appendChild(span);
 
@@ -116,8 +116,8 @@ class TreasuresPage extends ActualPageBase {
           const { image, link, title, summary } = data as {
             image: string;
             link: string;
-            title: { en: string; zh_cn: string; zh_tw: string };
-            summary: { en: string; zh_cn: string; zh_tw: string };
+            title: { en_us: string; zh_cn: string; zh_tw: string };
+            summary: { en_us: string; zh_cn: string; zh_tw: string };
           };
 
           const aElement = itemElement.children[0] as HTMLAnchorElement;

@@ -57,7 +57,7 @@ abstract class BrickWithTableBase extends BrickBase {
 
     tableHeadElement.appendChild(trHead);
     this.appendTableHeadCell({
-      en: "Operations",
+      en_us: "Operations",
       zh_cn: "操作",
       zh_tw: "操作",
     });

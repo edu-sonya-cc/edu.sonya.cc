@@ -1,11 +1,11 @@
 /**
- * <en>
+ * <en_us>
  * Function:
  * Create:
  * History:
  * Reference:
  * Description:
- * </en>
+ * </en_us>
  *
  * <zh_cn>
  * 功能：注音写字生成小工具
@@ -32,19 +32,19 @@
 export declare abstract class CopybookBase extends BrickBase {
   constructor(appendData: object, otherComputedData: object);
   /**
-   * <en>Synchronize new data related to copybook.</en>
+   * <en_us>Synchronize new data related to copybook.</en_us>
    * <zh_cn>同步字帖相关新数据</zh_cn>
    * <zh_tw>同步字帖相關新數據</zh_tw>
    * @param _newData
-   * <en>New data related to copybook.</en>
+   * <en_us>New data related to copybook.</en_us>
    * <zh_cn>字帖相关新数据</zh_cn>
    * <zh_tw>字帖相關新數據</zh_tw>
    */
   protected updateOtherDataOfCopybook: (_newData: any) => void;
   /**
-   * <en>
+   * <en_us>
    * Array: check box corresponding to the selectable copybook set leaf node set.
-   * </en>
+   * </en_us>
    * <zh_cn>
    * 数组：可选择的字帖叶结点集合对应的复选框。
    * </zh_cn>
@@ -61,13 +61,13 @@ export declare abstract class CopybookBase extends BrickBase {
     }
   >;
   /**
-   * <en>
+   * <en_us>
    * Array: Array: optional copybook collection.
    * Level 3: semester, unit and class. Skip the third level at present. terms -> units [-> lessions]
    * In the first semester of the first grade, the contents of the writing table were all included in the literacy table;
    * In the second semester of the first year, there are two parts: the character recognition table and the writing table.
    * From the second grade, there are three parts: literacy table, writing table and words.
-   * </en>
+   * </en_us>
    * <zh_cn>
    * 数组：可选择的字帖集。三级：学期、单元、课。目前略过第三级。
    * 一年级上，写字表内容全部包含于识字表中；一年级下，分识字表与写字表两部分。二年级开始，分识字表、写字表、词语三部分。
@@ -88,49 +88,49 @@ export declare abstract class CopybookBase extends BrickBase {
     }>;
   }>;
   /**
-   * <en>Typebook Kind radio button element array.</en>
+   * <en_us>Typebook Kind radio button element array.</en_us>
    * <zh_cn>字帖类型单选按钮数组</zh_cn>
    * <zh_tw>字帖類型單選按鈕數組</zh_tw>
    */
   protected kindElementArray: Array<HTMLInputElement>;
   /**
-   * <en>Init typebook kind radio button element array.</en>
+   * <en_us>Init typebook kind radio button element array.</en_us>
    * <zh_cn>初始化字帖类型单选按钮数组</zh_cn>
    * <zh_tw>初始化字帖類型單選按鈕數組</zh_tw>
    */
   protected initKindElements: () => void;
   /**
-   * <en>Entry method radio button element array.</en>
+   * <en_us>Entry method radio button element array.</en_us>
    * <zh_cn>录入方式单选按钮数组</zh_cn>
    * <zh_tw>錄入方式單選按鈕數組</zh_tw>
    */
   protected inputMethodElementArray: Array<HTMLInputElement>;
   /**
-   * <en>Init entry method radio button element array.</en>
+   * <en_us>Init entry method radio button element array.</en_us>
    * <zh_cn>初始化录入方式单选按钮数组</zh_cn>
    * <zh_tw>初始化錄入方式單選按鈕數組</zh_tw>
    */
   protected initInputMethodElements: () => void;
   /**
-   * <en>Font Size radio button element array.</en>
+   * <en_us>Font Size radio button element array.</en_us>
    * <zh_cn>字号单选按钮数组</zh_cn>
    * <zh_tw>字型大小單選按鈕數組</zh_tw>
    */
   protected fontSizeElementArray: Array<HTMLInputElement>;
   /**
-   * <en>Init font size radio button element array.</en>
+   * <en_us>Init font size radio button element array.</en_us>
    * <zh_cn>初始化字号单选按钮数组</zh_cn>
    * <zh_tw>初始化字型大小單選按鈕數組</zh_tw>
    */
   protected initFontSizeElements: () => void;
   /**
-   * <en>Color radio button element array.</en>
+   * <en_us>Color radio button element array.</en_us>
    * <zh_cn>颜色单选按钮数组</zh_cn>
    * <zh_tw>顏色單選按鈕數組</zh_tw>
    */
   protected colorElementArray: Array<HTMLInputElement>;
   /**
-   * <en>Init color radio button element array.</en>
+   * <en_us>Init color radio button element array.</en_us>
    * <zh_cn>初始化颜色单选按钮数组</zh_cn>
    * <zh_tw>初始化顏色單選按鈕數組</zh_tw>
    */

@@ -246,10 +246,10 @@ var BrickCore = (function (_super) {
                 }
             });
             html += '</page>';
-            var en = FILENAME_POSTFIX + "hundredthLattice";
+            var en_us = FILENAME_POSTFIX + "hundredthLattice";
             var zh_cn = FILENAME_POSTFIX + "\u767E\u6570\u683C";
             var zh_tw = FILENAME_POSTFIX + "\u767E\u6578\u683C";
-            computedData.title = { en: en, zh_cn: zh_cn, zh_tw: zh_tw };
+            computedData.title = { en_us: en_us, zh_cn: zh_cn, zh_tw: zh_tw };
             computedData.css = css;
             computedData.html = html;
         };
@@ -269,35 +269,35 @@ var BrickCore = (function (_super) {
             _this.appendTextareaTd(tr, textStyle, item, 'textStyle', 'string');
         };
         _this.initTableHead = function () {
-            _this.appendTableHeadCell({ en: 'Length', zh_cn: '边长', zh_tw: '邊長' });
+            _this.appendTableHeadCell({ en_us: 'Length', zh_cn: '边长', zh_tw: '邊長' });
             _this.appendTableHeadCell({
-                en: 'Show Number',
+                en_us: 'Show Number',
                 zh_cn: '显示数字',
                 zh_tw: '顯示數字'
             });
             _this.appendTableHeadCell({
-                en: 'Digital Overlay',
+                en_us: 'Digital Overlay',
                 zh_cn: '数字叠加',
                 zh_tw: '數位疊加'
             });
             _this.appendTableHeadCell({
-                en: 'Start Number',
+                en_us: 'Start Number',
                 zh_cn: '开始值',
                 zh_tw: '開始值'
             });
-            _this.appendTableHeadCell({ en: 'Count', zh_cn: '数量', zh_tw: '數量' });
+            _this.appendTableHeadCell({ en_us: 'Count', zh_cn: '数量', zh_tw: '數量' });
             _this.appendTableHeadCell({
-                en: 'Inner Line Style',
+                en_us: 'Inner Line Style',
                 zh_cn: '内部线样式',
                 zh_tw: '內部線樣式'
             });
             _this.appendTableHeadCell({
-                en: 'Outer Line Style',
+                en_us: 'Outer Line Style',
                 zh_cn: '外边线样式',
                 zh_tw: '外邊線樣式'
             });
             _this.appendTableHeadCell({
-                en: 'Text Style',
+                en_us: 'Text Style',
                 zh_cn: '文本样式',
                 zh_tw: '文字樣式'
             });
@@ -314,7 +314,7 @@ var BrickCore = (function (_super) {
             var buttonList = [
                 {
                     nameI18n: {
-                        en: 'Hide numbers',
+                        en_us: 'Hide numbers',
                         zh_cn: '无数字',
                         zh_tw: '無數字'
                     },
@@ -331,7 +331,7 @@ var BrickCore = (function (_super) {
                 },
                 {
                     nameI18n: {
-                        en: 'Start from zero',
+                        en_us: 'Start from zero',
                         zh_cn: '从0开始',
                         zh_tw: '從0開始'
                     },
@@ -348,7 +348,7 @@ var BrickCore = (function (_super) {
                 },
                 {
                     nameI18n: {
-                        en: 'Start from one',
+                        en_us: 'Start from one',
                         zh_cn: '从1开始',
                         zh_tw: '從1開始'
                     },
@@ -365,7 +365,7 @@ var BrickCore = (function (_super) {
                 },
             ];
             var strongI18n = {
-                en: 'Shortcuts',
+                en_us: 'Shortcuts',
                 zh_cn: '快捷按钮',
                 zh_tw: '快捷按鈕'
             };

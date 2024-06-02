@@ -24,7 +24,7 @@ class ReportPage extends ActualPageBase {
   private pageMarginRight = 0;
 
   public initTitleElement(): void {
-    this.titleElement.i18n = { en: "Report", zh_cn: "报表", zh_tw: "報表" };
+    this.titleElement.i18n = { en_us: "Report", zh_cn: "报表", zh_tw: "報表" };
   }
 
   public initMainElement = () => {

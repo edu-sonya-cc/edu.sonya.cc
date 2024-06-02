@@ -29,7 +29,7 @@ export declare abstract class BrickBase implements IBrickCore {
   protected DEFAULT_DATA_JSON: string;
   protected computedData: {
     title: {
-      en: string;
+      en_us: string;
       zh_cn: string;
       zh_tw: string;
     };

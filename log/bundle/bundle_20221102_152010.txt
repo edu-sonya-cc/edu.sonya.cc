@@ -1,7 +1,0 @@
-[0m[1m[31merror[0m: Found argument 'src\js\brick\' which wasn't expected, or isn't valid in this context
-
-USAGE:
-    deno bundle [OPTIONS] <source_file> [--] [out_file]
-
-For more information try --help
-

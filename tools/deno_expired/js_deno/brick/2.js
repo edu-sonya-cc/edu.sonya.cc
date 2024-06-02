@@ -4,7 +4,7 @@
 
 class BrickCore extends BrickWithTableBase {
     idOrClassPrefix = 'brickPageMathStage';
-    constructor(){
+    constructor() {
         const NOW = new Date();
         super({
             onlyMentalArithmetic: false,
@@ -18,9 +18,18 @@ class BrickCore extends BrickWithTableBase {
         this.initPlusOrSubtractDictionaryNotGreatThan100Array();
         this.initExhaustibleAMultiplyBInfo();
     }
-    updateOtherDataLevel3 = (newData)=>{
-        const { onlyMentalArithmetic , pageSubjectFontSize , questionFontSize  } = newData;
-        const { data , onlyMentalArithmeticRadioArray , pageSubjectFontSizeElement , questionFontSizeElement  } = this;
+    updateOtherDataLevel3 = (newData) => {
+        const {
+            onlyMentalArithmetic,
+            pageSubjectFontSize,
+            questionFontSize
+        } = newData;
+        const {
+            data,
+            onlyMentalArithmeticRadioArray,
+            pageSubjectFontSizeElement,
+            questionFontSizeElement
+        } = this;
         data.onlyMentalArithmetic = onlyMentalArithmetic;
         data.pageSubjectFontSize = pageSubjectFontSize;
         data.questionFontSize = questionFontSize;
@@ -28,11 +37,18 @@ class BrickCore extends BrickWithTableBase {
         pageSubjectFontSizeElement.value = pageSubjectFontSize;
         questionFontSizeElement.value = questionFontSize;
     };
-    initExhaustibleAMultiplyBInfo = ()=>{
-        const { exhaustibleAMultiplyBInfo  } = this;
-        const { aMultiplyBMaybeCarryArray , aMultiplyBMaybeNotCarryArray , aMultiplyBMaybeDebitMinusArray , aMultiplyBMaybeNotDebitMinusArray  } = exhaustibleAMultiplyBInfo;
-        for(let a = 1; a < 10; ++a){
-            for(let b = 1; b < 10; ++b){
+    initExhaustibleAMultiplyBInfo = () => {
+        const {
+            exhaustibleAMultiplyBInfo
+        } = this;
+        const {
+            aMultiplyBMaybeCarryArray,
+            aMultiplyBMaybeNotCarryArray,
+            aMultiplyBMaybeDebitMinusArray,
+            aMultiplyBMaybeNotDebitMinusArray
+        } = exhaustibleAMultiplyBInfo;
+        for (let a = 1; a < 10; ++a) {
+            for (let b = 1; b < 10; ++b) {
                 const aMultiplyB = a * b;
                 const digits = aMultiplyB % 10;
                 const item = {
@@ -55,8 +71,8 @@ class BrickCore extends BrickWithTableBase {
         exhaustibleAMultiplyBInfo.aMultiplyBMaybeDebitMinusMaxIndex = aMultiplyBMaybeDebitMinusArray.length - 1;
         exhaustibleAMultiplyBInfo.aMultiplyBMaybeNotDebitMinusMaxIndex = aMultiplyBMaybeNotDebitMinusArray.length - 1;
     };
-    initPlusOrSubtractDictionaryNotGreatThan100Array = ()=>{
-        for(let a = 0; a <= 100; ++a){
+    initPlusOrSubtractDictionaryNotGreatThan100Array = () => {
+        for (let a = 0; a <= 100; ++a) {
             const aDigits = a % 10;
             const addendWithCarryArray = [];
             const addendWithoutCarryArray = [];
@@ -66,7 +82,7 @@ class BrickCore extends BrickWithTableBase {
             const subtractorMax = a;
             const bMax = Math.max(addendMax, subtractorMax);
             const bDigitMinWhenCarry = Math.max(1, 10 - aDigits);
-            for(let b = 0; b <= bMax; ++b){
+            for (let b = 0; b <= bMax; ++b) {
                 const bDigits = b % 10;
                 if (b <= addendMax) {
                     if (bDigits >= bDigitMinWhenCarry) {
@@ -95,7 +111,7 @@ class BrickCore extends BrickWithTableBase {
             });
         }
     };
-    initExhaustibleArray = ()=>{
+    initExhaustibleArray = () => {
         this.fillExhaustibleArray1();
         this.fillExhaustibleArray2();
         this.fillExhaustibleArray3();
@@ -112,22 +128,24 @@ class BrickCore extends BrickWithTableBase {
         aMultiplyBMaybeDebitMinusMaxIndex: -1,
         aMultiplyBMaybeNotDebitMinusMaxIndex: -1
     };
-    fillExhaustibleArray1 = ()=>{
+    fillExhaustibleArray1 = () => {
         const catalog = 'A+B=C';
-        const { exhaustibleArray  } = this;
+        const {
+            exhaustibleArray
+        } = this;
         [
             '1-5',
             '0-5',
             '0-10',
             '0-20'
-        ].forEach((scope)=>{
+        ].forEach((scope) => {
             const segArray = scope.split('-');
             const min = parseInt(segArray[0], 0);
             const max = parseInt(segArray[1], 0);
             const list = [];
-            for(let a = min; a <= max; ++a){
+            for (let a = min; a <= max; ++a) {
                 const bMax = max - a;
-                for(let b = min; b <= bMax; ++b){
+                for (let b = min; b <= bMax; ++b) {
                     const result = a + b;
                     const commonHtml = `${a} + ${b} = `.replace(/ /g, '<i> </i>');
                     const question = `<p>${commonHtml}</p>`;
@@ -147,22 +165,24 @@ class BrickCore extends BrickWithTableBase {
             });
         });
     };
-    fillExhaustibleArray2 = ()=>{
+    fillExhaustibleArray2 = () => {
         const catalog = 'A-B=C';
-        const { exhaustibleArray  } = this;
+        const {
+            exhaustibleArray
+        } = this;
         [
             '1-5',
             '0-5',
             '0-10',
             '0-20'
-        ].forEach((scope)=>{
+        ].forEach((scope) => {
             const segArray = scope.split('-');
             const min = parseInt(segArray[0], 0);
             const max = parseInt(segArray[1], 0);
             const list = [];
-            for(let a = min * 2; a <= max; ++a){
+            for (let a = min * 2; a <= max; ++a) {
                 const bMax = a - min;
-                for(let b = min; b <= bMax; ++b){
+                for (let b = min; b <= bMax; ++b) {
                     const result = a - b;
                     const commonHtml = `${a} - ${b} = `.replace(/ /g, '<i> </i>');
                     const question = `<p>${commonHtml}</p>`;
@@ -182,22 +202,24 @@ class BrickCore extends BrickWithTableBase {
             });
         });
     };
-    fillExhaustibleArray3 = ()=>{
+    fillExhaustibleArray3 = () => {
         const catalog = 'A+B=C D-E=F';
-        const { exhaustibleArray  } = this;
+        const {
+            exhaustibleArray
+        } = this;
         [
             '1-5',
             '0-5',
             '0-10',
             '0-20'
-        ].forEach((scope)=>{
+        ].forEach((scope) => {
             const segArray = scope.split('-');
             const min = parseInt(segArray[0], 0);
             const max = parseInt(segArray[1], 0);
             const list = [];
-            for(let a = min; a <= max; ++a){
+            for (let a = min; a <= max; ++a) {
                 const bMax = max - a;
-                for(let b = min; b <= bMax; ++b){
+                for (let b = min; b <= bMax; ++b) {
                     const result = a + b;
                     const commonHtml = `${a} + ${b} = `.replace(/ /g, '<i> </i>');
                     const question = `<p>${commonHtml}</p>`;
@@ -210,9 +232,9 @@ class BrickCore extends BrickWithTableBase {
                     });
                 }
             }
-            for(let a1 = min * 2; a1 <= max; ++a1){
+            for (let a1 = min * 2; a1 <= max; ++a1) {
                 const bMax1 = a1 - min;
-                for(let b1 = min; b1 <= bMax1; ++b1){
+                for (let b1 = min; b1 <= bMax1; ++b1) {
                     const result1 = a1 - b1;
                     const commonHtml1 = `${a1} - ${b1} = `.replace(/ /g, '<i> </i>');
                     const question1 = `<p>${commonHtml1}</p>`;
@@ -232,17 +254,19 @@ class BrickCore extends BrickWithTableBase {
             });
         });
     };
-    fillExhaustibleArray4 = ()=>{
+    fillExhaustibleArray4 = () => {
         const catalog = 'A×B=C';
-        const { exhaustibleArray  } = this;
+        const {
+            exhaustibleArray
+        } = this;
         [
             '9×9A',
             '9×9B'
-        ].forEach((scope)=>{
+        ].forEach((scope) => {
             const bStartFrom1 = scope === '9×9B';
             const list = [];
-            for(let a = 1; a < 10; ++a){
-                for(let b = bStartFrom1 ? 1 : a; b < 10; ++b){
+            for (let a = 1; a < 10; ++a) {
+                for (let b = bStartFrom1 ? 1 : a; b < 10; ++b) {
                     const result = a * b;
                     const commonHtml = `${a} × ${b} = `.replace(/ /g, '<i> </i>');
                     const question = `<p>${commonHtml}</p>`;
@@ -262,13 +286,15 @@ class BrickCore extends BrickWithTableBase {
             });
         });
     };
-    fillExhaustibleArray5 = ()=>{
+    fillExhaustibleArray5 = () => {
         const catalog = 'A+B+C=10/20/n';
-        const { exhaustibleArray  } = this;
+        const {
+            exhaustibleArray
+        } = this;
         const scope = 'A';
         const list = [];
-        for(let a = 1; a < 10; ++a){
-            for(let b = 1; b < 10; ++b){
+        for (let a = 1; a < 10; ++a) {
+            for (let b = 1; b < 10; ++b) {
                 const c = (20 - a - b) % 10;
                 const result = a + b + c;
                 const commonHtml = `${a} + ${b} + ${c} = `.replace(/ /g, '<i> </i>');
@@ -288,15 +314,30 @@ class BrickCore extends BrickWithTableBase {
             countPerSet: list.length
         });
     };
-    countDataAndComputedData = ()=>{
+    countDataAndComputedData = () => {
         this.countDataAndComputedDataInBrickWithTableBase();
-        const { computedData , mmToPxScale  } = this;
-        const { paperSize , isLandscape , maxX: MAX_X , maxY: MAX_Y , pageMarginTop , pageMarginBottom , pageMarginLeft , pageMarginRight , list , pageSubjectFontSize , questionFontSize  } = this.data;
+        const {
+            computedData,
+            mmToPxScale
+        } = this;
+        const {
+            paperSize,
+            isLandscape,
+            maxX: MAX_X,
+            maxY: MAX_Y,
+            pageMarginTop,
+            pageMarginBottom,
+            pageMarginLeft,
+            pageMarginRight,
+            list,
+            pageSubjectFontSize,
+            questionFontSize
+        } = this.data;
         computedData.css = `/* common.css */
 * { margin:0;border:0;padding:0; }
 * { box-sizing:border-box; }
 
-/* landscape 横向 portrait 纵向*/ 
+/* landscape 横向 portrait 纵向*/
 @media print { @page { size: ${paperSize} ${isLandscape ? 'landscape' : 'portrait'}; margin:${pageMarginTop}mm ${pageMarginRight}mm ${pageMarginBottom}mm ${pageMarginLeft}mm; } }
 page:not(page:last-child){page-break-after:always;}
 
@@ -435,29 +476,37 @@ p[edu-right-char="9"]{padding-right:9em;}
         const NOW = new Date();
         const LANG = getCurrentLang();
         const i18nSubject = {
-            en: 'Five minute pass',
+            en_us: 'Five minute pass',
             zh_cn: '五分钟闯关',
             zh_tw: '五分鐘闖關'
         };
         const i18nAnswerFlag = {
-            en: 'Answer',
+            en_us: 'Answer',
             zh_cn: '答案',
             zh_tw: '答案'
         };
-        const { data: { year , month , day  }  } = this;
+        const {
+            data: {
+                year,
+                month,
+                day
+            }
+        } = this;
         const i18nSubtitle = {
-            en: `<span class="subtitleDay">${day}</span> <span class="subtitleMonth">${month}</span>, <span class="subtitleYear">${year}</span>`,
+            en_us: `<span class="subtitleDay">${day}</span> <span class="subtitleMonth">${month}</span>, <span class="subtitleYear">${year}</span>`,
             zh_cn: `<span class="subtitleYear">${year}</span>年<span class="subtitleMonth">${month}</span>月<span class="subtitleDay">${day}</span>日`,
             zh_tw: `<span class="subtitleYear">${year}</span>年<span class="subtitleMonth">${month}</span>月<span class="subtitleDay">${day}</span>日`
         };
         const HTML_SUBJECT = `<span class="subject">${i18nSubject[LANG]}&nbsp;</span>&nbsp;`;
         const HTML_SUBTITLE = `<div class="subtitle">${i18nSubtitle[LANG]}</div>`;
-        const titlePostfix = `_${NOW.getFullYear()}${'0'.concat((NOW.getMonth() + 1).toString()).substr(-2)}${'0'.concat(NOW.getDate().toString()).substr(-2)}`.concat(`_${'0'.concat(NOW.getHours().toString()).substr(-2)}${'0'.concat(NOW.getMinutes().toString()).substr(-2)}${'0'.concat(NOW.getSeconds().toString()).substr(-2)}`, list.length < 4 ? '_'.concat(list.map(({ kind  })=>kind).join('_and_')) : '');
-        const en = `${FILENAME_POSTFIX}mathStage_${titlePostfix}`;
+        const titlePostfix = `_${NOW.getFullYear()}${'0'.concat((NOW.getMonth() + 1).toString()).substr(-2)}${'0'.concat(NOW.getDate().toString()).substr(-2)}`.concat(`_${'0'.concat(NOW.getHours().toString()).substr(-2)}${'0'.concat(NOW.getMinutes().toString()).substr(-2)}${'0'.concat(NOW.getSeconds().toString()).substr(-2)}`, list.length < 4 ? '_'.concat(list.map(({
+            kind
+        }) => kind).join('_and_')) : '');
+        const en_us = `${FILENAME_POSTFIX}mathStage_${titlePostfix}`;
         const zh_cn = `${FILENAME_POSTFIX}数学五分钟闯关_${titlePostfix}`;
         const zh_tw = `${FILENAME_POSTFIX}數學五分鐘闖關_${titlePostfix}`;
         computedData.title = {
-            en,
+            en_us,
             zh_cn,
             zh_tw
         };
@@ -472,28 +521,42 @@ p[edu-right-char="9"]{padding-right:9em;}
         const answerPageStartHtml = `<page class="answerPage">${answerPageSubjectRowHtml}`;
         computedData.html = this.getReportHtml(questionPageStartHtml, answerPageStartHtml);
     };
-    getReportHtml = (questionPageStartHtml, answerPageStartHtml)=>{
-        const { data: { list  }  } = this;
+    getReportHtml = (questionPageStartHtml, answerPageStartHtml) => {
+        const {
+            data: {
+                list
+            }
+        } = this;
         const questionRowsArray = [];
         const answerRowsArray = [];
         let questionHtml = '';
         let answerHtml = '';
         let questionPageIndex = 0;
         let answerPageIndex = 0;
-        list.filter(({ independentPagination  })=>independentPagination).forEach((info)=>{
+        list.filter(({
+            independentPagination
+        }) => independentPagination).forEach((info) => {
             this.appendReportElements(info, questionRowsArray, answerRowsArray);
         });
-        questionRowsArray.forEach(({ rowsOccupied , rows  })=>{
+        questionRowsArray.forEach(({
+            rowsOccupied,
+            rows
+        }) => {
             questionHtml += this.getIndependentPaginationHtml(rowsOccupied, rows, questionPageStartHtml, questionPageIndex);
         });
-        answerRowsArray.forEach(({ rowsOccupied , rows  })=>{
+        answerRowsArray.forEach(({
+            rowsOccupied,
+            rows
+        }) => {
             answerHtml += this.getIndependentPaginationHtml(rowsOccupied, rows, answerPageStartHtml, answerPageIndex);
         });
         questionPageIndex = questionHtml.split('</page>').length - 1;
         answerPageIndex = answerHtml.split('</page>').length - 1;
         questionRowsArray.length = 0;
         answerRowsArray.length = 0;
-        list.filter(({ independentPagination  })=>!independentPagination).forEach((info)=>{
+        list.filter(({
+            independentPagination
+        }) => !independentPagination).forEach((info) => {
             this.appendReportElements(info, questionRowsArray, answerRowsArray);
         });
         questionHtml += this.getDependentPagingHtml(questionRowsArray, questionPageStartHtml, questionPageIndex);
@@ -502,13 +565,15 @@ p[edu-right-char="9"]{padding-right:9em;}
         const answerPageCount = (answerHtml.split('</page>').length - 1).toString();
         return questionHtml.replace(/~reporterPageCount~/g, questionPageCount).concat(answerHtml.replace(/~reporterPageCount~/g, answerPageCount));
     };
-    getIndependentPaginationHtml = (rowsOccupied, rows, pageStartHtml, pageIndex)=>{
+    getIndependentPaginationHtml = (rowsOccupied, rows, pageStartHtml, pageIndex) => {
         if (!rows.length) return '';
         if (this.data.onlyMentalArithmetic) rowsOccupied = this.defaultRowsOccupied;
-        const { smallRowCountPerPage  } = this;
+        const {
+            smallRowCountPerPage
+        } = this;
         let html = pageStartHtml.replace('~reporterPageIndex~', (++pageIndex).toString());
         let remainingRowCount = smallRowCountPerPage;
-        rows.forEach((row)=>{
+        rows.forEach((row) => {
             if (rowsOccupied > remainingRowCount) {
                 html += `</page>${pageStartHtml.replace('~reporterPageIndex~', (++pageIndex).toString())}`;
                 remainingRowCount = smallRowCountPerPage;
@@ -522,15 +587,21 @@ p[edu-right-char="9"]{padding-right:9em;}
     smallRowCountPerPage = 48;
     defaultRowCountPerPage = 25;
     defaultRowsOccupied = this.smallRowCountPerPage / this.defaultRowCountPerPage;
-    getDependentPagingHtml = (rowArray, pageStartHtml, pageIndex)=>{
+    getDependentPagingHtml = (rowArray, pageStartHtml, pageIndex) => {
         if (!rowArray.length) return '';
         const forceSetRowsOccupiedToDefault = this.data.onlyMentalArithmetic;
-        const { smallRowCountPerPage , defaultRowsOccupied  } = this;
+        const {
+            smallRowCountPerPage,
+            defaultRowsOccupied
+        } = this;
         let html = pageStartHtml.replace('~reporterPageIndex~', (++pageIndex).toString());
         let remainingRowCount = smallRowCountPerPage;
-        rowArray.forEach(({ rowsOccupied , rows  })=>{
+        rowArray.forEach(({
+            rowsOccupied,
+            rows
+        }) => {
             if (forceSetRowsOccupiedToDefault) rowsOccupied = defaultRowsOccupied;
-            rows.forEach((row)=>{
+            rows.forEach((row) => {
                 if (rowsOccupied > remainingRowCount) {
                     html += `</page>${pageStartHtml.replace('~reporterPageIndex~', (++pageIndex).toString())}`;
                     remainingRowCount = smallRowCountPerPage;
@@ -543,36 +614,42 @@ p[edu-right-char="9"]{padding-right:9em;}
         return html;
     };
     plusOrSubtractDictionaryNotGreatThan100Array = [];
-    getAddendWithCarry = (other)=>{
+    getAddendWithCarry = (other) => {
         const plusOrSubtractDictionaryNotGreatThan100 = this.plusOrSubtractDictionaryNotGreatThan100Array[other];
         if (typeof plusOrSubtractDictionaryNotGreatThan100 === 'undefined') return 0;
         return plusOrSubtractDictionaryNotGreatThan100.addendWithCarryArray[this.getIntegerRandom(0, plusOrSubtractDictionaryNotGreatThan100.addendWithCarryMaxIndex)];
     };
-    getAddendWithoutCarry = (other)=>{
+    getAddendWithoutCarry = (other) => {
         const plusOrSubtractDictionaryNotGreatThan100 = this.plusOrSubtractDictionaryNotGreatThan100Array[other];
         if (typeof plusOrSubtractDictionaryNotGreatThan100 === 'undefined') return 0;
         const array = plusOrSubtractDictionaryNotGreatThan100.addendWithoutCarryArray;
         const maxIndex = plusOrSubtractDictionaryNotGreatThan100.addendWithoutCarryMaxIndex;
         if (maxIndex === 0) return array[0];
-        const { getIntegerRandom  } = this;
+        const {
+            getIntegerRandom
+        } = this;
         return array[getIntegerRandom(!getIntegerRandom(0, 100) ? 0 : 1, maxIndex)];
     };
-    getSubtractorWithDebitMinus = (minuend)=>{
+    getSubtractorWithDebitMinus = (minuend) => {
         const plusOrSubtractDictionaryNotGreatThan100 = this.plusOrSubtractDictionaryNotGreatThan100Array[minuend];
         if (typeof plusOrSubtractDictionaryNotGreatThan100 === 'undefined') return 0;
         return plusOrSubtractDictionaryNotGreatThan100.subtractorWithDebitMinusArray[this.getIntegerRandom(0, plusOrSubtractDictionaryNotGreatThan100.subtractorWithDebitMinusMaxIndex)];
     };
-    getSubtractorWithoutDebitMinus = (minuend)=>{
+    getSubtractorWithoutDebitMinus = (minuend) => {
         const plusOrSubtractDictionaryNotGreatThan100 = this.plusOrSubtractDictionaryNotGreatThan100Array[minuend];
         if (typeof plusOrSubtractDictionaryNotGreatThan100 === 'undefined') return 0;
         const array = plusOrSubtractDictionaryNotGreatThan100.subtractorWithoutDebitMinusArray;
         const maxIndex = plusOrSubtractDictionaryNotGreatThan100.subtractorWithoutDebitMinusMaxIndex;
         if (maxIndex === 0) return array[0];
-        const { getIntegerRandom  } = this;
+        const {
+            getIntegerRandom
+        } = this;
         return array[getIntegerRandom(!getIntegerRandom(0, 100) ? 0 : 1, maxIndex)];
     };
     getMaybeCarryTwiceNumbers(has) {
-        const { getIntegerRandom  } = this;
+        const {
+            getIntegerRandom
+        } = this;
         let a, b, c, d;
         if (has) {
             if (getIntegerRandom(1, 10) < 3) {
@@ -670,12 +747,20 @@ p[edu-right-char="9"]{padding-right:9em;}
     questionElementHtmlAppendStart4 = '<div edu-flex="4">';
     questionElementHtmlAppendStart3 = '<div edu-flex="3">';
     fillElementArrayOfAPlusB(has, min, max, questionElementArray, answerElementArray) {
-        const { data: { onlyMentalArithmetic  } , getIntegerRandom , getAddendWithCarry , getAddendWithoutCarry , getHtmlOfAPlusB  } = this;
+        const {
+            data: {
+                onlyMentalArithmetic
+            },
+            getIntegerRandom,
+            getAddendWithCarry,
+            getAddendWithoutCarry,
+            getHtmlOfAPlusB
+        } = this;
         const questionElementHtmlAppend = onlyMentalArithmetic ? '' : this.questionElementHtmlAppendOfAdditionWhenNotMentalArithmetic3;
         let A;
         let B;
         if (has) {
-            while(true){
+            while (true) {
                 A = getIntegerRandom(min, max);
                 if (A % 10) break;
             }
@@ -699,13 +784,13 @@ p[edu-right-char="9"]{padding-right:9em;}
         const hundredsCarryHtml = A % 100 + B % 100 > 99 ? '<carry edu-digit="hundreds">1</carry>' : '';
         return `<p><number>${A}</number></p><p><operator>+</operator><number>${B}</number>${hundredsCarryHtml}${tensCarryHtml}</p><hr><p><number>${result}</number></p>`;
     }
-    getSimleHtmlOfAMultiplyB = (A, B, result)=>{
+    getSimleHtmlOfAMultiplyB = (A, B, result) => {
         return `<p><number>${A}</number></p><p><operator>×</operator><number>${B}</number></p><hr><p><number>${result}</number></p>`;
     };
-    isOnlyFirstIsNotZero = (numberal)=>{
+    isOnlyFirstIsNotZero = (numberal) => {
         let str = numberal.toString();
         let length = str.length;
-        while(length){
+        while (length) {
             const lastChar = str.substring(length - 1, length);
             if (lastChar === '0') {
                 str = str.substring(0, length - 1);
@@ -717,14 +802,18 @@ p[edu-right-char="9"]{padding-right:9em;}
         return length <= 1;
     };
     getHtmlOfAMultiplyB(A, B, result) {
-        const { getSimleHtmlOfAMultiplyB  } = this;
+        const {
+            getSimleHtmlOfAMultiplyB
+        } = this;
         if (B < 10) {
             return getSimleHtmlOfAMultiplyB(A, B, result);
         }
         if (A < 10) {
             return getSimleHtmlOfAMultiplyB(B, A, result);
         }
-        const { isOnlyFirstIsNotZero  } = this;
+        const {
+            isOnlyFirstIsNotZero
+        } = this;
         if (isOnlyFirstIsNotZero(B)) {
             return getSimleHtmlOfAMultiplyB(A, B, result);
         }
@@ -745,17 +834,17 @@ p[edu-right-char="9"]{padding-right:9em;}
         const numberArray = [];
         const carryArray = [];
         const resultLength = result.toString().length;
-        for(let i = 0; i < resultLength; ++i){
+        for (let i = 0; i < resultLength; ++i) {
             carryArray.push(0);
             numberArray.push(0);
         }
-        for(let i1 = bLength; i1 > 0; --i1){
+        for (let i1 = bLength; i1 > 0; --i1) {
             html += `<p edu-right-char="${bLength - i1}">`;
             const product = A * parseInt(bStr.substring(i1 - 1, i1), 0);
             html += `<number>${product}</number>`;
             const productChars = product.toString().split('');
             const productCharCount = productChars.length;
-            for(let charLoop = productCharCount; charLoop > 0; --charLoop){
+            for (let charLoop = productCharCount; charLoop > 0; --charLoop) {
                 const __char = productChars[charLoop - 1];
                 const arrayIndex = resultLength - 1 - (bLength - i1) - (productCharCount - charLoop);
                 console.log(JSON.stringify({
@@ -771,7 +860,7 @@ p[edu-right-char="9"]{padding-right:9em;}
             if (i1 !== 1) html += `</p>`;
         }
         console.log(A, B, result, JSON.stringify(numberArray));
-        for(let i2 = resultLength - 1; i2 > 0; --i2){
+        for (let i2 = resultLength - 1; i2 > 0; --i2) {
             const arrayIndex1 = i2;
             const numeral = numberArray[arrayIndex1];
             if (numeral > 9) {
@@ -782,8 +871,10 @@ p[edu-right-char="9"]{padding-right:9em;}
             }
         }
         console.log(JSON.stringify(numberArray), JSON.stringify(carryArray));
-        const { eduDigitArray  } = this;
-        for(let i3 = 0; i3 < resultLength; ++i3){
+        const {
+            eduDigitArray
+        } = this;
+        for (let i3 = 0; i3 < resultLength; ++i3) {
             const carryNumber = carryArray[i3];
             if (carryNumber > 0) {
                 html += `<carry edu-digit="${eduDigitArray[resultLength - 2 - i3]}">${carryNumber}</carry>`;
@@ -807,12 +898,20 @@ p[edu-right-char="9"]{padding-right:9em;}
         `thousands-billions`
     ];
     fillElementArrayOfASubtractB(has, min, max, questionElementArray, answerElementArray) {
-        const { data: { onlyMentalArithmetic  } , getDebitHtml , getIntegerRandom , getSubtractorWithDebitMinus , getSubtractorWithoutDebitMinus  } = this;
+        const {
+            data: {
+                onlyMentalArithmetic
+            },
+            getDebitHtml,
+            getIntegerRandom,
+            getSubtractorWithDebitMinus,
+            getSubtractorWithoutDebitMinus
+        } = this;
         const questionElementHtmlAppend = onlyMentalArithmetic ? '' : this.questionElementHtmlAppendOfSubstractionWhenNotMentalArithmetic4;
         let A;
         let B;
         if (has) {
-            while(true){
+            while (true) {
                 A = getIntegerRandom(min, max);
                 if (A % 10 < 9) break;
             }
@@ -849,9 +948,14 @@ p[edu-right-char="9"]{padding-right:9em;}
     getDebitHtmlOfASubstractB(A, B, aSubstractB) {
         return `${this.getDebitHtml(A, B)}<p><number>${A}</number></p><p><operator>-</operator><number>${B}</number></p><hr><p><number>${aSubstractB}</number></p>`;
     }
-    fillElementArrayOfAPlusBThenC = (has, questionElementHtmlAppend, onlyMentalArithmetic, questionElementArray, answerElementArray, withBrackets = false)=>{
+    fillElementArrayOfAPlusBThenC = (has, questionElementHtmlAppend, onlyMentalArithmetic, questionElementArray, answerElementArray, withBrackets = false) => {
         let a, b, c, d;
-        ({ a , b , c , d  } = this.getMaybeCarryTwiceNumbers(has));
+        ({
+            a,
+            b,
+            c,
+            d
+        } = this.getMaybeCarryTwiceNumbers(has));
         const A = a;
         const B = b;
         const C = c;
@@ -900,8 +1004,14 @@ p[edu-right-char="9"]{padding-right:9em;}
         }
         this.fillElementListCore(questionElementHtml, answerElementHtml, questionElementArray, answerElementArray);
     };
-    fillElementArrayOfASubtractBThenC = (has, questionElementHtmlAppend, onlyMentalArithmetic, questionElementArray, answerElementArray, withBrackets = false)=>{
-        const { getIntegerRandom , getAddendWithCarry , getAddendWithoutCarry , getDebitHtml , getHtmlOfAPlusB  } = this;
+    fillElementArrayOfASubtractBThenC = (has, questionElementHtmlAppend, onlyMentalArithmetic, questionElementArray, answerElementArray, withBrackets = false) => {
+        const {
+            getIntegerRandom,
+            getAddendWithCarry,
+            getAddendWithoutCarry,
+            getDebitHtml,
+            getHtmlOfAPlusB
+        } = this;
         let a, b, c, d;
         if (withBrackets) {
             if (has) {
@@ -928,14 +1038,24 @@ p[edu-right-char="9"]{padding-right:9em;}
                 }
             }
             d = a - b - c;
-            ({ a , b , c , d  } = {
+            ({
+                a,
+                b,
+                c,
+                d
+            } = {
                 a: b,
                 b: c,
                 c: d,
                 d: a
             });
         } else {
-            ({ a , b , c , d  } = this.getMaybeCarryTwiceNumbers(has));
+            ({
+                a,
+                b,
+                c,
+                d
+            } = this.getMaybeCarryTwiceNumbers(has));
         }
         const A = d;
         const B = a;
@@ -955,6 +1075,7 @@ p[edu-right-char="9"]{padding-right:9em;}
         const cDidits = C % 10;
         const aSubstractB = A - B;
         const bPlusC2 = B + C;
+
         function doneBPlusCAndThenASubstractIt() {
             const debitHtml = getDebitHtml(A, bPlusC2);
             answerElementHtml += `<answer-option edu-chars="${charsStr}">`;
@@ -963,6 +1084,7 @@ p[edu-right-char="9"]{padding-right:9em;}
             answerElementHtml += `${debitHtml}<p><number>${A}</number></p><p><operator>-</operator><number>${bPlusC2}</number></p><hr><p><number>${result}</number></p>`;
             answerElementHtml += '</answer-option>';
         }
+
         function doneASubstractCSubstractB() {
             const aSubstractC = A - C;
             const debitHtmlStep1 = getDebitHtml(A, C);
@@ -972,6 +1094,7 @@ p[edu-right-char="9"]{padding-right:9em;}
             answerElementHtml += `${debitHtmlStep2}<p><number>${aSubstractC}</number></p><p><operator>-</operator><number>${B}</number></p><hr><p><number>${result}</number></p>`;
             answerElementHtml += '</answer-option>';
         }
+
         function doneASubstractBSubstractC() {
             const aSubstractB = A - B;
             const debitHtmlStep1 = getDebitHtml(A, B);
@@ -1011,8 +1134,16 @@ p[edu-right-char="9"]{padding-right:9em;}
         answerElementHtml += '</div>';
         this.fillElementListCore(questionElementHtml, answerElementHtml, questionElementArray, answerElementArray);
     };
-    fillElementArrayOfASubtractBThenPlusC = (has, questionElementHtmlAppend, onlyMentalArithmetic, questionElementArray, answerElementArray, withBrackets = false)=>{
-        const { getIntegerRandom , getAddendWithCarry , getAddendWithoutCarry , getSubtractorWithDebitMinus , getSubtractorWithoutDebitMinus , getDebitHtml , getHtmlOfAPlusB  } = this;
+    fillElementArrayOfASubtractBThenPlusC = (has, questionElementHtmlAppend, onlyMentalArithmetic, questionElementArray, answerElementArray, withBrackets = false) => {
+        const {
+            getIntegerRandom,
+            getAddendWithCarry,
+            getAddendWithoutCarry,
+            getSubtractorWithDebitMinus,
+            getSubtractorWithoutDebitMinus,
+            getDebitHtml,
+            getHtmlOfAPlusB
+        } = this;
         let A, B, C, aSubstractB;
         if (withBrackets) {
             const bRandom = getIntegerRandom(0, 99);
@@ -1065,6 +1196,7 @@ p[edu-right-char="9"]{padding-right:9em;}
         const acDigits = aPlusC % 10;
         const charsStr = (aPlusC.toString().length + 1).toString();
         answerElementHtml += `<div edu-flex="8">`;
+
         function doneAPlusCSubstractB() {
             const tensCarryHtml = aDigits2 + cDigits > 9 ? '<carry edu-digit="tens">1</carry>' : '';
             const hundredsCarryHtml = aLastTowDigits + cLastTowDigits > 99 ? '<carry edu-digit="hundreds">1</carry>' : '';
@@ -1121,8 +1253,12 @@ p[edu-right-char="9"]{padding-right:9em;}
         answerElementHtml += `</div>`;
         this.fillElementListCore(questionElementHtml, answerElementHtml, questionElementArray, answerElementArray);
     };
-    fillElementArrayOfAPlusBThenSubtractC = (has, questionElementHtmlAppend, onlyMentalArithmetic, questionElementArray, answerElementArray, withBrackets = false)=>{
-        const { getIntegerRandom , getDebitHtml , getHtmlOfAPlusB  } = this;
+    fillElementArrayOfAPlusBThenSubtractC = (has, questionElementHtmlAppend, onlyMentalArithmetic, questionElementArray, answerElementArray, withBrackets = false) => {
+        const {
+            getIntegerRandom,
+            getDebitHtml,
+            getHtmlOfAPlusB
+        } = this;
         let A, B, C;
         if (withBrackets) {
             const bRandom = getIntegerRandom(0, 99);
@@ -1177,6 +1313,7 @@ p[edu-right-char="9"]{padding-right:9em;}
         const cDigits1 = C % 10;
         const aLastTowDigits = A % 100;
         const bLastTowDigits = B % 100;
+
         function doneASubstractCPlusB() {
             const AC = A - C;
             const debitHtml = getDebitHtml(A, C);
@@ -1191,6 +1328,7 @@ p[edu-right-char="9"]{padding-right:9em;}
             answerElementHtml += `<p><number>${AC}</number></p><p><operator>+</operator><number>${B}</number>${hundredsCarryHtml}${tensCarryHtml}</p><hr><p><number>${result}</number></p>`;
             answerElementHtml += `</answer-option>`;
         }
+
         function doneAPlusBSubstractC(twoOption = false) {
             const debitHtmlABSubstractC = getDebitHtml(AB, C);
             if (twoOption) {
@@ -1207,6 +1345,7 @@ p[edu-right-char="9"]{padding-right:9em;}
             answerElementHtml += `${debitHtmlABSubstractC}<p><number>${AB}</number></p><p><operator>-</operator><number>${C}</number></p><hr><p><number>${result}</number></p>`;
             answerElementHtml += `</answer-option>`;
         }
+
         function doneBSubstractCThenPlusA(twoOption = false) {
             const BC = B - C;
             const debitHtml = getDebitHtml(B, C);
@@ -1248,15 +1387,24 @@ p[edu-right-char="9"]{padding-right:9em;}
         answerElementHtml += `</div>`;
         this.fillElementListCore(questionElementHtml, answerElementHtml, questionElementArray, answerElementArray);
     };
-    appendReportElements = (info, questionRowsArray, answerRowsArray)=>{
-        const { data: { onlyMentalArithmetic  }  } = this;
-        const { kind , catalog  } = info;
-        const filterResult = this.exhaustibleArray.filter(({ kind: kindIndicator  })=>kindIndicator === kind);
+    appendReportElements = (info, questionRowsArray, answerRowsArray) => {
+        const {
+            data: {
+                onlyMentalArithmetic
+            }
+        } = this;
+        const {
+            kind,
+            catalog
+        } = info;
+        const filterResult = this.exhaustibleArray.filter(({
+            kind: kindIndicator
+        }) => kindIndicator === kind);
         if (filterResult.length) {
             this.fillExhaustibleList(filterResult[0], info, onlyMentalArithmetic, questionRowsArray, answerRowsArray);
             return;
         }
-        switch(catalog){
+        switch (catalog) {
             case 'A+B=C':
                 this.countByArithmetic1(info, questionRowsArray, answerRowsArray);
                 break;
@@ -1298,18 +1446,29 @@ p[edu-right-char="9"]{padding-right:9em;}
         }
     };
     countByArithmetic1(info, questionRowsArray, answerRowsArray) {
-        const { getIntegerRandom  } = this;
-        const { kind , catalog , scope , rows , textStyle , countPerRow , rowsOccupied , rowCountPerPage  } = info;
+        const {
+            getIntegerRandom
+        } = this;
+        const {
+            kind,
+            catalog,
+            scope,
+            rows,
+            textStyle,
+            countPerRow,
+            rowsOccupied,
+            rowCountPerPage
+        } = info;
         const rowCountPerPageStr = rowCountPerPage.toString();
         const questionRows = [];
         const answerRows = [];
         const mustHasnot = scope === '0-100A';
         const mustHas = scope === '0-100B';
         const maybeHas = scope === '0-100C';
-        for(let rowIndex = 0; rowIndex < rows; ++rowIndex){
+        for (let rowIndex = 0; rowIndex < rows; ++rowIndex) {
             const questionElementArray = [];
             const answerElementArray = [];
-            for(let questionIndex = 0; questionIndex < countPerRow; ++questionIndex){
+            for (let questionIndex = 0; questionIndex < countPerRow; ++questionIndex) {
                 const has = mustHasnot ? false : mustHas || maybeHas && getIntegerRandom(1, 10) > 1;
                 this.fillElementArrayOfAPlusB(has, 11, 100, questionElementArray, answerElementArray);
             }
@@ -1325,18 +1484,29 @@ p[edu-right-char="9"]{padding-right:9em;}
         });
     }
     countByArithmetic2(info, questionRowsArray, answerRowsArray) {
-        const { getIntegerRandom  } = this;
-        const { kind , catalog , scope , rows , textStyle , countPerRow , rowsOccupied , rowCountPerPage  } = info;
+        const {
+            getIntegerRandom
+        } = this;
+        const {
+            kind,
+            catalog,
+            scope,
+            rows,
+            textStyle,
+            countPerRow,
+            rowsOccupied,
+            rowCountPerPage
+        } = info;
         const rowCountPerPageStr = rowCountPerPage.toString();
         const questionRows = [];
         const answerRows = [];
         const mustHasnot = scope === '0-100A';
         const mustHas = scope === '0-100B';
         const maybeHas = scope === '0-100C';
-        for(let rowIndex = 0; rowIndex < rows; ++rowIndex){
+        for (let rowIndex = 0; rowIndex < rows; ++rowIndex) {
             const questionElementArray = [];
             const answerElementArray = [];
-            for(let questionIndex = 0; questionIndex < countPerRow; ++questionIndex){
+            for (let questionIndex = 0; questionIndex < countPerRow; ++questionIndex) {
                 const has = mustHasnot ? false : mustHas || maybeHas && getIntegerRandom(1, 10) > 1;
                 this.fillElementArrayOfASubtractB(has, 11, 100, questionElementArray, answerElementArray);
             }
@@ -1352,8 +1522,26 @@ p[edu-right-char="9"]{padding-right:9em;}
         });
     }
     countByArithmetic3(info, questionRowsArray, answerRowsArray) {
-        const { data: { onlyMentalArithmetic  } , getIntegerRandom , getAddendWithCarry , getAddendWithoutCarry , getSubtractorWithDebitMinus , getSubtractorWithoutDebitMinus  } = this;
-        const { kind , catalog , scope , rows , textStyle , countPerRow , rowsOccupied , rowCountPerPage  } = info;
+        const {
+            data: {
+                onlyMentalArithmetic
+            },
+            getIntegerRandom,
+            getAddendWithCarry,
+            getAddendWithoutCarry,
+            getSubtractorWithDebitMinus,
+            getSubtractorWithoutDebitMinus
+        } = this;
+        const {
+            kind,
+            catalog,
+            scope,
+            rows,
+            textStyle,
+            countPerRow,
+            rowsOccupied,
+            rowCountPerPage
+        } = info;
         const rowCountPerPageStr = rowCountPerPage.toString();
         const questionRows = [];
         const answerRows = [];
@@ -1362,10 +1550,10 @@ p[edu-right-char="9"]{padding-right:9em;}
         const mustHasnot = scope === '0-100A';
         const mustHas = scope === '0-100B';
         const maybeHas = scope === '0-100C';
-        for(let rowIndex = 0; rowIndex < rows; ++rowIndex){
+        for (let rowIndex = 0; rowIndex < rows; ++rowIndex) {
             const questionElementArray = [];
             const answerElementArray = [];
-            for(let questionIndex = 0; questionIndex < countPerRow; ++questionIndex){
+            for (let questionIndex = 0; questionIndex < countPerRow; ++questionIndex) {
                 const has = mustHasnot ? false : mustHas || maybeHas && getIntegerRandom(1, 10) > 1;
                 if (getIntegerRandom(0, 1)) {
                     this.fillElementArrayOfAPlusB(has, 11, 100, questionElementArray, answerElementArray);
@@ -1385,8 +1573,22 @@ p[edu-right-char="9"]{padding-right:9em;}
         });
     }
     countByArithmetic4(info, questionRowsArray, answerRowsArray) {
-        const { data: { onlyMentalArithmetic  } , getIntegerRandom  } = this;
-        const { kind , catalog , scope , rows , textStyle , countPerRow , rowsOccupied , rowCountPerPage  } = info;
+        const {
+            data: {
+                onlyMentalArithmetic
+            },
+            getIntegerRandom
+        } = this;
+        const {
+            kind,
+            catalog,
+            scope,
+            rows,
+            textStyle,
+            countPerRow,
+            rowsOccupied,
+            rowCountPerPage
+        } = info;
         const rowCountPerPageStr = rowCountPerPage.toString();
         const questionRows = [];
         const answerRows = [];
@@ -1394,10 +1596,10 @@ p[edu-right-char="9"]{padding-right:9em;}
         const mustHasnot = scope === '0-100A';
         const mustHas = scope === '0-100B';
         const maybeHas = scope === '0-100C';
-        for(let rowIndex = 0; rowIndex < rows; ++rowIndex){
+        for (let rowIndex = 0; rowIndex < rows; ++rowIndex) {
             const questionElementArray = [];
             const answerElementArray = [];
-            for(let questionIndex = 0; questionIndex < countPerRow; ++questionIndex){
+            for (let questionIndex = 0; questionIndex < countPerRow; ++questionIndex) {
                 const has = mustHasnot ? false : mustHas || maybeHas && getIntegerRandom(1, 10) > 3;
                 this.fillElementArrayOfAPlusBThenC(has, questionElementHtmlAppend, onlyMentalArithmetic, questionElementArray, answerElementArray);
             }
@@ -1413,19 +1615,33 @@ p[edu-right-char="9"]{padding-right:9em;}
         });
     }
     countByArithmetic5(info, questionRowsArray, answerRowsArray) {
-        const { data: { onlyMentalArithmetic  } , getIntegerRandom  } = this;
+        const {
+            data: {
+                onlyMentalArithmetic
+            },
+            getIntegerRandom
+        } = this;
         const questionElementHtmlAppend = onlyMentalArithmetic ? '' : this.questionElementHtmlAppendOfSubstractionWhenNotMentalArithmetic8;
-        const { kind , catalog , scope , rows , textStyle , countPerRow , rowsOccupied , rowCountPerPage  } = info;
+        const {
+            kind,
+            catalog,
+            scope,
+            rows,
+            textStyle,
+            countPerRow,
+            rowsOccupied,
+            rowCountPerPage
+        } = info;
         const rowCountPerPageStr = rowCountPerPage.toString();
         const questionRows = [];
         const answerRows = [];
         const mustHasnot = scope === '0-100A';
         const mustHas = scope === '0-100B';
         const maybeHas = scope === '0-100C';
-        for(let rowIndex = 0; rowIndex < rows; ++rowIndex){
+        for (let rowIndex = 0; rowIndex < rows; ++rowIndex) {
             const questionElementArray = [];
             const answerElementArray = [];
-            for(let questionIndex = 0; questionIndex < countPerRow; ++questionIndex){
+            for (let questionIndex = 0; questionIndex < countPerRow; ++questionIndex) {
                 const has = mustHasnot ? false : mustHas || maybeHas && getIntegerRandom(1, 10) > 3;
                 this.fillElementArrayOfASubtractBThenC(has, questionElementHtmlAppend, onlyMentalArithmetic, questionElementArray, answerElementArray);
             }
@@ -1444,22 +1660,34 @@ p[edu-right-char="9"]{padding-right:9em;}
         this.countByArithmetic6Or7(info, questionRowsArray, answerRowsArray, false);
     }
     countByArithmetic6Or7(info, questionRowsArray, answerRowsArray, withBrackets) {
-        const { data: { onlyMentalArithmetic  } , getIntegerRandom  } = this;
+        const {
+            data: {
+                onlyMentalArithmetic
+            },
+            getIntegerRandom
+        } = this;
         const questionElementHtmlAppend = onlyMentalArithmetic ? '' : this.questionElementHtmlAppendOfSubstractionWhenNotMentalArithmetic8;
-        const { scope , rows , textStyle , countPerRow , rowsOccupied , rowCountPerPage  } = info;
+        const {
+            scope,
+            rows,
+            textStyle,
+            countPerRow,
+            rowsOccupied,
+            rowCountPerPage
+        } = info;
         const rowCountPerPageStr = rowCountPerPage.toString();
         const questionRows = [];
         const answerRows = [];
         const mustHasnot = scope === '0-100A';
         const mustHas = scope === '0-100B';
         const maybeHas = scope === '0-100C';
-        for(let rowIndex = 0; rowIndex < rows; ++rowIndex){
+        for (let rowIndex = 0; rowIndex < rows; ++rowIndex) {
             const questionElementArray = [];
             const answerElementArray = [];
-            for(let questionIndex = 0; questionIndex < countPerRow; ++questionIndex){
+            for (let questionIndex = 0; questionIndex < countPerRow; ++questionIndex) {
                 const has = mustHasnot ? false : mustHas || maybeHas && getIntegerRandom(1, 10) > 3;
                 const operatorRandom = getIntegerRandom(0, 3);
-                switch(operatorRandom){
+                switch (operatorRandom) {
                     case 0:
                         this.fillElementArrayOfAPlusBThenC(has, questionElementHtmlAppend, onlyMentalArithmetic, questionElementArray, answerElementArray, withBrackets);
                         break;
@@ -1493,42 +1721,85 @@ p[edu-right-char="9"]{padding-right:9em;}
         this.countByArithmetic8Or9(info, questionRowsArray, answerRowsArray, false);
     }
     countByArithmetic8Or9(info, questionRowsArray, answerRowsArray, switchOrder) {
-        const { data: { onlyMentalArithmetic  } , getIntegerRandom , getAddendWithCarry , getAddendWithoutCarry , getSubtractorWithDebitMinus , getSubtractorWithoutDebitMinus  } = this;
+        const {
+            data: {
+                onlyMentalArithmetic
+            },
+            getIntegerRandom,
+            getAddendWithCarry,
+            getAddendWithoutCarry,
+            getSubtractorWithDebitMinus,
+            getSubtractorWithoutDebitMinus
+        } = this;
         const questionElementHtmlAppend = onlyMentalArithmetic ? '' : this.questionElementHtmlAppendOfSubstractionWhenNotMentalArithmetic8;
-        const { kind , catalog , scope , rows , textStyle , countPerRow , rowsOccupied , rowCountPerPage  } = info;
+        const {
+            kind,
+            catalog,
+            scope,
+            rows,
+            textStyle,
+            countPerRow,
+            rowsOccupied,
+            rowCountPerPage
+        } = info;
         const rowCountPerPageStr = rowCountPerPage.toString();
         const questionRows = [];
         const answerRows = [];
-        const { aMultiplyBMaybeCarryArray , aMultiplyBMaybeNotCarryArray , aMultiplyBMaybeDebitMinusArray , aMultiplyBMaybeNotDebitMinusArray , aMultiplyBMaybeCarryMaxIndex , aMultiplyBMaybeNotCarryMaxIndex , aMultiplyBMaybeDebitMinusMaxIndex , aMultiplyBMaybeNotDebitMinusMaxIndex  } = this.exhaustibleAMultiplyBInfo;
+        const {
+            aMultiplyBMaybeCarryArray,
+            aMultiplyBMaybeNotCarryArray,
+            aMultiplyBMaybeDebitMinusArray,
+            aMultiplyBMaybeNotDebitMinusArray,
+            aMultiplyBMaybeCarryMaxIndex,
+            aMultiplyBMaybeNotCarryMaxIndex,
+            aMultiplyBMaybeDebitMinusMaxIndex,
+            aMultiplyBMaybeNotDebitMinusMaxIndex
+        } = this.exhaustibleAMultiplyBInfo;
         const mustHasnot = scope === '0-100A';
         const mustHas = scope === '0-100B';
         const maybeHas = scope === '0-100C';
-        for(let rowIndex = 0; rowIndex < rows; ++rowIndex){
+        for (let rowIndex = 0; rowIndex < rows; ++rowIndex) {
             const questionElementArray = [];
             const answerElementArray = [];
-            for(let questionIndex = 0; questionIndex < countPerRow; ++questionIndex){
+            for (let questionIndex = 0; questionIndex < countPerRow; ++questionIndex) {
                 const has = mustHasnot ? false : mustHas || maybeHas && getIntegerRandom(1, 10) > 3;
                 const isPlus = getIntegerRandom(0, 1) === 1;
                 const operator = isPlus ? '+' : '-';
                 let A, B, aMultiplyB;
                 let C;
-                switch((isPlus ? 0 : 2) + (has ? 0 : 1)){
+                switch ((isPlus ? 0 : 2) + (has ? 0 : 1)) {
                     case 0:
-                        ({ A , B , aMultiplyB  } = aMultiplyBMaybeCarryArray[getIntegerRandom(0, aMultiplyBMaybeCarryMaxIndex)]);
+                        ({
+                            A,
+                            B,
+                            aMultiplyB
+                        } = aMultiplyBMaybeCarryArray[getIntegerRandom(0, aMultiplyBMaybeCarryMaxIndex)]);
                         C = getAddendWithCarry(aMultiplyB);
                         break;
                     case 1:
-                        ({ A , B , aMultiplyB  } = aMultiplyBMaybeNotCarryArray[getIntegerRandom(0, aMultiplyBMaybeNotCarryMaxIndex)]);
+                        ({
+                            A,
+                            B,
+                            aMultiplyB
+                        } = aMultiplyBMaybeNotCarryArray[getIntegerRandom(0, aMultiplyBMaybeNotCarryMaxIndex)]);
                         C = getAddendWithoutCarry(aMultiplyB);
                         break;
                     case 2:
-                        ({ A , B , aMultiplyB  } = aMultiplyBMaybeDebitMinusArray[getIntegerRandom(0, aMultiplyBMaybeDebitMinusMaxIndex)]);
+                        ({
+                            A,
+                            B,
+                            aMultiplyB
+                        } = aMultiplyBMaybeDebitMinusArray[getIntegerRandom(0, aMultiplyBMaybeDebitMinusMaxIndex)]);
                         C = getSubtractorWithDebitMinus(aMultiplyB);
                         if (switchOrder) C += aMultiplyB;
                         break;
                     case 3:
                     default:
-                        ({ A , B , aMultiplyB  } = aMultiplyBMaybeNotDebitMinusArray[getIntegerRandom(0, aMultiplyBMaybeNotDebitMinusMaxIndex)]);
+                        ({
+                            A,
+                            B,
+                            aMultiplyB
+                        } = aMultiplyBMaybeNotDebitMinusArray[getIntegerRandom(0, aMultiplyBMaybeNotDebitMinusMaxIndex)]);
                         C = getSubtractorWithoutDebitMinus(aMultiplyB);
                         if (switchOrder) C += aMultiplyB;
                         break;
@@ -1568,15 +1839,30 @@ p[edu-right-char="9"]{padding-right:9em;}
         this.countByArithmetic8Or9(info, questionRowsArray, answerRowsArray, true);
     }
     countByArithmetic10(info, questionRowsArray, answerRowsArray) {
-        const { data: { onlyMentalArithmetic  } , getIntegerRandom  } = this;
+        const {
+            data: {
+                onlyMentalArithmetic
+            },
+            getIntegerRandom
+        } = this;
         const questionElementHtmlAppend = onlyMentalArithmetic ? '' : this.questionElementHtmlAppendOfSubstractionWhenNotMentalArithmetic8;
-        const { kind , catalog , scope , rows , independentPagination , textStyle , countPerRow , rowsOccupied , rowCountPerPage  } = info;
+        const {
+            kind,
+            catalog,
+            scope,
+            rows,
+            independentPagination,
+            textStyle,
+            countPerRow,
+            rowsOccupied,
+            rowCountPerPage
+        } = info;
         const rowCountPerPageStr = rowCountPerPage.toString();
         let minMultiplier = 1;
         let maxMultiplier = 9;
         let fontSizeCss = '';
         let flexStr = '8';
-        switch(scope){
+        switch (scope) {
             case '20×20':
                 minMultiplier = 11;
                 maxMultiplier = 20;
@@ -1595,10 +1881,10 @@ p[edu-right-char="9"]{padding-right:9em;}
         }
         const questionRows = [];
         const answerRows = [];
-        for(let rowIndex = 0; rowIndex < rows; ++rowIndex){
+        for (let rowIndex = 0; rowIndex < rows; ++rowIndex) {
             const questionElementArray = [];
             const answerElementArray = [];
-            for(let questionIndex = 0; questionIndex < countPerRow; ++questionIndex){
+            for (let questionIndex = 0; questionIndex < countPerRow; ++questionIndex) {
                 const A = getIntegerRandom(minMultiplier, maxMultiplier);
                 const B_C = getIntegerRandom(1, maxMultiplier);
                 const isPlus = B_C < 3 || getIntegerRandom(1, 2) < 2;
@@ -1647,27 +1933,42 @@ p[edu-right-char="9"]{padding-right:9em;}
         });
     }
     countByArithmetic11(info, questionRowsArray, answerRowsArray) {
-        const { data: { onlyMentalArithmetic  } , getIntegerRandom  } = this;
-        const { kind , catalog , scope , rows , independentPagination , textStyle , countPerRow , rowsOccupied , rowCountPerPage  } = info;
+        const {
+            data: {
+                onlyMentalArithmetic
+            },
+            getIntegerRandom
+        } = this;
+        const {
+            kind,
+            catalog,
+            scope,
+            rows,
+            independentPagination,
+            textStyle,
+            countPerRow,
+            rowsOccupied,
+            rowCountPerPage
+        } = info;
         const rowCountPerPageStr = rowCountPerPage.toString();
         const questionRows = [];
         const answerRows = [];
-        for(let rowIndex = 0; rowIndex < rows; ++rowIndex){
+        for (let rowIndex = 0; rowIndex < rows; ++rowIndex) {
             const questionElementArray = [];
             const answerElementArray = [];
-            for(let questionIndex = 0; questionIndex < countPerRow; ++questionIndex){
+            for (let questionIndex = 0; questionIndex < countPerRow; ++questionIndex) {
                 let B;
                 let C;
                 let questionElementHtml;
                 let answerElementHtml;
                 const A = getIntegerRandom(1, 9);
-                while(true){
+                while (true) {
                     B = getIntegerRandom(1, 9);
                     if ((A + B) % 10) break;
                 }
                 const A_B = A + B;
                 if (getIntegerRandom(1, 10) < 2) {
-                    while(true){
+                    while (true) {
                         C = getIntegerRandom(1, 9);
                         if ((A_B + C) % 10 && (A + C) % 10 && (B + C) % 10) break;
                     }
@@ -1696,15 +1997,30 @@ p[edu-right-char="9"]{padding-right:9em;}
         });
     }
     countByArithmetic12(info, questionRowsArray, answerRowsArray) {
-        const { data: { onlyMentalArithmetic  } , getIntegerRandom  } = this;
-        const { kind , catalog , scope , rows , independentPagination , textStyle , countPerRow , rowsOccupied , rowCountPerPage  } = info;
+        const {
+            data: {
+                onlyMentalArithmetic
+            },
+            getIntegerRandom
+        } = this;
+        const {
+            kind,
+            catalog,
+            scope,
+            rows,
+            independentPagination,
+            textStyle,
+            countPerRow,
+            rowsOccupied,
+            rowCountPerPage
+        } = info;
         const rowCountPerPageStr = rowCountPerPage.toString();
         const questionRows = [];
         const answerRows = [];
-        for(let rowIndex = 0; rowIndex < rows; ++rowIndex){
+        for (let rowIndex = 0; rowIndex < rows; ++rowIndex) {
             const questionElementArray = [];
             const answerElementArray = [];
-            for(let questionIndex = 0; questionIndex < countPerRow; ++questionIndex){
+            for (let questionIndex = 0; questionIndex < countPerRow; ++questionIndex) {
                 let B;
                 let C;
                 let D;
@@ -1716,28 +2032,28 @@ p[edu-right-char="9"]{padding-right:9em;}
                 let answerElementHtml;
                 const A = getIntegerRandom(1, 9);
                 if (scope === 'B' && getIntegerRandom(1, 10) < 2) {
-                    while(true){
+                    while (true) {
                         B = getIntegerRandom(1, 9);
                         if ((A + B) % 10) break;
                     }
                     A_B = A + B;
-                    while(true){
+                    while (true) {
                         C = getIntegerRandom(1, 9);
                         if ((A_B + C) % 10 && (A + C) % 10 && (B + C) % 10) break;
                     }
                     A_B_C = A_B + C;
-                    while(true){
+                    while (true) {
                         D = getIntegerRandom(1, 9);
                         if ((A_B_C + D) % 10 && (A + D) % 10 && (B + D) % 10 && (C + D) % 10 && (A_B + D) % 10) break;
                     }
                     A_B_C_D = A_B_C + D;
-                    while(true){
+                    while (true) {
                         E = getIntegerRandom(1, 9);
                         if ((A_B_C_D + E) % 10) break;
                     }
                     answerElementHtml = '×';
                 } else {
-                    switch(getIntegerRandom(1, 4)){
+                    switch (getIntegerRandom(1, 4)) {
                         case 1:
                             B = 10 - A;
                             C = getIntegerRandom(1, 9);
@@ -1746,10 +2062,10 @@ p[edu-right-char="9"]{padding-right:9em;}
                             answerElementHtml = [
                                 A,
                                 B
-                            ].sort((prev, next)=>prev - next).join(' ');
+                            ].sort((prev, next) => prev - next).join(' ');
                             break;
                         case 2:
-                            while(true){
+                            while (true) {
                                 B = getIntegerRandom(1, 9);
                                 if ((A + B) % 10) break;
                             }
@@ -1760,15 +2076,15 @@ p[edu-right-char="9"]{padding-right:9em;}
                                 A,
                                 B,
                                 C
-                            ].sort((prev, next)=>prev - next).join(' ');
+                            ].sort((prev, next) => prev - next).join(' ');
                             break;
                         case 3:
-                            while(true){
+                            while (true) {
                                 B = getIntegerRandom(1, 9);
                                 if ((A + B) % 10) break;
                             }
                             A_B = A + B;
-                            while(true){
+                            while (true) {
                                 C = getIntegerRandom(1, 9);
                                 if ((A_B + C) % 10 && (A + C) % 10 && (B + C) % 10) break;
                             }
@@ -1779,21 +2095,21 @@ p[edu-right-char="9"]{padding-right:9em;}
                                 B,
                                 C,
                                 D
-                            ].sort((prev, next)=>prev - next).join(' ');
+                            ].sort((prev, next) => prev - next).join(' ');
                             break;
                         case 4:
                         default:
-                            while(true){
+                            while (true) {
                                 B = getIntegerRandom(1, 9);
                                 if ((A + B) % 10) break;
                             }
                             A_B = A + B;
-                            while(true){
+                            while (true) {
                                 C = getIntegerRandom(1, 9);
                                 if ((A_B + C) % 10 && (A + C) % 10 && (B + C) % 10) break;
                             }
                             A_B_C = A_B + C;
-                            while(true){
+                            while (true) {
                                 D = getIntegerRandom(1, 9);
                                 if ((A_B_C + D) % 10 && (A + D) % 10 && (B + D) % 10 && (C + D) % 10 && (A_B + D) % 10) break;
                             }
@@ -1804,7 +2120,7 @@ p[edu-right-char="9"]{padding-right:9em;}
                                 C,
                                 D,
                                 E
-                            ].sort((prev, next)=>prev - next).join(' ');
+                            ].sort((prev, next) => prev - next).join(' ');
                             break;
                     }
                 }
@@ -1814,7 +2130,7 @@ p[edu-right-char="9"]{padding-right:9em;}
                     C,
                     D,
                     E
-                ].sort((prev, next)=>prev - next).join(' '));
+                ].sort((prev, next) => prev - next).join(' '));
                 answerElementHtml = `${questionElementHtml} => ${answerElementHtml}`;
                 this.fillElementListCore(questionElementHtml, answerElementHtml, questionElementArray, answerElementArray);
             }
@@ -1830,10 +2146,10 @@ p[edu-right-char="9"]{padding-right:9em;}
         });
     }
     exhaustibleArray = [];
-    getIntegerRandom = (min, max)=>{
+    getIntegerRandom = (min, max) => {
         return Math.floor(Math.random() * (max - min + 1)) + min;
     };
-    fillElementList = (onlyMentalArithmetic, item, questionElementArray, answerElementArray)=>{
+    fillElementList = (onlyMentalArithmetic, item, questionElementArray, answerElementArray) => {
         const question = onlyMentalArithmetic ? item.question : item.questionFull;
         const answer = onlyMentalArithmetic ? item.answer : item.answerFull;
         this.fillElementListCore(question, answer, questionElementArray, answerElementArray);
@@ -1850,9 +2166,21 @@ p[edu-right-char="9"]{padding-right:9em;}
             answerElement.setAttribute('edu-without-outer-line', '');
         }
     }
-    createTableBodyRow = (item)=>{
-        const { kind , catalog , scope , rows , countPerRow , rowsOccupied , rowCountPerPage , independentPagination , textStyle  } = item;
-        const { tableBodyElement  } = this;
+    createTableBodyRow = (item) => {
+        const {
+            kind,
+            catalog,
+            scope,
+            rows,
+            countPerRow,
+            rowsOccupied,
+            rowCountPerPage,
+            independentPagination,
+            textStyle
+        } = item;
+        const {
+            tableBodyElement
+        } = this;
         const tr = createElement('tr');
         tableBodyElement.appendChild(tr);
         this.appendOperationTd(tr, item);
@@ -1865,51 +2193,54 @@ p[edu-right-char="9"]{padding-right:9em;}
         this.appendReadonlyTd(tr, rowsOccupied);
         this.appendReadonlyTd(tr, rowCountPerPage);
     };
-    initTableHead = ()=>{
+    initTableHead = () => {
         this.appendTableHeadCell({
-            en: 'Catalog',
+            en_us: 'Catalog',
             zh_cn: '大类',
             zh_tw: '大類'
         });
         this.appendTableHeadCell({
-            en: 'Scope',
+            en_us: 'Scope',
             zh_cn: '范围',
             zh_tw: '範圍'
         });
         this.appendTableHeadCell({
-            en: 'Rows',
+            en_us: 'Rows',
             zh_cn: '行数',
             zh_tw: '行數'
         });
         this.appendTableHeadCell({
-            en: 'Independent Pagination',
+            en_us: 'Independent Pagination',
             zh_cn: '独立分页',
             zh_tw: '獨立分頁'
         });
         this.appendTableHeadCell({
-            en: 'Text Style',
+            en_us: 'Text Style',
             zh_cn: '文本样式',
             zh_tw: '文字樣式'
         });
         this.appendTableHeadCell({
-            en: 'Count Per Row',
+            en_us: 'Count Per Row',
             zh_cn: '每行题数',
             zh_tw: '每行題數'
         });
         this.appendTableHeadCell({
-            en: 'Item Row Count',
+            en_us: 'Item Row Count',
             zh_cn: '题目占行',
             zh_tw: '題目占行'
         });
         this.appendTableHeadCell({
-            en: 'Item Count Per Page',
+            en_us: 'Item Count Per Page',
             zh_cn: '每页题行',
             zh_tw: '每頁題行'
         });
     };
-    onPageSizeChanged = (newPageSize)=>{
-        const { isLandscapeRadioArray , data  } = this;
-        switch(newPageSize){
+    onPageSizeChanged = (newPageSize) => {
+        const {
+            isLandscapeRadioArray,
+            data
+        } = this;
+        switch (newPageSize) {
             case 'A3':
                 isLandscapeRadioArray[0].value = true;
                 data.isLandscape = true;
@@ -1922,8 +2253,13 @@ p[edu-right-char="9"]{padding-right:9em;}
                 return;
         }
     };
-    getUsableList = ()=>{
-        const { appendUsableItem , addCommonItem , smallRowCountPerPage , formatCentile  } = this;
+    getUsableList = () => {
+        const {
+            appendUsableItem,
+            addCommonItem,
+            smallRowCountPerPage,
+            formatCentile
+        } = this;
         const usableList = [];
         const buttonList = [];
         let catalog;
@@ -2502,27 +2838,32 @@ p[edu-right-char="9"]{padding-right:9em;}
         appendUsableItem(catalog, buttonList, usableList);
         return usableList;
     };
-    initCoreElementsBeforeTable = ()=>{
-        const { configCoreElement , getWrapElement , idOrClassPrefix , initTextboxElement , initRadioGroupByBooleanOrNumberValue  } = this;
+    initCoreElementsBeforeTable = () => {
+        const {
+            configCoreElement,
+            getWrapElement,
+            idOrClassPrefix,
+            initTextboxElement,
+            initRadioGroupByBooleanOrNumberValue
+        } = this;
         let wrapElement;
         wrapElement = getWrapElement({
-            en: 'Date (Not Saved)',
+            en_us: 'Date (Not Saved)',
             zh_cn: '日期（不存储）',
             zh_tw: '日期（不存儲）'
         });
         wrapElement.id = `${idOrClassPrefix}DateWrap`;
         this.initDateElements(wrapElement);
         wrapElement = getWrapElement({
-            en: 'Arithmetic and Font Size',
+            en_us: 'Arithmetic and Font Size',
             zh_cn: '算法与字号',
             zh_tw: '算法與字號'
         });
         wrapElement.id = `${idOrClassPrefix}ArithmeticAndTextStyleWrap`;
-        initRadioGroupByBooleanOrNumberValue([
-            {
+        initRadioGroupByBooleanOrNumberValue([{
                 value: false,
                 i18nHtml: getI18nInnerHTML({
-                    en: 'Normal',
+                    en_us: 'Normal',
                     zh_cn: '常规',
                     zh_tw: '常規'
                 })
@@ -2530,19 +2871,19 @@ p[edu-right-char="9"]{padding-right:9em;}
             {
                 value: true,
                 i18nHtml: getI18nInnerHTML({
-                    en: 'Mental',
+                    en_us: 'Mental',
                     zh_cn: '口算',
                     zh_tw: '口算'
                 })
             }
         ], 'onlyMentalArithmetic', this.onlyMentalArithmeticRadioArray, wrapElement);
         initTextboxElement({
-            en: 'Subject:',
+            en_us: 'Subject:',
             zh_cn: '标题：',
             zh_tw: '標題：'
         }, 'pageSubjectFontSize', this.pageSubjectFontSizeElement, wrapElement);
         initTextboxElement({
-            en: 'Question:',
+            en_us: 'Question:',
             zh_cn: '问题：',
             zh_tw: '問題：'
         }, 'questionFontSize', this.questionFontSizeElement, wrapElement);
@@ -2554,19 +2895,28 @@ p[edu-right-char="9"]{padding-right:9em;}
     yearElement = createElement('input');
     monthElement = createElement('input');
     dayElement = createElement('input');
-    initDateElements = (wrapElement)=>{
-        const { data: { year , month , day  } , yearElement , monthElement , dayElement  } = this;
+    initDateElements = (wrapElement) => {
+        const {
+            data: {
+                year,
+                month,
+                day
+            },
+            yearElement,
+            monthElement,
+            dayElement
+        } = this;
         const span = createElement('span');
         wrapElement.appendChild(span);
         const yearLabel = createElement('label');
         yearLabel.innerHTML = getI18nInnerHTML({
-            en: 'Year:',
+            en_us: 'Year:',
             zh_cn: '年：',
             zh_tw: '年：'
         });
         yearElement.value = year;
         yearElement.type = 'text';
-        const onYearhanged = ()=>{
+        const onYearhanged = () => {
             this.data.year = parseInt(yearElement.value, 0);
             this.saveConfigAndBuildIfAllowed();
         };
@@ -2576,13 +2926,13 @@ p[edu-right-char="9"]{padding-right:9em;}
         span.appendChild(yearElement);
         const monthLabel = createElement('label');
         monthLabel.innerHTML = getI18nInnerHTML({
-            en: 'Month:',
+            en_us: 'Month:',
             zh_cn: '月：',
             zh_tw: '月：'
         });
         monthElement.value = this.data.month;
         monthElement.type = 'text';
-        const onMonthChanged = ()=>{
+        const onMonthChanged = () => {
             this.data.month = parseInt(monthElement.value, 0);
             this.saveConfigAndBuildIfAllowed();
         };
@@ -2592,13 +2942,13 @@ p[edu-right-char="9"]{padding-right:9em;}
         span.appendChild(monthElement);
         const dayLabel = createElement('label');
         dayLabel.innerHTML = getI18nInnerHTML({
-            en: 'Day:',
+            en_us: 'Day:',
             zh_cn: '日：',
             zh_tw: '日：'
         });
         dayElement.value = this.data.day;
         dayElement.type = 'text';
-        const onDayChanged = ()=>{
+        const onDayChanged = () => {
             this.data.day = parseInt(dayElement.value, 0);
             this.saveConfigAndBuildIfAllowed();
         };
@@ -2607,19 +2957,31 @@ p[edu-right-char="9"]{padding-right:9em;}
         span.appendChild(dayLabel);
         span.appendChild(dayElement);
     };
-    initCoreElementsAfterTable = ()=>{};
+    initCoreElementsAfterTable = () => {};
     fillExhaustibleList(exhaustibleItem, info, onlyMentalArithmetic, questionRowsArray, answerRowsArray) {
-        const { getIntegerRandom  } = this;
-        const { catalog , rows , countPerRow , rowsOccupied , rowCountPerPage , textStyle  } = info;
+        const {
+            getIntegerRandom
+        } = this;
+        const {
+            catalog,
+            rows,
+            countPerRow,
+            rowsOccupied,
+            rowCountPerPage,
+            textStyle
+        } = info;
         const questionCount = countPerRow * rows;
-        const { list , countPerSet  } = exhaustibleItem;
+        const {
+            list,
+            countPerSet
+        } = exhaustibleItem;
         const listJson = JSON.stringify(list);
         const itemList = [];
         let listClone;
         const fullSetCount = Math.floor(questionCount / countPerSet);
-        for(let fullSetLoop = 0; fullSetLoop < fullSetCount; ++fullSetLoop){
+        for (let fullSetLoop = 0; fullSetLoop < fullSetCount; ++fullSetLoop) {
             listClone = JSON.parse(listJson);
-            for(let itemLoop = countPerSet; itemLoop > 0; --itemLoop){
+            for (let itemLoop = countPerSet; itemLoop > 0; --itemLoop) {
                 const currentIndex = getIntegerRandom(1, itemLoop) - 1;
                 itemList.push(listClone.splice(currentIndex, 1)[0]);
             }
@@ -2628,7 +2990,7 @@ p[edu-right-char="9"]{padding-right:9em;}
         if (remainingCount) {
             listClone = JSON.parse(listJson);
             let listRemainingCount = listClone.length;
-            for(let itemLoop1 = remainingCount; itemLoop1 > 0; --itemLoop1){
+            for (let itemLoop1 = remainingCount; itemLoop1 > 0; --itemLoop1) {
                 const currentIndex1 = getIntegerRandom(1, listRemainingCount--) - 1;
                 itemList.push(listClone.splice(currentIndex1, 1)[0]);
             }
@@ -2637,11 +2999,11 @@ p[edu-right-char="9"]{padding-right:9em;}
         const questionRows = [];
         const answerRows = [];
         const questionRowCount = questionCount / countPerRow;
-        for(let index = 0; index < questionRowCount; ++index){
+        for (let index = 0; index < questionRowCount; ++index) {
             const offset = countPerRow * index;
             const questionElementArray = [];
             const answerElementArray = [];
-            for(let subIndex = 0; subIndex < countPerRow; ++subIndex){
+            for (let subIndex = 0; subIndex < countPerRow; ++subIndex) {
                 const item = itemList[subIndex + offset];
                 this.fillElementList(onlyMentalArithmetic, item, questionElementArray, answerElementArray);
             }
@@ -2660,11 +3022,11 @@ p[edu-right-char="9"]{padding-right:9em;}
         if (this.data.onlyMentalArithmetic) rowCountPerPageStr = this.defaultRowCountPerPage.toString();
         const questionRow = createElement('row');
         questionRow.setAttribute('row-count-per-page', rowCountPerPageStr);
-        questionElementArray.forEach((cell)=>questionRow.appendChild(cell));
+        questionElementArray.forEach((cell) => questionRow.appendChild(cell));
         questionRows.push(questionRow);
         const answerRow = createElement('row');
         answerRow.setAttribute('row-count-per-page', rowCountPerPageStr);
-        answerElementArray.forEach((cell)=>answerRow.appendChild(cell));
+        answerElementArray.forEach((cell) => answerRow.appendChild(cell));
         answerRows.push(answerRow);
         if (textStyle.length) {
             questionRow.setAttribute('style', textStyle);
@@ -2672,7 +3034,16 @@ p[edu-right-char="9"]{padding-right:9em;}
         }
     }
     addCommonItem(info, kindArray, buttonList) {
-        const { catalog , scope , rows , independentPagination , textStyle , countPerRow , rowsOccupied , rowCountPerPage  } = info;
+        const {
+            catalog,
+            scope,
+            rows,
+            independentPagination,
+            textStyle,
+            countPerRow,
+            rowsOccupied,
+            rowCountPerPage
+        } = info;
         const kind = `${catalog}_${scope}`;
         kindArray.push(kind);
         buttonList.push({

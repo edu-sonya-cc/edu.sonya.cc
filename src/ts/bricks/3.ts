@@ -1,11 +1,11 @@
 /**
- * <en>
+ * <en_us>
  * Function: generate English letter poker to help children remember English letter upper and lower case
  * Initial: 2022-09-15 Anqi
  * History: AnQi place on file on October 31, 2022
  * Reference: None
  * Note: lower case, upper case, upper left upper case and upper right lower case
- * </en>
+ * </en_us>
  *
  * <zh_cn>
  * 功能：生成英文字母扑克，帮助孩子记忆英语字母大小写
@@ -34,43 +34,43 @@
 /// <reference path='../../types/pokerBase.d.ts' />
 
 /**
- * <en>English Letters Poker Type</en>
+ * <en_us>English Letters Poker Type</en_us>
  * <zh_cn>英语字母扑克类型</zh_cn>
  * <zh_tw>英語字母撲克類型</zh_tw>
  */
 enum EnglishLettersPokerKind {
   /**
-   * <en>None</en>
+   * <en_us>None</en_us>
    * <zh_cn>无</zh_cn>
    * <zh_tw>無</zh_tw>
    */
   none = 0,
   /**
-   * <en>Only lowercase letters</en>
+   * <en_us>Only lowercase letters</en_us>
    * <zh_cn>仅小写字母</zh_cn>
    * <zh_tw>僅小寫字母</zh_tw>
    */
   onlyLowerCase = 1,
   /**
-   * <en>Only uppercase letters</en>
+   * <en_us>Only uppercase letters</en_us>
    * <zh_cn>仅大写字母</zh_cn>
    * <zh_tw>僅大寫字母</zh_tw>
    */
   onlyUpperCase = 2,
   /**
-   * <en>Both</en>
+   * <en_us>Both</en_us>
    * <zh_cn>两者都有</zh_cn>
    * <zh_tw>兩者都有</zh_tw>
    */
   both = 3,
   /**
-   * <en>KK</en>
+   * <en_us>KK</en_us>
    * <zh_cn>KK音标</zh_cn>
    * <zh_tw>KK音标</zh_tw>
    */
   kk1 = 4,
   /**
-   * <en>KK</en>
+   * <en_us>KK</en_us>
    * <zh_cn>KK音标带斜线</zh_cn>
    * <zh_tw>KK音标帶斜線</zh_tw>
    */
@@ -301,66 +301,66 @@ class BrickCore extends PokerBase implements IBrickCore {
     countPerPage: number,
   ): void => {
     let backCover = "";
-    let title = { en: "", zh_cn: "", zh_tw: "" };
+    let title = { en_us: "", zh_cn: "", zh_tw: "" };
     switch (pokerKind) {
       case EnglishLettersPokerKind.onlyLowerCase:
         backCover = `a-z<br /><br />${
           getI18nInnerHTML({
-            en: "English Letters",
+            en_us: "English Letters",
             zh_cn: "英语小写字母",
             zh_tw: "英語小寫字母",
           })
         }`;
-        title.en = `${FILENAME_POSTFIX}English Letters_a-z`;
+        title.en_us = `${FILENAME_POSTFIX}English Letters_a-z`;
         title.zh_cn = `${FILENAME_POSTFIX}英语小写字母_a-z`;
         title.zh_tw = `${FILENAME_POSTFIX}英語小寫字母_a-z`;
         break;
       case EnglishLettersPokerKind.onlyUpperCase:
         backCover = `A-Z<br /><br />${
           getI18nInnerHTML({
-            en: "English Letters",
+            en_us: "English Letters",
             zh_cn: "英语大写字母",
             zh_tw: "英語大寫字母",
           })
         }`;
-        title.en = `${FILENAME_POSTFIX}English Letters_A-Z`;
+        title.en_us = `${FILENAME_POSTFIX}English Letters_A-Z`;
         title.zh_cn = `${FILENAME_POSTFIX}英语大写字母_A-Z`;
         title.zh_tw = `${FILENAME_POSTFIX}英語大寫字母_A-Z`;
         break;
       case EnglishLettersPokerKind.both:
         backCover = `a-z & A-Z<br /><br />${
           getI18nInnerHTML({
-            en: "English Letters",
+            en_us: "English Letters",
             zh_cn: "英语字母<br />（大小写）",
             zh_tw: "英語字母<br />（大小寫）",
           })
         }`;
-        title.en = `${FILENAME_POSTFIX}English Letters_a-z&A-Z`;
+        title.en_us = `${FILENAME_POSTFIX}English Letters_a-z&A-Z`;
         title.zh_cn = `${FILENAME_POSTFIX}英语字母（大小写）_a-z&A-Z`;
         title.zh_tw = `${FILENAME_POSTFIX}英語字母（大小寫）_a-z&A-Z`;
         break;
-        
+
       case EnglishLettersPokerKind.kk1:
         backCover = `${
           getI18nInnerHTML({
-            en: "KK<br />Phonetic<br />Symbols", // 奇怪的情况：K.K.生成出来后居然是.K.K
+            en_us: "KK<br />Phonetic<br />Symbols", // 奇怪的情况：K.K.生成出来后居然是.K.K
             zh_cn: "KK音标<br />（扑克）",
             zh_tw: "KK音標<br />（撲克）",
           })
         }`;
-        title.en = `${FILENAME_POSTFIX}KK Phonetic Symbols Pokers`;
+        title.en_us = `${FILENAME_POSTFIX}KK Phonetic Symbols Pokers`;
         title.zh_cn = `${FILENAME_POSTFIX}KK音标扑克`;
         title.zh_tw = `${FILENAME_POSTFIX}KK音标撲克`;
         break;
       case EnglishLettersPokerKind.kk2:
         backCover = `${
           getI18nInnerHTML({
-            en: "KK<br />Phonetic<br />Symbols<br />with Bias", // 奇怪的情况：K.K.生成出来后居然是.K.K
+            en_us: "KK<br />Phonetic<br />Symbols<br />with Bias", // 奇怪的情况：K.K.生成出来后居然是.K.K
             zh_cn: "KK音标2<br />（扑克）<br />带斜线",
             zh_tw: "KK音標2<br />（撲克）<br />帶斜線",
           })
         }`;
-        title.en = `${FILENAME_POSTFIX}KK Phonetic Symbols Pokers with Bias`;
+        title.en_us = `${FILENAME_POSTFIX}KK Phonetic Symbols Pokers with Bias`;
         title.zh_cn = `${FILENAME_POSTFIX}KK音标扑克2`;
         title.zh_tw = `${FILENAME_POSTFIX}KK音标撲克2`;
         break;
@@ -382,35 +382,35 @@ class BrickCore extends PokerBase implements IBrickCore {
     // const labelElement = createElement('label') as HTMLLabelElement;
     // wrapElement.appendChild(labelElement);
     // labelElement.innerHTML = getI18nInnerHTML({
-    //   en: '',
+    //   en_us: '',
     //   zh_cn: '',
     //   zh_tw: '',
     // });
 
     const pokerKindI18nHtmlArray = [
       getI18nInnerHTML({
-        en: "Only lowercase letters",
+        en_us: "Only lowercase letters",
         zh_cn: "仅小写字母",
         zh_tw: "僅小寫字母",
       }),
       getI18nInnerHTML({
-        en: "Only uppercase letters",
+        en_us: "Only uppercase letters",
         zh_cn: "仅大写字母",
         zh_tw: "僅大寫字母",
       }),
       getI18nInnerHTML({
-        en: "Both",
+        en_us: "Both",
         zh_cn: "两者都有",
         zh_tw: "兩者都有",
       }),
 
       getI18nInnerHTML({
-        en: "KK1",
+        en_us: "KK1",
         zh_cn: "KK音标",
         zh_tw: "KK音标",
       }),
       getI18nInnerHTML({
-        en: "KK2",
+        en_us: "KK2",
         zh_cn: "KK音标带斜线",
         zh_tw: "KK音标帶斜線",
       }),

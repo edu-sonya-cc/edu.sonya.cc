@@ -4,18 +4,31 @@
 
 class BrickCore extends BrickWithTableBase {
     idOrClassPrefix = 'brickPageHundredthLattice';
-    constructor(){
+    constructor() {
         super({}, {});
     }
-    countDataAndComputedData = ()=>{
+    countDataAndComputedData = () => {
         this.countDataAndComputedDataInBrickWithTableBase();
-        const { computedData , mmToPxScale  } = this;
-        const { paperSize , isLandscape , maxX: MAX_X , maxY: MAX_Y , pageMarginTop , pageMarginBottom , pageMarginLeft , pageMarginRight , list  } = this.data;
+        const {
+            computedData,
+            mmToPxScale
+        } = this;
+        const {
+            paperSize,
+            isLandscape,
+            maxX: MAX_X,
+            maxY: MAX_Y,
+            pageMarginTop,
+            pageMarginBottom,
+            pageMarginLeft,
+            pageMarginRight,
+            list
+        } = this.data;
         const css = `/* common.css */
 		* { margin:0;border:0;padding:0; }
 		* { box-sizing:border-box; }
 
-		/* landscape 横向 portrait 纵向*/ 
+		/* landscape 横向 portrait 纵向*/
 		@media print { @page { size: ${paperSize} ${isLandscape ? 'landscape' : 'portrait'}; margin:${pageMarginTop}mm ${pageMarginRight}mm ${pageMarginBottom}mm ${pageMarginLeft}mm; } }
 		page:not(page:last-child){page-break-after:always;}
 
@@ -29,11 +42,20 @@ class BrickCore extends BrickWithTableBase {
         let usedY = 0;
         let currentRowHeight = 0;
         let svgIndex = 0;
-        list.forEach(({ length , showNumber , digitalOverlay , startNumber , count , innerLineStyle , outerLineStyle , textStyle  })=>{
+        list.forEach(({
+            length,
+            showNumber,
+            digitalOverlay,
+            startNumber,
+            count,
+            innerLineStyle,
+            outerLineStyle,
+            textStyle
+        }) => {
             const WIDTH = length * 10;
             const HEIGHT = length * 10;
             let numberOffset = 0;
-            for(let regionIndex = 0; regionIndex < count; ++regionIndex){
+            for (let regionIndex = 0; regionIndex < count; ++regionIndex) {
                 let newPage = usedY + HEIGHT > MAX_Y;
                 let newRow = false;
                 if (!newPage && usedX + WIDTH > MAX_X) {
@@ -55,20 +77,26 @@ class BrickCore extends BrickWithTableBase {
                 }
                 currentRowHeight = Math.max(currentRowHeight, HEIGHT);
                 usedX += WIDTH;
-                const { createSvg , appendOuterLine , appendLine , appendText , getTextStyleFontSizePatchCss  } = svgSpace.edu.sonya.cc.SvgHelper;
+                const {
+                    createSvg,
+                    appendOuterLine,
+                    appendLine,
+                    appendText,
+                    getTextStyleFontSizePatchCss
+                } = svgSpace.edu.sonya.cc.SvgHelper;
                 const svg = createSvg();
                 svg.id = `svg_${++svgIndex}`;
                 appendOuterLine(svg, WIDTH, HEIGHT, outerLineStyle);
-                for(let i = 1; i < 10; ++i){
+                for (let i = 1; i < 10; ++i) {
                     const X = length * i;
                     appendLine(svg, innerLineStyle, X, X, 0, HEIGHT, null);
                     const Y = length * i;
                     appendLine(svg, innerLineStyle, 0, WIDTH, Y, Y, null);
                 }
                 if (showNumber) {
-                    for(let i1 = 0; i1 < 10; ++i1){
+                    for (let i1 = 0; i1 < 10; ++i1) {
                         const Y1 = length * (i1 + 0.5);
-                        for(let j = 0; j < 10; ++j){
+                        for (let j = 0; j < 10; ++j) {
                             const X1 = length * (j + 0.5);
                             const NUMBER = numberOffset + startNumber + 10 * i1 + j;
                             appendText(svg, textStyle.concat(getTextStyleFontSizePatchCss(NUMBER, textStyle)), NUMBER.toString(), X1, Y1, 0, 'center', null, true);
@@ -80,20 +108,31 @@ class BrickCore extends BrickWithTableBase {
             }
         });
         html += '</page>';
-        const en = `${FILENAME_POSTFIX}hundredthLattice`;
+        const en_us = `${FILENAME_POSTFIX}hundredthLattice`;
         const zh_cn = `${FILENAME_POSTFIX}百数格`;
         const zh_tw = `${FILENAME_POSTFIX}百數格`;
         computedData.title = {
-            en,
+            en_us,
             zh_cn,
             zh_tw
         };
         computedData.css = css;
         computedData.html = html;
     };
-    createTableBodyRow = (item)=>{
-        const { length , showNumber , digitalOverlay , startNumber , count , innerLineStyle , outerLineStyle , textStyle  } = item;
-        const { tableBodyElement  } = this;
+    createTableBodyRow = (item) => {
+        const {
+            length,
+            showNumber,
+            digitalOverlay,
+            startNumber,
+            count,
+            innerLineStyle,
+            outerLineStyle,
+            textStyle
+        } = item;
+        const {
+            tableBodyElement
+        } = this;
         const tr = createElement('tr');
         tableBodyElement.appendChild(tr);
         this.appendOperationTd(tr, item);
@@ -106,56 +145,55 @@ class BrickCore extends BrickWithTableBase {
         this.appendTextareaTd(tr, outerLineStyle, item, 'outerLineStyle', 'string');
         this.appendTextareaTd(tr, textStyle, item, 'textStyle', 'string');
     };
-    initTableHead = ()=>{
+    initTableHead = () => {
         this.appendTableHeadCell({
-            en: 'Length',
+            en_us: 'Length',
             zh_cn: '边长',
             zh_tw: '邊長'
         });
         this.appendTableHeadCell({
-            en: 'Show Number',
+            en_us: 'Show Number',
             zh_cn: '显示数字',
             zh_tw: '顯示數字'
         });
         this.appendTableHeadCell({
-            en: 'Digital Overlay',
+            en_us: 'Digital Overlay',
             zh_cn: '数字叠加',
             zh_tw: '數位疊加'
         });
         this.appendTableHeadCell({
-            en: 'Start Number',
+            en_us: 'Start Number',
             zh_cn: '开始值',
             zh_tw: '開始值'
         });
         this.appendTableHeadCell({
-            en: 'Count',
+            en_us: 'Count',
             zh_cn: '数量',
             zh_tw: '數量'
         });
         this.appendTableHeadCell({
-            en: 'Inner Line Style',
+            en_us: 'Inner Line Style',
             zh_cn: '内部线样式',
             zh_tw: '內部線樣式'
         });
         this.appendTableHeadCell({
-            en: 'Outer Line Style',
+            en_us: 'Outer Line Style',
             zh_cn: '外边线样式',
             zh_tw: '外邊線樣式'
         });
         this.appendTableHeadCell({
-            en: 'Text Style',
+            en_us: 'Text Style',
             zh_cn: '文本样式',
             zh_tw: '文字樣式'
         });
     };
-    getUsableList = ()=>{
+    getUsableList = () => {
         const innerLineStyle = 'stroke:#888;stroke-width:0.1mm;stroke-dasharray:3 2;';
         const outerLineStyle = 'stroke:#000;stroke-width:0.2mm;';
         const textStyle = 'font-size:6mm;';
-        const buttonList = [
-            {
+        const buttonList = [{
                 nameI18n: {
-                    en: 'Hide numbers',
+                    en_us: 'Hide numbers',
                     zh_cn: '无数字',
                     zh_tw: '無數字'
                 },
@@ -172,7 +210,7 @@ class BrickCore extends BrickWithTableBase {
             },
             {
                 nameI18n: {
-                    en: 'Start from zero',
+                    en_us: 'Start from zero',
                     zh_cn: '从0开始',
                     zh_tw: '從0開始'
                 },
@@ -189,7 +227,7 @@ class BrickCore extends BrickWithTableBase {
             },
             {
                 nameI18n: {
-                    en: 'Start from one',
+                    en_us: 'Start from one',
                     zh_cn: '从1开始',
                     zh_tw: '從1開始'
                 },
@@ -206,16 +244,14 @@ class BrickCore extends BrickWithTableBase {
             }
         ];
         const strongI18n = {
-            en: 'Shortcuts',
+            en_us: 'Shortcuts',
             zh_cn: '快捷按钮',
             zh_tw: '快捷按鈕'
         };
-        return [
-            {
-                strongI18n,
-                buttonList
-            }
-        ];
+        return [{
+            strongI18n,
+            buttonList
+        }];
     };
 }
 const brickCore = new BrickCore();

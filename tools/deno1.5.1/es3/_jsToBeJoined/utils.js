@@ -217,7 +217,7 @@ System.register("utils", [], function (exports_1, context_1) {
                 return ("" + date.getFullYear() + "0".concat((date.getMonth() + 1).toString()).substr(-2) + "0".concat((date.getDate()).toString()).substr(-2)).concat("_" + "0".concat((date.getHours()).toString()).substr(-2) + "0".concat((date.getMinutes()).toString()).substr(-2) + "0".concat((date.getSeconds()).toString()).substr(-2));
             });
             exports_1("getI18nableWithSameContent", getI18nableWithSameContent = function (value) {
-                return { en: value, zh_cn: value, zh_tw: value };
+                return { en_us: value, zh_cn: value, zh_tw: value };
             });
         }
     };

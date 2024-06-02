@@ -7,14 +7,16 @@ class AboutPage extends ActualPageBase {
     initTitleElement() {
         const titleElement = getTitleElement();
         titleElement.i18n = {
-            en: 'Sparks of Fire',
+            en_us: 'Sparks of Fire',
             zh_cn: '星星之火',
             zh_tw: '星星之火'
         };
     }
-    initMainElement = ()=>{
+    initMainElement = () => {
         const mainElement = getMainElement();
-        const { topImageElement  } = this;
+        const {
+            topImageElement
+        } = this;
         mainElement.appendChild(topImageElement);
         topImageElement.id = 'aboutPageMainImage';
         topImageElement.className = 'topImage';
@@ -22,9 +24,8 @@ class AboutPage extends ActualPageBase {
         const contentWrap = createElement('div');
         contentWrap.id = 'aboutPageContent';
         mainElement.appendChild(contentWrap);
-        [
-            {
-                lang: 'en',
+        [{
+                lang: 'en_us',
                 html: `<h3>Seed germination: pure kindness</h3>
 	<p>Sonya: "When I grow up, I will be a biologist, astronomer and teacher at the same time... to protect the lovely animals and plants and lead the students to protect our beautiful home - the earth."</p>
 	<p></p>
@@ -81,13 +82,16 @@ class AboutPage extends ActualPageBase {
 <p>雲杉種微，破土而出，百年成材，可達百米，參天而立，庇佑天下生靈；</p>
 <p>星火微光，眾人拾柴，集善如炬，可達萬頃，綿延長明，照徹長夜黑暗。</p>`
             }
-        ].forEach(({ lang , html  })=>{
+        ].forEach(({
+            lang,
+            html
+        }) => {
             const span = createElement(lang);
             contentWrap.appendChild(span);
             span.innerHTML = html;
         });
     };
-    init = ()=>{
+    init = () => {
         super.init();
     };
 }

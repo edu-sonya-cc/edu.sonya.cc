@@ -11,16 +11,22 @@ class TreasuresPage extends ActualPageBase {
     initTitleElement() {
         const titleElement = getTitleElement();
         titleElement.i18n = {
-            en: 'Natural Treasures List',
+            en_us: 'Natural Treasures List',
             zh_cn: '物华天宝清单',
             zh_tw: '物華天寶清單'
         };
     }
-    initMainElement = ()=>{
+    initMainElement = () => {
         const PAGE_NAME = 'treasuresPage';
         const mainElement = getMainElement();
         mainElement.id = `${PAGE_NAME}Main`;
-        const { mainContentElement , topImageElement , pageSubjectElement , listElement , paginationElement  } = this;
+        const {
+            mainContentElement,
+            topImageElement,
+            pageSubjectElement,
+            listElement,
+            paginationElement
+        } = this;
         mainElement.appendChild(topImageElement);
         mainElement.appendChild(mainContentElement);
         mainContentElement.id = `${PAGE_NAME}MainContent`;
@@ -32,7 +38,7 @@ class TreasuresPage extends ActualPageBase {
         topImageElement.src = `${SITE_IMAGE_PATH}4treasures/topImage.jpg?${treasuresPageMainImageVersion}`;
         pageSubjectElement.id = `${PAGE_NAME}Subject`;
         pageSubjectElement.className = 'pageSubject';
-        pcGlobal.fillListAndPagination(listElement, paginationElement, PageSize.treasuresPage, treasures, PAGE_NAME, (itemElement, data, init)=>{
+        pcGlobal.fillListAndPagination(listElement, paginationElement, PageSize.treasuresPage, treasures, PAGE_NAME, (itemElement, data, init) => {
             if (init) {
                 const aElement = createElement('a');
                 itemElement.appendChild(aElement);
@@ -61,7 +67,12 @@ class TreasuresPage extends ActualPageBase {
                 hide(itemElement);
             } else {
                 showBlock(itemElement);
-                const { image , link , title , summary  } = data;
+                const {
+                    image,
+                    link,
+                    title,
+                    summary
+                } = data;
                 const aElement1 = itemElement.children[0];
                 const imageElement1 = aElement1.children[0];
                 const rightWrapElement1 = aElement1.children[1];
@@ -76,7 +87,7 @@ class TreasuresPage extends ActualPageBase {
             }
         });
     };
-    init = ()=>{
+    init = () => {
         super.init();
     };
 }

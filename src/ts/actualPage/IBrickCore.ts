@@ -1,5 +1,5 @@
 /**
- * <en></en>
+ * <en_us></en_us>
  * <zh_cn></zh_cn>
  * <zh_tw></zh_tw>
  */

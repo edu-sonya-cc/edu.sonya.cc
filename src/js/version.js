@@ -211,37 +211,37 @@ System.register("version", [], function (exports_1, context_1) {
         setters: [],
         execute: function () {
             exports_1("cssVersions", cssVersions = {
-                pc: "230119D",
-                pad: "230120D",
-                phone: "230120D"
+                pc: '230119D',
+                pad: '230120D',
+                phone: '230120D'
             });
             exports_1("jsVersions", jsVersions = {
-                main: "230319A",
-                data: "230119D",
-                home: "230120K",
-                bricks: "230119D",
-                brick: "230119D",
-                treasures: "230119D",
-                stories: "230119D",
-                story: "230119D",
-                about: "230119D",
-                report: "230120A"
+                main: '230525A',
+                data: '230119D',
+                home: '230120K',
+                bricks: '230525A',
+                brick: '230119D',
+                treasures: '230119D',
+                stories: '230119D',
+                story: '230119D',
+                about: '230119D',
+                report: '230120A'
             });
             exports_1("mainImageVersions", mainImageVersions = {
-                home: "230119D",
-                bricks: "230119D",
-                brick: "230119D",
-                treasures: "230119D",
-                stories: "230119D",
-                story: "230119D",
-                about: "230119D"
+                home: '230119D',
+                bricks: '230119D',
+                brick: '230119D',
+                treasures: '230119D',
+                stories: '230119D',
+                story: '230119D',
+                about: '230119D'
             });
             (function () {
-                var head = document.getElementsByTagName("head")[0];
-                var dataScriptElement = document.createElement("script");
-                dataScriptElement.setAttribute("id", "dataScript");
-                dataScriptElement.setAttribute("charset", "utf-8");
-                dataScriptElement.setAttribute("src", "js/main.js?" + jsVersions.main);
+                var head = document.getElementsByTagName('head')[0];
+                var dataScriptElement = document.createElement('script');
+                dataScriptElement.setAttribute('id', 'dataScript');
+                dataScriptElement.setAttribute('charset', 'utf-8');
+                dataScriptElement.setAttribute('src', "js/main.js?" + jsVersions.main);
                 head.appendChild(dataScriptElement);
             })();
         }

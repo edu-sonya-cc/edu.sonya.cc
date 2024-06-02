@@ -196,7 +196,7 @@ var PokerBase = (function (_super) {
             configCoreElement.setAttribute(REPORT_KIND_PROPERTY, 'poker');
             var getWrapElement = _this.getWrapElement;
             var wrapElement = getWrapElement({
-                en: 'Poker size',
+                en_us: 'Poker size',
                 zh_cn: '扑克尺寸',
                 zh_tw: '撲克尺寸'
             });
@@ -204,14 +204,14 @@ var PokerBase = (function (_super) {
             _this.initPokerHeightElements(wrapElement);
             _this.appendPokerSizeButtons(wrapElement);
             wrapElement = getWrapElement({
-                en: 'Font size',
+                en_us: 'Font size',
                 zh_cn: '字号',
                 zh_tw: '字型大小'
             });
             _this.initFontSizeElements(wrapElement);
             _this.initBackFontSizeElements(wrapElement);
             wrapElement = getWrapElement({
-                en: 'Poker Kind',
+                en_us: 'Poker Kind',
                 zh_cn: '扑克类型',
                 zh_tw: '撲克類型'
             });
@@ -239,7 +239,7 @@ var PokerBase = (function (_super) {
             var labelElement = createElement('label');
             wrapElement.appendChild(labelElement);
             labelElement.innerHTML = getI18nInnerHTML({
-                en: 'Width:',
+                en_us: 'Width:',
                 zh_cn: '宽：',
                 zh_tw: '寬：'
             });
@@ -261,7 +261,7 @@ var PokerBase = (function (_super) {
             var labelElement = createElement('label');
             wrapElement.appendChild(labelElement);
             labelElement.innerHTML = getI18nInnerHTML({
-                en: 'Height:',
+                en_us: 'Height:',
                 zh_cn: '高：',
                 zh_tw: '高：'
             });
@@ -283,7 +283,7 @@ var PokerBase = (function (_super) {
             var labelElement = createElement('label');
             wrapElement.appendChild(labelElement);
             labelElement.innerHTML = getI18nInnerHTML({
-                en: 'Front:',
+                en_us: 'Front:',
                 zh_cn: '正面：',
                 zh_tw: '正面：'
             });
@@ -304,7 +304,7 @@ var PokerBase = (function (_super) {
             var labelElement = createElement('label');
             wrapElement.appendChild(labelElement);
             labelElement.innerHTML = getI18nInnerHTML({
-                en: 'Back:',
+                en_us: 'Back:',
                 zh_cn: '背面：',
                 zh_tw: '背面：'
             });
@@ -324,7 +324,7 @@ var PokerBase = (function (_super) {
             [
                 {
                     i18n: {
-                        en: 'Small',
+                        en_us: 'Small',
                         zh_cn: '小',
                         zh_tw: '小'
                     },
@@ -333,7 +333,7 @@ var PokerBase = (function (_super) {
                 },
                 {
                     i18n: {
-                        en: 'Big',
+                        en_us: 'Big',
                         zh_cn: '大',
                         zh_tw: '大'
                     },

@@ -11,12 +11,12 @@ class BricksPage extends ActualPageBase {
     initTitleElement() {
         const titleElement = getTitleElement();
         titleElement.i18n = {
-            en: 'List of throwing a brick to attract jade',
+            en_us: 'List of throwing a brick to attract jade',
             zh_cn: '抛砖引玉清单',
             zh_tw: '拋磚引玉清單'
         };
     }
-    initItemElement = (itemElement, PAGE_NAME)=>{
+    initItemElement = (itemElement, PAGE_NAME) => {
         const aElement = createElement('a');
         itemElement.appendChild(aElement);
         aElement.className = `${PAGE_NAME}ItemWrap`;
@@ -40,12 +40,17 @@ class BricksPage extends ActualPageBase {
         moreElement.innerHTML = MORE_BUTTON_HTML;
         rightWrapElement.appendChild(moreElement);
     };
-    bindNullToItemElement = (itemElement)=>{
+    bindNullToItemElement = (itemElement) => {
         hide(itemElement);
     };
-    bindDataToItemElement = (itemElement, data)=>{
+    bindDataToItemElement = (itemElement, data) => {
         showBlock(itemElement);
-        const { id , image , title , summary  } = data;
+        const {
+            id,
+            image,
+            title,
+            summary
+        } = data;
         const aElement = itemElement.children[0];
         const imageElement = aElement.children[0];
         const rightWrapElement = aElement.children[1];
@@ -59,7 +64,7 @@ class BricksPage extends ActualPageBase {
         aElement.href = `?go=brick&id=${id}`;
     };
     PAGE_NAME = 'bricksPage';
-    fillItem = (itemElement, data, init)=>{
+    fillItem = (itemElement, data, init) => {
         if (init) {
             this.initItemElement(itemElement, this.PAGE_NAME);
         } else if (data === null) {
@@ -68,12 +73,14 @@ class BricksPage extends ActualPageBase {
             this.bindDataToItemElement(itemElement, data);
         }
     };
-    changeSubKind = (subKind)=>{
+    changeSubKind = (subKind) => {
         console.log(`changeSubKind(${subKind})`, typeof subKind);
-        const { subKindsRowElement  } = this;
+        const {
+            subKindsRowElement
+        } = this;
         const bricksSubKindPageSize = PageSize.bricksPage.subKind;
         const subKindsWrapElement = subKindsRowElement.children[1];
-        for(let i = 0; i < bricksSubKindPageSize; ++i){
+        for (let i = 0; i < bricksSubKindPageSize; ++i) {
             const subKindElement = subKindsWrapElement.children[i];
             if (subKindElement.getAttribute(SUB_KIND_NAME_PROPERTY) === subKind) {
                 subKindElement.setAttribute(ACTIVATED_PROPERTY, '');
@@ -84,16 +91,20 @@ class BricksPage extends ActualPageBase {
         const list = [];
         if (subKind.length && subKind !== '0') {
             const fitSubKind = BRICK_SUB_KINDS[parseInt(subKind, 0) - 1].name;
-            bricks.filter(({ subKind  })=>subKind === fitSubKind).forEach((item)=>list.push(item));
+            bricks.filter(({
+                subKind
+            }) => subKind === fitSubKind).forEach((item) => list.push(item));
         } else {
-            bricks.forEach((item)=>list.push(item));
+            bricks.forEach((item) => list.push(item));
         }
         const itemCount = list.length;
         const pageSize = PageSize.bricksPage.list;
-        const { listElement  } = this;
+        const {
+            listElement
+        } = this;
         const subKindNamesWrapElement = subKindsRowElement.children[1];
         let currentPage = -1;
-        const gotoSubKind = (subKindIndex)=>{
+        const gotoSubKind = (subKindIndex) => {
             if (subKindIndex > itemCount) {
                 subKindIndex = itemCount;
             } else if (subKindIndex < 0) {
@@ -103,13 +114,16 @@ class BricksPage extends ActualPageBase {
                 return;
             }
             currentPage = subKindIndex;
-            const { paginationElement , fillItem  } = this;
+            const {
+                paginationElement,
+                fillItem
+            } = this;
             pcGlobal.changePaginationParams(list, pageSize, listElement, paginationElement, fillItem);
             pcGlobal.setPageIndex(currentPage);
         };
         const kind = parseInt(PAGE_SUB_KIND, 0);
         const maxIndex = subKindNamesWrapElement.children.length - 1;
-        for(let i1 = 0; i1 <= maxIndex; ++i1){
+        for (let i1 = 0; i1 <= maxIndex; ++i1) {
             const pageNumberElement = subKindNamesWrapElement.children[i1];
             const pageIndexProperty = pageNumberElement.getAttribute(PAGE_PROPERTY);
             if (parseInt(pageIndexProperty, 0) === kind) {
@@ -120,8 +134,10 @@ class BricksPage extends ActualPageBase {
         }
         gotoSubKind(parseInt(subKind, 0));
     };
-    fillSubKindWrap = (subKindsRowElement)=>{
-        const { changeSubKind  } = this;
+    fillSubKindWrap = (subKindsRowElement) => {
+        const {
+            changeSubKind
+        } = this;
         const bricksSubKindCount = BRICK_SUB_KINDS.length;
         const bricksSubKindPageSize = PageSize.bricksPage.subKind;
         const leftArrowElement = createElement('span');
@@ -135,7 +151,7 @@ class BricksPage extends ActualPageBase {
         subKindsRowElement.appendChild(rightArrowElement);
         rightArrowElement.innerHTML = '&gt;';
         rightArrowElement.setAttribute('id', 'bricksSubKindRowRightArrow');
-        for(let i = 0; i < bricksSubKindPageSize; ++i){
+        for (let i = 0; i < bricksSubKindPageSize; ++i) {
             const subKindElement = createElement('span');
             subKindElement.className = 'bricksSubKind';
             subKindsWrapElement.appendChild(subKindElement);
@@ -144,7 +160,7 @@ class BricksPage extends ActualPageBase {
         const maxSubKindPageIndex = bricksSubKindPageCount - 1;
         const bricksSubKindCountOfLastPage = bricksSubKindCount - bricksSubKindPageSize * maxSubKindPageIndex;
         let currentPage = -1;
-        const gotoPage = (pageIndex)=>{
+        const gotoPage = (pageIndex) => {
             if (pageIndex > maxSubKindPageIndex) {
                 pageIndex = maxSubKindPageIndex;
             } else if (pageIndex < 0) {
@@ -155,15 +171,20 @@ class BricksPage extends ActualPageBase {
             }
             const bricksSubKindCountOfCurrentPage = pageIndex < maxSubKindPageIndex ? bricksSubKindPageSize : bricksSubKindCountOfLastPage;
             const indexOffset = bricksSubKindPageSize * pageIndex;
-            for(let i = 0; i < bricksSubKindCountOfCurrentPage; ++i){
+            for (let i = 0; i < bricksSubKindCountOfCurrentPage; ++i) {
                 const subKindElement = subKindsWrapElement.children[i];
                 const bricksSubKind = BRICK_SUB_KINDS[indexOffset + i];
-                const { name , title  } = bricksSubKind;
+                const {
+                    name,
+                    title
+                } = bricksSubKind;
                 subKindElement.innerHTML = getI18nInnerHTML(title);
                 subKindElement.setAttribute(SUB_KIND_NAME_PROPERTY, name);
-                const kindStr = (BRICK_SUB_KINDS.map(({ name  })=>name).indexOf(name) + 1).toString();
+                const kindStr = (BRICK_SUB_KINDS.map(({
+                    name
+                }) => name).indexOf(name) + 1).toString();
                 subKindElement.setAttribute(PAGE_PROPERTY, kindStr);
-                subKindElement.onclick = (event)=>{
+                subKindElement.onclick = (event) => {
                     if (kindStr === PAGE_SUB_KIND) {
                         return stopEventBubble(event);
                     }
@@ -171,9 +192,9 @@ class BricksPage extends ActualPageBase {
                     return stopEventBubble(event);
                 };
             }
-            for(let i1 = bricksSubKindPageSize - bricksSubKindCountOfCurrentPage; i1 > 0; --i1){
+            for (let i1 = bricksSubKindPageSize - bricksSubKindCountOfCurrentPage; i1 > 0; --i1) {
                 const subKindElement1 = subKindsWrapElement.children[bricksSubKindPageSize - i1];
-                subKindElement1.onclick = (event)=>{
+                subKindElement1.onclick = (event) => {
                     return stopEventBubble(event);
                 };
             }
@@ -193,11 +214,11 @@ class BricksPage extends ActualPageBase {
             leftArrowElement.setAttribute('disabled', '');
             rightArrowElement.setAttribute('disabled', '');
         } else {
-            leftArrowElement.onclick = (event)=>{
+            leftArrowElement.onclick = (event) => {
                 gotoPage(currentPage - 1);
                 return stopEventBubble(event);
             };
-            rightArrowElement.onclick = (event)=>{
+            rightArrowElement.onclick = (event) => {
                 gotoPage(currentPage + 1);
                 return stopEventBubble(event);
             };
@@ -205,11 +226,19 @@ class BricksPage extends ActualPageBase {
         gotoPage(Math.floor(Math.max(0, parseInt(PAGE_SUB_KIND, 0) - 1) / 4));
         this.changeSubKind(PAGE_SUB_KIND);
     };
-    initMainElement = ()=>{
-        const { PAGE_NAME  } = this;
+    initMainElement = () => {
+        const {
+            PAGE_NAME
+        } = this;
         const mainElement = getMainElement();
         mainElement.id = `${PAGE_NAME}Main`;
-        const { mainContentElement , topImageElement , subKindsRowElement , listElement , paginationElement  } = this;
+        const {
+            mainContentElement,
+            topImageElement,
+            subKindsRowElement,
+            listElement,
+            paginationElement
+        } = this;
         mainElement.appendChild(topImageElement);
         mainElement.appendChild(subKindsRowElement);
         mainElement.appendChild(mainContentElement);
@@ -221,7 +250,7 @@ class BricksPage extends ActualPageBase {
         topImageElement.className = 'topImage';
         topImageElement.src = `${SITE_IMAGE_PATH}2bricks/topImage.jpg?${bricksPageMainImageVersion}`;
         const pageSize = PageSize.bricksPage.list;
-        pcGlobal.fillListAndPagination(listElement, paginationElement, pageSize, bricks.map((item, index)=>{
+        pcGlobal.fillListAndPagination(listElement, paginationElement, pageSize, bricks.map((item, index) => {
             return {
                 id: index + 1,
                 ...item
@@ -229,7 +258,7 @@ class BricksPage extends ActualPageBase {
         }), PAGE_NAME, this.fillItem);
         this.fillSubKindWrap(subKindsRowElement);
     };
-    init = ()=>{
+    init = () => {
         super.init();
     };
 }

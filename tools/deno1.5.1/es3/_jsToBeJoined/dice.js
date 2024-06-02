@@ -192,9 +192,10 @@ var edu;
                 DiceKind[DiceKind["twelve"] = 8] = "twelve";
                 DiceKind[DiceKind["twenty"] = 16] = "twenty";
                 DiceKind[DiceKind["twentyFour"] = 32] = "twentyFour";
+                DiceKind[DiceKind["ten"] = 64] = "ten";
             })(DiceKind = cc.DiceKind || (cc.DiceKind = {}));
-            cc.DiceKindCount = 8;
-            cc.DefaultDiceKind = 63;
+            cc.DiceKindCount = 9;
+            cc.DefaultDiceKind = 127;
             var SVG_NS = "http://www.w3.org/2000/svg";
             var SVG_XLINKNS = "http://www.w3.org/1999/xlink";
             var DiceGenerator = (function () {
@@ -210,8 +211,9 @@ var edu;
                 DiceGenerator.prototype.batchCreate = function (createParameters) {
                     var _this = this;
                     createParameters.forEach(function (createParameter, index) {
-                        if (createParameter.id.length === 0)
+                        if (createParameter.id.length === 0) {
                             createParameter.id = "svg_index";
+                        }
                     });
                     return createParameters.map(function (createParameter) {
                         return _this.create(createParameter);
@@ -268,6 +270,10 @@ var edu;
                         case DiceKind.eight:
                             this.drawGraphsOfEightSidedDice(svg, FIXED_SIDE_LENGTH, INNER_LINE_STYLE, OUTER_LINE_STYLE, viewBox, OPTIONS, mmToPxScale);
                             this.drawTextsOfEightSidedDice(infos, FIXED_SIDE_LENGTH);
+                            break;
+                        case DiceKind.ten:
+                            this.drawGraphsOfTenSidedDice(svg, FIXED_SIDE_LENGTH, INNER_LINE_STYLE, OUTER_LINE_STYLE, viewBox, OPTIONS, mmToPxScale);
+                            this.drawTextsOfTenSidedDice(infos, FIXED_SIDE_LENGTH);
                             break;
                         case DiceKind.twelve:
                             this.drawGraphsOfTwelveSidedDice(svg, FIXED_SIDE_LENGTH, INNER_LINE_STYLE, OUTER_LINE_STYLE, viewBox, OPTIONS, mmToPxScale);
@@ -337,7 +343,10 @@ var edu;
                     var EXTNED_LENGTH = EXTNED_SCALE * SIDE_LENGTH;
                     var OFFSET_X = EXTNED_LENGTH * 0.5;
                     var OFFSET_Y = EXTNED_LENGTH * Math.cos(30 / 180 * Math.PI);
-                    x1 = 0, x2 = SIDE_LENGTH * 0.5, y1 = HEIGHT_OF_TWO, y2 = HEIGHT_OF_ONE;
+                    x1 = 0,
+                        x2 = SIDE_LENGTH * 0.5,
+                        y1 = HEIGHT_OF_TWO,
+                        y2 = HEIGHT_OF_ONE;
                     this.appendLine(svg, OUTER_LINE_STYLE, x1, x2, y1, y2, viewBox);
                     x1 = x2, x2 -= OFFSET_X, y1 = y2, y2 -= OFFSET_Y;
                     this.appendLine(svg, OUTER_LINE_STYLE, x1, x2, y1, y2, viewBox);
@@ -453,7 +462,10 @@ var edu;
                     var OFFSET_X = EXTNED_LENGTH * 0.5;
                     var OFFSET_Y = EXTNED_LENGTH * Math.cos(30 / 180 * Math.PI);
                     var x1 = 0, x2 = 0, y1 = 0, y2 = 0;
-                    x1 = 0, x2 = OFFSET_X, y1 = HEIGHT_OF_ONE, y2 = HEIGHT_OF_ONE - OFFSET_Y;
+                    x1 = 0,
+                        x2 = OFFSET_X,
+                        y1 = HEIGHT_OF_ONE,
+                        y2 = HEIGHT_OF_ONE - OFFSET_Y;
                     this.appendLine(svg, OUTER_LINE_STYLE, x1, x2, y1, y2, null);
                     x1 = x2, x2 = SIDE_LENGTH - OFFSET_X, y1 = y2;
                     this.appendLine(svg, OUTER_LINE_STYLE, x1, x2, y1, y2, null);
@@ -514,6 +526,320 @@ var edu;
                     this.setSvgTextInfo(infos[1], SIDE_LENGTH * 75.0 / 25, SIDE_LENGTH * 39.0 / 25, 0);
                     this.setSvgTextInfo(infos[7], SIDE_LENGTH * 41.5 / 25, SIDE_LENGTH * 17.5 / 25, 180);
                 };
+                DiceGenerator.prototype.drawGraphsOfTenSidedDice = function (svg, SIDE_LENGTH, INNER_LINE_STYLE, OUTER_LINE_STYLE, viewBox, OPTIONS, mmToPxScale) {
+                    var max = Math.max, min = Math.min, sin = Math.sin, cos = Math.cos, tan = Math.tan, atan = Math.atan, PI = Math.PI, abs = Math.abs;
+                    var _a = this, SIDE_LENGTH = _a.SIDE_LENGTH, svg = _a.svg, viewBox = _a.viewBox, appendLine = _a.appendLine, OUTER_LINE_STYLE = _a.OUTER_LINE_STYLE, INNER_LINE_STYLE = _a.INNER_LINE_STYLE;
+                    var PASTE_SCALE = SIDE_LENGTH < 3
+                        ? 1
+                        : SIDE_LENGTH <= 10
+                            ? 0.5
+                            : 0.25;
+                    var PASTE_WIDTH = SIDE_LENGTH * PASTE_SCALE;
+                    var X_O1 = SIDE_LENGTH * 2.55;
+                    var Y_O1 = SIDE_LENGTH * 2.55;
+                    var ANGLE_SMALL_DEGREE = 50.22;
+                    var ANGLE_SMALL = 50.22 * PI / 180;
+                    var HALF_ANGLE_SMALL = ANGLE_SMALL * 0.5;
+                    var ANGLE_MIDDLE = 94.7 * PI / 180;
+                    var ANGLE_BIG = (PI - HALF_ANGLE_SMALL - ANGLE_MIDDLE) * 2;
+                    var ANGLE_90 = PI * 0.5;
+                    var ANGLE_EXTEND = 45 * PI / 180;
+                    var ANGLE_B1 = ANGLE_90 - HALF_ANGLE_SMALL;
+                    var ANGLE_B2 = ANGLE_MIDDLE - ANGLE_B1;
+                    var SIDE_V1 = SIDE_LENGTH * sin(ANGLE_B2);
+                    var SIDE_H1 = SIDE_LENGTH * cos(ANGLE_B2);
+                    var SIDE_LONG = SIDE_H1 / sin(HALF_ANGLE_SMALL);
+                    var SIDE_V2 = SIDE_LONG * sin(ANGLE_B1);
+                    var SIZE_LONG_MIDLINE = SIDE_V1 + SIDE_V2;
+                    var ANGLE_A1 = HALF_ANGLE_SMALL;
+                    var X_B1 = X_O1, Y_B1 = Y_O1 + SIZE_LONG_MIDLINE;
+                    var X_A1_DELTA = SIDE_LONG * sin(ANGLE_A1);
+                    var Y_A1_DELTA = SIDE_LONG * cos(ANGLE_A1);
+                    var X_A1 = X_O1 - X_A1_DELTA, X_C1 = X_O1 + X_A1_DELTA;
+                    var Y_A1 = Y_O1 + Y_A1_DELTA, Y_C1 = Y_O1 + Y_A1_DELTA;
+                    var ANGLE_D1 = ANGLE_SMALL;
+                    var X_D1 = X_O1 + SIZE_LONG_MIDLINE * sin(ANGLE_D1);
+                    var Y_D1 = Y_O1 + SIZE_LONG_MIDLINE * cos(ANGLE_D1);
+                    var ANGLE_E1 = ANGLE_SMALL * 1.5;
+                    var X_E1 = X_O1 + SIDE_LONG * sin(ANGLE_E1);
+                    var Y_E1 = Y_O1 + SIDE_LONG * cos(ANGLE_E1);
+                    var ANGLE_F1 = ANGLE_SMALL * 2 - ANGLE_90;
+                    var X_F1 = X_O1 + SIZE_LONG_MIDLINE * cos(ANGLE_F1);
+                    var Y_F1 = Y_O1 - SIZE_LONG_MIDLINE * sin(ANGLE_F1);
+                    var ANGLE_G1 = ANGLE_SMALL * 2.5 - ANGLE_90;
+                    var X_G1 = X_O1 + SIDE_LONG * cos(ANGLE_G1);
+                    var Y_G1 = Y_O1 - SIDE_LONG * sin(ANGLE_G1);
+                    var ANGLE_H1 = ANGLE_SMALL * 3 - ANGLE_90;
+                    var X_H1 = X_O1 + SIZE_LONG_MIDLINE * cos(ANGLE_H1);
+                    var Y_H1 = Y_O1 - SIZE_LONG_MIDLINE * sin(ANGLE_H1);
+                    var ANGLE_I1 = PI - ANGLE_SMALL * 3.5;
+                    var X_I1 = X_O1 + SIDE_LONG * sin(ANGLE_I1);
+                    var Y_I1 = Y_O1 - SIDE_LONG * cos(ANGLE_I1);
+                    var ANGLE_J1 = ANGLE_SMALL * 4 - PI;
+                    var X_J1 = X_O1 - SIZE_LONG_MIDLINE * sin(ANGLE_J1);
+                    var Y_J1 = Y_O1 - SIZE_LONG_MIDLINE * cos(ANGLE_J1);
+                    var ANGLE_K1 = ANGLE_SMALL * 4.5 - PI;
+                    var X_K1 = X_O1 - SIDE_LONG * sin(ANGLE_K1);
+                    var Y_K1 = Y_O1 - SIDE_LONG * cos(ANGLE_K1);
+                    var X_O2 = X_A1 + X_B1 - X_O1;
+                    var Y_O2 = Y_A1 + Y_B1 - Y_O1;
+                    var X_B2 = X_A1, Y_B2 = Y_A1;
+                    var X_C2 = X_B1, Y_C2 = Y_B1;
+                    var X_A2 = X_O2 * 2 - X_C2, Y_A2 = Y_C2;
+                    var ANGLE_D2 = ANGLE_SMALL;
+                    var X_D2 = X_O2 + SIZE_LONG_MIDLINE * sin(ANGLE_D2);
+                    var Y_D2 = Y_O2 - SIZE_LONG_MIDLINE * cos(ANGLE_D2);
+                    var ANGLE_E2 = ANGLE_SMALL * 1.5;
+                    var X_E2 = X_O2 + SIDE_LONG * sin(ANGLE_E2);
+                    var Y_E2 = Y_O2 - SIDE_LONG * cos(ANGLE_E2);
+                    var ANGLE_F2 = ANGLE_SMALL * 2 - ANGLE_90;
+                    var X_F2 = X_O2 + SIZE_LONG_MIDLINE * cos(ANGLE_F2);
+                    var Y_F2 = Y_O2 + SIZE_LONG_MIDLINE * sin(ANGLE_F2);
+                    var ANGLE_G2 = ANGLE_SMALL * 2.5 - ANGLE_90;
+                    var X_G2 = X_O2 + SIDE_LONG * cos(ANGLE_G2);
+                    var Y_G2 = Y_O2 + SIDE_LONG * sin(ANGLE_G2);
+                    var ANGLE_H2 = ANGLE_SMALL * 3 - ANGLE_90;
+                    var X_H2 = X_O2 + SIZE_LONG_MIDLINE * cos(ANGLE_H2);
+                    var Y_H2 = Y_O2 + SIZE_LONG_MIDLINE * sin(ANGLE_H2);
+                    var ANGLE_I2 = PI - ANGLE_SMALL * 3.5;
+                    var X_I2 = X_O2 + SIDE_LONG * sin(ANGLE_I2);
+                    var Y_I2 = Y_O2 + SIDE_LONG * cos(ANGLE_I2);
+                    var ANGLE_J2 = ANGLE_SMALL * 4 - PI;
+                    var X_J2 = X_O2 - SIZE_LONG_MIDLINE * sin(ANGLE_J2);
+                    var Y_J2 = Y_O2 + SIZE_LONG_MIDLINE * cos(ANGLE_J2);
+                    var ANGLE_K2 = ANGLE_SMALL * 4.5 - PI;
+                    var X_K2 = X_O2 - SIDE_LONG * sin(ANGLE_K2);
+                    var Y_K2 = Y_O2 + SIDE_LONG * cos(ANGLE_K2);
+                    var ANGLE_A2E = ANGLE_EXTEND - HALF_ANGLE_SMALL;
+                    var X_A2E = X_A2 - PASTE_WIDTH * sin(ANGLE_A2E);
+                    var Y_A2E = Y_A2 + PASTE_WIDTH * cos(ANGLE_A2E);
+                    var ANGLE_O2E = ANGLE_EXTEND + HALF_ANGLE_SMALL;
+                    var X_O2E = X_O2 - PASTE_WIDTH * sin(ANGLE_O2E);
+                    var Y_O2E = Y_O2 - PASTE_WIDTH * cos(ANGLE_O2E);
+                    var ANGLE_O1E = ANGLE_EXTEND + HALF_ANGLE_SMALL;
+                    var X_O1E = X_O1 - PASTE_WIDTH * sin(ANGLE_O1E);
+                    var Y_O1E = Y_O1 + PASTE_WIDTH * cos(ANGLE_O1E);
+                    var ANGLE_K1E = PI -
+                        (ANGLE_EXTEND + ANGLE_MIDDLE + ANGLE_SMALL * 4.5 - PI);
+                    var X_K1E = X_K1 + PASTE_WIDTH * sin(ANGLE_K1E);
+                    var Y_K1E = Y_K1 - PASTE_WIDTH * cos(ANGLE_K1E);
+                    var ANGLE_A1E = ANGLE_EXTEND - HALF_ANGLE_SMALL;
+                    var X_A1E = X_A1 - PASTE_WIDTH * sin(ANGLE_A1E);
+                    var Y_A1E = Y_A1 - PASTE_WIDTH * cos(ANGLE_A1E);
+                    var ANGLE_B1E = ANGLE_BIG * 0.5 + ANGLE_EXTEND - ANGLE_90;
+                    var X_B1E = X_B1 + PASTE_WIDTH * cos(ANGLE_B1E);
+                    var Y_B1E = Y_B1 + PASTE_WIDTH * sin(ANGLE_B1E);
+                    var ANGLE_C1E1 = PI -
+                        (ANGLE_EXTEND + ANGLE_MIDDLE + HALF_ANGLE_SMALL);
+                    var X_C1E1 = X_C1 - PASTE_WIDTH * sin(ANGLE_C1E1);
+                    var Y_C1E1 = Y_C1 + PASTE_WIDTH * cos(ANGLE_C1E1);
+                    var ANGLE_C1E2 = PI -
+                        (ANGLE_EXTEND + ANGLE_MIDDLE - HALF_ANGLE_SMALL);
+                    var X_C1E2 = X_C1 + PASTE_WIDTH * sin(ANGLE_C1E2);
+                    var Y_C1E2 = Y_C1 + PASTE_WIDTH * cos(ANGLE_C1E2);
+                    var ANGLE_D1E1 = atan((X_D1 - X_C1) / (Y_C1 - Y_D1)) - ANGLE_EXTEND;
+                    var X_D1E1 = X_D1 - PASTE_WIDTH * sin(ANGLE_D1E1);
+                    var Y_D1E1 = Y_D1 + PASTE_WIDTH * cos(ANGLE_D1E1);
+                    var ANGLE_DE = atan((X_E1 - X_D1) / (Y_D1 - Y_E1));
+                    var ANGLE_D1E2 = ANGLE_DE - ANGLE_EXTEND;
+                    var X_D1E2 = X_D1 + PASTE_WIDTH * cos(ANGLE_D1E2);
+                    var Y_D1E2 = Y_D1 + PASTE_WIDTH * sin(ANGLE_D1E2);
+                    var ANGLE_E1E1 = ANGLE_EXTEND - ANGLE_DE;
+                    var X_E1E1 = X_E1 + PASTE_WIDTH * sin(ANGLE_E1E1);
+                    var Y_E1E1 = Y_E1 + PASTE_WIDTH * cos(ANGLE_E1E1);
+                    var ANGLE_EF = atan((X_F1 - X_E1) / (Y_E1 - Y_F1));
+                    var ANGLE_E1E2 = ANGLE_EXTEND - ANGLE_EF;
+                    var X_E1E2 = X_E1 + PASTE_WIDTH * cos(ANGLE_E1E2);
+                    var Y_E1E2 = Y_E1 - PASTE_WIDTH * sin(ANGLE_E1E2);
+                    var ANGLE_F1E1 = ANGLE_90 - (ANGLE_EF + ANGLE_EXTEND);
+                    var X_F1E1 = X_F1 + PASTE_WIDTH * sin(ANGLE_F1E1);
+                    var Y_F1E1 = Y_F1 + PASTE_WIDTH * cos(ANGLE_F1E1);
+                    var ANGLE_FG = atan((X_F1 - X_G1) / (Y_F1 - Y_G1));
+                    var ANGLE_F1E2 = ANGLE_90 - (ANGLE_FG + ANGLE_EXTEND);
+                    var X_F1E2 = X_F1 + PASTE_WIDTH * sin(ANGLE_F1E2);
+                    var Y_F1E2 = Y_F1 - PASTE_WIDTH * cos(ANGLE_F1E2);
+                    var ANGLE_G1E1 = ANGLE_FG - ANGLE_EXTEND;
+                    var X_G1E1 = X_G1 + PASTE_WIDTH * cos(ANGLE_G1E1);
+                    var Y_G1E1 = Y_G1 - PASTE_WIDTH * sin(ANGLE_G1E1);
+                    var ANGLE_GH = atan((X_G1 - X_H1) / (Y_G1 - Y_H1));
+                    var ANGLE_G1E2 = ANGLE_90 - (ANGLE_GH + ANGLE_EXTEND);
+                    var X_G1E2 = X_G1 + PASTE_WIDTH * sin(ANGLE_G1E2);
+                    var Y_G1E2 = Y_G1 - PASTE_WIDTH * cos(ANGLE_G1E2);
+                    var ANGLE_H1E1 = ANGLE_EXTEND - ANGLE_GH;
+                    var X_H1E1 = X_H1 + PASTE_WIDTH * cos(ANGLE_H1E1);
+                    var Y_H1E1 = Y_H1 + PASTE_WIDTH * sin(ANGLE_H1E1);
+                    var ANGLE_HI = atan((X_H1 - X_I1) / (Y_H1 - Y_I1));
+                    var ANGLE_H1E2 = ANGLE_EXTEND + ANGLE_HI;
+                    var X_H1E2 = X_H1 - PASTE_WIDTH * cos(ANGLE_H1E2);
+                    var Y_H1E2 = Y_H1 + PASTE_WIDTH * sin(ANGLE_H1E2);
+                    var ANGLE_I1E1 = ANGLE_EXTEND + ANGLE_HI;
+                    var X_I1E1 = X_I1 + PASTE_WIDTH * cos(ANGLE_I1E1);
+                    var Y_I1E1 = Y_I1 + PASTE_WIDTH * sin(ANGLE_I1E1);
+                    var ANGLE_IJ = atan((X_I1 - X_J1) / (Y_I1 - Y_J1));
+                    var ANGLE_I1E2 = ANGLE_EXTEND + ANGLE_IJ;
+                    var X_I1E2 = X_I1 + PASTE_WIDTH * cos(ANGLE_I1E2);
+                    var Y_I1E2 = Y_I1 - PASTE_WIDTH * sin(ANGLE_I1E2);
+                    var ANGLE_J1E1 = ANGLE_IJ - ANGLE_EXTEND;
+                    var X_J1E1 = X_J1 + PASTE_WIDTH * cos(ANGLE_J1E1);
+                    var Y_J1E1 = Y_J1 - PASTE_WIDTH * sin(ANGLE_J1E1);
+                    var ANGLE_JK = atan((X_J1 - X_K1) / (Y_K1 - Y_J1));
+                    var ANGLE_J1E2 = ANGLE_JK - ANGLE_EXTEND;
+                    var X_J1E2 = X_J1 - PASTE_WIDTH * cos(ANGLE_J1E2);
+                    var Y_J1E2 = Y_J1 - PASTE_WIDTH * sin(ANGLE_J1E2);
+                    appendLine(svg, OUTER_LINE_STYLE, X_B1E, X_B1, Y_B1E, Y_B1, viewBox);
+                    appendLine(svg, OUTER_LINE_STYLE, X_B1E, X_C1E1, Y_B1E, Y_C1E1, viewBox);
+                    appendLine(svg, OUTER_LINE_STYLE, X_C1E1, X_C1, Y_C1E1, Y_C1, viewBox);
+                    appendLine(svg, OUTER_LINE_STYLE, X_C1, X_C1E2, Y_C1, Y_C1E2, viewBox);
+                    appendLine(svg, OUTER_LINE_STYLE, X_C1E2, X_D1E1, Y_C1E2, Y_D1E1, viewBox);
+                    appendLine(svg, OUTER_LINE_STYLE, X_D1E1, X_D1, Y_D1E1, Y_D1, viewBox);
+                    appendLine(svg, OUTER_LINE_STYLE, X_D1, X_D1E2, Y_D1, Y_D1E2, viewBox);
+                    appendLine(svg, OUTER_LINE_STYLE, X_D1E2, X_E1E1, Y_D1E2, Y_E1E1, viewBox);
+                    appendLine(svg, OUTER_LINE_STYLE, X_E1E1, X_E1, Y_E1E1, Y_E1, viewBox);
+                    appendLine(svg, OUTER_LINE_STYLE, X_E1, X_E1E2, Y_E1, Y_E1E2, viewBox);
+                    appendLine(svg, OUTER_LINE_STYLE, X_E1E2, X_F1E1, Y_E1E2, Y_F1E1, viewBox);
+                    appendLine(svg, OUTER_LINE_STYLE, X_F1E1, X_F1, Y_F1E1, Y_F1, viewBox);
+                    appendLine(svg, OUTER_LINE_STYLE, X_F1, X_F1E2, Y_F1, Y_F1E2, viewBox);
+                    appendLine(svg, OUTER_LINE_STYLE, X_F1E2, X_G1E1, Y_F1E2, Y_G1E1, viewBox);
+                    appendLine(svg, OUTER_LINE_STYLE, X_G1E1, X_G1, Y_G1E1, Y_G1, viewBox);
+                    appendLine(svg, OUTER_LINE_STYLE, X_G1, X_G1E2, Y_G1, Y_G1E2, viewBox);
+                    appendLine(svg, OUTER_LINE_STYLE, X_G1E2, X_H1E1, Y_G1E2, Y_H1E1, viewBox);
+                    appendLine(svg, OUTER_LINE_STYLE, X_H1E1, X_H1, Y_H1E1, Y_H1, viewBox);
+                    appendLine(svg, OUTER_LINE_STYLE, X_H1, X_H1E2, Y_H1, Y_H1E2, viewBox);
+                    appendLine(svg, OUTER_LINE_STYLE, X_H1E2, X_I1E1, Y_H1E2, Y_I1E1, viewBox);
+                    appendLine(svg, OUTER_LINE_STYLE, X_I1E1, X_I1, Y_I1E1, Y_I1, viewBox);
+                    appendLine(svg, OUTER_LINE_STYLE, X_I1, X_I1E2, Y_I1, Y_I1E2, viewBox);
+                    appendLine(svg, OUTER_LINE_STYLE, X_I1E2, X_J1E1, Y_I1E2, Y_J1E1, viewBox);
+                    appendLine(svg, OUTER_LINE_STYLE, X_J1E1, X_J1, Y_J1E1, Y_J1, viewBox);
+                    appendLine(svg, OUTER_LINE_STYLE, X_J1, X_J1E2, Y_J1, Y_J1E2, viewBox);
+                    appendLine(svg, OUTER_LINE_STYLE, X_J1E2, X_K1E, Y_J1E2, Y_K1E, viewBox);
+                    appendLine(svg, OUTER_LINE_STYLE, X_K1E, X_K1, Y_K1E, Y_K1, viewBox);
+                    appendLine(svg, OUTER_LINE_STYLE, X_O1, X_K1, Y_O1, Y_K1, viewBox);
+                    appendLine(svg, INNER_LINE_STYLE, X_K1, X_J1, Y_K1, Y_J1, viewBox);
+                    appendLine(svg, INNER_LINE_STYLE, X_J1, X_I1, Y_J1, Y_I1, viewBox);
+                    appendLine(svg, INNER_LINE_STYLE, X_I1, X_H1, Y_I1, Y_H1, viewBox);
+                    appendLine(svg, INNER_LINE_STYLE, X_H1, X_G1, Y_H1, Y_G1, viewBox);
+                    appendLine(svg, INNER_LINE_STYLE, X_G1, X_F1, Y_G1, Y_F1, viewBox);
+                    appendLine(svg, INNER_LINE_STYLE, X_F1, X_E1, Y_F1, Y_E1, viewBox);
+                    appendLine(svg, INNER_LINE_STYLE, X_E1, X_D1, Y_E1, Y_D1, viewBox);
+                    appendLine(svg, INNER_LINE_STYLE, X_D1, X_C1, Y_D1, Y_C1, viewBox);
+                    appendLine(svg, INNER_LINE_STYLE, X_C1, X_B1, Y_C1, Y_B1, viewBox);
+                    appendLine(svg, INNER_LINE_STYLE, X_B1, X_A1, Y_B1, Y_A1, viewBox);
+                    appendLine(svg, INNER_LINE_STYLE, X_O1, X_I1, Y_O1, Y_I1, viewBox);
+                    appendLine(svg, INNER_LINE_STYLE, X_O1, X_G1, Y_O1, Y_G1, viewBox);
+                    appendLine(svg, INNER_LINE_STYLE, X_O1, X_E1, Y_O1, Y_E1, viewBox);
+                    appendLine(svg, INNER_LINE_STYLE, X_O1, X_C1, Y_O1, Y_C1, viewBox);
+                    appendLine(svg, INNER_LINE_STYLE, X_O1, X_A1, Y_O1, Y_A1, viewBox);
+                    appendLine(svg, OUTER_LINE_STYLE, X_O2, X_K2, Y_O2, Y_K2, viewBox);
+                    appendLine(svg, OUTER_LINE_STYLE, X_K2, X_J2, Y_K2, Y_J2, viewBox);
+                    appendLine(svg, OUTER_LINE_STYLE, X_J2, X_I2, Y_J2, Y_I2, viewBox);
+                    appendLine(svg, OUTER_LINE_STYLE, X_I2, X_H2, Y_I2, Y_H2, viewBox);
+                    appendLine(svg, OUTER_LINE_STYLE, X_H2, X_G2, Y_H2, Y_G2, viewBox);
+                    appendLine(svg, OUTER_LINE_STYLE, X_G2, X_F2, Y_G2, Y_F2, viewBox);
+                    appendLine(svg, OUTER_LINE_STYLE, X_F2, X_E2, Y_F2, Y_E2, viewBox);
+                    appendLine(svg, OUTER_LINE_STYLE, X_E2, X_D2, Y_E2, Y_D2, viewBox);
+                    appendLine(svg, OUTER_LINE_STYLE, X_D2, X_C2, Y_D2, Y_C2, viewBox);
+                    appendLine(svg, INNER_LINE_STYLE, X_C2, X_B2, Y_C2, Y_B2, viewBox);
+                    appendLine(svg, OUTER_LINE_STYLE, X_B2, X_A2, Y_B2, Y_A2, viewBox);
+                    appendLine(svg, INNER_LINE_STYLE, X_O2, X_I2, Y_O2, Y_I2, viewBox);
+                    appendLine(svg, INNER_LINE_STYLE, X_O2, X_G2, Y_O2, Y_G2, viewBox);
+                    appendLine(svg, INNER_LINE_STYLE, X_O2, X_E2, Y_O2, Y_E2, viewBox);
+                    appendLine(svg, INNER_LINE_STYLE, X_O2, X_C2, Y_O2, Y_C2, viewBox);
+                    appendLine(svg, INNER_LINE_STYLE, X_O2, X_A2, Y_O2, Y_A2, viewBox);
+                    appendLine(svg, OUTER_LINE_STYLE, X_O1, X_O1E, Y_O1, Y_O1E, viewBox);
+                    appendLine(svg, OUTER_LINE_STYLE, X_O1E, X_A1E, Y_O1E, Y_A1E, viewBox);
+                    appendLine(svg, OUTER_LINE_STYLE, X_A1E, X_A1, Y_A1E, Y_A1, viewBox);
+                    appendLine(svg, OUTER_LINE_STYLE, X_K1E, X_K1, Y_K1E, Y_K1, viewBox);
+                    appendLine(svg, OUTER_LINE_STYLE, X_O2, X_O2E, Y_O2, Y_O2E, viewBox);
+                    appendLine(svg, OUTER_LINE_STYLE, X_O2E, X_A2E, Y_O2E, Y_A2E, viewBox);
+                    appendLine(svg, OUTER_LINE_STYLE, X_A2E, X_A2, Y_A2E, Y_A2, viewBox);
+                    this.textData = {
+                        X_A1: X_A1,
+                        X_A2: X_A2,
+                        X_C1: X_C1,
+                        X_C2: X_C2,
+                        X_E1: X_E1,
+                        X_E2: X_E2,
+                        X_G1: X_G1,
+                        X_G2: X_G2,
+                        X_I1: X_I1,
+                        X_I2: X_I2,
+                        X_K1: X_K1,
+                        X_K2: X_K2,
+                        Y_A1: Y_A1,
+                        Y_A2: Y_A2,
+                        Y_C1: Y_C1,
+                        Y_C2: Y_C2,
+                        Y_E1: Y_E1,
+                        Y_E2: Y_E2,
+                        Y_G1: Y_G1,
+                        Y_G2: Y_G2,
+                        Y_I1: Y_I1,
+                        Y_I2: Y_I2,
+                        Y_K1: Y_K1,
+                        Y_K2: Y_K2,
+                        ANGLE_SMALL_DEGREE: ANGLE_SMALL_DEGREE
+                    };
+                };
+                DiceGenerator.prototype.drawTextsOfTenSidedDice = function (infos, SIDE_LENGTH) {
+                    var setSvgTextInfo = this.setSvgTextInfo;
+                    var textData = this.textData;
+                    var X_A1 = textData.X_A1, X_A2 = textData.X_A2, X_C1 = textData.X_C1, X_C2 = textData.X_C2, X_E1 = textData.X_E1, X_E2 = textData.X_E2, X_G1 = textData.X_G1, X_G2 = textData.X_G2, X_I1 = textData.X_I1, X_I2 = textData.X_I2, X_K1 = textData.X_K1, X_K2 = textData.X_K2, Y_A1 = textData.Y_A1, Y_A2 = textData.Y_A2, Y_C1 = textData.Y_C1, Y_C2 = textData.Y_C2, Y_E1 = textData.Y_E1, Y_E2 = textData.Y_E2, Y_G1 = textData.Y_G1, Y_G2 = textData.Y_G2, Y_I1 = textData.Y_I1, Y_I2 = textData.Y_I2, Y_K1 = textData.Y_K1, Y_K2 = textData.Y_K2, ANGLE_SMALL_DEGREE = textData.ANGLE_SMALL_DEGREE;
+                    [
+                        {
+                            x: (X_A2 + X_C2) * 0.5,
+                            y: (Y_A2 + Y_C2) * 0.5,
+                            rotate: 0
+                        },
+                        {
+                            x: (X_G1 + X_I1) * 0.5,
+                            y: (Y_G1 + Y_I1) * 0.5,
+                            rotate: 360 - ANGLE_SMALL_DEGREE * 3
+                        },
+                        {
+                            x: (X_E2 + X_G2) * 0.5,
+                            y: (Y_E2 + Y_G2) * 0.5,
+                            rotate: ANGLE_SMALL_DEGREE * 2
+                        },
+                        {
+                            x: (X_A1 + X_C1) * 0.5,
+                            y: (Y_A1 + Y_C1) * 0.5,
+                            rotate: 0
+                        },
+                        {
+                            x: (X_I2 + X_K2) * 0.5,
+                            y: (Y_I2 + Y_K2) * 0.5,
+                            rotate: ANGLE_SMALL_DEGREE * 4
+                        },
+                        {
+                            x: (X_C1 + X_E1) * 0.5,
+                            y: (Y_C1 + Y_E1) * 0.5,
+                            rotate: -ANGLE_SMALL_DEGREE
+                        },
+                        {
+                            x: (X_G2 + X_I2) * 0.5,
+                            y: (Y_G2 + Y_I2) * 0.5,
+                            rotate: ANGLE_SMALL_DEGREE * 3
+                        },
+                        {
+                            x: (X_I1 + X_K1) * 0.5,
+                            y: (Y_I1 + Y_K1) * 0.5,
+                            rotate: 360 - ANGLE_SMALL_DEGREE * 4
+                        },
+                        {
+                            x: (X_C2 + X_E2) * 0.5,
+                            y: (Y_C2 + Y_E2) * 0.5,
+                            rotate: ANGLE_SMALL_DEGREE
+                        },
+                        {
+                            x: (X_E1 + X_G1) * 0.5,
+                            y: (Y_E1 + Y_G1) * 0.5,
+                            rotate: 360 - ANGLE_SMALL_DEGREE * 2
+                        },
+                    ].map(function (_a, n) {
+                        var x = _a.x, y = _a.y, rotate = _a.rotate;
+                        setSvgTextInfo(infos[n], x, y, rotate);
+                    });
+                };
                 DiceGenerator.prototype.drawGraphsOfTwelveSidedDice = function (svg, SIDE_LENGTH, INNER_LINE_STYLE, OUTER_LINE_STYLE, viewBox, OPTIONS, mmToPxScale) {
                     var QUARTER_SIDE_LENGTH = SIDE_LENGTH * 0.25;
                     var RADIUS = SIDE_LENGTH * 0.2;
@@ -532,10 +858,14 @@ var edu;
                     var SIN36_MULTIPLY_SIDE_LENGTH = SIDE_LENGTH * SIN36;
                     var SIN54_MULTIPLY_SIDE_LENGTH = SIDE_LENGTH * SIN54;
                     var SIN72_MULTIPLY_SIDE_LENGTH = SIDE_LENGTH * SIN72;
-                    var SIN18_MULTIPLY_QUARTER_SIDE_LENGTH = QUARTER_SIDE_LENGTH * SIN18;
-                    var SIN36_MULTIPLY_QUARTER_SIDE_LENGTH = QUARTER_SIDE_LENGTH * SIN36;
-                    var SIN54_MULTIPLY_QUARTER_SIDE_LENGTH = QUARTER_SIDE_LENGTH * SIN54;
-                    var SIN72_MULTIPLY_QUARTER_SIDE_LENGTH = QUARTER_SIDE_LENGTH * SIN72;
+                    var SIN18_MULTIPLY_QUARTER_SIDE_LENGTH = QUARTER_SIDE_LENGTH *
+                        SIN18;
+                    var SIN36_MULTIPLY_QUARTER_SIDE_LENGTH = QUARTER_SIDE_LENGTH *
+                        SIN36;
+                    var SIN54_MULTIPLY_QUARTER_SIDE_LENGTH = QUARTER_SIDE_LENGTH *
+                        SIN54;
+                    var SIN72_MULTIPLY_QUARTER_SIDE_LENGTH = QUARTER_SIDE_LENGTH *
+                        SIN72;
                     var SIN72_MULTIPLY_LONG_SIDE_LENGTH = LONG_SIDE_LENGTH * SIN72;
                     var SECOND_GROUP_OFFSET = SIDE_LENGTH * 2 + LONG_SIDE_LENGTH +
                         SIN18_MULTIPLY_SIDE_LENGTH;
@@ -564,7 +894,8 @@ var edu;
                         var F2x = 0, F2y = 0;
                         var F5x = 0, F5y = 0;
                         if (groupIndex === 0) {
-                            A1x = LEFT + SIN18 * (SIDE_LENGTH + SIN18_MULTIPLY_SIDE_LENGTH * 2) +
+                            A1x = LEFT +
+                                SIN18 * (SIDE_LENGTH + SIN18_MULTIPLY_SIDE_LENGTH * 2) +
                                 LONG_SIDE_LENGTH;
                             A2x = A1x + SIN54_MULTIPLY_SIDE_LENGTH;
                             A5x = A1x - SIN54_MULTIPLY_SIDE_LENGTH;
@@ -967,7 +1298,8 @@ var edu;
                     var cx4 = dx1 + ex1 - cx1, cy4 = dy1 + ey1 - cy1;
                     var ax4 = ex1, ay4 = ey1;
                     var dx4 = dx1, dy4 = dy1;
-                    var angle_cd4 = Math.atan((cy4 - dy4) / (cx4 - dx4)) * 180 / Math.PI;
+                    var angle_cd4 = Math.atan((cy4 - dy4) / (cx4 - dx4)) * 180 /
+                        Math.PI;
                     var angle_ce4 = BIGER_ANGLE - angle_cd4;
                     var angle_cf4 = BIGER_ANGLE - (90 - angle_ce4);
                     var angle_ca4 = BIGER_ANGLE - (90 - angle_cd4);
@@ -1004,7 +1336,8 @@ var edu;
                     var cx5 = ax4 + bx4 - cx4, cy5 = ay4 + by4 - cy4;
                     var dx5 = ax4, dy5 = ay4;
                     var ex5 = bx4, ey5 = by4;
-                    var angle_cd5 = Math.atan((cy5 - dy5) / (cx5 - dx5)) * 180 / Math.PI;
+                    var angle_cd5 = Math.atan((cy5 - dy5) / (cx5 - dx5)) * 180 /
+                        Math.PI;
                     var angle_ce5 = BIGER_ANGLE - angle_cd5;
                     var angle_cf5 = BIGER_ANGLE - (90 - angle_ce5);
                     var angle_ca5 = BIGER_ANGLE - (90 - angle_cd5);
@@ -1031,7 +1364,12 @@ var edu;
                         ey = ey5,
                         fx = fx5,
                         fy = fy5;
-                    aax = aax5, aay = aay5, bbx = bbx5, bby = bby5, ffx = ffx5, ffy = ffy5;
+                    aax = aax5,
+                        aay = aay5,
+                        bbx = bbx5,
+                        bby = bby5,
+                        ffx = ffx5,
+                        ffy = ffy5;
                     this.appendLine(svg, INNER_LINE_STYLE, ax, bx, ay, by, viewBox);
                     this.appendLine(svg, INNER_LINE_STYLE, ax, cx, ay, cy, viewBox);
                     this.appendLine(svg, OUTER_LINE_STYLE, ax, dx, ay, dy, viewBox);
@@ -1048,8 +1386,10 @@ var edu;
                     var cx6 = ex4 + fx4 - cx4, cy6 = ey4 + fy4 - cy4;
                     var dx6 = fx4, dy6 = fy4;
                     var ex6 = ex4, ey6 = ey4;
-                    var angle_cd6 = Math.atan((cy6 - dy6) / (dx6 - cx6)) * 180 / Math.PI;
-                    var angle_ce6 = Math.atan((cy6 - ey6) / (cx6 - ex6)) * 180 / Math.PI;
+                    var angle_cd6 = Math.atan((cy6 - dy6) / (dx6 - cx6)) * 180 /
+                        Math.PI;
+                    var angle_ce6 = Math.atan((cy6 - ey6) / (cx6 - ex6)) * 180 /
+                        Math.PI;
                     var angle_ca6 = BIGER_ANGLE - angle_cd6;
                     var angle_cf6 = BIGER_ANGLE - angle_ce6;
                     var angle_cb6 = BIGER_ANGLE - (90 - angle_ca6);
@@ -1106,7 +1446,8 @@ var edu;
                     var cx3 = dx4 + ex4 - cx4, cy3 = dy4 + ey4 - cy4;
                     var fx3 = dx4, fy3 = dy4;
                     var ex3 = ex4, ey3 = ey4;
-                    var angle_cf3 = Math.atan((cy3 - fy3) / (fx3 - cx3)) * 180 / Math.PI;
+                    var angle_cf3 = Math.atan((cy3 - fy3) / (fx3 - cx3)) * 180 /
+                        Math.PI;
                     var angle_ce3 = BIGER_ANGLE - angle_cf3;
                     var angle_cd3 = 180 - BIGER_ANGLE - angle_ce3;
                     var angle_ca3 = BIGER_ANGLE - angle_cd3;
@@ -1144,7 +1485,8 @@ var edu;
                     var cx2 = ax3 + dx3 - cx3, cy2 = ay3 + dy3 - cy3;
                     var fx2 = ax3, fy2 = ay3;
                     var ex2 = dx3, ey2 = dy3;
-                    var angle_cf2 = Math.atan((cy2 - fy2) / (fx2 - cx2)) * 180 / Math.PI;
+                    var angle_cf2 = Math.atan((cy2 - fy2) / (fx2 - cx2)) * 180 /
+                        Math.PI;
                     var angle_ce2 = BIGER_ANGLE - angle_cf2;
                     var angle_cd2 = 180 - BIGER_ANGLE - angle_ce2;
                     var angle_ca2 = BIGER_ANGLE - angle_cd2;

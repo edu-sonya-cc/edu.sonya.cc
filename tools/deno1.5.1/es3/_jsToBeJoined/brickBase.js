@@ -306,7 +306,7 @@ System.register("brickBase", [], function (exports_1, context_1) {
                     this.DEFAULT_DATA_JSON = "";
                     this.computedData = {
                         title: {
-                            en: "",
+                            en_us: "",
                             zh_cn: "",
                             zh_tw: ""
                         },
@@ -320,7 +320,7 @@ System.register("brickBase", [], function (exports_1, context_1) {
                         configCoreElement.setAttribute(REPORT_KIND_PROPERTY, _this.reporterKindProperty);
                         var getWrapElement = _this.getWrapElement;
                         var wrapElement = getWrapElement({
-                            en: "Paper",
+                            en_us: "Paper",
                             zh_cn: "纸张",
                             zh_tw: "紙張"
                         });
@@ -328,7 +328,7 @@ System.register("brickBase", [], function (exports_1, context_1) {
                         _this.initPaperSizeElements(wrapElement);
                         _this.initIsLandscapeElements(wrapElement);
                         wrapElement = getWrapElement({
-                            en: "Margin of page",
+                            en_us: "Margin of page",
                             zh_cn: "页边距",
                             zh_tw: "頁邊距"
                         });
@@ -454,7 +454,7 @@ System.register("brickBase", [], function (exports_1, context_1) {
                         var labelElement = createElement("label");
                         span.appendChild(labelElement);
                         labelElement.innerHTML = getI18nInnerHTML({
-                            en: "Size:",
+                            en_us: "Size:",
                             zh_cn: "纸型：",
                             zh_tw: "紙型："
                         });
@@ -491,7 +491,7 @@ System.register("brickBase", [], function (exports_1, context_1) {
                         var labelElement = createElement("label");
                         span.appendChild(labelElement);
                         labelElement.innerHTML = getI18nInnerHTML({
-                            en: "Orientation:",
+                            en_us: "Orientation:",
                             zh_cn: "方向：",
                             zh_tw: "方向："
                         });
@@ -507,12 +507,12 @@ System.register("brickBase", [], function (exports_1, context_1) {
                             var spanElement = createElement("span");
                             spanElement.innerHTML = getI18nInnerHTML(isLandscapeValue
                                 ? {
-                                    en: "landscape",
+                                    en_us: "landscape",
                                     zh_cn: "横向",
                                     zh_tw: "橫向"
                                 }
                                 : {
-                                    en: "portrait",
+                                    en_us: "portrait",
                                     zh_cn: "纵向",
                                     zh_tw: "縱向"
                                 });
@@ -534,7 +534,7 @@ System.register("brickBase", [], function (exports_1, context_1) {
                         var labelElement = createElement("label");
                         wrapElement.appendChild(labelElement);
                         labelElement.innerHTML = getI18nInnerHTML({
-                            en: "Top:",
+                            en_us: "Top:",
                             zh_cn: "上：",
                             zh_tw: "上："
                         });
@@ -556,7 +556,7 @@ System.register("brickBase", [], function (exports_1, context_1) {
                         var labelElement = createElement("label");
                         wrapElement.appendChild(labelElement);
                         labelElement.innerHTML = getI18nInnerHTML({
-                            en: "Bottom:",
+                            en_us: "Bottom:",
                             zh_cn: "下：",
                             zh_tw: "下："
                         });
@@ -578,7 +578,7 @@ System.register("brickBase", [], function (exports_1, context_1) {
                         var labelElement = createElement("label");
                         wrapElement.appendChild(labelElement);
                         labelElement.innerHTML = getI18nInnerHTML({
-                            en: "Left:",
+                            en_us: "Left:",
                             zh_cn: "左：",
                             zh_tw: "左："
                         });
@@ -600,7 +600,7 @@ System.register("brickBase", [], function (exports_1, context_1) {
                         var labelElement = createElement("label");
                         wrapElement.appendChild(labelElement);
                         labelElement.innerHTML = getI18nInnerHTML({
-                            en: "Right:",
+                            en_us: "Right:",
                             zh_cn: "右：",
                             zh_tw: "右："
                         });

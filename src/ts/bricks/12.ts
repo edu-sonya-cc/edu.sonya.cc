@@ -14,27 +14,27 @@
 /// <reference path='../../types/IBrickCore.d.ts' />
 
 /**
- * <en>Multiplication Table information</en>
+ * <en_us>Multiplication Table information</en_us>
  * <zh_cn>乘法口诀表信息</zh_cn>
  * <zh_tw>乘法口訣表資訊</zh_tw>
  */
 type MultiplicationTableInfo = {
   /**
-   * <en>Length</en>
+   * <en_us>Length</en_us>
    * <zh_cn>边长</zh_cn>
    * <zh_tw>邊長</zh_tw>
    */
   length: number;
 
   /**
-   * <en>Scope</en>
+   * <en_us>Scope</en_us>
    * <zh_cn>范围</zh_cn>
    * <zh_tw>範圍</zh_tw>
    */
   scope: 'chinese' | 'west' | 'india';
 
   /**
-   * <en>Kind</en>
+   * <en_us>Kind</en_us>
    * <zh_cn>类型</zh_cn>
    * <zh_tw>類型</zh_tw>
    */
@@ -47,35 +47,35 @@ type MultiplicationTableInfo = {
     | 'horizontal';
 
   /**
-   * <en>Poker Include Zero</en>
+   * <en_us>Poker Include Zero</en_us>
    * <zh_cn>扑克带零</zh_cn>
    * <zh_tw>撲克帶零</zh_tw>
    */
   pokerIncludeZero: boolean;
 
   /**
-   * <en>Copies</en>
+   * <en_us>Copies</en_us>
    * <zh_cn>份数</zh_cn>
    * <zh_tw>份數</zh_tw>
    */
   copies: number;
 
   /**
-   * <en>Inner Line Style</en>
+   * <en_us>Inner Line Style</en_us>
    * <zh_cn>内部线样式</zh_cn>
    * <zh_tw>內部線樣式</zh_tw>
    */
   innerLineStyle: string;
 
   /**
-   * <en>Outer Line Style</en>
+   * <en_us>Outer Line Style</en_us>
    * <zh_cn>外边线样式</zh_cn>
    * <zh_tw>外邊線樣式</zh_tw>
    */
   outerLineStyle: string;
 
   /**
-   * <en>Text Style</en>
+   * <en_us>Text Style</en_us>
    * <zh_cn>文本样式</zh_cn>
    * <zh_tw>文字樣式</zh_tw>
    */
@@ -87,13 +87,13 @@ type DivOrSvgElementWithSize = svgSpace.edu.sonya.cc.DivOrSvgElementWithSize;
 type WrapElementWithInfo = svgSpace.edu.sonya.cc.WrapElementWithInfo;
 
 /**
- * <en>
+ * <en_us>
  * Function:
  * Create:
  * History:
  * Reference:
  * Description:
- * </en>
+ * </en_us>
  *
  * <zh_cn>
  * 功能：生成乘法口诀表辅助教具
@@ -264,10 +264,10 @@ class BrickCore extends BrickWithTableBase {
       pokerHtml.replace(/<page>/g, '<page style="flex-direction:row-reverse;">'),
     );
 
-    const en = `${FILENAME_POSTFIX}multiplicationtable`;
+    const en_us = `${FILENAME_POSTFIX}multiplicationtable`;
     const zh_cn = `${FILENAME_POSTFIX}乘法口诀表`;
     const zh_tw = `${FILENAME_POSTFIX}乘法口訣表`;
-    computedData.title = { en, zh_cn, zh_tw };
+    computedData.title = { en_us, zh_cn, zh_tw };
   };
 
   /** OK
@@ -1337,16 +1337,16 @@ class BrickCore extends BrickWithTableBase {
     // 'numberPoker' | 'chinesePoker' | 'numberPokerFull' | 'chinesePokerFull' | 'vertical' | 'horizontal'
     {
       value: 'numberPoker',
-      captions: { en: 'Number Poker', zh_cn: '数字扑克', zh_tw: '數位撲克' },
+      captions: { en_us: 'Number Poker', zh_cn: '数字扑克', zh_tw: '數位撲克' },
     },
     {
       value: 'chinesePoker',
-      captions: { en: 'Chinese Poker', zh_cn: '汉字扑克', zh_tw: '漢字撲克' },
+      captions: { en_us: 'Chinese Poker', zh_cn: '汉字扑克', zh_tw: '漢字撲克' },
     },
     {
       value: 'numberPokerFull',
       captions: {
-        en: 'Number Poker Full',
+        en_us: 'Number Poker Full',
         zh_cn: '完整数字扑克',
         zh_tw: '完整數位撲克',
       },
@@ -1354,33 +1354,33 @@ class BrickCore extends BrickWithTableBase {
     {
       value: 'chinesePokerFull',
       captions: {
-        en: 'Chinese Poker Full',
+        en_us: 'Chinese Poker Full',
         zh_cn: '完整汉字扑克',
         zh_tw: '完整漢字撲克',
       },
     },
     {
       value: 'vertical',
-      captions: { en: 'Vertical', zh_cn: '竖格', zh_tw: '豎格' },
+      captions: { en_us: 'Vertical', zh_cn: '竖格', zh_tw: '豎格' },
     },
     {
       value: 'horizontal',
-      captions: { en: 'Horizontal', zh_cn: '横格', zh_tw: '橫格' },
+      captions: { en_us: 'Horizontal', zh_cn: '横格', zh_tw: '橫格' },
     },
   ];
   private scopeTableColumnInfo = [
     // 'chinese' | 'west' | 'india'
     {
       value: 'chinese',
-      captions: { en: 'Chinese', zh_cn: '中式9×9', zh_tw: '中式9×9' },
+      captions: { en_us: 'Chinese', zh_cn: '中式9×9', zh_tw: '中式9×9' },
     },
     {
       value: 'west',
-      captions: { en: 'West', zh_cn: '西式12×12', zh_tw: '西式12×12' },
+      captions: { en_us: 'West', zh_cn: '西式12×12', zh_tw: '西式12×12' },
     },
     {
       value: 'india',
-      captions: { en: 'India', zh_cn: '印式19×19', zh_tw: '印式19×19' },
+      captions: { en_us: 'India', zh_cn: '印式19×19', zh_tw: '印式19×19' },
     },
   ];
   /** OK
@@ -1421,27 +1421,27 @@ class BrickCore extends BrickWithTableBase {
    * 初始化表头
    */
   protected initTableHead = (): void => {
-    this.appendTableHeadCell({ en: 'Length', zh_cn: '边长', zh_tw: '邊長' });
-    this.appendTableHeadCell({ en: 'Scope', zh_cn: '范围', zh_tw: '範圍' });
-    this.appendTableHeadCell({ en: 'Kind', zh_cn: '类型', zh_tw: '類型' });
+    this.appendTableHeadCell({ en_us: 'Length', zh_cn: '边长', zh_tw: '邊長' });
+    this.appendTableHeadCell({ en_us: 'Scope', zh_cn: '范围', zh_tw: '範圍' });
+    this.appendTableHeadCell({ en_us: 'Kind', zh_cn: '类型', zh_tw: '類型' });
     this.appendTableHeadCell({
-      en: 'Poker Include Zero',
+      en_us: 'Poker Include Zero',
       zh_cn: '扑克带零',
       zh_tw: '撲克帶零',
     });
-    this.appendTableHeadCell({ en: 'Copies', zh_cn: '份数', zh_tw: '份數' });
+    this.appendTableHeadCell({ en_us: 'Copies', zh_cn: '份数', zh_tw: '份數' });
     this.appendTableHeadCell({
-      en: 'Inner Line Style',
+      en_us: 'Inner Line Style',
       zh_cn: '内部线样式',
       zh_tw: '內部線樣式',
     });
     this.appendTableHeadCell({
-      en: 'Outer Line Style',
+      en_us: 'Outer Line Style',
       zh_cn: '外边线样式',
       zh_tw: '外邊線樣式',
     });
     this.appendTableHeadCell({
-      en: 'Text Style',
+      en_us: 'Text Style',
       zh_cn: '文本样式',
       zh_tw: '文字樣式',
     });

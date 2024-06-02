@@ -202,7 +202,7 @@ var TreasuresPage = (function (_super) {
                 SITE_IMAGE_PATH + "4treasures/topImage.jpg?" + mainImageVersions.treasures;
             pageSubjectElement.id = PAGE_NAME + "Subject";
             pageSubjectElement.className = "pageSubject";
-            ['en', 'zh_cn', 'zh_tw'].forEach(function (lang) {
+            ['en_us', 'zh_cn', 'zh_tw'].forEach(function (lang) {
                 var span = createElement(lang);
                 pageSubjectElement.appendChild(span);
                 var image = createElement('img');
@@ -267,7 +267,7 @@ var TreasuresPage = (function (_super) {
     TreasuresPage.prototype.initTitleElement = function () {
         var titleElement = getTitleElement();
         titleElement.i18n = {
-            en: "Natural Treasures List",
+            en_us: "Natural Treasures List",
             zh_cn: "物华天宝清单",
             zh_tw: "物華天寶清單"
         };

@@ -329,7 +329,7 @@ body.appendChild(
     diceKind: DiceKind.twentyFour,
     sideLength: 25,
     contents:
-      "a,o,e,i,u,ü,ai,ei,ui,ao,ou,iu,ie,üe,er,an,en,in,un,ün,ang,eng,ing,ong"
+      "a,o,e,i,u,ü,ai,ei,ui,ao,ou,iu,ie,üe,er,an,en_us,in,un,ün,ang,eng,ing,ong"
         .replace(
           /a/g,
           "ɑ",

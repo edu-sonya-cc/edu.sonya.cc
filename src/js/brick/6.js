@@ -254,10 +254,10 @@ var BrickCore = (function (_super) {
                     }
                 });
             });
-            var en = FILENAME_POSTFIX + "cuisenaireRods";
+            var en_us = FILENAME_POSTFIX + "cuisenaireRods";
             var zh_cn = FILENAME_POSTFIX + "\u53E4\u6C0F\u79EF\u6728";
             var zh_tw = FILENAME_POSTFIX + "\u53E4\u6C0F\u7A4D\u6728";
-            computedData.title = { en: en, zh_cn: zh_cn, zh_tw: zh_tw };
+            computedData.title = { en_us: en_us, zh_cn: zh_cn, zh_tw: zh_tw };
             computedData.css = css;
             computedData.html = html;
         };
@@ -406,11 +406,11 @@ var BrickCore = (function (_super) {
             [
                 {
                     digitalOverlay: false,
-                    strongI18n: { en: 'Not Overlay', zh_cn: '无叠加', zh_tw: '無疊加' }
+                    strongI18n: { en_us: 'Not Overlay', zh_cn: '无叠加', zh_tw: '無疊加' }
                 },
                 {
                     digitalOverlay: true,
-                    strongI18n: { en: 'Overlay', zh_cn: '叠加', zh_tw: '疊加' }
+                    strongI18n: { en_us: 'Overlay', zh_cn: '叠加', zh_tw: '疊加' }
                 },
             ].forEach(function (_a) {
                 var digitalOverlay = _a.digitalOverlay, strongI18n = _a.strongI18n;
@@ -419,7 +419,7 @@ var BrickCore = (function (_super) {
                     buttonList: [
                         {
                             nameI18n: {
-                                en: 'Full sealing',
+                                en_us: 'Full sealing',
                                 zh_cn: '全封口',
                                 zh_tw: '全封口'
                             },
@@ -427,7 +427,7 @@ var BrickCore = (function (_super) {
                         },
                         {
                             nameI18n: {
-                                en: 'Capped',
+                                en_us: 'Capped',
                                 zh_cn: '封顶',
                                 zh_tw: '封頂'
                             },
@@ -435,7 +435,7 @@ var BrickCore = (function (_super) {
                         },
                         {
                             nameI18n: {
-                                en: 'No overlap on the back cover',
+                                en_us: 'No overlap on the back cover',
                                 zh_cn: '封底',
                                 zh_tw: '封底'
                             },
@@ -443,7 +443,7 @@ var BrickCore = (function (_super) {
                         },
                         {
                             nameI18n: {
-                                en: 'No sealing, no stacking',
+                                en_us: 'No sealing, no stacking',
                                 zh_cn: '无封口',
                                 zh_tw: '無封口'
                             },
@@ -474,43 +474,43 @@ var BrickCore = (function (_super) {
         };
         _this.initTableHead = function () {
             _this.appendTableHeadCell({
-                en: 'Digital Overlay',
+                en_us: 'Digital Overlay',
                 zh_cn: '数字叠加',
                 zh_tw: '數位疊加'
             });
             _this.appendTableHeadCell({
-                en: 'Sealing style',
+                en_us: 'Sealing style',
                 zh_cn: '封口方式',
                 zh_tw: '封口方式'
             });
-            _this.appendTableHeadCell({ en: 'Length', zh_cn: '边长', zh_tw: '邊長' });
+            _this.appendTableHeadCell({ en_us: 'Length', zh_cn: '边长', zh_tw: '邊長' });
             _this.appendTableHeadCell({
-                en: 'Inner Line Style',
+                en_us: 'Inner Line Style',
                 zh_cn: '内部线样式',
                 zh_tw: '內部線樣式'
             });
             _this.appendTableHeadCell({
-                en: 'Cut Line Style',
+                en_us: 'Cut Line Style',
                 zh_cn: '剪开线样式',
                 zh_tw: '剪開線樣式'
             });
             _this.appendTableHeadCell({
-                en: 'Outer Line Color',
+                en_us: 'Outer Line Color',
                 zh_cn: '外边线样式',
                 zh_tw: '外邊線線樣'
             });
             _this.appendTableHeadCell({
-                en: 'Text Style',
+                en_us: 'Text Style',
                 zh_cn: '文本样式',
                 zh_tw: '文字樣式'
             });
             _this.appendTableHeadCell({
-                en: 'Pages',
+                en_us: 'Pages',
                 zh_cn: '各色页数',
                 zh_tw: '各色頁數'
             });
             _this.appendTableHeadCell({
-                en: 'Paper thickness',
+                en_us: 'Paper thickness',
                 zh_cn: '纸厚',
                 zh_tw: '紙厚'
             });
@@ -523,16 +523,16 @@ var BrickCore = (function (_super) {
             _this.appendOperationTd(tr, item);
             _this.appendCheckboxTdWithoutText(tr, digitalOverlay, item, 'digitalOverlay');
             _this.appendSelectTd(tr, sealingStyle, item, 'sealingStyle', [
-                { value: 'none', captions: { en: 'None', zh_cn: '无', zh_tw: '無' } },
+                { value: 'none', captions: { en_us: 'None', zh_cn: '无', zh_tw: '無' } },
                 {
                     value: 'onlyAbove',
-                    captions: { en: 'Only Above', zh_cn: '仅顶', zh_tw: '僅頂' }
+                    captions: { en_us: 'Only Above', zh_cn: '仅顶', zh_tw: '僅頂' }
                 },
                 {
                     value: 'onlyBelow',
-                    captions: { en: 'Only Below', zh_cn: '仅底', zh_tw: '僅底' }
+                    captions: { en_us: 'Only Below', zh_cn: '仅底', zh_tw: '僅底' }
                 },
-                { value: 'both', captions: { en: 'Both', zh_cn: '全部', zh_tw: '全部' } },
+                { value: 'both', captions: { en_us: 'Both', zh_cn: '全部', zh_tw: '全部' } },
             ]);
             _this.appendNumberTd(tr, length, item, 'length', 1, null, 1);
             _this.appendTextareaTd(tr, innerLineStyle.join('\n'), item, 'innerLineStyle', 'stringArray');

@@ -13,83 +13,83 @@
 /// <reference path='../../types/brickWithTableBase.d.ts' />
 
 /**
- * <en>Gucci building block information</en>
+ * <en_us>Gucci building block information</en_us>
  * <zh_cn>古氏积木信息</zh_cn>
  * <zh_tw>古氏積木資訊</zh_tw>
  */
 type CuisenaireRodInfo = {
   /**
-   * <en>Only white paper</en>
+   * <en_us>Only white paper</en_us>
    * <zh_cn>只有白纸</zh_cn>
    * <zh_tw>只有白紙</zh_tw>
    */
   onlyWhitePaper: boolean;
 
   /**
-   * <en>Digital Overlay</en>
+   * <en_us>Digital Overlay</en_us>
    * <zh_cn>数字叠加</zh_cn>
    * <zh_tw>數位疊加</zh_tw>
    */
   digitalOverlay: boolean;
 
   /**
-   * <en>Sealing style</en>
+   * <en_us>Sealing style</en_us>
    * <zh_cn>封口方式</zh_cn>
    * <zh_tw>封口方式</zh_tw>
    */
   sealingStyle: 'none' | 'onlyAbove' | 'onlyBelow' | 'both';
 
   /**
-   * <en>Length</en>
+   * <en_us>Length</en_us>
    * <zh_cn>边长</zh_cn>
    * <zh_tw>邊長</zh_tw>
    */
   length: number;
 
   /**
-   * <en>Inner Line Style</en>
+   * <en_us>Inner Line Style</en_us>
    * <zh_cn>内部线样式</zh_cn>
    * <zh_tw>內部線樣式</zh_tw>
    */
   innerLineStyle: string[];
 
   /**
-   * <en>Cut Line Style</en>
+   * <en_us>Cut Line Style</en_us>
    * <zh_cn>剪开线样式</zh_cn>
    * <zh_tw>剪開線樣式</zh_tw>
    */
   cutLineStyle: string[];
 
   /**
-   * <en>Outer Line Color</en>
+   * <en_us>Outer Line Color</en_us>
    * <zh_cn>外边线样式</zh_cn>
    * <zh_tw>外邊線線樣</zh_tw>
    */
   outerLineStyle: string[];
 
   /**
-   * <en>Text Style</en>
+   * <en_us>Text Style</en_us>
    * <zh_cn>文本样式</zh_cn>
    * <zh_tw>文字樣式</zh_tw>
    */
   textStyle: string[];
 
   /**
-   * <en>Pages</en>
+   * <en_us>Pages</en_us>
    * <zh_cn>各色页数</zh_cn>
    * <zh_tw>各色頁數</zh_tw>
    */
   pages: number[];
 
   /**
-   * <en>Paper thickness</en>
+   * <en_us>Paper thickness</en_us>
    * <zh_cn>纸厚</zh_cn>
    * <zh_tw>紙厚</zh_tw>
    */
   paperThickness: number;
 
   /**
-   * <en>Other parameters</en>
+   * <en_us>Other parameters</en_us>
    * <zh_cn>其它参数</zh_cn>
    * <zh_tw>其它參數</zh_tw>
    */
@@ -97,13 +97,13 @@ type CuisenaireRodInfo = {
 };
 
 /**
- * <en>
+ * <en_us>
  * Function:
  * Create:
  * History:
  * Reference:
  * Description:
- * </en>
+ * </en_us>
  *
  * <zh_cn>
  * 功能：古氏积木
@@ -310,10 +310,10 @@ class BrickCore extends BrickWithTableBase {
       },
     );
 
-    const en = `${FILENAME_POSTFIX}cuisenaireRods`;
+    const en_us = `${FILENAME_POSTFIX}cuisenaireRods`;
     const zh_cn = `${FILENAME_POSTFIX}古氏积木`;
     const zh_tw = `${FILENAME_POSTFIX}古氏積木`;
-    computedData.title = { en, zh_cn, zh_tw };
+    computedData.title = { en_us, zh_cn, zh_tw };
 
     computedData.css = css;
     computedData.html = html;
@@ -695,11 +695,11 @@ class BrickCore extends BrickWithTableBase {
     [
       {
         digitalOverlay: false,
-        strongI18n: { en: 'Not Overlay', zh_cn: '无叠加', zh_tw: '無疊加' },
+        strongI18n: { en_us: 'Not Overlay', zh_cn: '无叠加', zh_tw: '無疊加' },
       },
       {
         digitalOverlay: true,
-        strongI18n: { en: 'Overlay', zh_cn: '叠加', zh_tw: '疊加' },
+        strongI18n: { en_us: 'Overlay', zh_cn: '叠加', zh_tw: '疊加' },
       },
     ].forEach(({ digitalOverlay, strongI18n }) => {
       usableList.push({
@@ -707,7 +707,7 @@ class BrickCore extends BrickWithTableBase {
         buttonList: [
           {
             nameI18n: {
-              en: 'Full sealing',
+              en_us: 'Full sealing',
               zh_cn: '全封口',
               zh_tw: '全封口',
             },
@@ -715,7 +715,7 @@ class BrickCore extends BrickWithTableBase {
           },
           {
             nameI18n: {
-              en: 'Capped',
+              en_us: 'Capped',
               zh_cn: '封顶',
               zh_tw: '封頂',
             },
@@ -723,7 +723,7 @@ class BrickCore extends BrickWithTableBase {
           },
           {
             nameI18n: {
-              en: 'No overlap on the back cover',
+              en_us: 'No overlap on the back cover',
               zh_cn: '封底',
               zh_tw: '封底',
             },
@@ -731,7 +731,7 @@ class BrickCore extends BrickWithTableBase {
           },
           {
             nameI18n: {
-              en: 'No sealing, no stacking',
+              en_us: 'No sealing, no stacking',
               zh_cn: '无封口',
               zh_tw: '無封口',
             },
@@ -764,51 +764,51 @@ class BrickCore extends BrickWithTableBase {
    * 初始化表头
    */
   protected initTableHead = (): void => {
-    // this.appendTableHeadCell({ en: 'Only white paper', zh_cn: '只有白纸', zh_tw: '只有白紙' });
+    // this.appendTableHeadCell({ en_us: 'Only white paper', zh_cn: '只有白纸', zh_tw: '只有白紙' });
 
     this.appendTableHeadCell({
-      en: 'Digital Overlay',
+      en_us: 'Digital Overlay',
       zh_cn: '数字叠加',
       zh_tw: '數位疊加',
     });
     this.appendTableHeadCell({
-      en: 'Sealing style',
+      en_us: 'Sealing style',
       zh_cn: '封口方式',
       zh_tw: '封口方式',
     });
-    this.appendTableHeadCell({ en: 'Length', zh_cn: '边长', zh_tw: '邊長' });
+    this.appendTableHeadCell({ en_us: 'Length', zh_cn: '边长', zh_tw: '邊長' });
     this.appendTableHeadCell({
-      en: 'Inner Line Style',
+      en_us: 'Inner Line Style',
       zh_cn: '内部线样式',
       zh_tw: '內部線樣式',
     });
     this.appendTableHeadCell({
-      en: 'Cut Line Style',
+      en_us: 'Cut Line Style',
       zh_cn: '剪开线样式',
       zh_tw: '剪開線樣式',
     });
     this.appendTableHeadCell({
-      en: 'Outer Line Color',
+      en_us: 'Outer Line Color',
       zh_cn: '外边线样式',
       zh_tw: '外邊線線樣',
     });
     this.appendTableHeadCell({
-      en: 'Text Style',
+      en_us: 'Text Style',
       zh_cn: '文本样式',
       zh_tw: '文字樣式',
     });
     this.appendTableHeadCell({
-      en: 'Pages',
+      en_us: 'Pages',
       zh_cn: '各色页数',
       zh_tw: '各色頁數',
     });
     this.appendTableHeadCell({
-      en: 'Paper thickness',
+      en_us: 'Paper thickness',
       zh_cn: '纸厚',
       zh_tw: '紙厚',
     });
 
-    // this.appendTableHeadCell({ en: 'Other parameters', zh_cn: '其它参数', zh_tw: '其它參數' });
+    // this.appendTableHeadCell({ en_us: 'Other parameters', zh_cn: '其它参数', zh_tw: '其它參數' });
   };
 
   /** OK
@@ -840,21 +840,21 @@ class BrickCore extends BrickWithTableBase {
     // tr.appendChild(tdOperation);
     this.appendOperationTd(tr, item);
 
-    // , getI18nInnerHTML({ en: '', zh_cn: '', zh_tw: '' })
+    // , getI18nInnerHTML({ en_us: '', zh_cn: '', zh_tw: '' })
     // this.appendCheckboxTdWithoutText(tr, onlyWhitePaper, cuisenaireRod, 'onlyWhitePaper');
     this.appendCheckboxTdWithoutText(tr, digitalOverlay, item, 'digitalOverlay');
 
     this.appendSelectTd(tr, sealingStyle, item, 'sealingStyle', [
-      { value: 'none', captions: { en: 'None', zh_cn: '无', zh_tw: '無' } },
+      { value: 'none', captions: { en_us: 'None', zh_cn: '无', zh_tw: '無' } },
       {
         value: 'onlyAbove',
-        captions: { en: 'Only Above', zh_cn: '仅顶', zh_tw: '僅頂' },
+        captions: { en_us: 'Only Above', zh_cn: '仅顶', zh_tw: '僅頂' },
       },
       {
         value: 'onlyBelow',
-        captions: { en: 'Only Below', zh_cn: '仅底', zh_tw: '僅底' },
+        captions: { en_us: 'Only Below', zh_cn: '仅底', zh_tw: '僅底' },
       },
-      { value: 'both', captions: { en: 'Both', zh_cn: '全部', zh_tw: '全部' } },
+      { value: 'both', captions: { en_us: 'Both', zh_cn: '全部', zh_tw: '全部' } },
     ]);
     this.appendNumberTd(tr, length, item, 'length', 1, null, 1);
 

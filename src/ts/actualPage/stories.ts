@@ -22,7 +22,7 @@ class StoriesPage extends ActualPageBase {
   public initTitleElement(): void {
     const titleElement = getTitleElement();
     titleElement.i18n = {
-      en: "Growing List",
+      en_us: "Growing List",
       zh_cn: "成长足迹清单",
       zh_tw: "成長足迹清單",
     };
@@ -57,7 +57,7 @@ class StoriesPage extends ActualPageBase {
     pageSubjectElement.id = `${PAGE_NAME}Subject`;
     pageSubjectElement.className = "pageSubject";
 
-    ['en', 'zh_cn', 'zh_tw'].forEach((lang: string) => {
+    ['en_us', 'zh_cn', 'zh_tw'].forEach((lang: string) => {
       const span = createElement(lang) as HTMLSpanElement;
       pageSubjectElement.appendChild(span);
 
@@ -126,8 +126,8 @@ class StoriesPage extends ActualPageBase {
           const { id, date, title, summary } = data as {
             id: number;
             date: Date;
-            title: { en: string; zh_cn: string; zh_tw: string };
-            summary: { en: string; zh_cn: string; zh_tw: string };
+            title: { en_us: string; zh_cn: string; zh_tw: string };
+            summary: { en_us: string; zh_cn: string; zh_tw: string };
           };
 
           const titleElement = itemElement.children[0] as HTMLDivElement;
@@ -142,7 +142,7 @@ class StoriesPage extends ActualPageBase {
 
           summaryElement.innerHTML = getI18nInnerHTML(summary);
           // const chineseDate = global.getChineseDate(date);
-          // storyDateElement.innerHTML = `<en>${global.getEnglishDate(date)}</en><zh_cn>${chineseDate}</zh_cn><zh_tw>${chineseDate}</zh_tw>`;
+          // storyDateElement.innerHTML = `<en_us>${global.getEnglishDate(date)}</en_us><zh_cn>${chineseDate}</zh_cn><zh_tw>${chineseDate}</zh_tw>`;
           storyDateElement.innerHTML = getI18nInnerHTMLFromDate(date);
 
           const hrElement = itemElement.children[2] as HTMLHRElement;

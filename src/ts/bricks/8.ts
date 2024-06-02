@@ -1,12 +1,12 @@
 /**
- * <en>
+ * <en_us>
  * Function: Generate Israeli Lami (from Chinese Mahjong)
  * Initial construction: Anqi, October 5, 2021
  * History: On November 2, 2022
  * Reference:
  * 						2021-10-05 Anqi P: 0 00007\_Learning\Mathematics\Mahjong
  * Description: Regular (2 for each of the four patterns 1-13, plus 2 or 8 changeable cards)
- * </en>
+ * </en_us>
  *
  * <zh_cn>
  * 功能：生成以色列拉密（源于中国麻将）
@@ -40,37 +40,37 @@
 /// <reference path='../../types/IBrickCore.d.ts' />
 
 /**
- * <en>Rummikub Mahjong Type</en>
+ * <en_us>Rummikub Mahjong Type</en_us>
  * <zh_cn>拉密麻将类型</zh_cn>
  * <zh_tw>拉密麻將類型</zh_tw>
  */
 enum RummikubPokerKind {
   /**
-   * <en>None</en>
+   * <en_us>None</en_us>
    * <zh_cn>无</zh_cn>
    * <zh_tw>無</zh_tw>
    */
   none = 0,
   /**
-   * <en>diagonal</en>
+   * <en_us>diagonal</en_us>
    * <zh_cn>对角线</zh_cn>
    * <zh_tw>對角線</zh_tw>
    */
   diagonal = 1,
   /**
-   * <en>center</en>
+   * <en_us>center</en_us>
    * <zh_cn>中心</zh_cn>
    * <zh_tw>中心</zh_tw>
    */
   center = 2,
   /**
-   * <en>diagonal extends</en>
+   * <en_us>diagonal extends</en_us>
    * <zh_cn>对角线扩展版</zh_cn>
    * <zh_tw>對角線擴展版</zh_tw>
    */
   diagonalExtends = 4,
   /**
-   * <en>center extends</en>
+   * <en_us>center extends</en_us>
    * <zh_cn>中心扩展版</zh_cn>
    * <zh_tw>中心擴展版</zh_tw>
    */
@@ -78,14 +78,14 @@ enum RummikubPokerKind {
 }
 
 /**
- * <en>Count of Rummikub Mahjong Type</en>
+ * <en_us>Count of Rummikub Mahjong Type</en_us>
  * <zh_cn>拉密麻将类型数量</zh_cn>
  * <zh_tw>拉密麻將類型數量</zh_tw>
  */
 const RummikubPokerKindCount = 4;
 
 /**
- * <en>Default Value of Rummikub Mahjong Type</en>
+ * <en_us>Default Value of Rummikub Mahjong Type</en_us>
  * <zh_cn>拉密麻将类型默认值</zh_cn>
  * <zh_tw>拉密麻將類型默認值</zh_tw>
  */
@@ -112,13 +112,13 @@ class BrickCore extends PokerBase {
       .double{display:flex;justify-content: space-around;}
       .double b:first-child{position:relative;left:0.375em;}
       .double b:last-child{position:relative;left:-0.375em;opacity:0.75;}
-  
+
       .discoloration{display:flex;width: 100%;position: relative;}
       .discoloration b:first-child{overflow:hidden;position:relative;left:0.5em;}
       .discoloration b:first-child i{position:relative;left:-0.5em;color:#000;}
       .discoloration b:last-child{overflow:hidden;position:relative;left:-0.5em;}
       .discoloration b:last-child i{position:relative;left:0em;color:#F00;}
-  
+
       .mirror{position:relative;margin-left:12%;width:88%;letter-spacing:0em;display:flex;}
       .top-left .mirror,.bottom-right .mirror{width:40%;margin-left:6%;}
       .mirror b:first-child{overflow:hidden;}
@@ -301,16 +301,16 @@ class BrickCore extends PokerBase {
   };
 
   //   private readonly CENTER_TEXT = `"<div><span>
-  // <p><en>Same decor</en><zh_cn>同色连续</zh_cn><zh_tw>同色连续</zh_tw></p>
-  // <p><en>Arithmetic sequence</en></p><br />
+  // <p><en_us>Same decor</en_us><zh_cn>同色连续</zh_cn><zh_tw>同色连续</zh_tw></p>
+  // <p><en_us>Arithmetic sequence</en_us></p><br />
   // <p edu-color=""1"">7,8,9,10,11,12,13</p>
   // <p edu-color=""2"">1,2,3</p>
   // <p edu-color=""3"">2,3,4,5</p>
   // <p edu-color=""4"">5,6,7,8</p>
   // <p edu-color=""1"">5,6,☺,8</p>
   // </span><span>
-  // <p><en>Different decors</en><zh_cn>异色同值</zh_cn><zh_tw>异色同值</zh_tw></p>
-  // <p><en>Same value</en></p>
+  // <p><en_us>Different decors</en_us><zh_cn>异色同值</zh_cn><zh_tw>异色同值</zh_tw></p>
+  // <p><en_us>Same value</en_us></p>
   // <p><b edu-color=""1"">1</b><b edu-color=""2"">1</b><b edu-color=""3"">1</b></p>
   // <p><b edu-color=""1"">2</b><b edu-color=""2"">2</b><b edu-color=""3"">2</b><b edu-color=""3"">☺</b></p>
   // <p><b edu-color=""1"">☺</b><b edu-color=""2"">3</b><b edu-color=""3"">3</b></p>
@@ -319,84 +319,84 @@ class BrickCore extends PokerBase {
   //  `;
 
   /**
-   * <en>Count of normal card: diagonal</en>
+   * <en_us>Count of normal card: diagonal</en_us>
    * <zh_cn>普通牌份数：对角线</zh_cn>
    * <zh_tw>普通牌份數：對角線</zh_tw>
    */
   private DIAGONAL_NORMAL_CARD_TIMES = 2;
   /**
-   * <en>Count of changeable carddiagonal</en>
+   * <en_us>Count of changeable carddiagonal</en_us>
    * <zh_cn>百变牌数：对角线</zh_cn>
    * <zh_tw>百变牌數：對角線</zh_tw>
    */
   private DIAGONAL_CHANGEABLE_CARD_COUNT = 2;
   /**
-   * <en>Tips of diagonal</en>
+   * <en_us>Tips of diagonal</en_us>
    * <zh_cn>提示：对角线</zh_cn>
    * <zh_tw>提示：對角線</zh_tw>
    */
   private DIAGONAL_CENTER_TEXT = `<div>
-  <p><en>Same decor</en><zh_cn>同色连续</zh_cn><zh_tw>同色连续</zh_tw></p>
-  <p><en>Arithmetic sequence</en></p><br />
+  <p><en_us>Same decor</en_us><zh_cn>同色连续</zh_cn><zh_tw>同色连续</zh_tw></p>
+  <p><en_us>Arithmetic sequence</en_us></p><br />
   <p edu-color="1">7,8,9,10,11,12,13</p>
   <p edu-color="2">1,2,3</p>
   <p edu-color="1">5,6,☺,8</p>
- 
-  <p><en>Different decors</en><zh_cn>异色同值</zh_cn><zh_tw>异色同值</zh_tw></p>
-  <p><en>Same value</en></p>
+
+  <p><en_us>Different decors</en_us><zh_cn>异色同值</zh_cn><zh_tw>异色同值</zh_tw></p>
+  <p><en_us>Same value</en_us></p>
   <p><b edu-color="1">2</b><b edu-color="2">2</b><b edu-color="3">2</b><b edu-color="3">☺</b></p>
   <p><b edu-color="1">☺</b><b edu-color="2">3</b><b edu-color="3">3</b></p>
  </span></div>`;
 
   /**
-   * <en>Count of normal card: center</en>
+   * <en_us>Count of normal card: center</en_us>
    * <zh_cn>普通牌份数：中心</zh_cn>
    * <zh_tw>普通牌份數：中心</zh_tw>
    */
   private CENTER_NORMAL_CARD_TIMES = 2;
   /**
-   * <en>Count of changeable cardcenter</en>
+   * <en_us>Count of changeable cardcenter</en_us>
    * <zh_cn>百变牌数：中心</zh_cn>
    * <zh_tw>百变牌數：中心</zh_tw>
    */
   private CENTER_CHANGEABLE_CARD_COUNT = 2;
   /**
-   * <en>Tips of center</en>
+   * <en_us>Tips of center</en_us>
    * <zh_cn>提示：中心</zh_cn>
    * <zh_tw>提示：中心</zh_tw>
    */
   private CENTER_CENTER_TEXT = ``;
 
   /**
-   * <en>Count of normal card: diagonal extends</en>
+   * <en_us>Count of normal card: diagonal extends</en_us>
    * <zh_cn>普通牌份数：对角线扩展版</zh_cn>
    * <zh_tw>普通牌份數：對角線擴展版</zh_tw>
    */
   private DIAGONAL_EXTENDS_NORMAL_CARD_TIMES = 2;
   /**
-   * <en>Count of changeable carddiagonal extends</en>
+   * <en_us>Count of changeable carddiagonal extends</en_us>
    * <zh_cn>百变牌数：对角线扩展版</zh_cn>
    * <zh_tw>百变牌數：對角線擴展版</zh_tw>
    */
   private DIAGONAL_EXTENDS_CHANGEABLE_CARD_COUNT = 8;
   /**
-   * <en>Tips of diagonal extends</en>
+   * <en_us>Tips of diagonal extends</en_us>
    * <zh_cn>提示：对角线扩展版</zh_cn>
    * <zh_tw>提示：對角線擴展版</zh_tw>
    */
   private DIAGONAL_EXTENDS_CENTER_TEXT = this.DIAGONAL_CENTER_TEXT;
 
   // 	private DIAGONAL_EXTENDS_CENTER_TEXT = `<div><span>
-  //  <p><en>Same decor</en><zh_cn>同色连续</zh_cn><zh_tw>同色连续</zh_tw></p>
-  //  <p><en>Arithmetic sequence</en></p><br />
+  //  <p><en_us>Same decor</en_us><zh_cn>同色连续</zh_cn><zh_tw>同色连续</zh_tw></p>
+  //  <p><en_us>Arithmetic sequence</en_us></p><br />
   //  <p edu-color="1">7,8,9,10,11,12,13</p>
   //  <p edu-color="2">1,2,3</p>
   //  <p edu-color="3">2,3,4,5</p>
   //  <p edu-color="4">5,6,7,8</p>
   //  <p edu-color="1">5,6,☺,8</p>
   // </span><span>
-  //  <p><en>Different decors</en><zh_cn>异色同值</zh_cn><zh_tw>异色同值</zh_tw></p>
-  //  <p><en>Same value</en></p>
+  //  <p><en_us>Different decors</en_us><zh_cn>异色同值</zh_cn><zh_tw>异色同值</zh_tw></p>
+  //  <p><en_us>Same value</en_us></p>
   //  <p><b edu-color="1">1</b><b edu-color="2">1</b><b edu-color="3">1</b></p>
   //  <p><b edu-color="1">2</b><b edu-color="2">2</b><b edu-color="3">2</b><b edu-color="3">☺</b></p>
   //  <p><b edu-color="1">☺</b><b edu-color="2">3</b><b edu-color="3">3</b></p>
@@ -404,19 +404,19 @@ class BrickCore extends PokerBase {
   // </span></div>`;
 
   /**
-   * <en>Count of normal card: center extends</en>
+   * <en_us>Count of normal card: center extends</en_us>
    * <zh_cn>普通牌份数：中心扩展版</zh_cn>
    * <zh_tw>普通牌份數：中心擴展版</zh_tw>
    */
   private CENTER_EXTENDS_NORMAL_CARD_TIMES = 2;
   /**
-   * <en>Count of changeable cardcenter extends</en>
+   * <en_us>Count of changeable cardcenter extends</en_us>
    * <zh_cn>百变牌数：中心扩展版</zh_cn>
    * <zh_tw>百变牌數：中心擴展版</zh_tw>
    */
   private CENTER_EXTENDS_CHANGEABLE_CARD_COUNT = 8;
   /**
-   * <en>Tips of center extends</en>
+   * <en_us>Tips of center extends</en_us>
    * <zh_cn>提示：中心扩展版</zh_cn>
    * <zh_tw>提示：中心擴展版</zh_tw>
    */
@@ -428,11 +428,11 @@ class BrickCore extends PokerBase {
   ): void => {
     if (pokerKind === 0) pokerKind = DefaultRummikubPokerKind;
 
-    const en = `${FILENAME_POSTFIX}Rummikub`;
+    const en_us = `${FILENAME_POSTFIX}Rummikub`;
     const zh_cn = `${FILENAME_POSTFIX}拉密`;
     const zh_tw = `${FILENAME_POSTFIX}拉密`;
 
-    const enBackCover = en.split("_").join("<br />");
+    const enBackCover = en_us.split("_").join("<br />");
     const zh_cnBackCover = zh_cn.split("_").join("<br />");
     const zh_twBackCover = zh_tw.split("_").join("<br />");
 
@@ -442,7 +442,7 @@ class BrickCore extends PokerBase {
     const zh_twArray: Array<string> = [];
 
     let backCover = "";
-    let title = { en, zh_cn, zh_tw };
+    let title = { en_us, zh_cn, zh_tw };
     const CENTER_TEXTS: Array<string> = [];
     const BACK_COVERS: Array<string> = [];
     const CHARS: Array<string> = [];
@@ -563,7 +563,7 @@ class BrickCore extends PokerBase {
     switch (enArray.length) {
       case 0:
         backCover = getI18nInnerHTML({
-          en: enBackCover,
+          en_us: enBackCover,
           zh_cn: zh_cnBackCover,
           zh_tw: zh_twBackCover,
         });
@@ -574,29 +574,29 @@ class BrickCore extends PokerBase {
         const zh_twFirstItem = zh_twArray[0];
 
         backCover = getI18nInnerHTML({
-          en: enBackCover.concat("<br /><br />", enFirstItem),
+          en_us: enBackCover.concat("<br /><br />", enFirstItem),
           zh_cn: zh_cnBackCover.concat("<br /><br />", zh_cnFirstItem),
           zh_tw: zh_twBackCover.concat("<br /><br />", zh_twFirstItem),
         });
 
-        title.en += "_".concat(enFullArray[0]);
+        title.en_us += "_".concat(enFullArray[0]);
         title.zh_cn += "_".concat(zh_cnFirstItem);
         title.zh_tw += "_".concat(zh_twFirstItem);
         break;
       default:
         if (enArray.length === RummikubPokerKindCount) {
           backCover = getI18nInnerHTML({
-            en: enBackCover,
+            en_us: enBackCover,
             zh_cn: zh_cnBackCover,
             zh_tw: zh_twBackCover,
           });
 
-          title.en += " Mixed_ALL";
+          title.en_us += " Mixed_ALL";
           title.zh_cn += "混合_所有";
           title.zh_tw += "混合_所有";
         } else {
           backCover = getI18nInnerHTML({
-            en: enBackCover.concat(
+            en_us: enBackCover.concat(
               "<br /><br /><small>",
               enArray.join("<br />"),
               "</small>",
@@ -613,7 +613,7 @@ class BrickCore extends PokerBase {
             ),
           });
 
-          title.en += " Mixed_".concat(enFullArray.join("_"));
+          title.en_us += " Mixed_".concat(enFullArray.join("_"));
           title.zh_cn += "混合_".concat(zh_cnArray.join("_"));
           title.zh_tw += "混合_".concat(zh_twArray.join("_"));
         }
@@ -687,7 +687,7 @@ class BrickCore extends PokerBase {
 
   protected initOtherElements = (): void => {
     // let wrapElement = this.getWrapElement({
-    //   en: 'Show tips',
+    //   en_us: 'Show tips',
     //   zh_cn: '显示提示',
     //   zh_tw: '顯示提示',
     // });
@@ -723,7 +723,7 @@ class BrickCore extends PokerBase {
             buttonElement.setAttribute("edu-to-height", "25");
 
             // buttonElement.innerHTML = getI18nInnerHTML({
-            //   en: 'Default',
+            //   en_us: 'Default',
             //   zh_cn: '默认',
             //   zh_tw: '默認',
             // });
@@ -736,14 +736,14 @@ class BrickCore extends PokerBase {
       );
 
     let wrapElement = this.getWrapElement({
-      en: "Include Zero",
+      en_us: "Include Zero",
       zh_cn: "包含0",
       zh_tw: "包含0",
     });
     this.initIncludeZeroElements(wrapElement);
 
     wrapElement = this.getWrapElement({
-      en: "Whole Page",
+      en_us: "Whole Page",
       zh_cn: "每项补全整页",
       zh_tw: "每項補全整頁",
     });
@@ -759,29 +759,29 @@ class BrickCore extends PokerBase {
     // const labelElement = createElement('label') as HTMLLabelElement;
     // wrapElement.appendChild(labelElement);
     // labelElement.innerHTML = getI18nInnerHTML({
-    //   en: '',
+    //   en_us: '',
     //   zh_cn: '',
     //   zh_tw: '',
     // });
 
     const pokerKindI18nHtmlArray = [
       getI18nInnerHTML({
-        en: "diagonal",
+        en_us: "diagonal",
         zh_cn: "对角线",
         zh_tw: "對角線",
       }),
       getI18nInnerHTML({
-        en: "center",
+        en_us: "center",
         zh_cn: "中心",
         zh_tw: "中心",
       }),
       getI18nInnerHTML({
-        en: "diagonal extends",
+        en_us: "diagonal extends",
         zh_cn: "对角线扩展版",
         zh_tw: "對角線擴展版",
       }),
       getI18nInnerHTML({
-        en: "center extends",
+        en_us: "center extends",
         zh_cn: "中心扩展版",
         zh_tw: "中心擴展版",
       }),
@@ -836,7 +836,7 @@ class BrickCore extends PokerBase {
   //   // const labelElement = createElement('label') as HTMLLabelElement;
   //   // wrapElement.appendChild(labelElement);
   //   // labelElement.innerHTML = getI18nInnerHTML({
-  //   //   en: '',
+  //   //   en_us: '',
   //   //   zh_cn: '',
   //   //   zh_tw: '',
   //   // });
@@ -844,12 +844,12 @@ class BrickCore extends PokerBase {
 
   // 	const i18nHtmlArray = [
   //     getI18nInnerHTML({
-  //       en: 'Yes',
+  //       en_us: 'Yes',
   //       zh_cn: '是',
   //       zh_tw: '是',
   //     }),
   //     getI18nInnerHTML({
-  //       en: 'No',
+  //       en_us: 'No',
   //       zh_cn: '否',
   //       zh_tw: '否',
   //     }),
@@ -886,7 +886,7 @@ class BrickCore extends PokerBase {
     // const labelElement = createElement('label') as HTMLLabelElement;
     // wrapElement.appendChild(labelElement);
     // labelElement.innerHTML = getI18nInnerHTML({
-    //   en: '',
+    //   en_us: '',
     //   zh_cn: '',
     //   zh_tw: '',
     // });
@@ -894,12 +894,12 @@ class BrickCore extends PokerBase {
 
     const i18nHtmlArray = [
       getI18nInnerHTML({
-        en: "Yes",
+        en_us: "Yes",
         zh_cn: "是",
         zh_tw: "是",
       }),
       getI18nInnerHTML({
-        en: "No",
+        en_us: "No",
         zh_cn: "否",
         zh_tw: "否",
       }),
@@ -940,7 +940,7 @@ class BrickCore extends PokerBase {
     // const labelElement = createElement('label') as HTMLLabelElement;
     // wrapElement.appendChild(labelElement);
     // labelElement.innerHTML = getI18nInnerHTML({
-    //   en: '',
+    //   en_us: '',
     //   zh_cn: '',
     //   zh_tw: '',
     // });
@@ -948,12 +948,12 @@ class BrickCore extends PokerBase {
 
     const i18nHtmlArray = [
       getI18nInnerHTML({
-        en: "Yes",
+        en_us: "Yes",
         zh_cn: "是",
         zh_tw: "是",
       }),
       getI18nInnerHTML({
-        en: "No",
+        en_us: "No",
         zh_cn: "否",
         zh_tw: "否",
       }),
@@ -1008,7 +1008,7 @@ class BrickCore extends PokerBase {
     enFullArray: string[],
     zh_cnArray: string[],
     zh_twArray: string[],
-    en: string,
+    en_us: string,
     zh_cn: string,
     zh_tw: string,
     CHARS: string[],
@@ -1021,7 +1021,7 @@ class BrickCore extends PokerBase {
     zh_twArray.push(zh_twAppend);
 
     let notSameBackCover = getI18nInnerHTML({
-      en: en.concat("<br /><small>", enAppend, "</small>"),
+      en_us: en_us.concat("<br /><small>", enAppend, "</small>"),
       zh_cn: zh_cn.concat("<br />", zh_cnAppend),
       zh_tw: zh_tw.concat("<br />", zh_twAppend),
     });

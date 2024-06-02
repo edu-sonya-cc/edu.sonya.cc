@@ -29,69 +29,69 @@ type ExhaustibleItemType = {
 type AMultiplyBType = { A: number; B: number; aMultiplyB: number }; // , aMultiplyBStr: string
 
 /**
- * <en>Math Stage Information</en>
+ * <en_us>Math Stage Information</en_us>
  * <zh_cn>数学闯关信息</zh_cn>
  * <zh_tw>數學闖關資訊</zh_tw>
  */
 type MathStageInfo = {
   /**
-   * <en>Kind</en>
+   * <en_us>Kind</en_us>
    * <zh_cn>类型</zh_cn>
    * <zh_tw>類型</zh_tw>
    */
   kind: string;
 
   /**
-   * <en>Catalog</en>
+   * <en_us>Catalog</en_us>
    * <zh_cn>大类</zh_cn>
    * <zh_tw>大類</zh_tw>
    */
   catalog: string;
 
   /**
-   * <en>Scope</en>
+   * <en_us>Scope</en_us>
    * <zh_cn>范围</zh_cn>
    * <zh_tw>範圍</zh_tw>
    */
   scope: string;
 
   /**
-   * <en>Rows</en>
+   * <en_us>Rows</en_us>
    * <zh_cn>行数</zh_cn>
    * <zh_tw>行數</zh_tw>
    */
   rows: number;
 
   /**
-   * <en>Count Per Row</en>
+   * <en_us>Count Per Row</en_us>
    * <zh_cn>每行题目数</zh_cn>
    * <zh_tw>每行題目數</zh_tw>
    */
   countPerRow: number;
 
   /**
-   * <en>Item Row Count</en>
+   * <en_us>Item Row Count</en_us>
    * <zh_cn>每題占用行数</zh_cn>
    * <zh_tw>每題佔用行數</zh_tw>
    */
   rowsOccupied: number;
 
   /**
-   * <en>Item Count Per Page</en>
+   * <en_us>Item Count Per Page</en_us>
    * <zh_cn>每頁題目行數</zh_cn>
    * <zh_tw>每頁題目行數</zh_tw>
    */
   rowCountPerPage: number;
 
   /**
-   * <en>Independent Pagination</en>
+   * <en_us>Independent Pagination</en_us>
    * <zh_cn>独立分页</zh_cn>
    * <zh_tw>獨立分頁</zh_tw>
    */
   independentPagination: boolean;
 
   /**
-   * <en>Text Style</en>
+   * <en_us>Text Style</en_us>
    * <zh_cn>文本样式</zh_cn>
    * <zh_tw>文字樣式</zh_tw>
    */
@@ -99,13 +99,13 @@ type MathStageInfo = {
 };
 
 /**
- * <en>
+ * <en_us>
  * Function:
  * Create:
  * History:
  * Reference:
  * Description:
- * </en>
+ * </en_us>
  *
  * <zh_cn>
  * 功能：生成数学阶段性闯关题目及配套答案
@@ -776,27 +776,27 @@ p[edu-right-char="9"]{padding-right:9em;}
 
     const LANG = getCurrentLang();
     const i18nSubject = {
-      en: 'Five minute pass',
+      en_us: 'Five minute pass',
       zh_cn: '五分钟闯关',
       zh_tw: '五分鐘闖關',
     };
     const i18nSeparator = {
-      en: '_',
+      en_us: '_',
       zh_cn: '：',
       zh_tw: '：',
     };
     const i18nSubtitlePrefix = {
-      en: '____ ____, ',
+      en_us: '____ ____, ',
       zh_cn: '',
       zh_tw: '',
     };
     const i18nSubtitlePostfix = {
-      en: '',
+      en_us: '',
       zh_cn: '年____月____日',
       zh_tw: '年____月____日',
     };
     const i18nAnswerFlag = {
-      en: 'Answer',
+      en_us: 'Answer',
       zh_cn: '答案',
       zh_tw: '答案',
     };
@@ -804,12 +804,12 @@ p[edu-right-char="9"]{padding-right:9em;}
       data: { year, month, day },
     } = this;
     const i18nSubtitle = {
-      en: `<span class="subtitleDay">${day}</span> <span class="subtitleMonth">${month}</span>, <span class="subtitleYear">${year}</span>`,
+      en_us: `<span class="subtitleDay">${day}</span> <span class="subtitleMonth">${month}</span>, <span class="subtitleYear">${year}</span>`,
       zh_cn: `<span class="subtitleYear">${year}</span>年<span class="subtitleMonth">${month}</span>月<span class="subtitleDay">${day}</span>日`,
       zh_tw: `<span class="subtitleYear">${year}</span>年<span class="subtitleMonth">${month}</span>月<span class="subtitleDay">${day}</span>日`,
     };
     // const i18nCopies = {
-    // 	en: ' copies',
+    // 	en_us: ' copies',
     // 	zh_cn: '份',
     // 	zh_tw: '份',
     // };
@@ -833,8 +833,8 @@ p[edu-right-char="9"]{padding-right:9em;}
     // 	COPIES_COUNT === 1 ? '' : ''.concat(COPIES_COUNT, i18nCopies[LANG]), titlePostfix,
     // );
     // const titleI18n = {
-    // 	en: ''.concat('edu.sonya.cc_', i18nSubject.en, i18nSeparator.en, i18nSubjectPostfix.en,
-    // 		COPIES_COUNT === 1 ? '' : ''.concat(COPIES_COUNT, i18nCopies.en), titlePostfix,
+    // 	en_us: ''.concat('edu.sonya.cc_', i18nSubject.en_us, i18nSeparator.en_us, i18nSubjectPostfix.en_us,
+    // 		COPIES_COUNT === 1 ? '' : ''.concat(COPIES_COUNT, i18nCopies.en_us), titlePostfix,
     // 	),
     // 	zh_cn: ''.concat('edu.sonya.cc_', i18nSubject.zh_cn, i18nSeparator.zh_cn, i18nSubjectPostfix.zh_cn,
     // 		COPIES_COUNT === 1 ? '' : ''.concat(COPIES_COUNT, i18nCopies.zh_cn), titlePostfix,
@@ -843,10 +843,10 @@ p[edu-right-char="9"]{padding-right:9em;}
     // 		COPIES_COUNT === 1 ? '' : ''.concat(COPIES_COUNT, i18nCopies.zh_tw), titlePostfix,
     // 	),
     // };
-    const en = `${FILENAME_POSTFIX}mathStage_${titlePostfix}`;
+    const en_us = `${FILENAME_POSTFIX}mathStage_${titlePostfix}`;
     const zh_cn = `${FILENAME_POSTFIX}数学五分钟闯关_${titlePostfix}`;
     const zh_tw = `${FILENAME_POSTFIX}數學五分鐘闖關_${titlePostfix}`;
-    computedData.title = { en, zh_cn, zh_tw };
+    computedData.title = { en_us, zh_cn, zh_tw };
 
     const pageSubjectRowLeftHtml = '<cell class="subjectLeft"><div>edu.sonya.cc</div></cell>';
     const pageSubjectRowCenterHtml = `<cell class="subjectCenter">${HTML_SUBJECT}${HTML_SUBTITLE}</cell>`;
@@ -3498,33 +3498,33 @@ p[edu-right-char="9"]{padding-right:9em;}
    * 初始化表头
    */
   protected initTableHead = (): void => {
-    // this.appendTableHeadCell({ en: 'Kind', zh_cn: '类型', zh_tw: '類型' });
+    // this.appendTableHeadCell({ en_us: 'Kind', zh_cn: '类型', zh_tw: '類型' });
 
-    this.appendTableHeadCell({ en: 'Catalog', zh_cn: '大类', zh_tw: '大類' });
-    this.appendTableHeadCell({ en: 'Scope', zh_cn: '范围', zh_tw: '範圍' });
-    this.appendTableHeadCell({ en: 'Rows', zh_cn: '行数', zh_tw: '行數' });
+    this.appendTableHeadCell({ en_us: 'Catalog', zh_cn: '大类', zh_tw: '大類' });
+    this.appendTableHeadCell({ en_us: 'Scope', zh_cn: '范围', zh_tw: '範圍' });
+    this.appendTableHeadCell({ en_us: 'Rows', zh_cn: '行数', zh_tw: '行數' });
     this.appendTableHeadCell({
-      en: 'Independent Pagination',
+      en_us: 'Independent Pagination',
       zh_cn: '独立分页',
       zh_tw: '獨立分頁',
     });
     this.appendTableHeadCell({
-      en: 'Text Style',
+      en_us: 'Text Style',
       zh_cn: '文本样式',
       zh_tw: '文字樣式',
     });
     this.appendTableHeadCell({
-      en: 'Count Per Row',
+      en_us: 'Count Per Row',
       zh_cn: '每行题数',
       zh_tw: '每行題數',
     });
     this.appendTableHeadCell({
-      en: 'Item Row Count',
+      en_us: 'Item Row Count',
       zh_cn: '题目占行',
       zh_tw: '題目占行',
     });
     this.appendTableHeadCell({
-      en: 'Item Count Per Page',
+      en_us: 'Item Count Per Page',
       zh_cn: '每页题行',
       zh_tw: '每頁題行',
     });
@@ -4427,7 +4427,7 @@ p[edu-right-char="9"]{padding-right:9em;}
     let wrapElement: HTMLDivElement;
 
     wrapElement = getWrapElement({
-      en: 'Date (Not Saved)',
+      en_us: 'Date (Not Saved)',
       zh_cn: '日期（不存储）',
       zh_tw: '日期（不存儲）',
     });
@@ -4437,15 +4437,15 @@ p[edu-right-char="9"]{padding-right:9em;}
     // onlyMentalArithmetic
     // this.initRadioGroupWithLabelByBooleanOrNumberValue(
     // 	[
-    // 		{ value: false, i18nHtml: getI18nInnerHTML({ en: 'No', zh_cn: '否', zh_tw: '否' })},
-    // 		{ value: true, i18nHtml: getI18nInnerHTML({ en: 'Yes', zh_cn: '是', zh_tw: '是' })},
+    // 		{ value: false, i18nHtml: getI18nInnerHTML({ en_us: 'No', zh_cn: '否', zh_tw: '否' })},
+    // 		{ value: true, i18nHtml: getI18nInnerHTML({ en_us: 'Yes', zh_cn: '是', zh_tw: '是' })},
     // 	],
     // 	'onlyMentalArithmetic',
     // 	this.onlyMentalArithmeticRadioArray,
-    // 	{ en: 'Only Mental Arithmetic', zh_cn: '全部口算', zh_tw: '全部口算' },
+    // 	{ en_us: 'Only Mental Arithmetic', zh_cn: '全部口算', zh_tw: '全部口算' },
     // );
     wrapElement = getWrapElement({
-      en: 'Arithmetic and Font Size',
+      en_us: 'Arithmetic and Font Size',
       zh_cn: '算法与字号',
       zh_tw: '算法與字號',
     });
@@ -4456,7 +4456,7 @@ p[edu-right-char="9"]{padding-right:9em;}
         {
           value: false,
           i18nHtml: getI18nInnerHTML({
-            en: 'Normal',
+            en_us: 'Normal',
             zh_cn: '常规',
             zh_tw: '常規',
           }),
@@ -4464,7 +4464,7 @@ p[edu-right-char="9"]{padding-right:9em;}
         {
           value: true,
           i18nHtml: getI18nInnerHTML({
-            en: 'Mental',
+            en_us: 'Mental',
             zh_cn: '口算',
             zh_tw: '口算',
           }),
@@ -4476,7 +4476,7 @@ p[edu-right-char="9"]{padding-right:9em;}
     );
     initTextboxElement(
       {
-        en: 'Subject:',
+        en_us: 'Subject:',
         zh_cn: '标题：',
         zh_tw: '標題：',
       },
@@ -4486,7 +4486,7 @@ p[edu-right-char="9"]{padding-right:9em;}
     );
     initTextboxElement(
       {
-        en: 'Question:',
+        en_us: 'Question:',
         zh_cn: '问题：',
         zh_tw: '問題：',
       },
@@ -4496,7 +4496,7 @@ p[edu-right-char="9"]{padding-right:9em;}
     );
 
     // wrapElement = getWrapElement({
-    //   en: 'Line Styles',
+    //   en_us: 'Line Styles',
     //   zh_cn: '线条样式',
     //   zh_tw: '線條樣式',
     // });
@@ -4525,7 +4525,7 @@ p[edu-right-char="9"]{padding-right:9em;}
 
   //   const outerLabel = createElement('label') as HTMLLabelElement;
   //   outerLabel.innerHTML = getI18nInnerHTML({
-  //     en: 'Thick Line:',
+  //     en_us: 'Thick Line:',
   //     zh_cn: '粗线：',
   //     zh_tw: '粗線：',
   //   });
@@ -4544,7 +4544,7 @@ p[edu-right-char="9"]{padding-right:9em;}
 
   //   const innerLabel = createElement('label') as HTMLLabelElement;
   //   innerLabel.innerHTML = getI18nInnerHTML({
-  //     en: 'Thin Line:',
+  //     en_us: 'Thin Line:',
   //     zh_cn: '细线：',
   //     zh_tw: '細線：',
   //   });
@@ -4582,7 +4582,7 @@ p[edu-right-char="9"]{padding-right:9em;}
 
     const yearLabel = createElement('label') as HTMLLabelElement;
     yearLabel.innerHTML = getI18nInnerHTML({
-      en: 'Year:',
+      en_us: 'Year:',
       zh_cn: '年：',
       zh_tw: '年：',
     });
@@ -4601,7 +4601,7 @@ p[edu-right-char="9"]{padding-right:9em;}
 
     const monthLabel = createElement('label') as HTMLLabelElement;
     monthLabel.innerHTML = getI18nInnerHTML({
-      en: 'Month:',
+      en_us: 'Month:',
       zh_cn: '月：',
       zh_tw: '月：',
     });
@@ -4620,7 +4620,7 @@ p[edu-right-char="9"]{padding-right:9em;}
 
     const dayLabel = createElement('label') as HTMLLabelElement;
     dayLabel.innerHTML = getI18nInnerHTML({
-      en: 'Day:',
+      en_us: 'Day:',
       zh_cn: '日：',
       zh_tw: '日：',
     });

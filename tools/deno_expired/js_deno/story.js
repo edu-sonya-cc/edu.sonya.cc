@@ -6,19 +6,21 @@ class StoryPage extends ActualPageBase {
     initTitleElement() {
         const titleElement = getTitleElement();
         titleElement.i18n = {
-            en: 'Growing',
+            en_us: 'Growing',
             zh_cn: '成长足迹',
             zh_tw: '成長足跡'
         };
     }
-    initMainElement = ()=>{
+    initMainElement = () => {
         const mainElement = getMainElement();
         const contentElement = createElement('div');
         mainElement.appendChild(contentElement);
-        contentElement.innerHTML = getI18nInnerHTML(stories.filter(({ id  })=>id === PAGE_ID)[0].html);
+        contentElement.innerHTML = getI18nInnerHTML(stories.filter(({
+            id
+        }) => id === PAGE_ID)[0].html);
         contentElement.id = 'storyPageContent';
     };
-    init = ()=>{
+    init = () => {
         super.init();
     };
 }

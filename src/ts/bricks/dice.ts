@@ -8,126 +8,136 @@ namespace edu {
   export namespace sonya {
     export namespace cc {
       /**
-       * <en>Dice Type</en>
+       * <en_us>Dice Type</en_us>
        * <zh_cn>骰子类型</zh_cn>
        * <zh_tw>骰子類型</zh_tw>
        */
       export enum DiceKind {
         /**
-         * <en>None</en>
+         * <en_us>None</en_us>
          * <zh_cn>无</zh_cn>
          * <zh_tw>無</zh_tw>
          */
         none = 0,
         /**
-         * <en>4-sided dice</en>
+         * <en_us>4-sided dice</en_us>
          * <zh_cn>4面骰子</zh_cn>
          * <zh_tw>4面骰子</zh_tw>
          */
         four = 1,
         /**
-         * <en>6-sided dice</en>
+         * <en_us>6-sided dice</en_us>
          * <zh_cn>6面骰子</zh_cn>
          * <zh_tw>6面骰子</zh_tw>
          */
         six = 2,
         /**
-         * <en>8-sided dice</en>
+         * <en_us>8-sided dice</en_us>
          * <zh_cn>8面骰子</zh_cn>
          * <zh_tw>8面骰子</zh_tw>
          */
         eight = 4,
         /**
-         * <en>12-sided dice</en>
+         * <en_us>12-sided dice</en_us>
          * <zh_cn>12面骰子</zh_cn>
          * <zh_tw>12面骰子</zh_tw>
          */
         twelve = 8,
         /**
-         * <en>20-sided dice</en>
+         * <en_us>20-sided dice</en_us>
          * <zh_cn>20面骰子</zh_cn>
          * <zh_tw>20面骰子</zh_tw>
          */
         twenty = 16,
         /**
-         * <en>24-sided dice</en>
+         * <en_us>24-sided dice</en_us>
          * <zh_cn>24面骰子</zh_cn>
          * <zh_tw>24面骰子</zh_tw>
          */
         twentyFour = 32,
+
+        // 240602: add this
+        /**
+         * <en_us>10-sided dice</en_us>
+         * <zh_cn>10面骰子</zh_cn>
+         * <zh_tw>10面骰子</zh_tw>
+         */
+        ten = 64,
       }
 
+      // 240602: 8 → 9
       /**
-       * <en>Count of Dice Type</en>
+       * <en_us>Count of Dice Type</en_us>
        * <zh_cn>骰子类型数量</zh_cn>
        * <zh_tw>骰子類型數量</zh_tw>
        */
-      export const DiceKindCount = 8;
+      export const DiceKindCount = 9;
 
+      // 240602: 63 → 127
       /**
-       * <en>Default Value of Dice Type</en>
+       * <en_us>Default Value of Dice Type</en_us>
        * <zh_cn>骰子类型默认值</zh_cn>
        * <zh_tw>骰子類型默認值</zh_tw>
        */
-      export const DefaultDiceKind = 63;
+      export const DefaultDiceKind = 127;
 
       /**
-       * <en>Dice Generation Parameters</en>
+       * <en_us>Dice Generation Parameters</en_us>
        * <zh_cn>骰子生成参数</zh_cn>
        * <zh_tw>骰子生成參數</zh_tw>
        */
       export interface DiceParameter {
         /**
-         * <en>Id</en>
+         * <en_us>Id</en_us>
          * <zh_cn>id</zh_cn>
          * <zh_tw>id</zh_tw>
          */
         id: string;
 
         /**
-         * <en>Dice Type</en>
+         * <en_us>Dice Type</en_us>
          * <zh_cn>骰子类型</zh_cn>
          * <zh_tw>骰子類型</zh_tw>
          */
         diceKind: DiceKind;
 
         /**
-         * <en>Side Length</en>
+         * <en_us>Side Length</en_us>
          * <zh_cn>边长</zh_cn>
          * <zh_tw>邊長</zh_tw>
          */
         sideLength: number;
 
         /**
-         * <en>Contents of all sides</en>
+         * <en_us>Contents of all sides</en_us>
          * <zh_cn>各面内容</zh_cn>
          * <zh_tw>各面內容</zh_tw>
          */
         contents: Array<I18nable | string>;
 
         /**
-         * <en>Outside Boundary Line Style</en>
+         * <en_us>Outside Boundary Line Style</en_us>
          * <zh_cn>外边界线样式</zh_cn>
          * <zh_tw>外邊界線樣式</zh_tw>
          */
         outerLineStyle: string;
 
         /**
-         * <en>Interior Line Style</en>
+         * <en_us>Interior Line Style</en_us>
          * <zh_cn>内部线样式</zh_cn>
          * <zh_tw>內部線樣式</zh_tw>
          */
         innerLineStyle: string;
 
         /**
-         * <en>Text Style</en>
+         * <en_us>Text Style</en_us>
          * <zh_cn>文本样式</zh_cn>
          * <zh_tw>文字樣式</zh_tw>
          */
         textStyle: string;
 
         /**
-         * <en>Other parameters</en>
+         * <en_us>Other parameters</en_us>
          * <zh_cn>其它参数</zh_cn>
          * <zh_tw>其它參數</zh_tw>
          */
@@ -151,27 +161,27 @@ namespace edu {
       };
 
       /**
-       * <en>Dice Generation Result</en>
+       * <en_us>Dice Generation Result</en_us>
        * <zh_cn>骰子生成结果</zh_cn>
        * <zh_tw>骰子生成結果</zh_tw>
        */
       export interface DiceResult {
         /**
-         * <en>Svg Element Id</en>
+         * <en_us>Svg Element Id</en_us>
          * <zh_cn>svg元素编号</zh_cn>
          * <zh_tw>svg元素編號</zh_tw>
          */
         id: string;
 
         /**
-         * <en>Svg Element or Outer Wrapper Element</en>
+         * <en_us>Svg Element or Outer Wrapper Element</en_us>
          * <zh_cn>svg元素或外层元素</zh_cn>
          * <zh_tw>svg元素或外層元素</zh_tw>
          */
         svg: HTMLElement | SVGElement;
 
         /**
-         * <en>css</en>
+         * <en_us>css</en_us>
          * <zh_cn>样式表</zh_cn>
          * <zh_tw>樣式表</zh_tw>
          */
@@ -183,21 +193,21 @@ namespace edu {
       const SVG_XLINKNS = "http://www.w3.org/1999/xlink";
 
       /**
-       * <en>Dice Generator</en>
+       * <en_us>Dice Generator</en_us>
        * <zh_cn>骰子生成器</zh_cn>
        * <zh_tw>骰子生成器</zh_tw>
        */
       export class DiceGenerator {
         /**
-         * <en>Generate dice in batch</en>
+         * <en_us>Generate dice in batch</en_us>
          * <zh_cn>批量生成骰子</zh_cn>
          * <zh_tw>批量生成骰子</zh_tw>
          * @param createParameters
-         * <en>Arrays: creating parameters</en>
+         * <en_us>Arrays: creating parameters</en_us>
          * <zh_cn>数组：创建参数</zh_cn>
          * <zh_tw>數組：創建參數</zh_tw>
          * @returns
-         * <en>Generate results in array format, used to combine complete html</en>
+         * <en_us>Generate results in array format, used to combine complete html</en_us>
          * <zh_cn>生成结果，为数组格式，用于组合完整的html</zh_cn>
          * <zh_tw>生成結果，為數組格式，用於組合完整的html</zh_tw>
          */
@@ -205,7 +215,9 @@ namespace edu {
           createParameters: Array<DiceParameter>,
         ): Array<DiceResult> {
           createParameters.forEach((createParameter, index) => {
-            if (createParameter.id.length === 0) createParameter.id = `svg_index`;
+            if (createParameter.id.length === 0) {
+              createParameter.id = `svg_index`;
+            }
           });
 
           return createParameters.map((createParameter) =>
@@ -214,15 +226,15 @@ namespace edu {
         }
 
         /**
-         * <en>Generate a single dice</en>
+         * <en_us>Generate a single dice</en_us>
          * <zh_cn>生成单个骰子</zh_cn>
          * <zh_tw>生成單個骰子</zh_tw>
          * @param param0
-         * <en>Deconstructed creation parameters</en>
+         * <en_us>Deconstructed creation parameters</en_us>
          * <zh_cn>已解构的创建参数</zh_cn>
          * <zh_tw>已解構的創建參數</zh_tw>
          * @returns
-         * <en>Generate results, used to combine complete html</en>
+         * <en_us>Generate results, used to combine complete html</en_us>
          * <zh_cn>生成结果，用于组合完整的html</zh_cn>
          * <zh_tw>生成結果，用於組合完整的html</zh_tw>
          */
@@ -322,6 +334,18 @@ namespace edu {
               );
               this.drawTextsOfEightSidedDice(infos, FIXED_SIDE_LENGTH);
               break;
+            case DiceKind.ten:
+              this.drawGraphsOfTenSidedDice(
+                svg,
+                FIXED_SIDE_LENGTH,
+                INNER_LINE_STYLE,
+                OUTER_LINE_STYLE,
+                viewBox,
+                OPTIONS,
+                mmToPxScale,
+              );
+              this.drawTextsOfTenSidedDice(infos, FIXED_SIDE_LENGTH);
+              break;
             case DiceKind.twelve:
               this.drawGraphsOfTwelveSidedDice(
                 svg,
@@ -362,7 +386,15 @@ namespace edu {
               break;
           }
           infos.forEach(({ content, x, y, rotate }) => {
-            this.appendText(svg, TEXT_STYLE, content as string, x, y, rotate, null);
+            this.appendText(
+              svg,
+              TEXT_STYLE,
+              content as string,
+              x,
+              y,
+              rotate,
+              null,
+            );
           });
 
           const width = `${viewBox.right}mm`;
@@ -388,8 +420,10 @@ namespace edu {
             );
             svg.setAttribute(
               "transform",
-              `translate(${viewBox.right * transformScale}, ${viewBox.bottom *
-                transformScale}) scale(${scale}, ${scale})`,
+              `translate(${viewBox.right * transformScale}, ${
+                viewBox.bottom *
+                transformScale
+              }) scale(${scale}, ${scale})`,
             );
             svg.setAttribute("transform-origin", "center");
           }
@@ -454,7 +488,10 @@ namespace edu {
           const OFFSET_Y = EXTNED_LENGTH * Math.cos(30 / 180 * Math.PI);
 
           // 外部线
-          x1 = 0, x2 = SIDE_LENGTH * 0.5, y1 = HEIGHT_OF_TWO, y2 = HEIGHT_OF_ONE;
+          x1 = 0,
+            x2 = SIDE_LENGTH * 0.5,
+            y1 = HEIGHT_OF_TWO,
+            y2 = HEIGHT_OF_ONE;
           this.appendLine(svg, OUTER_LINE_STYLE, x1, x2, y1, y2, viewBox);
 
           x1 = x2, x2 -= OFFSET_X, y1 = y2, y2 -= OFFSET_Y;
@@ -698,7 +735,10 @@ namespace edu {
           const pasteRegionWidth = SIDE_LENGTH_PX - offsetX * 2;
           console.log(SIDE_LENGTH, mmToPxScale, SIDE_LENGTH_PX);
 
-          const path = document.createElementNS(SVG_NS, "path") as SVGPathElement;
+          const path = document.createElementNS(
+            SVG_NS,
+            "path",
+          ) as SVGPathElement;
           path.setAttribute("fill", "none");
           path.setAttribute("stroke", "#000000");
           path.setAttribute(
@@ -931,7 +971,10 @@ namespace edu {
           let x1 = 0, x2 = 0, y1 = 0, y2 = 0;
 
           // 外部线
-          x1 = 0, x2 = OFFSET_X, y1 = HEIGHT_OF_ONE, y2 = HEIGHT_OF_ONE - OFFSET_Y;
+          x1 = 0,
+            x2 = OFFSET_X,
+            y1 = HEIGHT_OF_ONE,
+            y2 = HEIGHT_OF_ONE - OFFSET_Y;
           this.appendLine(svg, OUTER_LINE_STYLE, x1, x2, y1, y2, null);
 
           x1 = x2, x2 = SIDE_LENGTH - OFFSET_X, y1 = y2;
@@ -1071,6 +1114,591 @@ namespace edu {
           );
         }
 
+        private drawGraphsOfTenSidedDice(
+          svg: SVGElement,
+          SIDE_LENGTH: number,
+          INNER_LINE_STYLE: string,
+          OUTER_LINE_STYLE: string,
+          viewBox: { left: number; right: number; top: number; bottom: number },
+          OPTIONS: object,
+          mmToPxScale: number,
+        ) {
+          // this.fixTextStyle(0.45);
+          const { max, min, sin, cos, tan, atan, PI, abs } = Math;
+          const {
+            SIDE_LENGTH,
+            svg,
+            viewBox,
+            appendLine,
+            OUTER_LINE_STYLE,
+            INNER_LINE_STYLE,
+          } = this;
+          const PASTE_SCALE = SIDE_LENGTH < 3
+            ? 1
+            : SIDE_LENGTH <= 10
+            ? 0.5
+            : 0.25;
+          const PASTE_WIDTH = SIDE_LENGTH * PASTE_SCALE;
+          const X_O1 = SIDE_LENGTH * 2.55;
+          const Y_O1 = SIDE_LENGTH * 2.55;
+          const ANGLE_SMALL_DEGREE = 50.22;
+          const ANGLE_SMALL = 50.22 * PI / 180;
+          const HALF_ANGLE_SMALL = ANGLE_SMALL * 0.5;
+          const ANGLE_MIDDLE = 94.7 * PI / 180;
+          const ANGLE_BIG = (PI - HALF_ANGLE_SMALL - ANGLE_MIDDLE) * 2;
+          const ANGLE_90 = PI * 0.5;
+          const ANGLE_EXTEND = 45 * PI / 180;
+          const ANGLE_B1 = ANGLE_90 - HALF_ANGLE_SMALL;
+          const ANGLE_B2 = ANGLE_MIDDLE - ANGLE_B1;
+          const SIDE_V1 = SIDE_LENGTH * sin(ANGLE_B2);
+          const SIDE_H1 = SIDE_LENGTH * cos(ANGLE_B2);
+          const SIDE_LONG = SIDE_H1 / sin(HALF_ANGLE_SMALL);
+          const SIDE_V2 = SIDE_LONG * sin(ANGLE_B1);
+          const SIZE_LONG_MIDLINE = SIDE_V1 + SIDE_V2;
+          const ANGLE_A1 = HALF_ANGLE_SMALL;
+          const X_B1 = X_O1, Y_B1 = Y_O1 + SIZE_LONG_MIDLINE;
+          const X_A1_DELTA = SIDE_LONG * sin(ANGLE_A1);
+          const Y_A1_DELTA = SIDE_LONG * cos(ANGLE_A1);
+          const X_A1 = X_O1 - X_A1_DELTA, X_C1 = X_O1 + X_A1_DELTA;
+          const Y_A1 = Y_O1 + Y_A1_DELTA, Y_C1 = Y_O1 + Y_A1_DELTA;
+          const ANGLE_D1 = ANGLE_SMALL;
+          const X_D1 = X_O1 + SIZE_LONG_MIDLINE * sin(ANGLE_D1);
+          const Y_D1 = Y_O1 + SIZE_LONG_MIDLINE * cos(ANGLE_D1);
+          const ANGLE_E1 = ANGLE_SMALL * 1.5;
+          const X_E1 = X_O1 + SIDE_LONG * sin(ANGLE_E1);
+          const Y_E1 = Y_O1 + SIDE_LONG * cos(ANGLE_E1);
+          const ANGLE_F1 = ANGLE_SMALL * 2 - ANGLE_90;
+          const X_F1 = X_O1 + SIZE_LONG_MIDLINE * cos(ANGLE_F1);
+          const Y_F1 = Y_O1 - SIZE_LONG_MIDLINE * sin(ANGLE_F1);
+          const ANGLE_G1 = ANGLE_SMALL * 2.5 - ANGLE_90;
+          const X_G1 = X_O1 + SIDE_LONG * cos(ANGLE_G1);
+          const Y_G1 = Y_O1 - SIDE_LONG * sin(ANGLE_G1);
+          const ANGLE_H1 = ANGLE_SMALL * 3 - ANGLE_90;
+          const X_H1 = X_O1 + SIZE_LONG_MIDLINE * cos(ANGLE_H1);
+          const Y_H1 = Y_O1 - SIZE_LONG_MIDLINE * sin(ANGLE_H1);
+          const ANGLE_I1 = PI - ANGLE_SMALL * 3.5;
+          const X_I1 = X_O1 + SIDE_LONG * sin(ANGLE_I1);
+          const Y_I1 = Y_O1 - SIDE_LONG * cos(ANGLE_I1);
+          const ANGLE_J1 = ANGLE_SMALL * 4 - PI;
+          const X_J1 = X_O1 - SIZE_LONG_MIDLINE * sin(ANGLE_J1);
+          const Y_J1 = Y_O1 - SIZE_LONG_MIDLINE * cos(ANGLE_J1);
+          const ANGLE_K1 = ANGLE_SMALL * 4.5 - PI;
+          const X_K1 = X_O1 - SIDE_LONG * sin(ANGLE_K1);
+          const Y_K1 = Y_O1 - SIDE_LONG * cos(ANGLE_K1);
+          const X_O2 = X_A1 + X_B1 - X_O1;
+          const Y_O2 = Y_A1 + Y_B1 - Y_O1;
+          const X_B2 = X_A1, Y_B2 = Y_A1;
+          const X_C2 = X_B1, Y_C2 = Y_B1;
+          const X_A2 = X_O2 * 2 - X_C2, Y_A2 = Y_C2;
+          const ANGLE_D2 = ANGLE_SMALL;
+          const X_D2 = X_O2 + SIZE_LONG_MIDLINE * sin(ANGLE_D2);
+          const Y_D2 = Y_O2 - SIZE_LONG_MIDLINE * cos(ANGLE_D2);
+          const ANGLE_E2 = ANGLE_SMALL * 1.5;
+          const X_E2 = X_O2 + SIDE_LONG * sin(ANGLE_E2);
+          const Y_E2 = Y_O2 - SIDE_LONG * cos(ANGLE_E2);
+          const ANGLE_F2 = ANGLE_SMALL * 2 - ANGLE_90;
+          const X_F2 = X_O2 + SIZE_LONG_MIDLINE * cos(ANGLE_F2);
+          const Y_F2 = Y_O2 + SIZE_LONG_MIDLINE * sin(ANGLE_F2);
+          const ANGLE_G2 = ANGLE_SMALL * 2.5 - ANGLE_90;
+          const X_G2 = X_O2 + SIDE_LONG * cos(ANGLE_G2);
+          const Y_G2 = Y_O2 + SIDE_LONG * sin(ANGLE_G2);
+          const ANGLE_H2 = ANGLE_SMALL * 3 - ANGLE_90;
+          const X_H2 = X_O2 + SIZE_LONG_MIDLINE * cos(ANGLE_H2);
+          const Y_H2 = Y_O2 + SIZE_LONG_MIDLINE * sin(ANGLE_H2);
+          const ANGLE_I2 = PI - ANGLE_SMALL * 3.5;
+          const X_I2 = X_O2 + SIDE_LONG * sin(ANGLE_I2);
+          const Y_I2 = Y_O2 + SIDE_LONG * cos(ANGLE_I2);
+          const ANGLE_J2 = ANGLE_SMALL * 4 - PI;
+          const X_J2 = X_O2 - SIZE_LONG_MIDLINE * sin(ANGLE_J2);
+          const Y_J2 = Y_O2 + SIZE_LONG_MIDLINE * cos(ANGLE_J2);
+          const ANGLE_K2 = ANGLE_SMALL * 4.5 - PI;
+          const X_K2 = X_O2 - SIDE_LONG * sin(ANGLE_K2);
+          const Y_K2 = Y_O2 + SIDE_LONG * cos(ANGLE_K2);
+          const ANGLE_A2E = ANGLE_EXTEND - HALF_ANGLE_SMALL;
+          const X_A2E = X_A2 - PASTE_WIDTH * sin(ANGLE_A2E);
+          const Y_A2E = Y_A2 + PASTE_WIDTH * cos(ANGLE_A2E);
+          const ANGLE_O2E = ANGLE_EXTEND + HALF_ANGLE_SMALL;
+          const X_O2E = X_O2 - PASTE_WIDTH * sin(ANGLE_O2E);
+          const Y_O2E = Y_O2 - PASTE_WIDTH * cos(ANGLE_O2E);
+          const ANGLE_O1E = ANGLE_EXTEND + HALF_ANGLE_SMALL;
+          const X_O1E = X_O1 - PASTE_WIDTH * sin(ANGLE_O1E);
+          const Y_O1E = Y_O1 + PASTE_WIDTH * cos(ANGLE_O1E);
+          const ANGLE_K1E = PI -
+            (ANGLE_EXTEND + ANGLE_MIDDLE + ANGLE_SMALL * 4.5 - PI);
+          const X_K1E = X_K1 + PASTE_WIDTH * sin(ANGLE_K1E);
+          const Y_K1E = Y_K1 - PASTE_WIDTH * cos(ANGLE_K1E);
+          const ANGLE_A1E = ANGLE_EXTEND - HALF_ANGLE_SMALL;
+          const X_A1E = X_A1 - PASTE_WIDTH * sin(ANGLE_A1E);
+          const Y_A1E = Y_A1 - PASTE_WIDTH * cos(ANGLE_A1E);
+          const ANGLE_B1E = ANGLE_BIG * 0.5 + ANGLE_EXTEND - ANGLE_90;
+          const X_B1E = X_B1 + PASTE_WIDTH * cos(ANGLE_B1E);
+          const Y_B1E = Y_B1 + PASTE_WIDTH * sin(ANGLE_B1E);
+          const ANGLE_C1E1 = PI -
+            (ANGLE_EXTEND + ANGLE_MIDDLE + HALF_ANGLE_SMALL);
+          const X_C1E1 = X_C1 - PASTE_WIDTH * sin(ANGLE_C1E1);
+          const Y_C1E1 = Y_C1 + PASTE_WIDTH * cos(ANGLE_C1E1);
+          const ANGLE_C1E2 = PI -
+            (ANGLE_EXTEND + ANGLE_MIDDLE - HALF_ANGLE_SMALL);
+          const X_C1E2 = X_C1 + PASTE_WIDTH * sin(ANGLE_C1E2);
+          const Y_C1E2 = Y_C1 + PASTE_WIDTH * cos(ANGLE_C1E2);
+          const ANGLE_D1E1 = atan((X_D1 - X_C1) / (Y_C1 - Y_D1)) - ANGLE_EXTEND;
+          const X_D1E1 = X_D1 - PASTE_WIDTH * sin(ANGLE_D1E1);
+          const Y_D1E1 = Y_D1 + PASTE_WIDTH * cos(ANGLE_D1E1);
+          const ANGLE_DE = atan((X_E1 - X_D1) / (Y_D1 - Y_E1));
+          const ANGLE_D1E2 = ANGLE_DE - ANGLE_EXTEND;
+          const X_D1E2 = X_D1 + PASTE_WIDTH * cos(ANGLE_D1E2);
+          const Y_D1E2 = Y_D1 + PASTE_WIDTH * sin(ANGLE_D1E2);
+          const ANGLE_E1E1 = ANGLE_EXTEND - ANGLE_DE;
+          const X_E1E1 = X_E1 + PASTE_WIDTH * sin(ANGLE_E1E1);
+          const Y_E1E1 = Y_E1 + PASTE_WIDTH * cos(ANGLE_E1E1);
+          const ANGLE_EF = atan((X_F1 - X_E1) / (Y_E1 - Y_F1));
+          const ANGLE_E1E2 = ANGLE_EXTEND - ANGLE_EF;
+          const X_E1E2 = X_E1 + PASTE_WIDTH * cos(ANGLE_E1E2);
+          const Y_E1E2 = Y_E1 - PASTE_WIDTH * sin(ANGLE_E1E2);
+          const ANGLE_F1E1 = ANGLE_90 - (ANGLE_EF + ANGLE_EXTEND);
+          const X_F1E1 = X_F1 + PASTE_WIDTH * sin(ANGLE_F1E1);
+          const Y_F1E1 = Y_F1 + PASTE_WIDTH * cos(ANGLE_F1E1);
+          const ANGLE_FG = atan((X_F1 - X_G1) / (Y_F1 - Y_G1));
+          const ANGLE_F1E2 = ANGLE_90 - (ANGLE_FG + ANGLE_EXTEND);
+          const X_F1E2 = X_F1 + PASTE_WIDTH * sin(ANGLE_F1E2);
+          const Y_F1E2 = Y_F1 - PASTE_WIDTH * cos(ANGLE_F1E2);
+          const ANGLE_G1E1 = ANGLE_FG - ANGLE_EXTEND;
+          const X_G1E1 = X_G1 + PASTE_WIDTH * cos(ANGLE_G1E1);
+          const Y_G1E1 = Y_G1 - PASTE_WIDTH * sin(ANGLE_G1E1);
+          const ANGLE_GH = atan((X_G1 - X_H1) / (Y_G1 - Y_H1));
+          const ANGLE_G1E2 = ANGLE_90 - (ANGLE_GH + ANGLE_EXTEND);
+          const X_G1E2 = X_G1 + PASTE_WIDTH * sin(ANGLE_G1E2);
+          const Y_G1E2 = Y_G1 - PASTE_WIDTH * cos(ANGLE_G1E2);
+          const ANGLE_H1E1 = ANGLE_EXTEND - ANGLE_GH;
+          const X_H1E1 = X_H1 + PASTE_WIDTH * cos(ANGLE_H1E1);
+          const Y_H1E1 = Y_H1 + PASTE_WIDTH * sin(ANGLE_H1E1);
+          const ANGLE_HI = atan((X_H1 - X_I1) / (Y_H1 - Y_I1));
+          const ANGLE_H1E2 = ANGLE_EXTEND + ANGLE_HI;
+          const X_H1E2 = X_H1 - PASTE_WIDTH * cos(ANGLE_H1E2);
+          const Y_H1E2 = Y_H1 + PASTE_WIDTH * sin(ANGLE_H1E2);
+          const ANGLE_I1E1 = ANGLE_EXTEND + ANGLE_HI;
+          const X_I1E1 = X_I1 + PASTE_WIDTH * cos(ANGLE_I1E1);
+          const Y_I1E1 = Y_I1 + PASTE_WIDTH * sin(ANGLE_I1E1);
+          const ANGLE_IJ = atan((X_I1 - X_J1) / (Y_I1 - Y_J1));
+          const ANGLE_I1E2 = ANGLE_EXTEND + ANGLE_IJ;
+          const X_I1E2 = X_I1 + PASTE_WIDTH * cos(ANGLE_I1E2);
+          const Y_I1E2 = Y_I1 - PASTE_WIDTH * sin(ANGLE_I1E2);
+          const ANGLE_J1E1 = ANGLE_IJ - ANGLE_EXTEND;
+          const X_J1E1 = X_J1 + PASTE_WIDTH * cos(ANGLE_J1E1);
+          const Y_J1E1 = Y_J1 - PASTE_WIDTH * sin(ANGLE_J1E1);
+          const ANGLE_JK = atan((X_J1 - X_K1) / (Y_K1 - Y_J1));
+          const ANGLE_J1E2 = ANGLE_JK - ANGLE_EXTEND;
+          const X_J1E2 = X_J1 - PASTE_WIDTH * cos(ANGLE_J1E2);
+          const Y_J1E2 = Y_J1 - PASTE_WIDTH * sin(ANGLE_J1E2);
+
+          appendLine(svg, OUTER_LINE_STYLE, X_B1E, X_B1, Y_B1E, Y_B1, viewBox);
+          appendLine(
+            svg,
+            OUTER_LINE_STYLE,
+            X_B1E,
+            X_C1E1,
+            Y_B1E,
+            Y_C1E1,
+            viewBox,
+          );
+          appendLine(
+            svg,
+            OUTER_LINE_STYLE,
+            X_C1E1,
+            X_C1,
+            Y_C1E1,
+            Y_C1,
+            viewBox,
+          );
+          appendLine(
+            svg,
+            OUTER_LINE_STYLE,
+            X_C1,
+            X_C1E2,
+            Y_C1,
+            Y_C1E2,
+            viewBox,
+          );
+          appendLine(
+            svg,
+            OUTER_LINE_STYLE,
+            X_C1E2,
+            X_D1E1,
+            Y_C1E2,
+            Y_D1E1,
+            viewBox,
+          );
+          appendLine(
+            svg,
+            OUTER_LINE_STYLE,
+            X_D1E1,
+            X_D1,
+            Y_D1E1,
+            Y_D1,
+            viewBox,
+          );
+          appendLine(
+            svg,
+            OUTER_LINE_STYLE,
+            X_D1,
+            X_D1E2,
+            Y_D1,
+            Y_D1E2,
+            viewBox,
+          );
+          appendLine(
+            svg,
+            OUTER_LINE_STYLE,
+            X_D1E2,
+            X_E1E1,
+            Y_D1E2,
+            Y_E1E1,
+            viewBox,
+          );
+          appendLine(
+            svg,
+            OUTER_LINE_STYLE,
+            X_E1E1,
+            X_E1,
+            Y_E1E1,
+            Y_E1,
+            viewBox,
+          );
+          appendLine(
+            svg,
+            OUTER_LINE_STYLE,
+            X_E1,
+            X_E1E2,
+            Y_E1,
+            Y_E1E2,
+            viewBox,
+          );
+          appendLine(
+            svg,
+            OUTER_LINE_STYLE,
+            X_E1E2,
+            X_F1E1,
+            Y_E1E2,
+            Y_F1E1,
+            viewBox,
+          );
+          appendLine(
+            svg,
+            OUTER_LINE_STYLE,
+            X_F1E1,
+            X_F1,
+            Y_F1E1,
+            Y_F1,
+            viewBox,
+          );
+          appendLine(
+            svg,
+            OUTER_LINE_STYLE,
+            X_F1,
+            X_F1E2,
+            Y_F1,
+            Y_F1E2,
+            viewBox,
+          );
+          appendLine(
+            svg,
+            OUTER_LINE_STYLE,
+            X_F1E2,
+            X_G1E1,
+            Y_F1E2,
+            Y_G1E1,
+            viewBox,
+          );
+          appendLine(
+            svg,
+            OUTER_LINE_STYLE,
+            X_G1E1,
+            X_G1,
+            Y_G1E1,
+            Y_G1,
+            viewBox,
+          );
+          appendLine(
+            svg,
+            OUTER_LINE_STYLE,
+            X_G1,
+            X_G1E2,
+            Y_G1,
+            Y_G1E2,
+            viewBox,
+          );
+          appendLine(
+            svg,
+            OUTER_LINE_STYLE,
+            X_G1E2,
+            X_H1E1,
+            Y_G1E2,
+            Y_H1E1,
+            viewBox,
+          );
+          appendLine(
+            svg,
+            OUTER_LINE_STYLE,
+            X_H1E1,
+            X_H1,
+            Y_H1E1,
+            Y_H1,
+            viewBox,
+          );
+          appendLine(
+            svg,
+            OUTER_LINE_STYLE,
+            X_H1,
+            X_H1E2,
+            Y_H1,
+            Y_H1E2,
+            viewBox,
+          );
+          appendLine(
+            svg,
+            OUTER_LINE_STYLE,
+            X_H1E2,
+            X_I1E1,
+            Y_H1E2,
+            Y_I1E1,
+            viewBox,
+          );
+          appendLine(
+            svg,
+            OUTER_LINE_STYLE,
+            X_I1E1,
+            X_I1,
+            Y_I1E1,
+            Y_I1,
+            viewBox,
+          );
+          appendLine(
+            svg,
+            OUTER_LINE_STYLE,
+            X_I1,
+            X_I1E2,
+            Y_I1,
+            Y_I1E2,
+            viewBox,
+          );
+          appendLine(
+            svg,
+            OUTER_LINE_STYLE,
+            X_I1E2,
+            X_J1E1,
+            Y_I1E2,
+            Y_J1E1,
+            viewBox,
+          );
+          appendLine(
+            svg,
+            OUTER_LINE_STYLE,
+            X_J1E1,
+            X_J1,
+            Y_J1E1,
+            Y_J1,
+            viewBox,
+          );
+          appendLine(
+            svg,
+            OUTER_LINE_STYLE,
+            X_J1,
+            X_J1E2,
+            Y_J1,
+            Y_J1E2,
+            viewBox,
+          );
+          appendLine(
+            svg,
+            OUTER_LINE_STYLE,
+            X_J1E2,
+            X_K1E,
+            Y_J1E2,
+            Y_K1E,
+            viewBox,
+          );
+          appendLine(svg, OUTER_LINE_STYLE, X_K1E, X_K1, Y_K1E, Y_K1, viewBox);
+          appendLine(svg, OUTER_LINE_STYLE, X_O1, X_K1, Y_O1, Y_K1, viewBox);
+          appendLine(svg, INNER_LINE_STYLE, X_K1, X_J1, Y_K1, Y_J1, viewBox);
+          appendLine(svg, INNER_LINE_STYLE, X_J1, X_I1, Y_J1, Y_I1, viewBox);
+          appendLine(svg, INNER_LINE_STYLE, X_I1, X_H1, Y_I1, Y_H1, viewBox);
+          appendLine(svg, INNER_LINE_STYLE, X_H1, X_G1, Y_H1, Y_G1, viewBox);
+          appendLine(svg, INNER_LINE_STYLE, X_G1, X_F1, Y_G1, Y_F1, viewBox);
+          appendLine(svg, INNER_LINE_STYLE, X_F1, X_E1, Y_F1, Y_E1, viewBox);
+          appendLine(svg, INNER_LINE_STYLE, X_E1, X_D1, Y_E1, Y_D1, viewBox);
+          appendLine(svg, INNER_LINE_STYLE, X_D1, X_C1, Y_D1, Y_C1, viewBox);
+          appendLine(svg, INNER_LINE_STYLE, X_C1, X_B1, Y_C1, Y_B1, viewBox);
+          appendLine(svg, INNER_LINE_STYLE, X_B1, X_A1, Y_B1, Y_A1, viewBox);
+          appendLine(svg, INNER_LINE_STYLE, X_O1, X_I1, Y_O1, Y_I1, viewBox);
+          appendLine(svg, INNER_LINE_STYLE, X_O1, X_G1, Y_O1, Y_G1, viewBox);
+          appendLine(svg, INNER_LINE_STYLE, X_O1, X_E1, Y_O1, Y_E1, viewBox);
+          appendLine(svg, INNER_LINE_STYLE, X_O1, X_C1, Y_O1, Y_C1, viewBox);
+          appendLine(svg, INNER_LINE_STYLE, X_O1, X_A1, Y_O1, Y_A1, viewBox);
+          appendLine(svg, OUTER_LINE_STYLE, X_O2, X_K2, Y_O2, Y_K2, viewBox);
+          appendLine(svg, OUTER_LINE_STYLE, X_K2, X_J2, Y_K2, Y_J2, viewBox);
+          appendLine(svg, OUTER_LINE_STYLE, X_J2, X_I2, Y_J2, Y_I2, viewBox);
+          appendLine(svg, OUTER_LINE_STYLE, X_I2, X_H2, Y_I2, Y_H2, viewBox);
+          appendLine(svg, OUTER_LINE_STYLE, X_H2, X_G2, Y_H2, Y_G2, viewBox);
+          appendLine(svg, OUTER_LINE_STYLE, X_G2, X_F2, Y_G2, Y_F2, viewBox);
+          appendLine(svg, OUTER_LINE_STYLE, X_F2, X_E2, Y_F2, Y_E2, viewBox);
+          appendLine(svg, OUTER_LINE_STYLE, X_E2, X_D2, Y_E2, Y_D2, viewBox);
+          appendLine(svg, OUTER_LINE_STYLE, X_D2, X_C2, Y_D2, Y_C2, viewBox);
+          appendLine(svg, INNER_LINE_STYLE, X_C2, X_B2, Y_C2, Y_B2, viewBox);
+          appendLine(svg, OUTER_LINE_STYLE, X_B2, X_A2, Y_B2, Y_A2, viewBox);
+          appendLine(svg, INNER_LINE_STYLE, X_O2, X_I2, Y_O2, Y_I2, viewBox);
+          appendLine(svg, INNER_LINE_STYLE, X_O2, X_G2, Y_O2, Y_G2, viewBox);
+          appendLine(svg, INNER_LINE_STYLE, X_O2, X_E2, Y_O2, Y_E2, viewBox);
+          appendLine(svg, INNER_LINE_STYLE, X_O2, X_C2, Y_O2, Y_C2, viewBox);
+          appendLine(svg, INNER_LINE_STYLE, X_O2, X_A2, Y_O2, Y_A2, viewBox);
+          appendLine(svg, OUTER_LINE_STYLE, X_O1, X_O1E, Y_O1, Y_O1E, viewBox);
+          appendLine(
+            svg,
+            OUTER_LINE_STYLE,
+            X_O1E,
+            X_A1E,
+            Y_O1E,
+            Y_A1E,
+            viewBox,
+          );
+          appendLine(svg, OUTER_LINE_STYLE, X_A1E, X_A1, Y_A1E, Y_A1, viewBox);
+          appendLine(svg, OUTER_LINE_STYLE, X_K1E, X_K1, Y_K1E, Y_K1, viewBox);
+          appendLine(svg, OUTER_LINE_STYLE, X_O2, X_O2E, Y_O2, Y_O2E, viewBox);
+          appendLine(
+            svg,
+            OUTER_LINE_STYLE,
+            X_O2E,
+            X_A2E,
+            Y_O2E,
+            Y_A2E,
+            viewBox,
+          );
+          appendLine(svg, OUTER_LINE_STYLE, X_A2E, X_A2, Y_A2E, Y_A2, viewBox);
+
+          (this as any).textData = {
+            X_A1,
+            X_A2,
+            X_C1,
+            X_C2,
+            X_E1,
+            X_E2,
+            X_G1,
+            X_G2,
+            X_I1,
+            X_I2,
+            X_K1,
+            X_K2,
+            Y_A1,
+            Y_A2,
+            Y_C1,
+            Y_C2,
+            Y_E1,
+            Y_E2,
+            Y_G1,
+            Y_G2,
+            Y_I1,
+            Y_I2,
+            Y_K1,
+            Y_K2,
+            ANGLE_SMALL_DEGREE,
+          };
+          // viewBox.right = SIDE_LENGTH * 3.5 + EXTNED_LENGTH;
+          // viewBox.bottom = BOTTOM;
+        }
+
+        private drawTextsOfTenSidedDice(
+          infos: {
+            content: any;
+            x: number;
+            y: number;
+            rotate: number | "auto" | "auto-reverse";
+          }[],
+          SIDE_LENGTH: number,
+        ) {
+          const { setSvgTextInfo } = this;
+          const textData = (this as any).textData;
+          const {
+            X_A1,
+            X_A2,
+            X_C1,
+            X_C2,
+            X_E1,
+            X_E2,
+            X_G1,
+            X_G2,
+            X_I1,
+            X_I2,
+            X_K1,
+            X_K2,
+            Y_A1,
+            Y_A2,
+            Y_C1,
+            Y_C2,
+            Y_E1,
+            Y_E2,
+            Y_G1,
+            Y_G2,
+            Y_I1,
+            Y_I2,
+            Y_K1,
+            Y_K2,
+            ANGLE_SMALL_DEGREE,
+          } = textData;
+          [
+            {
+              x: (X_A2 + X_C2) * 0.5,
+              y: (Y_A2 + Y_C2) * 0.5,
+              rotate: 0,
+            },
+            {
+              x: (X_G1 + X_I1) * 0.5,
+              y: (Y_G1 + Y_I1) * 0.5,
+              rotate: 360 - ANGLE_SMALL_DEGREE * 3,
+            },
+            {
+              x: (X_E2 + X_G2) * 0.5,
+              y: (Y_E2 + Y_G2) * 0.5,
+              rotate: ANGLE_SMALL_DEGREE * 2,
+            },
+            {
+              x: (X_A1 + X_C1) * 0.5,
+              y: (Y_A1 + Y_C1) * 0.5,
+              rotate: 0,
+            },
+            {
+              x: (X_I2 + X_K2) * 0.5,
+              y: (Y_I2 + Y_K2) * 0.5,
+              rotate: ANGLE_SMALL_DEGREE * 4,
+            },
+            {
+              x: (X_C1 + X_E1) * 0.5,
+              y: (Y_C1 + Y_E1) * 0.5,
+              rotate: -ANGLE_SMALL_DEGREE,
+            },
+            {
+              x: (X_G2 + X_I2) * 0.5,
+              y: (Y_G2 + Y_I2) * 0.5,
+              rotate: ANGLE_SMALL_DEGREE * 3,
+            },
+            {
+              x: (X_I1 + X_K1) * 0.5,
+              y: (Y_I1 + Y_K1) * 0.5,
+              rotate: 360 - ANGLE_SMALL_DEGREE * 4,
+            },
+            {
+              x: (X_C2 + X_E2) * 0.5,
+              y: (Y_C2 + Y_E2) * 0.5,
+              rotate: ANGLE_SMALL_DEGREE,
+            },
+            {
+              x: (X_E1 + X_G1) * 0.5,
+              y: (Y_E1 + Y_G1) * 0.5,
+              rotate: 360 - ANGLE_SMALL_DEGREE * 2,
+            },
+          ].map(({ x, y, rotate }, n) => {
+            setSvgTextInfo(infos[n], x, y, rotate);
+          });
+        }
+
         drawGraphsOfTwelveSidedDice(
           svg: SVGElement,
           SIDE_LENGTH: number,
@@ -1102,10 +1730,14 @@ namespace edu {
           const SIN54_MULTIPLY_SIDE_LENGTH = SIDE_LENGTH * SIN54;
           const SIN72_MULTIPLY_SIDE_LENGTH = SIDE_LENGTH * SIN72;
 
-          const SIN18_MULTIPLY_QUARTER_SIDE_LENGTH = QUARTER_SIDE_LENGTH * SIN18;
-          const SIN36_MULTIPLY_QUARTER_SIDE_LENGTH = QUARTER_SIDE_LENGTH * SIN36;
-          const SIN54_MULTIPLY_QUARTER_SIDE_LENGTH = QUARTER_SIDE_LENGTH * SIN54;
-          const SIN72_MULTIPLY_QUARTER_SIDE_LENGTH = QUARTER_SIDE_LENGTH * SIN72;
+          const SIN18_MULTIPLY_QUARTER_SIDE_LENGTH = QUARTER_SIDE_LENGTH *
+            SIN18;
+          const SIN36_MULTIPLY_QUARTER_SIDE_LENGTH = QUARTER_SIDE_LENGTH *
+            SIN36;
+          const SIN54_MULTIPLY_QUARTER_SIDE_LENGTH = QUARTER_SIDE_LENGTH *
+            SIN54;
+          const SIN72_MULTIPLY_QUARTER_SIDE_LENGTH = QUARTER_SIDE_LENGTH *
+            SIN72;
 
           const SIN72_MULTIPLY_LONG_SIDE_LENGTH = LONG_SIDE_LENGTH * SIN72;
 
@@ -1139,7 +1771,8 @@ namespace edu {
             let F5x = 0, F5y = 0;
 
             if (groupIndex === 0) {
-              A1x = LEFT + SIN18 * (SIDE_LENGTH + SIN18_MULTIPLY_SIDE_LENGTH * 2) +
+              A1x = LEFT +
+                SIN18 * (SIDE_LENGTH + SIN18_MULTIPLY_SIDE_LENGTH * 2) +
                 LONG_SIDE_LENGTH;
               A2x = A1x + SIN54_MULTIPLY_SIDE_LENGTH;
               A5x = A1x - SIN54_MULTIPLY_SIDE_LENGTH;
@@ -1419,50 +2052,314 @@ namespace edu {
             }
 
             if (groupIndex === 0) {
-              this.appendLine(svg, OUTER_LINE_STYLE, B5x, B6x, B5y, B6y, viewBox);
-              this.appendLine(svg, OUTER_LINE_STYLE, B1x, B7x, B1y, B7y, viewBox);
-              this.appendLine(svg, OUTER_LINE_STYLE, B1x, B8x, B1y, B8y, viewBox);
-              this.appendLine(svg, OUTER_LINE_STYLE, B2x, B9x, B2y, B9y, viewBox);
+              this.appendLine(
+                svg,
+                OUTER_LINE_STYLE,
+                B5x,
+                B6x,
+                B5y,
+                B6y,
+                viewBox,
+              );
+              this.appendLine(
+                svg,
+                OUTER_LINE_STYLE,
+                B1x,
+                B7x,
+                B1y,
+                B7y,
+                viewBox,
+              );
+              this.appendLine(
+                svg,
+                OUTER_LINE_STYLE,
+                B1x,
+                B8x,
+                B1y,
+                B8y,
+                viewBox,
+              );
+              this.appendLine(
+                svg,
+                OUTER_LINE_STYLE,
+                B2x,
+                B9x,
+                B2y,
+                B9y,
+                viewBox,
+              );
 
-              this.appendLine(svg, OUTER_LINE_STYLE, C5x, C6x, C5y, C6y, viewBox);
-              this.appendLine(svg, OUTER_LINE_STYLE, C1x, C7x, C1y, C7y, viewBox);
-              this.appendLine(svg, OUTER_LINE_STYLE, C1x, C8x, C1y, C8y, viewBox);
-              this.appendLine(svg, OUTER_LINE_STYLE, C2x, C9x, C2y, C9y, viewBox);
+              this.appendLine(
+                svg,
+                OUTER_LINE_STYLE,
+                C5x,
+                C6x,
+                C5y,
+                C6y,
+                viewBox,
+              );
+              this.appendLine(
+                svg,
+                OUTER_LINE_STYLE,
+                C1x,
+                C7x,
+                C1y,
+                C7y,
+                viewBox,
+              );
+              this.appendLine(
+                svg,
+                OUTER_LINE_STYLE,
+                C1x,
+                C8x,
+                C1y,
+                C8y,
+                viewBox,
+              );
+              this.appendLine(
+                svg,
+                OUTER_LINE_STYLE,
+                C2x,
+                C9x,
+                C2y,
+                C9y,
+                viewBox,
+              );
 
-              this.appendLine(svg, OUTER_LINE_STYLE, D1x, D8x, D1y, D8y, viewBox);
-              this.appendLine(svg, OUTER_LINE_STYLE, D2x, D9x, D2y, D9y, viewBox);
+              this.appendLine(
+                svg,
+                OUTER_LINE_STYLE,
+                D1x,
+                D8x,
+                D1y,
+                D8y,
+                viewBox,
+              );
+              this.appendLine(
+                svg,
+                OUTER_LINE_STYLE,
+                D2x,
+                D9x,
+                D2y,
+                D9y,
+                viewBox,
+              );
 
-              this.appendLine(svg, OUTER_LINE_STYLE, E5x, E6x, E5y, E6y, viewBox);
-              this.appendLine(svg, OUTER_LINE_STYLE, E1x, E7x, E1y, E7y, viewBox);
-              this.appendLine(svg, OUTER_LINE_STYLE, E1x, E8x, E1y, E8y, viewBox);
-              this.appendLine(svg, OUTER_LINE_STYLE, E2x, E9x, E2y, E9y, viewBox);
+              this.appendLine(
+                svg,
+                OUTER_LINE_STYLE,
+                E5x,
+                E6x,
+                E5y,
+                E6y,
+                viewBox,
+              );
+              this.appendLine(
+                svg,
+                OUTER_LINE_STYLE,
+                E1x,
+                E7x,
+                E1y,
+                E7y,
+                viewBox,
+              );
+              this.appendLine(
+                svg,
+                OUTER_LINE_STYLE,
+                E1x,
+                E8x,
+                E1y,
+                E8y,
+                viewBox,
+              );
+              this.appendLine(
+                svg,
+                OUTER_LINE_STYLE,
+                E2x,
+                E9x,
+                E2y,
+                E9y,
+                viewBox,
+              );
 
-              this.appendLine(svg, OUTER_LINE_STYLE, F5x, F6x, F5y, F6y, viewBox);
-              this.appendLine(svg, OUTER_LINE_STYLE, F1x, F7x, F1y, F7y, viewBox);
+              this.appendLine(
+                svg,
+                OUTER_LINE_STYLE,
+                F5x,
+                F6x,
+                F5y,
+                F6y,
+                viewBox,
+              );
+              this.appendLine(
+                svg,
+                OUTER_LINE_STYLE,
+                F1x,
+                F7x,
+                F1y,
+                F7y,
+                viewBox,
+              );
 
-              this.appendLine(svg, OUTER_LINE_STYLE, F1x, F8x, F1y, F8y, viewBox);
-              this.appendLine(svg, OUTER_LINE_STYLE, F2x, F9x, F2y, F9y, viewBox);
+              this.appendLine(
+                svg,
+                OUTER_LINE_STYLE,
+                F1x,
+                F8x,
+                F1y,
+                F8y,
+                viewBox,
+              );
+              this.appendLine(
+                svg,
+                OUTER_LINE_STYLE,
+                F2x,
+                F9x,
+                F2y,
+                F9y,
+                viewBox,
+              );
 
-              this.appendLine(svg, OUTER_LINE_STYLE, B6x, B7x, B6y, B7y, viewBox);
-              this.appendLine(svg, OUTER_LINE_STYLE, B8x, B9x, B8y, B9y, viewBox);
-              this.appendLine(svg, OUTER_LINE_STYLE, C6x, C7x, C6y, C7y, viewBox);
-              this.appendLine(svg, OUTER_LINE_STYLE, C8x, C9x, C8y, C9y, viewBox);
+              this.appendLine(
+                svg,
+                OUTER_LINE_STYLE,
+                B6x,
+                B7x,
+                B6y,
+                B7y,
+                viewBox,
+              );
+              this.appendLine(
+                svg,
+                OUTER_LINE_STYLE,
+                B8x,
+                B9x,
+                B8y,
+                B9y,
+                viewBox,
+              );
+              this.appendLine(
+                svg,
+                OUTER_LINE_STYLE,
+                C6x,
+                C7x,
+                C6y,
+                C7y,
+                viewBox,
+              );
+              this.appendLine(
+                svg,
+                OUTER_LINE_STYLE,
+                C8x,
+                C9x,
+                C8y,
+                C9y,
+                viewBox,
+              );
 
-              this.appendLine(svg, OUTER_LINE_STYLE, D6x, D7x, D6y, D7y, viewBox); //
+              this.appendLine(
+                svg,
+                OUTER_LINE_STYLE,
+                D6x,
+                D7x,
+                D6y,
+                D7y,
+                viewBox,
+              ); //
 
-              this.appendLine(svg, OUTER_LINE_STYLE, D8x, D9x, D8y, D9y, viewBox);
-              this.appendLine(svg, OUTER_LINE_STYLE, E6x, E7x, E6y, E7y, viewBox);
-              this.appendLine(svg, OUTER_LINE_STYLE, E8x, E9x, E8y, E9y, viewBox);
+              this.appendLine(
+                svg,
+                OUTER_LINE_STYLE,
+                D8x,
+                D9x,
+                D8y,
+                D9y,
+                viewBox,
+              );
+              this.appendLine(
+                svg,
+                OUTER_LINE_STYLE,
+                E6x,
+                E7x,
+                E6y,
+                E7y,
+                viewBox,
+              );
+              this.appendLine(
+                svg,
+                OUTER_LINE_STYLE,
+                E8x,
+                E9x,
+                E8y,
+                E9y,
+                viewBox,
+              );
 
-              this.appendLine(svg, OUTER_LINE_STYLE, F6x, F7x, F6y, F7y, viewBox); //
+              this.appendLine(
+                svg,
+                OUTER_LINE_STYLE,
+                F6x,
+                F7x,
+                F6y,
+                F7y,
+                viewBox,
+              ); //
 
-              this.appendLine(svg, OUTER_LINE_STYLE, F8x, F9x, F8y, F9y, viewBox);
+              this.appendLine(
+                svg,
+                OUTER_LINE_STYLE,
+                F8x,
+                F9x,
+                F8y,
+                F9y,
+                viewBox,
+              );
 
-              this.appendLine(svg, OUTER_LINE_STYLE, B2x, C5x, B2y, C5y, viewBox);
-              this.appendLine(svg, OUTER_LINE_STYLE, C2x, D5x, C2y, D5y, viewBox);
-              this.appendLine(svg, OUTER_LINE_STYLE, D2x, E5x, D2y, E5y, viewBox);
-              this.appendLine(svg, OUTER_LINE_STYLE, E2x, F5x, E2y, F5y, viewBox);
-              this.appendLine(svg, OUTER_LINE_STYLE, F2x, B5x, F2y, B5y, viewBox);
+              this.appendLine(
+                svg,
+                OUTER_LINE_STYLE,
+                B2x,
+                C5x,
+                B2y,
+                C5y,
+                viewBox,
+              );
+              this.appendLine(
+                svg,
+                OUTER_LINE_STYLE,
+                C2x,
+                D5x,
+                C2y,
+                D5y,
+                viewBox,
+              );
+              this.appendLine(
+                svg,
+                OUTER_LINE_STYLE,
+                D2x,
+                E5x,
+                D2y,
+                E5y,
+                viewBox,
+              );
+              this.appendLine(
+                svg,
+                OUTER_LINE_STYLE,
+                E2x,
+                F5x,
+                E2y,
+                F5y,
+                viewBox,
+              );
+              this.appendLine(
+                svg,
+                OUTER_LINE_STYLE,
+                F2x,
+                B5x,
+                F2y,
+                B5y,
+                viewBox,
+              );
             }
 
             if ((OPTIONS as unknown as { withHole: boolean }).withHole) {
@@ -1479,12 +2376,54 @@ namespace edu {
               let CC6x = (A4x + A5x + F1x + F2x + F5x) * 0.2,
                 CC6y = (A4y + A5y + F1y + F2y + F5y) * 0.2;
 
-              this.appendCircle(svg, INNER_LINE_STYLE, CC1x, CC1y, RADIUS, null);
-              this.appendCircle(svg, INNER_LINE_STYLE, CC2x, CC2y, RADIUS, null);
-              this.appendCircle(svg, INNER_LINE_STYLE, CC3x, CC3y, RADIUS, null);
-              this.appendCircle(svg, INNER_LINE_STYLE, CC4x, CC4y, RADIUS, null);
-              this.appendCircle(svg, INNER_LINE_STYLE, CC5x, CC5y, RADIUS, null);
-              this.appendCircle(svg, INNER_LINE_STYLE, CC6x, CC6y, RADIUS, null);
+              this.appendCircle(
+                svg,
+                INNER_LINE_STYLE,
+                CC1x,
+                CC1y,
+                RADIUS,
+                null,
+              );
+              this.appendCircle(
+                svg,
+                INNER_LINE_STYLE,
+                CC2x,
+                CC2y,
+                RADIUS,
+                null,
+              );
+              this.appendCircle(
+                svg,
+                INNER_LINE_STYLE,
+                CC3x,
+                CC3y,
+                RADIUS,
+                null,
+              );
+              this.appendCircle(
+                svg,
+                INNER_LINE_STYLE,
+                CC4x,
+                CC4y,
+                RADIUS,
+                null,
+              );
+              this.appendCircle(
+                svg,
+                INNER_LINE_STYLE,
+                CC5x,
+                CC5y,
+                RADIUS,
+                null,
+              );
+              this.appendCircle(
+                svg,
+                INNER_LINE_STYLE,
+                CC6x,
+                CC6y,
+                RADIUS,
+                null,
+              );
             }
           }
         }
@@ -1651,7 +2590,10 @@ namespace edu {
           const pasteRegionLongBiasXPx = pasteRegionLongBiasX * mmToPxScale;
           const pasteRegionLongBiasYPx = pasteRegionLongBiasY * mmToPxScale;
 
-          const path = document.createElementNS(SVG_NS, "path") as SVGPathElement;
+          const path = document.createElementNS(
+            SVG_NS,
+            "path",
+          ) as SVGPathElement;
           path.setAttribute("fill", "none");
           path.setAttribute("stroke", "#000000");
           path.setAttribute(
@@ -1679,8 +2621,10 @@ namespace edu {
                 `l ${OneXPx}, -${OneYPx}`,
                 `h ${pasteRegionPx}`,
                 `l ${pasteRegionLongBiasXPx}, ${pasteRegionLongBiasYPx}`,
-                `l -${pasteRegionShortBiasXPx +
-                  OneXPx * 2}, ${pasteRegionShortBiasYPx + OneYPx * 2}`,
+                `l -${
+                  pasteRegionShortBiasXPx +
+                  OneXPx * 2
+                }, ${pasteRegionShortBiasYPx + OneYPx * 2}`,
                 `h -${pasteRegionPx}`,
                 `l -${pasteRegionLongBiasXPx}, -${pasteRegionLongBiasYPx}`,
                 `l ${pasteRegionShortBiasXPx}, -${pasteRegionShortBiasYPx}`,
@@ -1971,7 +2915,8 @@ namespace edu {
           const cx4 = dx1 + ex1 - cx1, cy4 = dy1 + ey1 - cy1;
           const ax4 = ex1, ay4 = ey1;
           const dx4 = dx1, dy4 = dy1;
-          const angle_cd4 = Math.atan((cy4 - dy4) / (cx4 - dx4)) * 180 / Math.PI;
+          const angle_cd4 = Math.atan((cy4 - dy4) / (cx4 - dx4)) * 180 /
+            Math.PI;
           const angle_ce4 = BIGER_ANGLE - angle_cd4;
           const angle_cf4 = BIGER_ANGLE - (90 - angle_ce4);
           const angle_ca4 = BIGER_ANGLE - (90 - angle_cd4);
@@ -2009,7 +2954,8 @@ namespace edu {
           const cx5 = ax4 + bx4 - cx4, cy5 = ay4 + by4 - cy4;
           const dx5 = ax4, dy5 = ay4;
           const ex5 = bx4, ey5 = by4;
-          const angle_cd5 = Math.atan((cy5 - dy5) / (cx5 - dx5)) * 180 / Math.PI;
+          const angle_cd5 = Math.atan((cy5 - dy5) / (cx5 - dx5)) * 180 /
+            Math.PI;
           const angle_ce5 = BIGER_ANGLE - angle_cd5;
           const angle_cf5 = BIGER_ANGLE - (90 - angle_ce5);
           const angle_ca5 = BIGER_ANGLE - (90 - angle_cd5);
@@ -2021,7 +2967,8 @@ namespace edu {
           const fx5 = cx5 + SHORT_SIDE_LENGTH * getSinByAngle(angle_cf5);
           const fy5 = cy5 + SHORT_SIDE_LENGTH * getCosByAngle(angle_cf5);
           const ffx5 = bx5 + (cx5 - bx5) * 0.3, ffy5 = by5 + (cy5 - by5) * 0.3;
-          const c_mirror_ab_x5 = ax5 + bx5 - cx5, c_mirror_ab_y5 = ay5 + by5 - cy5;
+          const c_mirror_ab_x5 = ax5 + bx5 - cx5,
+            c_mirror_ab_y5 = ay5 + by5 - cy5;
           const aax5 = ax5 + (c_mirror_ab_x5 - ax5) * 0.3,
             aay5 = ay5 + (c_mirror_ab_y5 - ay5) * 0.3;
           const bbx5 = bx5 + (c_mirror_ab_x5 - bx5) * 0.3,
@@ -2038,7 +2985,12 @@ namespace edu {
             ey = ey5,
             fx = fx5,
             fy = fy5;
-          aax = aax5, aay = aay5, bbx = bbx5, bby = bby5, ffx = ffx5, ffy = ffy5;
+          aax = aax5,
+            aay = aay5,
+            bbx = bbx5,
+            bby = bby5,
+            ffx = ffx5,
+            ffy = ffy5;
           this.appendLine(svg, INNER_LINE_STYLE, ax, bx, ay, by, viewBox);
           this.appendLine(svg, INNER_LINE_STYLE, ax, cx, ay, cy, viewBox);
           this.appendLine(svg, OUTER_LINE_STYLE, ax, dx, ay, dy, viewBox);
@@ -2056,8 +3008,10 @@ namespace edu {
           const cx6 = ex4 + fx4 - cx4, cy6 = ey4 + fy4 - cy4;
           const dx6 = fx4, dy6 = fy4;
           const ex6 = ex4, ey6 = ey4;
-          const angle_cd6 = Math.atan((cy6 - dy6) / (dx6 - cx6)) * 180 / Math.PI;
-          const angle_ce6 = Math.atan((cy6 - ey6) / (cx6 - ex6)) * 180 / Math.PI;
+          const angle_cd6 = Math.atan((cy6 - dy6) / (dx6 - cx6)) * 180 /
+            Math.PI;
+          const angle_ce6 = Math.atan((cy6 - ey6) / (cx6 - ex6)) * 180 /
+            Math.PI;
           const angle_ca6 = BIGER_ANGLE - angle_cd6;
           const angle_cf6 = BIGER_ANGLE - angle_ce6;
           const angle_cb6 = BIGER_ANGLE - (90 - angle_ca6);
@@ -2068,12 +3022,14 @@ namespace edu {
           const fx6 = cx6 - SHORT_SIDE_LENGTH * getCosByAngle(angle_cf6);
           const fy6 = cy6 + SHORT_SIDE_LENGTH * getSinByAngle(angle_cf6);
           const ffx6 = bx6 + (cx6 - bx6) * 0.3, ffy6 = by6 + (cy6 - by6) * 0.3;
-          const c_mirror_ad_x6 = ax6 + dx6 - cx6, c_mirror_ad_y6 = ay6 + dy6 - cy6;
+          const c_mirror_ad_x6 = ax6 + dx6 - cx6,
+            c_mirror_ad_y6 = ay6 + dy6 - cy6;
           const aax6 = ax6 + (c_mirror_ad_x6 - ax6) * 0.3,
             aay6 = ay6 + (c_mirror_ad_y6 - ay6) * 0.3;
           const ddx6 = dx6 + (c_mirror_ad_x6 - dx6) * 0.3,
             ddy6 = dy6 + (c_mirror_ad_y6 - dy6) * 0.3;
-          const c_mirror_ef_x6 = ex6 + fx6 - cx6, c_mirror_ef_y6 = ey6 + fy6 - cy6;
+          const c_mirror_ef_x6 = ex6 + fx6 - cx6,
+            c_mirror_ef_y6 = ey6 + fy6 - cy6;
           const eex6 = ex6 + (c_mirror_ef_x6 - ex6) * 0.3,
             eey6 = ey6 + (c_mirror_ef_y6 - ey6) * 0.3;
           const fffx6 = fx6 + (c_mirror_ef_x6 - fx6) * 0.3,
@@ -2119,7 +3075,8 @@ namespace edu {
           const cx3 = dx4 + ex4 - cx4, cy3 = dy4 + ey4 - cy4;
           const fx3 = dx4, fy3 = dy4;
           const ex3 = ex4, ey3 = ey4;
-          const angle_cf3 = Math.atan((cy3 - fy3) / (fx3 - cx3)) * 180 / Math.PI;
+          const angle_cf3 = Math.atan((cy3 - fy3) / (fx3 - cx3)) * 180 /
+            Math.PI;
           const angle_ce3 = BIGER_ANGLE - angle_cf3;
           const angle_cd3 = 180 - BIGER_ANGLE - angle_ce3;
           const angle_ca3 = BIGER_ANGLE - angle_cd3;
@@ -2158,7 +3115,8 @@ namespace edu {
           const cx2 = ax3 + dx3 - cx3, cy2 = ay3 + dy3 - cy3;
           const fx2 = ax3, fy2 = ay3;
           const ex2 = dx3, ey2 = dy3;
-          const angle_cf2 = Math.atan((cy2 - fy2) / (fx2 - cx2)) * 180 / Math.PI;
+          const angle_cf2 = Math.atan((cy2 - fy2) / (fx2 - cx2)) * 180 /
+            Math.PI;
           const angle_ce2 = BIGER_ANGLE - angle_cf2;
           const angle_cd2 = 180 - BIGER_ANGLE - angle_ce2;
           const angle_ca2 = BIGER_ANGLE - angle_cd2;
@@ -2170,12 +3128,14 @@ namespace edu {
           const dx2 = cx2 - SHORT_SIDE_LENGTH * getCosByAngle(angle_cd2);
           const dy2 = cy2 + SHORT_SIDE_LENGTH * getSinByAngle(angle_cd2);
           const ffx2 = bx2 + (cx2 - bx2) * 0.3, ffy2 = by2 + (cy2 - by2) * 0.3;
-          const c_mirror_ab_x2 = ax2 + bx2 - cx2, c_mirror_ab_y2 = ay2 + by2 - cy2;
+          const c_mirror_ab_x2 = ax2 + bx2 - cx2,
+            c_mirror_ab_y2 = ay2 + by2 - cy2;
           const aax2 = ax2 + (c_mirror_ab_x2 - ax2) * 0.3,
             aay2 = ay2 + (c_mirror_ab_y2 - ay2) * 0.3;
           const bbx2 = bx2 + (c_mirror_ab_x2 - bx2) * 0.3,
             bby2 = by2 + (c_mirror_ab_y2 - by2) * 0.3;
-          const c_mirror_de_x2 = dx2 + ex2 - cx2, c_mirror_de_y2 = dy2 + ey2 - cy2;
+          const c_mirror_de_x2 = dx2 + ex2 - cx2,
+            c_mirror_de_y2 = dy2 + ey2 - cy2;
           const ddx2 = dx2 + (c_mirror_de_x2 - dx2) * 0.3,
             ddy2 = dy2 + (c_mirror_de_y2 - dy2) * 0.3;
           const eex2 = ex2 + (c_mirror_de_x2 - ex2) * 0.3,
@@ -2415,7 +3375,10 @@ namespace edu {
           y2: number,
           viewBox: ViewBoxType | null,
         ) {
-          const line = document.createElementNS(SVG_NS, "line") as SVGLineElement;
+          const line = document.createElementNS(
+            SVG_NS,
+            "line",
+          ) as SVGLineElement;
           line.setAttribute("x1", `${x1}mm`);
           line.setAttribute("x2", `${x2}mm`);
           line.setAttribute("y1", `${y1}mm`);
@@ -2468,7 +3431,7 @@ namespace edu {
           dy: number,
           rotate: RotateType,
         ) {
-          // https://developer.mozilla.org/en-US/docs/Web/SVG/Element/tspan
+          // https://developer.mozilla.org/en_us-US/docs/Web/SVG/Element/tspan
           const tspan = document.createElementNS(
             SVG_NS,
             "tspan",
@@ -2511,7 +3474,10 @@ namespace edu {
 
           svg.appendChild(g);
 
-          const text = document.createElementNS(SVG_NS, "text") as SVGTextElement;
+          const text = document.createElementNS(
+            SVG_NS,
+            "text",
+          ) as SVGTextElement;
           text.setAttribute("x", `${x}mm`);
           text.setAttribute("y", `${y}mm`);
           text.setAttribute(
@@ -2535,9 +3501,10 @@ namespace edu {
           if (viewBox) {
             // left/top/right/bottom/width/height
             const clientRects = text.getClientRects();
-            const { left: x1, right: x2, top: y1, bottom: y2 } = (clientRects.length
-              ? clientRects.item(0)
-              : text.getBoundingClientRect()) as DOMRect;
+            const { left: x1, right: x2, top: y1, bottom: y2 } =
+              (clientRects.length
+                ? clientRects.item(0)
+                : text.getBoundingClientRect()) as DOMRect;
             viewBox.left = Math.min(viewBox.left, x1, x2);
             viewBox.right = Math.max(viewBox.right, x1, x2);
             viewBox.top = Math.min(viewBox.top, y1, y2);

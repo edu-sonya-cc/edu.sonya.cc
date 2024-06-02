@@ -23,7 +23,7 @@ class BricksPage extends ActualPageBase {
   public initTitleElement(): void {
     const titleElement = getTitleElement();
     titleElement.i18n = {
-      en: "List of throwing a brick to attract jade",
+      en_us: "List of throwing a brick to attract jade",
       zh_cn: "抛砖引玉清单",
       zh_tw: "拋磚引玉清單",
     };
@@ -86,8 +86,8 @@ class BricksPage extends ActualPageBase {
       // subKind: string,
       // version: string,
       image: string;
-      title: { en: string; zh_cn: string; zh_tw: string };
-      summary: { en: string; zh_cn: string; zh_tw: string };
+      title: { en_us: string; zh_cn: string; zh_tw: string };
+      summary: { en_us: string; zh_cn: string; zh_tw: string };
     };
 
     const aElement = itemElement.children[0] as HTMLAnchorElement;
@@ -148,12 +148,12 @@ class BricksPage extends ActualPageBase {
       version: string;
       image: string;
       title: {
-        en: string;
+        en_us: string;
         zh_cn: string;
         zh_tw: string;
       };
       summary: {
-        en: string;
+        en_us: string;
         zh_cn: string;
         zh_tw: string;
       };

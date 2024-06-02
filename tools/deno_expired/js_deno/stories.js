@@ -11,16 +11,22 @@ class StoriesPage extends ActualPageBase {
     initTitleElement() {
         const titleElement = getTitleElement();
         titleElement.i18n = {
-            en: 'Growing List',
+            en_us: 'Growing List',
             zh_cn: '成长足迹清单',
             zh_tw: '成長足迹清單'
         };
     }
-    initMainElement = ()=>{
+    initMainElement = () => {
         const PAGE_NAME = 'storiesPage';
         const mainElement = getMainElement();
         mainElement.id = `${PAGE_NAME}Main`;
-        const { mainContentElement , topImageElement , pageSubjectElement , listElement , paginationElement  } = this;
+        const {
+            mainContentElement,
+            topImageElement,
+            pageSubjectElement,
+            listElement,
+            paginationElement
+        } = this;
         mainElement.appendChild(topImageElement);
         mainElement.appendChild(mainContentElement);
         mainContentElement.id = `${PAGE_NAME}MainContent`;
@@ -32,12 +38,12 @@ class StoriesPage extends ActualPageBase {
         topImageElement.src = `${SITE_IMAGE_PATH}5stories/topImage.jpg?${storiesPageMainImageVersion}`;
         pageSubjectElement.id = `${PAGE_NAME}Subject`;
         pageSubjectElement.className = 'pageSubject';
-        pcGlobal.fillListAndPagination(listElement, paginationElement, PageSize.storiesPage, stories.map((item, index)=>{
+        pcGlobal.fillListAndPagination(listElement, paginationElement, PageSize.storiesPage, stories.map((item, index) => {
             return {
                 id: index + 1,
                 ...item
             };
-        }), PAGE_NAME, (itemElement, data, init)=>{
+        }), PAGE_NAME, (itemElement, data, init) => {
             if (init) {
                 const titleElement = createElement('div');
                 titleElement.className = `${PAGE_NAME}Title`;
@@ -64,11 +70,16 @@ class StoriesPage extends ActualPageBase {
                 storyDateElement1.innerHTML = '';
                 const hrElement1 = itemElement.children[2];
                 hide(hrElement1);
-                itemElement.onclick = (event)=>{
+                itemElement.onclick = (event) => {
                     return stopEventBubble(event);
                 };
             } else {
-                const { id , date , title , summary  } = data;
+                const {
+                    id,
+                    date,
+                    title,
+                    summary
+                } = data;
                 const titleElement2 = itemElement.children[0];
                 titleElement2.innerHTML = getI18nInnerHTML(title);
                 const summaryAndDateElement2 = itemElement.children[1];
@@ -78,14 +89,14 @@ class StoriesPage extends ActualPageBase {
                 storyDateElement2.innerHTML = getI18nInnerHTMLFromDate(date);
                 const hrElement2 = itemElement.children[2];
                 showBlock(hrElement2);
-                itemElement.onclick = (event)=>{
+                itemElement.onclick = (event) => {
                     window.location.href = `?go=story&id=${id}`;
                     return stopEventBubble(event);
                 };
             }
         });
     };
-    init = ()=>{
+    init = () => {
         super.init();
     };
 }

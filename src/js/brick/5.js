@@ -285,7 +285,7 @@ var BrickCore = (function (_super) {
         };
         _this.INITIAL_ARRAY = "b,p,m,f,d,t,n,l,g,k,h,j,q,x,zh,ch,sh,r,z,c,s,y,w,"
             .split(",");
-        _this.VOWEL_ARRAY = "a,o,e,i,u,ü,ai,ei,ui,ao,ou,iu,ie,üe,er,an,en,in,un,ün,ang,eng,ing,ong"
+        _this.VOWEL_ARRAY = "a,o,e,i,u,ü,ai,ei,ui,ao,ou,iu,ie,üe,er,an,en_us,in,un,ün,ang,eng,ing,ong"
             .split(",");
         _this.OVERALL_READING_ARRAY = "zhi,chi,shi,ri,zi,ci,si,yi,wu,yu,ye,yue,yuan,yin,yun,ying".split(",");
         _this.THREE_SYLLABLE_SPELLING_AND_TONE_ARRAY = "ia,ua,uo,uai,iao,ian,iang,uan,uang,iong,üan,ˉ,ˊ,ˇ,ˋ,ˉ,ˊ,ˇ,ˋ,".split(",");
@@ -293,10 +293,10 @@ var BrickCore = (function (_super) {
         _this.countPokerDataAndComputedData = function (pokerKind, countPerPage) {
             if (pokerKind === 0)
                 pokerKind = DefaultPinyinPokerKind;
-            var en = FILENAME_POSTFIX + "Pinyin Poker";
+            var en_us = FILENAME_POSTFIX + "Pinyin Poker";
             var zh_cn = FILENAME_POSTFIX + "\u62FC\u97F3\u6251\u514B";
             var zh_tw = FILENAME_POSTFIX + "\u62FC\u97F3\u64B2\u514B";
-            var enBackCover = en.split("_").join("<br />");
+            var enBackCover = en_us.split("_").join("<br />");
             var zh_cnBackCover = zh_cn.split("_").join("<br />");
             var zh_twBackCover = zh_tw.split("_").join("<br />");
             var enArray = [];
@@ -304,7 +304,7 @@ var BrickCore = (function (_super) {
             var zh_cnArray = [];
             var zh_twArray = [];
             var backCover = "";
-            var title = { en: en, zh_cn: zh_cn, zh_tw: zh_tw };
+            var title = { en_us: en_us, zh_cn: zh_cn, zh_tw: zh_tw };
             var CHARS = [];
             var BACK_COVERS = [];
             var CHARS_NOT_SAME_BACK_COVER = [];
@@ -335,7 +335,7 @@ var BrickCore = (function (_super) {
             switch (enArray.length) {
                 case 0:
                     backCover = getI18nInnerHTML({
-                        en: enBackCover,
+                        en_us: enBackCover,
                         zh_cn: zh_cnBackCover,
                         zh_tw: zh_twBackCover
                     });
@@ -345,32 +345,32 @@ var BrickCore = (function (_super) {
                     var zh_cnFirstItem = zh_cnArray[0];
                     var zh_twFirstItem = zh_twArray[0];
                     backCover = getI18nInnerHTML({
-                        en: enBackCover.concat("<br /><br />", enFirstItem),
+                        en_us: enBackCover.concat("<br /><br />", enFirstItem),
                         zh_cn: zh_cnBackCover.concat("<br /><br />", zh_cnFirstItem),
                         zh_tw: zh_twBackCover.concat("<br /><br />", zh_twFirstItem)
                     });
-                    title.en += "_".concat(enFullArray[0]);
+                    title.en_us += "_".concat(enFullArray[0]);
                     title.zh_cn += "_".concat(zh_cnFirstItem);
                     title.zh_tw += "_".concat(zh_twFirstItem);
                     break;
                 default:
                     if (enArray.length === PinyinPokerKindCount) {
                         backCover = getI18nInnerHTML({
-                            en: enBackCover,
+                            en_us: enBackCover,
                             zh_cn: zh_cnBackCover,
                             zh_tw: zh_twBackCover
                         });
-                        title.en += " Mixed_ALL";
+                        title.en_us += " Mixed_ALL";
                         title.zh_cn += "混合_所有";
                         title.zh_tw += "混合_所有";
                     }
                     else {
                         backCover = getI18nInnerHTML({
-                            en: enBackCover.concat("<br /><br /><small>", enArray.join("<br />"), "</small>"),
+                            en_us: enBackCover.concat("<br /><br /><small>", enArray.join("<br />"), "</small>"),
                             zh_cn: zh_cnBackCover.concat("<br /><br /><small>", zh_cnArray.join("<br />"), "</small>"),
                             zh_tw: zh_twBackCover.concat("<br /><br /><small>", zh_twArray.join("<br />"), "</small>")
                         });
-                        title.en += " Mixed_".concat(enFullArray.join("_"));
+                        title.en_us += " Mixed_".concat(enFullArray.join("_"));
                         title.zh_cn += "混合_".concat(zh_cnArray.join("_"));
                         title.zh_tw += "混合_".concat(zh_twArray.join("_"));
                     }
@@ -400,7 +400,7 @@ var BrickCore = (function (_super) {
         };
         _this.initOtherElements = function () {
             var wrapElement = _this.getWrapElement({
-                en: "Use Same Back Cover",
+                en_us: "Use Same Back Cover",
                 zh_cn: "统一背面",
                 zh_tw: "統一背面"
             });
@@ -410,27 +410,27 @@ var BrickCore = (function (_super) {
             var _a = _this, pokerKind = _a.data.pokerKind, pokerKindElementArray = _a.pokerKindElementArray;
             var pokerKindI18nHtmlArray = [
                 getI18nInnerHTML({
-                    en: "Initials",
+                    en_us: "Initials",
                     zh_cn: "声母",
                     zh_tw: "聲母"
                 }),
                 getI18nInnerHTML({
-                    en: "Finals",
+                    en_us: "Finals",
                     zh_cn: "韵母",
                     zh_tw: "韻母"
                 }),
                 getI18nInnerHTML({
-                    en: "Overall recognition and tone",
+                    en_us: "Overall recognition and tone",
                     zh_cn: "整体认读与声调",
                     zh_tw: "整體認讀與聲調"
                 }),
                 getI18nInnerHTML({
-                    en: "Three syllables",
+                    en_us: "Three syllables",
                     zh_cn: "三拼音节",
                     zh_tw: "三拼音節"
                 }),
                 getI18nInnerHTML({
-                    en: "Simple final with tone",
+                    en_us: "Simple final with tone",
                     zh_cn: "带声调单韵母",
                     zh_tw: "帶聲調單韻母"
                 }),
@@ -473,12 +473,12 @@ var BrickCore = (function (_super) {
             var _a = _this, useSameBackCover = _a.data.useSameBackCover, useSameBackCoverElementArray = _a.useSameBackCoverElementArray;
             var i18nHtmlArray = [
                 getI18nInnerHTML({
-                    en: "Yes",
+                    en_us: "Yes",
                     zh_cn: "是",
                     zh_tw: "是"
                 }),
                 getI18nInnerHTML({
-                    en: "No",
+                    en_us: "No",
                     zh_cn: "否",
                     zh_tw: "否"
                 }),
@@ -507,12 +507,12 @@ var BrickCore = (function (_super) {
         };
         return _this;
     }
-    BrickCore.prototype.countIt = function (enAppend, zh_cnAppend, zh_twAppend, charsArray, enFullArray, zh_cnArray, zh_twArray, en, zh_cn, zh_tw, CHARS, CHARS_NOT_SAME_BACK_COVER, countPerPage, BACK_COVERS) {
+    BrickCore.prototype.countIt = function (enAppend, zh_cnAppend, zh_twAppend, charsArray, enFullArray, zh_cnArray, zh_twArray, en_us, zh_cn, zh_tw, CHARS, CHARS_NOT_SAME_BACK_COVER, countPerPage, BACK_COVERS) {
         enFullArray.push(enAppend);
         zh_cnArray.push(zh_cnAppend);
         zh_twArray.push(zh_twAppend);
         var notSameBackCover = getI18nInnerHTML({
-            en: en.concat("<br /><small>", enAppend, "</small>"),
+            en_us: en_us.concat("<br /><small>", enAppend, "</small>"),
             zh_cn: zh_cn.concat("<br />", zh_cnAppend),
             zh_tw: zh_tw.concat("<br />", zh_twAppend)
         });

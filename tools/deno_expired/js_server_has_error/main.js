@@ -6,14 +6,14 @@ const DOMAIN = 'edu.sonya.cc';
 const FILENAME_POSTFIX = DOMAIN.concat('_');
 const CURRENT_URL = window.location.href;
 const HOME_URL = CURRENT_URL.startsWith('file:///') ? 'file:///P:/ecs_person/websites/sonya.cc/edu_git/src/index.htm' : 'http://edu.sonya.cc/';
-(function() {
+(function () {
     const myWindow = window;
     if (!myWindow.top || CURRENT_URL.startsWith('file:///')) return;
     if (!myWindow.top.location.href.startsWith(HOME_URL)) myWindow.top.location.replace(HOME_URL);
 })();
 const HOME_URL_LENGTH = HOME_URL.length;
 var ActualPage;
-(function(ActualPage) {
+(function (ActualPage) {
     ActualPage[ActualPage["home"] = 0] = "home";
     ActualPage[ActualPage["bricks"] = 1] = "bricks";
     ActualPage[ActualPage["brick"] = 2] = "brick";
@@ -33,8 +33,8 @@ const ACTUAL_PAGE_NAME_ARRAY = [
     'about',
     'report'
 ];
-const getActualPageName = (value)=>ACTUAL_PAGE_NAME_ARRAY[value];
-const getActualPageValueByName = (name)=>ACTUAL_PAGE_NAME_ARRAY.indexOf(name);
+const getActualPageName = (value) => ACTUAL_PAGE_NAME_ARRAY[value];
+const getActualPageValueByName = (name) => ACTUAL_PAGE_NAME_ARRAY.indexOf(name);
 const PARAMETER_FOR_ACTUAL_PAGE = 'go';
 const ACTUAL_PAGE_VALUE = CURRENT_URL.indexOf('?'.concat(PARAMETER_FOR_ACTUAL_PAGE, '=')) > -1 ? getActualPageValueByName(CURRENT_URL.split('?')[1].split('&')[0].split('=')[1]) : ActualPage.home;
 const ACTUAL_PAGE_NAME = ACTUAL_PAGE_NAME_ARRAY[ACTUAL_PAGE_VALUE];
@@ -42,18 +42,17 @@ const SITE_ROOT = HOME_URL.substring(0, HOME_URL.lastIndexOf('/') + 1);
 const SITE_IMAGE_PATH = `${SITE_ROOT}images/`;
 const SITE_JAVASCRIPT_PATH = `${SITE_ROOT}js/`;
 const SITE_CSS_PATH = `${SITE_ROOT}css/`;
-const getPageParameterByName = (name, defaultValue)=>{
-    return CURRENT_URL.indexOf(`&${name}=`) === -1 ? defaultValue || '' : CURRENT_URL.split('&').slice(1).filter((keyValue)=>keyValue.startsWith(`${name}=`))[0].split('=')[1];
+const getPageParameterByName = (name, defaultValue) => {
+    return CURRENT_URL.indexOf(`&${name}=`) === -1 ? defaultValue || '' : CURRENT_URL.split('&').slice(1).filter((keyValue) => keyValue.startsWith(`${name}=`))[0].split('=')[1];
 };
 const PAGE_SUB_KIND = getPageParameterByName('kind', null);
 const PAGE_IDNEX = parseInt(getPageParameterByName('page', '1'), 0) - 1;
 const PAGE_ID = parseInt(getPageParameterByName('id', '1'), 0);
-const MORE_BUTTON_HTML = '<en>more...</en><zh_cn>查看更多</zh_cn><zh_tw>查看更多</zh_tw>';
-const BRICK_SUB_KINDS = [
-    {
+const MORE_BUTTON_HTML = '<en_us>more...</en_us><zh_cn>查看更多</zh_cn><zh_tw>查看更多</zh_tw>';
+const BRICK_SUB_KINDS = [{
         name: '01_chinese',
         title: {
-            en: 'Chinese',
+            en_us: 'Chinese',
             zh_cn: '语文',
             zh_tw: '語文'
         }
@@ -61,7 +60,7 @@ const BRICK_SUB_KINDS = [
     {
         name: '02_math',
         title: {
-            en: 'Mathematics',
+            en_us: 'Mathematics',
             zh_cn: '数学',
             zh_tw: '數學'
         }
@@ -69,7 +68,7 @@ const BRICK_SUB_KINDS = [
     {
         name: '03_english',
         title: {
-            en: 'English',
+            en_us: 'English',
             zh_cn: '英语',
             zh_tw: '英語'
         }
@@ -77,7 +76,7 @@ const BRICK_SUB_KINDS = [
     {
         name: '04_programming',
         title: {
-            en: 'Programming',
+            en_us: 'Programming',
             zh_cn: '编程',
             zh_tw: '程式設計'
         }
@@ -99,81 +98,107 @@ const REPORT_KIND_PROPERTY = 'edu-report-kind';
 function hide(element) {
     if (element) element.style.display = 'none';
 }
+
 function showBlock(element) {
     if (element) element.style.display = 'block';
 }
+
 function showInlineBlock(element) {
     if (element) element.style.display = 'inline-block';
 }
+
 function showFlex(element) {
     if (element) element.style.display = 'flex';
 }
+
 function showInlineFlex(element) {
     if (element) element.style.display = 'inline-flex';
 }
+
 function getElementById(id) {
     return document.getElementById(id);
 }
+
 function getElementByIdAndTagName(id, _tagName) {
     return document.getElementById(id);
 }
+
 function querySelectorAll(selectors) {
     return document.querySelectorAll(selectors);
 }
+
 function querySelectorAllByI18n() {
     return document.querySelectorAll('[i18n]');
 }
+
 function querySelectorAllByI18nPlaceholder() {
     return document.querySelectorAll('[i18n-placeholder]');
 }
+
 function getElementsByTagName(qualifiedName) {
     return document.getElementsByTagName(qualifiedName);
 }
+
 function getHeadElement() {
     return document.getElementsByTagName('head')[0];
 }
+
 function getHtmlElement() {
     return document.getElementsByTagName('html')[0];
 }
+
 function getBodyElement() {
     return document.getElementsByTagName('body')[0];
 }
+
 function getTitleElement() {
     return document.getElementsByTagName('title')[0];
 }
+
 function getHeaderElement() {
     return document.getElementsByTagName('header')[0];
 }
+
 function getFooterElement() {
     return document.getElementsByTagName('footer')[0];
 }
+
 function getMainElement() {
     return document.getElementsByTagName('main')[0];
 }
+
 function createElement(tagName, options) {
     return document.createElement(tagName, options);
 }
+
 function setAttributesOfA(aElement, link) {
     aElement.setAttribute('href', link);
     if (!link.startsWith('mailto:')) {
         aElement.setAttribute('target', '_blank');
     }
 }
+
 function stopEventBubble(event) {
     event.cancelBubble = true;
     event.preventDefault();
     event.stopPropagation();
     return false;
 }
-function getI18nInnerHTML({ en , zh_cn , zh_tw  }) {
-    return `<en>${en}</en><zh_cn>${zh_cn}</zh_cn><zh_tw>${zh_tw}</zh_tw>`;
+
+function getI18nInnerHTML({
+    en_us,
+    zh_cn,
+    zh_tw
+}) {
+    return `<en_us>${en_us}</en_us><zh_cn>${zh_cn}</zh_cn><zh_tw>${zh_tw}</zh_tw>`;
 }
 const MONTH_NAME_ARRAY = new Array('Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Spt', 'Oct', 'Nov', 'Dec');
+
 function getI18nInnerHTMLFromDate(date) {
-    const en = `${MONTH_NAME_ARRAY[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
+    const en_us = `${MONTH_NAME_ARRAY[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
     const zh_cn = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
     const zh_tw = zh_cn;
-    return `<en>${en}</en><zh_cn>${zh_cn}</zh_cn><zh_tw>${zh_tw}</zh_tw>`;
+    return `<en_us>${en_us}</en_us><zh_cn>${zh_cn}</zh_cn><zh_tw>${zh_tw}</zh_tw>`;
 }
 // deno-fmt-ignore-file
 // deno-lint-ignore-file
@@ -182,20 +207,20 @@ function getI18nInnerHTMLFromDate(date) {
 const LOCAL_STORAGE_KEY_OF_LANG = 'lang';
 const LOCAL_STORAGE_KEY_OF_CURRENT_PAGE = CURRENT_URL.includes('?') ? CURRENT_URL.split('?')[1] : ACTUAL_PAGE_NAME;
 const CHANGE_LANG_NOTIFY_ARRAY = [];
-const getCurrentLang = ()=>localStorage.getItem(LOCAL_STORAGE_KEY_OF_LANG) || 'zh_cn';
-const setCurrentLang = (lang)=>{
+const getCurrentLang = () => localStorage.getItem(LOCAL_STORAGE_KEY_OF_LANG) || 'zh_cn';
+const setCurrentLang = (lang) => {
     getHtmlElement().setAttribute(LANG_PROPERTY, lang);
     localStorage.setItem(LOCAL_STORAGE_KEY_OF_LANG, lang);
     updateUIByCurrentLang();
 };
-const updateUIByCurrentLang = ()=>{
+const updateUIByCurrentLang = () => {
     const lang = getCurrentLang();
-    CHANGE_LANG_NOTIFY_ARRAY.forEach((func)=>func(lang));
+    CHANGE_LANG_NOTIFY_ARRAY.forEach((func) => func(lang));
 };
-const getCurrentPageLocalStorage = ()=>localStorage.getItem(LOCAL_STORAGE_KEY_OF_CURRENT_PAGE) || '';
-const setCurrentPageLocalStorage = (newValue)=>localStorage.setItem(LOCAL_STORAGE_KEY_OF_CURRENT_PAGE, newValue);
-const getChangeLangNotifyArrayOfCurrentPage = ()=>CHANGE_LANG_NOTIFY_ARRAY;
-const clearChangeLangNotifyArrayOfCurrentPage = ()=>{
+const getCurrentPageLocalStorage = () => localStorage.getItem(LOCAL_STORAGE_KEY_OF_CURRENT_PAGE) || '';
+const setCurrentPageLocalStorage = (newValue) => localStorage.setItem(LOCAL_STORAGE_KEY_OF_CURRENT_PAGE, newValue);
+const getChangeLangNotifyArrayOfCurrentPage = () => CHANGE_LANG_NOTIFY_ARRAY;
+const clearChangeLangNotifyArrayOfCurrentPage = () => {
     CHANGE_LANG_NOTIFY_ARRAY.length = 0;
 };
 
@@ -203,38 +228,42 @@ const clearChangeLangNotifyArrayOfCurrentPage = ()=>{
 // deno-lint-ignore-file
 // This code was bundled using `deno bundle` and it's not recommended to edit it manually
 
-const convertDateToYYYYMMDD_hhmmss = (date)=>{
+const convertDateToYYYYMMDD_hhmmss = (date) => {
     return `${date.getFullYear()}${'0'.concat((date.getMonth() + 1).toString()).substr(-2)}${'0'.concat(date.getDate().toString()).substr(-2)}`.concat(`_${'0'.concat(date.getHours().toString()).substr(-2)}${'0'.concat(date.getMinutes().toString()).substr(-2)}${'0'.concat(date.getSeconds().toString()).substr(-2)}`);
 };
+
 function pushSameValueTimes(array, value, times) {
-    for(let i = 0; i < times; ++i){
+    for (let i = 0; i < times; ++i) {
         array.push(value);
     }
 }
+
 function getNumbersArray(min, max) {
     const array = [];
-    for(let i = min; i <= max; ++i){
+    for (let i = min; i <= max; ++i) {
         array.push(i.toString());
     }
     return array;
 }
+
 function repeatString(original, times) {
     const array = [];
-    for(let i = 0; i <= times; ++i){
+    for (let i = 0; i <= times; ++i) {
         array.push(original);
     }
     return array.join();
 }
+
 function getArrayRepeatSameValue(value, times) {
     const array = [];
-    for(let i = 0; i < times; ++i){
+    for (let i = 0; i < times; ++i) {
         array.push(value);
     }
     return array;
 }
-const getI18nableWithSameContent = (value)=>{
+const getI18nableWithSameContent = (value) => {
     return {
-        en: value,
+        en_us: value,
         zh_cn: value,
         zh_tw: value
     };
@@ -247,28 +276,28 @@ class Global {
     IS_MOBILE = navigator.userAgent.toLowerCase().indexOf(' mobile ') > -1;
     body = getBodyElement();
     langUpdatedEventArray = getChangeLangNotifyArrayOfCurrentPage();
-    bindChangeLangEventForI18nElements = ()=>{
+    bindChangeLangEventForI18nElements = () => {
         const innerHtmlI18nElement = [];
-        querySelectorAllByI18n().forEach((element)=>{
+        querySelectorAllByI18n().forEach((element) => {
             element.hasAttribute('i18n') && (element.i18n = JSON.parse(element.getAttribute('i18n')));
             innerHtmlI18nElement.push(element);
         });
         const placeholderI18nElement = [];
-        querySelectorAllByI18nPlaceholder().forEach((element)=>{
+        querySelectorAllByI18nPlaceholder().forEach((element) => {
             element.hasAttribute('i18n-placeholder') && (element.i18nPlaceholder = JSON.parse(element.getAttribute('i18n-placeholder')));
             placeholderI18nElement.push(element);
         });
-        this.langUpdatedEventArray.push((lang)=>{
-            innerHtmlI18nElement.forEach((element)=>{
+        this.langUpdatedEventArray.push((lang) => {
+            innerHtmlI18nElement.forEach((element) => {
                 element.innerHTML = element.i18n && element.i18n[lang];
             });
-            placeholderI18nElement.forEach((element)=>{
+            placeholderI18nElement.forEach((element) => {
                 element.setAttribute('placeholder', element.i18nPlaceholder && element.i18nPlaceholder[lang]);
             });
         });
     };
     inited = false;
-    init = ()=>{
+    init = () => {
         if (this.inited) return;
         this.body.setAttribute(DEVICE_PROPERTY, this.IS_MOBILE ? 'mobile' : 'pc');
         this.inited = true;
@@ -287,13 +316,12 @@ class PcGlobal {
     navElement = createElement('nav');
     footerElement = getFooterElement();
     mainElement = getMainElement();
-    topMenuItems = [
-        {
+    topMenuItems = [{
             id: 'topMenuHome',
             kind: 'a',
             link: `${HOME_URL}`,
             titles: {
-                en: `Home`,
+                en_us: `Home`,
                 zh_cn: `首页`,
                 zh_tw: `首頁`
             }
@@ -303,7 +331,7 @@ class PcGlobal {
             kind: 'a',
             link: `${HOME_URL}?go=bricks&kind=0&page=1`,
             titles: {
-                en: `Tools`,
+                en_us: `Tools`,
                 zh_cn: `抛砖引玉`,
                 zh_tw: `抛磚引玉`
             }
@@ -313,7 +341,7 @@ class PcGlobal {
             kind: 'a',
             link: `${HOME_URL}?go=treasures&page=1`,
             titles: {
-                en: `Natural treasures`,
+                en_us: `Natural treasures`,
                 zh_cn: `物华天宝`,
                 zh_tw: `物華天寶`
             }
@@ -323,7 +351,7 @@ class PcGlobal {
             kind: 'a',
             link: `${HOME_URL}?go=stories&page=1`,
             titles: {
-                en: `Growings`,
+                en_us: `Growings`,
                 zh_cn: `成长足迹`,
                 zh_tw: `成長足迹`
             }
@@ -333,7 +361,7 @@ class PcGlobal {
             kind: 'a',
             link: `${HOME_URL}?go=about`,
             titles: {
-                en: `About Us`,
+                en_us: `About Us`,
                 zh_cn: `关于我们`,
                 zh_tw: `關於我們`
             }
@@ -343,11 +371,11 @@ class PcGlobal {
             kind: 'select',
             link: `onChangeLanuage`,
             titles: {
-                en: `Language`,
+                en_us: `Language`,
                 zh_cn: `语言`,
                 zh_tw: `語言`
             },
-            options: '<option value=\'en\'>English</option><option value=\'zh_cn\'>简体</option><option value=\'zh_tw\'>繁體</option>',
+            options: '<option value=\'en_us\'>English</option><option value=\'zh_cn\'>简体</option><option value=\'zh_tw\'>繁體</option>',
             onchange: 'onChangeLanuage'
         },
         {
@@ -355,7 +383,7 @@ class PcGlobal {
             kind: 'a',
             link: `https://github.com/edu-sonya-cc/edu.sonya.cc`,
             titles: {
-                en: ``,
+                en_us: ``,
                 zh_cn: ``,
                 zh_tw: ``
             }
@@ -365,15 +393,14 @@ class PcGlobal {
             kind: 'button',
             link: ``,
             titles: {
-                en: ``,
+                en_us: ``,
                 zh_cn: ``,
                 zh_tw: ``
             },
             onclick: 'onShowSearchRegion'
         }
     ];
-    footerHotAreas = [
-        {
+    footerHotAreas = [{
             id: 'footIcpLink',
             href: 'https://beian.miit.gov.cn/'
         },
@@ -396,11 +423,11 @@ class PcGlobal {
             onclick: 'onShare'
         }
     ];
-    onAddFavorite = (event)=>{
+    onAddFavorite = (event) => {
         let errorTip = '';
         let title = '';
-        switch(getCurrentLang()){
-            case 'en':
+        switch (getCurrentLang()) {
+            case 'en_us':
                 title = 'Add to favorite';
                 errorTip = 'Add to favorite failed, please press Ctrl + D or Command + D, Or manually set in the browser.';
                 break;
@@ -416,7 +443,7 @@ class PcGlobal {
                 break;
         }
         let url = encodeURI(window.location.href);
-        switch(ACTUAL_PAGE_NAME){
+        switch (ACTUAL_PAGE_NAME) {
             case 'home':
                 url = HOME_URL;
                 break;
@@ -448,10 +475,10 @@ class PcGlobal {
         }
         return stopEventBubble(event);
     };
-    onShare = (event)=>{
+    onShare = (event) => {
         console.log('onShare()');
         const url = encodeURI(window.location.href);
-        const wechatShareImageSrcPostfix = url.indexOf('&') === -1 ? '' : '/'.concat(url.split('&').slice(1).map((keyValue)=>keyValue.split('=')[1]).join('_'));
+        const wechatShareImageSrcPostfix = url.indexOf('&') === -1 ? '' : '/'.concat(url.split('&').slice(1).map((keyValue) => keyValue.split('=')[1]).join('_'));
         const wechatShareImageSrc = `${SITE_IMAGE_PATH}${ACTUAL_PAGE_NAME}${wechatShareImageSrcPostfix}.png`;
         this.wechatShareElement.setAttribute('src', wechatShareImageSrc);
         this.wechatShareElement.setAttribute('alt', wechatShareImageSrc);
@@ -459,29 +486,40 @@ class PcGlobal {
         return stopEventBubble(event);
     };
     searchRegionElement = createElement('div');
-    onShowSearchRegion = (event)=>{
+    onShowSearchRegion = (event) => {
         console.log('onShowSearchRegion()');
         showBlock(this.searchRegionElement);
         return stopEventBubble(event);
     };
-    onChangeLanuage = (event)=>{
+    onChangeLanuage = (event) => {
         console.log('onChangeLanuage()');
         setCurrentLang(getElementById('topMenuLanguage').value);
         return stopEventBubble(event);
     };
     pageSubKind = PAGE_SUB_KIND;
-    getPageSubKind = ()=>this.pageSubKind;
-    setPageSubKind = (kind)=>{
+    getPageSubKind = () => this.pageSubKind;
+    setPageSubKind = (kind) => {
         this.pageSubKind = kind;
     };
     pageIndex = PAGE_IDNEX;
-    getPageIndex = ()=>this.pageIndex + 1;
-    setPageIndex = (index)=>{
+    getPageIndex = () => this.pageIndex + 1;
+    setPageIndex = (index) => {
         this.pageIndex = index - 1;
     };
-    init = ()=>{
+    init = () => {
         global.init();
-        const { shareAreaElement , wechatShareElement , headerElement , logoElement , navElement , topMenuItems , footerElement , footerHotAreas , mainElement , searchRegionElement  } = this;
+        const {
+            shareAreaElement,
+            wechatShareElement,
+            headerElement,
+            logoElement,
+            navElement,
+            topMenuItems,
+            footerElement,
+            footerHotAreas,
+            mainElement,
+            searchRegionElement
+        } = this;
         mainElement.appendChild(searchRegionElement);
         searchRegionElement.setAttribute('id', 'searchRegion');
         footerElement.appendChild(shareAreaElement);
@@ -496,18 +534,22 @@ class PcGlobal {
         const logoUrl = SITE_IMAGE_PATH.concat('0common/logo.jpg');
         logoElement.setAttribute('src', logoUrl);
         logoElement.setAttribute('alt', logoUrl);
-        logoElement.onclick = ()=>{
+        logoElement.onclick = () => {
             window.location.href = HOME_URL;
         };
         const currentLang = getCurrentLang();
-        shareAreaElement.onclick = ()=>false;
-        footerElement.onclick = ()=>{
+        shareAreaElement.onclick = () => false;
+        footerElement.onclick = () => {
             hide(shareAreaElement);
         };
-        footerHotAreas.forEach((hotArea)=>{
+        footerHotAreas.forEach((hotArea) => {
             const aElement = createElement('a');
             footerElement.appendChild(aElement);
-            const { id , href , onclick  } = hotArea;
+            const {
+                id,
+                href,
+                onclick
+            } = hotArea;
             aElement.setAttribute('id', id);
             if (!href.startsWith(HOME_URL.substring(0, 20))) {
                 setAttributesOfA(aElement, href);
@@ -515,7 +557,7 @@ class PcGlobal {
                 aElement.setAttribute('href', href);
             }
             if (onclick) {
-                switch(onclick){
+                switch (onclick) {
                     case 'onAddFavorite':
                         aElement.onclick = this.onAddFavorite;
                         aElement.setAttribute('rel', 'sidebar');
@@ -530,7 +572,15 @@ class PcGlobal {
                 }
             }
         });
-        topMenuItems.forEach(({ id , kind , link , titles , options , onclick , onchange  })=>{
+        topMenuItems.forEach(({
+            id,
+            kind,
+            link,
+            titles,
+            options,
+            onclick,
+            onchange
+        }) => {
             const elementType = kind === 'menu' ? 'a' : kind;
             const menu = createElement(elementType);
             navElement.appendChild(menu);
@@ -552,7 +602,7 @@ class PcGlobal {
                 headerElement.appendChild(subMenuWrap);
                 subMenuWrap.setAttribute('id', id.concat('SubMenuWrap'));
                 subMenuWrap.setAttribute('class', 'topMenuItemSubMenuWrap');
-                menu.onclick = (event)=>{
+                menu.onclick = (event) => {
                     showBlock(subMenuWrap);
                     return stopEventBubble(event);
                 };
@@ -560,7 +610,7 @@ class PcGlobal {
             if (kind === 'select') {
                 menu.innerHTML = options;
                 menu.value = currentLang;
-                switch(onchange){
+                switch (onchange) {
                     case 'onChangeLanuage':
                         menu.onchange = this.onChangeLanuage;
                         break;
@@ -571,7 +621,7 @@ class PcGlobal {
                 menu.innerHTML = getI18nInnerHTML(titles);
             }
             if (onclick) {
-                switch(onclick){
+                switch (onclick) {
                     case 'onShowSearchRegion':
                         menu.onclick = this.onShowSearchRegion;
                         break;
@@ -585,11 +635,11 @@ class PcGlobal {
         const topMenuLanguage = getElementById('topMenuLanguage');
         topMenuLanguage.value = getCurrentLang();
     };
-    fillListAndPagination = (listElement, paginationElement, pageSize, list, pageName, fillItem)=>{
+    fillListAndPagination = (listElement, paginationElement, pageSize, list, pageName, fillItem) => {
         listElement.id = `${pageName}List`;
         paginationElement.className = 'pagination';
         list.length;
-        for(let i = 0; i < pageSize; ++i){
+        for (let i = 0; i < pageSize; ++i) {
             const itemElement = createElement('div');
             itemElement.className = `${pageName}Item`;
             listElement.appendChild(itemElement);
@@ -611,7 +661,7 @@ class PcGlobal {
         rightArrowElement.className = 'paginationRightArrow';
         this.changePaginationParams(list, pageSize, listElement, paginationElement, fillItem);
     };
-    changePaginationParams = (list, pageSize, listElement, paginationElement, fillItem)=>{
+    changePaginationParams = (list, pageSize, listElement, paginationElement, fillItem) => {
         const leftArrowElement = paginationElement.children[0];
         const pageNumbersWrapElement = paginationElement.children[1];
         const rightArrowElement = paginationElement.children[2];
@@ -620,26 +670,27 @@ class PcGlobal {
         const pageMaxIndex = pageCount - 1;
         const countOfLastPage = itemCount - pageSize * pageMaxIndex;
         let currentPage = -1;
-        const gotoPage = (pageIndex)=>{
+        const gotoPage = (pageIndex) => {
             if (pageIndex > pageMaxIndex) pageIndex = pageMaxIndex;
             else if (pageIndex < 0) pageIndex = 0;
             if (currentPage === pageIndex) return;
             const countOfCurrentPage = pageIndex < pageMaxIndex ? pageSize : countOfLastPage;
             const indexOffset = pageSize * pageIndex;
-            for(let i = 0; i < countOfCurrentPage; ++i){
+            for (let i = 0; i < countOfCurrentPage; ++i) {
                 fillItem(listElement.children[i], list[indexOffset + i]);
             }
-            for(let i1 = pageSize - 1; i1 >= countOfCurrentPage; --i1){
+            for (let i1 = pageSize - 1; i1 >= countOfCurrentPage; --i1) {
                 fillItem(listElement.children[i1], null);
             }
             currentPage = pageIndex;
             this.pageIndex = pageIndex;
             const pageNumberElementMaxIndex = pageNumbersWrapElement.children.length - 1;
             if (pageCount >= 10) {
-                let startIndex = 1, endIndex = pageNumberElementMaxIndex;
+                let startIndex = 1,
+                    endIndex = pageNumberElementMaxIndex;
                 if (pageIndex < 4) {
                     endIndex = pageNumberElementMaxIndex - 1;
-                    for(let i2 = startIndex; i2 <= endIndex; ++i2){
+                    for (let i2 = startIndex; i2 <= endIndex; ++i2) {
                         const pageNumberElement = pageNumbersWrapElement.children[i2];
                         pageNumberElement.innerHTML = (i2 + 1).toString();
                         if (pageNumberElement.hasAttribute(PAGE_PROPERTY)) {
@@ -651,7 +702,7 @@ class PcGlobal {
                     rightEllipsisElement.setAttribute(PAGE_PROPERTY, '6');
                 } else if (pageIndex >= pageMaxIndex - 4) {
                     startIndex = 2;
-                    for(let i3 = startIndex; i3 <= endIndex; ++i3){
+                    for (let i3 = startIndex; i3 <= endIndex; ++i3) {
                         const pageNumberElement1 = pageNumbersWrapElement.children[i3];
                         pageNumberElement1.innerHTML = (i3 + 1).toString();
                         if (pageNumberElement1.hasAttribute(PAGE_PROPERTY)) {
@@ -664,7 +715,7 @@ class PcGlobal {
                 } else {
                     startIndex = 2;
                     endIndex = pageNumberElementMaxIndex - 1;
-                    for(let i4 = startIndex; i4 <= endIndex; ++i4){
+                    for (let i4 = startIndex; i4 <= endIndex; ++i4) {
                         const pageNumberElement2 = pageNumbersWrapElement.children[i4];
                         pageNumberElement2.innerHTML = (i4 + 1).toString();
                         if (pageNumberElement2.hasAttribute(PAGE_PROPERTY)) {
@@ -680,7 +731,7 @@ class PcGlobal {
                 }
             }
             const pageIndexStr = (pageIndex + 1).toString();
-            for(let i5 = 0; i5 <= pageNumberElementMaxIndex; ++i5){
+            for (let i5 = 0; i5 <= pageNumberElementMaxIndex; ++i5) {
                 const pageNumberElement3 = pageNumbersWrapElement.children[i5];
                 if (pageNumberElement3.innerHTML === pageIndexStr) {
                     pageNumberElement3.setAttribute(ACTIVATED_PROPERTY, '');
@@ -706,35 +757,35 @@ class PcGlobal {
                 fullUrl
             }));
             if (url !== fullUrl) {
-                setTimeout(()=>{
+                setTimeout(() => {
                     window.location.href = fullUrl;
                 }, 0);
             }
         };
-        switch(pageCount){
+        switch (pageCount) {
             case 0:
             case 1:
                 hide(paginationElement);
                 break;
             default:
                 showBlock(paginationElement);
-                leftArrowElement.onclick = (event)=>{
+                leftArrowElement.onclick = (event) => {
                     gotoPage(currentPage - 1);
                     return stopEventBubble(event);
                 };
-                rightArrowElement.onclick = (event)=>{
+                rightArrowElement.onclick = (event) => {
                     gotoPage(currentPage + 1);
                     return stopEventBubble(event);
                 };
                 pageNumbersWrapElement.innerHTML = '';
                 if (pageCount < 10) {
-                    for(let i = 0; i < pageCount; ++i){
+                    for (let i = 0; i < pageCount; ++i) {
                         const pageNumberElement = createElement('span');
                         pageNumberElement.innerHTML = (i + 1).toString();
                         pageNumbersWrapElement.appendChild(pageNumberElement);
                     }
                 } else {
-                    for(let i1 = 0; i1 < 5; ++i1){
+                    for (let i1 = 0; i1 < 5; ++i1) {
                         const pageNumberElement1 = createElement('span');
                         pageNumberElement1.innerHTML = (i1 + 1).toString();
                         pageNumbersWrapElement.appendChild(pageNumberElement1);
@@ -747,9 +798,9 @@ class PcGlobal {
                     pageNumbersWrapElement.appendChild(lastPageNumberElement);
                 }
                 const pageNumberElementCount = pageNumbersWrapElement.children.length;
-                for(let i2 = 0; i2 < pageNumberElementCount; ++i2){
+                for (let i2 = 0; i2 < pageNumberElementCount; ++i2) {
                     const pageNumberElement2 = pageNumbersWrapElement.children[i2];
-                    pageNumberElement2.onclick = (event)=>{
+                    pageNumberElement2.onclick = (event) => {
                         const element = event.target;
                         const innerHTML = element.innerHTML;
                         if (innerHTML === '...') {
@@ -766,21 +817,21 @@ class PcGlobal {
     };
 }
 const pcGlobal = new PcGlobal();
-document.onclick = ()=>{
-    querySelectorAll('.topMenuItemSubMenuWrap,#shareArea,#brickPageShareArea,#brickPageSponsorImage').forEach((element)=>hide(element));
+document.onclick = () => {
+    querySelectorAll('.topMenuItemSubMenuWrap,#shareArea,#brickPageShareArea,#brickPageSponsorImage').forEach((element) => hide(element));
 };
 class ActualPageBase {
     init() {
         this.initTitleElement();
         const titleElement = getTitleElement();
-        getChangeLangNotifyArrayOfCurrentPage().push((lang)=>{
+        getChangeLangNotifyArrayOfCurrentPage().push((lang) => {
             titleElement.innerHTML = titleElement.i18n[lang];
         });
         this.initMainElement();
         global.bindChangeLangEventForI18nElements();
         setCurrentLang(getCurrentLang());
     }
-}// deno-fmt-ignore-file
+} // deno-fmt-ignore-file
 // deno-lint-ignore-file
 // This code was bundled using `deno bundle` and it's not recommended to edit it manually
 
@@ -789,9 +840,11 @@ class DPIHelper {
     dpiX = 0;
     mmToPxScale = 0;
     pxToMmScale = 0;
-    constructor(){
+    constructor() {
         const screen = window.screen;
-        const { dpiArray  } = this;
+        const {
+            dpiArray
+        } = this;
         if (screen.deviceXDPI) {
             dpiArray.push(screen.deviceXDPI);
             dpiArray.push(screen.deviceYDPI);
@@ -808,34 +861,34 @@ class DPIHelper {
         this.mmToPxScale = dpiX / 25.4;
         this.pxToMmScale = 25.4 / dpiX;
     }
-    convertPxToMm = (px)=>px / this.dpiX * 25.4;
-    convertMmToPx = (mm)=>mm / 25.4 * this.dpiX;
-    getMmToPxScale = ()=>this.mmToPxScale;
-    getPxToMmScale = ()=>this.pxToMmScale;
+    convertPxToMm = (px) => px / this.dpiX * 25.4;
+    convertMmToPx = (mm) => mm / 25.4 * this.dpiX;
+    getMmToPxScale = () => this.mmToPxScale;
+    getPxToMmScale = () => this.pxToMmScale;
 }
 // deno-fmt-ignore-file
 // deno-lint-ignore-file
 // This code was bundled using `deno bundle` and it's not recommended to edit it manually
 
 var svgSpace;
-(function(svgSpace1) {
+(function (svgSpace1) {
     let edu;
-    (function(edu) {
+    (function (edu) {
         let sonya;
-        (function(sonya) {
+        (function (sonya) {
             let cc;
-            (function(cc) {
+            (function (cc) {
                 const SVG_NS = 'http://www.w3.org/2000/svg';
                 const SVG_XLINKNS = 'http://www.w3.org/1999/xlink';
                 class SvgHelper {
-                    static createSvg = ()=>{
+                    static createSvg = () => {
                         const svg = document.createElementNS(SVG_NS, 'svg');
                         svg.setAttribute('version', '1.1');
                         svg.setAttribute('xmlns', SVG_NS);
                         svg.setAttribute('xmlns:xlink', SVG_XLINKNS);
                         return svg;
                     };
-                    static createSvgPath = ()=>{
+                    static createSvgPath = () => {
                         return document.createElementNS(SVG_NS, 'path');
                     };
                     static appendLine(svg, STYLE, x1, x2, y1, y2, viewBox) {
@@ -886,7 +939,7 @@ var svgSpace;
                         text.setAttribute('x', `${x}mm`);
                         text.setAttribute('y', `${y}mm`);
                         text.setAttribute('style', 'dominant-baseline:middle;text-anchor:middle;');
-                        if (CONTENT.indexOf('<en>') > -1) {
+                        if (CONTENT.indexOf('<en_us>') > -1) {
                             const lang = getCurrentLang();
                             const startTag = `<${lang}>`;
                             const endTag = `</${lang}>`;
@@ -902,13 +955,13 @@ var svgSpace;
                             const segs = CONTENT.split('<br>');
                             let lastLength = 0;
                             const dyOffset = `${dyNumber}${unit}`;
-                            segs.forEach((seg, index)=>{
+                            segs.forEach((seg, index) => {
                                 SvgHelper.appendTspan(text, '', seg, index ? `-${lastLength}em` : '0', index ? dyOffset : '0');
                                 lastLength = seg.length;
                             });
                         } else {
                             if (maybeNumber) {
-                                CONTENT.split('').forEach((__char, index)=>{
+                                CONTENT.split('').forEach((__char, index) => {
                                     SvgHelper.appendTspan(text, '', __char, '0', '0');
                                 });
                             } else {
@@ -918,7 +971,12 @@ var svgSpace;
                         g.appendChild(text);
                         if (viewBox) {
                             const clientRects = text.getClientRects();
-                            const { left: x1 , right: x2 , top: y1 , bottom: y2  } = clientRects.length ? clientRects.item(0) : text.getBoundingClientRect();
+                            const {
+                                left: x1,
+                                right: x2,
+                                top: y1,
+                                bottom: y2
+                            } = clientRects.length ? clientRects.item(0) : text.getBoundingClientRect();
                             viewBox.left = Math.min(viewBox.left, x1, x2);
                             viewBox.right = Math.max(viewBox.right, x1, x2);
                             viewBox.top = Math.min(viewBox.top, y1, y2);
@@ -945,7 +1003,9 @@ var svgSpace;
                     static appendOuterLine(svg, WIDTH, HEIGHT, OUTER_LINE_STYLE) {
                         svg.setAttribute('width', `${WIDTH}mm`);
                         svg.setAttribute('height', `${HEIGHT}mm`);
-                        const { appendLine  } = svgSpace.edu.sonya.cc.SvgHelper;
+                        const {
+                            appendLine
+                        } = svgSpace.edu.sonya.cc.SvgHelper;
                         appendLine(svg, OUTER_LINE_STYLE, 0, WIDTH, 0, 0, null);
                         appendLine(svg, OUTER_LINE_STYLE, 0, WIDTH, HEIGHT, HEIGHT, null);
                         appendLine(svg, OUTER_LINE_STYLE, 0, 0, 0, HEIGHT, null);
@@ -971,13 +1031,13 @@ var svgSpace;
 // This code was bundled using `deno bundle` and it's not recommended to edit it manually
 
 var edu;
-(function(edu) {
+(function (edu) {
     let sonya;
-    (function(sonya) {
+    (function (sonya) {
         let cc;
-        (function(cc) {
+        (function (cc) {
             let DiceKind;
-            (function(DiceKind) {
+            (function (DiceKind) {
                 DiceKind[DiceKind["none"] = 0] = "none";
                 DiceKind[DiceKind["four"] = 1] = "four";
                 DiceKind[DiceKind["six"] = 2] = "six";
@@ -992,16 +1052,25 @@ var edu;
             const SVG_XLINKNS = 'http://www.w3.org/1999/xlink';
             class DiceGenerator {
                 batchCreate(createParameters) {
-                    createParameters.forEach((createParameter, index)=>{
+                    createParameters.forEach((createParameter, index) => {
                         if (createParameter.id.length === 0) createParameter.id = `svg_index`;
                     });
-                    return createParameters.map((createParameter)=>this.create(createParameter));
+                    return createParameters.map((createParameter) => this.create(createParameter));
                 }
-                create({ id , diceKind , sideLength: SIDE_LENGTH , contents: CONTENTS , outerLineStyle: OUTER_LINE_STYLE , innerLineStyle: INNER_LINE_STYLE , textStyle: TEXT_STYLE , options: OPTIONS  }) {
+                create({
+                    id,
+                    diceKind,
+                    sideLength: SIDE_LENGTH,
+                    contents: CONTENTS,
+                    outerLineStyle: OUTER_LINE_STYLE,
+                    innerLineStyle: INNER_LINE_STYLE,
+                    textStyle: TEXT_STYLE,
+                    options: OPTIONS
+                }) {
                     if (id.length === 0) id = 'svg_0';
                     let FIXED_SIDE_LENGTH = SIDE_LENGTH;
                     let nested = false;
-                    switch(diceKind){
+                    switch (diceKind) {
                         case DiceKind.twentyFour:
                             FIXED_SIDE_LENGTH = 25;
                             nested = true;
@@ -1018,10 +1087,10 @@ var edu;
                         bottom: 0
                     };
                     const infos = [];
-                    switch(diceKind){
+                    switch (diceKind) {
                         case DiceKind.four:
-                            CONTENTS.forEach((content)=>{
-                                for(let i = 0; i < 3; ++i){
+                            CONTENTS.forEach((content) => {
+                                for (let i = 0; i < 3; ++i) {
                                     infos.push({
                                         content,
                                         x: 0,
@@ -1032,7 +1101,7 @@ var edu;
                             });
                             break;
                         default:
-                            CONTENTS.forEach((content)=>{
+                            CONTENTS.forEach((content) => {
                                 infos.push({
                                     content,
                                     x: 0,
@@ -1043,7 +1112,7 @@ var edu;
                             break;
                     }
                     const mmToPxScale = new DPIHelper().getMmToPxScale();
-                    switch(diceKind){
+                    switch (diceKind) {
                         case DiceKind.four:
                             this.drawGraphsOfFourSidedDice(svg, FIXED_SIDE_LENGTH, INNER_LINE_STYLE, OUTER_LINE_STYLE, viewBox, OPTIONS, mmToPxScale);
                             this.drawTextsOfFourSidedDice(infos, FIXED_SIDE_LENGTH, CONTENTS);
@@ -1071,7 +1140,12 @@ var edu;
                         default:
                             break;
                     }
-                    infos.forEach(({ content , x , y , rotate  })=>{
+                    infos.forEach(({
+                        content,
+                        x,
+                        y,
+                        rotate
+                    }) => {
                         this.appendText(svg, TEXT_STYLE, content, x, y, rotate, null);
                     });
                     const width = `${viewBox.right}mm`;
@@ -1097,7 +1171,7 @@ var edu;
                         css
                     };
                 }
-                createSvg = ()=>{
+                createSvg = () => {
                     const svg = document.createElementNS(SVG_NS, 'svg');
                     svg.setAttribute('version', '1.1');
                     svg.setAttribute('xmlns', SVG_NS);
@@ -1107,7 +1181,10 @@ var edu;
                 drawGraphsOfFourSidedDice(svg, SIDE_LENGTH, INNER_LINE_STYLE, OUTER_LINE_STYLE, viewBox, OPTIONS, mmToPxScale) {
                     const HEIGHT_OF_ONE = SIDE_LENGTH * 1.732 * 0.5;
                     const HEIGHT_OF_TWO = HEIGHT_OF_ONE * 2;
-                    let x1 = 0, x2 = 0, y1 = 0, y2 = 0;
+                    let x1 = 0,
+                        x2 = 0,
+                        y1 = 0,
+                        y2 = 0;
                     x1 = SIDE_LENGTH * 0.5, x2 = x1 + SIDE_LENGTH, y1 = HEIGHT_OF_ONE, y2 = y1;
                     this.appendLine(svg, INNER_LINE_STYLE, x1, x2, y1, y2, viewBox);
                     x1 = 0, x2 = x1 + SIDE_LENGTH, y1 += HEIGHT_OF_ONE, y2 = y1;
@@ -1191,8 +1268,16 @@ var edu;
                     path.setAttribute('stroke', '#000000');
                     path.setAttribute('d', `M 0, ${duckTongueHeightPx + SIDE_LENGTH_PX} `.concat(`h ${SIDE_LENGTH_PX * 2} `, `l ${offsetX}, -${pasteRegionHeightPx} `, `h ${pasteRegionWidth} `, `l ${offsetX}, ${pasteRegionHeightPx} `, `v -${SIDE_LENGTH_PX} `, `l ${offsetX}, -${duckTongueHeightPx} `, `h ${pasteRegionWidth} `, `l ${offsetX}, ${duckTongueHeightPx} `, `v ${SIDE_LENGTH_PX} `, `l ${offsetX}, -${pasteRegionHeightPx} `, `h ${pasteRegionWidth} `, `l ${offsetX}, ${pasteRegionHeightPx} `, `v ${SIDE_LENGTH_PX} `, `h -${SIDE_LENGTH_PX * 2} `, `l -${offsetX}, ${pasteRegionHeightPx} `, `h -${pasteRegionWidth} `, `l -${offsetX}, -${pasteRegionHeightPx} `, `v ${SIDE_LENGTH_PX} `, `l -${offsetX}, ${duckTongueHeightPx} `, `h -${pasteRegionWidth} `, `l -${offsetX}, -${duckTongueHeightPx} `, `v -${SIDE_LENGTH_PX} `, `l -${offsetX}, ${pasteRegionHeightPx} `, `h -${pasteRegionWidth} `, `l -${offsetX}, -${pasteRegionHeightPx} `, ' z'));
                     svg.appendChild(path);
-                    let X1 = 0, X2 = SIDE_LENGTH * 1, X3 = SIDE_LENGTH * 2, X4 = SIDE_LENGTH * 3, X5 = SIDE_LENGTH * 4, X6 = SIDE_LENGTH * 5;
-                    let Y2 = duckTongueHeight, Y4 = Y2 + SIDE_LENGTH, Y5 = Y4 + SIDE_LENGTH, Y7 = Y5 + SIDE_LENGTH;
+                    let X1 = 0,
+                        X2 = SIDE_LENGTH * 1,
+                        X3 = SIDE_LENGTH * 2,
+                        X4 = SIDE_LENGTH * 3,
+                        X5 = SIDE_LENGTH * 4,
+                        X6 = SIDE_LENGTH * 5;
+                    let Y2 = duckTongueHeight,
+                        Y4 = Y2 + SIDE_LENGTH,
+                        Y5 = Y4 + SIDE_LENGTH,
+                        Y7 = Y5 + SIDE_LENGTH;
                     this.appendLine(svg, INNER_LINE_STYLE, X4, X5, Y2, Y2, null);
                     this.appendLine(svg, INNER_LINE_STYLE, X3, X6, Y4, Y4, null);
                     this.appendLine(svg, INNER_LINE_STYLE, X1, X4, Y5, Y5, null);
@@ -1229,7 +1314,10 @@ var edu;
                     const EXTNED_LENGTH = 0.15 * SIDE_LENGTH;
                     const OFFSET_X = EXTNED_LENGTH * 0.5;
                     const OFFSET_Y = EXTNED_LENGTH * Math.cos(30 / 180 * Math.PI);
-                    let x1 = 0, x2 = 0, y1 = 0, y2 = 0;
+                    let x1 = 0,
+                        x2 = 0,
+                        y1 = 0,
+                        y2 = 0;
                     x1 = 0, x2 = OFFSET_X, y1 = HEIGHT_OF_ONE, y2 = HEIGHT_OF_ONE - OFFSET_Y;
                     this.appendLine(svg, OUTER_LINE_STYLE, x1, x2, y1, y2, null);
                     x1 = x2, x2 = SIDE_LENGTH - OFFSET_X, y1 = y2;
@@ -1304,28 +1392,48 @@ var edu;
                     const SIN72_MULTIPLY_LONG_SIDE_LENGTH = LONG_SIDE_LENGTH * SIN72;
                     const SECOND_GROUP_OFFSET = SIDE_LENGTH * 2 + LONG_SIDE_LENGTH + SIN18_MULTIPLY_SIDE_LENGTH;
                     const TOP = SIN72_MULTIPLY_QUARTER_SIDE_LENGTH;
-                    for(let groupIndex = 0; groupIndex < 2; ++groupIndex){
+                    for (let groupIndex = 0; groupIndex < 2; ++groupIndex) {
                         const LEFT = (groupIndex === 0 ? 0 : SECOND_GROUP_OFFSET) + SIN72_MULTIPLY_QUARTER_SIDE_LENGTH;
-                        let A1x = 0, A1y = 0;
-                        let A2x = 0, A2y = 0;
-                        let A3x = 0, A3y = 0;
-                        let A4x = 0, A4y = 0;
-                        let A5x = 0, A5y = 0;
-                        let B1x = 0, B1y = 0;
-                        let B2x = 0, B2y = 0;
-                        let B5x = 0, B5y = 0;
-                        let C1x = 0, C1y = 0;
-                        let C2x = 0, C2y = 0;
-                        let C5x = 0, C5y = 0;
-                        let D1x = 0, D1y = 0;
-                        let D2x = 0, D2y = 0;
-                        let D5x = 0, D5y = 0;
-                        let E1x = 0, E1y = 0;
-                        let E2x = 0, E2y = 0;
-                        let E5x = 0, E5y = 0;
-                        let F1x = 0, F1y = 0;
-                        let F2x = 0, F2y = 0;
-                        let F5x = 0, F5y = 0;
+                        let A1x = 0,
+                            A1y = 0;
+                        let A2x = 0,
+                            A2y = 0;
+                        let A3x = 0,
+                            A3y = 0;
+                        let A4x = 0,
+                            A4y = 0;
+                        let A5x = 0,
+                            A5y = 0;
+                        let B1x = 0,
+                            B1y = 0;
+                        let B2x = 0,
+                            B2y = 0;
+                        let B5x = 0,
+                            B5y = 0;
+                        let C1x = 0,
+                            C1y = 0;
+                        let C2x = 0,
+                            C2y = 0;
+                        let C5x = 0,
+                            C5y = 0;
+                        let D1x = 0,
+                            D1y = 0;
+                        let D2x = 0,
+                            D2y = 0;
+                        let D5x = 0,
+                            D5y = 0;
+                        let E1x = 0,
+                            E1y = 0;
+                        let E2x = 0,
+                            E2y = 0;
+                        let E5x = 0,
+                            E5y = 0;
+                        let F1x = 0,
+                            F1y = 0;
+                        let F2x = 0,
+                            F2y = 0;
+                        let F5x = 0,
+                            F5y = 0;
                         if (groupIndex === 0) {
                             A1x = LEFT + SIN18 * (SIDE_LENGTH + SIN18_MULTIPLY_SIDE_LENGTH * 2) + LONG_SIDE_LENGTH;
                             A2x = A1x + SIN54_MULTIPLY_SIDE_LENGTH;
@@ -1435,26 +1543,46 @@ var edu;
                         this.appendLine(svg, LINE_STYLE, E1x, E5x, E1y, E5y, viewBox);
                         this.appendLine(svg, LINE_STYLE, F1x, F2x, F1y, F2y, viewBox);
                         this.appendLine(svg, LINE_STYLE, F1x, F5x, F1y, F5y, viewBox);
-                        let B6x = 0, B6y = 0;
-                        let B7x = 0, B7y = 0;
-                        let B8x = 0, B8y = 0;
-                        let B9x = 0, B9y = 0;
-                        let C6x = 0, C6y = 0;
-                        let C7x = 0, C7y = 0;
-                        let C8x = 0, C8y = 0;
-                        let C9x = 0, C9y = 0;
-                        let D6x = 0, D6y = 0;
-                        let D7x = 0, D7y = 0;
-                        let D8x = 0, D8y = 0;
-                        let D9x = 0, D9y = 0;
-                        let E6x = 0, E6y = 0;
-                        let E7x = 0, E7y = 0;
-                        let E8x = 0, E8y = 0;
-                        let E9x = 0, E9y = 0;
-                        let F6x = 0, F6y = 0;
-                        let F7x = 0, F7y = 0;
-                        let F8x = 0, F8y = 0;
-                        let F9x = 0, F9y = 0;
+                        let B6x = 0,
+                            B6y = 0;
+                        let B7x = 0,
+                            B7y = 0;
+                        let B8x = 0,
+                            B8y = 0;
+                        let B9x = 0,
+                            B9y = 0;
+                        let C6x = 0,
+                            C6y = 0;
+                        let C7x = 0,
+                            C7y = 0;
+                        let C8x = 0,
+                            C8y = 0;
+                        let C9x = 0,
+                            C9y = 0;
+                        let D6x = 0,
+                            D6y = 0;
+                        let D7x = 0,
+                            D7y = 0;
+                        let D8x = 0,
+                            D8y = 0;
+                        let D9x = 0,
+                            D9y = 0;
+                        let E6x = 0,
+                            E6y = 0;
+                        let E7x = 0,
+                            E7y = 0;
+                        let E8x = 0,
+                            E8y = 0;
+                        let E9x = 0,
+                            E9y = 0;
+                        let F6x = 0,
+                            F6y = 0;
+                        let F7x = 0,
+                            F7y = 0;
+                        let F8x = 0,
+                            F8y = 0;
+                        let F9x = 0,
+                            F9y = 0;
                         if (groupIndex === 0) {
                             B6x = B5x - SIN54_MULTIPLY_QUARTER_SIDE_LENGTH;
                             B6y = B5y - SIN36_MULTIPLY_QUARTER_SIDE_LENGTH;
@@ -1529,12 +1657,18 @@ var edu;
                             this.appendLine(svg, OUTER_LINE_STYLE, F2x, B5x, F2y, B5y, viewBox);
                         }
                         if (OPTIONS.withHole) {
-                            let CC1x = (A1x + A2x + A3x + A4x + A5x) * 0.2, CC1y = (A1y + A2y + A3y + A4y + A5y) * 0.2;
-                            let CC2x = (A1x + A5x + B1x + B2x + B5x) * 0.2, CC2y = (A1y + A5y + B1y + B2y + B5y) * 0.2;
-                            let CC3x = (A1x + A2x + C1x + C2x + C5x) * 0.2, CC3y = (A1y + A2y + C1y + C2y + C5y) * 0.2;
-                            let CC4x = (A2x + A3x + D1x + D2x + D5x) * 0.2, CC4y = (A2y + A3y + D1y + D2y + D5y) * 0.2;
-                            let CC5x = (A3x + A4x + E1x + E2x + E5x) * 0.2, CC5y = (A3y + A4y + E1y + E2y + E5y) * 0.2;
-                            let CC6x = (A4x + A5x + F1x + F2x + F5x) * 0.2, CC6y = (A4y + A5y + F1y + F2y + F5y) * 0.2;
+                            let CC1x = (A1x + A2x + A3x + A4x + A5x) * 0.2,
+                                CC1y = (A1y + A2y + A3y + A4y + A5y) * 0.2;
+                            let CC2x = (A1x + A5x + B1x + B2x + B5x) * 0.2,
+                                CC2y = (A1y + A5y + B1y + B2y + B5y) * 0.2;
+                            let CC3x = (A1x + A2x + C1x + C2x + C5x) * 0.2,
+                                CC3y = (A1y + A2y + C1y + C2y + C5y) * 0.2;
+                            let CC4x = (A2x + A3x + D1x + D2x + D5x) * 0.2,
+                                CC4y = (A2y + A3y + D1y + D2y + D5y) * 0.2;
+                            let CC5x = (A3x + A4x + E1x + E2x + E5x) * 0.2,
+                                CC5y = (A3y + A4y + E1y + E2y + E5y) * 0.2;
+                            let CC6x = (A4x + A5x + F1x + F2x + F5x) * 0.2,
+                                CC6y = (A4y + A5y + F1y + F2y + F5y) * 0.2;
                             this.appendCircle(svg, INNER_LINE_STYLE, CC1x, CC1y, RADIUS, null);
                             this.appendCircle(svg, INNER_LINE_STYLE, CC2x, CC2y, RADIUS, null);
                             this.appendCircle(svg, INNER_LINE_STYLE, CC3x, CC3y, RADIUS, null);
@@ -1573,7 +1707,10 @@ var edu;
                     const pasteRegionLongBiasY = pasteRegionLongBias * SIN60;
                     const TwoY = OneY * 2;
                     const ThreeY = OneY * 3;
-                    let x1 = 0, x2 = 0, y1 = 0, y2 = 0;
+                    let x1 = 0,
+                        x2 = 0,
+                        y1 = 0,
+                        y2 = 0;
                     let FIVE_SIDE = SIDE_LENGTH * 5;
                     x1 = pasteRegionLongBiasX + pasteRegion, x2 = x1 + FIVE_SIDE;
                     y1 = OneY, y2 = y1;
@@ -1583,7 +1720,7 @@ var edu;
                     this.appendLine(svg, INNER_LINE_STYLE, x1, x2, y1, y2, viewBox);
                     x1 -= OneX, x2 = x1 - OneX;
                     y1 = OneY, y2 = TwoY;
-                    for(let i = 0; i < 5; ++i){
+                    for (let i = 0; i < 5; ++i) {
                         x1 += SIDE_LENGTH, x2 += SIDE_LENGTH;
                         this.appendLine(svg, INNER_LINE_STYLE, x1, x2, y1, y2, viewBox);
                     }
@@ -1595,7 +1732,7 @@ var edu;
                     this.appendLine(svg, INNER_LINE_STYLE, x1, x2, y1, y2, viewBox);
                     x1 -= OneX;
                     y1 = 0;
-                    for(let i1 = 0; i1 < 3; ++i1){
+                    for (let i1 = 0; i1 < 3; ++i1) {
                         x1 += SIDE_LENGTH, x2 += SIDE_LENGTH;
                         this.appendLine(svg, INNER_LINE_STYLE, x1, x2, y1, y2, viewBox);
                     }
@@ -1648,35 +1785,73 @@ var edu;
                     return Math.cos(angle * Math.PI / 180);
                 }
                 drawGraphsOfTwentyFourSidedDice(svg, SIDE_LENGTH, INNER_LINE_STYLE, OUTER_LINE_STYLE, viewBox, OPTIONS, mmToPxScale) {
-                    const { getSinByAngle , getCosByAngle  } = this;
+                    const {
+                        getSinByAngle,
+                        getCosByAngle
+                    } = this;
                     const BIGER_ANGLE = 180 - 48.275 * 2;
                     const SMALL_ANGLE_COS = Math.cos(48.275 * Math.PI / 180);
                     const HALF_LONG_SIDE_LENGTH = 50 * 0.5;
                     const SHORT_SIDE_LENGTH = HALF_LONG_SIDE_LENGTH / SMALL_ANGLE_COS;
-                    let ax = 0, ay = 0, bx = 0, by = 0, cx = 0, cy = 0, dx = 0, dy = 0, ex = 0, ey = 0, fx = 0, fy = 0;
-                    let aax = 0, aay = 0, bbx = 0, bby = 0, ddx = 0, ddy = 0, eex = 0, eey = 0, ffx = 0, ffy = 0, fffx = 0, fffy = 0;
-                    let content_offset_top = -3, content_offset_left = -2;
+                    let ax = 0,
+                        ay = 0,
+                        bx = 0,
+                        by = 0,
+                        cx = 0,
+                        cy = 0,
+                        dx = 0,
+                        dy = 0,
+                        ex = 0,
+                        ey = 0,
+                        fx = 0,
+                        fy = 0;
+                    let aax = 0,
+                        aay = 0,
+                        bbx = 0,
+                        bby = 0,
+                        ddx = 0,
+                        ddy = 0,
+                        eex = 0,
+                        eey = 0,
+                        ffx = 0,
+                        ffy = 0,
+                        fffx = 0,
+                        fffy = 0;
+                    let content_offset_top = -3,
+                        content_offset_left = -2;
                     content_offset_top *= 1.5, content_offset_left *= 1.5;
                     const OFFSET_X = -23.0805019730301175;
-                    const ax1 = 150 + OFFSET_X, ay1 = 0;
-                    const bx1 = ax1 + 50, by1 = 0;
-                    const cx1 = ax1 + HALF_LONG_SIDE_LENGTH, cy1 = SHORT_SIDE_LENGTH * getSinByAngle(48.275);
+                    const ax1 = 150 + OFFSET_X,
+                        ay1 = 0;
+                    const bx1 = ax1 + 50,
+                        by1 = 0;
+                    const cx1 = ax1 + HALF_LONG_SIDE_LENGTH,
+                        cy1 = SHORT_SIDE_LENGTH * getSinByAngle(48.275);
                     const angle_cd1 = BIGER_ANGLE - 48.275;
-                    const dx1 = cx1 - SHORT_SIDE_LENGTH * getCosByAngle(angle_cd1), dy1 = cy1 + SHORT_SIDE_LENGTH * getSinByAngle(angle_cd1);
+                    const dx1 = cx1 - SHORT_SIDE_LENGTH * getCosByAngle(angle_cd1),
+                        dy1 = cy1 + SHORT_SIDE_LENGTH * getSinByAngle(angle_cd1);
                     const angle_ce1 = 180 - BIGER_ANGLE - angle_cd1;
-                    const ex1 = cx1 + SHORT_SIDE_LENGTH * getCosByAngle(angle_ce1), ey1 = cy1 + SHORT_SIDE_LENGTH * getSinByAngle(angle_ce1);
+                    const ex1 = cx1 + SHORT_SIDE_LENGTH * getCosByAngle(angle_ce1),
+                        ey1 = cy1 + SHORT_SIDE_LENGTH * getSinByAngle(angle_ce1);
                     const angle_cf1 = BIGER_ANGLE - angle_ce1;
-                    const fx1 = cx1 + SHORT_SIDE_LENGTH * getCosByAngle(angle_cf1), fy1 = cy1 - SHORT_SIDE_LENGTH * getSinByAngle(angle_cf1);
+                    const fx1 = cx1 + SHORT_SIDE_LENGTH * getCosByAngle(angle_cf1),
+                        fy1 = cy1 - SHORT_SIDE_LENGTH * getSinByAngle(angle_cf1);
                     const c_mirror_ad_x1 = 150 + dx1 - cx1;
                     const c_mirror_ad_y1 = 0 + dy1 - cy1;
-                    const aax1 = 150 + (c_mirror_ad_x1 - 150) * 0.3 + OFFSET_X, aay1 = 0 + (c_mirror_ad_y1 - 0) * 0.3;
-                    const bbx1 = 0, bby1 = 0;
-                    const ddx1 = dx1 + (c_mirror_ad_x1 - dx1) * 0.3, ddy1 = dy1 + (c_mirror_ad_y1 - dy1) * 0.3;
-                    const ffx1 = bx1 + (cx1 - bx1) * 0.3, ffy1 = 0 + (cy1 - 0) * 0.3;
+                    const aax1 = 150 + (c_mirror_ad_x1 - 150) * 0.3 + OFFSET_X,
+                        aay1 = 0 + (c_mirror_ad_y1 - 0) * 0.3;
+                    const bbx1 = 0,
+                        bby1 = 0;
+                    const ddx1 = dx1 + (c_mirror_ad_x1 - dx1) * 0.3,
+                        ddy1 = dy1 + (c_mirror_ad_y1 - dy1) * 0.3;
+                    const ffx1 = bx1 + (cx1 - bx1) * 0.3,
+                        ffy1 = 0 + (cy1 - 0) * 0.3;
                     const c_mirror_ef_x1 = ex1 + fx1 - cx1;
                     const c_mirror_ef_y1 = ey1 + fy1 - cy1;
-                    const eex1 = ex1 + (c_mirror_ef_x1 - ex1) * 0.3, eey1 = ey1 + (c_mirror_ef_y1 - ey1) * 0.3;
-                    const fffx1 = fx1 + (c_mirror_ef_x1 - fx1) * 0.3, fffy1 = fy1 + (c_mirror_ef_y1 - fy1) * 0.3;
+                    const eex1 = ex1 + (c_mirror_ef_x1 - ex1) * 0.3,
+                        eey1 = ey1 + (c_mirror_ef_y1 - ey1) * 0.3;
+                    const fffx1 = fx1 + (c_mirror_ef_x1 - fx1) * 0.3,
+                        fffy1 = fy1 + (c_mirror_ef_y1 - fy1) * 0.3;
                     ax = ax1, ay = ay1, bx = bx1, by = by1, cx = cx1, cy = cy1, dx = dx1, dy = dy1, ex = ex1, ey = ey1, fx = fx1, fy = fy1;
                     aax = aax1, aay = aay1, bbx = bbx1, bby = bby1, ddx = ddx1, ddy = ddy1, eex = eex1, eey = eey1, ffx = ffx1, ffy = ffy1, fffx = fffx1, fffy = fffy1;
                     this.appendLine(svg, OUTER_LINE_STYLE, ax, bx, ay, by, viewBox);
@@ -1695,9 +1870,12 @@ var edu;
                     this.appendLine(svg, OUTER_LINE_STYLE, eex, fffx, eey, fffy, viewBox);
                     this.appendLine(svg, OUTER_LINE_STYLE, ex, eex, ey, eey, viewBox);
                     this.appendLine(svg, OUTER_LINE_STYLE, fx, fffx, fy, fffy, viewBox);
-                    const cx4 = dx1 + ex1 - cx1, cy4 = dy1 + ey1 - cy1;
-                    const ax4 = ex1, ay4 = ey1;
-                    const dx4 = dx1, dy4 = dy1;
+                    const cx4 = dx1 + ex1 - cx1,
+                        cy4 = dy1 + ey1 - cy1;
+                    const ax4 = ex1,
+                        ay4 = ey1;
+                    const dx4 = dx1,
+                        dy4 = dy1;
                     const angle_cd4 = Math.atan((cy4 - dy4) / (cx4 - dx4)) * 180 / Math.PI;
                     const angle_ce4 = BIGER_ANGLE - angle_cd4;
                     const angle_cf4 = BIGER_ANGLE - (90 - angle_ce4);
@@ -1709,7 +1887,8 @@ var edu;
                     const fy4 = cy4 + SHORT_SIDE_LENGTH * getCosByAngle(angle_cf4);
                     const bx4 = cx4 + SHORT_SIDE_LENGTH * getCosByAngle(angle_cb4);
                     const by4 = cy4 + SHORT_SIDE_LENGTH * getSinByAngle(angle_cb4);
-                    const ffx4 = bx4 + (cx4 - bx4) * 0.3, ffy4 = by4 + (cy4 - by4) * 0.3;
+                    const ffx4 = bx4 + (cx4 - bx4) * 0.3,
+                        ffy4 = by4 + (cy4 - by4) * 0.3;
                     ax = ax4, ay = ay4, bx = bx4, by = by4, cx = cx4, cy = cy4, dx = dx4, dy = dy4, ex = ex4, ey = ey4, fx = fx4, fy = fy4;
                     ffx = ffx4, ffy = ffy4;
                     this.appendLine(svg, INNER_LINE_STYLE, ax, bx, ay, by, viewBox);
@@ -1721,9 +1900,12 @@ var edu;
                     this.appendLine(svg, INNER_LINE_STYLE, dx, ex, dy, ey, viewBox);
                     this.appendLine(svg, INNER_LINE_STYLE, ex, fx, ey, fy, viewBox);
                     this.appendLine(svg, OUTER_LINE_STYLE, fx, ffx, fy, ffy, viewBox);
-                    const cx5 = ax4 + bx4 - cx4, cy5 = ay4 + by4 - cy4;
-                    const dx5 = ax4, dy5 = ay4;
-                    const ex5 = bx4, ey5 = by4;
+                    const cx5 = ax4 + bx4 - cx4,
+                        cy5 = ay4 + by4 - cy4;
+                    const dx5 = ax4,
+                        dy5 = ay4;
+                    const ex5 = bx4,
+                        ey5 = by4;
                     const angle_cd5 = Math.atan((cy5 - dy5) / (cx5 - dx5)) * 180 / Math.PI;
                     const angle_ce5 = BIGER_ANGLE - angle_cd5;
                     const angle_cf5 = BIGER_ANGLE - (90 - angle_ce5);
@@ -1735,10 +1917,14 @@ var edu;
                     const by5 = cy5 + SHORT_SIDE_LENGTH * getSinByAngle(angle_cb5);
                     const fx5 = cx5 + SHORT_SIDE_LENGTH * getSinByAngle(angle_cf5);
                     const fy5 = cy5 + SHORT_SIDE_LENGTH * getCosByAngle(angle_cf5);
-                    const ffx5 = bx5 + (cx5 - bx5) * 0.3, ffy5 = by5 + (cy5 - by5) * 0.3;
-                    const c_mirror_ab_x5 = ax5 + bx5 - cx5, c_mirror_ab_y5 = ay5 + by5 - cy5;
-                    const aax5 = ax5 + (c_mirror_ab_x5 - ax5) * 0.3, aay5 = ay5 + (c_mirror_ab_y5 - ay5) * 0.3;
-                    const bbx5 = bx5 + (c_mirror_ab_x5 - bx5) * 0.3, bby5 = by5 + (c_mirror_ab_y5 - by5) * 0.3;
+                    const ffx5 = bx5 + (cx5 - bx5) * 0.3,
+                        ffy5 = by5 + (cy5 - by5) * 0.3;
+                    const c_mirror_ab_x5 = ax5 + bx5 - cx5,
+                        c_mirror_ab_y5 = ay5 + by5 - cy5;
+                    const aax5 = ax5 + (c_mirror_ab_x5 - ax5) * 0.3,
+                        aay5 = ay5 + (c_mirror_ab_y5 - ay5) * 0.3;
+                    const bbx5 = bx5 + (c_mirror_ab_x5 - bx5) * 0.3,
+                        bby5 = by5 + (c_mirror_ab_y5 - by5) * 0.3;
                     ax = ax5, ay = ay5, bx = bx5, by = by5, cx = cx5, cy = cy5, dx = dx5, dy = dy5, ex = ex5, ey = ey5, fx = fx5, fy = fy5;
                     aax = aax5, aay = aay5, bbx = bbx5, bby = bby5, ffx = ffx5, ffy = ffy5;
                     this.appendLine(svg, INNER_LINE_STYLE, ax, bx, ay, by, viewBox);
@@ -1754,9 +1940,12 @@ var edu;
                     this.appendLine(svg, OUTER_LINE_STYLE, ax, aax, ay, aay, viewBox);
                     this.appendLine(svg, OUTER_LINE_STYLE, bx, bbx, by, bby, viewBox);
                     this.appendLine(svg, OUTER_LINE_STYLE, aax, bbx, aay, bby, viewBox);
-                    const cx6 = ex4 + fx4 - cx4, cy6 = ey4 + fy4 - cy4;
-                    const dx6 = fx4, dy6 = fy4;
-                    const ex6 = ex4, ey6 = ey4;
+                    const cx6 = ex4 + fx4 - cx4,
+                        cy6 = ey4 + fy4 - cy4;
+                    const dx6 = fx4,
+                        dy6 = fy4;
+                    const ex6 = ex4,
+                        ey6 = ey4;
                     const angle_cd6 = Math.atan((cy6 - dy6) / (dx6 - cx6)) * 180 / Math.PI;
                     const angle_ce6 = Math.atan((cy6 - ey6) / (cx6 - ex6)) * 180 / Math.PI;
                     const angle_ca6 = BIGER_ANGLE - angle_cd6;
@@ -1768,13 +1957,20 @@ var edu;
                     const by6 = cy6 + SHORT_SIDE_LENGTH * getCosByAngle(angle_cb6);
                     const fx6 = cx6 - SHORT_SIDE_LENGTH * getCosByAngle(angle_cf6);
                     const fy6 = cy6 + SHORT_SIDE_LENGTH * getSinByAngle(angle_cf6);
-                    const ffx6 = bx6 + (cx6 - bx6) * 0.3, ffy6 = by6 + (cy6 - by6) * 0.3;
-                    const c_mirror_ad_x6 = ax6 + dx6 - cx6, c_mirror_ad_y6 = ay6 + dy6 - cy6;
-                    const aax6 = ax6 + (c_mirror_ad_x6 - ax6) * 0.3, aay6 = ay6 + (c_mirror_ad_y6 - ay6) * 0.3;
-                    const ddx6 = dx6 + (c_mirror_ad_x6 - dx6) * 0.3, ddy6 = dy6 + (c_mirror_ad_y6 - dy6) * 0.3;
-                    const c_mirror_ef_x6 = ex6 + fx6 - cx6, c_mirror_ef_y6 = ey6 + fy6 - cy6;
-                    const eex6 = ex6 + (c_mirror_ef_x6 - ex6) * 0.3, eey6 = ey6 + (c_mirror_ef_y6 - ey6) * 0.3;
-                    const fffx6 = fx6 + (c_mirror_ef_x6 - fx6) * 0.3, fffy6 = fy6 + (c_mirror_ef_y6 - fy6) * 0.3;
+                    const ffx6 = bx6 + (cx6 - bx6) * 0.3,
+                        ffy6 = by6 + (cy6 - by6) * 0.3;
+                    const c_mirror_ad_x6 = ax6 + dx6 - cx6,
+                        c_mirror_ad_y6 = ay6 + dy6 - cy6;
+                    const aax6 = ax6 + (c_mirror_ad_x6 - ax6) * 0.3,
+                        aay6 = ay6 + (c_mirror_ad_y6 - ay6) * 0.3;
+                    const ddx6 = dx6 + (c_mirror_ad_x6 - dx6) * 0.3,
+                        ddy6 = dy6 + (c_mirror_ad_y6 - dy6) * 0.3;
+                    const c_mirror_ef_x6 = ex6 + fx6 - cx6,
+                        c_mirror_ef_y6 = ey6 + fy6 - cy6;
+                    const eex6 = ex6 + (c_mirror_ef_x6 - ex6) * 0.3,
+                        eey6 = ey6 + (c_mirror_ef_y6 - ey6) * 0.3;
+                    const fffx6 = fx6 + (c_mirror_ef_x6 - fx6) * 0.3,
+                        fffy6 = fy6 + (c_mirror_ef_y6 - fy6) * 0.3;
                     ax = ax6, ay = ay6, bx = bx6, by = by6, cx = cx6, cy = cy6, dx = dx6, dy = dy6, ex = ex6, ey = ey6, fx = fx6, fy = fy6;
                     aax = aax6, aay = aay6, ddx = ddx6, ddy = ddy6, eex = eex6, eey = eey6, ffx = ffx6, ffy = ffy6, fffx = fffx6, fffy = fffy6;
                     this.appendLine(svg, OUTER_LINE_STYLE, ax, bx, ay, by, viewBox);
@@ -1792,9 +1988,12 @@ var edu;
                     this.appendLine(svg, OUTER_LINE_STYLE, eex, fffx, eey, fffy, viewBox);
                     this.appendLine(svg, OUTER_LINE_STYLE, ex, eex, ey, eey, viewBox);
                     this.appendLine(svg, OUTER_LINE_STYLE, fx, fffx, fy, fffy, viewBox);
-                    const cx3 = dx4 + ex4 - cx4, cy3 = dy4 + ey4 - cy4;
-                    const fx3 = dx4, fy3 = dy4;
-                    const ex3 = ex4, ey3 = ey4;
+                    const cx3 = dx4 + ex4 - cx4,
+                        cy3 = dy4 + ey4 - cy4;
+                    const fx3 = dx4,
+                        fy3 = dy4;
+                    const ex3 = ex4,
+                        ey3 = ey4;
                     const angle_cf3 = Math.atan((cy3 - fy3) / (fx3 - cx3)) * 180 / Math.PI;
                     const angle_ce3 = BIGER_ANGLE - angle_cf3;
                     const angle_cd3 = 180 - BIGER_ANGLE - angle_ce3;
@@ -1806,7 +2005,8 @@ var edu;
                     const by3 = cy3 - SHORT_SIDE_LENGTH * getCosByAngle(angle_cb3);
                     const dx3 = cx3 - SHORT_SIDE_LENGTH * getCosByAngle(angle_cd3);
                     const dy3 = cy3 + SHORT_SIDE_LENGTH * getSinByAngle(angle_cd3);
-                    const ffx3 = bx3 + (cx3 - bx3) * 0.3, ffy3 = by3 + (cy3 - by3) * 0.3;
+                    const ffx3 = bx3 + (cx3 - bx3) * 0.3,
+                        ffy3 = by3 + (cy3 - by3) * 0.3;
                     ax = ax3, ay = ay3, bx = bx3, by = by3, cx = cx3, cy = cy3, dx = dx3, dy = dy3, ex = ex3, ey = ey3, fx = fx3, fy = fy3;
                     ffx = ffx3, ffy = ffy3;
                     this.appendLine(svg, OUTER_LINE_STYLE, ax, bx, ay, by, viewBox);
@@ -1819,9 +2019,12 @@ var edu;
                     this.appendLine(svg, OUTER_LINE_STYLE, dx, ex, dy, ey, viewBox);
                     this.appendLine(svg, INNER_LINE_STYLE, ex, fx, ey, fy, viewBox);
                     this.appendLine(svg, OUTER_LINE_STYLE, fx, ffx, fy, ffy, viewBox);
-                    const cx2 = ax3 + dx3 - cx3, cy2 = ay3 + dy3 - cy3;
-                    const fx2 = ax3, fy2 = ay3;
-                    const ex2 = dx3, ey2 = dy3;
+                    const cx2 = ax3 + dx3 - cx3,
+                        cy2 = ay3 + dy3 - cy3;
+                    const fx2 = ax3,
+                        fy2 = ay3;
+                    const ex2 = dx3,
+                        ey2 = dy3;
                     const angle_cf2 = Math.atan((cy2 - fy2) / (fx2 - cx2)) * 180 / Math.PI;
                     const angle_ce2 = BIGER_ANGLE - angle_cf2;
                     const angle_cd2 = 180 - BIGER_ANGLE - angle_ce2;
@@ -1833,13 +2036,20 @@ var edu;
                     const by2 = cy2 - SHORT_SIDE_LENGTH * getCosByAngle(angle_cb2);
                     const dx2 = cx2 - SHORT_SIDE_LENGTH * getCosByAngle(angle_cd2);
                     const dy2 = cy2 + SHORT_SIDE_LENGTH * getSinByAngle(angle_cd2);
-                    const ffx2 = bx2 + (cx2 - bx2) * 0.3, ffy2 = by2 + (cy2 - by2) * 0.3;
-                    const c_mirror_ab_x2 = ax2 + bx2 - cx2, c_mirror_ab_y2 = ay2 + by2 - cy2;
-                    const aax2 = ax2 + (c_mirror_ab_x2 - ax2) * 0.3, aay2 = ay2 + (c_mirror_ab_y2 - ay2) * 0.3;
-                    const bbx2 = bx2 + (c_mirror_ab_x2 - bx2) * 0.3, bby2 = by2 + (c_mirror_ab_y2 - by2) * 0.3;
-                    const c_mirror_de_x2 = dx2 + ex2 - cx2, c_mirror_de_y2 = dy2 + ey2 - cy2;
-                    const ddx2 = dx2 + (c_mirror_de_x2 - dx2) * 0.3, ddy2 = dy2 + (c_mirror_de_y2 - dy2) * 0.3;
-                    const eex2 = ex2 + (c_mirror_de_x2 - ex2) * 0.3, eey2 = ey2 + (c_mirror_de_y2 - ey2) * 0.3;
+                    const ffx2 = bx2 + (cx2 - bx2) * 0.3,
+                        ffy2 = by2 + (cy2 - by2) * 0.3;
+                    const c_mirror_ab_x2 = ax2 + bx2 - cx2,
+                        c_mirror_ab_y2 = ay2 + by2 - cy2;
+                    const aax2 = ax2 + (c_mirror_ab_x2 - ax2) * 0.3,
+                        aay2 = ay2 + (c_mirror_ab_y2 - ay2) * 0.3;
+                    const bbx2 = bx2 + (c_mirror_ab_x2 - bx2) * 0.3,
+                        bby2 = by2 + (c_mirror_ab_y2 - by2) * 0.3;
+                    const c_mirror_de_x2 = dx2 + ex2 - cx2,
+                        c_mirror_de_y2 = dy2 + ey2 - cy2;
+                    const ddx2 = dx2 + (c_mirror_de_x2 - dx2) * 0.3,
+                        ddy2 = dy2 + (c_mirror_de_y2 - dy2) * 0.3;
+                    const eex2 = ex2 + (c_mirror_de_x2 - ex2) * 0.3,
+                        eey2 = ey2 + (c_mirror_de_y2 - ey2) * 0.3;
                     ax = ax2, ay = ay2, bx = bx2, by = by2, cx = cx2, cy = cy2, dx = dx2, dy = dy2, ex = ex2, ey = ey2, fx = fx2, fy = fy2;
                     aax = aax2, aay = aay2, bbx = bbx2, bby = bby2, ddx = ddx2, ddy = ddy2, eex = eex2, eey = eey2, ffx = ffx2, ffy = ffy2;
                     this.appendLine(svg, INNER_LINE_STYLE, ax, bx, ay, by, viewBox);
@@ -1937,14 +2147,19 @@ var edu;
                     if (CONTENT.indexOf('<') > -1) {
                         text.innerHTML = CONTENT;
                     } else {
-                        CONTENT.split('').forEach((__char, index)=>{
+                        CONTENT.split('').forEach((__char, index) => {
                             this.appendTspan(text, '', __char, 0, 0, 0);
                         });
                     }
                     g.appendChild(text);
                     if (viewBox) {
                         const clientRects = text.getClientRects();
-                        const { left: x1 , right: x2 , top: y1 , bottom: y2  } = clientRects.length ? clientRects.item(0) : text.getBoundingClientRect();
+                        const {
+                            left: x1,
+                            right: x2,
+                            top: y1,
+                            bottom: y2
+                        } = clientRects.length ? clientRects.item(0) : text.getBoundingClientRect();
                         viewBox.left = Math.min(viewBox.left, x1, x2);
                         viewBox.right = Math.max(viewBox.right, x1, x2);
                         viewBox.top = Math.min(viewBox.top, y1, y2);
@@ -1967,15 +2182,15 @@ var edu;
 // This code was bundled using `deno bundle` and it's not recommended to edit it manually
 
 var boxSpace;
-(function(boxSpace) {
+(function (boxSpace) {
     let edu;
-    (function(edu) {
+    (function (edu) {
         let sonya;
-        (function(sonya) {
+        (function (sonya) {
             let cc;
-            (function(cc) {
+            (function (cc) {
                 let BoxKind;
-                (function(BoxKind) {
+                (function (BoxKind) {
                     BoxKind[BoxKind["none"] = 0] = "none";
                     BoxKind[BoxKind["cuboid"] = 1] = "cuboid";
                     BoxKind[BoxKind["cuboidWithoutTop"] = 2] = "cuboidWithoutTop";
@@ -1987,17 +2202,32 @@ var boxSpace;
                 const SVG_NS = 'http://www.w3.org/2000/svg';
                 class BoxGenerator {
                     batchCreate(createParameters) {
-                        createParameters.forEach((createParameter, index)=>{
+                        createParameters.forEach((createParameter, index) => {
                             if (createParameter.id.length === 0) createParameter.id = `svg_index`;
                         });
-                        return createParameters.map((createParameter)=>this.create(createParameter));
+                        return createParameters.map((createParameter) => this.create(createParameter));
                     }
-                    create({ id , boxKind , lengths: LENGTHS , contents: CONTENTS , outerLineStyle: OUTER_LINE_STYLE , innerLineStyle: INNER_LINE_STYLE , textStyle: TEXT_STYLE , rotate: ROTATE , move: MOVE , topWithoutHalfCircle: TOP_WITHOUT_HALF_CIRCLE , options: OPTIONS  }) {
+                    create({
+                        id,
+                        boxKind,
+                        lengths: LENGTHS,
+                        contents: CONTENTS,
+                        outerLineStyle: OUTER_LINE_STYLE,
+                        innerLineStyle: INNER_LINE_STYLE,
+                        textStyle: TEXT_STYLE,
+                        rotate: ROTATE,
+                        move: MOVE,
+                        topWithoutHalfCircle: TOP_WITHOUT_HALF_CIRCLE,
+                        options: OPTIONS
+                    }) {
                         if (id.length === 0) id = 'svg_0';
                         const FIRST_LENGTH = LENGTHS[0];
                         let FIXED_FIRST_LENGTH = FIRST_LENGTH;
                         let nested = false;
-                        const { createSvg , appendText  } = svgSpace.edu.sonya.cc.SvgHelper;
+                        const {
+                            createSvg,
+                            appendText
+                        } = svgSpace.edu.sonya.cc.SvgHelper;
                         const svg = createSvg();
                         svg.setAttribute('id', id);
                         const viewBox = {
@@ -2007,9 +2237,9 @@ var boxSpace;
                             bottom: 0
                         };
                         const infos = [];
-                        switch(boxKind){
+                        switch (boxKind) {
                             default:
-                                CONTENTS.forEach((content)=>{
+                                CONTENTS.forEach((content) => {
                                     infos.push({
                                         content,
                                         x: 0,
@@ -2020,7 +2250,7 @@ var boxSpace;
                                 break;
                         }
                         const mmToPxScale = new DPIHelper().getMmToPxScale();
-                        switch(boxKind){
+                        switch (boxKind) {
                             case BoxKind.cuboid:
                             case BoxKind.cuboidWithoutTop:
                             case BoxKind.cuboidWithoutBottom:
@@ -2033,7 +2263,12 @@ var boxSpace;
                             default:
                                 break;
                         }
-                        infos.forEach(({ content , x , y , rotate  })=>{
+                        infos.forEach(({
+                            content,
+                            x,
+                            y,
+                            rotate
+                        }) => {
                             appendText(svg, TEXT_STYLE, content, x, y, rotate, 'left top', null);
                         });
                         const width = `${viewBox.right}mm`;
@@ -2118,7 +2353,9 @@ var boxSpace;
                         const Y5 = Y4 + WIDTH;
                         const Y7 = Y5 + HEIGHT;
                         const Y8 = Y7 + duckTongueHeight;
-                        const { appendLine  } = svgSpace.edu.sonya.cc.SvgHelper;
+                        const {
+                            appendLine
+                        } = svgSpace.edu.sonya.cc.SvgHelper;
                         if (boxKind < 4) {
                             if (boxKind !== BoxKind.cuboidWithoutTop) {
                                 appendLine(svg, INNER_LINE_STYLE, X4, X5, Y2, Y2, null);
@@ -2141,7 +2378,7 @@ var boxSpace;
                         viewBox.left = 0;
                         viewBox.top = 0;
                         viewBox.right = X6;
-                        switch(boxKind){
+                        switch (boxKind) {
                             case BoxKind.cuboidWithoutBottom:
                             case BoxKind.cuboidCoverOnTheSameSideWithoutBottom:
                                 viewBox.bottom = Y8 - (duckTongueHeight + HEIGHT);
@@ -2152,7 +2389,9 @@ var boxSpace;
                         }
                     }
                     drawTextsOfCuboiBox(infos, LENGTHS, boxKind) {
-                        const { setSvgTextInfo  } = svgSpace.edu.sonya.cc.SvgHelper;
+                        const {
+                            setSvgTextInfo
+                        } = svgSpace.edu.sonya.cc.SvgHelper;
                         const LENGTH = LENGTHS[0];
                         const WIDTH = LENGTHS[2];
                         const HEIGHT = LENGTHS[1];
@@ -2171,7 +2410,7 @@ var boxSpace;
                         const Y4 = -1 * (duckTongueHeight + HEIGHT + WIDTH * 0.5 - YDifference);
                         const Y5 = HEIGHT * 1.5 + LENGTH;
                         const Y6 = duckTongueHeight + HEIGHT + WIDTH + HEIGHT * 0.5 - YDifference;
-                        switch(boxKind){
+                        switch (boxKind) {
                             case BoxKind.cuboidWithoutTop:
                             case BoxKind.cuboidCoverOnTheSameSideWithoutTop:
                                 infos[0].content = '';
@@ -2191,7 +2430,7 @@ var boxSpace;
                         setSvgTextInfo(infos[2], X3, Y3, 0);
                         setSvgTextInfo(infos[3], X4, Y4, 180);
                         setSvgTextInfo(infos[4], X5, Y5, -90);
-                        switch(boxKind){
+                        switch (boxKind) {
                             case BoxKind.cuboidWithoutBottom:
                             case BoxKind.cuboidCoverOnTheSameSideWithoutBottom:
                                 infos[5].content = '';
@@ -2219,18 +2458,18 @@ var boxSpace;
 class BrickBase {
     brickBaseIdPrefix = 'brickPageBase';
     reporterKindProperty = 'unknown';
-    download = ()=>{};
-    print = ()=>{};
-    updateOtherData = (newData)=>{};
-    initCoreElements = ()=>{};
-    initOtherElements = ()=>{};
-    onPageSizeChanged = (newPageSize)=>{};
-    getCss = ()=>this.computedData.css;
-    getHtml = ()=>this.computedData.html;
+    download = () => {};
+    print = () => {};
+    updateOtherData = (newData) => {};
+    initCoreElements = () => {};
+    initOtherElements = () => {};
+    onPageSizeChanged = (newPageSize) => {};
+    getCss = () => this.computedData.css;
+    getHtml = () => this.computedData.html;
     constructor(appendData, otherComputedData, newPageSizeArray = [
         'A3',
         'A4'
-    ]){
+    ]) {
         this.data = {
             ...this.data,
             ...appendData
@@ -2240,7 +2479,7 @@ class BrickBase {
             ...this.computedData,
             ...otherComputedData
         };
-        newPageSizeArray.forEach((pageSize)=>this.pageSizeArray.push(pageSize));
+        newPageSizeArray.forEach((pageSize) => this.pageSizeArray.push(pageSize));
     }
     data = {
         paperSize: 'A4',
@@ -2255,7 +2494,7 @@ class BrickBase {
     DEFAULT_DATA_JSON = '';
     computedData = {
         title: {
-            en: '',
+            en_us: '',
             zh_cn: '',
             zh_tw: ''
         },
@@ -2264,12 +2503,17 @@ class BrickBase {
     };
     pageSizeArray = [];
     configCoreElement = getElementById('brickPageConfigCore');
-    init = ()=>{
-        const { configCoreElement , brickBaseIdPrefix  } = this;
+    init = () => {
+        const {
+            configCoreElement,
+            brickBaseIdPrefix
+        } = this;
         configCoreElement.setAttribute(REPORT_KIND_PROPERTY, this.reporterKindProperty);
-        const { getWrapElement  } = this;
+        const {
+            getWrapElement
+        } = this;
         let wrapElement = getWrapElement({
-            en: 'Paper',
+            en_us: 'Paper',
             zh_cn: '纸张',
             zh_tw: '紙張'
         });
@@ -2277,7 +2521,7 @@ class BrickBase {
         this.initPaperSizeElements(wrapElement);
         this.initIsLandscapeElements(wrapElement);
         wrapElement = getWrapElement({
-            en: 'Margin of page',
+            en_us: 'Margin of page',
             zh_cn: '页边距',
             zh_tw: '頁邊距'
         });
@@ -2290,10 +2534,12 @@ class BrickBase {
         this.initOtherElements();
         global.bindChangeLangEventForI18nElements();
         updateUIByCurrentLang();
-        getChangeLangNotifyArrayOfCurrentPage().push(()=>this.build());
+        getChangeLangNotifyArrayOfCurrentPage().push(() => this.build());
     };
-    getWrapElement = (strongI18n)=>{
-        const { configCoreElement  } = this;
+    getWrapElement = (strongI18n) => {
+        const {
+            configCoreElement
+        } = this;
         const wrapElement = createElement('div');
         wrapElement.className = 'brickPageConfigCoreOptionRowWrap';
         configCoreElement.appendChild(wrapElement);
@@ -2302,8 +2548,8 @@ class BrickBase {
         wrapElement.appendChild(strongElement);
         return wrapElement;
     };
-    onRadioOptionChanged = (propertyName, value)=>{};
-    initTextboxElement = (labelI18n, propertyName, textboxElement, wrapElement)=>{
+    onRadioOptionChanged = (propertyName, value) => {};
+    initTextboxElement = (labelI18n, propertyName, textboxElement, wrapElement) => {
         if (labelI18n) {
             const label = createElement('label');
             label.innerHTML = getI18nInnerHTML(labelI18n);
@@ -2311,7 +2557,7 @@ class BrickBase {
         }
         textboxElement.value = this.data[propertyName];
         textboxElement.type = 'text';
-        const onTextboxChanged = ()=>{
+        const onTextboxChanged = () => {
             this.data[propertyName] = textboxElement.value;
             this.saveConfigAndBuildIfAllowed();
         };
@@ -2319,14 +2565,14 @@ class BrickBase {
         textboxElement.onblur = onTextboxChanged;
         wrapElement.appendChild(textboxElement);
     };
-    initTextareaElement = (labelI18n, propertyName, textareaElement, wrapElement)=>{
+    initTextareaElement = (labelI18n, propertyName, textareaElement, wrapElement) => {
         if (labelI18n) {
             const label = createElement('label');
             label.innerHTML = getI18nInnerHTML(labelI18n);
             wrapElement.appendChild(label);
         }
         textareaElement.value = this.data[propertyName];
-        const onTextareaChanged = ()=>{
+        const onTextareaChanged = () => {
             this.data[propertyName] = parseInt(textareaElement.value, 0);
             this.saveConfigAndBuildIfAllowed();
         };
@@ -2334,9 +2580,12 @@ class BrickBase {
         textareaElement.onblur = onTextareaChanged;
         wrapElement.appendChild(textareaElement);
     };
-    initRadioGroupByStringValue = (radiosInfoArray, propertyName, radioElementArray, wrapElement)=>{
+    initRadioGroupByStringValue = (radiosInfoArray, propertyName, radioElementArray, wrapElement) => {
         const currentValue = this.data[propertyName];
-        radiosInfoArray.forEach(({ value , i18nHtml  })=>{
+        radiosInfoArray.forEach(({
+            value,
+            i18nHtml
+        }) => {
             const radioElement = createElement('input');
             radioElement.type = 'radio';
             radioElement.name = propertyName;
@@ -2346,12 +2595,12 @@ class BrickBase {
             }
             const spanElement = createElement('span');
             spanElement.innerHTML = i18nHtml;
-            radioElement.onclick = ()=>{
+            radioElement.onclick = () => {
                 this.data[propertyName] = value;
                 this.onRadioOptionChanged(propertyName, value);
                 this.saveConfigAndBuildIfAllowed();
             };
-            spanElement.onclick = ()=>{
+            spanElement.onclick = () => {
                 radioElement.click();
             };
             wrapElement.appendChild(radioElement);
@@ -2359,13 +2608,16 @@ class BrickBase {
             radioElementArray.push(radioElement);
         });
     };
-    initRadioGroupWithLabelByStringValue = (radiosInfoArray, propertyName, radioElementArray, wrapLabelI18n)=>{
+    initRadioGroupWithLabelByStringValue = (radiosInfoArray, propertyName, radioElementArray, wrapLabelI18n) => {
         const wrapElement = this.getWrapElement(wrapLabelI18n);
         this.initRadioGroupByStringValue(radiosInfoArray, propertyName, radioElementArray, wrapElement);
     };
-    initRadioGroupByBooleanOrNumberValue = (radiosInfoArray, propertyName, radioElementArray, wrapElement)=>{
+    initRadioGroupByBooleanOrNumberValue = (radiosInfoArray, propertyName, radioElementArray, wrapElement) => {
         const currentValue = this.data[propertyName];
-        radiosInfoArray.forEach(({ value , i18nHtml  })=>{
+        radiosInfoArray.forEach(({
+            value,
+            i18nHtml
+        }) => {
             const radioElement = createElement('input');
             radioElement.type = 'radio';
             radioElement.name = propertyName;
@@ -2375,12 +2627,12 @@ class BrickBase {
             }
             const spanElement = createElement('span');
             spanElement.innerHTML = i18nHtml;
-            radioElement.onclick = ()=>{
+            radioElement.onclick = () => {
                 this.data[propertyName] = value;
                 this.onRadioOptionChanged(propertyName, value);
                 this.saveConfigAndBuildIfAllowed();
             };
-            spanElement.onclick = ()=>{
+            spanElement.onclick = () => {
                 radioElement.click();
             };
             wrapElement.appendChild(radioElement);
@@ -2388,25 +2640,31 @@ class BrickBase {
             radioElementArray.push(radioElement);
         });
     };
-    initRadioGroupWithLabelByBooleanOrNumberValue = (radiosInfoArray, propertyName, radioElementArray, wrapLabelI18n)=>{
+    initRadioGroupWithLabelByBooleanOrNumberValue = (radiosInfoArray, propertyName, radioElementArray, wrapLabelI18n) => {
         const wrapElement = this.getWrapElement(wrapLabelI18n);
         this.initRadioGroupByBooleanOrNumberValue(radiosInfoArray, propertyName, radioElementArray, wrapElement);
     };
     paperSizeRadioArray = [];
-    initPaperSizeElements = (wrapElement)=>{
-        const { data: { paperSize  } , paperSizeRadioArray , brickBaseIdPrefix  } = this;
+    initPaperSizeElements = (wrapElement) => {
+        const {
+            data: {
+                paperSize
+            },
+            paperSizeRadioArray,
+            brickBaseIdPrefix
+        } = this;
         const span = createElement('span');
         span.id = `${brickBaseIdPrefix}PaperSizeWrap`;
         wrapElement.appendChild(span);
         const labelElement = createElement('label');
         span.appendChild(labelElement);
         labelElement.innerHTML = getI18nInnerHTML({
-            en: 'Size:',
+            en_us: 'Size:',
             zh_cn: '纸型：',
             zh_tw: '紙型：'
         });
         labelElement.setAttribute('for', 'paperSize');
-        this.pageSizeArray.forEach((paperSizeValue)=>{
+        this.pageSizeArray.forEach((paperSizeValue) => {
             const radioElement = createElement('input');
             radioElement.type = 'radio';
             radioElement.value = paperSizeValue;
@@ -2416,12 +2674,12 @@ class BrickBase {
             }
             const spanElement = createElement('span');
             spanElement.innerHTML = paperSizeValue;
-            radioElement.onclick = ()=>{
+            radioElement.onclick = () => {
                 this.data.paperSize = paperSizeValue;
                 this.onPageSizeChanged(paperSizeValue);
                 this.saveConfigAndBuildIfAllowed();
             };
-            spanElement.onclick = ()=>{
+            spanElement.onclick = () => {
                 radioElement.click();
             };
             span.appendChild(radioElement);
@@ -2430,15 +2688,21 @@ class BrickBase {
         });
     };
     isLandscapeRadioArray = [];
-    initIsLandscapeElements = (wrapElement)=>{
-        const { data: { isLandscape  } , isLandscapeRadioArray , brickBaseIdPrefix  } = this;
+    initIsLandscapeElements = (wrapElement) => {
+        const {
+            data: {
+                isLandscape
+            },
+            isLandscapeRadioArray,
+            brickBaseIdPrefix
+        } = this;
         const span = createElement('span');
         span.id = `${brickBaseIdPrefix}PaperDirectionWrap`;
         wrapElement.appendChild(span);
         const labelElement = createElement('label');
         span.appendChild(labelElement);
         labelElement.innerHTML = getI18nInnerHTML({
-            en: 'Orientation:',
+            en_us: 'Orientation:',
             zh_cn: '方向：',
             zh_tw: '方向：'
         });
@@ -2446,7 +2710,7 @@ class BrickBase {
         [
             true,
             false
-        ].forEach((isLandscapeValue)=>{
+        ].forEach((isLandscapeValue) => {
             const radioElement = createElement('input');
             radioElement.type = 'radio';
             radioElement.name = 'isLandscape';
@@ -2456,19 +2720,19 @@ class BrickBase {
             }
             const spanElement = createElement('span');
             spanElement.innerHTML = getI18nInnerHTML(isLandscapeValue ? {
-                en: 'landscape',
+                en_us: 'landscape',
                 zh_cn: '横向',
                 zh_tw: '橫向'
             } : {
-                en: 'portrait',
+                en_us: 'portrait',
                 zh_cn: '纵向',
                 zh_tw: '縱向'
             });
-            radioElement.onclick = ()=>{
+            radioElement.onclick = () => {
                 this.data.isLandscape = isLandscapeValue;
                 this.saveConfigAndBuildIfAllowed();
             };
-            spanElement.onclick = ()=>{
+            spanElement.onclick = () => {
                 radioElement.click();
             };
             span.appendChild(radioElement);
@@ -2477,19 +2741,24 @@ class BrickBase {
         });
     };
     pageMarginTopElement = createElement('input');
-    initPageMarginTopElements = (wrapElement)=>{
-        const { data: { pageMarginTop  } , pageMarginTopElement  } = this;
+    initPageMarginTopElements = (wrapElement) => {
+        const {
+            data: {
+                pageMarginTop
+            },
+            pageMarginTopElement
+        } = this;
         const labelElement = createElement('label');
         wrapElement.appendChild(labelElement);
         labelElement.innerHTML = getI18nInnerHTML({
-            en: 'Top:',
+            en_us: 'Top:',
             zh_cn: '上：',
             zh_tw: '上：'
         });
         pageMarginTopElement.value = pageMarginTop.toString();
         pageMarginTopElement.type = 'number';
         pageMarginTopElement.setAttribute('min', '0');
-        const changeValue = ()=>{
+        const changeValue = () => {
             this.data.pageMarginTop = parseInt(pageMarginTopElement.value, 0);
             this.saveConfigAndBuildIfAllowed();
         };
@@ -2499,19 +2768,24 @@ class BrickBase {
         wrapElement.appendChild(pageMarginTopElement);
     };
     pageMarginBottomElement = createElement('input');
-    initPageMarginBottomElements = (wrapElement)=>{
-        const { data: { pageMarginBottom  } , pageMarginBottomElement  } = this;
+    initPageMarginBottomElements = (wrapElement) => {
+        const {
+            data: {
+                pageMarginBottom
+            },
+            pageMarginBottomElement
+        } = this;
         const labelElement = createElement('label');
         wrapElement.appendChild(labelElement);
         labelElement.innerHTML = getI18nInnerHTML({
-            en: 'Bottom:',
+            en_us: 'Bottom:',
             zh_cn: '下：',
             zh_tw: '下：'
         });
         pageMarginBottomElement.value = pageMarginBottom.toString();
         pageMarginBottomElement.type = 'number';
         pageMarginBottomElement.setAttribute('min', '0');
-        const changeValue = ()=>{
+        const changeValue = () => {
             this.data.pageMarginBottom = parseInt(pageMarginBottomElement.value, 0);
             this.saveConfigAndBuildIfAllowed();
         };
@@ -2521,19 +2795,24 @@ class BrickBase {
         wrapElement.appendChild(pageMarginBottomElement);
     };
     pageMarginLeftElement = createElement('input');
-    initPageMarginLeftElements = (wrapElement)=>{
-        const { data: { pageMarginLeft  } , pageMarginLeftElement  } = this;
+    initPageMarginLeftElements = (wrapElement) => {
+        const {
+            data: {
+                pageMarginLeft
+            },
+            pageMarginLeftElement
+        } = this;
         const labelElement = createElement('label');
         wrapElement.appendChild(labelElement);
         labelElement.innerHTML = getI18nInnerHTML({
-            en: 'Left:',
+            en_us: 'Left:',
             zh_cn: '左：',
             zh_tw: '左：'
         });
         pageMarginLeftElement.value = pageMarginLeft.toString();
         pageMarginLeftElement.type = 'number';
         pageMarginLeftElement.setAttribute('min', '0');
-        const changeValue = ()=>{
+        const changeValue = () => {
             this.data.pageMarginLeft = parseInt(pageMarginLeftElement.value, 0);
             this.saveConfigAndBuildIfAllowed();
         };
@@ -2543,19 +2822,24 @@ class BrickBase {
         wrapElement.appendChild(pageMarginLeftElement);
     };
     pageMarginRightElement = createElement('input');
-    initPageMarginRightElements = (wrapElement)=>{
-        const { data: { pageMarginRight  } , pageMarginRightElement  } = this;
+    initPageMarginRightElements = (wrapElement) => {
+        const {
+            data: {
+                pageMarginRight
+            },
+            pageMarginRightElement
+        } = this;
         const labelElement = createElement('label');
         wrapElement.appendChild(labelElement);
         labelElement.innerHTML = getI18nInnerHTML({
-            en: 'Right:',
+            en_us: 'Right:',
             zh_cn: '右：',
             zh_tw: '右：'
         });
         pageMarginRightElement.value = pageMarginRight.toString();
         pageMarginRightElement.type = 'number';
         pageMarginRightElement.setAttribute('min', '0');
-        const changeValue = ()=>{
+        const changeValue = () => {
             this.data.pageMarginRight = parseInt(pageMarginRightElement.value, 0);
             this.saveConfigAndBuildIfAllowed();
         };
@@ -2564,8 +2848,19 @@ class BrickBase {
         wrapElement.appendChild(labelElement);
         wrapElement.appendChild(pageMarginRightElement);
     };
-    build = ()=>{
-        let { data: { paperSize , isLandscape , maxX , maxY , pageMarginTop , pageMarginBottom , pageMarginLeft , pageMarginRight  }  } = this;
+    build = () => {
+        let {
+            data: {
+                paperSize,
+                isLandscape,
+                maxX,
+                maxY,
+                pageMarginTop,
+                pageMarginBottom,
+                pageMarginLeft,
+                pageMarginRight
+            }
+        } = this;
         const PAPER_WIDTH_A3 = 297;
         const PAPER_HEIGHT_A3 = 420;
         const PAPER_WIDTH_A4 = 210;
@@ -2578,7 +2873,7 @@ class BrickBase {
         }, '*');
         let paperWidth = 0;
         let paperHeight = 0;
-        switch(paperSize){
+        switch (paperSize) {
             case 'A3':
                 paperWidth = PAPER_WIDTH_A3;
                 paperHeight = PAPER_HEIGHT_A3;
@@ -2609,7 +2904,10 @@ class BrickBase {
         const titleElement = getTitleElement();
         titleElement.i18n = title;
         titleElement.innerHTML = title[getCurrentLang()];
-        const { getHtml , getCss  } = this;
+        const {
+            getHtml,
+            getCss
+        } = this;
         const html = getHtml();
         const css = getCss();
         getElementById('brickPageIframe').contentWindow?.postMessage({
@@ -2624,7 +2922,7 @@ class BrickBase {
     };
     mmToPxScale = 0;
     pxToMmScale = 0;
-    loadConfig = ()=>{
+    loadConfig = () => {
         const currentConfig = getCurrentPageLocalStorage();
         if (currentConfig.length === 0) {
             this.loadDefaultConfig();
@@ -2632,31 +2930,46 @@ class BrickBase {
         }
         this.updateData(JSON.parse(currentConfig));
     };
-    saveConfig = ()=>{
+    saveConfig = () => {
         setCurrentPageLocalStorage(JSON.stringify(this.data));
     };
-    loadDefaultConfig = ()=>{
+    loadDefaultConfig = () => {
         this.updateData(JSON.parse(this.DEFAULT_DATA_JSON));
     };
-    getData = ()=>{
+    getData = () => {
         return this.data;
     };
-    setData = (newData)=>{
+    setData = (newData) => {
         this.updateData(newData);
     };
     buildAfterChangeParameter = true;
-    saveConfigAndBuildIfAllowed = ()=>{
+    saveConfigAndBuildIfAllowed = () => {
         if (!this.buildAfterChangeParameter) return;
         this.saveConfig();
         this.build();
     };
-    updateData = (newData)=>{
-        const { paperSize , isLandscape , pageMarginTop , pageMarginBottom , pageMarginLeft , pageMarginRight , diceKind  } = newData;
-        const { paperSizeRadioArray , isLandscapeRadioArray , pageMarginTopElement , pageMarginBottomElement , pageMarginLeftElement , pageMarginRightElement  } = this;
-        paperSizeRadioArray.forEach((element)=>{
+    updateData = (newData) => {
+        const {
+            paperSize,
+            isLandscape,
+            pageMarginTop,
+            pageMarginBottom,
+            pageMarginLeft,
+            pageMarginRight,
+            diceKind
+        } = newData;
+        const {
+            paperSizeRadioArray,
+            isLandscapeRadioArray,
+            pageMarginTopElement,
+            pageMarginBottomElement,
+            pageMarginLeftElement,
+            pageMarginRightElement
+        } = this;
+        paperSizeRadioArray.forEach((element) => {
             element.checked = element.value === paperSize;
         });
-        isLandscapeRadioArray.forEach((element)=>{
+        isLandscapeRadioArray.forEach((element) => {
             element.checked = element.value === isLandscape.toString();
         });
         pageMarginTopElement.value = pageMarginTop;
@@ -2672,14 +2985,15 @@ class BrickBase {
         this.updateOtherData(newData);
         this.build();
     };
-    getAutomaticPaginationHtmlFromChildList = (list, MAX_X, MAX_Y, pageClass = '')=>{
+    getAutomaticPaginationHtmlFromChildList = (list, MAX_X, MAX_Y, pageClass = '') => {
         if (list.length === 0) return '';
         let html = pageClass.length ? `<page class="${pageClass}">` : '<page>';
         let usedX = 0;
         let usedY = 0;
         let currentRowHeight = 0;
-        list.forEach((child)=>{
-            let WIDTH = 0, HEIGHT = 0;
+        list.forEach((child) => {
+            let WIDTH = 0,
+                HEIGHT = 0;
             if (child instanceof SVGElement) {
                 WIDTH = parseFloat(child.getAttribute('width').replace('mm', ''));
                 HEIGHT = parseFloat(child.getAttribute('height').replace('mm', ''));
@@ -2718,15 +3032,16 @@ class BrickBase {
         html += '</page>';
         return html;
     };
-    appendAutomaticPaginationControls = (wrapper, list, MAX_X, MAX_Y)=>{
+    appendAutomaticPaginationControls = (wrapper, list, MAX_X, MAX_Y) => {
         if (list.length === 0) return;
         let page = createElement('page');
         wrapper.appendChild(page);
         let usedX = 0;
         let usedY = 0;
         let currentRowHeight = 0;
-        list.forEach((child)=>{
-            let WIDTH = 0, HEIGHT = 0;
+        list.forEach((child) => {
+            let WIDTH = 0,
+                HEIGHT = 0;
             if (child instanceof SVGElement) {
                 WIDTH = parseFloat(child.getAttribute('width').replace('mm', ''));
                 HEIGHT = parseFloat(child.getAttribute('height').replace('mm', ''));
@@ -2764,16 +3079,16 @@ class BrickBase {
             page.appendChild(child);
         });
     };
-    formatDecile = (length)=>Math.round(length * 10) / 10;
-    formatCentile = (length)=>Math.round(length * 100) / 100;
-    formatMillimeter = (length)=>Math.round(length * 1000) / 1000;
+    formatDecile = (length) => Math.round(length * 10) / 10;
+    formatCentile = (length) => Math.round(length * 100) / 100;
+    formatMillimeter = (length) => Math.round(length * 1000) / 1000;
 }
 // deno-fmt-ignore-file
 // deno-lint-ignore-file
 // This code was bundled using `deno bundle` and it's not recommended to edit it manually
 
 class BrickWithTableBase extends BrickBase {
-    constructor(appendData, otherComputedData){
+    constructor(appendData, otherComputedData) {
         super({
             list: [],
             ...appendData
@@ -2781,8 +3096,8 @@ class BrickWithTableBase extends BrickBase {
             ...otherComputedData
         });
     }
-    initCoreElementsBeforeTable = ()=>{};
-    initCoreElementsAfterTable = ()=>{};
+    initCoreElementsBeforeTable = () => {};
+    initCoreElementsAfterTable = () => {};
     tableWrapElement = createElement('div');
     tableElement = createElement('table');
     tableHeadElement = createElement('thead');
@@ -2790,9 +3105,16 @@ class BrickWithTableBase extends BrickBase {
     trHead = createElement('tr');
     trArray = [];
     idOrClassPrefix = 'brickPage';
-    initCoreElements = ()=>{
+    initCoreElements = () => {
         const configCoreElement = this.configCoreElement;
-        const { tableWrapElement , tableElement , tableHeadElement , tableBodyElement , trHead , idOrClassPrefix  } = this;
+        const {
+            tableWrapElement,
+            tableElement,
+            tableHeadElement,
+            tableBodyElement,
+            trHead,
+            idOrClassPrefix
+        } = this;
         this.initCoreElementsBeforeTable();
         this.initUsableButtonsWrap();
         configCoreElement.appendChild(tableWrapElement);
@@ -2803,39 +3125,52 @@ class BrickWithTableBase extends BrickBase {
         tableElement.appendChild(tableBodyElement);
         tableHeadElement.appendChild(trHead);
         this.appendTableHeadCell({
-            en: 'Operations',
+            en_us: 'Operations',
             zh_cn: '操作',
             zh_tw: '操作'
         });
         this.initTableHead();
     };
-    updateOtherDataLevel3 = (newData)=>{};
-    updateOtherData = (newData)=>{
-        const { list  } = newData;
+    updateOtherDataLevel3 = (newData) => {};
+    updateOtherData = (newData) => {
+        const {
+            list
+        } = newData;
         this.data.list.length = 0;
-        list.forEach((item)=>this.data.list.push(item));
+        list.forEach((item) => this.data.list.push(item));
         this.updateOtherDataLevel3(newData);
         this.showDataInTable();
     };
-    initUsableButtonsWrap = ()=>{
+    initUsableButtonsWrap = () => {
         const configCoreElement = this.configCoreElement;
-        const { idOrClassPrefix , data: { list  }  } = this;
+        const {
+            idOrClassPrefix,
+            data: {
+                list
+            }
+        } = this;
         const usableButtonsWrap = createElement('div');
         configCoreElement.appendChild(usableButtonsWrap);
         usableButtonsWrap.id = `${idOrClassPrefix}UsableButtonsWrap`;
-        this.getUsableList().forEach(({ strongI18n , buttonList  })=>{
+        this.getUsableList().forEach(({
+            strongI18n,
+            buttonList
+        }) => {
             const wrapElement = this.getWrapElement(strongI18n);
             wrapElement.setAttribute('style', 'margin-bottom:1em;');
             usableButtonsWrap.appendChild(wrapElement);
             const span = createElement('span');
             span.setAttribute('style', 'display:inline-flex;');
             wrapElement.appendChild(span);
-            buttonList.forEach(({ nameI18n , info  })=>{
+            buttonList.forEach(({
+                nameI18n,
+                info
+            }) => {
                 const button = createElement('button');
                 span.appendChild(button);
                 button.type = 'button';
                 button.innerHTML = getI18nInnerHTML(nameI18n);
-                button.onclick = (event)=>{
+                button.onclick = (event) => {
                     const infoClone = JSON.parse(JSON.stringify(info));
                     list.push(infoClone);
                     this.createTableBodyRow(infoClone);
@@ -2845,38 +3180,46 @@ class BrickWithTableBase extends BrickBase {
             });
         });
     };
-    showDataInTable = ()=>{
-        const { tableBodyElement , trArray , data: { list  }  } = this;
+    showDataInTable = () => {
+        const {
+            tableBodyElement,
+            trArray,
+            data: {
+                list
+            }
+        } = this;
         tableBodyElement.innerHTML = '';
         trArray.length = 0;
-        list.forEach((item, index)=>{
+        list.forEach((item, index) => {
             this.createTableBodyRow(item, tableBodyElement, index);
         });
     };
-    appendTableHeadCell = (i18n)=>{
-        const { trHead  } = this;
+    appendTableHeadCell = (i18n) => {
+        const {
+            trHead
+        } = this;
         const td = createElement('td');
         trHead.appendChild(td);
         td.innerHTML = getI18nInnerHTML(i18n);
     };
-    appendReadonlyTd = (tr, innerHTML)=>{
+    appendReadonlyTd = (tr, innerHTML) => {
         const td = createElement('td');
         tr.appendChild(td);
         const span = createElement('span');
         td.appendChild(span);
         span.innerHTML = innerHTML;
     };
-    appendTextareaTd = (tr, value, data, fieldName, valueKind = 'string')=>{
+    appendTextareaTd = (tr, value, data, fieldName, valueKind = 'string') => {
         const td = createElement('td');
         tr.appendChild(td);
         const textarea = createElement('textarea');
         td.appendChild(textarea);
         textarea.value = value;
         textarea.rows = 4;
-        textarea.onchange = textarea.focus = ()=>{
-            switch(valueKind){
+        textarea.onchange = textarea.focus = () => {
+            switch (valueKind) {
                 case 'numberArray':
-                    data[fieldName] = textarea.value.split('\n').map((value)=>parseFloat(value));
+                    data[fieldName] = textarea.value.split('\n').map((value) => parseFloat(value));
                     break;
                 case 'stringArray':
                     data[fieldName] = textarea.value.split('\n');
@@ -2889,19 +3232,19 @@ class BrickWithTableBase extends BrickBase {
             this.build();
         };
     };
-    appendTextboxTd = (tr, value, data, fieldName)=>{
+    appendTextboxTd = (tr, value, data, fieldName) => {
         const td = createElement('td');
         tr.appendChild(td);
         const input = createElement('input');
         td.appendChild(input);
         input.value = value;
         input.type = 'text';
-        input.onchange = input.focus = ()=>{
+        input.onchange = input.focus = () => {
             data[fieldName] = input.value;
             this.build();
         };
     };
-    appendCheckboxTdWithoutText = (tr, value, data, fieldName)=>{
+    appendCheckboxTdWithoutText = (tr, value, data, fieldName) => {
         const td = createElement('td');
         tr.appendChild(td);
         const checkbox = createElement('input');
@@ -2909,12 +3252,12 @@ class BrickWithTableBase extends BrickBase {
         checkbox.name = fieldName;
         checkbox.checked = value;
         td.appendChild(checkbox);
-        checkbox.onchange = ()=>{
+        checkbox.onchange = () => {
             data[fieldName] = checkbox.checked;
             this.build();
         };
     };
-    appendNumberTd = (tr, value, data, fieldName, min, max, step)=>{
+    appendNumberTd = (tr, value, data, fieldName, min, max, step) => {
         const td = createElement('td');
         tr.appendChild(td);
         const input = createElement('input');
@@ -2925,17 +3268,20 @@ class BrickWithTableBase extends BrickBase {
         if (max) input.max = max.toString();
         if (step) input.step = step.toString();
         td.appendChild(input);
-        input.onchange = input.focus = ()=>{
+        input.onchange = input.focus = () => {
             data[fieldName] = parseFloat(input.value);
             this.build();
         };
     };
-    appendSelectTd = (tr, value, data, fieldName, options)=>{
+    appendSelectTd = (tr, value, data, fieldName, options) => {
         const td = createElement('td');
         tr.appendChild(td);
         const lang = getCurrentLang();
         const select = createElement('select');
-        options.forEach(({ value , captions  })=>{
+        options.forEach(({
+            value,
+            captions
+        }) => {
             const option = createElement('option');
             option.value = value;
             option.setAttribute('i18n', getI18nInnerHTML(captions));
@@ -2944,15 +3290,15 @@ class BrickWithTableBase extends BrickBase {
         });
         select.value = value;
         td.appendChild(select);
-        select.onchange = ()=>{
+        select.onchange = () => {
             data[fieldName] = select.value;
             this.build();
         };
     };
-    appendOperationTd = (tr, data)=>{
+    appendOperationTd = (tr, data) => {
         const td = createElement('td');
         tr.appendChild(td);
-        '↑↓×'.split('').forEach((caption, index)=>{
+        '↑↓×'.split('').forEach((caption, index) => {
             const button = createElement('button');
             td.appendChild(button);
             button.type = 'button';
@@ -2960,12 +3306,14 @@ class BrickWithTableBase extends BrickBase {
             if (index === 2) {
                 button.className = 'warning';
             }
-            button.onclick = (event)=>{
-                const { tableBodyElement  } = this;
+            button.onclick = (event) => {
+                const {
+                    tableBodyElement
+                } = this;
                 const trList = tableBodyElement.children;
                 const trCount = trList.length;
                 let trIndex = -1;
-                for(let i = 0; i < trCount; ++i){
+                for (let i = 0; i < trCount; ++i) {
                     if (trList[i] === tr) {
                         trIndex = i;
                         break;
@@ -2973,8 +3321,8 @@ class BrickWithTableBase extends BrickBase {
                 }
                 if (trIndex === -1) return stopEventBubble(event);
                 const newlist = [];
-                this.data.list.forEach((item)=>newlist.push(item));
-                switch(index){
+                this.data.list.forEach((item) => newlist.push(item));
+                switch (index) {
                     case 0:
                         if (trIndex === 0) return stopEventBubble(event);
                         const removeItemWhenMoveUp = newlist.splice(trIndex, 1);
@@ -2999,8 +3347,13 @@ class BrickWithTableBase extends BrickBase {
             };
         });
     };
-    countDataAndComputedDataInBrickWithTableBase = ()=>{
-        const { tableHeadElement , data: { list  }  } = this;
+    countDataAndComputedDataInBrickWithTableBase = () => {
+        const {
+            tableHeadElement,
+            data: {
+                list
+            }
+        } = this;
         tableHeadElement.style.display = list.length ? 'table-header-group' : 'none';
     };
 }
@@ -3009,7 +3362,7 @@ class BrickWithTableBase extends BrickBase {
 // This code was bundled using `deno bundle` and it's not recommended to edit it manually
 
 class PokerBase extends BrickBase {
-    constructor(appendData, otherComputedData){
+    constructor(appendData, otherComputedData) {
         super({
             pokerWidth: 40,
             pokerHeight: 56,
@@ -3024,19 +3377,38 @@ class PokerBase extends BrickBase {
             ...otherComputedData
         });
     }
-    countDataAndComputedData = ()=>{
-        let { data: { paperSize , isLandscape , maxX: MAX_X , maxY: MAX_Y , pokerWidth , pokerHeight , pageMarginTop , pageMarginLeft , pokerWidth: CARD_WIDTH , pokerHeight: CARD_HEIGHT , fontSize , backFontSize , pokerKind  }  } = this;
+    countDataAndComputedData = () => {
+        let {
+            data: {
+                paperSize,
+                isLandscape,
+                maxX: MAX_X,
+                maxY: MAX_Y,
+                pokerWidth,
+                pokerHeight,
+                pageMarginTop,
+                pageMarginLeft,
+                pokerWidth: CARD_WIDTH,
+                pokerHeight: CARD_HEIGHT,
+                fontSize,
+                backFontSize,
+                pokerKind
+            }
+        } = this;
         const ROW_COUNT = Math.floor(MAX_Y / pokerHeight);
         const COLUMN_COUNT = Math.floor(MAX_X / pokerWidth);
         const COUNT_PER_PAGE = ROW_COUNT * COLUMN_COUNT;
         this.countPokerDataAndComputedData(pokerKind, COUNT_PER_PAGE);
-        const { getForePageHtml , getBackPageHtml  } = this;
+        const {
+            getForePageHtml,
+            getBackPageHtml
+        } = this;
         this.computedData.html = getForePageHtml().concat(getBackPageHtml());
         this.computedData.css = `/* common.css */
     * { margin:0;border:0;padding:0; }
     * { box-sizing:border-box; }
 
-    /* landscape 横向 portrait 纵向*/ 
+    /* landscape 横向 portrait 纵向*/
     @media print { @page { size: ${paperSize} ${isLandscape ? 'landscape' : 'portrait'}; } }
     page:not(page:last-child){page-break-after:always;}
 
@@ -3047,7 +3419,7 @@ class PokerBase extends BrickBase {
 
     page.forePage{font-family:'Times New Roman', 'KaiTi';font-size:${fontSize};}
     page.backPage{font-family:'Times New Roman', 'KaiTi';font-size:${backFontSize};}
-    
+
     /* page > row > cell > top/bottom/center > text.top-left/.top-right/.bottom-left/.bottom-right */
     /* top > text.top-left/.top-right */
     /* bottom > text.bottom-left/.bottom-right */
@@ -3067,15 +3439,15 @@ class PokerBase extends BrickBase {
       -ms-transform:rotate(180deg); 	/* IE 9 */
       -moz-transform:rotate(180deg); 	/* Firefox */
       -webkit-transform:rotate(180deg); /* Safari 和 Chrome */
-      -o-transform:rotate(180deg); 	/* Opera */ 
-      
+      -o-transform:rotate(180deg); 	/* Opera */
+
       transform-origin:center center;
       -ms-transform-origin:center center;
       -moz-transform-origin:center center;
       -webkit-transform-origin:center center;
       -o-transform-origin:center center;
     }
-    
+
     /* https://blog.csdn.net/scotfield_msn/article/details/52564829 */
     /* black/red/orange/yellow/green/Cyan/blue/purple/pink/Light green */
     /* 黑/红/橙/黄/绿/青/蓝/紫/粉/淡绿/	*/
@@ -3093,7 +3465,7 @@ class PokerBase extends BrickBase {
       [edu-color="10"]{color:#6B8E23;}
     */
     /* [edu-color="3"] {color:#FFFF00;} 黄色 黃色 yellow */
-    
+
     [edu-color="1"] {color:#000000;} /* 黑色 黑色 black */
     [edu-color="2"] {color:#FF0000;} /* 红色 紅色 red */
     [edu-color="3"] {color:#0000FF;} /* 蓝色 藍色 blue */
@@ -3104,17 +3476,21 @@ class PokerBase extends BrickBase {
     [edu-color="8"] {color:#F19EC2;} /* 粉红 粉紅 pink */
     [edu-color="9"] {color:#6B8E23;} /* 淡绿 淡綠 light green */
     [edu-color="10"]{color:#FF7F00;} /* 橙色 橙色 orange */
-    
+
     [edu-color="-1"] {color:#DDDDDD;}
     `.concat(this.computedData.pokerCss);
     };
-    updateOtherDataOfPoker = (_newData)=>{};
-    initCoreElements = ()=>{
-        const { configCoreElement  } = this;
+    updateOtherDataOfPoker = (_newData) => {};
+    initCoreElements = () => {
+        const {
+            configCoreElement
+        } = this;
         configCoreElement.setAttribute(REPORT_KIND_PROPERTY, 'poker');
-        const { getWrapElement  } = this;
+        const {
+            getWrapElement
+        } = this;
         let wrapElement = getWrapElement({
-            en: 'Poker size',
+            en_us: 'Poker size',
             zh_cn: '扑克尺寸',
             zh_tw: '撲克尺寸'
         });
@@ -3122,21 +3498,21 @@ class PokerBase extends BrickBase {
         this.initPokerHeightElements(wrapElement);
         this.appendPokerSizeButtons(wrapElement);
         wrapElement = getWrapElement({
-            en: 'Font size',
+            en_us: 'Font size',
             zh_cn: '字号',
             zh_tw: '字型大小'
         });
         this.initFontSizeElements(wrapElement);
         this.initBackFontSizeElements(wrapElement);
         wrapElement = getWrapElement({
-            en: 'Poker Kind',
+            en_us: 'Poker Kind',
             zh_cn: '扑克类型',
             zh_tw: '撲克類型'
         });
         this.initPokerKindElements(wrapElement);
     };
-    onPageSizeChanged = (newPageSize)=>{
-        switch(newPageSize){
+    onPageSizeChanged = (newPageSize) => {
+        switch (newPageSize) {
             case 'A3':
                 this.data.pokerWidth = 48;
                 this.data.pokerHeight = 68;
@@ -3152,19 +3528,24 @@ class PokerBase extends BrickBase {
         this.pokerHeightElement.value = this.data.pokerHeight.toString();
     };
     pokerWidthElement = createElement('input');
-    initPokerWidthElements = (wrapElement)=>{
-        const { data: { pokerWidth  } , pokerWidthElement  } = this;
+    initPokerWidthElements = (wrapElement) => {
+        const {
+            data: {
+                pokerWidth
+            },
+            pokerWidthElement
+        } = this;
         const labelElement = createElement('label');
         wrapElement.appendChild(labelElement);
         labelElement.innerHTML = getI18nInnerHTML({
-            en: 'Width:',
+            en_us: 'Width:',
             zh_cn: '宽：',
             zh_tw: '寬：'
         });
         pokerWidthElement.value = pokerWidth.toString();
         pokerWidthElement.type = 'number';
         pokerWidthElement.setAttribute('min', '0');
-        const changeValue = ()=>{
+        const changeValue = () => {
             this.data.pokerWidth = parseInt(pokerWidthElement.value, 0);
             this.saveConfigAndBuildIfAllowed();
         };
@@ -3174,19 +3555,24 @@ class PokerBase extends BrickBase {
         wrapElement.appendChild(pokerWidthElement);
     };
     pokerHeightElement = createElement('input');
-    initPokerHeightElements = (wrapElement)=>{
-        const { data: { pokerHeight  } , pokerHeightElement  } = this;
+    initPokerHeightElements = (wrapElement) => {
+        const {
+            data: {
+                pokerHeight
+            },
+            pokerHeightElement
+        } = this;
         const labelElement = createElement('label');
         wrapElement.appendChild(labelElement);
         labelElement.innerHTML = getI18nInnerHTML({
-            en: 'Height:',
+            en_us: 'Height:',
             zh_cn: '高：',
             zh_tw: '高：'
         });
         pokerHeightElement.value = pokerHeight.toString();
         pokerHeightElement.type = 'number';
         pokerHeightElement.setAttribute('min', '0');
-        const changeValue = ()=>{
+        const changeValue = () => {
             this.data.pokerHeight = parseInt(pokerHeightElement.value, 0);
             this.saveConfigAndBuildIfAllowed();
         };
@@ -3196,18 +3582,23 @@ class PokerBase extends BrickBase {
         wrapElement.appendChild(pokerHeightElement);
     };
     fontSizeElement = createElement('input');
-    initFontSizeElements = (wrapElement)=>{
-        const { data: { fontSize  } , fontSizeElement  } = this;
+    initFontSizeElements = (wrapElement) => {
+        const {
+            data: {
+                fontSize
+            },
+            fontSizeElement
+        } = this;
         const labelElement = createElement('label');
         wrapElement.appendChild(labelElement);
         labelElement.innerHTML = getI18nInnerHTML({
-            en: 'Front:',
+            en_us: 'Front:',
             zh_cn: '正面：',
             zh_tw: '正面：'
         });
         fontSizeElement.type = 'text';
         fontSizeElement.value = fontSize;
-        const changeValue = ()=>{
+        const changeValue = () => {
             this.data.fontSize = fontSizeElement.value;
             this.saveConfigAndBuildIfAllowed();
         };
@@ -3217,18 +3608,23 @@ class PokerBase extends BrickBase {
         wrapElement.appendChild(fontSizeElement);
     };
     backFontSizeElement = createElement('input');
-    initBackFontSizeElements = (wrapElement)=>{
-        const { data: { backFontSize  } , backFontSizeElement  } = this;
+    initBackFontSizeElements = (wrapElement) => {
+        const {
+            data: {
+                backFontSize
+            },
+            backFontSizeElement
+        } = this;
         const labelElement = createElement('label');
         wrapElement.appendChild(labelElement);
         labelElement.innerHTML = getI18nInnerHTML({
-            en: 'Back:',
+            en_us: 'Back:',
             zh_cn: '背面：',
             zh_tw: '背面：'
         });
         backFontSizeElement.type = 'text';
         backFontSizeElement.value = backFontSize;
-        const changeValue = ()=>{
+        const changeValue = () => {
             this.data.backFontSize = backFontSizeElement.value;
             this.saveConfigAndBuildIfAllowed();
         };
@@ -3238,11 +3634,10 @@ class PokerBase extends BrickBase {
         wrapElement.appendChild(backFontSizeElement);
     };
     pokerKindElementArray = [];
-    appendPokerSizeButtons = (wrapElement)=>{
-        [
-            {
+    appendPokerSizeButtons = (wrapElement) => {
+        [{
                 i18n: {
-                    en: 'Small',
+                    en_us: 'Small',
                     zh_cn: '小',
                     zh_tw: '小'
                 },
@@ -3251,21 +3646,25 @@ class PokerBase extends BrickBase {
             },
             {
                 i18n: {
-                    en: 'Big',
+                    en_us: 'Big',
                     zh_cn: '大',
                     zh_tw: '大'
                 },
                 width: 48,
                 height: 68
             }
-        ].forEach(({ i18n , width , height  }, i)=>{
+        ].forEach(({
+            i18n,
+            width,
+            height
+        }, i) => {
             const buttonElement = createElement('button');
             buttonElement.innerHTML = getI18nInnerHTML(i18n);
             buttonElement.type = 'button';
             buttonElement.setAttribute('edu-to-width', width.toString());
             buttonElement.setAttribute('edu-to-height', height.toString());
             buttonElement.name = 'pokerSizeButtons';
-            buttonElement.onclick = (event)=>{
+            buttonElement.onclick = (event) => {
                 const widthValue = parseInt(buttonElement.getAttribute('edu-to-width'), 0);
                 const heightValue = parseInt(buttonElement.getAttribute('edu-to-height'), 0);
                 this.data.pokerWidth = widthValue;
@@ -3278,10 +3677,22 @@ class PokerBase extends BrickBase {
             wrapElement.appendChild(buttonElement);
         });
     };
-    updateOtherData = (newData)=>{
-        const { pokerWidth , pokerHeight , fontSize , backFontSize , pokerKind  } = newData;
-        const { pokerWidthElement , pokerHeightElement , fontSizeElement , backFontSizeElement , pokerKindElementArray  } = this;
-        pokerKindElementArray.forEach((element)=>{
+    updateOtherData = (newData) => {
+        const {
+            pokerWidth,
+            pokerHeight,
+            fontSize,
+            backFontSize,
+            pokerKind
+        } = newData;
+        const {
+            pokerWidthElement,
+            pokerHeightElement,
+            fontSizeElement,
+            backFontSizeElement,
+            pokerKindElementArray
+        } = this;
+        pokerKindElementArray.forEach((element) => {
             element.checked = element.value === pokerKind.toString();
         });
         pokerWidthElement.value = pokerWidth;
@@ -3301,7 +3712,7 @@ class PokerBase extends BrickBase {
 // This code was bundled using `deno bundle` and it's not recommended to edit it manually
 
 class CopybookBase extends BrickBase {
-    constructor(appendData, otherComputedData){
+    constructor(appendData, otherComputedData) {
         super({
             copybooks: [],
             selectedCheckboxIndexArray: [],
@@ -3316,21 +3727,20 @@ class CopybookBase extends BrickBase {
             ...otherComputedData
         });
     }
-    updateOtherDataOfCopybook = (_newData)=>{};
+    updateOtherDataOfCopybook = (_newData) => {};
     usableCopybookCheckboxElementArray = [];
     usableCopybooksPeopleEducationEdition = [];
     kindElementArray = [];
-    initKindElements = ()=>{
+    initKindElements = () => {
         const wrapLabelI18n = {
-            en: `Typebook Kind`,
+            en_us: `Typebook Kind`,
             zh_cn: `字帖类型`,
             zh_tw: `字帖類型`
         };
-        const radiosInfoArray = [
-            {
+        const radiosInfoArray = [{
                 value: `pinyinToChinese`,
                 i18nHtml: getI18nInnerHTML({
-                    en: `Reading Pinyin and Writing Chinese Characters`,
+                    en_us: `Reading Pinyin and Writing Chinese Characters`,
                     zh_cn: `看拼音写汉字`,
                     zh_tw: `看拼音寫漢字`
                 })
@@ -3338,7 +3748,7 @@ class CopybookBase extends BrickBase {
             {
                 value: `chineseToPinyin`,
                 i18nHtml: getI18nInnerHTML({
-                    en: `Look at Chinese characters and write pinyin`,
+                    en_us: `Look at Chinese characters and write pinyin`,
                     zh_cn: `看汉字写拼音`,
                     zh_tw: `看漢字寫拼音`
                 })
@@ -3347,17 +3757,16 @@ class CopybookBase extends BrickBase {
         this.initRadioGroupWithLabelByStringValue(radiosInfoArray, 'kind', this.kindElementArray, wrapLabelI18n);
     };
     inputMethodElementArray = [];
-    initInputMethodElements = ()=>{
+    initInputMethodElements = () => {
         const wrapLabelI18n = {
-            en: `Entry method`,
+            en_us: `Entry method`,
             zh_cn: `录入方式`,
             zh_tw: `錄入方式`
         };
-        const radiosInfoArray = [
-            {
+        const radiosInfoArray = [{
                 value: `select`,
                 i18nHtml: getI18nInnerHTML({
-                    en: `Select`,
+                    en_us: `Select`,
                     zh_cn: `选择`,
                     zh_tw: `選擇`
                 })
@@ -3365,7 +3774,7 @@ class CopybookBase extends BrickBase {
             {
                 value: `manualInput`,
                 i18nHtml: getI18nInnerHTML({
-                    en: `Manual input`,
+                    en_us: `Manual input`,
                     zh_cn: `手动输入`,
                     zh_tw: `手動輸入`
                 })
@@ -3374,17 +3783,16 @@ class CopybookBase extends BrickBase {
         this.initRadioGroupWithLabelByStringValue(radiosInfoArray, 'inputMethod', this.inputMethodElementArray, wrapLabelI18n);
     };
     fontSizeElementArray = [];
-    initFontSizeElements = ()=>{
+    initFontSizeElements = () => {
         const wrapLabelI18n = {
-            en: `Font Size`,
+            en_us: `Font Size`,
             zh_cn: `字号`,
             zh_tw: `字型大小`
         };
-        const radiosInfoArray = [
-            {
+        const radiosInfoArray = [{
                 value: `small`,
                 i18nHtml: getI18nInnerHTML({
-                    en: `Small`,
+                    en_us: `Small`,
                     zh_cn: `小`,
                     zh_tw: `小`
                 })
@@ -3392,7 +3800,7 @@ class CopybookBase extends BrickBase {
             {
                 value: `middle`,
                 i18nHtml: getI18nInnerHTML({
-                    en: `Middle`,
+                    en_us: `Middle`,
                     zh_cn: `中`,
                     zh_tw: `中`
                 })
@@ -3400,7 +3808,7 @@ class CopybookBase extends BrickBase {
             {
                 value: `big`,
                 i18nHtml: getI18nInnerHTML({
-                    en: `Big`,
+                    en_us: `Big`,
                     zh_cn: `大`,
                     zh_tw: `大`
                 })
@@ -3409,17 +3817,16 @@ class CopybookBase extends BrickBase {
         this.initRadioGroupWithLabelByStringValue(radiosInfoArray, 'fontSize', this.fontSizeElementArray, wrapLabelI18n);
     };
     colorElementArray = [];
-    initColorElements = ()=>{
+    initColorElements = () => {
         const wrapLabelI18n = {
-            en: `Color`,
+            en_us: `Color`,
             zh_cn: `颜色`,
             zh_tw: `顏色`
         };
-        const radiosInfoArray = [
-            {
+        const radiosInfoArray = [{
                 value: `blackOnGreen`,
                 i18nHtml: getI18nInnerHTML({
-                    en: `Green line and black characters.`,
+                    en_us: `Green line and black characters.`,
                     zh_cn: `绿线黑字`,
                     zh_tw: `綠線黑字`
                 })
@@ -3427,7 +3834,7 @@ class CopybookBase extends BrickBase {
             {
                 value: `redOnBlack`,
                 i18nHtml: getI18nInnerHTML({
-                    en: `Black line and red characters.`,
+                    en_us: `Black line and red characters.`,
                     zh_cn: `黑线红字`,
                     zh_tw: `黑線紅字`
                 })
@@ -3435,7 +3842,7 @@ class CopybookBase extends BrickBase {
             {
                 value: `blackOnRed`,
                 i18nHtml: getI18nInnerHTML({
-                    en: `Red line and black characters.`,
+                    en_us: `Red line and black characters.`,
                     zh_cn: `红线黑字`,
                     zh_tw: `紅線黑字`
                 })
@@ -3790,7 +4197,7 @@ class CopybookBase extends BrickBase {
         'di',
         'du',
         'ei',
-        'en',
+        'en_us',
         'er',
         'fɑ',
         'fo',
@@ -3858,12 +4265,12 @@ class CopybookBase extends BrickBase {
         'e',
         'o'
     ];
-    isPinyinBill = (pinyinBill)=>{
+    isPinyinBill = (pinyinBill) => {
         let pinyinBillTemp = pinyinBill;
         let pinyinBillTempLength = pinyinBillTemp.length;
-        while(pinyinBillTempLength){
+        while (pinyinBillTempLength) {
             let find = false;
-            for(let leftLength = 6; leftLength > 0; --leftLength){
+            for (let leftLength = 6; leftLength > 0; --leftLength) {
                 if (pinyinBillTempLength < leftLength) continue;
                 const leftPinyin = pinyinBillTemp.substring(0, leftLength);
                 if (this.pinyinArrayWithoutTone.indexOf(leftPinyin) === -1) continue;
@@ -3884,16 +4291,16 @@ class CopybookBase extends BrickBase {
         }
         return true;
     };
-    splitPinyin = (pinyinBill, pinyinArray, charCount)=>{
+    splitPinyin = (pinyinBill, pinyinArray, charCount) => {
         pinyinBill = pinyinBill.toLowerCase();
         const isEndOfR = pinyinBill.substr(-1) === 'r';
         let pinyinBillTemp = isEndOfR ? pinyinBill.substr(0, pinyinBill.length - 1) : pinyinBill;
         pinyinBillTemp = pinyinBillTemp.replace(/[āáǎà]/gi, 'ɑ').replace(/[ōóǒò]/gi, 'o').replace(/[ēéěè]/gi, 'e').replace(/[īíǐì]/gi, 'i').replace(/[ūúǔù]/gi, 'u').replace(/[ǖǘǚǜ]/gi, 'ü');
         const array = [];
         let pinyinBillTempLength = pinyinBillTemp.length;
-        while(pinyinBillTempLength){
+        while (pinyinBillTempLength) {
             let find = false;
-            for(let leftLength = 6; leftLength > 0; --leftLength){
+            for (let leftLength = 6; leftLength > 0; --leftLength) {
                 if (pinyinBillTempLength < leftLength) continue;
                 const leftPinyin = pinyinBillTemp.substring(0, leftLength);
                 if (this.pinyinArrayWithoutTone.indexOf(leftPinyin) === -1) {
@@ -3917,7 +4324,7 @@ class CopybookBase extends BrickBase {
             pinyinBillTempLength = pinyinBillTemp.length;
         }
         let offset = 0;
-        array.forEach((pinyin)=>{
+        array.forEach((pinyin) => {
             const length = pinyin.length;
             pinyinArray.push(pinyinBill.substr(offset, length));
             offset += length;
@@ -3928,10 +4335,12 @@ class CopybookBase extends BrickBase {
             pinyinArray.push(last);
         }
     };
-    fixPinyinArray = (pinyinBill, pinyinArray, charCount)=>{
-        const { splitPinyin  } = this;
+    fixPinyinArray = (pinyinBill, pinyinArray, charCount) => {
+        const {
+            splitPinyin
+        } = this;
         const array = [];
-        pinyinArray.forEach((seg)=>{
+        pinyinArray.forEach((seg) => {
             splitPinyin(seg, array, charCount);
         });
         if (array.length !== charCount) {
@@ -3939,13 +4348,28 @@ class CopybookBase extends BrickBase {
             splitPinyin(pinyinBill, array, charCount);
         }
         pinyinArray.length = 0;
-        array.forEach((pinyin)=>{
+        array.forEach((pinyin) => {
             pinyinArray.push(pinyin);
         });
     };
-    countDataAndComputedData = ()=>{
-        const { data , computedData  } = this;
-        const { paperSize , isLandscape , maxX: MAX_X , maxY: MAX_Y , pageMarginTop , pageMarginBottom , pageMarginLeft , pageMarginRight , kind , fontSize , color  } = data;
+    countDataAndComputedData = () => {
+        const {
+            data,
+            computedData
+        } = this;
+        const {
+            paperSize,
+            isLandscape,
+            maxX: MAX_X,
+            maxY: MAX_Y,
+            pageMarginTop,
+            pageMarginBottom,
+            pageMarginLeft,
+            pageMarginRight,
+            kind,
+            fontSize,
+            color
+        } = data;
         const SCALE = fontSize === 'middle' ? 1 : fontSize === 'small' ? 12 / 15 : 18 / 15;
         const RECTANGLE_WIDTH = 15 * SCALE;
         const RECTANGLE_HEIGHT = 23 * SCALE;
@@ -3964,8 +4388,8 @@ class CopybookBase extends BrickBase {
 		body {width:${MAX_X}mm;overflow-x:hidden;overflow-y:auto;page-break-inside:avoid;}
 
 		page { display:flex;flex-flow:wrap;column-gap:1mm;row-gap:2mm;flex:100%;justify-content:flex-start;align-items:flex-start; }
-		
-		/* landscape 横向 portrait 纵向*/ 
+
+		/* landscape 横向 portrait 纵向*/
 		@media print { @page { size: ${paperSize} ${isLandscape ? 'landscape' : 'portrait'}; margin:${pageMarginTop}mm ${pageMarginRight}mm ${pageMarginBottom}mm ${pageMarginLeft}mm; } }
 		page:not(page:last-child){page-break-after:always;}
 
@@ -4010,27 +4434,31 @@ class CopybookBase extends BrickBase {
 		.subject{font-size:1em;}
 		`;
         const BACKGOUND_SVG_SRC = `http://edu.sonya.cc/images/3brick/1/background/${color}.svg`;
-        const PAGE_WIDTH = MAX_X, PAGE_HEIGHT = MAX_Y;
+        const PAGE_WIDTH = MAX_X,
+            PAGE_HEIGHT = MAX_Y;
         const HORIZONTAL_SPACE = 1;
         const ROWS_COUNT = Math.floor((PAGE_HEIGHT + 2) / (RECTANGLE_HEIGHT + 2));
         const LANG = getCurrentLang();
         const i18nAnswerFlag = {
-            en: 'Answer',
+            en_us: 'Answer',
             zh_cn: '答案',
             zh_tw: '答案'
         };
         const i18nSubject = data.kind === 'pinyinToChinese' ? {
-            en: 'Writing',
+            en_us: 'Writing',
             zh_cn: '写字',
             zh_tw: '寫字'
         } : {
-            en: 'Phonetic Notation',
+            en_us: 'Phonetic Notation',
             zh_cn: '注音',
             zh_tw: '注音'
         };
-        const { inputMethod , selectedCheckboxIndexArray  } = data;
-        const i18nSubtitle = inputMethod === 'select' && selectedCheckboxIndexArray.length === 1 ? this.usableCopybookCheckboxElementArray.filter((checkbox)=>checkbox.checked)[0].names : {
-            en: '',
+        const {
+            inputMethod,
+            selectedCheckboxIndexArray
+        } = data;
+        const i18nSubtitle = inputMethod === 'select' && selectedCheckboxIndexArray.length === 1 ? this.usableCopybookCheckboxElementArray.filter((checkbox) => checkbox.checked)[0].names : {
+            en_us: '',
             zh_cn: '',
             zh_tw: ''
         };
@@ -4059,7 +4487,10 @@ class CopybookBase extends BrickBase {
             let currentRowWidth = 0;
             questionHtml += problemsStartHtml;
             answerHtml += answersStartHtml;
-            randomizedCopybooks.forEach(({ chinese , pinyin  })=>{
+            randomizedCopybooks.forEach(({
+                chinese,
+                pinyin
+            }) => {
                 pinyin = pinyin.replace(/\//gi, '\'').replace(/a/g, 'ɑ').replace(/g/g, 'ɡ');
                 const charArray = chinese.split('');
                 const pinyinArray = pinyin.split('\'');
@@ -4083,7 +4514,7 @@ class CopybookBase extends BrickBase {
                 }
                 questionHtml += wordWrapStartHtml;
                 answerHtml += wordWrapStartHtml;
-                charArray.forEach((__char, index)=>{
+                charArray.forEach((__char, index) => {
                     const charStartHtml = `<span class="charWrap">`;
                     const charEndHtml = `</span>`;
                     const backgroundHtml = `<img class="backgound-image" src="${BACKGOUND_SVG_SRC}" alt="${BACKGOUND_SVG_SRC}" />`;
@@ -4104,25 +4535,29 @@ class CopybookBase extends BrickBase {
         const questionPageCount = (questionHtml.split('</page>').length - 1).toString();
         const answerPageCount = (answerHtml.split('</page>').length - 1).toString();
         const html = questionHtml.replace(/~reporterPageCount~/g, questionPageCount).concat(answerHtml.replace(/~reporterPageCount~/g, answerPageCount));
-        const en = `${FILENAME_POSTFIX}Copybooks_chineseAndPinyin`;
+        const en_us = `${FILENAME_POSTFIX}Copybooks_chineseAndPinyin`;
         const zh_cn = `${FILENAME_POSTFIX}简体汉字与拼音`;
         const zh_tw = `${FILENAME_POSTFIX}簡體漢字與拼音`;
         computedData.title = {
-            en,
+            en_us,
             zh_cn,
             zh_tw
         };
         computedData.css = css;
         computedData.html = html;
     };
-    getRandomizedCopybooks = ()=>{
-        const { data: { copybooks  }  } = this;
+    getRandomizedCopybooks = () => {
+        const {
+            data: {
+                copybooks
+            }
+        } = this;
         if (copybooks.length === 0) return [];
         const remaining = [];
-        copybooks.forEach((copybook)=>remaining.push(copybook));
+        copybooks.forEach((copybook) => remaining.push(copybook));
         const result = [];
         let length = remaining.length;
-        while(length > 1){
+        while (length > 1) {
             const index = Math.floor(Math.random() * length);
             result.push(remaining[index]);
             remaining.splice(index, 1);
@@ -4131,13 +4566,22 @@ class CopybookBase extends BrickBase {
         result.push(remaining[0]);
         return result;
     };
-    updateOtherData = (newData)=>{
-        const { copybooks , selectedCheckboxIndexArray , kind , inputMethod , fontSize , color  } = newData;
-        const { data  } = this;
+    updateOtherData = (newData) => {
+        const {
+            copybooks,
+            selectedCheckboxIndexArray,
+            kind,
+            inputMethod,
+            fontSize,
+            color
+        } = newData;
+        const {
+            data
+        } = this;
         data.copybooks.length = 0;
-        copybooks.forEach((copybook)=>data.copybooks.push(copybook));
+        copybooks.forEach((copybook) => data.copybooks.push(copybook));
         data.selectedCheckboxIndexArray.length = 0;
-        selectedCheckboxIndexArray.forEach((selectedCheckboxIndex)=>data.selectedCheckboxIndexArray.push(selectedCheckboxIndex));
+        selectedCheckboxIndexArray.forEach((selectedCheckboxIndex) => data.selectedCheckboxIndexArray.push(selectedCheckboxIndex));
         data.kind = kind;
         data.inputMethod = inputMethod;
         data.fontSize = fontSize;
@@ -4150,14 +4594,23 @@ class CopybookBase extends BrickBase {
     textareaChinese = createElement('textarea');
     textareaPinyin = createElement('textarea');
     textareaChineseAndPinyin = createElement('textarea');
-    initCoreElements = ()=>{
+    initCoreElements = () => {
         this.initKindElements();
         this.initInputMethodElements();
         this.initFontSizeElements();
         this.initColorElements();
         const configCoreElement = this.configCoreElement;
-        const { usableCopybookCheckboxElementArray , usableCopybooksPeopleEducationEdition , textareaChinese , textareaPinyin , textareaChineseAndPinyin , idOrClassPrefix  } = this;
-        const { data  } = this;
+        const {
+            usableCopybookCheckboxElementArray,
+            usableCopybooksPeopleEducationEdition,
+            textareaChinese,
+            textareaPinyin,
+            textareaChineseAndPinyin,
+            idOrClassPrefix
+        } = this;
+        const {
+            data
+        } = this;
         this.appendCopybookOfGrade1Term1();
         this.appendCopybookOfGrade1Term2();
         this.appendCopybookOfGrade2Term1();
@@ -4172,7 +4625,7 @@ class CopybookBase extends BrickBase {
         detailsPeopleEducationEdition.appendChild(summaryPeopleEducationEdition);
         const strongElement = createElement('strong');
         strongElement.innerHTML = getI18nInnerHTML({
-            en: `Textbook (People's Education Edition)`,
+            en_us: `Textbook (People's Education Edition)`,
             zh_cn: '课本（人教版）',
             zh_tw: '課本（人教版）'
         });
@@ -4180,7 +4633,10 @@ class CopybookBase extends BrickBase {
         const usableCopybooksPeopleEducationEditionWrap = createElement('div');
         usableCopybooksPeopleEducationEditionWrap.className = `${idOrClassPrefix}UsableCopybooksWrap`;
         detailsPeopleEducationEdition.appendChild(usableCopybooksPeopleEducationEditionWrap);
-        usableCopybooksPeopleEducationEdition.forEach(({ termI18n , units  })=>{
+        usableCopybooksPeopleEducationEdition.forEach(({
+            termI18n,
+            units
+        }) => {
             const usableCopybookWrap = createElement('div');
             usableCopybooksPeopleEducationEditionWrap.appendChild(usableCopybookWrap);
             usableCopybookWrap.className = `${idOrClassPrefix}UsableCopybookWrap`;
@@ -4191,8 +4647,11 @@ class CopybookBase extends BrickBase {
             const spanGroup = createElement('span');
             usableCopybookWrap.appendChild(spanGroup);
             spanGroup.className = `${idOrClassPrefix}UsableCopybookCheckboxGroupWrap`;
-            units.forEach((unit)=>{
-                const { names , words  } = unit;
+            units.forEach((unit) => {
+                const {
+                    names,
+                    words
+                } = unit;
                 const spanWrap = createElement('span');
                 spanGroup.appendChild(spanWrap);
                 spanWrap.className = `${idOrClassPrefix}UsableCopybookCheckboxWrap`;
@@ -4207,18 +4666,21 @@ class CopybookBase extends BrickBase {
                 spanWrap.appendChild(span);
                 span.className = `${idOrClassPrefix}UsableCopybookSpanAfterCheckboxWrap`;
                 span.innerHTML = getI18nInnerHTML(names);
-                const checkboxChanged = (event)=>{
+                const checkboxChanged = (event) => {
                     const copybooks = [];
                     const chineseArray = [];
                     const pinyinArray = [];
                     const chineseAndPinyinArray = [];
                     const selectedCheckboxIndexArray = [];
-                    usableCopybookCheckboxElementArray.forEach((one)=>{
+                    usableCopybookCheckboxElementArray.forEach((one) => {
                         if (one.checked) {
                             selectedCheckboxIndexArray.push(parseInt(one.getAttribute('edu-index'), 0));
-                            one.words.forEach((chineseAndPinyinPair)=>{
+                            one.words.forEach((chineseAndPinyinPair) => {
                                 copybooks.push(chineseAndPinyinPair);
-                                const { chinese , pinyin  } = chineseAndPinyinPair;
+                                const {
+                                    chinese,
+                                    pinyin
+                                } = chineseAndPinyinPair;
                                 chineseArray.push(chinese);
                                 pinyinArray.push(pinyin.replace(/a/g, 'ɑ').replace(/g/g, 'ɡ'));
                                 chineseAndPinyinArray.push(`${chinese} ${pinyin.replace(/a/g, 'ɑ').replace(/g/g, 'ɡ')}`);
@@ -4229,11 +4691,11 @@ class CopybookBase extends BrickBase {
                     textareaPinyin.value = pinyinArray.join('\n');
                     textareaChineseAndPinyin.value = chineseAndPinyinArray.join('\n');
                     data.selectedCheckboxIndexArray.length = 0;
-                    selectedCheckboxIndexArray.forEach((index)=>data.selectedCheckboxIndexArray.push(index));
+                    selectedCheckboxIndexArray.forEach((index) => data.selectedCheckboxIndexArray.push(index));
                     this.updateCopybooks(copybooks);
                 };
                 checkbox.onchange = checkboxChanged;
-                span.onclick = (event)=>{
+                span.onclick = (event) => {
                     checkbox.checked = !checkbox.checked;
                     checkboxChanged(event);
                     return stopEventBubble(event);
@@ -4246,7 +4708,7 @@ class CopybookBase extends BrickBase {
         copybookInputWrap.id = `${idOrClassPrefix}CopybookInputWrap`;
         const copybookInputStrongElement = createElement('strong');
         copybookInputStrongElement.innerHTML = getI18nInnerHTML({
-            en: `Entry area`,
+            en_us: `Entry area`,
             zh_cn: '录入区',
             zh_tw: '錄入區'
         });
@@ -4257,61 +4719,89 @@ class CopybookBase extends BrickBase {
         textareaGroupWrap.appendChild(textareaChinese);
         textareaChinese.value = '';
         textareaChinese.rows = 4;
-        textareaChinese.onchange = textareaChinese.focus = ()=>{
+        textareaChinese.onchange = textareaChinese.focus = () => {
             this.updateChineseOrPinyinTextarea(textareaChinese, textareaPinyin, textareaChineseAndPinyin);
         };
         textareaChinese.setAttribute('i18n-placeholder', JSON.stringify({
-            en: `Input Chinese words, one for each line.`,
+            en_us: `Input Chinese words, one for each line.`,
             zh_cn: '输入汉字词语，每行一条。',
             zh_tw: '輸入漢字詞語，每行一條。'
         }));
         textareaGroupWrap.appendChild(textareaPinyin);
         textareaPinyin.value = '';
         textareaPinyin.rows = 4;
-        textareaPinyin.onchange = textareaPinyin.focus = ()=>{
+        textareaPinyin.onchange = textareaPinyin.focus = () => {
             this.updateChineseOrPinyinTextarea(textareaChinese, textareaPinyin, textareaChineseAndPinyin);
         };
         textareaPinyin.setAttribute('i18n-placeholder', JSON.stringify({
-            en: `Input the corresponding pinyin of Chinese words, separated by '/'. One for each line.`,
+            en_us: `Input the corresponding pinyin of Chinese words, separated by '/'. One for each line.`,
             zh_cn: '输入汉字词语对应拼音，使用/分隔。每行一条。',
             zh_tw: '輸入漢字詞語對應拼音，使用/分隔。每行一條。'
         }));
         textareaGroupWrap.appendChild(textareaChineseAndPinyin);
         textareaChineseAndPinyin.value = '';
         textareaChineseAndPinyin.rows = 4;
-        textareaChineseAndPinyin.onchange = textareaChineseAndPinyin.focus = ()=>{
+        textareaChineseAndPinyin.onchange = textareaChineseAndPinyin.focus = () => {
             this.updateChineseAndPinyinTextarea(textareaChineseAndPinyin, textareaChinese, textareaPinyin);
         };
         textareaChineseAndPinyin.setAttribute('i18n-placeholder', JSON.stringify({
-            en: `Input Chinese words and corresponding pinyin, and pinyin is separated by '/'. One for each line.`,
+            en_us: `Input Chinese words and corresponding pinyin, and pinyin is separated by '/'. One for each line.`,
             zh_cn: '输入汉字词语及对应拼音，拼音使用/分隔。每行一条。',
             zh_tw: '輸入漢字詞語及對應拼音，拼音使用/分隔。每行一條。'
         }));
     };
-    updateCopybookData = ()=>{
-        const { data , computedData , usableCopybookCheckboxElementArray  } = this;
-        const { paperSize , isLandscape , maxX: MAX_X , maxY: MAX_Y , pageMarginTop , pageMarginLeft , copybooks , selectedCheckboxIndexArray , kind , inputMethod , fontSize , color  } = data;
-        const { kindElementArray , inputMethodElementArray , fontSizeElementArray , colorElementArray , textareaChinese , textareaPinyin , textareaChineseAndPinyin  } = this;
-        kindElementArray.forEach((radio)=>{
+    updateCopybookData = () => {
+        const {
+            data,
+            computedData,
+            usableCopybookCheckboxElementArray
+        } = this;
+        const {
+            paperSize,
+            isLandscape,
+            maxX: MAX_X,
+            maxY: MAX_Y,
+            pageMarginTop,
+            pageMarginLeft,
+            copybooks,
+            selectedCheckboxIndexArray,
+            kind,
+            inputMethod,
+            fontSize,
+            color
+        } = data;
+        const {
+            kindElementArray,
+            inputMethodElementArray,
+            fontSizeElementArray,
+            colorElementArray,
+            textareaChinese,
+            textareaPinyin,
+            textareaChineseAndPinyin
+        } = this;
+        kindElementArray.forEach((radio) => {
             radio.checked = radio.value === kind;
         });
-        inputMethodElementArray.forEach((radio)=>{
+        inputMethodElementArray.forEach((radio) => {
             radio.checked = radio.value === inputMethod;
         });
-        fontSizeElementArray.forEach((radio)=>{
+        fontSizeElementArray.forEach((radio) => {
             radio.checked = radio.value === fontSize;
         });
-        colorElementArray.forEach((radio)=>{
+        colorElementArray.forEach((radio) => {
             radio.checked = radio.value === color;
         });
-        usableCopybookCheckboxElementArray.forEach((checkbox)=>{
+        usableCopybookCheckboxElementArray.forEach((checkbox) => {
             const index = parseInt(checkbox.getAttribute('edu-index') || '0', 0);
             checkbox.checked = selectedCheckboxIndexArray.indexOf(index) > -1;
         });
         const chineseArray = [];
         const pinyinArray = [];
         const chineseAndPinyinArray = [];
-        copybooks.forEach(({ chinese , pinyin  })=>{
+        copybooks.forEach(({
+            chinese,
+            pinyin
+        }) => {
             chineseArray.push(chinese);
             pinyinArray.push(pinyin);
             chineseAndPinyinArray.push(`${chinese} ${pinyin}`);
@@ -4320,11 +4810,11 @@ class CopybookBase extends BrickBase {
         textareaPinyin.value = pinyinArray.join('\n');
         textareaChineseAndPinyin.value = chineseAndPinyinArray.join('\n');
     };
-    updateChineseAndPinyinTextarea = (textareaChineseAndPinyin, textareaChinese, textareaPinyin)=>{
+    updateChineseAndPinyinTextarea = (textareaChineseAndPinyin, textareaChinese, textareaPinyin) => {
         const copybooks = [];
         const chineseAndPinyinArray = textareaChineseAndPinyin.value.split('\n');
         const chineseAndPinyinLength = chineseAndPinyinArray.length;
-        for(let i = 0; i < chineseAndPinyinLength; ++i){
+        for (let i = 0; i < chineseAndPinyinLength; ++i) {
             const pairArray = chineseAndPinyinArray[i].split(' ');
             const chinese = pairArray[0];
             const pinyin = (pairArray.length < 2 ? '' : pairArray[1]).replace(/a/g, 'ɑ').replace(/g/g, 'ɡ');
@@ -4335,7 +4825,10 @@ class CopybookBase extends BrickBase {
         }
         const chineseArray = [];
         const pinyinArray = [];
-        copybooks.forEach(({ chinese , pinyin  })=>{
+        copybooks.forEach(({
+            chinese,
+            pinyin
+        }) => {
             chineseArray.push(chinese);
             pinyinArray.push(pinyin.replace(/a/g, 'ɑ').replace(/g/g, 'ɡ'));
             chineseAndPinyinArray.push(`${chinese} ${pinyin.replace(/a/g, 'ɑ').replace(/g/g, 'ɡ')}`);
@@ -4344,14 +4837,14 @@ class CopybookBase extends BrickBase {
         textareaPinyin.value = pinyinArray.join('\n');
         this.updateCopybooks(copybooks);
     };
-    updateChineseOrPinyinTextarea = (textareaChinese, textareaPinyin, textareaChineseAndPinyin)=>{
+    updateChineseOrPinyinTextarea = (textareaChinese, textareaPinyin, textareaChineseAndPinyin) => {
         const copybooks = [];
         const chineseArray = textareaChinese.value.split('\n');
         const pinyinArray = textareaPinyin.value.split('\n');
         const chineseLength = chineseArray.length;
         const pinyinLength = pinyinArray.length;
         const maxCount = Math.max(chineseLength, pinyinLength);
-        for(let i = 0; i < maxCount; ++i){
+        for (let i = 0; i < maxCount; ++i) {
             const chinese = i < chineseLength ? chineseArray[i] : '';
             const pinyin = (i < pinyinLength ? pinyinArray[i] : '').replace(/a/g, 'ɑ').replace(/g/g, 'ɡ');
             copybooks.push({
@@ -4362,7 +4855,10 @@ class CopybookBase extends BrickBase {
         chineseArray.length = 0;
         pinyinArray.length = 0;
         const chineseAndPinyinArray = [];
-        copybooks.forEach(({ chinese , pinyin  })=>{
+        copybooks.forEach(({
+            chinese,
+            pinyin
+        }) => {
             chineseArray.push(chinese);
             pinyinArray.push(pinyin.replace(/a/g, 'ɑ').replace(/g/g, 'ɡ'));
             chineseAndPinyinArray.push(`${chinese} ${pinyin.replace(/a/g, 'ɑ').replace(/g/g, 'ɡ')}`);
@@ -4372,21 +4868,23 @@ class CopybookBase extends BrickBase {
         textareaChineseAndPinyin.value = chineseAndPinyinArray.join('\n');
         this.updateCopybooks(copybooks);
     };
-    updateCopybooks = (copybooks)=>{
-        const { data  } = this;
+    updateCopybooks = (copybooks) => {
+        const {
+            data
+        } = this;
         data.copybooks.length = 0;
-        copybooks.forEach((copybook)=>{
+        copybooks.forEach((copybook) => {
             data.copybooks.push(copybook);
         });
         this.countDataAndComputedData();
         this.build();
     };
-    onRadioOptionChanged = (propertyName, value)=>{
-        switch(propertyName){
+    onRadioOptionChanged = (propertyName, value) => {
+        switch (propertyName) {
             case 'kind':
                 break;
             case 'inputMethod':
-                switch(value){
+                switch (value) {
                     case 'select':
                         showBlock(getElementById('brickPageCopybookUsableCopybooksWrap'));
                         hide(getElementById('brickPageCopybookCopybookInputWrap'));
@@ -4407,23 +4905,23 @@ class CopybookBase extends BrickBase {
                 break;
         }
     };
-    appendCopybookOfGrade1Term1 = ()=>{
-        const { usableCopybooksPeopleEducationEdition  } = this;
+    appendCopybookOfGrade1Term1 = () => {
+        const {
+            usableCopybooksPeopleEducationEdition
+        } = this;
         usableCopybooksPeopleEducationEdition.push({
             termI18n: {
-                en: `K1T1`,
+                en_us: `K1T1`,
                 zh_cn: `一年级上`,
                 zh_tw: `一年級上`
             },
-            units: [
-                {
+            units: [{
                     names: {
-                        en: `Unit 1`,
+                        en_us: `Unit 1`,
                         zh_cn: `第一单元`,
                         zh_tw: `第一单元`
                     },
-                    words: [
-                        {
+                    words: [{
                             chinese: `天`,
                             pinyin: `tiān`
                         },
@@ -4583,12 +5081,11 @@ class CopybookBase extends BrickBase {
                 },
                 {
                     names: {
-                        en: `Unit 2`,
+                        en_us: `Unit 2`,
                         zh_cn: `第二单元`,
                         zh_tw: `第二单元`
                     },
-                    words: [
-                        {
+                    words: [{
                             chinese: `爸`,
                             pinyin: `bà`
                         },
@@ -4660,12 +5157,11 @@ class CopybookBase extends BrickBase {
                 },
                 {
                     names: {
-                        en: `Unit 3`,
+                        en_us: `Unit 3`,
                         zh_cn: `第三单元`,
                         zh_tw: `第三单元`
                     },
-                    words: [
-                        {
+                    words: [{
                             chinese: `妹`,
                             pinyin: `mèi`
                         },
@@ -4725,12 +5221,11 @@ class CopybookBase extends BrickBase {
                 },
                 {
                     names: {
-                        en: `Unit 4`,
+                        en_us: `Unit 4`,
                         zh_cn: `第四单元`,
                         zh_tw: `第四单元`
                     },
-                    words: [
-                        {
+                    words: [{
                             chinese: `秋`,
                             pinyin: `qiū`
                         },
@@ -4878,12 +5373,11 @@ class CopybookBase extends BrickBase {
                 },
                 {
                     names: {
-                        en: `Unit 5`,
+                        en_us: `Unit 5`,
                         zh_cn: `第五单元`,
                         zh_tw: `第五单元`
                     },
-                    words: [
-                        {
+                    words: [{
                             chinese: `远`,
                             pinyin: `yuǎn`
                         },
@@ -5083,12 +5577,11 @@ class CopybookBase extends BrickBase {
                 },
                 {
                     names: {
-                        en: `Unit 6`,
+                        en_us: `Unit 6`,
                         zh_cn: `第六单元`,
                         zh_tw: `第六单元`
                     },
-                    words: [
-                        {
+                    words: [{
                             chinese: `影`,
                             pinyin: `yǐng`
                         },
@@ -5240,12 +5733,11 @@ class CopybookBase extends BrickBase {
                 },
                 {
                     names: {
-                        en: `Unit 7`,
+                        en_us: `Unit 7`,
                         zh_cn: `第七单元`,
                         zh_tw: `第七单元`
                     },
-                    words: [
-                        {
+                    words: [{
                             chinese: `睡`,
                             pinyin: `shuì`
                         },
@@ -5381,12 +5873,11 @@ class CopybookBase extends BrickBase {
                 },
                 {
                     names: {
-                        en: `Unit 8`,
+                        en_us: `Unit 8`,
                         zh_cn: `第八单元`,
                         zh_tw: `第八单元`
                     },
-                    words: [
-                        {
+                    words: [{
                             chinese: `群`,
                             pinyin: `qún`
                         },
@@ -5523,23 +6014,23 @@ class CopybookBase extends BrickBase {
             ]
         });
     };
-    appendCopybookOfGrade1Term2 = ()=>{
-        const { usableCopybooksPeopleEducationEdition  } = this;
+    appendCopybookOfGrade1Term2 = () => {
+        const {
+            usableCopybooksPeopleEducationEdition
+        } = this;
         usableCopybooksPeopleEducationEdition.push({
             termI18n: {
-                en: `K1T2`,
+                en_us: `K1T2`,
                 zh_cn: `一年级下`,
                 zh_tw: `一年級下`
             },
-            units: [
-                {
+            units: [{
                     names: {
-                        en: `Literacy 1`,
+                        en_us: `Literacy 1`,
                         zh_cn: `识字表1`,
                         zh_tw: `識字錶1`
                     },
-                    words: [
-                        {
+                    words: [{
                             chinese: `霜`,
                             pinyin: `shuāng`
                         },
@@ -5707,12 +6198,11 @@ class CopybookBase extends BrickBase {
                 },
                 {
                     names: {
-                        en: `Literacy 2`,
+                        en_us: `Literacy 2`,
                         zh_cn: `识字表2`,
                         zh_tw: `識字錶2`
                     },
-                    words: [
-                        {
+                    words: [{
                             chinese: `吃`,
                             pinyin: `chī`
                         },
@@ -5896,12 +6386,11 @@ class CopybookBase extends BrickBase {
                 },
                 {
                     names: {
-                        en: `Literacy 3`,
+                        en_us: `Literacy 3`,
                         zh_cn: `识字表3`,
                         zh_tw: `識字錶3`
                     },
-                    words: [
-                        {
+                    words: [{
                             chinese: `块`,
                             pinyin: `kuài`
                         },
@@ -6037,12 +6526,11 @@ class CopybookBase extends BrickBase {
                 },
                 {
                     names: {
-                        en: `Literacy 4`,
+                        en_us: `Literacy 4`,
                         zh_cn: `识字表4`,
                         zh_tw: `識字錶4`
                     },
-                    words: [
-                        {
+                    words: [{
                             chinese: `夜`,
                             pinyin: `yè`
                         },
@@ -6254,12 +6742,11 @@ class CopybookBase extends BrickBase {
                 },
                 {
                     names: {
-                        en: `Literacy 5`,
+                        en_us: `Literacy 5`,
                         zh_cn: `识字表5`,
                         zh_tw: `識字錶5`
                     },
-                    words: [
-                        {
+                    words: [{
                             chinese: `蜻蜓`,
                             pinyin: `qīng'tíng`
                         },
@@ -6443,12 +6930,11 @@ class CopybookBase extends BrickBase {
                 },
                 {
                     names: {
-                        en: `Literacy 6`,
+                        en_us: `Literacy 6`,
                         zh_cn: `识字表6`,
                         zh_tw: `識字錶6`
                     },
-                    words: [
-                        {
+                    words: [{
                             chinese: `首`,
                             pinyin: `shǒu`
                         },
@@ -6604,12 +7090,11 @@ class CopybookBase extends BrickBase {
                 },
                 {
                     names: {
-                        en: `Literacy 7`,
+                        en_us: `Literacy 7`,
                         zh_cn: `识字表7`,
                         zh_tw: `識字錶7`
                     },
-                    words: [
-                        {
+                    words: [{
                             chinese: `具`,
                             pinyin: `jù`
                         },
@@ -6825,12 +7310,11 @@ class CopybookBase extends BrickBase {
                 },
                 {
                     names: {
-                        en: `Literacy 8`,
+                        en_us: `Literacy 8`,
                         zh_cn: `识字表8`,
                         zh_tw: `識字錶8`
                     },
-                    words: [
-                        {
+                    words: [{
                             chinese: `棉`,
                             pinyin: `mián`
                         },
@@ -7010,12 +7494,11 @@ class CopybookBase extends BrickBase {
                 },
                 {
                     names: {
-                        en: `Writing 1`,
+                        en_us: `Writing 1`,
                         zh_cn: `写字表1`,
                         zh_tw: `寫字錶1`
                     },
-                    words: [
-                        {
+                    words: [{
                             chinese: `春`,
                             pinyin: `chūn`
                         },
@@ -7111,12 +7594,11 @@ class CopybookBase extends BrickBase {
                 },
                 {
                     names: {
-                        en: `Writing 2`,
+                        en_us: `Writing 2`,
                         zh_cn: `写字表2`,
                         zh_tw: `寫字錶2`
                     },
-                    words: [
-                        {
+                    words: [{
                             chinese: `吃`,
                             pinyin: `chī`
                         },
@@ -7204,12 +7686,11 @@ class CopybookBase extends BrickBase {
                 },
                 {
                     names: {
-                        en: `Writing 3`,
+                        en_us: `Writing 3`,
                         zh_cn: `写字表3`,
                         zh_tw: `寫字錶3`
                     },
-                    words: [
-                        {
+                    words: [{
                             chinese: `他`,
                             pinyin: `tā`
                         },
@@ -7285,12 +7766,11 @@ class CopybookBase extends BrickBase {
                 },
                 {
                     names: {
-                        en: `Writing 4`,
+                        en_us: `Writing 4`,
                         zh_cn: `写字表4`,
                         zh_tw: `寫字錶4`
                     },
-                    words: [
-                        {
+                    words: [{
                             chinese: `思`,
                             pinyin: `sī`
                         },
@@ -7394,12 +7874,11 @@ class CopybookBase extends BrickBase {
                 },
                 {
                     names: {
-                        en: `Writing 5`,
+                        en_us: `Writing 5`,
                         zh_cn: `写字表5`,
                         zh_tw: `寫字錶5`
                     },
-                    words: [
-                        {
+                    words: [{
                             chinese: `间`,
                             pinyin: `jiān`
                         },
@@ -7507,12 +7986,11 @@ class CopybookBase extends BrickBase {
                 },
                 {
                     names: {
-                        en: `Writing 6`,
+                        en_us: `Writing 6`,
                         zh_cn: `写字表6`,
                         zh_tw: `寫字錶6`
                     },
-                    words: [
-                        {
+                    words: [{
                             chinese: `首`,
                             pinyin: `shǒu`
                         },
@@ -7596,12 +8074,11 @@ class CopybookBase extends BrickBase {
                 },
                 {
                     names: {
-                        en: `Writing 7`,
+                        en_us: `Writing 7`,
                         zh_cn: `写字表7`,
                         zh_tw: `寫字錶7`
                     },
-                    words: [
-                        {
+                    words: [{
                             chinese: `文`,
                             pinyin: `wén`
                         },
@@ -7709,12 +8186,11 @@ class CopybookBase extends BrickBase {
                 },
                 {
                     names: {
-                        en: `Writing 8`,
+                        en_us: `Writing 8`,
                         zh_cn: `写字表8`,
                         zh_tw: `寫字錶8`
                     },
-                    words: [
-                        {
+                    words: [{
                             chinese: `病`,
                             pinyin: `bìng`
                         },
@@ -7803,23 +8279,23 @@ class CopybookBase extends BrickBase {
             ]
         });
     };
-    appendCopybookOfGrade2Term1 = ()=>{
-        const { usableCopybooksPeopleEducationEdition  } = this;
+    appendCopybookOfGrade2Term1 = () => {
+        const {
+            usableCopybooksPeopleEducationEdition
+        } = this;
         usableCopybooksPeopleEducationEdition.push({
             termI18n: {
-                en: `K2T1`,
+                en_us: `K2T1`,
                 zh_cn: `二年级上`,
                 zh_tw: `二年級上`
             },
-            units: [
-                {
+            units: [{
                     names: {
-                        en: `Literacy 1`,
+                        en_us: `Literacy 1`,
                         zh_cn: `识字表1`,
                         zh_tw: `識字錶1`
                     },
-                    words: [
-                        {
+                    words: [{
                             chinese: `塘`,
                             pinyin: `táng`
                         },
@@ -8023,12 +8499,11 @@ class CopybookBase extends BrickBase {
                 },
                 {
                     names: {
-                        en: `Literacy 2`,
+                        en_us: `Literacy 2`,
                         zh_cn: `识字表2`,
                         zh_tw: `識字錶2`
                     },
-                    words: [
-                        {
+                    words: [{
                             chinese: `帆`,
                             pinyin: `fān`
                         },
@@ -8232,12 +8707,11 @@ class CopybookBase extends BrickBase {
                 },
                 {
                     names: {
-                        en: `Literacy 3`,
+                        en_us: `Literacy 3`,
                         zh_cn: `识字表3`,
                         zh_tw: `識字錶3`
                     },
-                    words: [
-                        {
+                    words: [{
                             chinese: `曹`,
                             pinyin: `cáo`
                         },
@@ -8513,12 +8987,11 @@ class CopybookBase extends BrickBase {
                 },
                 {
                     names: {
-                        en: `Literacy 4`,
+                        en_us: `Literacy 4`,
                         zh_cn: `识字表4`,
                         zh_tw: `識字錶4`
                     },
-                    words: [
-                        {
+                    words: [{
                             chinese: `依`,
                             pinyin: `yī`
                         },
@@ -8754,12 +9227,11 @@ class CopybookBase extends BrickBase {
                 },
                 {
                     names: {
-                        en: `Literacy 5`,
+                        en_us: `Literacy 5`,
                         zh_cn: `识字表5`,
                         zh_tw: `識字錶5`
                     },
-                    words: [
-                        {
+                    words: [{
                             chinese: `沿`,
                             pinyin: `yán`
                         },
@@ -8931,12 +9403,11 @@ class CopybookBase extends BrickBase {
                 },
                 {
                     names: {
-                        en: `Literacy 6`,
+                        en_us: `Literacy 6`,
                         zh_cn: `识字表6`,
                         zh_tw: `識字錶6`
                     },
-                    words: [
-                        {
+                    words: [{
                             chinese: `楼`,
                             pinyin: `lóu`
                         },
@@ -9152,12 +9623,11 @@ class CopybookBase extends BrickBase {
                 },
                 {
                     names: {
-                        en: `Literacy 7`,
+                        en_us: `Literacy 7`,
                         zh_cn: `识字表7`,
                         zh_tw: `識字錶7`
                     },
-                    words: [
-                        {
+                    words: [{
                             chinese: `宿`,
                             pinyin: `sù`
                         },
@@ -9341,12 +9811,11 @@ class CopybookBase extends BrickBase {
                 },
                 {
                     names: {
-                        en: `Literacy 8`,
+                        en_us: `Literacy 8`,
                         zh_cn: `识字表8`,
                         zh_tw: `識字錶8`
                     },
-                    words: [
-                        {
+                    words: [{
                             chinese: `假`,
                             pinyin: `jiǎ`
                         },
@@ -9542,12 +10011,11 @@ class CopybookBase extends BrickBase {
                 },
                 {
                     names: {
-                        en: `Writing 1`,
+                        en_us: `Writing 1`,
                         zh_cn: `写字表1`,
                         zh_tw: `寫字錶1`
                     },
-                    words: [
-                        {
+                    words: [{
                             chinese: `两`,
                             pinyin: `liǎng`
                         },
@@ -9655,12 +10123,11 @@ class CopybookBase extends BrickBase {
                 },
                 {
                     names: {
-                        en: `Writing 2`,
+                        en_us: `Writing 2`,
                         zh_cn: `写字表2`,
                         zh_tw: `寫字錶2`
                     },
-                    words: [
-                        {
+                    words: [{
                             chinese: `处`,
                             pinyin: `chù`
                         },
@@ -9800,12 +10267,11 @@ class CopybookBase extends BrickBase {
                 },
                 {
                     names: {
-                        en: `Writing 3`,
+                        en_us: `Writing 3`,
                         zh_cn: `写字表3`,
                         zh_tw: `寫字錶3`
                     },
-                    words: [
-                        {
+                    words: [{
                             chinese: `称`,
                             pinyin: `chēng`
                         },
@@ -9937,12 +10403,11 @@ class CopybookBase extends BrickBase {
                 },
                 {
                     names: {
-                        en: `Writing 4`,
+                        en_us: `Writing 4`,
                         zh_cn: `写字表4`,
                         zh_tw: `寫字錶4`
                     },
-                    words: [
-                        {
+                    words: [{
                             chinese: `依`,
                             pinyin: `yī`
                         },
@@ -10078,12 +10543,11 @@ class CopybookBase extends BrickBase {
                 },
                 {
                     names: {
-                        en: `Writing 5`,
+                        en_us: `Writing 5`,
                         zh_cn: `写字表5`,
                         zh_tw: `寫字錶5`
                     },
-                    words: [
-                        {
+                    words: [{
                             chinese: `井`,
                             pinyin: `jǐng`
                         },
@@ -10191,12 +10655,11 @@ class CopybookBase extends BrickBase {
                 },
                 {
                     names: {
-                        en: `Writing 6`,
+                        en_us: `Writing 6`,
                         zh_cn: `写字表6`,
                         zh_tw: `寫字錶6`
                     },
-                    words: [
-                        {
+                    words: [{
                             chinese: `楼`,
                             pinyin: `lóu`
                         },
@@ -10308,12 +10771,11 @@ class CopybookBase extends BrickBase {
                 },
                 {
                     names: {
-                        en: `Writing 7`,
+                        en_us: `Writing 7`,
                         zh_cn: `写字表7`,
                         zh_tw: `寫字錶7`
                     },
-                    words: [
-                        {
+                    words: [{
                             chinese: `危`,
                             pinyin: `wēi`
                         },
@@ -10401,12 +10863,11 @@ class CopybookBase extends BrickBase {
                 },
                 {
                     names: {
-                        en: `Writing 8`,
+                        en_us: `Writing 8`,
                         zh_cn: `写字表8`,
                         zh_tw: `寫字錶8`
                     },
-                    words: [
-                        {
+                    words: [{
                             chinese: `食物`,
                             pinyin: `shí'wù`
                         },
@@ -10498,12 +10959,11 @@ class CopybookBase extends BrickBase {
                 },
                 {
                     names: {
-                        en: `Words 1`,
+                        en_us: `Words 1`,
                         zh_cn: `词语1`,
                         zh_tw: `詞語1`
                     },
-                    words: [
-                        {
+                    words: [{
                             chinese: `看见`,
                             pinyin: `kàn'jiàn`
                         },
@@ -10663,12 +11123,11 @@ class CopybookBase extends BrickBase {
                 },
                 {
                     names: {
-                        en: `Words 2`,
+                        en_us: `Words 2`,
                         zh_cn: `词语2`,
                         zh_tw: `詞語2`
                     },
-                    words: [
-                        {
+                    words: [{
                             chinese: `花园`,
                             pinyin: `huā'yuán`
                         },
@@ -10828,12 +11287,11 @@ class CopybookBase extends BrickBase {
                 },
                 {
                     names: {
-                        en: `Words 3`,
+                        en_us: `Words 3`,
                         zh_cn: `词语3`,
                         zh_tw: `詞語3`
                     },
-                    words: [
-                        {
+                    words: [{
                             chinese: `一同`,
                             pinyin: `yì'tóng`
                         },
@@ -11049,12 +11507,11 @@ class CopybookBase extends BrickBase {
                 },
                 {
                     names: {
-                        en: `Words 4`,
+                        en_us: `Words 4`,
                         zh_cn: `词语4`,
                         zh_tw: `詞語4`
                     },
-                    words: [
-                        {
+                    words: [{
                             chinese: `依照`,
                             pinyin: `yīzhào`
                         },
@@ -11258,12 +11715,11 @@ class CopybookBase extends BrickBase {
                 },
                 {
                     names: {
-                        en: `Words 5`,
+                        en_us: `Words 5`,
                         zh_cn: `词语5`,
                         zh_tw: `詞語5`
                     },
-                    words: [
-                        {
+                    words: [{
                             chinese: `坐井观天`,
                             pinyin: `zuò'jǐng'guān'tiān`
                         },
@@ -11411,12 +11867,11 @@ class CopybookBase extends BrickBase {
                 },
                 {
                     names: {
-                        en: `Words 6`,
+                        en_us: `Words 6`,
                         zh_cn: `词语6`,
                         zh_tw: `詞語6`
                     },
-                    words: [
-                        {
+                    words: [{
                             chinese: `八角楼`,
                             pinyin: `bā'jiǎo'lóu`
                         },
@@ -11596,12 +12051,11 @@ class CopybookBase extends BrickBase {
                 },
                 {
                     names: {
-                        en: `Words 7`,
+                        en_us: `Words 7`,
                         zh_cn: `词语7`,
                         zh_tw: `詞語7`
                     },
-                    words: [
-                        {
+                    words: [{
                             chinese: `安危`,
                             pinyin: `ānwēi`
                         },
@@ -11741,12 +12195,11 @@ class CopybookBase extends BrickBase {
                 },
                 {
                     names: {
-                        en: `Words 8`,
+                        en_us: `Words 8`,
                         zh_cn: `词语8`,
                         zh_tw: `詞語8`
                     },
-                    words: [
-                        {
+                    words: [{
                             chinese: `食物`,
                             pinyin: `shí'wù`
                         },
@@ -11922,31 +12375,39 @@ class CopybookBase extends BrickBase {
 
 class BoxBase extends BrickWithTableBase {
     idOrClassPrefix = 'brickPageBox';
-    constructor(){
+    constructor() {
         super({
             topWithoutHalfCircle: false
         }, {});
     }
-    updateOtherDataLevel3 = (newData)=>{
-        const { topWithoutHalfCircle  } = newData;
-        const { data , topWithoutHalfCircleRadioArray  } = this;
+    updateOtherDataLevel3 = (newData) => {
+        const {
+            topWithoutHalfCircle
+        } = newData;
+        const {
+            data,
+            topWithoutHalfCircleRadioArray
+        } = this;
         data.topWithoutHalfCircle = topWithoutHalfCircle;
         topWithoutHalfCircleRadioArray[topWithoutHalfCircle ? 1 : 0].checked = true;
     };
-    initCoreElementsBeforeTable = ()=>{
-        const { configCoreElement , getWrapElement , idOrClassPrefix  } = this;
+    initCoreElementsBeforeTable = () => {
+        const {
+            configCoreElement,
+            getWrapElement,
+            idOrClassPrefix
+        } = this;
         let wrapElement;
         wrapElement = getWrapElement({
-            en: 'Top Half Circle',
+            en_us: 'Top Half Circle',
             zh_cn: '顶部半圆',
             zh_tw: '頂部半圓'
         });
         wrapElement.id = `${idOrClassPrefix}HalfCircleWrap`;
-        this.initRadioGroupByBooleanOrNumberValue([
-            {
+        this.initRadioGroupByBooleanOrNumberValue([{
                 value: false,
                 i18nHtml: getI18nInnerHTML({
-                    en: 'Hide',
+                    en_us: 'Hide',
                     zh_cn: '无',
                     zh_tw: '無'
                 })
@@ -11954,7 +12415,7 @@ class BoxBase extends BrickWithTableBase {
             {
                 value: true,
                 i18nHtml: getI18nInnerHTML({
-                    en: 'Show',
+                    en_us: 'Show',
                     zh_cn: '有',
                     zh_tw: '有'
                 })
@@ -11962,28 +12423,56 @@ class BoxBase extends BrickWithTableBase {
         ], 'topWithoutHalfCircle', this.topWithoutHalfCircleRadioArray, wrapElement);
     };
     topWithoutHalfCircleRadioArray = [];
-    updateOtherDataOfBox = (newData)=>{};
-    countDataAndComputedData = ()=>{
+    updateOtherDataOfBox = (newData) => {};
+    countDataAndComputedData = () => {
         this.countDataAndComputedDataInBrickWithTableBase();
-        const { BoxGenerator  } = boxSpace.edu.sonya.cc;
+        const {
+            BoxGenerator
+        } = boxSpace.edu.sonya.cc;
         const boxGenerator = new BoxGenerator();
-        const { data , computedData  } = this;
-        const { paperSize , isLandscape , maxX: MAX_X , maxY: MAX_Y , pageMarginTop , pageMarginLeft , list , topWithoutHalfCircle  } = data;
+        const {
+            data,
+            computedData
+        } = this;
+        const {
+            paperSize,
+            isLandscape,
+            maxX: MAX_X,
+            maxY: MAX_Y,
+            pageMarginTop,
+            pageMarginLeft,
+            list,
+            topWithoutHalfCircle
+        } = data;
         let css = `/* common.css */
     * { margin:0;border:0;padding:0; }
     * { box-sizing:border-box; }
 
     page { display:flex;flex-flow:wrap; }
     page:not(page:last-child){page-break-after:always;}
-    
-    /* landscape 横向 portrait 纵向*/ 
+
+    /* landscape 横向 portrait 纵向*/
     @media print { @page { size: ${paperSize} ${isLandscape ? 'landscape' : 'portrait'}; } }
     /* height:${MAX_Y}mm; */
     page { width:${MAX_X}mm;margin-left:${pageMarginLeft}mm;margin-top:${pageMarginTop}mm; }
     `;
         const svgList = [];
-        list.forEach(({ id , boxKind , lengths , contents , outerLineStyle , innerLineStyle , textStyle , rotate , move , options  })=>{
-            const { css: svgCss , svg  } = boxGenerator.create({
+        list.forEach(({
+            id,
+            boxKind,
+            lengths,
+            contents,
+            outerLineStyle,
+            innerLineStyle,
+            textStyle,
+            rotate,
+            move,
+            options
+        }) => {
+            const {
+                css: svgCss,
+                svg
+            } = boxGenerator.create({
                 id,
                 boxKind,
                 lengths,
@@ -11999,11 +12488,11 @@ class BoxBase extends BrickWithTableBase {
             svgList.push(svg);
             css += svgCss;
         });
-        const en = `${FILENAME_POSTFIX}Boxs`;
+        const en_us = `${FILENAME_POSTFIX}Boxs`;
         const zh_cn = `${FILENAME_POSTFIX}盒子`;
         const zh_tw = `${FILENAME_POSTFIX}盒子`;
         computedData.title = {
-            en,
+            en_us,
             zh_cn,
             zh_tw
         };
@@ -12011,22 +12500,27 @@ class BoxBase extends BrickWithTableBase {
         computedData.html = this.getAutomaticPaginationHtmlFromChildList(svgList, MAX_X, MAX_Y);
     };
     idOrClassPrefix = 'brickPageBox';
-    getUsableList = ()=>{
+    getUsableList = () => {
         const usableBoxs = [];
         this.appendBoxOfCuboid(usableBoxs);
         const usableList = [];
-        usableBoxs.forEach(({ name , infos  })=>{
+        usableBoxs.forEach(({
+            name,
+            infos
+        }) => {
             const strongI18n = {
-                en: name,
+                en_us: name,
                 zh_cn: name,
                 zh_tw: name
             };
             const buttonList = [];
-            infos.forEach((info)=>{
-                const { captionI18n  } = info;
+            infos.forEach((info) => {
+                const {
+                    captionI18n
+                } = info;
                 buttonList.push({
                     nameI18n: typeof captionI18n === 'string' ? {
-                        en: captionI18n,
+                        en_us: captionI18n,
                         zh_cn: captionI18n,
                         zh_tw: captionI18n
                     } : captionI18n,
@@ -12040,7 +12534,7 @@ class BoxBase extends BrickWithTableBase {
         });
         return usableList;
     };
-    appendBoxOfCuboid = (usableBoxs)=>{
+    appendBoxOfCuboid = (usableBoxs) => {
         const BoxKind = boxSpace.edu.sonya.cc.BoxKind;
         const outerLineStyle = 'stroke:#555;stroke-width:0.2mm;';
         const innerLineStyle = 'stroke:#888;stroke-width:0.1mm;stroke-dasharray:3 2;';
@@ -12048,14 +12542,13 @@ class BoxBase extends BrickWithTableBase {
         const textStyleBig = 'font-size:8mm;font-family:"Times New Roman", "Kaiti";';
         const contents = getArrayRepeatSameValue('', 6);
         const i18nContentsOfRummikub = getArrayRepeatSameValue(getI18nInnerHTML({
-            en: 'Rummikub',
+            en_us: 'Rummikub',
             zh_cn: '拉密',
             zh_tw: '拉密'
         }), 6);
         const infosCuboid = [];
         const infosCuboidCoverOnTheSameSide = [];
-        [
-            {
+        [{
                 lengths: [
                     40,
                     20,
@@ -12088,12 +12581,12 @@ class BoxBase extends BrickWithTableBase {
                 contents: i18nContentsOfRummikub,
                 textStyle: textStyleBig,
                 captionI18n: {
-                    en: '&nbsp;&nbsp;18<br/>×50<br/>×25<br/>Rummikub',
+                    en_us: '&nbsp;&nbsp;18<br/>×50<br/>×25<br/>Rummikub',
                     zh_cn: '&nbsp;&nbsp;18<br/>×50<br/>×25<br/>拉密',
                     zh_tw: '&nbsp;&nbsp;18<br/>×50<br/>×25<br/>拉密'
                 },
                 captionI18nSameSide: {
-                    en: `&nbsp;&nbsp;18<br/>×50<br/>×25<br/>+${10}<br/>Rummikub`,
+                    en_us: `&nbsp;&nbsp;18<br/>×50<br/>×25<br/>+${10}<br/>Rummikub`,
                     zh_cn: `&nbsp;&nbsp;18<br/>×50<br/>×25<br/>+${10}<br/>拉密`,
                     zh_tw: `&nbsp;&nbsp;18<br/>×50<br/>×25<br/>+${10}<br/>拉密`
                 },
@@ -12108,18 +12601,25 @@ class BoxBase extends BrickWithTableBase {
                 contents: i18nContentsOfRummikub,
                 textStyle: textStyleBig,
                 captionI18n: {
-                    en: '&nbsp;&nbsp;20<br/>×50<br/>×28<br/>Rummikub',
+                    en_us: '&nbsp;&nbsp;20<br/>×50<br/>×28<br/>Rummikub',
                     zh_cn: '&nbsp;&nbsp;20<br/>×50<br/>×28<br/>拉密',
                     zh_tw: '&nbsp;&nbsp;20<br/>×50<br/>×28<br/>拉密'
                 },
                 captionI18nSameSide: {
-                    en: `&nbsp;&nbsp;20<br/>×50<br/>×28<br/>+${10}<br/>Rummikub`,
+                    en_us: `&nbsp;&nbsp;20<br/>×50<br/>×28<br/>+${10}<br/>Rummikub`,
                     zh_cn: `&nbsp;&nbsp;20<br/>×50<br/>×28<br/>+${10}<br/>拉密`,
                     zh_tw: `&nbsp;&nbsp;20<br/>×50<br/>×28<br/>+${10}<br/>拉密`
                 },
                 otherSize: 10
             }
-        ].forEach(({ lengths , contents , textStyle , captionI18n , captionI18nSameSide , otherSize  })=>{
+        ].forEach(({
+            lengths,
+            contents,
+            textStyle,
+            captionI18n,
+            captionI18nSameSide,
+            otherSize
+        }) => {
             infosCuboid.push({
                 id: '',
                 boxKind: BoxKind.cuboid,
@@ -12160,7 +12660,7 @@ class BoxBase extends BrickWithTableBase {
             80,
             90,
             10
-        ].forEach((size)=>{
+        ].forEach((size) => {
             infosCuboid.push({
                 id: '',
                 boxKind: BoxKind.cuboid,
@@ -12245,7 +12745,7 @@ class BoxBase extends BrickWithTableBase {
                 90,
                 10
             ]
-        ].forEach((lengths)=>{
+        ].forEach((lengths) => {
             const captionI18n = `&nbsp;&nbsp;${lengths[0]}<br/>×${lengths[1]}<br/>×${lengths[2]}`;
             infosOfCuboidCoverOnTheSameSideWithoutBottom.push({
                 id: '',
@@ -12324,7 +12824,7 @@ class BoxBase extends BrickWithTableBase {
                 89,
                 90
             ]
-        ].forEach((lengths)=>{
+        ].forEach((lengths) => {
             const captionI18n = `&nbsp;&nbsp;${lengths[0]}<br/>×${lengths[1]}<br/>×${lengths[2]}`;
             infosOfCuboidCoverOnTheSameSideWithoutTop.push({
                 id: '',
@@ -12357,7 +12857,7 @@ class BoxBase extends BrickWithTableBase {
         });
         usableBoxs.push({
             name: getI18nInnerHTML({
-                en: 'Cuboid',
+                en_us: 'Cuboid',
                 zh_cn: '异侧',
                 zh_tw: '異側'
             }),
@@ -12365,7 +12865,7 @@ class BoxBase extends BrickWithTableBase {
         });
         usableBoxs.push({
             name: getI18nInnerHTML({
-                en: 'Cuboid which cover on the same side',
+                en_us: 'Cuboid which cover on the same side',
                 zh_cn: '盖子同侧',
                 zh_tw: '蓋子同側'
             }),
@@ -12373,7 +12873,7 @@ class BoxBase extends BrickWithTableBase {
         });
         usableBoxs.push({
             name: getI18nInnerHTML({
-                en: 'Cuboid without top',
+                en_us: 'Cuboid without top',
                 zh_cn: '异侧无顶',
                 zh_tw: '異側無頂'
             }),
@@ -12381,7 +12881,7 @@ class BoxBase extends BrickWithTableBase {
         });
         usableBoxs.push({
             name: getI18nInnerHTML({
-                en: 'Cuboid without bottom',
+                en_us: 'Cuboid without bottom',
                 zh_cn: '异侧无底',
                 zh_tw: '異側無底'
             }),
@@ -12389,7 +12889,7 @@ class BoxBase extends BrickWithTableBase {
         });
         usableBoxs.push({
             name: getI18nInnerHTML({
-                en: 'Cuboid which cover on the same side and without top',
+                en_us: 'Cuboid which cover on the same side and without top',
                 zh_cn: '盖子同侧无顶',
                 zh_tw: '蓋子同側無頂'
             }),
@@ -12397,16 +12897,31 @@ class BoxBase extends BrickWithTableBase {
         });
         usableBoxs.push({
             name: getI18nInnerHTML({
-                en: 'Cuboid which cover on the same side and without bottom',
+                en_us: 'Cuboid which cover on the same side and without bottom',
                 zh_cn: '盖子同侧无底',
                 zh_tw: '蓋子同側無底'
             }),
             infos: JSON.parse(JSON.stringify(infosOfCuboidCoverOnTheSameSideWithoutBottom))
         });
     };
-    createTableBodyRow = (item)=>{
-        const { id , boxKind , lengths , contents , outerLineStyle , innerLineStyle , textStyle , rotate , move , options  } = item;
-        const { tableBodyElement , appendTextareaTd , appendCheckboxTdWithoutText  } = this;
+    createTableBodyRow = (item) => {
+        const {
+            id,
+            boxKind,
+            lengths,
+            contents,
+            outerLineStyle,
+            innerLineStyle,
+            textStyle,
+            rotate,
+            move,
+            options
+        } = item;
+        const {
+            tableBodyElement,
+            appendTextareaTd,
+            appendCheckboxTdWithoutText
+        } = this;
         const tr = createElement('tr');
         tableBodyElement.appendChild(tr);
         this.appendOperationTd(tr, item);
@@ -12418,67 +12933,72 @@ class BoxBase extends BrickWithTableBase {
         appendTextareaTd(tr, innerLineStyle, item, 'innerLineStyle', 'string');
         appendTextareaTd(tr, textStyle, item, 'textStyle', 'string');
     };
-    initTableHead = ()=>{
+    initTableHead = () => {
         this.appendTableHeadCell({
-            en: 'Relevant length, such as length, width and height',
+            en_us: 'Relevant length, such as length, width and height',
             zh_cn: '相关长度，如长宽高',
             zh_tw: '相關長度，如長寬高'
         });
         this.appendTableHeadCell({
-            en: 'Contents of all sides',
+            en_us: 'Contents of all sides',
             zh_cn: '各面内容',
             zh_tw: '各面內容'
         });
         this.appendTableHeadCell({
-            en: 'Rotate',
+            en_us: 'Rotate',
             zh_cn: '旋转',
             zh_tw: '旋轉'
         });
         this.appendTableHeadCell({
-            en: 'Move',
+            en_us: 'Move',
             zh_cn: '上移',
             zh_tw: '上移'
         });
         this.appendTableHeadCell({
-            en: 'Outside Boundary Line Style',
+            en_us: 'Outside Boundary Line Style',
             zh_cn: '外边界线样式',
             zh_tw: '外邊界線樣式'
         });
         this.appendTableHeadCell({
-            en: 'Interior Line Style',
+            en_us: 'Interior Line Style',
             zh_cn: '内部线样式',
             zh_tw: '內部線樣式'
         });
         this.appendTableHeadCell({
-            en: 'Text Style',
+            en_us: 'Text Style',
             zh_cn: '文本样式',
             zh_tw: '文字樣式'
         });
     };
-    appendLengthsTd = (tr, box)=>{
+    appendLengthsTd = (tr, box) => {
         const td = createElement('td');
         tr.appendChild(td);
-        box.lengths.forEach((length, index)=>{
+        box.lengths.forEach((length, index) => {
             const input = createElement('input');
             td.appendChild(input);
             input.type = 'number';
             input.setAttribute('min', '0');
             input.setAttribute('max', '200');
             input.value = length.toString();
-            input.onchange = input.focus = ()=>{
+            input.onchange = input.focus = () => {
                 box.lengths[index] = parseFloat(input.value);
                 this.build();
             };
         });
     };
-    appendContentsTd = (tr, box)=>{
+    appendContentsTd = (tr, box) => {
         const td = createElement('td');
         tr.appendChild(td);
         const BoxKind = boxSpace.edu.sonya.cc.BoxKind;
-        const { boxKind , contents  } = box;
-        const { idOrClassPrefix  } = this;
+        const {
+            boxKind,
+            contents
+        } = box;
+        const {
+            idOrClassPrefix
+        } = this;
         let count = 0;
-        switch(boxKind){
+        switch (boxKind) {
             case BoxKind.cuboid:
             case BoxKind.cuboidWithoutTop:
             case BoxKind.cuboidWithoutBottom:
@@ -12494,7 +13014,7 @@ class BoxBase extends BrickWithTableBase {
         td.appendChild(div);
         div.className = `${idOrClassPrefix}ContentValueWrap`;
         const i18nNameArray = [
-            'en',
+            'en_us',
             'zh_cn',
             'zh_tw'
         ];
@@ -12506,20 +13026,20 @@ class BoxBase extends BrickWithTableBase {
             td.appendChild(textarea);
             textarea.value = box.contents.join('\n');
             textarea.rows = count;
-            textarea.onchange = textarea.focus = ()=>{
-                textarea.value.split('\n').concat(emptyArray).slice(0, count).forEach((item, index)=>{
+            textarea.onchange = textarea.focus = () => {
+                textarea.value.split('\n').concat(emptyArray).slice(0, count).forEach((item, index) => {
                     box.contents[index] = item;
                 });
                 this.build();
             };
         } else {
-            i18nNameArray.forEach((lang)=>{
+            i18nNameArray.forEach((lang) => {
                 const textarea = createElement('textarea');
                 td.appendChild(textarea);
-                textarea.value = box.contents.map((content)=>content[lang]).join('\n');
+                textarea.value = box.contents.map((content) => content[lang]).join('\n');
                 textarea.rows = 4;
-                textarea.onchange = textarea.focus = ()=>{
-                    textarea.value.split('\n').concat(emptyArray).slice(0, count).forEach((item, index)=>{
+                textarea.onchange = textarea.focus = () => {
+                    textarea.value.split('\n').concat(emptyArray).slice(0, count).forEach((item, index) => {
                         box.contents[index][lang] = item;
                     });
                     this.build();
@@ -12534,27 +13054,52 @@ class BoxBase extends BrickWithTableBase {
 
 class DiceBase extends BrickWithTableBase {
     idOrClassPrefix = 'brickPageDice';
-    countDataAndComputedData = ()=>{
+    countDataAndComputedData = () => {
         this.countDataAndComputedDataInBrickWithTableBase();
-        const { DiceGenerator  } = edu.sonya.cc;
+        const {
+            DiceGenerator
+        } = edu.sonya.cc;
         const diceGenerator = new DiceGenerator();
-        const { data , computedData  } = this;
-        const { paperSize , isLandscape , maxX: MAX_X , maxY: MAX_Y , pageMarginTop , pageMarginLeft , list  } = data;
+        const {
+            data,
+            computedData
+        } = this;
+        const {
+            paperSize,
+            isLandscape,
+            maxX: MAX_X,
+            maxY: MAX_Y,
+            pageMarginTop,
+            pageMarginLeft,
+            list
+        } = data;
         let css = `/* common.css */
     * { margin:0;border:0;padding:0; }
     * { box-sizing:border-box; }
 
     page { display:flex;flex-flow:wrap; }
     page:not(page:last-child){page-break-after:always;}
-    
-    /* landscape 横向 portrait 纵向*/ 
+
+    /* landscape 横向 portrait 纵向*/
     @media print { @page { size: ${paperSize} ${isLandscape ? 'landscape' : 'portrait'}; } }
     /* height:${MAX_Y}mm; */
     page { width:${MAX_X}mm;margin-left:${pageMarginLeft}mm;margin-top:${pageMarginTop}mm; }
     `;
         const svgList = [];
-        list.forEach(({ id , diceKind , sideLength , contents , outerLineStyle , innerLineStyle , textStyle , options  })=>{
-            const { css: svgCss , svg  } = diceGenerator.create({
+        list.forEach(({
+            id,
+            diceKind,
+            sideLength,
+            contents,
+            outerLineStyle,
+            innerLineStyle,
+            textStyle,
+            options
+        }) => {
+            const {
+                css: svgCss,
+                svg
+            } = diceGenerator.create({
                 id,
                 diceKind,
                 sideLength,
@@ -12567,11 +13112,11 @@ class DiceBase extends BrickWithTableBase {
             svgList.push(svg);
             css += svgCss;
         });
-        const en = `${FILENAME_POSTFIX}Dices`;
+        const en_us = `${FILENAME_POSTFIX}Dices`;
         const zh_cn = `${FILENAME_POSTFIX}骰子`;
         const zh_tw = `${FILENAME_POSTFIX}骰子`;
         computedData.title = {
-            en,
+            en_us,
             zh_cn,
             zh_tw
         };
@@ -12579,7 +13124,7 @@ class DiceBase extends BrickWithTableBase {
         computedData.html = this.getAutomaticPaginationHtmlFromChildList(svgList, MAX_X, MAX_Y);
     };
     idOrClassPrefix = 'brickPageDice';
-    getUsableList = ()=>{
+    getUsableList = () => {
         const usableDices = [];
         this.appendDiceOfSides4(usableDices);
         this.appendDiceOfSides6(usableDices);
@@ -12588,13 +13133,18 @@ class DiceBase extends BrickWithTableBase {
         this.appendDiceOfSides20(usableDices);
         this.appendDiceOfSides24(usableDices);
         const usableList = [];
-        usableDices.forEach(({ diceFace , infos  })=>{
+        usableDices.forEach(({
+            diceFace,
+            infos
+        }) => {
             const buttonList = [];
-            infos.forEach((info)=>{
-                const { captionI18n  } = info;
+            infos.forEach((info) => {
+                const {
+                    captionI18n
+                } = info;
                 buttonList.push({
                     nameI18n: typeof captionI18n === 'string' ? {
-                        en: captionI18n,
+                        en_us: captionI18n,
                         zh_cn: captionI18n,
                         zh_tw: captionI18n
                     } : captionI18n,
@@ -12602,7 +13152,7 @@ class DiceBase extends BrickWithTableBase {
                 });
             });
             const strongI18n = {
-                en: `${diceFace}-sides`,
+                en_us: `${diceFace}-sides`,
                 zh_cn: `${diceFace}面`,
                 zh_tw: `${diceFace}面`
             };
@@ -12613,41 +13163,43 @@ class DiceBase extends BrickWithTableBase {
         });
         return usableList;
     };
-    initTableHead = ()=>{
+    initTableHead = () => {
         this.appendTableHeadCell({
-            en: 'Faces',
+            en_us: 'Faces',
             zh_cn: '面',
             zh_tw: '面'
         });
         this.appendTableHeadCell({
-            en: 'Side',
+            en_us: 'Side',
             zh_cn: '边',
             zh_tw: '邊'
         });
         this.appendTableHeadCell({
-            en: 'Contents of all sides',
+            en_us: 'Contents of all sides',
             zh_cn: '各面内容',
             zh_tw: '各面內容'
         });
         this.appendTableHeadCell({
-            en: 'Outside Boundary Line Style',
+            en_us: 'Outside Boundary Line Style',
             zh_cn: '外边界线样式',
             zh_tw: '外邊界線樣式'
         });
         this.appendTableHeadCell({
-            en: 'Interior Line Style',
+            en_us: 'Interior Line Style',
             zh_cn: '内部线样式',
             zh_tw: '內部線樣式'
         });
         this.appendTableHeadCell({
-            en: 'Text Style',
+            en_us: 'Text Style',
             zh_cn: '文本样式',
             zh_tw: '文字樣式'
         });
     };
-    appendDiceOfSides4 = (usableDices)=>{
+    appendDiceOfSides4 = (usableDices) => {
         const infos = [];
-        const { DiceKind  } = edu.sonya.cc;
+        const {
+            DiceKind
+        } = edu.sonya.cc;
         infos.length = 0;
         infos.push({
             id: '',
@@ -12659,7 +13211,7 @@ class DiceBase extends BrickWithTableBase {
             textStyle: 'font-size:8.5mm;font-family:"Times New Roman", "Kaiti";',
             options: {},
             captionI18n: {
-                en: 'Pinyin Tone',
+                en_us: 'Pinyin Tone',
                 zh_cn: '拼音声调',
                 zh_tw: '拼音聲調'
             }
@@ -12685,7 +13237,7 @@ class DiceBase extends BrickWithTableBase {
             textStyle: 'font-size:6mm;font-family:"Times New Roman", "Kaiti";font-weight:bold;',
             options: {},
             captionI18n: {
-                en: 'Quad operator',
+                en_us: 'Quad operator',
                 zh_cn: '四则运算符',
                 zh_tw: '四則運算子'
             }
@@ -12695,9 +13247,11 @@ class DiceBase extends BrickWithTableBase {
             infos: JSON.parse(JSON.stringify(infos))
         });
     };
-    appendDiceOfSides6 = (usableDices)=>{
+    appendDiceOfSides6 = (usableDices) => {
         const infos = [];
-        const { DiceKind  } = edu.sonya.cc;
+        const {
+            DiceKind
+        } = edu.sonya.cc;
         infos.length = 0;
         infos.push({
             id: '',
@@ -12715,9 +13269,11 @@ class DiceBase extends BrickWithTableBase {
             infos: JSON.parse(JSON.stringify(infos))
         });
     };
-    appendDiceOfSides8 = (usableDices)=>{
+    appendDiceOfSides8 = (usableDices) => {
         const infos = [];
-        const { DiceKind  } = edu.sonya.cc;
+        const {
+            DiceKind
+        } = edu.sonya.cc;
         infos.length = 0;
         infos.push({
             id: '',
@@ -12740,7 +13296,7 @@ class DiceBase extends BrickWithTableBase {
             textStyle: 'font-size:12mm;font-family:"kaiti";',
             options: {},
             captionI18n: {
-                en: 'Eight Diagrams',
+                en_us: 'Eight Diagrams',
                 zh_cn: '八卦',
                 zh_tw: '八卦'
             }
@@ -12755,7 +13311,7 @@ class DiceBase extends BrickWithTableBase {
             textStyle: 'font-size:12mm;font-family:"kaiti";',
             options: {},
             captionI18n: {
-                en: 'Eight winds',
+                en_us: 'Eight winds',
                 zh_cn: '八风',
                 zh_tw: '八風'
             }
@@ -12765,9 +13321,11 @@ class DiceBase extends BrickWithTableBase {
             infos: JSON.parse(JSON.stringify(infos))
         });
     };
-    appendDiceOfSides12 = (usableDices)=>{
+    appendDiceOfSides12 = (usableDices) => {
         const infos = [];
-        const { DiceKind  } = edu.sonya.cc;
+        const {
+            DiceKind
+        } = edu.sonya.cc;
         infos.length = 0;
         infos.push({
             id: '',
@@ -12794,7 +13352,7 @@ class DiceBase extends BrickWithTableBase {
                 withHole: false
             },
             captionI18n: {
-                en: 'Terrestrial branch',
+                en_us: 'Terrestrial branch',
                 zh_cn: '地支',
                 zh_tw: '地支'
             }
@@ -12811,7 +13369,7 @@ class DiceBase extends BrickWithTableBase {
                 withHole: false
             },
             captionI18n: {
-                en: 'Chinese zodiac 1',
+                en_us: 'Chinese zodiac 1',
                 zh_cn: '十二生肖',
                 zh_tw: '十二生肖'
             }
@@ -12828,7 +13386,7 @@ class DiceBase extends BrickWithTableBase {
                 withHole: false
             },
             captionI18n: {
-                en: 'Chinese zodiac 2',
+                en_us: 'Chinese zodiac 2',
                 zh_cn: '生肖繁体',
                 zh_tw: '生肖繁體'
             }
@@ -12858,7 +13416,7 @@ class DiceBase extends BrickWithTableBase {
                 withHole: false
             },
             captionI18n: {
-                en: 'English Months',
+                en_us: 'English Months',
                 zh_cn: '英文月份',
                 zh_tw: '英文月份'
             }
@@ -12888,7 +13446,7 @@ class DiceBase extends BrickWithTableBase {
                 withHole: false
             },
             captionI18n: {
-                en: 'Months',
+                en_us: 'Months',
                 zh_cn: '月份',
                 zh_tw: '月份'
             }
@@ -12918,7 +13476,7 @@ class DiceBase extends BrickWithTableBase {
                 withHole: false
             },
             captionI18n: {
-                en: 'Month abbreviation',
+                en_us: 'Month abbreviation',
                 zh_cn: '月份缩写',
                 zh_tw: '月份縮寫'
             }
@@ -12948,7 +13506,7 @@ class DiceBase extends BrickWithTableBase {
                 withHole: false
             },
             captionI18n: {
-                en: 'Month (number)',
+                en_us: 'Month (number)',
                 zh_cn: '月份（数字）',
                 zh_tw: '月份（數字）'
             }
@@ -12978,7 +13536,7 @@ class DiceBase extends BrickWithTableBase {
                 withHole: false
             },
             captionI18n: {
-                en: 'Lunar month',
+                en_us: 'Lunar month',
                 zh_cn: '农历月份',
                 zh_tw: '農曆月份'
             }
@@ -12988,9 +13546,11 @@ class DiceBase extends BrickWithTableBase {
             infos: JSON.parse(JSON.stringify(infos))
         });
     };
-    appendDiceOfSides20 = (usableDices)=>{
+    appendDiceOfSides20 = (usableDices) => {
         const infos = [];
-        const { DiceKind  } = edu.sonya.cc;
+        const {
+            DiceKind
+        } = edu.sonya.cc;
         infos.length = 0;
         infos.push({
             id: '',
@@ -13010,9 +13570,11 @@ class DiceBase extends BrickWithTableBase {
             infos: JSON.parse(JSON.stringify(infos))
         });
     };
-    appendDiceOfSides24 = (usableDices)=>{
+    appendDiceOfSides24 = (usableDices) => {
         const infos = [];
-        const { DiceKind  } = edu.sonya.cc;
+        const {
+            DiceKind
+        } = edu.sonya.cc;
         infos.length = 0;
         infos.push({
             id: '',
@@ -13052,7 +13614,7 @@ class DiceBase extends BrickWithTableBase {
                 withHole: false
             },
             captionI18n: {
-                en: 'Initial Consonant',
+                en_us: 'Initial Consonant',
                 zh_cn: '声母',
                 zh_tw: '聲母'
             }
@@ -13061,7 +13623,7 @@ class DiceBase extends BrickWithTableBase {
             id: '',
             diceKind: DiceKind.twentyFour,
             sideLength: 20,
-            contents: 'a,o,e,i,u,ü,ai,ei,ui,ao,ou,iu,ie,üe,er,an,en,in,un,ün,ang,eng,ing,ong'.replace(/a/g, 'ɑ').replace(/g/g, 'ɡ').split(','),
+            contents: 'a,o,e,i,u,ü,ai,ei,ui,ao,ou,iu,ie,üe,er,an,en_us,in,un,ün,ang,eng,ing,ong'.replace(/a/g, 'ɑ').replace(/g/g, 'ɡ').split(','),
             outerLineStyle: 'stroke:#555;stroke-width:0.2mm;',
             innerLineStyle: 'stroke:#888;stroke-width:0.1mm;stroke-dasharray:3 2;',
             textStyle: 'font-size:12mm;font-family:"kaiti";',
@@ -13069,7 +13631,7 @@ class DiceBase extends BrickWithTableBase {
                 withHole: false
             },
             captionI18n: {
-                en: 'Finals',
+                en_us: 'Finals',
                 zh_cn: '韵母',
                 zh_tw: '韻母'
             }
@@ -13086,7 +13648,7 @@ class DiceBase extends BrickWithTableBase {
                 withHole: false
             },
             captionI18n: {
-                en: 'Overall recognition',
+                en_us: 'Overall recognition',
                 zh_cn: '整体认读',
                 zh_tw: '整體認讀'
             }
@@ -13103,7 +13665,7 @@ class DiceBase extends BrickWithTableBase {
                 withHole: false
             },
             captionI18n: {
-                en: 'Simple final',
+                en_us: 'Simple final',
                 zh_cn: '单韵母',
                 zh_tw: '單韻母'
             }
@@ -13120,7 +13682,7 @@ class DiceBase extends BrickWithTableBase {
                 withHole: false
             },
             captionI18n: {
-                en: '24 Solar Terms',
+                en_us: '24 Solar Terms',
                 zh_cn: '二十四节气',
                 zh_tw: '二十四節氣'
             }
@@ -13130,9 +13692,20 @@ class DiceBase extends BrickWithTableBase {
             infos: JSON.parse(JSON.stringify(infos))
         });
     };
-    createTableBodyRow = (dice)=>{
-        const { id , diceKind , sideLength , contents , outerLineStyle , innerLineStyle , textStyle , options  } = dice;
-        const { tableBodyElement  } = this;
+    createTableBodyRow = (dice) => {
+        const {
+            id,
+            diceKind,
+            sideLength,
+            contents,
+            outerLineStyle,
+            innerLineStyle,
+            textStyle,
+            options
+        } = dice;
+        const {
+            tableBodyElement
+        } = this;
         const tr = createElement('tr');
         tableBodyElement.appendChild(tr);
         this.appendOperationTd(tr, dice);
@@ -13143,14 +13716,14 @@ class DiceBase extends BrickWithTableBase {
         this.appendTextareaTd(tr, innerLineStyle, dice, 'innerLineStyle', 'string');
         this.appendTextareaTd(tr, textStyle, dice, 'textStyle', 'string');
     };
-    appendDiceKindTd = (tr, dice)=>{
+    appendDiceKindTd = (tr, dice) => {
         const DiceKind = edu.sonya.cc.DiceKind;
         const td = createElement('td');
         tr.appendChild(td);
         const span = createElement('span');
         td.appendChild(span);
         let value = '';
-        switch(dice.diceKind){
+        switch (dice.diceKind) {
             case DiceKind.four:
                 value = '4';
                 break;
@@ -13174,14 +13747,19 @@ class DiceBase extends BrickWithTableBase {
         }
         span.innerHTML = value;
     };
-    appendContentsTd = (tr, dice)=>{
+    appendContentsTd = (tr, dice) => {
         const td = createElement('td');
         tr.appendChild(td);
         const DiceKind = edu.sonya.cc.DiceKind;
-        const { diceKind , contents  } = dice;
-        const { idOrClassPrefix  } = this;
+        const {
+            diceKind,
+            contents
+        } = dice;
+        const {
+            idOrClassPrefix
+        } = this;
         let count = 0;
-        switch(diceKind){
+        switch (diceKind) {
             case DiceKind.four:
                 count = 4;
                 break;
@@ -13207,7 +13785,7 @@ class DiceBase extends BrickWithTableBase {
         td.appendChild(div);
         div.className = `${idOrClassPrefix}ContentValueWrap`;
         const i18nNameArray = [
-            'en',
+            'en_us',
             'zh_cn',
             'zh_tw'
         ];
@@ -13219,20 +13797,20 @@ class DiceBase extends BrickWithTableBase {
             td.appendChild(textarea);
             textarea.value = dice.contents.join('\n');
             textarea.rows = 4;
-            textarea.onchange = textarea.focus = ()=>{
-                textarea.value.split('\n').concat(emptyArray).slice(0, count).forEach((item, index)=>{
+            textarea.onchange = textarea.focus = () => {
+                textarea.value.split('\n').concat(emptyArray).slice(0, count).forEach((item, index) => {
                     dice.contents[index] = item;
                 });
                 this.build();
             };
         } else {
-            i18nNameArray.forEach((lang)=>{
+            i18nNameArray.forEach((lang) => {
                 const textarea = createElement('textarea');
                 td.appendChild(textarea);
-                textarea.value = dice.contents.map((content)=>content[lang]).join('\n');
+                textarea.value = dice.contents.map((content) => content[lang]).join('\n');
                 textarea.rows = 4;
-                textarea.onchange = textarea.focus = ()=>{
-                    textarea.value.split('\n').concat(emptyArray).slice(0, count).forEach((item, index)=>{
+                textarea.onchange = textarea.focus = () => {
+                    textarea.value.split('\n').concat(emptyArray).slice(0, count).forEach((item, index) => {
                         dice.contents[index][lang] = item;
                     });
                     this.build();
@@ -13246,7 +13824,7 @@ class DiceBase extends BrickWithTableBase {
 // This code was bundled using `deno bundle` and it's not recommended to edit it manually
 
 const DATA_JS_VERSION = '20221223B';
-(function() {
+(function () {
     pcGlobal.init();
     const head = getHeadElement();
     const dataScriptElement = createElement('script');
@@ -13254,6 +13832,7 @@ const DATA_JS_VERSION = '20221223B';
     dataScriptElement.setAttribute('charset', 'utf-8');
     dataScriptElement.setAttribute('src', `js/data.js?${DATA_JS_VERSION}`);
     head.appendChild(dataScriptElement);
+
     function loadPageScript() {
         const pageScriptElement = createElement('script');
         pageScriptElement.setAttribute('id', 'pageScript');
@@ -13261,14 +13840,16 @@ const DATA_JS_VERSION = '20221223B';
         pageScriptElement.setAttribute('src', `js/${ACTUAL_PAGE_NAME}.js?${jsVersions[ACTUAL_PAGE_NAME]}`);
         head.appendChild(pageScriptElement);
     }
-    dataScriptElement.onload = dataScriptElement.onreadystatechange = function() {
-        const { readyState  } = this;
+    dataScriptElement.onload = dataScriptElement.onreadystatechange = function () {
+        const {
+            readyState
+        } = this;
         console.log('onreadystatechange', readyState);
         if (!readyState) {
             loadPageScript();
             return;
         }
-        switch(readyState){
+        switch (readyState) {
             case 'loaded':
             case 'complete':
                 loadPageScript();

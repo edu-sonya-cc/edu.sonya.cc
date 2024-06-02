@@ -197,7 +197,7 @@ var AboutPage = (function (_super) {
             mainContentElement.appendChild(pageSubjectElement);
             pageSubjectElement.id = PAGE_NAME + "Subject";
             pageSubjectElement.className = "pageSubject";
-            ['en', 'zh_cn', 'zh_tw'].forEach(function (lang) {
+            ['en_us', 'zh_cn', 'zh_tw'].forEach(function (lang) {
                 var span = createElement(lang);
                 pageSubjectElement.appendChild(span);
                 var image = createElement('img');
@@ -212,7 +212,7 @@ var AboutPage = (function (_super) {
             mainContentElement.appendChild(contentWrap);
             [
                 {
-                    lang: "en",
+                    lang: "en_us",
                     html: "<h3>Seed germination: pure kindness</h3>\n\t<p>Sonya: \"When I grow up, I will be a biologist, astronomer and teacher at the same time... to protect the lovely animals and plants and lead the students to protect our beautiful home - the earth.\"</p>\n\t<p></p>\n\t<p>His father: \"When I was young, I was very thoughtful and always wanted to help others. I would like to become a scientist from my ancestors and bring benefits to thousands of people. I'm sorry that I didn't get what I wanted because of changes. Although I'm middle-aged, I haven't forgotten this ambition.\"</p>\n\t<p>His mother: \"You have good intentions. You have collected many pages. If you don't stop working, you can share the world's best wishes for the website.\"</p>\n\t<p>Friends: \"I would like to go with you.\"</p>\n\t<p></p>\n\t<p>The Three Character Classic: \"At the beginning of human life, human nature is inherently good\" - you, I, TA, all people in the world have good intentions in their hearts.</p>\n\t<p></p>\n\t<h3>Spark: sincere blessing</h3>\n\t<p>The earth is home to an increasing population of 8 billion people. Resources are scarce and species are endangered. It is like the sixth biological extinction.</p>\n\t<p>However, consumerism prevails, the gap between rich and poor increases, and there are extremely poor people who have no food, clothing, shelter, and learning opportunities.</p>\n\t<p>We wish all the students in the world can have good teachers and friends, have no worries about food and clothing, be safe and healthy, have good luck, study quietly, and achieve this life!</p>\n\t<p></p>\n\t<h3>Looking ahead</h3>\n\t<p>Spruce is a tiny species, which has broken through the ground and become a timber for a hundred years, reaching a hundred meters. It stands tall and protects the world;</p>\n\t<p>In the dim light of the spark, people gather firewood and gather charity like a torch. It can reach ten thousand hectares and shine through the darkness of the night.</p>"
                 },
                 {
@@ -238,7 +238,7 @@ var AboutPage = (function (_super) {
     AboutPage.prototype.initTitleElement = function () {
         var titleElement = getTitleElement();
         titleElement.i18n = {
-            en: "Sparks of Fire",
+            en_us: "Sparks of Fire",
             zh_cn: "星星之火",
             zh_tw: "星星之火"
         };

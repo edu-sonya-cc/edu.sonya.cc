@@ -2,7 +2,7 @@
 chcp 65001
 :: %1: server, local, %2: min, %3: fileName, %4: subFolderName
 
-set langSet=en zh_cn zh_tw
+set langSet=en_us zh_cn zh_tw
 set landscapeSet=false true
 
 set htmFilename=%3%

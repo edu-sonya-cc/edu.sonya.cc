@@ -204,7 +204,7 @@ var BrickCore = (function (_super) {
             centerTexts: [],
             colors: [],
             isCenters: [],
-            pokerCss: "\n      .double{display:flex;justify-content: space-around;}\n      .double b:first-child{position:relative;left:0.375em;}\n      .double b:last-child{position:relative;left:-0.375em;opacity:0.75;}\n  \n      .discoloration{display:flex;width: 100%;position: relative;}\n      .discoloration b:first-child{overflow:hidden;position:relative;left:0.5em;}\n      .discoloration b:first-child i{position:relative;left:-0.5em;color:#000;}\n      .discoloration b:last-child{overflow:hidden;position:relative;left:-0.5em;}\n      .discoloration b:last-child i{position:relative;left:0em;color:#F00;}\n  \n      .mirror{position:relative;margin-left:12%;width:88%;letter-spacing:0em;display:flex;}\n      .top-left .mirror,.bottom-right .mirror{width:40%;margin-left:6%;}\n      .mirror b:first-child{overflow:hidden;}\n      .mirror b:last-child{overflow:hidden;}\n      .mirror b:first-child i{position:relative;left:-0.475em;}\n      .mirror b:last-child i{position:relative;left: -0.15em;border-left:1px solid #888;}\n      "
+            pokerCss: "\n      .double{display:flex;justify-content: space-around;}\n      .double b:first-child{position:relative;left:0.375em;}\n      .double b:last-child{position:relative;left:-0.375em;opacity:0.75;}\n\n      .discoloration{display:flex;width: 100%;position: relative;}\n      .discoloration b:first-child{overflow:hidden;position:relative;left:0.5em;}\n      .discoloration b:first-child i{position:relative;left:-0.5em;color:#000;}\n      .discoloration b:last-child{overflow:hidden;position:relative;left:-0.5em;}\n      .discoloration b:last-child i{position:relative;left:0em;color:#F00;}\n\n      .mirror{position:relative;margin-left:12%;width:88%;letter-spacing:0em;display:flex;}\n      .top-left .mirror,.bottom-right .mirror{width:40%;margin-left:6%;}\n      .mirror b:first-child{overflow:hidden;}\n      .mirror b:last-child{overflow:hidden;}\n      .mirror b:first-child i{position:relative;left:-0.475em;}\n      .mirror b:last-child i{position:relative;left: -0.15em;border-left:1px solid #888;}\n      "
         }) || this;
         _this.onPageSizeChanged = function (_newPageSize) { };
         _this.getForePageHtml = function () {
@@ -290,7 +290,7 @@ var BrickCore = (function (_super) {
         };
         _this.DIAGONAL_NORMAL_CARD_TIMES = 2;
         _this.DIAGONAL_CHANGEABLE_CARD_COUNT = 2;
-        _this.DIAGONAL_CENTER_TEXT = "<div>\n  <p><en>Same decor</en><zh_cn>\u540C\u8272\u8FDE\u7EED</zh_cn><zh_tw>\u540C\u8272\u8FDE\u7EED</zh_tw></p>\n  <p><en>Arithmetic sequence</en></p><br />\n  <p edu-color=\"1\">7,8,9,10,11,12,13</p>\n  <p edu-color=\"2\">1,2,3</p>\n  <p edu-color=\"1\">5,6,\u263A,8</p>\n \n  <p><en>Different decors</en><zh_cn>\u5F02\u8272\u540C\u503C</zh_cn><zh_tw>\u5F02\u8272\u540C\u503C</zh_tw></p>\n  <p><en>Same value</en></p>\n  <p><b edu-color=\"1\">2</b><b edu-color=\"2\">2</b><b edu-color=\"3\">2</b><b edu-color=\"3\">\u263A</b></p>\n  <p><b edu-color=\"1\">\u263A</b><b edu-color=\"2\">3</b><b edu-color=\"3\">3</b></p>\n </span></div>";
+        _this.DIAGONAL_CENTER_TEXT = "<div>\n  <p><en_us>Same decor</en_us><zh_cn>\u540C\u8272\u8FDE\u7EED</zh_cn><zh_tw>\u540C\u8272\u8FDE\u7EED</zh_tw></p>\n  <p><en_us>Arithmetic sequence</en_us></p><br />\n  <p edu-color=\"1\">7,8,9,10,11,12,13</p>\n  <p edu-color=\"2\">1,2,3</p>\n  <p edu-color=\"1\">5,6,\u263A,8</p>\n\n  <p><en_us>Different decors</en_us><zh_cn>\u5F02\u8272\u540C\u503C</zh_cn><zh_tw>\u5F02\u8272\u540C\u503C</zh_tw></p>\n  <p><en_us>Same value</en_us></p>\n  <p><b edu-color=\"1\">2</b><b edu-color=\"2\">2</b><b edu-color=\"3\">2</b><b edu-color=\"3\">\u263A</b></p>\n  <p><b edu-color=\"1\">\u263A</b><b edu-color=\"2\">3</b><b edu-color=\"3\">3</b></p>\n </span></div>";
         _this.CENTER_NORMAL_CARD_TIMES = 2;
         _this.CENTER_CHANGEABLE_CARD_COUNT = 2;
         _this.CENTER_CENTER_TEXT = "";
@@ -303,10 +303,10 @@ var BrickCore = (function (_super) {
         _this.countPokerDataAndComputedData = function (pokerKind, countPerPage) {
             if (pokerKind === 0)
                 pokerKind = DefaultRummikubPokerKind;
-            var en = FILENAME_POSTFIX + "Rummikub";
+            var en_us = FILENAME_POSTFIX + "Rummikub";
             var zh_cn = FILENAME_POSTFIX + "\u62C9\u5BC6";
             var zh_tw = FILENAME_POSTFIX + "\u62C9\u5BC6";
-            var enBackCover = en.split("_").join("<br />");
+            var enBackCover = en_us.split("_").join("<br />");
             var zh_cnBackCover = zh_cn.split("_").join("<br />");
             var zh_twBackCover = zh_tw.split("_").join("<br />");
             var enArray = [];
@@ -314,7 +314,7 @@ var BrickCore = (function (_super) {
             var zh_cnArray = [];
             var zh_twArray = [];
             var backCover = "";
-            var title = { en: en, zh_cn: zh_cn, zh_tw: zh_tw };
+            var title = { en_us: en_us, zh_cn: zh_cn, zh_tw: zh_tw };
             var CENTER_TEXTS = [];
             var BACK_COVERS = [];
             var CHARS = [];
@@ -347,7 +347,7 @@ var BrickCore = (function (_super) {
             switch (enArray.length) {
                 case 0:
                     backCover = getI18nInnerHTML({
-                        en: enBackCover,
+                        en_us: enBackCover,
                         zh_cn: zh_cnBackCover,
                         zh_tw: zh_twBackCover
                     });
@@ -357,32 +357,32 @@ var BrickCore = (function (_super) {
                     var zh_cnFirstItem = zh_cnArray[0];
                     var zh_twFirstItem = zh_twArray[0];
                     backCover = getI18nInnerHTML({
-                        en: enBackCover.concat("<br /><br />", enFirstItem),
+                        en_us: enBackCover.concat("<br /><br />", enFirstItem),
                         zh_cn: zh_cnBackCover.concat("<br /><br />", zh_cnFirstItem),
                         zh_tw: zh_twBackCover.concat("<br /><br />", zh_twFirstItem)
                     });
-                    title.en += "_".concat(enFullArray[0]);
+                    title.en_us += "_".concat(enFullArray[0]);
                     title.zh_cn += "_".concat(zh_cnFirstItem);
                     title.zh_tw += "_".concat(zh_twFirstItem);
                     break;
                 default:
                     if (enArray.length === RummikubPokerKindCount) {
                         backCover = getI18nInnerHTML({
-                            en: enBackCover,
+                            en_us: enBackCover,
                             zh_cn: zh_cnBackCover,
                             zh_tw: zh_twBackCover
                         });
-                        title.en += " Mixed_ALL";
+                        title.en_us += " Mixed_ALL";
                         title.zh_cn += "混合_所有";
                         title.zh_tw += "混合_所有";
                     }
                     else {
                         backCover = getI18nInnerHTML({
-                            en: enBackCover.concat("<br /><br /><small>", enArray.join("<br />"), "</small>"),
+                            en_us: enBackCover.concat("<br /><br /><small>", enArray.join("<br />"), "</small>"),
                             zh_cn: zh_cnBackCover.concat("<br /><br /><small>", zh_cnArray.join("<br />"), "</small>"),
                             zh_tw: zh_twBackCover.concat("<br /><br /><small>", zh_twArray.join("<br />"), "</small>")
                         });
-                        title.en += " Mixed_".concat(enFullArray.join("_"));
+                        title.en_us += " Mixed_".concat(enFullArray.join("_"));
                         title.zh_cn += "混合_".concat(zh_cnArray.join("_"));
                         title.zh_tw += "混合_".concat(zh_twArray.join("_"));
                     }
@@ -447,13 +447,13 @@ var BrickCore = (function (_super) {
                 }
             });
             var wrapElement = _this.getWrapElement({
-                en: "Include Zero",
+                en_us: "Include Zero",
                 zh_cn: "包含0",
                 zh_tw: "包含0"
             });
             _this.initIncludeZeroElements(wrapElement);
             wrapElement = _this.getWrapElement({
-                en: "Whole Page",
+                en_us: "Whole Page",
                 zh_cn: "每项补全整页",
                 zh_tw: "每項補全整頁"
             });
@@ -463,22 +463,22 @@ var BrickCore = (function (_super) {
             var _a = _this, pokerKind = _a.data.pokerKind, pokerKindElementArray = _a.pokerKindElementArray;
             var pokerKindI18nHtmlArray = [
                 getI18nInnerHTML({
-                    en: "diagonal",
+                    en_us: "diagonal",
                     zh_cn: "对角线",
                     zh_tw: "對角線"
                 }),
                 getI18nInnerHTML({
-                    en: "center",
+                    en_us: "center",
                     zh_cn: "中心",
                     zh_tw: "中心"
                 }),
                 getI18nInnerHTML({
-                    en: "diagonal extends",
+                    en_us: "diagonal extends",
                     zh_cn: "对角线扩展版",
                     zh_tw: "對角線擴展版"
                 }),
                 getI18nInnerHTML({
-                    en: "center extends",
+                    en_us: "center extends",
                     zh_cn: "中心扩展版",
                     zh_tw: "中心擴展版"
                 }),
@@ -521,12 +521,12 @@ var BrickCore = (function (_super) {
             var _a = _this, includeZero = _a.data.includeZero, includeZeroElementArray = _a.includeZeroElementArray;
             var i18nHtmlArray = [
                 getI18nInnerHTML({
-                    en: "Yes",
+                    en_us: "Yes",
                     zh_cn: "是",
                     zh_tw: "是"
                 }),
                 getI18nInnerHTML({
-                    en: "No",
+                    en_us: "No",
                     zh_cn: "否",
                     zh_tw: "否"
                 }),
@@ -558,12 +558,12 @@ var BrickCore = (function (_super) {
             var _a = _this, wholePage = _a.data.wholePage, wholePageElementArray = _a.wholePageElementArray;
             var i18nHtmlArray = [
                 getI18nInnerHTML({
-                    en: "Yes",
+                    en_us: "Yes",
                     zh_cn: "是",
                     zh_tw: "是"
                 }),
                 getI18nInnerHTML({
-                    en: "No",
+                    en_us: "No",
                     zh_cn: "否",
                     zh_tw: "否"
                 }),
@@ -598,12 +598,12 @@ var BrickCore = (function (_super) {
             '<p class="discoloration"><b><i>☺</i></b><b><i>☺</i></b></p>',
             '<p class="mirror"><b><i>☺</i></b><b><i>☺</i></b></p>',
         ];
-        _this.countIt = function (normalCardTimes, changeableCardCount, countPerPage, centerText, CENTER_TEXTS, enAppend, zh_cnAppend, zh_twAppend, enFullArray, zh_cnArray, zh_twArray, en, zh_cn, zh_tw, CHARS, COLORS, BACK_COVERS, pokerKind) {
+        _this.countIt = function (normalCardTimes, changeableCardCount, countPerPage, centerText, CENTER_TEXTS, enAppend, zh_cnAppend, zh_twAppend, enFullArray, zh_cnArray, zh_twArray, en_us, zh_cn, zh_tw, CHARS, COLORS, BACK_COVERS, pokerKind) {
             enFullArray.push(enAppend);
             zh_cnArray.push(zh_cnAppend);
             zh_twArray.push(zh_twAppend);
             var notSameBackCover = getI18nInnerHTML({
-                en: en.concat("<br /><small>", enAppend, "</small>"),
+                en_us: en_us.concat("<br /><small>", enAppend, "</small>"),
                 zh_cn: zh_cn.concat("<br />", zh_cnAppend),
                 zh_tw: zh_tw.concat("<br />", zh_twAppend)
             });

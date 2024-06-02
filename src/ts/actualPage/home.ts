@@ -19,12 +19,12 @@ class HomePage extends ActualPageBase {
       id: "homePageAbout",
       class: "leftAndRightSidesTextAndImage",
       title: {
-        en: "Sparks of Fire",
+        en_us: "Sparks of Fire",
         zh_cn: "星星之火",
         zh_tw: "星星之火",
       },
       summary: {
-        en:
+        en_us:
           `Pure kindness comes from the heart, just like seeds. It sprouts in the cold winter, spreads with the Internet, and benefits children.
 Sincere blessing, originating from compassion, is like a spark. Born from China, you and I spread it, warming the world.
 The beauty of life is based on compassion and wisdom, the beauty of the earth is based on virtue, the beauty of the sky is based on depth, the beauty of mathematics is based on simplicity, the beauty of language is based on love of words, and the beauty of science and technology must be improved.
@@ -57,12 +57,12 @@ The seed breaks through the soil and can become a towering tree to protect the w
       id: "homePageBricks",
       class: "leftAndRightSidesTextAndImage",
       title: {
-        en: "Throwing a brick to attract jade",
+        en_us: "Throwing a brick to attract jade",
         zh_cn: "抛砖引玉",
         zh_tw: "抛磚引玉",
       },
       summary: {
-        en: `The drop of water is soft enough to wear through the stone.<br/>
+        en_us: `The drop of water is soft enough to wear through the stone.<br/>
 The rope is weak and can break the wood.<br/>
 Although I am stupid, I can get a thousand worries.<br/>
 Throw these simple bricks to attract many beautiful jades.`,
@@ -84,17 +84,17 @@ Throw these simple bricks to attract many beautiful jades.`,
       id: "homePageTreasures",
       class: "leftAndRightSidesTextAndImage",
       title: {
-        en: "Natural treasures",
+        en_us: "Natural treasures",
         zh_cn: "物华天宝",
         zh_tw: "物華天寶",
       },
       summary: {
-        en: `The grand China is the backbone of everything<br/>
+        en_us: `The grand China is the backbone of everything<br/>
 The towering China, with its long history, has become an article<br/>
 
 Mengxi Bi Tan, Tiangong Kaiwu, a series of craftsmen have been produced since ancient times,<br/>
 Poems, Books, Rites, Music, Changes, and Spring and Autumn Annals have passed on wisdom through the ages<br/>
-				
+
 Wang Bo's Preface to Tengwang Pavilion: "There are many treasures in the sky. The dragon shines on the ruins where cattle fight. There are outstanding people and places. Xu Ru gets down on the bed of Chen Fan."<br/>
 Based on this reason, I collected some works of a great craftsman, so we can see the heavy weapons in a glimpse.`,
         zh_cn: `泱泱华夏，一撇一捺，尽是脊梁。<br/>
@@ -123,12 +123,12 @@ Based on this reason, I collected some works of a great craftsman, so we can see
       id: "homePageStories",
       class: "leftAndRightSidesList",
       title: {
-        en: "growing",
+        en_us: "growing",
         zh_cn: "成长足迹",
         zh_tw: "成長足跡",
       },
       summary: {
-        en: ``,
+        en_us: ``,
         zh_cn: ``,
         zh_tw: ``,
       },
@@ -141,12 +141,12 @@ Based on this reason, I collected some works of a great craftsman, so we can see
       id: "homePageTeachers",
       class: "flippableCardList",
       title: {
-        en: "Good teachers and helpful friends",
+        en_us: "Good teachers and helpful friends",
         zh_cn: "良师益友",
         zh_tw: "良師益友",
       },
       summary: {
-        en: ``,
+        en_us: ``,
         zh_cn: ``,
         zh_tw: ``,
       },
@@ -160,7 +160,7 @@ Based on this reason, I collected some works of a great craftsman, so we can see
   public initTitleElement(): void {
     const titleElement = getTitleElement();
     titleElement.i18n = {
-      en: "地势坤--Terrain Kun",
+      en_us: "地势坤--Terrain Kun",
       zh_cn: "地势坤",
       zh_tw: "地势坤--地勢坤",
     };
@@ -192,7 +192,7 @@ Based on this reason, I collected some works of a great craftsman, so we can see
         sectionSubjectElement.setAttribute("class", "homePageSubject");
         sectionSubjectElement.id = id.concat("Subject");
 
-        ['en', 'zh_cn', 'zh_tw'].forEach((lang: string) => {
+        ['en_us', 'zh_cn', 'zh_tw'].forEach((lang: string) => {
           const span = createElement(lang) as HTMLSpanElement;
           sectionSubjectElement.appendChild(span);
 
@@ -275,12 +275,12 @@ Based on this reason, I collected some works of a great craftsman, so we can see
               date: Date;
               version: string;
               title: {
-                en: string;
+                en_us: string;
                 zh_cn: string;
                 zh_tw: string;
               };
               summary: {
-                en: string;
+                en_us: string;
                 zh_cn: string;
                 zh_tw: string;
               };
@@ -325,7 +325,7 @@ Based on this reason, I collected some works of a great craftsman, so we can see
               const storyDateElement = createElement("span") as HTMLSpanElement;
               storyDateElement.className = "homePageStoryTime";
               // const chineseDate = global.getChineseDate(date);
-              // storyDateElement.innerHTML = `<en>${global.getEnglishDate(date)}</en><zh_cn>${chineseDate}</zh_cn><zh_tw>${chineseDate}</zh_tw>`;
+              // storyDateElement.innerHTML = `<en_us>${global.getEnglishDate(date)}</en_us><zh_cn>${chineseDate}</zh_cn><zh_tw>${chineseDate}</zh_tw>`;
               storyDateElement.innerHTML = getI18nInnerHTMLFromDate(date);
               storyTitleAndTimeElement.appendChild(storyDateElement);
 

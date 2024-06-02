@@ -15,8 +15,7 @@ System.register("svgHelper", [], function (exports_1, context_1) {
                             var SVG_NS = "http://www.w3.org/2000/svg";
                             var SVG_XLINKNS = "http://www.w3.org/1999/xlink";
                             var SvgHelper = (function () {
-                                function SvgHelper() {
-                                }
+                                function SvgHelper() {}
                                 SvgHelper.appendLine = function (svg, STYLE, x1, x2, y1, y2, viewBox) {
                                     var line = document.createElementNS(SVG_NS, "line");
                                     line.setAttribute("x1", x1 + "mm");
@@ -56,7 +55,9 @@ System.register("svgHelper", [], function (exports_1, context_1) {
                                     text.appendChild(tspan);
                                 };
                                 SvgHelper.appendText = function (svg, STYLE, CONTENT, x, y, rotate, transformOrigin, viewBox, maybeNumber) {
-                                    if (maybeNumber === void 0) { maybeNumber = false; }
+                                    if (maybeNumber === void 0) {
+                                        maybeNumber = false;
+                                    }
                                     var g = document.createElementNS(SVG_NS, "g");
                                     if (rotate) {
                                         g.setAttribute("style", "transform: rotate(" + rotate + "deg);transform-origin:" + transformOrigin + ";");
@@ -66,7 +67,7 @@ System.register("svgHelper", [], function (exports_1, context_1) {
                                     text.setAttribute("x", x + "mm");
                                     text.setAttribute("y", y + "mm");
                                     text.setAttribute("style", "dominant-baseline:middle;text-anchor:middle;");
-                                    if (CONTENT.indexOf("<en>") > -1) {
+                                    if (CONTENT.indexOf("<en_us>") > -1) {
                                         var lang = getCurrentLang();
                                         var startTag = "<" + lang + ">";
                                         var endTag = "</" + lang + ">";
@@ -76,9 +77,9 @@ System.register("svgHelper", [], function (exports_1, context_1) {
                                     }
                                     CONTENT = CONTENT.replace(/<br \/>/gi, "<br/>").replace(/<br\/>/gi, "<br>").replace(/\\n/gi, "<br>");
                                     if (CONTENT.indexOf("<br>") > -1) {
-                                        var fontSize = STYLE.indexOf("font-size:") > -1
-                                            ? STYLE.split("font-size:")[1].split(";")[0]
-                                            : "2mm";
+                                        var fontSize = STYLE.indexOf("font-size:") > -1 ?
+                                            STYLE.split("font-size:")[1].split(";")[0] :
+                                            "2mm";
                                         var unit = fontSize.replace(/[0-9.]/gi, "");
                                         var dyNumber = parseFloat(fontSize.replace(unit, ""));
                                         var segs = CONTENT.split("<br>");
@@ -88,23 +89,25 @@ System.register("svgHelper", [], function (exports_1, context_1) {
                                             SvgHelper.appendTspan(text, "", seg, index ? "-" + lastLength_1 + "em" : "0", index ? dyOffset_1 : "0");
                                             lastLength_1 = seg.length;
                                         });
-                                    }
-                                    else {
+                                    } else {
                                         if (maybeNumber) {
                                             CONTENT.split("").forEach(function (char, index) {
                                                 SvgHelper.appendTspan(text, "", char, "0", "0");
                                             });
-                                        }
-                                        else {
+                                        } else {
                                             SvgHelper.appendTspan(text, "", CONTENT, "0", "0");
                                         }
                                     }
                                     g.appendChild(text);
                                     if (viewBox) {
                                         var clientRects = text.getClientRects();
-                                        var _a = (clientRects.length
-                                            ? clientRects.item(0)
-                                            : text.getBoundingClientRect()), x1 = _a.left, x2 = _a.right, y1 = _a.top, y2 = _a.bottom;
+                                        var _a = (clientRects.length ?
+                                                clientRects.item(0) :
+                                                text.getBoundingClientRect()),
+                                            x1 = _a.left,
+                                            x2 = _a.right,
+                                            y1 = _a.top,
+                                            y2 = _a.bottom;
                                         viewBox.left = Math.min(viewBox.left, x1, x2);
                                         viewBox.right = Math.max(viewBox.right, x1, x2);
                                         viewBox.top = Math.min(viewBox.top, y1, y2);
@@ -171,4 +174,3 @@ System.register("svgHelper", [], function (exports_1, context_1) {
 });
 
 __exp = __instantiate("svgHelper", false);
-

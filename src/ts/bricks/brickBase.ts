@@ -240,7 +240,7 @@ export abstract class BrickBase implements IBrickCore {
   protected DEFAULT_DATA_JSON = "";
   protected computedData = {
     title: {
-      en: "",
+      en_us: "",
       zh_cn: "",
       zh_tw: "",
     },
@@ -267,7 +267,7 @@ export abstract class BrickBase implements IBrickCore {
 
     const { getWrapElement } = this;
     let wrapElement = getWrapElement({
-      en: "Paper",
+      en_us: "Paper",
       zh_cn: "纸张",
       zh_tw: "紙張",
     });
@@ -276,7 +276,7 @@ export abstract class BrickBase implements IBrickCore {
     this.initIsLandscapeElements(wrapElement);
 
     wrapElement = getWrapElement({
-      en: "Margin of page",
+      en_us: "Margin of page",
       zh_cn: "页边距",
       zh_tw: "頁邊距",
     });
@@ -480,7 +480,7 @@ export abstract class BrickBase implements IBrickCore {
     const labelElement = createElement("label") as HTMLLabelElement;
     span.appendChild(labelElement);
     labelElement.innerHTML = getI18nInnerHTML({
-      en: "Size:",
+      en_us: "Size:",
       zh_cn: "纸型：",
       zh_tw: "紙型：",
     });
@@ -527,7 +527,7 @@ export abstract class BrickBase implements IBrickCore {
     const labelElement = createElement("label") as HTMLLabelElement;
     span.appendChild(labelElement);
     labelElement.innerHTML = getI18nInnerHTML({
-      en: "Orientation:",
+      en_us: "Orientation:",
       zh_cn: "方向：",
       zh_tw: "方向：",
     });
@@ -547,12 +547,12 @@ export abstract class BrickBase implements IBrickCore {
       spanElement.innerHTML = getI18nInnerHTML(
         isLandscapeValue
           ? {
-            en: "landscape",
+            en_us: "landscape",
             zh_cn: "横向",
             zh_tw: "橫向",
           }
           : {
-            en: "portrait",
+            en_us: "portrait",
             zh_cn: "纵向",
             zh_tw: "縱向",
           },
@@ -580,7 +580,7 @@ export abstract class BrickBase implements IBrickCore {
     const labelElement = createElement("label") as HTMLLabelElement;
     wrapElement.appendChild(labelElement);
     labelElement.innerHTML = getI18nInnerHTML({
-      en: "Top:",
+      en_us: "Top:",
       zh_cn: "上：",
       zh_tw: "上：",
     });
@@ -610,7 +610,7 @@ export abstract class BrickBase implements IBrickCore {
     const labelElement = createElement("label") as HTMLLabelElement;
     wrapElement.appendChild(labelElement);
     labelElement.innerHTML = getI18nInnerHTML({
-      en: "Bottom:",
+      en_us: "Bottom:",
       zh_cn: "下：",
       zh_tw: "下：",
     });
@@ -636,7 +636,7 @@ export abstract class BrickBase implements IBrickCore {
     const labelElement = createElement("label") as HTMLLabelElement;
     wrapElement.appendChild(labelElement);
     labelElement.innerHTML = getI18nInnerHTML({
-      en: "Left:",
+      en_us: "Left:",
       zh_cn: "左：",
       zh_tw: "左：",
     });
@@ -662,7 +662,7 @@ export abstract class BrickBase implements IBrickCore {
     const labelElement = createElement("label") as HTMLLabelElement;
     wrapElement.appendChild(labelElement);
     labelElement.innerHTML = getI18nInnerHTML({
-      en: "Right:",
+      en_us: "Right:",
       zh_cn: "右：",
       zh_tw: "右：",
     });

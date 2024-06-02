@@ -276,16 +276,16 @@ System.register("dom", [], function (exports_1, context_1) {
     }
     exports_1("stopEventBubble", stopEventBubble);
     function getI18nInnerHTML(_a) {
-        var en = _a.en, zh_cn = _a.zh_cn, zh_tw = _a.zh_tw;
-        return "<en>" + en + "</en><zh_cn>" + zh_cn + "</zh_cn><zh_tw>" + zh_tw + "</zh_tw>";
+        var en_us = _a.en_us, zh_cn = _a.zh_cn, zh_tw = _a.zh_tw;
+        return "<en_us>" + en_us + "</en_us><zh_cn>" + zh_cn + "</zh_cn><zh_tw>" + zh_tw + "</zh_tw>";
     }
     exports_1("getI18nInnerHTML", getI18nInnerHTML);
     function getI18nInnerHTMLFromDate(date) {
-        var en = MONTH_NAME_ARRAY[date.getMonth()] + " " + date.getDate() + ", " + date.getFullYear();
+        var en_us = MONTH_NAME_ARRAY[date.getMonth()] + " " + date.getDate() + ", " + date.getFullYear();
         var zh_cn = date.getFullYear() + "-" + (date.getMonth() +
             1) + "-" + date.getDate();
         var zh_tw = zh_cn;
-        return "<en>" + en + "</en><zh_cn>" + zh_cn + "</zh_cn><zh_tw>" + zh_tw + "</zh_tw>";
+        return "<en_us>" + en_us + "</en_us><zh_cn>" + zh_cn + "</zh_cn><zh_tw>" + zh_tw + "</zh_tw>";
     }
     exports_1("getI18nInnerHTMLFromDate", getI18nInnerHTMLFromDate);
     return {

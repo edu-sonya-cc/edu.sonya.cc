@@ -286,55 +286,55 @@ var BrickCore = (function (_super) {
         };
         _this.countPokerDataAndComputedData = function (pokerKind, countPerPage) {
             var backCover = "";
-            var title = { en: "", zh_cn: "", zh_tw: "" };
+            var title = { en_us: "", zh_cn: "", zh_tw: "" };
             switch (pokerKind) {
                 case EnglishLettersPokerKind.onlyLowerCase:
                     backCover = "a-z<br /><br />" + getI18nInnerHTML({
-                        en: "English Letters",
+                        en_us: "English Letters",
                         zh_cn: "英语小写字母",
                         zh_tw: "英語小寫字母"
                     });
-                    title.en = FILENAME_POSTFIX + "English Letters_a-z";
+                    title.en_us = FILENAME_POSTFIX + "English Letters_a-z";
                     title.zh_cn = FILENAME_POSTFIX + "\u82F1\u8BED\u5C0F\u5199\u5B57\u6BCD_a-z";
                     title.zh_tw = FILENAME_POSTFIX + "\u82F1\u8A9E\u5C0F\u5BEB\u5B57\u6BCD_a-z";
                     break;
                 case EnglishLettersPokerKind.onlyUpperCase:
                     backCover = "A-Z<br /><br />" + getI18nInnerHTML({
-                        en: "English Letters",
+                        en_us: "English Letters",
                         zh_cn: "英语大写字母",
                         zh_tw: "英語大寫字母"
                     });
-                    title.en = FILENAME_POSTFIX + "English Letters_A-Z";
+                    title.en_us = FILENAME_POSTFIX + "English Letters_A-Z";
                     title.zh_cn = FILENAME_POSTFIX + "\u82F1\u8BED\u5927\u5199\u5B57\u6BCD_A-Z";
                     title.zh_tw = FILENAME_POSTFIX + "\u82F1\u8A9E\u5927\u5BEB\u5B57\u6BCD_A-Z";
                     break;
                 case EnglishLettersPokerKind.both:
                     backCover = "a-z & A-Z<br /><br />" + getI18nInnerHTML({
-                        en: "English Letters",
+                        en_us: "English Letters",
                         zh_cn: "英语字母<br />（大小写）",
                         zh_tw: "英語字母<br />（大小寫）"
                     });
-                    title.en = FILENAME_POSTFIX + "English Letters_a-z&A-Z";
+                    title.en_us = FILENAME_POSTFIX + "English Letters_a-z&A-Z";
                     title.zh_cn = FILENAME_POSTFIX + "\u82F1\u8BED\u5B57\u6BCD\uFF08\u5927\u5C0F\u5199\uFF09_a-z&A-Z";
                     title.zh_tw = FILENAME_POSTFIX + "\u82F1\u8A9E\u5B57\u6BCD\uFF08\u5927\u5C0F\u5BEB\uFF09_a-z&A-Z";
                     break;
                 case EnglishLettersPokerKind.kk1:
                     backCover = "" + getI18nInnerHTML({
-                        en: "KK<br />Phonetic<br />Symbols",
+                        en_us: "KK<br />Phonetic<br />Symbols",
                         zh_cn: "KK音标<br />（扑克）",
                         zh_tw: "KK音標<br />（撲克）"
                     });
-                    title.en = FILENAME_POSTFIX + "KK Phonetic Symbols Pokers";
+                    title.en_us = FILENAME_POSTFIX + "KK Phonetic Symbols Pokers";
                     title.zh_cn = FILENAME_POSTFIX + "KK\u97F3\u6807\u6251\u514B";
                     title.zh_tw = FILENAME_POSTFIX + "KK\u97F3\u6807\u64B2\u514B";
                     break;
                 case EnglishLettersPokerKind.kk2:
                     backCover = "" + getI18nInnerHTML({
-                        en: "KK<br />Phonetic<br />Symbols<br />with Bias",
+                        en_us: "KK<br />Phonetic<br />Symbols<br />with Bias",
                         zh_cn: "KK音标2<br />（扑克）<br />带斜线",
                         zh_tw: "KK音標2<br />（撲克）<br />帶斜線"
                     });
-                    title.en = FILENAME_POSTFIX + "KK Phonetic Symbols Pokers with Bias";
+                    title.en_us = FILENAME_POSTFIX + "KK Phonetic Symbols Pokers with Bias";
                     title.zh_cn = FILENAME_POSTFIX + "KK\u97F3\u6807\u6251\u514B2";
                     title.zh_tw = FILENAME_POSTFIX + "KK\u97F3\u6807\u64B2\u514B2";
                     break;
@@ -350,27 +350,27 @@ var BrickCore = (function (_super) {
             var _a = _this, pokerKind = _a.data.pokerKind, pokerKindElementArray = _a.pokerKindElementArray;
             var pokerKindI18nHtmlArray = [
                 getI18nInnerHTML({
-                    en: "Only lowercase letters",
+                    en_us: "Only lowercase letters",
                     zh_cn: "仅小写字母",
                     zh_tw: "僅小寫字母"
                 }),
                 getI18nInnerHTML({
-                    en: "Only uppercase letters",
+                    en_us: "Only uppercase letters",
                     zh_cn: "仅大写字母",
                     zh_tw: "僅大寫字母"
                 }),
                 getI18nInnerHTML({
-                    en: "Both",
+                    en_us: "Both",
                     zh_cn: "两者都有",
                     zh_tw: "兩者都有"
                 }),
                 getI18nInnerHTML({
-                    en: "KK1",
+                    en_us: "KK1",
                     zh_cn: "KK音标",
                     zh_tw: "KK音标"
                 }),
                 getI18nInnerHTML({
-                    en: "KK2",
+                    en_us: "KK2",
                     zh_cn: "KK音标带斜线",
                     zh_tw: "KK音标帶斜線"
                 }),

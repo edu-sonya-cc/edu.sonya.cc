@@ -5,17 +5,16 @@
 class HomePage extends ActualPageBase {
     topImageElement = createElement('img');
     TEACHER_COUNT_PER_PAGE = PageSize.homePage.teachers;
-    sectionList = [
-        {
+    sectionList = [{
             id: 'homePageAbout',
             class: 'leftAndRightSidesTextAndImage',
             title: {
-                en: 'Sparks of Fire',
+                en_us: 'Sparks of Fire',
                 zh_cn: '星星之火',
                 zh_tw: '星星之火'
             },
             summary: {
-                en: `Pure kindness comes from the heart, just like seeds. It sprouts in the cold winter, spreads with the Internet, and benefits children.
+                en_us: `Pure kindness comes from the heart, just like seeds. It sprouts in the cold winter, spreads with the Internet, and benefits children.
 Sincere blessing, originating from compassion, is like a spark. Born from China, you and I spread it, warming the world.
 The beauty of life is based on compassion and wisdom, the beauty of the earth is based on virtue, the beauty of the sky is based on depth, the beauty of mathematics is based on simplicity, the beauty of language is based on love of words, and the beauty of science and technology must be improved.
 The seed breaks through the soil and can become a towering tree to protect the world's creatures; Sparks rise in dim light and can become bright torches, shining through the darkness of the night.`,
@@ -46,12 +45,12 @@ The seed breaks through the soil and can become a towering tree to protect the w
             id: 'homePageBricks',
             class: 'leftAndRightSidesTextAndImage',
             title: {
-                en: 'Throwing a brick to attract jade',
+                en_us: 'Throwing a brick to attract jade',
                 zh_cn: '抛砖引玉',
                 zh_tw: '抛磚引玉'
             },
             summary: {
-                en: `The drop of water is soft enough to wear through the stone.<br/>
+                en_us: `The drop of water is soft enough to wear through the stone.<br/>
 The rope is weak and can break the wood.<br/>
 Although I am stupid, I can get a thousand worries.<br/>
 Throw these simple bricks to attract many beautiful jades.`,
@@ -72,17 +71,17 @@ Throw these simple bricks to attract many beautiful jades.`,
             id: 'homePageTreasures',
             class: 'leftAndRightSidesTextAndImage',
             title: {
-                en: 'Natural treasures',
+                en_us: 'Natural treasures',
                 zh_cn: '物华天宝',
                 zh_tw: '物華天寶'
             },
             summary: {
-                en: `The grand China is the backbone of everything<br/>
+                en_us: `The grand China is the backbone of everything<br/>
 The towering China, with its long history, has become an article<br/>
 
 Mengxi Bi Tan, Tiangong Kaiwu, a series of craftsmen have been produced since ancient times,<br/>
 Poems, Books, Rites, Music, Changes, and Spring and Autumn Annals have passed on wisdom through the ages<br/>
-				
+
 Wang Bo's Preface to Tengwang Pavilion: "There are many treasures in the sky. The dragon shines on the ruins where cattle fight. There are outstanding people and places. Xu Ru gets down on the bed of Chen Fan."<br/>
 Based on this reason, I collected some works of a great craftsman, so we can see the heavy weapons in a glimpse.`,
                 zh_cn: `泱泱华夏，一撇一捺，尽是脊梁。<br/>
@@ -110,12 +109,12 @@ Based on this reason, I collected some works of a great craftsman, so we can see
             id: 'homePageStories',
             class: 'leftAndRightSidesList',
             title: {
-                en: 'growing',
+                en_us: 'growing',
                 zh_cn: '成长足迹',
                 zh_tw: '成長足跡'
             },
             summary: {
-                en: ``,
+                en_us: ``,
                 zh_cn: ``,
                 zh_tw: ``
             },
@@ -127,12 +126,12 @@ Based on this reason, I collected some works of a great craftsman, so we can see
             id: 'homePageTeachers',
             class: 'flippableCardList',
             title: {
-                en: 'Good teachers and helpful friends',
+                en_us: 'Good teachers and helpful friends',
                 zh_cn: '良师益友',
                 zh_tw: '良師益友'
             },
             summary: {
-                en: ``,
+                en_us: ``,
                 zh_cn: ``,
                 zh_tw: ``
             },
@@ -144,20 +143,32 @@ Based on this reason, I collected some works of a great craftsman, so we can see
     initTitleElement() {
         const titleElement = getTitleElement();
         titleElement.i18n = {
-            en: '地势坤--Terrain Kun',
+            en_us: '地势坤--Terrain Kun',
             zh_cn: '地势坤',
             zh_tw: '地势坤--地勢坤'
         };
     }
-    initMainElement = ()=>{
+    initMainElement = () => {
         const mainElement = getMainElement();
-        const { topImageElement , sectionList , TEACHER_COUNT_PER_PAGE  } = this;
+        const {
+            topImageElement,
+            sectionList,
+            TEACHER_COUNT_PER_PAGE
+        } = this;
         mainElement.appendChild(topImageElement);
         const topImageUrl = SITE_IMAGE_PATH.concat('1home/topImage.jpg');
         topImageElement.setAttribute('id', 'topImage');
         topImageElement.setAttribute('src', topImageUrl);
         topImageElement.setAttribute('alt', topImageUrl);
-        sectionList.forEach(({ id , 'class': sectionClass , title , summary , image , items , moreLink  }, sectionIndex)=>{
+        sectionList.forEach(({
+            id,
+            'class': sectionClass,
+            title,
+            summary,
+            image,
+            items,
+            moreLink
+        }, sectionIndex) => {
             const sectionWrapElement = createElement('div');
             mainElement.appendChild(sectionWrapElement);
             sectionWrapElement.setAttribute('id', id);
@@ -165,7 +176,7 @@ Based on this reason, I collected some works of a great craftsman, so we can see
             const sectionSubjectElement = createElement('div');
             sectionSubjectElement.setAttribute('class', 'homePageSubject');
             sectionSubjectElement.id = id.concat('Subject');
-            switch(sectionClass){
+            switch (sectionClass) {
                 case 'leftAndRightSidesTextAndImage':
                     const imageElementInTextAndImage = createElement('img');
                     const textWrapElementInTextAndImage = createElement('div');
@@ -188,7 +199,7 @@ Based on this reason, I collected some works of a great craftsman, so we can see
                     moreElement.className = 'moreButton primary';
                     moreElement.innerHTML = MORE_BUTTON_HTML;
                     textWrapElementInTextAndImage.appendChild(moreElement);
-                    imageElementInTextAndImage.onclick = textWrapElementInTextAndImage.onclick = (event)=>{
+                    imageElementInTextAndImage.onclick = textWrapElementInTextAndImage.onclick = (event) => {
                         window.location.href = moreLink;
                         return stopEventBubble(event);
                     };
@@ -199,12 +210,12 @@ Based on this reason, I collected some works of a great craftsman, so we can see
                     leftAreaOfLeftAndRightSidesListWrapElement.className = 'leftAndRightSidesListWrap';
                     sectionWrapElement.appendChild(leftAreaOfLeftAndRightSidesListWrapElement);
                     const storiesPageSize = PageSize.homePage.stories;
-                    const storiesOfFirstPage = stories.map((item)=>{
+                    const storiesOfFirstPage = stories.map((item) => {
                         return {
                             ...item
                         };
                     });
-                    storiesOfFirstPage.sort((prev, next)=>{
+                    storiesOfFirstPage.sort((prev, next) => {
                         if (!prev.isTop && next.isTop) {
                             return -1;
                         }
@@ -213,11 +224,16 @@ Based on this reason, I collected some works of a great craftsman, so we can see
                         }
                         return prev.date === next.date ? 0 : prev.date === next.date ? -1 : 0;
                     });
-                    for(let i = 0; i < storiesPageSize; ++i){
+                    for (let i = 0; i < storiesPageSize; ++i) {
                         const storyWrapElement = createElement('div');
                         storyWrapElement.className = 'homePageStoryWrap';
                         leftAreaOfLeftAndRightSidesListWrapElement.appendChild(storyWrapElement);
-                        const { id: id1 , date , title: title1 , summary: summary1  } = storiesOfFirstPage[i];
+                        const {
+                            id: id1,
+                            date,
+                            title: title1,
+                            summary: summary1
+                        } = storiesOfFirstPage[i];
                         const storyTitleAndTimeElement = createElement('div');
                         storyTitleAndTimeElement.className = 'homePageStoryTitleAndTime';
                         storyWrapElement.appendChild(storyTitleAndTimeElement);
@@ -233,7 +249,7 @@ Based on this reason, I collected some works of a great craftsman, so we can see
                         storySummaryElement.className = 'homePageStorySummary';
                         storySummaryElement.innerHTML = getI18nInnerHTML(summary1);
                         storyWrapElement.appendChild(storySummaryElement);
-                        storyWrapElement.onclick = (event)=>{
+                        storyWrapElement.onclick = (event) => {
                             window.location.href = `?go=story&id=${id1}`;
                             return stopEventBubble(event);
                         };
@@ -260,7 +276,7 @@ Based on this reason, I collected some works of a great craftsman, so we can see
                     flippableCardListWrapElement.appendChild(flippableCardsElement);
                     flippableCardsElement.setAttribute('id', 'flippableCards');
                     const TEACHER_IMAGE_POSTFIX = `${SITE_IMAGE_PATH}1home/teachers/`;
-                    for(let i1 = 0; i1 < TEACHER_COUNT_PER_PAGE; ++i1){
+                    for (let i1 = 0; i1 < TEACHER_COUNT_PER_PAGE; ++i1) {
                         const aElement = createElement('a');
                         aElement.className = 'homePageTeacherA';
                         setAttributesOfA(aElement, 'javascript:void(0);');
@@ -290,6 +306,7 @@ Based on this reason, I collected some works of a great craftsman, so we can see
                     const maxTeacherPageIndex = teacherPageCount - 1;
                     const teacherCountOfLastPage = teacherCount - TEACHER_COUNT_PER_PAGE * maxTeacherPageIndex;
                     let currentPage = -1;
+
                     function gotoPage(pageIndex) {
                         if (pageIndex > maxTeacherPageIndex) {
                             pageIndex = maxTeacherPageIndex;
@@ -301,10 +318,14 @@ Based on this reason, I collected some works of a great craftsman, so we can see
                         }
                         const teacherCountOfCurrentPage = pageIndex < maxTeacherPageIndex ? TEACHER_COUNT_PER_PAGE : teacherCountOfLastPage;
                         const indexOffset = TEACHER_COUNT_PER_PAGE * pageIndex;
-                        for(let i = 0; i < teacherCountOfCurrentPage; ++i){
+                        for (let i = 0; i < teacherCountOfCurrentPage; ++i) {
                             const aElement = flippableCardsElement.children[i];
                             const teacher = teachers[indexOffset + i];
-                            const { name , link , i18n  } = teacher;
+                            const {
+                                name,
+                                link,
+                                i18n
+                            } = teacher;
                             aElement.setAttribute('href', link);
                             const wrap = aElement.children[0];
                             showFlex(wrap);
@@ -317,7 +338,7 @@ Based on this reason, I collected some works of a great craftsman, so we can see
                             const urlElement = wrap.children[2].children[0];
                             urlElement.innerHTML = link;
                         }
-                        for(let i1 = TEACHER_COUNT_PER_PAGE - teacherCountOfCurrentPage; i1 > 0; --i1){
+                        for (let i1 = TEACHER_COUNT_PER_PAGE - teacherCountOfCurrentPage; i1 > 0; --i1) {
                             const aElement1 = flippableCardsElement.children[TEACHER_COUNT_PER_PAGE - i1];
                             aElement1.setAttribute('href', 'javascript:void(0);');
                             hide(aElement1.children[0]);
@@ -338,11 +359,11 @@ Based on this reason, I collected some works of a great craftsman, so we can see
                         leftArrowElement.setAttribute('disabled', '');
                         rightArrowElement.setAttribute('disabled', '');
                     } else {
-                        leftArrowElement.onclick = (event)=>{
+                        leftArrowElement.onclick = (event) => {
                             gotoPage(currentPage - 1);
                             return stopEventBubble(event);
                         };
-                        rightArrowElement.onclick = (event)=>{
+                        rightArrowElement.onclick = (event) => {
                             gotoPage(currentPage + 1);
                             return stopEventBubble(event);
                         };

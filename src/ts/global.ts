@@ -82,7 +82,7 @@ class Global {
       innerHtmlI18nElement.forEach(
         (
           element: Element & {
-            i18n?: { en: string; zh_cn: string; zh_tw: string };
+            i18n?: { en_us: string; zh_cn: string; zh_tw: string };
           },
         ) => {
           element.innerHTML = (element.i18n &&
@@ -92,7 +92,7 @@ class Global {
       placeholderI18nElement.forEach(
         (
           element: Element & {
-            i18nPlaceholder?: { en: string; zh_cn: string; zh_tw: string };
+            i18nPlaceholder?: { en_us: string; zh_cn: string; zh_tw: string };
           },
         ) => {
           element.setAttribute(

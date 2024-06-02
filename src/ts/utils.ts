@@ -49,5 +49,5 @@ export function getArrayRepeatSameValue<T>(value: T, times: number): Array<T> {
 }
 
 export const getI18nableWithSameContent = (value: string): I18nable => {
-  return { en: value, zh_cn: value, zh_tw: value };
+  return { en_us: value, zh_cn: value, zh_tw: value };
 };

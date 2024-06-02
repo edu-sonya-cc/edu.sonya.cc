@@ -8,19 +8,22 @@ class ReportPage extends ActualPageBase {
     titleElement = getTitleElement();
     initTitleElement() {
         this.titleElement.i18n = {
-            en: 'Report',
+            en_us: 'Report',
             zh_cn: '报表',
             zh_tw: '報表'
         };
     }
-    initMainElement = ()=>{
+    initMainElement = () => {
         const reportPage = 'reportPage';
         getHeaderElement().remove();
         getFooterElement().remove();
         getMainElement().remove();
         const body = getBodyElement();
         body.setAttribute(REPORT_PROPERTY, '');
-        const { styleElement , reportElement  } = this;
+        const {
+            styleElement,
+            reportElement
+        } = this;
         styleElement.id = `${reportPage}Style`;
         const headElement = getHeadElement();
         headElement.appendChild(styleElement);
@@ -28,7 +31,11 @@ class ReportPage extends ActualPageBase {
         reportElement.id = `${reportPage}Core`;
     };
     updateReport(title, css, html) {
-        const { styleElement , reportElement , titleElement  } = this;
+        const {
+            styleElement,
+            reportElement,
+            titleElement
+        } = this;
         styleElement.innerHTML = css;
         reportElement.innerHTML = html;
         titleElement.i18n = title;
@@ -49,15 +56,26 @@ class ReportPage extends ActualPageBase {
     print() {
         window.print();
     }
-    init = ()=>{
+    init = () => {
         super.init();
     };
 }
 const reportPage = new ReportPage();
 reportPage.init();
-window.addEventListener('message', function(event) {
-    const { data: { command , data: { title , css , html , lang , paperSize  }  }  } = event;
-    switch(command){
+window.addEventListener('message', function (event) {
+    const {
+        data: {
+            command,
+            data: {
+                title,
+                css,
+                html,
+                lang,
+                paperSize
+            }
+        }
+    } = event;
+    switch (command) {
         case 'build':
             reportPage.updateReport(title, css, html);
             break;

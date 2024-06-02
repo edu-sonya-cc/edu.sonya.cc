@@ -244,23 +244,23 @@ System.register("const", [], function (exports_1, context_1) {
             exports_1("PAGE_SUB_KIND", PAGE_SUB_KIND = getPageParameterByName("kind", null));
             exports_1("PAGE_IDNEX", PAGE_IDNEX = parseInt(getPageParameterByName("page", "1"), 0) - 1);
             exports_1("PAGE_ID", PAGE_ID = parseInt(getPageParameterByName("id", "1"), 0));
-            exports_1("MORE_BUTTON_HTML", MORE_BUTTON_HTML = "<en>more...</en><zh_cn>查看更多</zh_cn><zh_tw>查看更多</zh_tw>");
+            exports_1("MORE_BUTTON_HTML", MORE_BUTTON_HTML = "<en_us>more...</en_us><zh_cn>查看更多</zh_cn><zh_tw>查看更多</zh_tw>");
             exports_1("BRICK_SUB_KINDS", BRICK_SUB_KINDS = [
                 {
                     name: "01_chinese",
-                    title: { en: "Chinese", zh_cn: "语文", zh_tw: "語文" }
+                    title: { en_us: "Chinese", zh_cn: "语文", zh_tw: "語文" }
                 },
                 {
                     name: "02_math",
-                    title: { en: "Mathematics", zh_cn: "数学", zh_tw: "數學" }
+                    title: { en_us: "Mathematics", zh_cn: "数学", zh_tw: "數學" }
                 },
                 {
                     name: "03_english",
-                    title: { en: "English", zh_cn: "英语", zh_tw: "英語" }
+                    title: { en_us: "English", zh_cn: "英语", zh_tw: "英語" }
                 },
                 {
                     name: "04_programming",
-                    title: { en: "Programming", zh_cn: "编程", zh_tw: "程式設計" }
+                    title: { en_us: "Programming", zh_cn: "编程", zh_tw: "程式設計" }
                 },
             ]);
             exports_1("ACTIVATED_PROPERTY", ACTIVATED_PROPERTY = "edu-activated");

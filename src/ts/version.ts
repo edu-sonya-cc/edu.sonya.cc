@@ -3,7 +3,7 @@
 /// <reference path='../types/dom.d.ts' />
 
 /**
- * <en>css version</en>
+ * <en_us>css version</en_us>
  * <zh_cn>样式表版本</zh_cn>
  * <zh_tw>樣式表版本</zh_tw>
  */
@@ -14,7 +14,7 @@ export const cssVersions = {
 };
 
 /**
- * <en>scripts version</en>
+ * <en_us>scripts version</en_us>
  * <zh_cn>脚本版本</zh_cn>
  * <zh_tw>腳本版本</zh_tw>
  */
@@ -33,7 +33,7 @@ export const jsVersions = {
 };
 
 /**
- * <en>main image version</en>
+ * <en_us>main image version</en_us>
  * <zh_cn>顶图版本</zh_cn>
  * <zh_tw>頂圖版本</zh_tw>
  */

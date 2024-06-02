@@ -1,13 +1,24 @@
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+            ({
+                    __proto__: []
+                }
+                instanceof Array && function (d, b) {
+                    d.__proto__ = b;
+                }) ||
+            function (d, b) {
+                for (var p in b)
+                    if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p];
+            };
         return extendStatics(d, b);
     };
     return function (d, b) {
         extendStatics(d, b);
-        function __() { this.constructor = d; }
+
+        function __() {
+            this.constructor = d;
+        }
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
@@ -20,6 +31,7 @@ System.register("diceBase", [], function (exports_1, context_1) {
         execute: function () {
             DiceBase = (function (_super) {
                 __extends(DiceBase, _super);
+
                 function DiceBase() {
                     var _this = _super !== null && _super.apply(this, arguments) || this;
                     _this.idOrClassPrefix = "brickPageDice";
@@ -27,29 +39,50 @@ System.register("diceBase", [], function (exports_1, context_1) {
                         _this.countDataAndComputedDataInBrickWithTableBase();
                         var DiceGenerator = edu.sonya.cc.DiceGenerator;
                         var diceGenerator = new DiceGenerator();
-                        var _a = _this, data = _a.data, computedData = _a.computedData;
-                        var paperSize = data.paperSize, isLandscape = data.isLandscape, MAX_X = data.maxX, MAX_Y = data.maxY, pageMarginTop = data.pageMarginTop, pageMarginLeft = data.pageMarginLeft, list = data.list;
+                        var _a = _this,
+                            data = _a.data,
+                            computedData = _a.computedData;
+                        var paperSize = data.paperSize,
+                            isLandscape = data.isLandscape,
+                            MAX_X = data.maxX,
+                            MAX_Y = data.maxY,
+                            pageMarginTop = data.pageMarginTop,
+                            pageMarginLeft = data.pageMarginLeft,
+                            list = data.list;
                         var css = "/* common.css */\n    * { margin:0;border:0;padding:0; }\n    * { box-sizing:border-box; }\n\n    page { display:flex;flex-flow:wrap; }\n    page:not(page:last-child){page-break-after:always;}\n    \n    /* landscape \u6A2A\u5411 portrait \u7EB5\u5411*/ \n    @media print { @page { size: " + paperSize + " " + (isLandscape ? "landscape" : "portrait") + "; } }\n    /* height:" + MAX_Y + "mm; */\n    page { width:" + MAX_X + "mm;margin-left:" + pageMarginLeft + "mm;margin-top:" + pageMarginTop + "mm; }\n    ";
                         var svgList = [];
                         list.forEach(function (_a) {
-                            var id = _a.id, diceKind = _a.diceKind, sideLength = _a.sideLength, contents = _a.contents, outerLineStyle = _a.outerLineStyle, innerLineStyle = _a.innerLineStyle, textStyle = _a.textStyle, options = _a.options;
+                            var id = _a.id,
+                                diceKind = _a.diceKind,
+                                sideLength = _a.sideLength,
+                                contents = _a.contents,
+                                outerLineStyle = _a.outerLineStyle,
+                                innerLineStyle = _a.innerLineStyle,
+                                textStyle = _a.textStyle,
+                                options = _a.options;
                             var _b = diceGenerator.create({
-                                id: id,
-                                diceKind: diceKind,
-                                sideLength: sideLength,
-                                contents: contents,
-                                outerLineStyle: outerLineStyle,
-                                innerLineStyle: innerLineStyle,
-                                textStyle: textStyle,
-                                options: options
-                            }), svgCss = _b.css, svg = _b.svg;
+                                    id: id,
+                                    diceKind: diceKind,
+                                    sideLength: sideLength,
+                                    contents: contents,
+                                    outerLineStyle: outerLineStyle,
+                                    innerLineStyle: innerLineStyle,
+                                    textStyle: textStyle,
+                                    options: options
+                                }),
+                                svgCss = _b.css,
+                                svg = _b.svg;
                             svgList.push(svg);
                             css += svgCss;
                         });
-                        var en = FILENAME_POSTFIX + "Dices";
+                        var en_us = FILENAME_POSTFIX + "Dices";
                         var zh_cn = FILENAME_POSTFIX + "\u9AB0\u5B50";
                         var zh_tw = FILENAME_POSTFIX + "\u9AB0\u5B50";
-                        computedData.title = { en: en, zh_cn: zh_cn, zh_tw: zh_tw };
+                        computedData.title = {
+                            en_us: en_us,
+                            zh_cn: zh_cn,
+                            zh_tw: zh_tw
+                        };
                         computedData.css = css;
                         computedData.html = _this.getAutomaticPaginationHtmlFromChildList(svgList, MAX_X, MAX_Y);
                     };
@@ -64,23 +97,24 @@ System.register("diceBase", [], function (exports_1, context_1) {
                         _this.appendDiceOfSides24(usableDices);
                         var usableList = [];
                         usableDices.forEach(function (_a) {
-                            var diceFace = _a.diceFace, infos = _a.infos;
+                            var diceFace = _a.diceFace,
+                                infos = _a.infos;
                             var buttonList = [];
                             infos.forEach(function (info) {
                                 var captionI18n = info.captionI18n;
                                 buttonList.push({
-                                    nameI18n: typeof captionI18n === "string"
-                                        ? {
-                                            en: captionI18n,
+                                    nameI18n: typeof captionI18n === "string" ?
+                                        {
+                                            en_us: captionI18n,
                                             zh_cn: captionI18n,
                                             zh_tw: captionI18n
-                                        }
-                                        : captionI18n,
+                                        } :
+                                        captionI18n,
                                     info: info
                                 });
                             });
                             var strongI18n = {
-                                en: diceFace + "-sides",
+                                en_us: diceFace + "-sides",
                                 zh_cn: diceFace + "\u9762",
                                 zh_tw: diceFace + "\u9762"
                             };
@@ -92,25 +126,33 @@ System.register("diceBase", [], function (exports_1, context_1) {
                         return usableList;
                     };
                     _this.initTableHead = function () {
-                        _this.appendTableHeadCell({ en: "Faces", zh_cn: "面", zh_tw: "面" });
-                        _this.appendTableHeadCell({ en: "Side", zh_cn: "边", zh_tw: "邊" });
                         _this.appendTableHeadCell({
-                            en: "Contents of all sides",
+                            en_us: "Faces",
+                            zh_cn: "面",
+                            zh_tw: "面"
+                        });
+                        _this.appendTableHeadCell({
+                            en_us: "Side",
+                            zh_cn: "边",
+                            zh_tw: "邊"
+                        });
+                        _this.appendTableHeadCell({
+                            en_us: "Contents of all sides",
                             zh_cn: "各面内容",
                             zh_tw: "各面內容"
                         });
                         _this.appendTableHeadCell({
-                            en: "Outside Boundary Line Style",
+                            en_us: "Outside Boundary Line Style",
                             zh_cn: "外边界线样式",
                             zh_tw: "外邊界線樣式"
                         });
                         _this.appendTableHeadCell({
-                            en: "Interior Line Style",
+                            en_us: "Interior Line Style",
                             zh_cn: "内部线样式",
                             zh_tw: "內部線樣式"
                         });
                         _this.appendTableHeadCell({
-                            en: "Text Style",
+                            en_us: "Text Style",
                             zh_cn: "文本样式",
                             zh_tw: "文字樣式"
                         });
@@ -128,7 +170,11 @@ System.register("diceBase", [], function (exports_1, context_1) {
                             innerLineStyle: "stroke:#888;stroke-width:0.1mm;stroke-dasharray:3 2;",
                             textStyle: 'font-size:8.5mm;font-family:"Times New Roman", "Kaiti";',
                             options: {},
-                            captionI18n: { en: "Pinyin Tone", zh_cn: "拼音声调", zh_tw: "拼音聲調" }
+                            captionI18n: {
+                                en_us: "Pinyin Tone",
+                                zh_cn: "拼音声调",
+                                zh_tw: "拼音聲調"
+                            }
                         });
                         infos.push({
                             id: "",
@@ -151,7 +197,7 @@ System.register("diceBase", [], function (exports_1, context_1) {
                             textStyle: 'font-size:6mm;font-family:"Times New Roman", "Kaiti";font-weight:bold;',
                             options: {},
                             captionI18n: {
-                                en: "Quad operator",
+                                en_us: "Quad operator",
                                 zh_cn: "四则运算符",
                                 zh_tw: "四則運算子"
                             }
@@ -205,7 +251,11 @@ System.register("diceBase", [], function (exports_1, context_1) {
                             innerLineStyle: "stroke:#888;stroke-width:0.1mm;stroke-dasharray:3 2;",
                             textStyle: 'font-size:12mm;font-family:"kaiti";',
                             options: {},
-                            captionI18n: { en: "Eight Diagrams", zh_cn: "八卦", zh_tw: "八卦" }
+                            captionI18n: {
+                                en_us: "Eight Diagrams",
+                                zh_cn: "八卦",
+                                zh_tw: "八卦"
+                            }
                         });
                         infos.push({
                             id: "",
@@ -216,7 +266,11 @@ System.register("diceBase", [], function (exports_1, context_1) {
                             innerLineStyle: "stroke:#888;stroke-width:0.1mm;stroke-dasharray:3 2;",
                             textStyle: 'font-size:12mm;font-family:"kaiti";',
                             options: {},
-                            captionI18n: { en: "Eight winds", zh_cn: "八风", zh_tw: "八風" }
+                            captionI18n: {
+                                en_us: "Eight winds",
+                                zh_cn: "八风",
+                                zh_tw: "八風"
+                            }
                         });
                         usableDices.push({
                             diceFace: 8,
@@ -251,7 +305,11 @@ System.register("diceBase", [], function (exports_1, context_1) {
                             options: {
                                 withHole: false
                             },
-                            captionI18n: { en: "Terrestrial branch", zh_cn: "地支", zh_tw: "地支" }
+                            captionI18n: {
+                                en_us: "Terrestrial branch",
+                                zh_cn: "地支",
+                                zh_tw: "地支"
+                            }
                         });
                         infos.push({
                             id: "",
@@ -265,7 +323,7 @@ System.register("diceBase", [], function (exports_1, context_1) {
                                 withHole: false
                             },
                             captionI18n: {
-                                en: "Chinese zodiac 1",
+                                en_us: "Chinese zodiac 1",
                                 zh_cn: "十二生肖",
                                 zh_tw: "十二生肖"
                             }
@@ -282,7 +340,7 @@ System.register("diceBase", [], function (exports_1, context_1) {
                                 withHole: false
                             },
                             captionI18n: {
-                                en: "Chinese zodiac 2",
+                                en_us: "Chinese zodiac 2",
                                 zh_cn: "生肖繁体",
                                 zh_tw: "生肖繁體"
                             }
@@ -312,7 +370,7 @@ System.register("diceBase", [], function (exports_1, context_1) {
                                 withHole: false
                             },
                             captionI18n: {
-                                en: "English Months",
+                                en_us: "English Months",
                                 zh_cn: "英文月份",
                                 zh_tw: "英文月份"
                             }
@@ -341,7 +399,11 @@ System.register("diceBase", [], function (exports_1, context_1) {
                             options: {
                                 withHole: false
                             },
-                            captionI18n: { en: "Months", zh_cn: "月份", zh_tw: "月份" }
+                            captionI18n: {
+                                en_us: "Months",
+                                zh_cn: "月份",
+                                zh_tw: "月份"
+                            }
                         });
                         infos.push({
                             id: "",
@@ -368,7 +430,7 @@ System.register("diceBase", [], function (exports_1, context_1) {
                                 withHole: false
                             },
                             captionI18n: {
-                                en: "Month abbreviation",
+                                en_us: "Month abbreviation",
                                 zh_cn: "月份缩写",
                                 zh_tw: "月份縮寫"
                             }
@@ -398,7 +460,7 @@ System.register("diceBase", [], function (exports_1, context_1) {
                                 withHole: false
                             },
                             captionI18n: {
-                                en: "Month (number)",
+                                en_us: "Month (number)",
                                 zh_cn: "月份（数字）",
                                 zh_tw: "月份（數字）"
                             }
@@ -427,7 +489,11 @@ System.register("diceBase", [], function (exports_1, context_1) {
                             options: {
                                 withHole: false
                             },
-                            captionI18n: { en: "Lunar month", zh_cn: "农历月份", zh_tw: "農曆月份" }
+                            captionI18n: {
+                                en_us: "Lunar month",
+                                zh_cn: "农历月份",
+                                zh_tw: "農曆月份"
+                            }
                         });
                         usableDices.push({
                             diceFace: 12,
@@ -497,13 +563,17 @@ System.register("diceBase", [], function (exports_1, context_1) {
                             options: {
                                 withHole: false
                             },
-                            captionI18n: { en: "Initial Consonant", zh_cn: "声母", zh_tw: "聲母" }
+                            captionI18n: {
+                                en_us: "Initial Consonant",
+                                zh_cn: "声母",
+                                zh_tw: "聲母"
+                            }
                         });
                         infos.push({
                             id: "",
                             diceKind: DiceKind.twentyFour,
                             sideLength: 20,
-                            contents: "a,o,e,i,u,ü,ai,ei,ui,ao,ou,iu,ie,üe,er,an,en,in,un,ün,ang,eng,ing,ong"
+                            contents: "a,o,e,i,u,ü,ai,ei,ui,ao,ou,iu,ie,üe,er,an,en_us,in,un,ün,ang,eng,ing,ong"
                                 .replace(/a/g, "ɑ").replace(/g/g, "ɡ").split(","),
                             outerLineStyle: "stroke:#555;stroke-width:0.2mm;",
                             innerLineStyle: "stroke:#888;stroke-width:0.1mm;stroke-dasharray:3 2;",
@@ -511,7 +581,11 @@ System.register("diceBase", [], function (exports_1, context_1) {
                             options: {
                                 withHole: false
                             },
-                            captionI18n: { en: "Finals", zh_cn: "韵母", zh_tw: "韻母" }
+                            captionI18n: {
+                                en_us: "Finals",
+                                zh_cn: "韵母",
+                                zh_tw: "韻母"
+                            }
                         });
                         infos.push({
                             id: "",
@@ -526,7 +600,7 @@ System.register("diceBase", [], function (exports_1, context_1) {
                                 withHole: false
                             },
                             captionI18n: {
-                                en: "Overall recognition",
+                                en_us: "Overall recognition",
                                 zh_cn: "整体认读",
                                 zh_tw: "整體認讀"
                             }
@@ -542,7 +616,11 @@ System.register("diceBase", [], function (exports_1, context_1) {
                             options: {
                                 withHole: false
                             },
-                            captionI18n: { en: "Simple final", zh_cn: "单韵母", zh_tw: "單韻母" }
+                            captionI18n: {
+                                en_us: "Simple final",
+                                zh_cn: "单韵母",
+                                zh_tw: "單韻母"
+                            }
                         });
                         infos.push({
                             id: "",
@@ -557,7 +635,7 @@ System.register("diceBase", [], function (exports_1, context_1) {
                                 withHole: false
                             },
                             captionI18n: {
-                                en: "24 Solar Terms",
+                                en_us: "24 Solar Terms",
                                 zh_cn: "二十四节气",
                                 zh_tw: "二十四節氣"
                             }
@@ -568,7 +646,15 @@ System.register("diceBase", [], function (exports_1, context_1) {
                         });
                     };
                     _this.createTableBodyRow = function (dice) {
-                        var _a = dice, id = _a.id, diceKind = _a.diceKind, sideLength = _a.sideLength, contents = _a.contents, outerLineStyle = _a.outerLineStyle, innerLineStyle = _a.innerLineStyle, textStyle = _a.textStyle, options = _a.options;
+                        var _a = dice,
+                            id = _a.id,
+                            diceKind = _a.diceKind,
+                            sideLength = _a.sideLength,
+                            contents = _a.contents,
+                            outerLineStyle = _a.outerLineStyle,
+                            innerLineStyle = _a.innerLineStyle,
+                            textStyle = _a.textStyle,
+                            options = _a.options;
                         var tableBodyElement = _this.tableBodyElement;
                         var tr = createElement("tr");
                         tableBodyElement.appendChild(tr);
@@ -615,7 +701,8 @@ System.register("diceBase", [], function (exports_1, context_1) {
                         var td = createElement("td");
                         tr.appendChild(td);
                         var DiceKind = edu.sonya.cc.DiceKind;
-                        var diceKind = dice.diceKind, contents = dice.contents;
+                        var diceKind = dice.diceKind,
+                            contents = dice.contents;
                         var idOrClassPrefix = _this.idOrClassPrefix;
                         var count = 0;
                         switch (diceKind) {
@@ -643,7 +730,7 @@ System.register("diceBase", [], function (exports_1, context_1) {
                         var div = createElement("div");
                         td.appendChild(div);
                         div.className = idOrClassPrefix + "ContentValueWrap";
-                        var i18nNameArray = ["en", "zh_cn", "zh_tw"];
+                        var i18nNameArray = ["en_us", "zh_cn", "zh_tw"];
                         var emptyArray = [];
                         pushSameValueTimes(emptyArray, "\n", count);
                         var isText = typeof contents[0] === "string";
@@ -658,12 +745,13 @@ System.register("diceBase", [], function (exports_1, context_1) {
                                 });
                                 _this.build();
                             };
-                        }
-                        else {
+                        } else {
                             i18nNameArray.forEach(function (lang) {
                                 var textarea = createElement("textarea");
                                 td.appendChild(textarea);
-                                textarea.value = dice.contents.map(function (content) { return content[lang]; }).join("\n");
+                                textarea.value = dice.contents.map(function (content) {
+                                    return content[lang];
+                                }).join("\n");
                                 textarea.rows = 4;
                                 textarea.onchange = textarea.focus = function () {
                                     textarea.value.split("\n").concat(emptyArray).slice(0, count).forEach(function (item, index) {
@@ -685,4 +773,3 @@ System.register("diceBase", [], function (exports_1, context_1) {
 
 __exp = __instantiate("diceBase", false);
 const DiceBase = __exp["DiceBase"];
-

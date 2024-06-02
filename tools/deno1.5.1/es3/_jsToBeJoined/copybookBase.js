@@ -206,7 +206,7 @@ System.register("copybookBase", [], function (exports_1, context_1) {
                     _this.kindElementArray = [];
                     _this.initKindElements = function () {
                         var wrapLabelI18n = {
-                            en: "Typebook Kind",
+                            en_us: "Typebook Kind",
                             zh_cn: "\u5B57\u5E16\u7C7B\u578B",
                             zh_tw: "\u5B57\u5E16\u985E\u578B"
                         };
@@ -214,7 +214,7 @@ System.register("copybookBase", [], function (exports_1, context_1) {
                             {
                                 value: "pinyinToChinese",
                                 i18nHtml: getI18nInnerHTML({
-                                    en: "Reading Pinyin and Writing Chinese Characters",
+                                    en_us: "Reading Pinyin and Writing Chinese Characters",
                                     zh_cn: "\u770B\u62FC\u97F3\u5199\u6C49\u5B57",
                                     zh_tw: "\u770B\u62FC\u97F3\u5BEB\u6F22\u5B57"
                                 })
@@ -222,7 +222,7 @@ System.register("copybookBase", [], function (exports_1, context_1) {
                             {
                                 value: "chineseToPinyin",
                                 i18nHtml: getI18nInnerHTML({
-                                    en: "Look at Chinese characters and write pinyin",
+                                    en_us: "Look at Chinese characters and write pinyin",
                                     zh_cn: "\u770B\u6C49\u5B57\u5199\u62FC\u97F3",
                                     zh_tw: "\u770B\u6F22\u5B57\u5BEB\u62FC\u97F3"
                                 })
@@ -233,7 +233,7 @@ System.register("copybookBase", [], function (exports_1, context_1) {
                     _this.inputMethodElementArray = [];
                     _this.initInputMethodElements = function () {
                         var wrapLabelI18n = {
-                            en: "Entry method",
+                            en_us: "Entry method",
                             zh_cn: "\u5F55\u5165\u65B9\u5F0F",
                             zh_tw: "\u9304\u5165\u65B9\u5F0F"
                         };
@@ -241,7 +241,7 @@ System.register("copybookBase", [], function (exports_1, context_1) {
                             {
                                 value: "select",
                                 i18nHtml: getI18nInnerHTML({
-                                    en: "Select",
+                                    en_us: "Select",
                                     zh_cn: "\u9009\u62E9",
                                     zh_tw: "\u9078\u64C7"
                                 })
@@ -249,7 +249,7 @@ System.register("copybookBase", [], function (exports_1, context_1) {
                             {
                                 value: "manualInput",
                                 i18nHtml: getI18nInnerHTML({
-                                    en: "Manual input",
+                                    en_us: "Manual input",
                                     zh_cn: "\u624B\u52A8\u8F93\u5165",
                                     zh_tw: "\u624B\u52D5\u8F38\u5165"
                                 })
@@ -260,7 +260,7 @@ System.register("copybookBase", [], function (exports_1, context_1) {
                     _this.fontSizeElementArray = [];
                     _this.initFontSizeElements = function () {
                         var wrapLabelI18n = {
-                            en: "Font Size",
+                            en_us: "Font Size",
                             zh_cn: "\u5B57\u53F7",
                             zh_tw: "\u5B57\u578B\u5927\u5C0F"
                         };
@@ -268,7 +268,7 @@ System.register("copybookBase", [], function (exports_1, context_1) {
                             {
                                 value: "small",
                                 i18nHtml: getI18nInnerHTML({
-                                    en: "Small",
+                                    en_us: "Small",
                                     zh_cn: "\u5C0F",
                                     zh_tw: "\u5C0F"
                                 })
@@ -276,7 +276,7 @@ System.register("copybookBase", [], function (exports_1, context_1) {
                             {
                                 value: "middle",
                                 i18nHtml: getI18nInnerHTML({
-                                    en: "Middle",
+                                    en_us: "Middle",
                                     zh_cn: "\u4E2D",
                                     zh_tw: "\u4E2D"
                                 })
@@ -284,7 +284,7 @@ System.register("copybookBase", [], function (exports_1, context_1) {
                             {
                                 value: "big",
                                 i18nHtml: getI18nInnerHTML({
-                                    en: "Big",
+                                    en_us: "Big",
                                     zh_cn: "\u5927",
                                     zh_tw: "\u5927"
                                 })
@@ -295,7 +295,7 @@ System.register("copybookBase", [], function (exports_1, context_1) {
                     _this.colorElementArray = [];
                     _this.initColorElements = function () {
                         var wrapLabelI18n = {
-                            en: "Color",
+                            en_us: "Color",
                             zh_cn: "\u989C\u8272",
                             zh_tw: "\u984F\u8272"
                         };
@@ -303,7 +303,7 @@ System.register("copybookBase", [], function (exports_1, context_1) {
                             {
                                 value: "blackOnGreen",
                                 i18nHtml: getI18nInnerHTML({
-                                    en: "Green line and black characters.",
+                                    en_us: "Green line and black characters.",
                                     zh_cn: "\u7EFF\u7EBF\u9ED1\u5B57",
                                     zh_tw: "\u7DA0\u7DDA\u9ED1\u5B57"
                                 })
@@ -311,7 +311,7 @@ System.register("copybookBase", [], function (exports_1, context_1) {
                             {
                                 value: "redOnBlack",
                                 i18nHtml: getI18nInnerHTML({
-                                    en: "Black line and red characters.",
+                                    en_us: "Black line and red characters.",
                                     zh_cn: "\u9ED1\u7EBF\u7EA2\u5B57",
                                     zh_tw: "\u9ED1\u7DDA\u7D05\u5B57"
                                 })
@@ -319,7 +319,7 @@ System.register("copybookBase", [], function (exports_1, context_1) {
                             {
                                 value: "blackOnRed",
                                 i18nHtml: getI18nInnerHTML({
-                                    en: "Red line and black characters.",
+                                    en_us: "Red line and black characters.",
                                     zh_cn: "\u7EA2\u7EBF\u9ED1\u5B57",
                                     zh_tw: "\u7D05\u7DDA\u9ED1\u5B57"
                                 })
@@ -674,7 +674,7 @@ System.register("copybookBase", [], function (exports_1, context_1) {
                         'di',
                         'du',
                         'ei',
-                        'en',
+                        'en_us',
                         'er',
                         'fɑ',
                         'fo',
@@ -868,18 +868,18 @@ System.register("copybookBase", [], function (exports_1, context_1) {
                         var ROWS_COUNT = Math.floor((PAGE_HEIGHT + VERTICAL_SPACE) / (RECTANGLE_HEIGHT + VERTICAL_SPACE));
                         var LANG = getCurrentLang();
                         var i18nAnswerFlag = {
-                            en: 'Answer',
+                            en_us: 'Answer',
                             zh_cn: '答案',
                             zh_tw: '答案'
                         };
                         var i18nSubject = data.kind === 'pinyinToChinese'
                             ? {
-                                en: 'Writing',
+                                en_us: 'Writing',
                                 zh_cn: '写字',
                                 zh_tw: '寫字'
                             }
                             : {
-                                en: 'Phonetic Notation',
+                                en_us: 'Phonetic Notation',
                                 zh_cn: '注音',
                                 zh_tw: '注音'
                             };
@@ -887,7 +887,7 @@ System.register("copybookBase", [], function (exports_1, context_1) {
                         var i18nSubtitle = inputMethod === 'select' && selectedCheckboxIndexArray.length === 1
                             ? _this.usableCopybookCheckboxElementArray.filter(function (checkbox) { return checkbox.checked; })[0].names
                             : {
-                                en: '',
+                                en_us: '',
                                 zh_cn: '',
                                 zh_tw: ''
                             };
@@ -980,10 +980,10 @@ System.register("copybookBase", [], function (exports_1, context_1) {
                         var html = questionHtml
                             .replace(/~reporterPageCount~/g, questionPageCount)
                             .concat(answerHtml.replace(/~reporterPageCount~/g, answerPageCount));
-                        var en = FILENAME_POSTFIX + "Copybooks_chineseAndPinyin";
+                        var en_us = FILENAME_POSTFIX + "Copybooks_chineseAndPinyin";
                         var zh_cn = FILENAME_POSTFIX + "\u7B80\u4F53\u6C49\u5B57\u4E0E\u62FC\u97F3";
                         var zh_tw = FILENAME_POSTFIX + "\u7C21\u9AD4\u6F22\u5B57\u8207\u62FC\u97F3";
-                        computedData.title = { en: en, zh_cn: zh_cn, zh_tw: zh_tw };
+                        computedData.title = { en_us: en_us, zh_cn: zh_cn, zh_tw: zh_tw };
                         computedData.css = css;
                         computedData.html = html;
                     };
@@ -1047,7 +1047,7 @@ System.register("copybookBase", [], function (exports_1, context_1) {
                         detailsPeopleEducationEdition.appendChild(summaryPeopleEducationEdition);
                         var strongElement = createElement('strong');
                         strongElement.innerHTML = getI18nInnerHTML({
-                            en: "Textbook (People's Education Edition)",
+                            en_us: "Textbook (People's Education Edition)",
                             zh_cn: '课本（人教版）',
                             zh_tw: '課本（人教版）'
                         });
@@ -1124,7 +1124,7 @@ System.register("copybookBase", [], function (exports_1, context_1) {
                         copybookInputWrap.id = idOrClassPrefix + "CopybookInputWrap";
                         var copybookInputStrongElement = createElement('strong');
                         copybookInputStrongElement.innerHTML = getI18nInnerHTML({
-                            en: "Entry area",
+                            en_us: "Entry area",
                             zh_cn: '录入区',
                             zh_tw: '錄入區'
                         });
@@ -1139,7 +1139,7 @@ System.register("copybookBase", [], function (exports_1, context_1) {
                             _this.updateChineseOrPinyinTextarea(textareaChinese, textareaPinyin, textareaChineseAndPinyin);
                         };
                         textareaChinese.setAttribute('i18n-placeholder', JSON.stringify({
-                            en: "Input Chinese words, one for each line.",
+                            en_us: "Input Chinese words, one for each line.",
                             zh_cn: '输入汉字词语，每行一条。',
                             zh_tw: '輸入漢字詞語，每行一條。'
                         }));
@@ -1150,7 +1150,7 @@ System.register("copybookBase", [], function (exports_1, context_1) {
                             _this.updateChineseOrPinyinTextarea(textareaChinese, textareaPinyin, textareaChineseAndPinyin);
                         };
                         textareaPinyin.setAttribute('i18n-placeholder', JSON.stringify({
-                            en: "Input the corresponding pinyin of Chinese words, separated by '/'. One for each line.",
+                            en_us: "Input the corresponding pinyin of Chinese words, separated by '/'. One for each line.",
                             zh_cn: '输入汉字词语对应拼音，使用/分隔。每行一条。',
                             zh_tw: '輸入漢字詞語對應拼音，使用/分隔。每行一條。'
                         }));
@@ -1161,7 +1161,7 @@ System.register("copybookBase", [], function (exports_1, context_1) {
                             _this.updateChineseAndPinyinTextarea(textareaChineseAndPinyin, textareaChinese, textareaPinyin);
                         };
                         textareaChineseAndPinyin.setAttribute('i18n-placeholder', JSON.stringify({
-                            en: "Input Chinese words and corresponding pinyin, and pinyin is separated by '/'. One for each line.",
+                            en_us: "Input Chinese words and corresponding pinyin, and pinyin is separated by '/'. One for each line.",
                             zh_cn: '输入汉字词语及对应拼音，拼音使用/分隔。每行一条。',
                             zh_tw: '輸入漢字詞語及對應拼音，拼音使用/分隔。每行一條。'
                         }));
@@ -1287,10 +1287,10 @@ System.register("copybookBase", [], function (exports_1, context_1) {
                     _this.appendCopybookOfGrade1Term1 = function () {
                         var usableCopybooksPeopleEducationEdition = _this.usableCopybooksPeopleEducationEdition;
                         usableCopybooksPeopleEducationEdition.push({
-                            termI18n: { en: "K1T1", zh_cn: "\u4E00\u5E74\u7EA7\u4E0A", zh_tw: "\u4E00\u5E74\u7D1A\u4E0A" },
+                            termI18n: { en_us: "K1T1", zh_cn: "\u4E00\u5E74\u7EA7\u4E0A", zh_tw: "\u4E00\u5E74\u7D1A\u4E0A" },
                             units: [
                                 {
-                                    names: { en: "Unit 1", zh_cn: "\u7B2C\u4E00\u5355\u5143", zh_tw: "\u7B2C\u4E00\u5355\u5143" },
+                                    names: { en_us: "Unit 1", zh_cn: "\u7B2C\u4E00\u5355\u5143", zh_tw: "\u7B2C\u4E00\u5355\u5143" },
                                     words: [
                                         { chinese: "\u5929", pinyin: "ti\u0101n" },
                                         { chinese: "\u5730", pinyin: "d\u00EC" },
@@ -1334,7 +1334,7 @@ System.register("copybookBase", [], function (exports_1, context_1) {
                                     ]
                                 },
                                 {
-                                    names: { en: "Unit 2", zh_cn: "\u7B2C\u4E8C\u5355\u5143", zh_tw: "\u7B2C\u4E8C\u5355\u5143" },
+                                    names: { en_us: "Unit 2", zh_cn: "\u7B2C\u4E8C\u5355\u5143", zh_tw: "\u7B2C\u4E8C\u5355\u5143" },
                                     words: [
                                         { chinese: "\u7238", pinyin: "b\u00E0" },
                                         { chinese: "\u5988", pinyin: "m\u0101" },
@@ -1356,7 +1356,7 @@ System.register("copybookBase", [], function (exports_1, context_1) {
                                     ]
                                 },
                                 {
-                                    names: { en: "Unit 3", zh_cn: "\u7B2C\u4E09\u5355\u5143", zh_tw: "\u7B2C\u4E09\u5355\u5143" },
+                                    names: { en_us: "Unit 3", zh_cn: "\u7B2C\u4E09\u5355\u5143", zh_tw: "\u7B2C\u4E09\u5355\u5143" },
                                     words: [
                                         { chinese: "\u59B9", pinyin: "m\u00E8i" },
                                         { chinese: "\u5976", pinyin: "n\u01CEi" },
@@ -1375,7 +1375,7 @@ System.register("copybookBase", [], function (exports_1, context_1) {
                                     ]
                                 },
                                 {
-                                    names: { en: "Unit 4", zh_cn: "\u7B2C\u56DB\u5355\u5143", zh_tw: "\u7B2C\u56DB\u5355\u5143" },
+                                    names: { en_us: "Unit 4", zh_cn: "\u7B2C\u56DB\u5355\u5143", zh_tw: "\u7B2C\u56DB\u5355\u5143" },
                                     words: [
                                         { chinese: "\u79CB", pinyin: "qi\u016B" },
                                         { chinese: "\u6C14", pinyin: "q\u00EC" },
@@ -1416,7 +1416,7 @@ System.register("copybookBase", [], function (exports_1, context_1) {
                                     ]
                                 },
                                 {
-                                    names: { en: "Unit 5", zh_cn: "\u7B2C\u4E94\u5355\u5143", zh_tw: "\u7B2C\u4E94\u5355\u5143" },
+                                    names: { en_us: "Unit 5", zh_cn: "\u7B2C\u4E94\u5355\u5143", zh_tw: "\u7B2C\u4E94\u5355\u5143" },
                                     words: [
                                         { chinese: "\u8FDC", pinyin: "yu\u01CEn" },
                                         { chinese: "\u6709", pinyin: "y\u01D2u" },
@@ -1470,7 +1470,7 @@ System.register("copybookBase", [], function (exports_1, context_1) {
                                     ]
                                 },
                                 {
-                                    names: { en: "Unit 6", zh_cn: "\u7B2C\u516D\u5355\u5143", zh_tw: "\u7B2C\u516D\u5355\u5143" },
+                                    names: { en_us: "Unit 6", zh_cn: "\u7B2C\u516D\u5355\u5143", zh_tw: "\u7B2C\u516D\u5355\u5143" },
                                     words: [
                                         { chinese: "\u5F71", pinyin: "y\u01D0ng" },
                                         { chinese: "\u524D\u540E", pinyin: "qi\u00E1n'h\u00F2u" },
@@ -1512,7 +1512,7 @@ System.register("copybookBase", [], function (exports_1, context_1) {
                                     ]
                                 },
                                 {
-                                    names: { en: "Unit 7", zh_cn: "\u7B2C\u4E03\u5355\u5143", zh_tw: "\u7B2C\u4E03\u5355\u5143" },
+                                    names: { en_us: "Unit 7", zh_cn: "\u7B2C\u4E03\u5355\u5143", zh_tw: "\u7B2C\u4E03\u5355\u5143" },
                                     words: [
                                         { chinese: "\u7761", pinyin: "shu\u00EC" },
                                         { chinese: "\u90A3", pinyin: "n\u00E0" },
@@ -1550,7 +1550,7 @@ System.register("copybookBase", [], function (exports_1, context_1) {
                                     ]
                                 },
                                 {
-                                    names: { en: "Unit 8", zh_cn: "\u7B2C\u516B\u5355\u5143", zh_tw: "\u7B2C\u516B\u5355\u5143" },
+                                    names: { en_us: "Unit 8", zh_cn: "\u7B2C\u516B\u5355\u5143", zh_tw: "\u7B2C\u516B\u5355\u5143" },
                                     words: [
                                         { chinese: "\u7FA4", pinyin: "q\u00FAn" },
                                         { chinese: "\u7AF9", pinyin: "zh\u00FA" },
@@ -1593,10 +1593,10 @@ System.register("copybookBase", [], function (exports_1, context_1) {
                     _this.appendCopybookOfGrade1Term2 = function () {
                         var usableCopybooksPeopleEducationEdition = _this.usableCopybooksPeopleEducationEdition;
                         usableCopybooksPeopleEducationEdition.push({
-                            termI18n: { en: "K1T2", zh_cn: "\u4E00\u5E74\u7EA7\u4E0B", zh_tw: "\u4E00\u5E74\u7D1A\u4E0B" },
+                            termI18n: { en_us: "K1T2", zh_cn: "\u4E00\u5E74\u7EA7\u4E0B", zh_tw: "\u4E00\u5E74\u7D1A\u4E0B" },
                             units: [
                                 {
-                                    names: { en: "Literacy 1", zh_cn: "\u8BC6\u5B57\u88681", zh_tw: "\u8B58\u5B57\u93361" },
+                                    names: { en_us: "Literacy 1", zh_cn: "\u8BC6\u5B57\u88681", zh_tw: "\u8B58\u5B57\u93361" },
                                     words: [
                                         { chinese: "\u971C", pinyin: "shu\u0101ng" },
                                         { chinese: "\u5439", pinyin: "chu\u012B" },
@@ -1642,7 +1642,7 @@ System.register("copybookBase", [], function (exports_1, context_1) {
                                     ]
                                 },
                                 {
-                                    names: { en: "Literacy 2", zh_cn: "\u8BC6\u5B57\u88682", zh_tw: "\u8B58\u5B57\u93362" },
+                                    names: { en_us: "Literacy 2", zh_cn: "\u8BC6\u5B57\u88682", zh_tw: "\u8B58\u5B57\u93362" },
                                     words: [
                                         { chinese: "\u5403", pinyin: "ch\u012B" },
                                         { chinese: "\u5FD8", pinyin: "w\u00E0ng" },
@@ -1692,7 +1692,7 @@ System.register("copybookBase", [], function (exports_1, context_1) {
                                     ]
                                 },
                                 {
-                                    names: { en: "Literacy 3", zh_cn: "\u8BC6\u5B57\u88683", zh_tw: "\u8B58\u5B57\u93363" },
+                                    names: { en_us: "Literacy 3", zh_cn: "\u8BC6\u5B57\u88683", zh_tw: "\u8B58\u5B57\u93363" },
                                     words: [
                                         { chinese: "\u5757", pinyin: "ku\u00E0i" },
                                         { chinese: "\u6349", pinyin: "zhu\u014D" },
@@ -1730,7 +1730,7 @@ System.register("copybookBase", [], function (exports_1, context_1) {
                                     ]
                                 },
                                 {
-                                    names: { en: "Literacy 4", zh_cn: "\u8BC6\u5B57\u88684", zh_tw: "\u8B58\u5B57\u93364" },
+                                    names: { en_us: "Literacy 4", zh_cn: "\u8BC6\u5B57\u88684", zh_tw: "\u8B58\u5B57\u93364" },
                                     words: [
                                         { chinese: "\u591C", pinyin: "y\u00E8" },
                                         { chinese: "\u601D", pinyin: "s\u012B" },
@@ -1787,7 +1787,7 @@ System.register("copybookBase", [], function (exports_1, context_1) {
                                     ]
                                 },
                                 {
-                                    names: { en: "Literacy 5", zh_cn: "\u8BC6\u5B57\u88685", zh_tw: "\u8B58\u5B57\u93365" },
+                                    names: { en_us: "Literacy 5", zh_cn: "\u8BC6\u5B57\u88685", zh_tw: "\u8B58\u5B57\u93365" },
                                     words: [
                                         { chinese: "\u873B\u8713", pinyin: "q\u012Bng't\u00EDng" },
                                         { chinese: "\u8FF7", pinyin: "m\u00ED" },
@@ -1837,7 +1837,7 @@ System.register("copybookBase", [], function (exports_1, context_1) {
                                     ]
                                 },
                                 {
-                                    names: { en: "Literacy 6", zh_cn: "\u8BC6\u5B57\u88686", zh_tw: "\u8B58\u5B57\u93366" },
+                                    names: { en_us: "Literacy 6", zh_cn: "\u8BC6\u5B57\u88686", zh_tw: "\u8B58\u5B57\u93366" },
                                     words: [
                                         { chinese: "\u9996", pinyin: "sh\u01D2u" },
                                         { chinese: "\u8E2A\u8FF9", pinyin: "z\u014Dng'j\u00EC" },
@@ -1880,7 +1880,7 @@ System.register("copybookBase", [], function (exports_1, context_1) {
                                     ]
                                 },
                                 {
-                                    names: { en: "Literacy 7", zh_cn: "\u8BC6\u5B57\u88687", zh_tw: "\u8B58\u5B57\u93367" },
+                                    names: { en_us: "Literacy 7", zh_cn: "\u8BC6\u5B57\u88687", zh_tw: "\u8B58\u5B57\u93367" },
                                     words: [
                                         { chinese: "\u5177", pinyin: "j\u00F9" },
                                         { chinese: "\u6B21", pinyin: "c\u00EC" },
@@ -1938,7 +1938,7 @@ System.register("copybookBase", [], function (exports_1, context_1) {
                                     ]
                                 },
                                 {
-                                    names: { en: "Literacy 8", zh_cn: "\u8BC6\u5B57\u88688", zh_tw: "\u8B58\u5B57\u93368" },
+                                    names: { en_us: "Literacy 8", zh_cn: "\u8BC6\u5B57\u88688", zh_tw: "\u8B58\u5B57\u93368" },
                                     words: [
                                         { chinese: "\u68C9", pinyin: "mi\u00E1n" },
                                         { chinese: "\u5A18", pinyin: "ni\u00E1ng" },
@@ -1987,7 +1987,7 @@ System.register("copybookBase", [], function (exports_1, context_1) {
                                     ]
                                 },
                                 {
-                                    names: { en: "Writing 1", zh_cn: "\u5199\u5B57\u88681", zh_tw: "\u5BEB\u5B57\u93361" },
+                                    names: { en_us: "Writing 1", zh_cn: "\u5199\u5B57\u88681", zh_tw: "\u5BEB\u5B57\u93361" },
                                     words: [
                                         { chinese: "\u6625", pinyin: "ch\u016Bn" },
                                         { chinese: "\u51AC", pinyin: "d\u014Dng" },
@@ -2015,7 +2015,7 @@ System.register("copybookBase", [], function (exports_1, context_1) {
                                     ]
                                 },
                                 {
-                                    names: { en: "Writing 2", zh_cn: "\u5199\u5B57\u88682", zh_tw: "\u5BEB\u5B57\u93362" },
+                                    names: { en_us: "Writing 2", zh_cn: "\u5199\u5B57\u88682", zh_tw: "\u5BEB\u5B57\u93362" },
                                     words: [
                                         { chinese: "\u5403", pinyin: "ch\u012B" },
                                         { chinese: "\u53EB", pinyin: "ji\u00E0o" },
@@ -2041,7 +2041,7 @@ System.register("copybookBase", [], function (exports_1, context_1) {
                                     ]
                                 },
                                 {
-                                    names: { en: "Writing 3", zh_cn: "\u5199\u5B57\u88683", zh_tw: "\u5BEB\u5B57\u93363" },
+                                    names: { en_us: "Writing 3", zh_cn: "\u5199\u5B57\u88683", zh_tw: "\u5BEB\u5B57\u93363" },
                                     words: [
                                         { chinese: "\u4ED6", pinyin: "t\u0101" },
                                         { chinese: "\u5730", pinyin: "d\u00EC" },
@@ -2064,7 +2064,7 @@ System.register("copybookBase", [], function (exports_1, context_1) {
                                     ]
                                 },
                                 {
-                                    names: { en: "Writing 4", zh_cn: "\u5199\u5B57\u88684", zh_tw: "\u5BEB\u5B57\u93364" },
+                                    names: { en_us: "Writing 4", zh_cn: "\u5199\u5B57\u88684", zh_tw: "\u5BEB\u5B57\u93364" },
                                     words: [
                                         { chinese: "\u601D", pinyin: "s\u012B" },
                                         { chinese: "\u5E8A", pinyin: "chu\u00E1ng" },
@@ -2094,7 +2094,7 @@ System.register("copybookBase", [], function (exports_1, context_1) {
                                     ]
                                 },
                                 {
-                                    names: { en: "Writing 5", zh_cn: "\u5199\u5B57\u88685", zh_tw: "\u5BEB\u5B57\u93365" },
+                                    names: { en_us: "Writing 5", zh_cn: "\u5199\u5B57\u88685", zh_tw: "\u5BEB\u5B57\u93365" },
                                     words: [
                                         { chinese: "\u95F4", pinyin: "ji\u0101n" },
                                         { chinese: "\u8FF7", pinyin: "m\u00ED" },
@@ -2125,7 +2125,7 @@ System.register("copybookBase", [], function (exports_1, context_1) {
                                     ]
                                 },
                                 {
-                                    names: { en: "Writing 6", zh_cn: "\u5199\u5B57\u88686", zh_tw: "\u5BEB\u5B57\u93366" },
+                                    names: { en_us: "Writing 6", zh_cn: "\u5199\u5B57\u88686", zh_tw: "\u5BEB\u5B57\u93366" },
                                     words: [
                                         { chinese: "\u9996", pinyin: "sh\u01D2u" },
                                         { chinese: "\u91C7", pinyin: "c\u01CEi" },
@@ -2150,7 +2150,7 @@ System.register("copybookBase", [], function (exports_1, context_1) {
                                     ]
                                 },
                                 {
-                                    names: { en: "Writing 7", zh_cn: "\u5199\u5B57\u88687", zh_tw: "\u5BEB\u5B57\u93367" },
+                                    names: { en_us: "Writing 7", zh_cn: "\u5199\u5B57\u88687", zh_tw: "\u5BEB\u5B57\u93367" },
                                     words: [
                                         { chinese: "\u6587", pinyin: "w\u00E9n" },
                                         { chinese: "\u6B21", pinyin: "c\u00EC" },
@@ -2181,7 +2181,7 @@ System.register("copybookBase", [], function (exports_1, context_1) {
                                     ]
                                 },
                                 {
-                                    names: { en: "Writing 8", zh_cn: "\u5199\u5B57\u88688", zh_tw: "\u5BEB\u5B57\u93368" },
+                                    names: { en_us: "Writing 8", zh_cn: "\u5199\u5B57\u88688", zh_tw: "\u5BEB\u5B57\u93368" },
                                     words: [
                                         { chinese: "\u75C5", pinyin: "b\u00ECng" },
                                         { chinese: "\u533B", pinyin: "y\u012B" },
@@ -2213,14 +2213,14 @@ System.register("copybookBase", [], function (exports_1, context_1) {
                         var usableCopybooksPeopleEducationEdition = _this.usableCopybooksPeopleEducationEdition;
                         usableCopybooksPeopleEducationEdition.push({
                             termI18n: {
-                                en: "K2T1",
+                                en_us: "K2T1",
                                 zh_cn: "\u4E8C\u5E74\u7EA7\u4E0A",
                                 zh_tw: "\u4E8C\u5E74\u7D1A\u4E0A"
                             },
                             units: [
                                 {
                                     names: {
-                                        en: "Literacy 1",
+                                        en_us: "Literacy 1",
                                         zh_cn: "\u8BC6\u5B57\u88681",
                                         zh_tw: "\u8B58\u5B57\u93361"
                                     },
@@ -2429,7 +2429,7 @@ System.register("copybookBase", [], function (exports_1, context_1) {
                                 },
                                 {
                                     names: {
-                                        en: "Literacy 2",
+                                        en_us: "Literacy 2",
                                         zh_cn: "\u8BC6\u5B57\u88682",
                                         zh_tw: "\u8B58\u5B57\u93362"
                                     },
@@ -2638,7 +2638,7 @@ System.register("copybookBase", [], function (exports_1, context_1) {
                                 },
                                 {
                                     names: {
-                                        en: "Literacy 3",
+                                        en_us: "Literacy 3",
                                         zh_cn: "\u8BC6\u5B57\u88683",
                                         zh_tw: "\u8B58\u5B57\u93363"
                                     },
@@ -2919,7 +2919,7 @@ System.register("copybookBase", [], function (exports_1, context_1) {
                                 },
                                 {
                                     names: {
-                                        en: "Literacy 4",
+                                        en_us: "Literacy 4",
                                         zh_cn: "\u8BC6\u5B57\u88684",
                                         zh_tw: "\u8B58\u5B57\u93364"
                                     },
@@ -3160,7 +3160,7 @@ System.register("copybookBase", [], function (exports_1, context_1) {
                                 },
                                 {
                                     names: {
-                                        en: "Literacy 5",
+                                        en_us: "Literacy 5",
                                         zh_cn: "\u8BC6\u5B57\u88685",
                                         zh_tw: "\u8B58\u5B57\u93365"
                                     },
@@ -3337,7 +3337,7 @@ System.register("copybookBase", [], function (exports_1, context_1) {
                                 },
                                 {
                                     names: {
-                                        en: "Literacy 6",
+                                        en_us: "Literacy 6",
                                         zh_cn: "\u8BC6\u5B57\u88686",
                                         zh_tw: "\u8B58\u5B57\u93366"
                                     },
@@ -3558,7 +3558,7 @@ System.register("copybookBase", [], function (exports_1, context_1) {
                                 },
                                 {
                                     names: {
-                                        en: "Literacy 7",
+                                        en_us: "Literacy 7",
                                         zh_cn: "\u8BC6\u5B57\u88687",
                                         zh_tw: "\u8B58\u5B57\u93367"
                                     },
@@ -3747,7 +3747,7 @@ System.register("copybookBase", [], function (exports_1, context_1) {
                                 },
                                 {
                                     names: {
-                                        en: "Literacy 8",
+                                        en_us: "Literacy 8",
                                         zh_cn: "\u8BC6\u5B57\u88688",
                                         zh_tw: "\u8B58\u5B57\u93368"
                                     },
@@ -3948,7 +3948,7 @@ System.register("copybookBase", [], function (exports_1, context_1) {
                                 },
                                 {
                                     names: {
-                                        en: "Writing 1",
+                                        en_us: "Writing 1",
                                         zh_cn: "\u5199\u5B57\u88681",
                                         zh_tw: "\u5BEB\u5B57\u93361"
                                     },
@@ -4061,7 +4061,7 @@ System.register("copybookBase", [], function (exports_1, context_1) {
                                 },
                                 {
                                     names: {
-                                        en: "Writing 2",
+                                        en_us: "Writing 2",
                                         zh_cn: "\u5199\u5B57\u88682",
                                         zh_tw: "\u5BEB\u5B57\u93362"
                                     },
@@ -4206,7 +4206,7 @@ System.register("copybookBase", [], function (exports_1, context_1) {
                                 },
                                 {
                                     names: {
-                                        en: "Writing 3",
+                                        en_us: "Writing 3",
                                         zh_cn: "\u5199\u5B57\u88683",
                                         zh_tw: "\u5BEB\u5B57\u93363"
                                     },
@@ -4343,7 +4343,7 @@ System.register("copybookBase", [], function (exports_1, context_1) {
                                 },
                                 {
                                     names: {
-                                        en: "Writing 4",
+                                        en_us: "Writing 4",
                                         zh_cn: "\u5199\u5B57\u88684",
                                         zh_tw: "\u5BEB\u5B57\u93364"
                                     },
@@ -4484,7 +4484,7 @@ System.register("copybookBase", [], function (exports_1, context_1) {
                                 },
                                 {
                                     names: {
-                                        en: "Writing 5",
+                                        en_us: "Writing 5",
                                         zh_cn: "\u5199\u5B57\u88685",
                                         zh_tw: "\u5BEB\u5B57\u93365"
                                     },
@@ -4597,7 +4597,7 @@ System.register("copybookBase", [], function (exports_1, context_1) {
                                 },
                                 {
                                     names: {
-                                        en: "Writing 6",
+                                        en_us: "Writing 6",
                                         zh_cn: "\u5199\u5B57\u88686",
                                         zh_tw: "\u5BEB\u5B57\u93366"
                                     },
@@ -4714,7 +4714,7 @@ System.register("copybookBase", [], function (exports_1, context_1) {
                                 },
                                 {
                                     names: {
-                                        en: "Writing 7",
+                                        en_us: "Writing 7",
                                         zh_cn: "\u5199\u5B57\u88687",
                                         zh_tw: "\u5BEB\u5B57\u93367"
                                     },
@@ -4807,7 +4807,7 @@ System.register("copybookBase", [], function (exports_1, context_1) {
                                 },
                                 {
                                     names: {
-                                        en: "Writing 8",
+                                        en_us: "Writing 8",
                                         zh_cn: "\u5199\u5B57\u88688",
                                         zh_tw: "\u5BEB\u5B57\u93368"
                                     },
@@ -4903,7 +4903,7 @@ System.register("copybookBase", [], function (exports_1, context_1) {
                                     ]
                                 },
                                 {
-                                    names: { en: "Words 1", zh_cn: "\u8BCD\u8BED1", zh_tw: "\u8A5E\u8A9E1" },
+                                    names: { en_us: "Words 1", zh_cn: "\u8BCD\u8BED1", zh_tw: "\u8A5E\u8A9E1" },
                                     words: [
                                         { chinese: "\u770B\u89C1", pinyin: "k\u00E0n'ji\u00E0n" },
                                         { chinese: "\u54EA\u91CC", pinyin: "n\u01CE'l\u01D0" },
@@ -4947,7 +4947,7 @@ System.register("copybookBase", [], function (exports_1, context_1) {
                                     ]
                                 },
                                 {
-                                    names: { en: "Words 2", zh_cn: "\u8BCD\u8BED2", zh_tw: "\u8A5E\u8A9E2" },
+                                    names: { en_us: "Words 2", zh_cn: "\u8BCD\u8BED2", zh_tw: "\u8A5E\u8A9E2" },
                                     words: [
                                         { chinese: "\u82B1\u56ED", pinyin: "hu\u0101'yu\u00E1n" },
                                         { chinese: "\u77F3\u6865", pinyin: "sh\u00ED'qi\u00E1o" },
@@ -4991,7 +4991,7 @@ System.register("copybookBase", [], function (exports_1, context_1) {
                                     ]
                                 },
                                 {
-                                    names: { en: "Words 3", zh_cn: "\u8BCD\u8BED3", zh_tw: "\u8A5E\u8A9E3" },
+                                    names: { en_us: "Words 3", zh_cn: "\u8BCD\u8BED3", zh_tw: "\u8A5E\u8A9E3" },
                                     words: [
                                         { chinese: "\u4E00\u540C", pinyin: "y\u00EC't\u00F3ng" },
                                         { chinese: "\u67F1\u5B50", pinyin: "zh\u00F9'zi" },
@@ -5049,7 +5049,7 @@ System.register("copybookBase", [], function (exports_1, context_1) {
                                     ]
                                 },
                                 {
-                                    names: { en: "Words 4", zh_cn: "\u8BCD\u8BED4", zh_tw: "\u8A5E\u8A9E4" },
+                                    names: { en_us: "Words 4", zh_cn: "\u8BCD\u8BED4", zh_tw: "\u8A5E\u8A9E4" },
                                     words: [
                                         { chinese: "\u4F9D\u7167", pinyin: "y\u012Bzh\u00E0o" },
                                         { chinese: "\u5C3D\u5934", pinyin: "j\u00ECnt\u00F3u" },
@@ -5104,7 +5104,7 @@ System.register("copybookBase", [], function (exports_1, context_1) {
                                     ]
                                 },
                                 {
-                                    names: { en: "Words 5", zh_cn: "\u8BCD\u8BED5", zh_tw: "\u8A5E\u8A9E5" },
+                                    names: { en_us: "Words 5", zh_cn: "\u8BCD\u8BED5", zh_tw: "\u8A5E\u8A9E5" },
                                     words: [
                                         { chinese: "\u5750\u4E95\u89C2\u5929", pinyin: "zu\u00F2'j\u01D0ng'gu\u0101n'ti\u0101n" },
                                         { chinese: "\u4E95\u6CBF", pinyin: "j\u01D0ng'y\u00E1n" },
@@ -5145,7 +5145,7 @@ System.register("copybookBase", [], function (exports_1, context_1) {
                                     ]
                                 },
                                 {
-                                    names: { en: "Words 6", zh_cn: "\u8BCD\u8BED6", zh_tw: "\u8A5E\u8A9E6" },
+                                    names: { en_us: "Words 6", zh_cn: "\u8BCD\u8BED6", zh_tw: "\u8A5E\u8A9E6" },
                                     words: [
                                         { chinese: "\u516B\u89D2\u697C", pinyin: "b\u0101'ji\u01CEo'l\u00F3u" },
                                         { chinese: "\u6DF1\u591C", pinyin: "sh\u0113n'y\u00E8" },
@@ -5193,7 +5193,7 @@ System.register("copybookBase", [], function (exports_1, context_1) {
                                     ]
                                 },
                                 {
-                                    names: { en: "Words 7", zh_cn: "\u8BCD\u8BED7", zh_tw: "\u8A5E\u8A9E7" },
+                                    names: { en_us: "Words 7", zh_cn: "\u8BCD\u8BED7", zh_tw: "\u8A5E\u8A9E7" },
                                     words: [
                                         { chinese: "\u5B89\u5371", pinyin: "\u0101nw\u0113i" },
                                         { chinese: "\u4E0D\u6562", pinyin: "b\u00F9g\u01CEn" },
@@ -5233,7 +5233,7 @@ System.register("copybookBase", [], function (exports_1, context_1) {
                                     ]
                                 },
                                 {
-                                    names: { en: "Words 8", zh_cn: "\u8BCD\u8BED8", zh_tw: "\u8A5E\u8A9E8" },
+                                    names: { en_us: "Words 8", zh_cn: "\u8BCD\u8BED8", zh_tw: "\u8A5E\u8A9E8" },
                                     words: [
                                         { chinese: "\u98DF\u7269", pinyin: "sh\u00ED'w\u00F9" },
                                         { chinese: "\u8EAB\u8FB9", pinyin: "sh\u0113n'bi\u0101n" },

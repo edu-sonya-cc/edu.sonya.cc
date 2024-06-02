@@ -424,7 +424,7 @@ var BricksPage = (function (_super) {
     BricksPage.prototype.initTitleElement = function () {
         var titleElement = getTitleElement();
         titleElement.i18n = {
-            en: "List of throwing a brick to attract jade",
+            en_us: "List of throwing a brick to attract jade",
             zh_cn: "抛砖引玉清单",
             zh_tw: "拋磚引玉清單"
         };

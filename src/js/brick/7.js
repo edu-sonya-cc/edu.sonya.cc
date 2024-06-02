@@ -301,10 +301,10 @@ var BrickCore = (function (_super) {
         _this.countPokerDataAndComputedData = function (pokerKind, countPerPage) {
             if (pokerKind === 0)
                 pokerKind = DefaultMathPokerKind;
-            var en = FILENAME_POSTFIX + "Math Poker";
+            var en_us = FILENAME_POSTFIX + "Math Poker";
             var zh_cn = FILENAME_POSTFIX + "\u6570\u5B66\u6251\u514B";
             var zh_tw = FILENAME_POSTFIX + "\u6578\u5B78\u64B2\u514B";
-            var enBackCover = en.split("_").join("<br />");
+            var enBackCover = en_us.split("_").join("<br />");
             var zh_cnBackCover = zh_cn.split("_").join("<br />");
             var zh_twBackCover = zh_tw.split("_").join("<br />");
             var enArray = [];
@@ -312,7 +312,7 @@ var BrickCore = (function (_super) {
             var zh_cnArray = [];
             var zh_twArray = [];
             var backCover = "";
-            var title = { en: en, zh_cn: zh_cn, zh_tw: zh_tw };
+            var title = { en_us: en_us, zh_cn: zh_cn, zh_tw: zh_tw };
             var CENTER_TEXTS = [];
             var BACK_COVERS = [];
             var CHARS = [];
@@ -342,7 +342,7 @@ var BrickCore = (function (_super) {
             switch (enArray.length) {
                 case 0:
                     backCover = getI18nInnerHTML({
-                        en: enBackCover,
+                        en_us: enBackCover,
                         zh_cn: zh_cnBackCover,
                         zh_tw: zh_twBackCover
                     });
@@ -352,32 +352,32 @@ var BrickCore = (function (_super) {
                     var zh_cnFirstItem = zh_cnArray[0];
                     var zh_twFirstItem = zh_twArray[0];
                     backCover = getI18nInnerHTML({
-                        en: enBackCover.concat("<br /><br />", enFirstItem),
+                        en_us: enBackCover.concat("<br /><br />", enFirstItem),
                         zh_cn: zh_cnBackCover.concat("<br /><br />", zh_cnFirstItem),
                         zh_tw: zh_twBackCover.concat("<br /><br />", zh_twFirstItem)
                     });
-                    title.en += "_".concat(enFullArray[0]);
+                    title.en_us += "_".concat(enFullArray[0]);
                     title.zh_cn += "_".concat(zh_cnFirstItem);
                     title.zh_tw += "_".concat(zh_twFirstItem);
                     break;
                 default:
                     if (enArray.length === MathPokerKindCount) {
                         backCover = getI18nInnerHTML({
-                            en: enBackCover,
+                            en_us: enBackCover,
                             zh_cn: zh_cnBackCover,
                             zh_tw: zh_twBackCover
                         });
-                        title.en += " Mixed_ALL";
+                        title.en_us += " Mixed_ALL";
                         title.zh_cn += "混合_所有";
                         title.zh_tw += "混合_所有";
                     }
                     else {
                         backCover = getI18nInnerHTML({
-                            en: enBackCover.concat("<br /><br /><small>", enArray.join("<br />"), "</small>"),
+                            en_us: enBackCover.concat("<br /><br /><small>", enArray.join("<br />"), "</small>"),
                             zh_cn: zh_cnBackCover.concat("<br /><br /><small>", zh_cnArray.join("<br />"), "</small>"),
                             zh_tw: zh_twBackCover.concat("<br /><br /><small>", zh_twArray.join("<br />"), "</small>")
                         });
-                        title.en += " Mixed_".concat(enFullArray.join("_"));
+                        title.en_us += " Mixed_".concat(enFullArray.join("_"));
                         title.zh_cn += "混合_".concat(zh_cnArray.join("_"));
                         title.zh_tw += "混合_".concat(zh_twArray.join("_"));
                     }
@@ -411,7 +411,7 @@ var BrickCore = (function (_super) {
         };
         _this.initOtherElements = function () {
             var wrapElement = _this.getWrapElement({
-                en: "Tens show tips",
+                en_us: "Tens show tips",
                 zh_cn: "凑十显示提示",
                 zh_tw: "湊十顯示提示"
             });
@@ -421,27 +421,27 @@ var BrickCore = (function (_super) {
             var _a = _this, pokerKind = _a.data.pokerKind, pokerKindElementArray = _a.pokerKindElementArray;
             var pokerKindI18nHtmlArray = [
                 getI18nInnerHTML({
-                    en: "1-9 make up ten",
+                    en_us: "1-9 make up ten",
                     zh_cn: "1-9凑十",
                     zh_tw: "1-9凑十"
                 }),
                 getI18nInnerHTML({
-                    en: "1-5",
+                    en_us: "1-5",
                     zh_cn: "1-5",
                     zh_tw: "1-5"
                 }),
                 getI18nInnerHTML({
-                    en: "0-9",
+                    en_us: "0-9",
                     zh_cn: "0-9",
                     zh_tw: "0-9"
                 }),
                 getI18nInnerHTML({
-                    en: "0-20+-×÷",
+                    en_us: "0-20+-×÷",
                     zh_cn: "0-20+-×÷",
                     zh_tw: "0-20+-×÷"
                 }),
                 getI18nInnerHTML({
-                    en: "1-100",
+                    en_us: "1-100",
                     zh_cn: "1-100",
                     zh_tw: "1-100"
                 }),
@@ -484,12 +484,12 @@ var BrickCore = (function (_super) {
             var _a = _this, tensCenterTextShowed = _a.data.tensCenterTextShowed, tensCenterTextShowedElementArray = _a.tensCenterTextShowedElementArray;
             var i18nHtmlArray = [
                 getI18nInnerHTML({
-                    en: "Yes",
+                    en_us: "Yes",
                     zh_cn: "是",
                     zh_tw: "是"
                 }),
                 getI18nInnerHTML({
-                    en: "No",
+                    en_us: "No",
                     zh_cn: "否",
                     zh_tw: "否"
                 }),
@@ -518,12 +518,12 @@ var BrickCore = (function (_super) {
         };
         return _this;
     }
-    BrickCore.prototype.countIt = function (enAppend, zh_cnAppend, zh_twAppend, charsArray, enFullArray, zh_cnArray, zh_twArray, en, zh_cn, zh_tw, CENTER_TEXTS, CHARS, countPerPage, BACK_COVERS, times, centerText, COLORS) {
+    BrickCore.prototype.countIt = function (enAppend, zh_cnAppend, zh_twAppend, charsArray, enFullArray, zh_cnArray, zh_twArray, en_us, zh_cn, zh_tw, CENTER_TEXTS, CHARS, countPerPage, BACK_COVERS, times, centerText, COLORS) {
         enFullArray.push(enAppend);
         zh_cnArray.push(zh_cnAppend);
         zh_twArray.push(zh_twAppend);
         var notSameBackCover = getI18nInnerHTML({
-            en: en.concat("<br /><small>", enAppend, "</small>"),
+            en_us: en_us.concat("<br /><small>", enAppend, "</small>"),
             zh_cn: zh_cn.concat("<br />", zh_cnAppend),
             zh_tw: zh_tw.concat("<br />", zh_twAppend)
         });

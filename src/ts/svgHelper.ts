@@ -111,7 +111,7 @@ namespace svgSpace {
             dx: string,
             dy: string,
           ) {
-            // https://developer.mozilla.org/en-US/docs/Web/SVG/Element/tspan
+            // https://developer.mozilla.org/en_us-US/docs/Web/SVG/Element/tspan
             const tspan = document.createElementNS(
               SVG_NS,
               "tspan",
@@ -169,7 +169,7 @@ namespace svgSpace {
             // text.setAttribute('dy', '0');
             // text.setAttribute('rotate', rotate.toString());
 
-            if (CONTENT.indexOf("<en>") > -1) {
+            if (CONTENT.indexOf("<en_us>") > -1) {
               const lang = getCurrentLang();
               const startTag = `<${lang}>`;
               const endTag = `</${lang}>`;

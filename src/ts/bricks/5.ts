@@ -1,12 +1,12 @@
 /**
- * <en>
+ * <en_us>
  * Function: Generate Pinyin Poker
  * Initial: 2021-10-06 Anqi
  * History: 2022-11-01 Anqi Filing
  * Reference: None
  * Note: Initials, finals, overall recognition, three syllables and tone, simple final with tone,
  *       it is recommended to use different paper colors for printing
- * </en>
+ * </en_us>
  *
  * <zh_cn>
  * 功能：生成拼音扑克
@@ -36,43 +36,43 @@
 /// <reference path='../../types/IBrickCore.d.ts' />
 
 /**
- * <en>Pinyin Poker Type</en>
+ * <en_us>Pinyin Poker Type</en_us>
  * <zh_cn>拼音扑克类型</zh_cn>
  * <zh_tw>拼音撲克類型</zh_tw>
  */
 enum PinyinPokerKind {
   /**
-   * <en>None</en>
+   * <en_us>None</en_us>
    * <zh_cn>无</zh_cn>
    * <zh_tw>無</zh_tw>
    */
   none = 0,
   /**
-   * <en>Initials</en>
+   * <en_us>Initials</en_us>
    * <zh_cn>声母</zh_cn>
    * <zh_tw>聲母</zh_tw>
    */
   initials = 1,
   /**
-   * <en>Finals</en>
+   * <en_us>Finals</en_us>
    * <zh_cn>韵母</zh_cn>
    * <zh_tw>韻母</zh_tw>
    */
   finals = 2,
   /**
-   * <en>Overall recognition</en>
+   * <en_us>Overall recognition</en_us>
    * <zh_cn>整体认读</zh_cn>
    * <zh_tw>整體認讀</zh_tw>
    */
   overallRecognition = 4,
   /**
-   * <en>Three syllables and tone</en>
+   * <en_us>Three syllables and tone</en_us>
    * <zh_cn>三拼音节与声调</zh_cn>
    * <zh_tw>三拼音節與聲調</zh_tw>
    */
   threeSyllablesAndTone = 8,
   /**
-   * <en>Simple final with tone</en>
+   * <en_us>Simple final with tone</en_us>
    * <zh_cn>带声调单韵母</zh_cn>
    * <zh_tw>帶聲調單韻母</zh_tw>
    */
@@ -304,7 +304,7 @@ class BrickCore extends PokerBase implements IBrickCore {
 
   // 24个韵母
   private VOWEL_ARRAY =
-    "a,o,e,i,u,ü,ai,ei,ui,ao,ou,iu,ie,üe,er,an,en,in,un,ün,ang,eng,ing,ong"
+    "a,o,e,i,u,ü,ai,ei,ui,ao,ou,iu,ie,üe,er,an,en_us,in,un,ün,ang,eng,ing,ong"
       .split(",");
 
   // 16个整体认读
@@ -341,11 +341,11 @@ class BrickCore extends PokerBase implements IBrickCore {
   ): void => {
     if (pokerKind === 0) pokerKind = DefaultPinyinPokerKind;
 
-    const en = `${FILENAME_POSTFIX}Pinyin Poker`;
+    const en_us = `${FILENAME_POSTFIX}Pinyin Poker`;
     const zh_cn = `${FILENAME_POSTFIX}拼音扑克`;
     const zh_tw = `${FILENAME_POSTFIX}拼音撲克`;
 
-    const enBackCover = en.split("_").join("<br />");
+    const enBackCover = en_us.split("_").join("<br />");
     const zh_cnBackCover = zh_cn.split("_").join("<br />");
     const zh_twBackCover = zh_tw.split("_").join("<br />");
 
@@ -355,7 +355,7 @@ class BrickCore extends PokerBase implements IBrickCore {
     const zh_twArray: Array<string> = [];
 
     let backCover = "";
-    let title = { en, zh_cn, zh_tw };
+    let title = { en_us, zh_cn, zh_tw };
     const CHARS: Array<string> = [];
     const BACK_COVERS: Array<string> = [];
     const CHARS_NOT_SAME_BACK_COVER: Array<string> = [];
@@ -473,7 +473,7 @@ class BrickCore extends PokerBase implements IBrickCore {
     switch (enArray.length) {
       case 0:
         backCover = getI18nInnerHTML({
-          en: enBackCover,
+          en_us: enBackCover,
           zh_cn: zh_cnBackCover,
           zh_tw: zh_twBackCover,
         });
@@ -484,29 +484,29 @@ class BrickCore extends PokerBase implements IBrickCore {
         const zh_twFirstItem = zh_twArray[0];
 
         backCover = getI18nInnerHTML({
-          en: enBackCover.concat("<br /><br />", enFirstItem),
+          en_us: enBackCover.concat("<br /><br />", enFirstItem),
           zh_cn: zh_cnBackCover.concat("<br /><br />", zh_cnFirstItem),
           zh_tw: zh_twBackCover.concat("<br /><br />", zh_twFirstItem),
         });
 
-        title.en += "_".concat(enFullArray[0]);
+        title.en_us += "_".concat(enFullArray[0]);
         title.zh_cn += "_".concat(zh_cnFirstItem);
         title.zh_tw += "_".concat(zh_twFirstItem);
         break;
       default:
         if (enArray.length === PinyinPokerKindCount) {
           backCover = getI18nInnerHTML({
-            en: enBackCover,
+            en_us: enBackCover,
             zh_cn: zh_cnBackCover,
             zh_tw: zh_twBackCover,
           });
 
-          title.en += " Mixed_ALL";
+          title.en_us += " Mixed_ALL";
           title.zh_cn += "混合_所有";
           title.zh_tw += "混合_所有";
         } else {
           backCover = getI18nInnerHTML({
-            en: enBackCover.concat(
+            en_us: enBackCover.concat(
               "<br /><br /><small>",
               enArray.join("<br />"),
               "</small>",
@@ -523,7 +523,7 @@ class BrickCore extends PokerBase implements IBrickCore {
             ),
           });
 
-          title.en += " Mixed_".concat(enFullArray.join("_"));
+          title.en_us += " Mixed_".concat(enFullArray.join("_"));
           title.zh_cn += "混合_".concat(zh_cnArray.join("_"));
           title.zh_tw += "混合_".concat(zh_twArray.join("_"));
         }
@@ -564,7 +564,7 @@ class BrickCore extends PokerBase implements IBrickCore {
 
   protected initOtherElements = (): void => {
     let wrapElement = this.getWrapElement({
-      en: "Use Same Back Cover",
+      en_us: "Use Same Back Cover",
       zh_cn: "统一背面",
       zh_tw: "統一背面",
     });
@@ -580,34 +580,34 @@ class BrickCore extends PokerBase implements IBrickCore {
     // const labelElement = createElement('label') as HTMLLabelElement;
     // wrapElement.appendChild(labelElement);
     // labelElement.innerHTML = getI18nInnerHTML({
-    //   en: '',
+    //   en_us: '',
     //   zh_cn: '',
     //   zh_tw: '',
     // });
 
     const pokerKindI18nHtmlArray = [
       getI18nInnerHTML({
-        en: "Initials",
+        en_us: "Initials",
         zh_cn: "声母",
         zh_tw: "聲母",
       }),
       getI18nInnerHTML({
-        en: "Finals",
+        en_us: "Finals",
         zh_cn: "韵母",
         zh_tw: "韻母",
       }),
       getI18nInnerHTML({
-        en: "Overall recognition and tone",
+        en_us: "Overall recognition and tone",
         zh_cn: "整体认读与声调",
         zh_tw: "整體認讀與聲調",
       }),
       getI18nInnerHTML({
-        en: "Three syllables",
+        en_us: "Three syllables",
         zh_cn: "三拼音节",
         zh_tw: "三拼音節",
       }),
       getI18nInnerHTML({
-        en: "Simple final with tone",
+        en_us: "Simple final with tone",
         zh_cn: "带声调单韵母",
         zh_tw: "帶聲調單韻母",
       }),
@@ -663,7 +663,7 @@ class BrickCore extends PokerBase implements IBrickCore {
     // const labelElement = createElement('label') as HTMLLabelElement;
     // wrapElement.appendChild(labelElement);
     // labelElement.innerHTML = getI18nInnerHTML({
-    //   en: '',
+    //   en_us: '',
     //   zh_cn: '',
     //   zh_tw: '',
     // });
@@ -671,12 +671,12 @@ class BrickCore extends PokerBase implements IBrickCore {
 
     const i18nHtmlArray = [
       getI18nInnerHTML({
-        en: "Yes",
+        en_us: "Yes",
         zh_cn: "是",
         zh_tw: "是",
       }),
       getI18nInnerHTML({
-        en: "No",
+        en_us: "No",
         zh_cn: "否",
         zh_tw: "否",
       }),
@@ -718,7 +718,7 @@ class BrickCore extends PokerBase implements IBrickCore {
     enFullArray: string[],
     zh_cnArray: string[],
     zh_twArray: string[],
-    en: string,
+    en_us: string,
     zh_cn: string,
     zh_tw: string,
     CHARS: string[],
@@ -731,7 +731,7 @@ class BrickCore extends PokerBase implements IBrickCore {
     zh_twArray.push(zh_twAppend);
 
     let notSameBackCover = getI18nInnerHTML({
-      en: en.concat("<br /><small>", enAppend, "</small>"),
+      en_us: en_us.concat("<br /><small>", enAppend, "</small>"),
       zh_cn: zh_cn.concat("<br />", zh_cnAppend),
       zh_tw: zh_tw.concat("<br />", zh_twAppend),
     });

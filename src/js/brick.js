@@ -187,7 +187,7 @@ var BrickPage = (function (_super) {
         _this.initTitleElement = function () {
             var titleElement = getTitleElement();
             titleElement.i18n = {
-                en: "Throwing a brick to attract jade",
+                en_us: "Throwing a brick to attract jade",
                 zh_cn: "抛砖引玉",
                 zh_tw: "抛磚引玉"
             };
@@ -317,9 +317,9 @@ var BrickPage = (function (_super) {
         pageSubjectElement.id = PAGE_NAME + "Subject";
         pageSubjectElement.className = "pageSubject";
         var brick = bricks.filter(function (item) { return item.id === PAGE_ID; })[0] || {
-            title: { en: "Unknown", zh_cn: "未知", zh_tw: "未知" },
+            title: { en_us: "Unknown", zh_cn: "未知", zh_tw: "未知" },
             summary: {
-                en: "The id is wrong, please check it.",
+                en_us: "The id is wrong, please check it.",
                 zh_cn: "编号错误，请检查。",
                 zh_tw: "編號錯誤，請檢查。"
             }
@@ -341,12 +341,12 @@ var BrickPage = (function (_super) {
         previewRegionSubjectElement.className = PAGE_NAME + "MainContentSubject";
         configRegionSubjectElement.className = PAGE_NAME + "MainContentSubject";
         previewRegionSubjectElement.innerHTML = getI18nInnerHTML({
-            en: "Preivew",
+            en_us: "Preivew",
             zh_cn: "预览",
             zh_tw: "預覽"
         });
         configRegionSubjectElement.innerHTML = getI18nInnerHTML({
-            en: "Config",
+            en_us: "Config",
             zh_cn: "设置",
             zh_tw: "設置"
         });
@@ -401,22 +401,22 @@ var BrickPage = (function (_super) {
         var imageUrlPrefix = SITE_IMAGE_PATH + "3brick/";
         var toolbarItemI18nArray = [
             {
-                en: "download",
+                en_us: "download",
                 zh_cn: "下载",
                 zh_tw: "下載"
             },
             {
-                en: "print",
+                en_us: "print",
                 zh_cn: "打印",
                 zh_tw: "列印"
             },
             {
-                en: "share",
+                en_us: "share",
                 zh_cn: "分享",
                 zh_tw: "分享"
             },
             {
-                en: "sponsor",
+                en_us: "sponsor",
                 zh_cn: "赞助",
                 zh_tw: "贊助"
             },
@@ -449,22 +449,22 @@ var BrickPage = (function (_super) {
         configCoreToolbarElement.id = PAGE_NAME + "ConfigCoreToolbar";
         configRegionElement.setAttribute(ID_PROPERTY, PAGE_ID.toString());
         appendConfigToolbar("Build", "build", {
-            en: "Build",
+            en_us: "Build",
             zh_cn: "生成",
             zh_tw: "生成"
         });
         appendConfigToolbar("LoadDefaultConfig", "loadDefaultConfig", {
-            en: "Use Default",
+            en_us: "Use Default",
             zh_cn: "还原",
             zh_tw: "還原"
         });
         appendConfigToolbar("LoadConfigFromLocal", "loadConfigFromLocal", {
-            en: "Load",
+            en_us: "Load",
             zh_cn: "加载",
             zh_tw: "加載"
         });
         appendConfigToolbar("SaveConfigToLocal", "saveConfigToLocal", {
-            en: "Save",
+            en_us: "Save",
             zh_cn: "保存",
             zh_tw: "保存"
         });

@@ -14,48 +14,48 @@
 /// <reference path='../../types/brickWithTableBase.d.ts' />
 
 /**
- * <en>Football information</en>
+ * <en_us>Football information</en_us>
  * <zh_cn>足球信息</zh_cn>
  * <zh_tw>足球資訊</zh_tw>
  */
 type FootballInfo = {
   /**
-   * <en>Length</en>
+   * <en_us>Length</en_us>
    * <zh_cn>边长</zh_cn>
    * <zh_tw>邊長</zh_tw>
    */
   length: number;
 
   /**
-   * <en>Kind</en>
+   * <en_us>Kind</en_us>
    * <zh_cn>类型</zh_cn>
    * <zh_tw>類型</zh_tw>
    */
   kind: 'hollowOut' | 'hollowOutWithHole' | 'pentagon' | 'hexagon' | 'interlacedHexagon' | 'unify';
 
   /**
-   * <en>Row Count</en>
+   * <en_us>Row Count</en_us>
    * <zh_cn>行数</zh_cn>
    * <zh_tw>數量</zh_tw>
    */
   rowCount: number;
 
   /**
-   * <en>Inner Line Style</en>
+   * <en_us>Inner Line Style</en_us>
    * <zh_cn>内部线样式</zh_cn>
    * <zh_tw>內部線樣式</zh_tw>
    */
   innerLineStyle: string;
 
   /**
-   * <en>Outer Line Style</en>
+   * <en_us>Outer Line Style</en_us>
    * <zh_cn>外边线样式</zh_cn>
    * <zh_tw>外邊線樣式</zh_tw>
    */
   outerLineStyle: string;
 
   /**
-   * <en>Cut Line Style</en>
+   * <en_us>Cut Line Style</en_us>
    * <zh_cn>剪切线样式</zh_cn>
    * <zh_tw>剪切線樣式</zh_tw>
    */
@@ -67,13 +67,13 @@ type DivOrSvgElementWithSize = svgSpace.edu.sonya.cc.DivOrSvgElementWithSize;
 type WrapElementWithInfo = svgSpace.edu.sonya.cc.WrapElementWithInfo;
 
 /**
- * <en>
+ * <en_us>
  * Function:
  * Create:
  * History:
  * Reference:
  * Description:
- * </en>
+ * </en_us>
  *
  * <zh_cn>
  * 功能：生成足球纸模型（镂空、五边形、六边形、整体——12个五边形加20个六边形可拼装一个足球）
@@ -189,10 +189,10 @@ class BrickCore extends BrickWithTableBase {
       });
     html += this.getAutomaticPaginationHtmlFromChildList(elementList, MAX_X, MAX_Y);
 
-    const en = `${FILENAME_POSTFIX}football`;
+    const en_us = `${FILENAME_POSTFIX}football`;
     const zh_cn = `${FILENAME_POSTFIX}足球`;
     const zh_tw = `${FILENAME_POSTFIX}足球`;
-    computedData.title = { en, zh_cn, zh_tw };
+    computedData.title = { en_us, zh_cn, zh_tw };
 
     computedData.css = css;
     computedData.html = html;
@@ -1483,35 +1483,35 @@ class BrickCore extends BrickWithTableBase {
       // 'hollowOut' | 'hollowOutWithHole' | 'pentagon' | 'hexagon' | 'interlacedHexagon' | 'unify'
       {
         value: 'hollowOut',
-        captions: { en: 'Hollow Out', zh_cn: '镂空', zh_tw: '鏤空' },
+        captions: { en_us: 'Hollow Out', zh_cn: '镂空', zh_tw: '鏤空' },
       },
       {
         value: 'hollowOutWithHole',
         captions: {
-          en: 'Hollow Out with Hole',
+          en_us: 'Hollow Out with Hole',
           zh_cn: '镂空带孔',
           zh_tw: '鏤空帶孔',
         },
       },
       {
         value: 'pentagon',
-        captions: { en: 'Pentagon', zh_cn: '五边形', zh_tw: '五邊形' },
+        captions: { en_us: 'Pentagon', zh_cn: '五边形', zh_tw: '五邊形' },
       },
       {
         value: 'hexagon',
-        captions: { en: 'Hexagon', zh_cn: '六边形', zh_tw: '六邊形' },
+        captions: { en_us: 'Hexagon', zh_cn: '六边形', zh_tw: '六邊形' },
       },
       {
         value: 'interlacedHexagon',
         captions: {
-          en: 'Interlaced Hexagon',
+          en_us: 'Interlaced Hexagon',
           zh_cn: '交错六边形',
           zh_tw: '交錯六邊形',
         },
       },
       {
         value: 'unify',
-        captions: { en: 'Unify', zh_cn: '整体', zh_tw: '整體' },
+        captions: { en_us: 'Unify', zh_cn: '整体', zh_tw: '整體' },
       },
     ]);
     this.appendNumberTd(tr, rowCount, item, 'rowCount', 1, null, 1);
@@ -1525,22 +1525,22 @@ class BrickCore extends BrickWithTableBase {
    * 初始化表头
    */
   protected initTableHead = (): void => {
-    this.appendTableHeadCell({ en: 'Length', zh_cn: '边长', zh_tw: '邊長' });
-    this.appendTableHeadCell({ en: 'Kind', zh_cn: '类型', zh_tw: '類型' });
-    this.appendTableHeadCell({ en: 'Row Count', zh_cn: '行数', zh_tw: '數量' });
+    this.appendTableHeadCell({ en_us: 'Length', zh_cn: '边长', zh_tw: '邊長' });
+    this.appendTableHeadCell({ en_us: 'Kind', zh_cn: '类型', zh_tw: '類型' });
+    this.appendTableHeadCell({ en_us: 'Row Count', zh_cn: '行数', zh_tw: '數量' });
 
     this.appendTableHeadCell({
-      en: 'Inner Line Style',
+      en_us: 'Inner Line Style',
       zh_cn: '内部线样式',
       zh_tw: '內部線樣式',
     });
     this.appendTableHeadCell({
-      en: 'Outer Line Style',
+      en_us: 'Outer Line Style',
       zh_cn: '外边线样式',
       zh_tw: '外邊線樣式',
     });
     this.appendTableHeadCell({
-      en: 'Cut Line Style',
+      en_us: 'Cut Line Style',
       zh_cn: '剪切线样式',
       zh_tw: '剪切線樣式',
     });
@@ -1561,7 +1561,7 @@ class BrickCore extends BrickWithTableBase {
 
     const buttonList = [
       {
-        nameI18n: { en: 'Hollow Out', zh_cn: '镂空', zh_tw: '鏤空' },
+        nameI18n: { en_us: 'Hollow Out', zh_cn: '镂空', zh_tw: '鏤空' },
         info: {
           length: 10,
           kind: 'hollowOut',
@@ -1574,7 +1574,7 @@ class BrickCore extends BrickWithTableBase {
       },
       {
         nameI18n: {
-          en: 'Hollow Out with Hole',
+          en_us: 'Hollow Out with Hole',
           zh_cn: '镂空带孔',
           zh_tw: '鏤空帶孔',
         },
@@ -1589,7 +1589,7 @@ class BrickCore extends BrickWithTableBase {
         },
       },
       {
-        nameI18n: { en: 'Pentagon', zh_cn: '五边形', zh_tw: '五邊形' },
+        nameI18n: { en_us: 'Pentagon', zh_cn: '五边形', zh_tw: '五邊形' },
         info: {
           length,
           kind: 'pentagon',
@@ -1601,7 +1601,7 @@ class BrickCore extends BrickWithTableBase {
         },
       },
       {
-        nameI18n: { en: 'Hexagon', zh_cn: '六边形', zh_tw: '六邊形' },
+        nameI18n: { en_us: 'Hexagon', zh_cn: '六边形', zh_tw: '六邊形' },
         info: {
           length,
           kind: 'hexagon',
@@ -1614,7 +1614,7 @@ class BrickCore extends BrickWithTableBase {
       },
       {
         nameI18n: {
-          en: 'Interlaced Hexagon',
+          en_us: 'Interlaced Hexagon',
           zh_cn: '交错六边形',
           zh_tw: '交錯六邊形',
         },
@@ -1629,7 +1629,7 @@ class BrickCore extends BrickWithTableBase {
         },
       },
       {
-        nameI18n: { en: 'Unify', zh_cn: '整体', zh_tw: '整體' },
+        nameI18n: { en_us: 'Unify', zh_cn: '整体', zh_tw: '整體' },
         info: {
           length: 10,
           kind: 'unify',
@@ -1642,7 +1642,7 @@ class BrickCore extends BrickWithTableBase {
       },
     ];
     const strongI18n: I18nable = {
-      en: 'Shortcuts',
+      en_us: 'Shortcuts',
       zh_cn: '快捷按钮',
       zh_tw: '快捷按鈕',
     };

@@ -230,10 +230,10 @@ var BrickCore = (function (_super) {
                 }
             });
             html += _this.getAutomaticPaginationHtmlFromChildList(elementList, MAX_X, MAX_Y);
-            var en = FILENAME_POSTFIX + "football";
+            var en_us = FILENAME_POSTFIX + "football";
             var zh_cn = FILENAME_POSTFIX + "\u8DB3\u7403";
             var zh_tw = FILENAME_POSTFIX + "\u8DB3\u7403";
-            computedData.title = { en: en, zh_cn: zh_cn, zh_tw: zh_tw };
+            computedData.title = { en_us: en_us, zh_cn: zh_cn, zh_tw: zh_tw };
             computedData.css = css;
             computedData.html = html;
         };
@@ -993,35 +993,35 @@ var BrickCore = (function (_super) {
             _this.appendSelectTd(tr, kind, item, 'kind', [
                 {
                     value: 'hollowOut',
-                    captions: { en: 'Hollow Out', zh_cn: '镂空', zh_tw: '鏤空' }
+                    captions: { en_us: 'Hollow Out', zh_cn: '镂空', zh_tw: '鏤空' }
                 },
                 {
                     value: 'hollowOutWithHole',
                     captions: {
-                        en: 'Hollow Out with Hole',
+                        en_us: 'Hollow Out with Hole',
                         zh_cn: '镂空带孔',
                         zh_tw: '鏤空帶孔'
                     }
                 },
                 {
                     value: 'pentagon',
-                    captions: { en: 'Pentagon', zh_cn: '五边形', zh_tw: '五邊形' }
+                    captions: { en_us: 'Pentagon', zh_cn: '五边形', zh_tw: '五邊形' }
                 },
                 {
                     value: 'hexagon',
-                    captions: { en: 'Hexagon', zh_cn: '六边形', zh_tw: '六邊形' }
+                    captions: { en_us: 'Hexagon', zh_cn: '六边形', zh_tw: '六邊形' }
                 },
                 {
                     value: 'interlacedHexagon',
                     captions: {
-                        en: 'Interlaced Hexagon',
+                        en_us: 'Interlaced Hexagon',
                         zh_cn: '交错六边形',
                         zh_tw: '交錯六邊形'
                     }
                 },
                 {
                     value: 'unify',
-                    captions: { en: 'Unify', zh_cn: '整体', zh_tw: '整體' }
+                    captions: { en_us: 'Unify', zh_cn: '整体', zh_tw: '整體' }
                 },
             ]);
             _this.appendNumberTd(tr, rowCount, item, 'rowCount', 1, null, 1);
@@ -1030,21 +1030,21 @@ var BrickCore = (function (_super) {
             _this.appendTextareaTd(tr, cutLineStyle, item, 'cutLineStyle', 'string');
         };
         _this.initTableHead = function () {
-            _this.appendTableHeadCell({ en: 'Length', zh_cn: '边长', zh_tw: '邊長' });
-            _this.appendTableHeadCell({ en: 'Kind', zh_cn: '类型', zh_tw: '類型' });
-            _this.appendTableHeadCell({ en: 'Row Count', zh_cn: '行数', zh_tw: '數量' });
+            _this.appendTableHeadCell({ en_us: 'Length', zh_cn: '边长', zh_tw: '邊長' });
+            _this.appendTableHeadCell({ en_us: 'Kind', zh_cn: '类型', zh_tw: '類型' });
+            _this.appendTableHeadCell({ en_us: 'Row Count', zh_cn: '行数', zh_tw: '數量' });
             _this.appendTableHeadCell({
-                en: 'Inner Line Style',
+                en_us: 'Inner Line Style',
                 zh_cn: '内部线样式',
                 zh_tw: '內部線樣式'
             });
             _this.appendTableHeadCell({
-                en: 'Outer Line Style',
+                en_us: 'Outer Line Style',
                 zh_cn: '外边线样式',
                 zh_tw: '外邊線樣式'
             });
             _this.appendTableHeadCell({
-                en: 'Cut Line Style',
+                en_us: 'Cut Line Style',
                 zh_cn: '剪切线样式',
                 zh_tw: '剪切線樣式'
             });
@@ -1058,7 +1058,7 @@ var BrickCore = (function (_super) {
             var cutLineStyle = 'stroke:#FF0000;stroke-width:0.1mm;';
             var buttonList = [
                 {
-                    nameI18n: { en: 'Hollow Out', zh_cn: '镂空', zh_tw: '鏤空' },
+                    nameI18n: { en_us: 'Hollow Out', zh_cn: '镂空', zh_tw: '鏤空' },
                     info: {
                         length: 10,
                         kind: 'hollowOut',
@@ -1071,7 +1071,7 @@ var BrickCore = (function (_super) {
                 },
                 {
                     nameI18n: {
-                        en: 'Hollow Out with Hole',
+                        en_us: 'Hollow Out with Hole',
                         zh_cn: '镂空带孔',
                         zh_tw: '鏤空帶孔'
                     },
@@ -1086,7 +1086,7 @@ var BrickCore = (function (_super) {
                     }
                 },
                 {
-                    nameI18n: { en: 'Pentagon', zh_cn: '五边形', zh_tw: '五邊形' },
+                    nameI18n: { en_us: 'Pentagon', zh_cn: '五边形', zh_tw: '五邊形' },
                     info: {
                         length: length,
                         kind: 'pentagon',
@@ -1098,7 +1098,7 @@ var BrickCore = (function (_super) {
                     }
                 },
                 {
-                    nameI18n: { en: 'Hexagon', zh_cn: '六边形', zh_tw: '六邊形' },
+                    nameI18n: { en_us: 'Hexagon', zh_cn: '六边形', zh_tw: '六邊形' },
                     info: {
                         length: length,
                         kind: 'hexagon',
@@ -1111,7 +1111,7 @@ var BrickCore = (function (_super) {
                 },
                 {
                     nameI18n: {
-                        en: 'Interlaced Hexagon',
+                        en_us: 'Interlaced Hexagon',
                         zh_cn: '交错六边形',
                         zh_tw: '交錯六邊形'
                     },
@@ -1126,7 +1126,7 @@ var BrickCore = (function (_super) {
                     }
                 },
                 {
-                    nameI18n: { en: 'Unify', zh_cn: '整体', zh_tw: '整體' },
+                    nameI18n: { en_us: 'Unify', zh_cn: '整体', zh_tw: '整體' },
                     info: {
                         length: 10,
                         kind: 'unify',
@@ -1139,7 +1139,7 @@ var BrickCore = (function (_super) {
                 },
             ];
             var strongI18n = {
-                en: 'Shortcuts',
+                en_us: 'Shortcuts',
                 zh_cn: '快捷按钮',
                 zh_tw: '快捷按鈕'
             };

@@ -11,59 +11,59 @@
 /// <reference path='../types/storage.d.ts' />
 
 /**
- * <en>Class: general global object of computer browser. Based on Global object, it provides general functions of various pages of computer browser.</en>
+ * <en_us>Class: general global object of computer browser. Based on Global object, it provides general functions of various pages of computer browser.</en_us>
  * <zh_cn>类：电脑浏览器通用全局对象，基于Global对象，提供电脑浏览器各页面通用功能。</zh_cn>
  * <zh_tw>類：電腦瀏覽器通用全域對象，基於Global對象，提供電腦瀏覽器各頁面通用功能。</zh_tw>
  */
 class PcGlobal {
   /**
-   * <en>Sharing area element</en>
+   * <en_us>Sharing area element</en_us>
    * <zh_cn>分享区元素</zh_cn>
    * <zh_tw>分享區元素</zh_tw>
    */
   private shareAreaElement = createElement("div");
   /**
-   * <en>WeChat sharing button element</en>
+   * <en_us>WeChat sharing button element</en_us>
    * <zh_cn>微信分享按钮元素</zh_cn>
    * <zh_tw>微信分享按鈕元素</zh_tw>
    */
   private wechatShareElement = createElement("img");
 
   /**
-   * <en>header element</en>
+   * <en_us>header element</en_us>
    * <zh_cn>header元素</zh_cn>
    * <zh_tw>header元素</zh_tw>
    */
   private headerElement = getHeaderElement();
   /**
-   * <en>Page logo element</en>
+   * <en_us>Page logo element</en_us>
    * <zh_cn>页面logo元素</zh_cn>
    * <zh_tw>頁面logo元素</zh_tw>
    */
   private logoElement = createElement("img");
   /**
-   * <en>Menu using nav tags</en>
+   * <en_us>Menu using nav tags</en_us>
    * <zh_cn>使用nav标签的menu</zh_cn>
    * <zh_tw>使用nav標籤的menu</zh_tw>
    */
   private navElement = createElement("nav");
 
   /**
-   * <en>footer element</en>
+   * <en_us>footer element</en_us>
    * <zh_cn>footer元素</zh_cn>
    * <zh_tw>footer元素</zh_tw>
    */
   private footerElement = getFooterElement();
 
   /**
-   * <en>main element</en>
+   * <en_us>main element</en_us>
    * <zh_cn>main元素</zh_cn>
    * <zh_tw>main元素</zh_tw>
    */
   private mainElement = getMainElement();
 
   /**
-   * <en>Array: top right menu sub item</en>
+   * <en_us>Array: top right menu sub item</en_us>
    * <zh_cn>数组：顶部右上角菜单子项</zh_cn>
    * <zh_tw>數組：頂部右上角菜單子項</zh_tw>
    */
@@ -72,60 +72,60 @@ class PcGlobal {
       id: "topMenuHome",
       kind: "a",
       link: `${HOME_URL}`,
-      titles: { en: `Home`, zh_cn: `首页`, zh_tw: `首頁` },
+      titles: { en_us: `Home`, zh_cn: `首页`, zh_tw: `首頁` },
     },
     {
       id: "topMenuBricks",
       kind: "a",
       link: `${HOME_URL}?go=bricks&kind=0&page=1`,
-      titles: { en: `Tools`, zh_cn: `抛砖引玉`, zh_tw: `抛磚引玉` },
+      titles: { en_us: `Tools`, zh_cn: `抛砖引玉`, zh_tw: `抛磚引玉` },
     },
     {
       id: "topMenuTreasures",
       kind: "a",
       link: `${HOME_URL}?go=treasures&page=1`,
-      // titles: { en: `Natural treasures`, zh_cn: `物华天宝`, zh_tw: `物華天寶` },
-      titles: { en: `Treasures`, zh_cn: `物华天宝`, zh_tw: `物華天寶` },
+      // titles: { en_us: `Natural treasures`, zh_cn: `物华天宝`, zh_tw: `物華天寶` },
+      titles: { en_us: `Treasures`, zh_cn: `物华天宝`, zh_tw: `物華天寶` },
     },
     {
       id: "topMenuStories",
       kind: "a",
       link: `${HOME_URL}?go=stories&page=1`,
-      titles: { en: `Growings`, zh_cn: `成长足迹`, zh_tw: `成長足迹` },
+      titles: { en_us: `Growings`, zh_cn: `成长足迹`, zh_tw: `成長足迹` },
     },
     {
       id: "topMenuAbout",
       kind: "a",
       link: `${HOME_URL}?go=about`,
-      // titles: { en: `About Us`, zh_cn: `关于我们`, zh_tw: `關於我們` },
-      titles: { en: `About`, zh_cn: `关于我们`, zh_tw: `關於我們` },
+      // titles: { en_us: `About Us`, zh_cn: `关于我们`, zh_tw: `關於我們` },
+      titles: { en_us: `About`, zh_cn: `关于我们`, zh_tw: `關於我們` },
     },
     {
       id: "topMenuLanguage",
       kind: "select",
       link: `onChangeLanuage`,
-      titles: { en: `Language`, zh_cn: `语言`, zh_tw: `語言` },
+      titles: { en_us: `Language`, zh_cn: `语言`, zh_tw: `語言` },
       options:
-        "<option value='en'>English</option><option value='zh_cn'>简体</option><option value='zh_tw'>繁體</option>",
+        "<option value='en_us'>English</option><option value='zh_cn'>简体</option><option value='zh_tw'>繁體</option>",
       onchange: "onChangeLanuage",
     },
     {
       id: "topMenuGithub",
       kind: "a",
       link: `https://github.com/edu-sonya-cc/edu.sonya.cc`,
-      titles: { en: ``, zh_cn: ``, zh_tw: `` },
+      titles: { en_us: ``, zh_cn: ``, zh_tw: `` },
     },
     {
       id: "topMenuSearch",
       kind: "button",
       link: ``,
-      titles: { en: ``, zh_cn: ``, zh_tw: `` },
+      titles: { en_us: ``, zh_cn: ``, zh_tw: `` },
       onclick: "onShowSearchRegion",
     },
   ];
 
   /**
-   * <en>Arrays: footer hotspot data</en>
+   * <en_us>Arrays: footer hotspot data</en_us>
    * <zh_cn>数组：页脚热区数据</zh_cn>
    * <zh_tw>數組：頁腳熱區數據</zh_tw>
    */
@@ -156,7 +156,7 @@ class PcGlobal {
   ];
 
   /**
-   * <en>Add current page to favorites.</en>
+   * <en_us>Add current page to favorites.</en_us>
    * <zh_cn>添加当前页面到收藏夹中</zh_cn>
    * <zh_tw>添加當前頁面到收藏夾中</zh_tw>
    */
@@ -165,7 +165,7 @@ class PcGlobal {
     let errorTip = "";
     let title = "";
     switch (getCurrentLang()) {
-      case "en":
+      case "en_us":
         title = "Add to favorite";
         errorTip =
           "Add to favorite failed, please press Ctrl + D or Command + D, Or manually set in the browser.";
@@ -237,7 +237,7 @@ class PcGlobal {
   };
 
   /**
-   * <en>Share</en>
+   * <en_us>Share</en_us>
    * <zh_cn>分享</zh_cn>
    * <zh_tw>分享</zh_tw>
    */
@@ -266,7 +266,7 @@ class PcGlobal {
   };
 
   // /**
-  //  * <en>Hide share area</en>
+  //  * <en_us>Hide share area</en_us>
   //  * <zh_cn>隐藏共享区</zh_cn>
   //  * <zh_tw>隱藏共亯區</zh_tw>
   //  */
@@ -275,14 +275,14 @@ class PcGlobal {
   // };
 
   /**
-   * <en>Search Area</en>
+   * <en_us>Search Area</en_us>
    * <zh_cn>搜索区</zh_cn>
    * <zh_tw>搜索區</zh_tw>
    */
   private searchRegionElement = createElement("div");
 
   /**
-   * <en>Show Search Area</en>
+   * <en_us>Show Search Area</en_us>
    * <zh_cn>显示搜索区域</zh_cn>
    * <zh_tw>顯示搜索區域</zh_tw>
    */
@@ -296,7 +296,7 @@ class PcGlobal {
   };
 
   /**
-   * <en>Change the language</en>
+   * <en_us>Change the language</en_us>
    * <zh_cn>切换语言</zh_cn>
    * <zh_tw>切換語言</zh_tw>
    */
@@ -323,7 +323,7 @@ class PcGlobal {
   };
 
   /**
-   * <en>initialization</en>
+   * <en_us>initialization</en_us>
    * <zh_cn>初始化</zh_cn>
    * <zh_tw>初始化</zh_tw>
    */
@@ -814,7 +814,7 @@ class PcGlobal {
 }
 
 /**
- * <en>Class: general global object of computer browser. Based on Global object, it provides general functions of various pages of computer browser.</en>
+ * <en_us>Class: general global object of computer browser. Based on Global object, it provides general functions of various pages of computer browser.</en_us>
  * <zh_cn>电脑浏览器通用全局对象，基于Global对象，提供电脑浏览器各页面通用功能。</zh_cn>
  * <zh_tw>電腦瀏覽器通用全域對象，基於Global對象，提供電腦瀏覽器各頁面通用功能。</zh_tw>
  */

@@ -3,7 +3,7 @@
 // This code was bundled using `deno bundle` and it's not recommended to edit it manually
 
 var RummikubPokerKind;
-(function(RummikubPokerKind) {
+(function (RummikubPokerKind) {
     RummikubPokerKind[RummikubPokerKind["none"] = 0] = "none";
     RummikubPokerKind[RummikubPokerKind["diagonal"] = 1] = "diagonal";
     RummikubPokerKind[RummikubPokerKind["center"] = 2] = "center";
@@ -12,7 +12,7 @@ var RummikubPokerKind;
 })(RummikubPokerKind || (RummikubPokerKind = {}));
 const DefaultRummikubPokerKind = 15;
 class BrickCore extends PokerBase {
-    constructor(){
+    constructor() {
         super({
             pokerWidth: 20,
             pokerHeight: 28,
@@ -32,13 +32,13 @@ class BrickCore extends PokerBase {
       .double{display:flex;justify-content: space-around;}
       .double b:first-child{position:relative;left:0.375em;}
       .double b:last-child{position:relative;left:-0.375em;opacity:0.75;}
-  
+
       .discoloration{display:flex;width: 100%;position: relative;}
       .discoloration b:first-child{overflow:hidden;position:relative;left:0.5em;}
       .discoloration b:first-child i{position:relative;left:-0.5em;color:#000;}
       .discoloration b:last-child{overflow:hidden;position:relative;left:-0.5em;}
       .discoloration b:last-child i{position:relative;left:0em;color:#F00;}
-  
+
       .mirror{position:relative;margin-left:12%;width:88%;letter-spacing:0em;display:flex;}
       .top-left .mirror,.bottom-right .mirror{width:40%;margin-left:6%;}
       .mirror b:first-child{overflow:hidden;}
@@ -48,16 +48,38 @@ class BrickCore extends PokerBase {
       `
         });
     }
-    onPageSizeChanged = (_newPageSize)=>{};
-    getForePageHtml = ()=>{
-        let { data: { paperSize , maxX: MAX_X , maxY: MAX_Y , pokerWidth: CARD_WIDTH , pokerHeight: CARD_HEIGHT , centerTextShowed  } , computedData: { count: COUNT , chars: CHARS , centerTexts: CENTER_TEXTS , colors: COLORS , isCenters: IS_CENTERS  }  } = this;
+    onPageSizeChanged = (_newPageSize) => {};
+    getForePageHtml = () => {
+        let {
+            data: {
+                paperSize,
+                maxX: MAX_X,
+                maxY: MAX_Y,
+                pokerWidth: CARD_WIDTH,
+                pokerHeight: CARD_HEIGHT,
+                centerTextShowed
+            },
+            computedData: {
+                count: COUNT,
+                chars: CHARS,
+                centerTexts: CENTER_TEXTS,
+                colors: COLORS,
+                isCenters: IS_CENTERS
+            }
+        } = this;
         const MAX_SYMBOL_INDEX = COUNT - 1;
-        const PAGE_START = `<page class="forePage ${paperSize}">`, PAGE_END = '</page>';
-        const ROW_START = '<row>', ROW_END = '</row>';
-        const CELL_START = '<cell>', CELL_END = '</cell>';
-        const TOP_START = '<top>', TOP_END = '</top>';
-        const BOTTOM_START = '<bottom>', BOTTOM_END = '</bottom>';
-        const CENTER_START = '<center>', CENTER_END = '</center>';
+        const PAGE_START = `<page class="forePage ${paperSize}">`,
+            PAGE_END = '</page>';
+        const ROW_START = '<row>',
+            ROW_END = '</row>';
+        const CELL_START = '<cell>',
+            CELL_END = '</cell>';
+        const TOP_START = '<top>',
+            TOP_END = '</top>';
+        const BOTTOM_START = '<bottom>',
+            BOTTOM_END = '</bottom>';
+        const CENTER_START = '<center>',
+            CENTER_END = '</center>';
         const TEXT_END = '</text>';
         const ROW_COUNT = Math.floor(MAX_Y / CARD_HEIGHT);
         const COLUMN_COUNT = Math.floor(MAX_X / CARD_WIDTH);
@@ -65,11 +87,11 @@ class BrickCore extends PokerBase {
         const PAGE_COUNT = Math.ceil(COUNT / COUNT_PER_PAGE);
         let symbolIndex = 0;
         let html = '';
-        for(let loopOfPage = 0; loopOfPage < PAGE_COUNT; ++loopOfPage){
+        for (let loopOfPage = 0; loopOfPage < PAGE_COUNT; ++loopOfPage) {
             html += PAGE_START;
-            for(let loopOfRow = 0; loopOfRow < ROW_COUNT; ++loopOfRow){
+            for (let loopOfRow = 0; loopOfRow < ROW_COUNT; ++loopOfRow) {
                 html += ROW_START;
-                for(let loopOfCol = 0; loopOfCol < COLUMN_COUNT; ++loopOfCol){
+                for (let loopOfCol = 0; loopOfCol < COLUMN_COUNT; ++loopOfCol) {
                     html += CELL_START;
                     if (symbolIndex <= MAX_SYMBOL_INDEX) {
                         const isCenter = IS_CENTERS[symbolIndex];
@@ -94,12 +116,28 @@ class BrickCore extends PokerBase {
         }
         return html;
     };
-    getBackPageHtml = ()=>{
-        let { data: { paperSize , maxX: MAX_X , maxY: MAX_Y , pokerWidth: CARD_WIDTH , pokerHeight: CARD_HEIGHT  } , computedData: { count: COUNT , backCovers: BACK_COVERS  }  } = this;
-        const PAGE_START = `<page class="backPage ${paperSize}" dir="rtl">`, PAGE_END = '</page>';
-        const ROW_START = '<row>', ROW_END = '</row>';
-        const CELL_START = '<cell>', CELL_END = '</cell>';
-        const CENTER_START = '<center>', CENTER_END = '</center>';
+    getBackPageHtml = () => {
+        let {
+            data: {
+                paperSize,
+                maxX: MAX_X,
+                maxY: MAX_Y,
+                pokerWidth: CARD_WIDTH,
+                pokerHeight: CARD_HEIGHT
+            },
+            computedData: {
+                count: COUNT,
+                backCovers: BACK_COVERS
+            }
+        } = this;
+        const PAGE_START = `<page class="backPage ${paperSize}" dir="rtl">`,
+            PAGE_END = '</page>';
+        const ROW_START = '<row>',
+            ROW_END = '</row>';
+        const CELL_START = '<cell>',
+            CELL_END = '</cell>';
+        const CENTER_START = '<center>',
+            CENTER_END = '</center>';
         const MAX_SYMBOL_INDEX = COUNT - 1;
         const ROW_COUNT = Math.floor(MAX_Y / CARD_HEIGHT);
         const COLUMN_COUNT = Math.floor(MAX_X / CARD_WIDTH);
@@ -108,11 +146,11 @@ class BrickCore extends PokerBase {
         const lastItem = BACK_COVERS[BACK_COVERS.length - 1];
         let symbolIndex = 0;
         let html = '';
-        for(let loopOfPage = 0; loopOfPage < PAGE_COUNT; ++loopOfPage){
+        for (let loopOfPage = 0; loopOfPage < PAGE_COUNT; ++loopOfPage) {
             html += PAGE_START;
-            for(let loopOfRow = 0; loopOfRow < ROW_COUNT; ++loopOfRow){
+            for (let loopOfRow = 0; loopOfRow < ROW_COUNT; ++loopOfRow) {
                 html += ROW_START;
-                for(let loopOfCol = 0; loopOfCol < COLUMN_COUNT; ++loopOfCol){
+                for (let loopOfCol = 0; loopOfCol < COLUMN_COUNT; ++loopOfCol) {
                     html += CELL_START;
                     if (symbolIndex <= MAX_SYMBOL_INDEX) {
                         html += CENTER_START.concat(BACK_COVERS[symbolIndex] || lastItem, CENTER_END);
@@ -129,14 +167,14 @@ class BrickCore extends PokerBase {
     DIAGONAL_NORMAL_CARD_TIMES = 2;
     DIAGONAL_CHANGEABLE_CARD_COUNT = 2;
     DIAGONAL_CENTER_TEXT = `<div>
-  <p><en>Same decor</en><zh_cn>同色连续</zh_cn><zh_tw>同色连续</zh_tw></p>
-  <p><en>Arithmetic sequence</en></p><br />
+  <p><en_us>Same decor</en_us><zh_cn>同色连续</zh_cn><zh_tw>同色连续</zh_tw></p>
+  <p><en_us>Arithmetic sequence</en_us></p><br />
   <p edu-color="1">7,8,9,10,11,12,13</p>
   <p edu-color="2">1,2,3</p>
   <p edu-color="1">5,6,☺,8</p>
- 
-  <p><en>Different decors</en><zh_cn>异色同值</zh_cn><zh_tw>异色同值</zh_tw></p>
-  <p><en>Same value</en></p>
+
+  <p><en_us>Different decors</en_us><zh_cn>异色同值</zh_cn><zh_tw>异色同值</zh_tw></p>
+  <p><en_us>Same value</en_us></p>
   <p><b edu-color="1">2</b><b edu-color="2">2</b><b edu-color="3">2</b><b edu-color="3">☺</b></p>
   <p><b edu-color="1">☺</b><b edu-color="2">3</b><b edu-color="3">3</b></p>
  </span></div>`;
@@ -149,12 +187,12 @@ class BrickCore extends PokerBase {
     CENTER_EXTENDS_NORMAL_CARD_TIMES = 2;
     CENTER_EXTENDS_CHANGEABLE_CARD_COUNT = 8;
     CENTER_EXTENDS_CENTER_TEXT = ``;
-    countPokerDataAndComputedData = (pokerKind, countPerPage)=>{
+    countPokerDataAndComputedData = (pokerKind, countPerPage) => {
         if (pokerKind === 0) pokerKind = DefaultRummikubPokerKind;
-        const en = `${FILENAME_POSTFIX}Rummikub`;
+        const en_us = `${FILENAME_POSTFIX}Rummikub`;
         const zh_cn = `${FILENAME_POSTFIX}拉密`;
         const zh_tw = `${FILENAME_POSTFIX}拉密`;
-        const enBackCover = en.split('_').join('<br />');
+        const enBackCover = en_us.split('_').join('<br />');
         const zh_cnBackCover = zh_cn.split('_').join('<br />');
         const zh_twBackCover = zh_tw.split('_').join('<br />');
         const enArray = [];
@@ -163,7 +201,7 @@ class BrickCore extends PokerBase {
         const zh_twArray = [];
         let backCover = '';
         let title = {
-            en,
+            en_us,
             zh_cn,
             zh_tw
         };
@@ -194,10 +232,10 @@ class BrickCore extends PokerBase {
             count += this.countIt(this.CENTER_EXTENDS_NORMAL_CARD_TIMES, this.CENTER_EXTENDS_CHANGEABLE_CARD_COUNT, countPerPage, this.CENTER_EXTENDS_CENTER_TEXT, CENTER_TEXTS, 'center extends', '中心扩展版', '中心擴展版', enFullArray, zh_cnArray, zh_twArray, enBackCover, zh_cnBackCover, zh_twBackCover, CHARS, COLORS, BACK_COVERS, RummikubPokerKind.centerExtends);
             lastPokerKind = RummikubPokerKind.centerExtends;
         }
-        switch(enArray.length){
+        switch (enArray.length) {
             case 0:
                 backCover = getI18nInnerHTML({
-                    en: enBackCover,
+                    en_us: enBackCover,
                     zh_cn: zh_cnBackCover,
                     zh_tw: zh_twBackCover
                 });
@@ -207,31 +245,31 @@ class BrickCore extends PokerBase {
                 const zh_cnFirstItem = zh_cnArray[0];
                 const zh_twFirstItem = zh_twArray[0];
                 backCover = getI18nInnerHTML({
-                    en: enBackCover.concat('<br /><br />', enFirstItem),
+                    en_us: enBackCover.concat('<br /><br />', enFirstItem),
                     zh_cn: zh_cnBackCover.concat('<br /><br />', zh_cnFirstItem),
                     zh_tw: zh_twBackCover.concat('<br /><br />', zh_twFirstItem)
                 });
-                title.en += '_'.concat(enFullArray[0]);
+                title.en_us += '_'.concat(enFullArray[0]);
                 title.zh_cn += '_'.concat(zh_cnFirstItem);
                 title.zh_tw += '_'.concat(zh_twFirstItem);
                 break;
             default:
                 if (enArray.length === 4) {
                     backCover = getI18nInnerHTML({
-                        en: enBackCover,
+                        en_us: enBackCover,
                         zh_cn: zh_cnBackCover,
                         zh_tw: zh_twBackCover
                     });
-                    title.en += ' Mixed_ALL';
+                    title.en_us += ' Mixed_ALL';
                     title.zh_cn += '混合_所有';
                     title.zh_tw += '混合_所有';
                 } else {
                     backCover = getI18nInnerHTML({
-                        en: enBackCover.concat('<br /><br /><small>', enArray.join('<br />'), '</small>'),
+                        en_us: enBackCover.concat('<br /><br /><small>', enArray.join('<br />'), '</small>'),
                         zh_cn: zh_cnBackCover.concat('<br /><br /><small>', zh_cnArray.join('<br />'), '</small>'),
                         zh_tw: zh_twBackCover.concat('<br /><br /><small>', zh_twArray.join('<br />'), '</small>')
                     });
-                    title.en += ' Mixed_'.concat(enFullArray.join('_'));
+                    title.en_us += ' Mixed_'.concat(enFullArray.join('_'));
                     title.zh_cn += '混合_'.concat(zh_cnArray.join('_'));
                     title.zh_tw += '混合_'.concat(zh_twArray.join('_'));
                 }
@@ -245,7 +283,7 @@ class BrickCore extends PokerBase {
         this.computedData.backCovers = BACK_COVERS;
         this.computedData.centerTexts = CENTER_TEXTS;
         const appendCount = this.computedData.count - count;
-        switch(lastPokerKind){
+        switch (lastPokerKind) {
             case RummikubPokerKind.diagonal:
                 pushSameValueTimes(this.computedData.centerTexts, this.DIAGONAL_CENTER_TEXT, appendCount);
                 break;
@@ -257,33 +295,39 @@ class BrickCore extends PokerBase {
                 break;
         }
     };
-    updateOtherDataOfPoker = (newData)=>{
-        const { pokerKind  } = newData;
-        for(let pokerKindIndex = 0; pokerKindIndex < 4; ++pokerKindIndex){
+    updateOtherDataOfPoker = (newData) => {
+        const {
+            pokerKind
+        } = newData;
+        for (let pokerKindIndex = 0; pokerKindIndex < 4; ++pokerKindIndex) {
             const pokerKindValue = Math.pow(2, pokerKindIndex);
             const checkboxElement = this.pokerKindElementArray[pokerKindIndex];
             checkboxElement.checked = (pokerKind & pokerKindValue) === pokerKindValue;
         }
-        const { includeZero  } = newData;
-        this.includeZeroElementArray.forEach((radioElement)=>{
+        const {
+            includeZero
+        } = newData;
+        this.includeZeroElementArray.forEach((radioElement) => {
             radioElement.checked = includeZero === (radioElement.value === 'true');
         });
         this.data.includeZero = includeZero;
-        const { wholePage  } = newData;
-        this.wholePageElementArray.forEach((radioElement)=>{
+        const {
+            wholePage
+        } = newData;
+        this.wholePageElementArray.forEach((radioElement) => {
             radioElement.checked = wholePage === (radioElement.value === 'true');
         });
         this.data.wholePage = wholePage;
     };
-    initOtherElements = ()=>{
-        this.paperSizeRadioArray.forEach((radioElement)=>{
-            radioElement.onclick = (event)=>{
+    initOtherElements = () => {
+        this.paperSizeRadioArray.forEach((radioElement) => {
+            radioElement.onclick = (event) => {
                 const paperSizeValue = radioElement.value;
                 this.data.paperSize = paperSizeValue;
                 this.saveConfigAndBuildIfAllowed();
             };
         });
-        this.configCoreElement?.querySelectorAll('[name="pokerSizeButtons"]').forEach((buttonElement, index)=>{
+        this.configCoreElement?.querySelectorAll('[name="pokerSizeButtons"]').forEach((buttonElement, index) => {
             if (index === 0) {
                 buttonElement.setAttribute('edu-to-width', '18');
                 buttonElement.setAttribute('edu-to-height', '25');
@@ -293,43 +337,48 @@ class BrickCore extends PokerBase {
             }
         });
         let wrapElement = this.getWrapElement({
-            en: 'Include Zero',
+            en_us: 'Include Zero',
             zh_cn: '包含0',
             zh_tw: '包含0'
         });
         this.initIncludeZeroElements(wrapElement);
         wrapElement = this.getWrapElement({
-            en: 'Whole Page',
+            en_us: 'Whole Page',
             zh_cn: '每项补全整页',
             zh_tw: '每項補全整頁'
         });
         this.initWholePageElements(wrapElement);
     };
-    initPokerKindElements = (wrapElement)=>{
-        const { data: { pokerKind  } , pokerKindElementArray: pokerKindElementArray  } = this;
+    initPokerKindElements = (wrapElement) => {
+        const {
+            data: {
+                pokerKind
+            },
+            pokerKindElementArray: pokerKindElementArray
+        } = this;
         const pokerKindI18nHtmlArray = [
             getI18nInnerHTML({
-                en: 'diagonal',
+                en_us: 'diagonal',
                 zh_cn: '对角线',
                 zh_tw: '對角線'
             }),
             getI18nInnerHTML({
-                en: 'center',
+                en_us: 'center',
                 zh_cn: '中心',
                 zh_tw: '中心'
             }),
             getI18nInnerHTML({
-                en: 'diagonal extends',
+                en_us: 'diagonal extends',
                 zh_cn: '对角线扩展版',
                 zh_tw: '對角線擴展版'
             }),
             getI18nInnerHTML({
-                en: 'center extends',
+                en_us: 'center extends',
                 zh_cn: '中心扩展版',
                 zh_tw: '中心擴展版'
             })
         ];
-        for(let pokerKindIndex = 0; pokerKindIndex < 4; ++pokerKindIndex){
+        for (let pokerKindIndex = 0; pokerKindIndex < 4; ++pokerKindIndex) {
             const pokerKindValue = Math.pow(2, pokerKindIndex);
             const checkboxElement = createElement('input');
             checkboxElement.type = 'checkbox';
@@ -340,9 +389,9 @@ class BrickCore extends PokerBase {
             }
             const spanElement = createElement('span');
             spanElement.innerHTML = pokerKindI18nHtmlArray[pokerKindIndex];
-            checkboxElement.onclick = ()=>{
+            checkboxElement.onclick = () => {
                 let newValue = 0;
-                pokerKindElementArray.forEach((item)=>{
+                pokerKindElementArray.forEach((item) => {
                     if (item.checked) {
                         newValue |= parseInt(item.value, 0);
                     }
@@ -351,7 +400,7 @@ class BrickCore extends PokerBase {
                 console.log(this.data.pokerKind, pokerKindValue);
                 this.saveConfigAndBuildIfAllowed();
             };
-            spanElement.onclick = ()=>{
+            spanElement.onclick = () => {
                 checkboxElement.click();
             };
             wrapElement.appendChild(checkboxElement);
@@ -360,16 +409,21 @@ class BrickCore extends PokerBase {
         }
     };
     includeZeroElementArray = [];
-    initIncludeZeroElements = (wrapElement)=>{
-        const { data: { includeZero  } , includeZeroElementArray  } = this;
+    initIncludeZeroElements = (wrapElement) => {
+        const {
+            data: {
+                includeZero
+            },
+            includeZeroElementArray
+        } = this;
         const i18nHtmlArray = [
             getI18nInnerHTML({
-                en: 'Yes',
+                en_us: 'Yes',
                 zh_cn: '是',
                 zh_tw: '是'
             }),
             getI18nInnerHTML({
-                en: 'No',
+                en_us: 'No',
                 zh_cn: '否',
                 zh_tw: '否'
             })
@@ -377,7 +431,7 @@ class BrickCore extends PokerBase {
         [
             true,
             false
-        ].forEach((includeZeroValue)=>{
+        ].forEach((includeZeroValue) => {
             const radioElement = createElement('input');
             radioElement.type = 'radio';
             radioElement.name = 'includeZero';
@@ -387,11 +441,11 @@ class BrickCore extends PokerBase {
             }
             const spanElement = createElement('span');
             spanElement.innerHTML = i18nHtmlArray[includeZeroValue ? 0 : 1];
-            radioElement.onclick = ()=>{
+            radioElement.onclick = () => {
                 this.data.includeZero = includeZeroValue;
                 this.saveConfigAndBuildIfAllowed();
             };
-            spanElement.onclick = ()=>{
+            spanElement.onclick = () => {
                 radioElement.click();
             };
             wrapElement.appendChild(radioElement);
@@ -400,16 +454,21 @@ class BrickCore extends PokerBase {
         });
     };
     wholePageElementArray = [];
-    initWholePageElements = (wrapElement)=>{
-        const { data: { wholePage  } , wholePageElementArray  } = this;
+    initWholePageElements = (wrapElement) => {
+        const {
+            data: {
+                wholePage
+            },
+            wholePageElementArray
+        } = this;
         const i18nHtmlArray = [
             getI18nInnerHTML({
-                en: 'Yes',
+                en_us: 'Yes',
                 zh_cn: '是',
                 zh_tw: '是'
             }),
             getI18nInnerHTML({
-                en: 'No',
+                en_us: 'No',
                 zh_cn: '否',
                 zh_tw: '否'
             })
@@ -417,7 +476,7 @@ class BrickCore extends PokerBase {
         [
             true,
             false
-        ].forEach((wholePageValue)=>{
+        ].forEach((wholePageValue) => {
             const radioElement = createElement('input');
             radioElement.type = 'radio';
             radioElement.name = 'wholePage';
@@ -427,11 +486,11 @@ class BrickCore extends PokerBase {
             }
             const spanElement = createElement('span');
             spanElement.innerHTML = i18nHtmlArray[wholePageValue ? 0 : 1];
-            radioElement.onclick = ()=>{
+            radioElement.onclick = () => {
                 this.data.wholePage = wholePageValue;
                 this.saveConfigAndBuildIfAllowed();
             };
-            spanElement.onclick = ()=>{
+            spanElement.onclick = () => {
                 radioElement.click();
             };
             wrapElement.appendChild(radioElement);
@@ -447,19 +506,27 @@ class BrickCore extends PokerBase {
         '<p class="discoloration"><b><i>☺</i></b><b><i>☺</i></b></p>',
         '<p class="mirror"><b><i>☺</i></b><b><i>☺</i></b></p>'
     ];
-    countIt = (normalCardTimes, changeableCardCount, countPerPage, centerText, CENTER_TEXTS, enAppend, zh_cnAppend, zh_twAppend, enFullArray, zh_cnArray, zh_twArray, en, zh_cn, zh_tw, CHARS, COLORS, BACK_COVERS, pokerKind)=>{
+    countIt = (normalCardTimes, changeableCardCount, countPerPage, centerText, CENTER_TEXTS, enAppend, zh_cnAppend, zh_twAppend, enFullArray, zh_cnArray, zh_twArray, en_us, zh_cn, zh_tw, CHARS, COLORS, BACK_COVERS, pokerKind) => {
         enFullArray.push(enAppend);
         zh_cnArray.push(zh_cnAppend);
         zh_twArray.push(zh_twAppend);
         let notSameBackCover = getI18nInnerHTML({
-            en: en.concat('<br /><small>', enAppend, '</small>'),
+            en_us: en_us.concat('<br /><small>', enAppend, '</small>'),
             zh_cn: zh_cn.concat('<br />', zh_cnAppend),
             zh_tw: zh_tw.concat('<br />', zh_twAppend)
         });
-        const { DECOR_COUNT , NORMAL_CARD_ARRAY , CHANGEABLE_CARD_ARRAY , data: { includeZero , wholePage  }  } = this;
+        const {
+            DECOR_COUNT,
+            NORMAL_CARD_ARRAY,
+            CHANGEABLE_CARD_ARRAY,
+            data: {
+                includeZero,
+                wholePage
+            }
+        } = this;
         const isCenters = pokerKind === RummikubPokerKind.center || pokerKind === RummikubPokerKind.centerExtends;
-        for(let normalCardLoop = 0; normalCardLoop < normalCardTimes; ++normalCardLoop){
-            for(let colorIndex = 1; colorIndex <= DECOR_COUNT; ++colorIndex){
+        for (let normalCardLoop = 0; normalCardLoop < normalCardTimes; ++normalCardLoop) {
+            for (let colorIndex = 1; colorIndex <= DECOR_COUNT; ++colorIndex) {
                 const color = colorIndex.toString();
                 if (includeZero) {
                     CHARS.push('0');
@@ -467,7 +534,7 @@ class BrickCore extends PokerBase {
                     COLORS.push(color);
                     this.computedData.isCenters.push(isCenters);
                 }
-                NORMAL_CARD_ARRAY.forEach((__char)=>{
+                NORMAL_CARD_ARRAY.forEach((__char) => {
                     CHARS.push(__char);
                     CENTER_TEXTS.push(centerText);
                     COLORS.push(color);
@@ -476,9 +543,9 @@ class BrickCore extends PokerBase {
             }
         }
         const CHANGEABLE_CARD_SYMBOL_COUNT = changeableCardCount / 2;
-        for(let colorIndex1 = 0; colorIndex1 < 2; ++colorIndex1){
+        for (let colorIndex1 = 0; colorIndex1 < 2; ++colorIndex1) {
             const color1 = (colorIndex1 * 2).toString();
-            for(let changeableCardLoop = 0; changeableCardLoop < CHANGEABLE_CARD_SYMBOL_COUNT; ++changeableCardLoop){
+            for (let changeableCardLoop = 0; changeableCardLoop < CHANGEABLE_CARD_SYMBOL_COUNT; ++changeableCardLoop) {
                 const __char = CHANGEABLE_CARD_ARRAY[changeableCardLoop];
                 CHARS.push(__char);
                 CENTER_TEXTS.push(centerText);

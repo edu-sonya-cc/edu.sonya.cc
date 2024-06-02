@@ -221,10 +221,10 @@ var BrickCore = (function (_super) {
             });
             var pokerHtml = getAutomaticPaginationHtmlFromChildList(elementList, MAX_X, MAX_Y);
             computedData.html = latticeHtml.concat(latticeHtmlMirror, pokerHtml, pokerHtml.replace(/<page>/g, '<page style="flex-direction:row-reverse;">'));
-            var en = FILENAME_POSTFIX + "multiplicationtable";
+            var en_us = FILENAME_POSTFIX + "multiplicationtable";
             var zh_cn = FILENAME_POSTFIX + "\u4E58\u6CD5\u53E3\u8BC0\u8868";
             var zh_tw = FILENAME_POSTFIX + "\u4E58\u6CD5\u53E3\u8A23\u8868";
-            computedData.title = { en: en, zh_cn: zh_cn, zh_tw: zh_tw };
+            computedData.title = { en_us: en_us, zh_cn: zh_cn, zh_tw: zh_tw };
         };
         _this.getElementList = function (item, mmToPxScale, PAPER_WIDTH, PAPER_HEIGHT) {
             switch (item.kind) {
@@ -734,16 +734,16 @@ var BrickCore = (function (_super) {
         _this.kindTableColumnInfo = [
             {
                 value: 'numberPoker',
-                captions: { en: 'Number Poker', zh_cn: '数字扑克', zh_tw: '數位撲克' }
+                captions: { en_us: 'Number Poker', zh_cn: '数字扑克', zh_tw: '數位撲克' }
             },
             {
                 value: 'chinesePoker',
-                captions: { en: 'Chinese Poker', zh_cn: '汉字扑克', zh_tw: '漢字撲克' }
+                captions: { en_us: 'Chinese Poker', zh_cn: '汉字扑克', zh_tw: '漢字撲克' }
             },
             {
                 value: 'numberPokerFull',
                 captions: {
-                    en: 'Number Poker Full',
+                    en_us: 'Number Poker Full',
                     zh_cn: '完整数字扑克',
                     zh_tw: '完整數位撲克'
                 }
@@ -751,32 +751,32 @@ var BrickCore = (function (_super) {
             {
                 value: 'chinesePokerFull',
                 captions: {
-                    en: 'Chinese Poker Full',
+                    en_us: 'Chinese Poker Full',
                     zh_cn: '完整汉字扑克',
                     zh_tw: '完整漢字撲克'
                 }
             },
             {
                 value: 'vertical',
-                captions: { en: 'Vertical', zh_cn: '竖格', zh_tw: '豎格' }
+                captions: { en_us: 'Vertical', zh_cn: '竖格', zh_tw: '豎格' }
             },
             {
                 value: 'horizontal',
-                captions: { en: 'Horizontal', zh_cn: '横格', zh_tw: '橫格' }
+                captions: { en_us: 'Horizontal', zh_cn: '横格', zh_tw: '橫格' }
             },
         ];
         _this.scopeTableColumnInfo = [
             {
                 value: 'chinese',
-                captions: { en: 'Chinese', zh_cn: '中式9×9', zh_tw: '中式9×9' }
+                captions: { en_us: 'Chinese', zh_cn: '中式9×9', zh_tw: '中式9×9' }
             },
             {
                 value: 'west',
-                captions: { en: 'West', zh_cn: '西式12×12', zh_tw: '西式12×12' }
+                captions: { en_us: 'West', zh_cn: '西式12×12', zh_tw: '西式12×12' }
             },
             {
                 value: 'india',
-                captions: { en: 'India', zh_cn: '印式19×19', zh_tw: '印式19×19' }
+                captions: { en_us: 'India', zh_cn: '印式19×19', zh_tw: '印式19×19' }
             },
         ];
         _this.createTableBodyRow = function (item) {
@@ -795,27 +795,27 @@ var BrickCore = (function (_super) {
             _this.appendTextareaTd(tr, textStyle, item, 'textStyle', 'string');
         };
         _this.initTableHead = function () {
-            _this.appendTableHeadCell({ en: 'Length', zh_cn: '边长', zh_tw: '邊長' });
-            _this.appendTableHeadCell({ en: 'Scope', zh_cn: '范围', zh_tw: '範圍' });
-            _this.appendTableHeadCell({ en: 'Kind', zh_cn: '类型', zh_tw: '類型' });
+            _this.appendTableHeadCell({ en_us: 'Length', zh_cn: '边长', zh_tw: '邊長' });
+            _this.appendTableHeadCell({ en_us: 'Scope', zh_cn: '范围', zh_tw: '範圍' });
+            _this.appendTableHeadCell({ en_us: 'Kind', zh_cn: '类型', zh_tw: '類型' });
             _this.appendTableHeadCell({
-                en: 'Poker Include Zero',
+                en_us: 'Poker Include Zero',
                 zh_cn: '扑克带零',
                 zh_tw: '撲克帶零'
             });
-            _this.appendTableHeadCell({ en: 'Copies', zh_cn: '份数', zh_tw: '份數' });
+            _this.appendTableHeadCell({ en_us: 'Copies', zh_cn: '份数', zh_tw: '份數' });
             _this.appendTableHeadCell({
-                en: 'Inner Line Style',
+                en_us: 'Inner Line Style',
                 zh_cn: '内部线样式',
                 zh_tw: '內部線樣式'
             });
             _this.appendTableHeadCell({
-                en: 'Outer Line Style',
+                en_us: 'Outer Line Style',
                 zh_cn: '外边线样式',
                 zh_tw: '外邊線樣式'
             });
             _this.appendTableHeadCell({
-                en: 'Text Style',
+                en_us: 'Text Style',
                 zh_cn: '文本样式',
                 zh_tw: '文字樣式'
             });

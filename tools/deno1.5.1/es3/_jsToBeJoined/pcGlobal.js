@@ -198,51 +198,51 @@ System.register("pcGlobal", [], function (exports_1, context_1) {
                             id: "topMenuHome",
                             kind: "a",
                             link: "" + HOME_URL,
-                            titles: { en: "Home", zh_cn: "\u9996\u9875", zh_tw: "\u9996\u9801" }
+                            titles: { en_us: "Home", zh_cn: "\u9996\u9875", zh_tw: "\u9996\u9801" }
                         },
                         {
                             id: "topMenuBricks",
                             kind: "a",
                             link: HOME_URL + "?go=bricks&kind=0&page=1",
-                            titles: { en: "Tools", zh_cn: "\u629B\u7816\u5F15\u7389", zh_tw: "\u629B\u78DA\u5F15\u7389" }
+                            titles: { en_us: "Tools", zh_cn: "\u629B\u7816\u5F15\u7389", zh_tw: "\u629B\u78DA\u5F15\u7389" }
                         },
                         {
                             id: "topMenuTreasures",
                             kind: "a",
                             link: HOME_URL + "?go=treasures&page=1",
-                            titles: { en: "Treasures", zh_cn: "\u7269\u534E\u5929\u5B9D", zh_tw: "\u7269\u83EF\u5929\u5BF6" }
+                            titles: { en_us: "Treasures", zh_cn: "\u7269\u534E\u5929\u5B9D", zh_tw: "\u7269\u83EF\u5929\u5BF6" }
                         },
                         {
                             id: "topMenuStories",
                             kind: "a",
                             link: HOME_URL + "?go=stories&page=1",
-                            titles: { en: "Growings", zh_cn: "\u6210\u957F\u8DB3\u8FF9", zh_tw: "\u6210\u9577\u8DB3\u8FF9" }
+                            titles: { en_us: "Growings", zh_cn: "\u6210\u957F\u8DB3\u8FF9", zh_tw: "\u6210\u9577\u8DB3\u8FF9" }
                         },
                         {
                             id: "topMenuAbout",
                             kind: "a",
                             link: HOME_URL + "?go=about",
-                            titles: { en: "About", zh_cn: "\u5173\u4E8E\u6211\u4EEC", zh_tw: "\u95DC\u65BC\u6211\u5011" }
+                            titles: { en_us: "About", zh_cn: "\u5173\u4E8E\u6211\u4EEC", zh_tw: "\u95DC\u65BC\u6211\u5011" }
                         },
                         {
                             id: "topMenuLanguage",
                             kind: "select",
                             link: "onChangeLanuage",
-                            titles: { en: "Language", zh_cn: "\u8BED\u8A00", zh_tw: "\u8A9E\u8A00" },
-                            options: "<option value='en'>English</option><option value='zh_cn'>简体</option><option value='zh_tw'>繁體</option>",
+                            titles: { en_us: "Language", zh_cn: "\u8BED\u8A00", zh_tw: "\u8A9E\u8A00" },
+                            options: "<option value='en_us'>English</option><option value='zh_cn'>简体</option><option value='zh_tw'>繁體</option>",
                             onchange: "onChangeLanuage"
                         },
                         {
                             id: "topMenuGithub",
                             kind: "a",
                             link: "https://github.com/edu-sonya-cc/edu.sonya.cc",
-                            titles: { en: "", zh_cn: "", zh_tw: "" }
+                            titles: { en_us: "", zh_cn: "", zh_tw: "" }
                         },
                         {
                             id: "topMenuSearch",
                             kind: "button",
                             link: "",
-                            titles: { en: "", zh_cn: "", zh_tw: "" },
+                            titles: { en_us: "", zh_cn: "", zh_tw: "" },
                             onclick: "onShowSearchRegion"
                         },
                     ];
@@ -269,7 +269,7 @@ System.register("pcGlobal", [], function (exports_1, context_1) {
                         var errorTip = "";
                         var title = "";
                         switch (getCurrentLang()) {
-                            case "en":
+                            case "en_us":
                                 title = "Add to favorite";
                                 errorTip =
                                     "Add to favorite failed, please press Ctrl + D or Command + D, Or manually set in the browser.";

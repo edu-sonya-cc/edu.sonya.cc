@@ -452,33 +452,33 @@ var BrickCore = (function (_super) {
             var NOW = new Date();
             var LANG = getCurrentLang();
             var i18nSubject = {
-                en: 'Five minute pass',
+                en_us: 'Five minute pass',
                 zh_cn: '五分钟闯关',
                 zh_tw: '五分鐘闖關'
             };
             var i18nSeparator = {
-                en: '_',
+                en_us: '_',
                 zh_cn: '：',
                 zh_tw: '：'
             };
             var i18nSubtitlePrefix = {
-                en: '____ ____, ',
+                en_us: '____ ____, ',
                 zh_cn: '',
                 zh_tw: ''
             };
             var i18nSubtitlePostfix = {
-                en: '',
+                en_us: '',
                 zh_cn: '年____月____日',
                 zh_tw: '年____月____日'
             };
             var i18nAnswerFlag = {
-                en: 'Answer',
+                en_us: 'Answer',
                 zh_cn: '答案',
                 zh_tw: '答案'
             };
             var _c = _this.data, year = _c.year, month = _c.month, day = _c.day;
             var i18nSubtitle = {
-                en: "<span class=\"subtitleDay\">" + day + "</span> <span class=\"subtitleMonth\">" + month + "</span>, <span class=\"subtitleYear\">" + year + "</span>",
+                en_us: "<span class=\"subtitleDay\">" + day + "</span> <span class=\"subtitleMonth\">" + month + "</span>, <span class=\"subtitleYear\">" + year + "</span>",
                 zh_cn: "<span class=\"subtitleYear\">" + year + "</span>\u5E74<span class=\"subtitleMonth\">" + month + "</span>\u6708<span class=\"subtitleDay\">" + day + "</span>\u65E5",
                 zh_tw: "<span class=\"subtitleYear\">" + year + "</span>\u5E74<span class=\"subtitleMonth\">" + month + "</span>\u6708<span class=\"subtitleDay\">" + day + "</span>\u65E5"
             };
@@ -494,10 +494,10 @@ var BrickCore = (function (_super) {
                     return kind;
                 }).join('_and_'))
                 : '');
-            var en = FILENAME_POSTFIX + "mathStage_" + titlePostfix;
+            var en_us = FILENAME_POSTFIX + "mathStage_" + titlePostfix;
             var zh_cn = FILENAME_POSTFIX + "\u6570\u5B66\u4E94\u5206\u949F\u95EF\u5173_" + titlePostfix;
             var zh_tw = FILENAME_POSTFIX + "\u6578\u5B78\u4E94\u5206\u9418\u95D6\u95DC_" + titlePostfix;
-            computedData.title = { en: en, zh_cn: zh_cn, zh_tw: zh_tw };
+            computedData.title = { en_us: en_us, zh_cn: zh_cn, zh_tw: zh_tw };
             var pageSubjectRowLeftHtml = '<cell class="subjectLeft"><div>edu.sonya.cc</div></cell>';
             var pageSubjectRowCenterHtml = "<cell class=\"subjectCenter\">" + HTML_SUBJECT + HTML_SUBTITLE + "</cell>";
             var questionPageSubjectRowRightHtml = "<cell class=\"subjectRight\">~reporterPageIndex~/~reporterPageCount~</cell>";
@@ -1203,31 +1203,31 @@ var BrickCore = (function (_super) {
             _this.appendReadonlyTd(tr, rowCountPerPage);
         };
         _this.initTableHead = function () {
-            _this.appendTableHeadCell({ en: 'Catalog', zh_cn: '大类', zh_tw: '大類' });
-            _this.appendTableHeadCell({ en: 'Scope', zh_cn: '范围', zh_tw: '範圍' });
-            _this.appendTableHeadCell({ en: 'Rows', zh_cn: '行数', zh_tw: '行數' });
+            _this.appendTableHeadCell({ en_us: 'Catalog', zh_cn: '大类', zh_tw: '大類' });
+            _this.appendTableHeadCell({ en_us: 'Scope', zh_cn: '范围', zh_tw: '範圍' });
+            _this.appendTableHeadCell({ en_us: 'Rows', zh_cn: '行数', zh_tw: '行數' });
             _this.appendTableHeadCell({
-                en: 'Independent Pagination',
+                en_us: 'Independent Pagination',
                 zh_cn: '独立分页',
                 zh_tw: '獨立分頁'
             });
             _this.appendTableHeadCell({
-                en: 'Text Style',
+                en_us: 'Text Style',
                 zh_cn: '文本样式',
                 zh_tw: '文字樣式'
             });
             _this.appendTableHeadCell({
-                en: 'Count Per Row',
+                en_us: 'Count Per Row',
                 zh_cn: '每行题数',
                 zh_tw: '每行題數'
             });
             _this.appendTableHeadCell({
-                en: 'Item Row Count',
+                en_us: 'Item Row Count',
                 zh_cn: '题目占行',
                 zh_tw: '題目占行'
             });
             _this.appendTableHeadCell({
-                en: 'Item Count Per Page',
+                en_us: 'Item Count Per Page',
                 zh_cn: '每页题行',
                 zh_tw: '每頁題行'
             });
@@ -1841,14 +1841,14 @@ var BrickCore = (function (_super) {
             var _a = _this, configCoreElement = _a.configCoreElement, getWrapElement = _a.getWrapElement, idOrClassPrefix = _a.idOrClassPrefix, initTextboxElement = _a.initTextboxElement, initRadioGroupByBooleanOrNumberValue = _a.initRadioGroupByBooleanOrNumberValue;
             var wrapElement;
             wrapElement = getWrapElement({
-                en: 'Date (Not Saved)',
+                en_us: 'Date (Not Saved)',
                 zh_cn: '日期（不存储）',
                 zh_tw: '日期（不存儲）'
             });
             wrapElement.id = idOrClassPrefix + "DateWrap";
             _this.initDateElements(wrapElement);
             wrapElement = getWrapElement({
-                en: 'Arithmetic and Font Size',
+                en_us: 'Arithmetic and Font Size',
                 zh_cn: '算法与字号',
                 zh_tw: '算法與字號'
             });
@@ -1857,7 +1857,7 @@ var BrickCore = (function (_super) {
                 {
                     value: false,
                     i18nHtml: getI18nInnerHTML({
-                        en: 'Normal',
+                        en_us: 'Normal',
                         zh_cn: '常规',
                         zh_tw: '常規'
                     })
@@ -1865,19 +1865,19 @@ var BrickCore = (function (_super) {
                 {
                     value: true,
                     i18nHtml: getI18nInnerHTML({
-                        en: 'Mental',
+                        en_us: 'Mental',
                         zh_cn: '口算',
                         zh_tw: '口算'
                     })
                 },
             ], 'onlyMentalArithmetic', _this.onlyMentalArithmeticRadioArray, wrapElement);
             initTextboxElement({
-                en: 'Subject:',
+                en_us: 'Subject:',
                 zh_cn: '标题：',
                 zh_tw: '標題：'
             }, 'pageSubjectFontSize', _this.pageSubjectFontSizeElement, wrapElement);
             initTextboxElement({
-                en: 'Question:',
+                en_us: 'Question:',
                 zh_cn: '问题：',
                 zh_tw: '問題：'
             }, 'questionFontSize', _this.questionFontSizeElement, wrapElement);
@@ -1895,7 +1895,7 @@ var BrickCore = (function (_super) {
             wrapElement.appendChild(span);
             var yearLabel = createElement('label');
             yearLabel.innerHTML = getI18nInnerHTML({
-                en: 'Year:',
+                en_us: 'Year:',
                 zh_cn: '年：',
                 zh_tw: '年：'
             });
@@ -1911,7 +1911,7 @@ var BrickCore = (function (_super) {
             span.appendChild(yearElement);
             var monthLabel = createElement('label');
             monthLabel.innerHTML = getI18nInnerHTML({
-                en: 'Month:',
+                en_us: 'Month:',
                 zh_cn: '月：',
                 zh_tw: '月：'
             });
@@ -1927,7 +1927,7 @@ var BrickCore = (function (_super) {
             span.appendChild(monthElement);
             var dayLabel = createElement('label');
             dayLabel.innerHTML = getI18nInnerHTML({
-                en: 'Day:',
+                en_us: 'Day:',
                 zh_cn: '日：',
                 zh_tw: '日：'
             });

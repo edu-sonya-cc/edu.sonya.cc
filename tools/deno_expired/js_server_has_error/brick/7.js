@@ -3,7 +3,7 @@
 // This code was bundled using `deno bundle` and it's not recommended to edit it manually
 
 var MathPokerKind;
-(function(MathPokerKind) {
+(function (MathPokerKind) {
     MathPokerKind[MathPokerKind["none"] = 0] = "none";
     MathPokerKind[MathPokerKind["tens"] = 1] = "tens";
     MathPokerKind[MathPokerKind["oneToFive"] = 2] = "oneToFive";
@@ -13,7 +13,7 @@ var MathPokerKind;
 })(MathPokerKind || (MathPokerKind = {}));
 const DefaultMathPokerKind = 31;
 class BrickCore extends PokerBase {
-    constructor(){
+    constructor() {
         super({
             pokerWidth: 40,
             pokerHeight: 56,
@@ -28,15 +28,36 @@ class BrickCore extends PokerBase {
             pokerCss: `page.forePage div{display:inline-flex;font-size:0.5em;justify-content:space-between;flex:100%;width:70%;height:100%;line-height:1em;}`
         });
     }
-    getForePageHtml = ()=>{
-        let { data: { paperSize , maxX: MAX_X , maxY: MAX_Y , pokerWidth: CARD_WIDTH , pokerHeight: CARD_HEIGHT , tensCenterTextShowed  } , computedData: { count: COUNT , chars: CHARS , centerTexts: CENTER_TEXTS , colors: COLORS  }  } = this;
+    getForePageHtml = () => {
+        let {
+            data: {
+                paperSize,
+                maxX: MAX_X,
+                maxY: MAX_Y,
+                pokerWidth: CARD_WIDTH,
+                pokerHeight: CARD_HEIGHT,
+                tensCenterTextShowed
+            },
+            computedData: {
+                count: COUNT,
+                chars: CHARS,
+                centerTexts: CENTER_TEXTS,
+                colors: COLORS
+            }
+        } = this;
         const MAX_SYMBOL_INDEX = COUNT - 1;
-        const PAGE_START = `<page class="forePage ${paperSize}">`, PAGE_END = '</page>';
-        const ROW_START = '<row>', ROW_END = '</row>';
-        const CELL_START = '<cell>', CELL_END = '</cell>';
-        const TOP_START = '<top>', TOP_END = '</top>';
-        const BOTTOM_START = '<bottom>', BOTTOM_END = '</bottom>';
-        const CENTER_START = '<center>', CENTER_END = '</center>';
+        const PAGE_START = `<page class="forePage ${paperSize}">`,
+            PAGE_END = '</page>';
+        const ROW_START = '<row>',
+            ROW_END = '</row>';
+        const CELL_START = '<cell>',
+            CELL_END = '</cell>';
+        const TOP_START = '<top>',
+            TOP_END = '</top>';
+        const BOTTOM_START = '<bottom>',
+            BOTTOM_END = '</bottom>';
+        const CENTER_START = '<center>',
+            CENTER_END = '</center>';
         const TEXT_END = '</text>';
         const ROW_COUNT = Math.floor(MAX_Y / CARD_HEIGHT);
         const COLUMN_COUNT = Math.floor(MAX_X / CARD_WIDTH);
@@ -44,11 +65,11 @@ class BrickCore extends PokerBase {
         const PAGE_COUNT = Math.ceil(COUNT / COUNT_PER_PAGE);
         let symbolIndex = 0;
         let html = '';
-        for(let loopOfPage = 0; loopOfPage < PAGE_COUNT; ++loopOfPage){
+        for (let loopOfPage = 0; loopOfPage < PAGE_COUNT; ++loopOfPage) {
             html += PAGE_START;
-            for(let loopOfRow = 0; loopOfRow < ROW_COUNT; ++loopOfRow){
+            for (let loopOfRow = 0; loopOfRow < ROW_COUNT; ++loopOfRow) {
                 html += ROW_START;
-                for(let loopOfCol = 0; loopOfCol < COLUMN_COUNT; ++loopOfCol){
+                for (let loopOfCol = 0; loopOfCol < COLUMN_COUNT; ++loopOfCol) {
                     html += CELL_START;
                     if (symbolIndex <= MAX_SYMBOL_INDEX) {
                         const __char = CHARS[symbolIndex] || '_';
@@ -68,12 +89,28 @@ class BrickCore extends PokerBase {
         }
         return html;
     };
-    getBackPageHtml = ()=>{
-        let { data: { paperSize , maxX: MAX_X , maxY: MAX_Y , pokerWidth: CARD_WIDTH , pokerHeight: CARD_HEIGHT  } , computedData: { count: COUNT , backCovers: BACK_COVERS  }  } = this;
-        const PAGE_START = `<page class="backPage ${paperSize}" dir="rtl">`, PAGE_END = '</page>';
-        const ROW_START = '<row>', ROW_END = '</row>';
-        const CELL_START = '<cell>', CELL_END = '</cell>';
-        const CENTER_START = '<center>', CENTER_END = '</center>';
+    getBackPageHtml = () => {
+        let {
+            data: {
+                paperSize,
+                maxX: MAX_X,
+                maxY: MAX_Y,
+                pokerWidth: CARD_WIDTH,
+                pokerHeight: CARD_HEIGHT
+            },
+            computedData: {
+                count: COUNT,
+                backCovers: BACK_COVERS
+            }
+        } = this;
+        const PAGE_START = `<page class="backPage ${paperSize}" dir="rtl">`,
+            PAGE_END = '</page>';
+        const ROW_START = '<row>',
+            ROW_END = '</row>';
+        const CELL_START = '<cell>',
+            CELL_END = '</cell>';
+        const CENTER_START = '<center>',
+            CENTER_END = '</center>';
         const MAX_SYMBOL_INDEX = COUNT - 1;
         const ROW_COUNT = Math.floor(MAX_Y / CARD_HEIGHT);
         const COLUMN_COUNT = Math.floor(MAX_X / CARD_WIDTH);
@@ -82,11 +119,11 @@ class BrickCore extends PokerBase {
         const lastItem = BACK_COVERS[BACK_COVERS.length - 1];
         let symbolIndex = 0;
         let html = '';
-        for(let loopOfPage = 0; loopOfPage < PAGE_COUNT; ++loopOfPage){
+        for (let loopOfPage = 0; loopOfPage < PAGE_COUNT; ++loopOfPage) {
             html += PAGE_START;
-            for(let loopOfRow = 0; loopOfRow < ROW_COUNT; ++loopOfRow){
+            for (let loopOfRow = 0; loopOfRow < ROW_COUNT; ++loopOfRow) {
                 html += ROW_START;
-                for(let loopOfCol = 0; loopOfCol < COLUMN_COUNT; ++loopOfCol){
+                for (let loopOfCol = 0; loopOfCol < COLUMN_COUNT; ++loopOfCol) {
                     html += CELL_START;
                     if (symbolIndex <= MAX_SYMBOL_INDEX) {
                         html += CENTER_START.concat(BACK_COVERS[symbolIndex] || lastItem, CENTER_END);
@@ -120,12 +157,12 @@ class BrickCore extends PokerBase {
     ONE_TO_HUNDRED_ARRAY = getNumbersArray(1, 100);
     ONE_TO_HUNDRED_TIMES = 4;
     ONE_TO_HUNDRED_CENTER_TEXT = '';
-    countPokerDataAndComputedData = (pokerKind, countPerPage)=>{
+    countPokerDataAndComputedData = (pokerKind, countPerPage) => {
         if (pokerKind === 0) pokerKind = DefaultMathPokerKind;
-        const en = `${FILENAME_POSTFIX}Math Poker`;
+        const en_us = `${FILENAME_POSTFIX}Math Poker`;
         const zh_cn = `${FILENAME_POSTFIX}数学扑克`;
         const zh_tw = `${FILENAME_POSTFIX}數學撲克`;
-        const enBackCover = en.split('_').join('<br />');
+        const enBackCover = en_us.split('_').join('<br />');
         const zh_cnBackCover = zh_cn.split('_').join('<br />');
         const zh_twBackCover = zh_tw.split('_').join('<br />');
         const enArray = [];
@@ -134,7 +171,7 @@ class BrickCore extends PokerBase {
         const zh_twArray = [];
         let backCover = '';
         let title = {
-            en,
+            en_us,
             zh_cn,
             zh_tw
         };
@@ -163,10 +200,10 @@ class BrickCore extends PokerBase {
             enArray.push('oneToHundred');
             count += this.countIt('1-100', '1-100', '1-100', this.ONE_TO_HUNDRED_ARRAY, enFullArray, zh_cnArray, zh_twArray, enBackCover, zh_cnBackCover, zh_twBackCover, CENTER_TEXTS, CHARS, countPerPage, BACK_COVERS, this.ONE_TO_HUNDRED_TIMES, this.ONE_TO_HUNDRED_CENTER_TEXT, COLORS);
         }
-        switch(enArray.length){
+        switch (enArray.length) {
             case 0:
                 backCover = getI18nInnerHTML({
-                    en: enBackCover,
+                    en_us: enBackCover,
                     zh_cn: zh_cnBackCover,
                     zh_tw: zh_twBackCover
                 });
@@ -176,31 +213,31 @@ class BrickCore extends PokerBase {
                 const zh_cnFirstItem = zh_cnArray[0];
                 const zh_twFirstItem = zh_twArray[0];
                 backCover = getI18nInnerHTML({
-                    en: enBackCover.concat('<br /><br />', enFirstItem),
+                    en_us: enBackCover.concat('<br /><br />', enFirstItem),
                     zh_cn: zh_cnBackCover.concat('<br /><br />', zh_cnFirstItem),
                     zh_tw: zh_twBackCover.concat('<br /><br />', zh_twFirstItem)
                 });
-                title.en += '_'.concat(enFullArray[0]);
+                title.en_us += '_'.concat(enFullArray[0]);
                 title.zh_cn += '_'.concat(zh_cnFirstItem);
                 title.zh_tw += '_'.concat(zh_twFirstItem);
                 break;
             default:
                 if (enArray.length === 5) {
                     backCover = getI18nInnerHTML({
-                        en: enBackCover,
+                        en_us: enBackCover,
                         zh_cn: zh_cnBackCover,
                         zh_tw: zh_twBackCover
                     });
-                    title.en += ' Mixed_ALL';
+                    title.en_us += ' Mixed_ALL';
                     title.zh_cn += '混合_所有';
                     title.zh_tw += '混合_所有';
                 } else {
                     backCover = getI18nInnerHTML({
-                        en: enBackCover.concat('<br /><br /><small>', enArray.join('<br />'), '</small>'),
+                        en_us: enBackCover.concat('<br /><br /><small>', enArray.join('<br />'), '</small>'),
                         zh_cn: zh_cnBackCover.concat('<br /><br /><small>', zh_cnArray.join('<br />'), '</small>'),
                         zh_tw: zh_twBackCover.concat('<br /><br /><small>', zh_twArray.join('<br />'), '</small>')
                     });
-                    title.en += ' Mixed_'.concat(enFullArray.join('_'));
+                    title.en_us += ' Mixed_'.concat(enFullArray.join('_'));
                     title.zh_cn += '混合_'.concat(zh_cnArray.join('_'));
                     title.zh_tw += '混合_'.concat(zh_twArray.join('_'));
                 }
@@ -217,57 +254,66 @@ class BrickCore extends PokerBase {
             pushSameValueTimes(this.computedData.centerTexts, this.TENS_CENTER_TEXT, this.computedData.count - count);
         }
     };
-    updateOtherDataOfPoker = (newData)=>{
-        const { pokerKind  } = newData;
-        for(let pokerKindIndex = 0; pokerKindIndex < 5; ++pokerKindIndex){
+    updateOtherDataOfPoker = (newData) => {
+        const {
+            pokerKind
+        } = newData;
+        for (let pokerKindIndex = 0; pokerKindIndex < 5; ++pokerKindIndex) {
             const pokerKindValue = Math.pow(2, pokerKindIndex);
             const checkboxElement = this.pokerKindElementArray[pokerKindIndex];
             checkboxElement.checked = (pokerKind & pokerKindValue) === pokerKindValue;
         }
-        const { tensCenterTextShowed  } = newData;
-        this.tensCenterTextShowedElementArray.forEach((radioElement)=>{
+        const {
+            tensCenterTextShowed
+        } = newData;
+        this.tensCenterTextShowedElementArray.forEach((radioElement) => {
             radioElement.checked = tensCenterTextShowed === (radioElement.value === 'true');
         });
         this.data.tensCenterTextShowed = tensCenterTextShowed;
     };
-    initOtherElements = ()=>{
+    initOtherElements = () => {
         let wrapElement = this.getWrapElement({
-            en: 'Tens show tips',
+            en_us: 'Tens show tips',
             zh_cn: '凑十显示提示',
             zh_tw: '湊十顯示提示'
         });
         this.initTensCenterTextShowedElements(wrapElement);
     };
-    initPokerKindElements = (wrapElement)=>{
-        const { data: { pokerKind  } , pokerKindElementArray: pokerKindElementArray  } = this;
+    initPokerKindElements = (wrapElement) => {
+        const {
+            data: {
+                pokerKind
+            },
+            pokerKindElementArray: pokerKindElementArray
+        } = this;
         const pokerKindI18nHtmlArray = [
             getI18nInnerHTML({
-                en: '1-9 make up ten',
+                en_us: '1-9 make up ten',
                 zh_cn: '1-9凑十',
                 zh_tw: '1-9凑十'
             }),
             getI18nInnerHTML({
-                en: '1-5',
+                en_us: '1-5',
                 zh_cn: '1-5',
                 zh_tw: '1-5'
             }),
             getI18nInnerHTML({
-                en: '0-9',
+                en_us: '0-9',
                 zh_cn: '0-9',
                 zh_tw: '0-9'
             }),
             getI18nInnerHTML({
-                en: '0-20+-×÷',
+                en_us: '0-20+-×÷',
                 zh_cn: '0-20+-×÷',
                 zh_tw: '0-20+-×÷'
             }),
             getI18nInnerHTML({
-                en: '1-100',
+                en_us: '1-100',
                 zh_cn: '1-100',
                 zh_tw: '1-100'
             })
         ];
-        for(let pokerKindIndex = 0; pokerKindIndex < 5; ++pokerKindIndex){
+        for (let pokerKindIndex = 0; pokerKindIndex < 5; ++pokerKindIndex) {
             const pokerKindValue = Math.pow(2, pokerKindIndex);
             const checkboxElement = createElement('input');
             checkboxElement.type = 'checkbox';
@@ -278,9 +324,9 @@ class BrickCore extends PokerBase {
             }
             const spanElement = createElement('span');
             spanElement.innerHTML = pokerKindI18nHtmlArray[pokerKindIndex];
-            checkboxElement.onclick = ()=>{
+            checkboxElement.onclick = () => {
                 let newValue = 0;
-                pokerKindElementArray.forEach((item)=>{
+                pokerKindElementArray.forEach((item) => {
                     if (item.checked) {
                         newValue |= parseInt(item.value, 0);
                     }
@@ -289,7 +335,7 @@ class BrickCore extends PokerBase {
                 console.log(this.data.pokerKind, pokerKindValue);
                 this.saveConfigAndBuildIfAllowed();
             };
-            spanElement.onclick = ()=>{
+            spanElement.onclick = () => {
                 checkboxElement.click();
             };
             wrapElement.appendChild(checkboxElement);
@@ -298,16 +344,21 @@ class BrickCore extends PokerBase {
         }
     };
     tensCenterTextShowedElementArray = [];
-    initTensCenterTextShowedElements = (wrapElement)=>{
-        const { data: { tensCenterTextShowed  } , tensCenterTextShowedElementArray  } = this;
+    initTensCenterTextShowedElements = (wrapElement) => {
+        const {
+            data: {
+                tensCenterTextShowed
+            },
+            tensCenterTextShowedElementArray
+        } = this;
         const i18nHtmlArray = [
             getI18nInnerHTML({
-                en: 'Yes',
+                en_us: 'Yes',
                 zh_cn: '是',
                 zh_tw: '是'
             }),
             getI18nInnerHTML({
-                en: 'No',
+                en_us: 'No',
                 zh_cn: '否',
                 zh_tw: '否'
             })
@@ -315,7 +366,7 @@ class BrickCore extends PokerBase {
         [
             true,
             false
-        ].forEach((tensCenterTextShowedValue)=>{
+        ].forEach((tensCenterTextShowedValue) => {
             const radioElement = createElement('input');
             radioElement.type = 'radio';
             radioElement.name = 'tensCenterTextShowed';
@@ -325,11 +376,11 @@ class BrickCore extends PokerBase {
             }
             const spanElement = createElement('span');
             spanElement.innerHTML = i18nHtmlArray[tensCenterTextShowedValue ? 0 : 1];
-            radioElement.onclick = ()=>{
+            radioElement.onclick = () => {
                 this.data.tensCenterTextShowed = tensCenterTextShowedValue;
                 this.saveConfigAndBuildIfAllowed();
             };
-            spanElement.onclick = ()=>{
+            spanElement.onclick = () => {
                 radioElement.click();
             };
             wrapElement.appendChild(radioElement);
@@ -337,18 +388,18 @@ class BrickCore extends PokerBase {
             tensCenterTextShowedElementArray.push(radioElement);
         });
     };
-    countIt(enAppend, zh_cnAppend, zh_twAppend, charsArray, enFullArray, zh_cnArray, zh_twArray, en, zh_cn, zh_tw, CENTER_TEXTS, CHARS, countPerPage, BACK_COVERS, times, centerText, COLORS) {
+    countIt(enAppend, zh_cnAppend, zh_twAppend, charsArray, enFullArray, zh_cnArray, zh_twArray, en_us, zh_cn, zh_tw, CENTER_TEXTS, CHARS, countPerPage, BACK_COVERS, times, centerText, COLORS) {
         enFullArray.push(enAppend);
         zh_cnArray.push(zh_cnAppend);
         zh_twArray.push(zh_twAppend);
         let notSameBackCover = getI18nInnerHTML({
-            en: en.concat('<br /><small>', enAppend, '</small>'),
+            en_us: en_us.concat('<br /><small>', enAppend, '</small>'),
             zh_cn: zh_cn.concat('<br />', zh_cnAppend),
             zh_tw: zh_tw.concat('<br />', zh_twAppend)
         });
-        for(let i = 0; i < times; ++i){
+        for (let i = 0; i < times; ++i) {
             const color = (i + 1).toString();
-            charsArray.forEach((__char)=>{
+            charsArray.forEach((__char) => {
                 CHARS.push(__char);
                 CENTER_TEXTS.push(centerText);
                 COLORS.push(color);

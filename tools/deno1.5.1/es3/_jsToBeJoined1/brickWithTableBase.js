@@ -1,9 +1,12 @@
 var BrickWithTableBase = (function (_super) {
     __extends(BrickWithTableBase, _super);
+
     function BrickWithTableBase(appendData, otherComputedData) {
-        var _this = _super.call(this, __assign({ list: [] }, appendData), __assign({}, otherComputedData)) || this;
-        _this.initCoreElementsBeforeTable = function () { };
-        _this.initCoreElementsAfterTable = function () { };
+        var _this = _super.call(this, __assign({
+            list: []
+        }, appendData), __assign({}, otherComputedData)) || this;
+        _this.initCoreElementsBeforeTable = function () {};
+        _this.initCoreElementsAfterTable = function () {};
         _this.tableWrapElement = createElement("div");
         _this.tableElement = createElement("table");
         _this.tableHeadElement = createElement("thead");
@@ -13,7 +16,13 @@ var BrickWithTableBase = (function (_super) {
         _this.idOrClassPrefix = "brickPage";
         _this.initCoreElements = function () {
             var configCoreElement = _this.configCoreElement;
-            var _a = _this, tableWrapElement = _a.tableWrapElement, tableElement = _a.tableElement, tableHeadElement = _a.tableHeadElement, tableBodyElement = _a.tableBodyElement, trHead = _a.trHead, idOrClassPrefix = _a.idOrClassPrefix;
+            var _a = _this,
+                tableWrapElement = _a.tableWrapElement,
+                tableElement = _a.tableElement,
+                tableHeadElement = _a.tableHeadElement,
+                tableBodyElement = _a.tableBodyElement,
+                trHead = _a.trHead,
+                idOrClassPrefix = _a.idOrClassPrefix;
             _this.initCoreElementsBeforeTable();
             _this.initUsableButtonsWrap();
             configCoreElement.appendChild(tableWrapElement);
@@ -24,28 +33,33 @@ var BrickWithTableBase = (function (_super) {
             tableElement.appendChild(tableBodyElement);
             tableHeadElement.appendChild(trHead);
             _this.appendTableHeadCell({
-                en: "Operations",
+                en_us: "Operations",
                 zh_cn: "操作",
                 zh_tw: "操作"
             });
             _this.initTableHead();
         };
-        _this.updateOtherDataLevel3 = function (newData) { };
+        _this.updateOtherDataLevel3 = function (newData) {};
         _this.updateOtherData = function (newData) {
             var list = newData.list;
             _this.data.list.length = 0;
-            list.forEach(function (item) { return _this.data.list.push(item); });
+            list.forEach(function (item) {
+                return _this.data.list.push(item);
+            });
             _this.updateOtherDataLevel3(newData);
             _this.showDataInTable();
         };
         _this.initUsableButtonsWrap = function () {
             var configCoreElement = _this.configCoreElement;
-            var _a = _this, idOrClassPrefix = _a.idOrClassPrefix, list = _a.data.list;
+            var _a = _this,
+                idOrClassPrefix = _a.idOrClassPrefix,
+                list = _a.data.list;
             var usableButtonsWrap = createElement("div");
             configCoreElement.appendChild(usableButtonsWrap);
             usableButtonsWrap.id = idOrClassPrefix + "UsableButtonsWrap";
             _this.getUsableList().forEach(function (_a) {
-                var strongI18n = _a.strongI18n, buttonList = _a.buttonList;
+                var strongI18n = _a.strongI18n,
+                    buttonList = _a.buttonList;
                 var wrapElement = _this.getWrapElement(strongI18n);
                 wrapElement.setAttribute("style", "margin-bottom:1em;");
                 usableButtonsWrap.appendChild(wrapElement);
@@ -53,7 +67,8 @@ var BrickWithTableBase = (function (_super) {
                 span.setAttribute("style", "display:inline-flex;");
                 wrapElement.appendChild(span);
                 buttonList.forEach(function (_a) {
-                    var nameI18n = _a.nameI18n, info = _a.info;
+                    var nameI18n = _a.nameI18n,
+                        info = _a.info;
                     var button = createElement("button");
                     span.appendChild(button);
                     button.type = "button";
@@ -69,7 +84,10 @@ var BrickWithTableBase = (function (_super) {
             });
         };
         _this.showDataInTable = function () {
-            var _a = _this, tableBodyElement = _a.tableBodyElement, trArray = _a.trArray, list = _a.data.list;
+            var _a = _this,
+                tableBodyElement = _a.tableBodyElement,
+                trArray = _a.trArray,
+                list = _a.data.list;
             tableBodyElement.innerHTML = "";
             trArray.length = 0;
             list.forEach(function (item, index) {
@@ -90,7 +108,9 @@ var BrickWithTableBase = (function (_super) {
             span.innerHTML = innerHTML;
         };
         _this.appendTextareaTd = function (tr, value, data, fieldName, valueKind) {
-            if (valueKind === void 0) { valueKind = "string"; }
+            if (valueKind === void 0) {
+                valueKind = "string";
+            }
             var td = createElement("td");
             tr.appendChild(td);
             var textarea = createElement("textarea");
@@ -165,7 +185,8 @@ var BrickWithTableBase = (function (_super) {
             var lang = getCurrentLang();
             var select = createElement("select");
             options.forEach(function (_a) {
-                var value = _a.value, captions = _a.captions;
+                var value = _a.value,
+                    captions = _a.captions;
                 var option = createElement("option");
                 option.value = value;
                 option.setAttribute("i18n", getI18nInnerHTML(captions));
@@ -204,7 +225,9 @@ var BrickWithTableBase = (function (_super) {
                     if (trIndex === -1)
                         return stopEventBubble(event);
                     var newlist = [];
-                    _this.data.list.forEach(function (item) { return newlist.push(item); });
+                    _this.data.list.forEach(function (item) {
+                        return newlist.push(item);
+                    });
                     switch (index) {
                         case 0:
                             if (trIndex === 0)
@@ -224,17 +247,21 @@ var BrickWithTableBase = (function (_super) {
                         default:
                             break;
                     }
-                    _this.updateOtherData({ list: newlist });
+                    _this.updateOtherData({
+                        list: newlist
+                    });
                     _this.build();
                     return stopEventBubble(event);
                 };
             });
         };
         _this.countDataAndComputedDataInBrickWithTableBase = function () {
-            var _a = _this, tableHeadElement = _a.tableHeadElement, list = _a.data.list;
-            tableHeadElement.style.display = list.length
-                ? "table-header-group"
-                : "none";
+            var _a = _this,
+                tableHeadElement = _a.tableHeadElement,
+                list = _a.data.list;
+            tableHeadElement.style.display = list.length ?
+                "table-header-group" :
+                "none";
         };
         return _this;
     }
@@ -242,4 +269,3 @@ var BrickWithTableBase = (function (_super) {
 }(BrickBase));
 
 __instantiate("brickWithTableBase", false);
-

@@ -9,62 +9,62 @@
 /// <reference path='../../types/brickWithTableBase.d.ts' />
 
 /**
- * <en>Hundredth lattice information</en>
+ * <en_us>Hundredth lattice information</en_us>
  * <zh_cn>百数格信息</zh_cn>
  * <zh_tw>百數格資訊</zh_tw>
  */
 type HundredthLatticeInfo = {
   /**
-   * <en>Length</en>
+   * <en_us>Length</en_us>
    * <zh_cn>边长</zh_cn>
    * <zh_tw>邊長</zh_tw>
    */
   length: number;
 
   /**
-   * <en>Show Number</en>
+   * <en_us>Show Number</en_us>
    * <zh_cn>显示数字</zh_cn>
    * <zh_tw>顯示數字</zh_tw>
    */
   showNumber: boolean;
 
   /**
-   * <en>Digital Overlay</en>
+   * <en_us>Digital Overlay</en_us>
    * <zh_cn>数字叠加</zh_cn>
    * <zh_tw>數位疊加</zh_tw>
    */
   digitalOverlay: boolean;
 
   /**
-   * <en>Start Number</en>
+   * <en_us>Start Number</en_us>
    * <zh_cn>开始值</zh_cn>
    * <zh_tw>開始值</zh_tw>
    */
   startNumber: number;
 
   /**
-   * <en>Count</en>
+   * <en_us>Count</en_us>
    * <zh_cn>数量</zh_cn>
    * <zh_tw>數量</zh_tw>
    */
   count: number;
 
   /**
-   * <en>Inner Line Style</en>
+   * <en_us>Inner Line Style</en_us>
    * <zh_cn>内部线样式</zh_cn>
    * <zh_tw>內部線樣式</zh_tw>
    */
   innerLineStyle: string;
 
   /**
-   * <en>Outer Line Style</en>
+   * <en_us>Outer Line Style</en_us>
    * <zh_cn>外边线样式</zh_cn>
    * <zh_tw>外邊線線樣</zh_tw>
    */
   outerLineStyle: string;
 
   /**
-   * <en>Text Style</en>
+   * <en_us>Text Style</en_us>
    * <zh_cn>文本样式</zh_cn>
    * <zh_tw>文字樣式</zh_tw>
    */
@@ -72,13 +72,13 @@ type HundredthLatticeInfo = {
 };
 
 /**
- * <en>
+ * <en_us>
  * Function:
  * Create:
  * History:
  * Reference:
  * Description:
- * </en>
+ * </en_us>
  *
  * <zh_cn>
  * 功能：
@@ -242,10 +242,10 @@ class BrickCore extends BrickWithTableBase {
     );
     html += '</page>';
 
-    const en = `${FILENAME_POSTFIX}hundredthLattice`;
+    const en_us = `${FILENAME_POSTFIX}hundredthLattice`;
     const zh_cn = `${FILENAME_POSTFIX}百数格`;
     const zh_tw = `${FILENAME_POSTFIX}百數格`;
-    computedData.title = { en, zh_cn, zh_tw };
+    computedData.title = { en_us, zh_cn, zh_tw };
 
     computedData.css = css;
     computedData.html = html;
@@ -291,35 +291,35 @@ class BrickCore extends BrickWithTableBase {
    * 初始化表头
    */
   protected initTableHead = (): void => {
-    this.appendTableHeadCell({ en: 'Length', zh_cn: '边长', zh_tw: '邊長' });
+    this.appendTableHeadCell({ en_us: 'Length', zh_cn: '边长', zh_tw: '邊長' });
     this.appendTableHeadCell({
-      en: 'Show Number',
+      en_us: 'Show Number',
       zh_cn: '显示数字',
       zh_tw: '顯示數字',
     });
     this.appendTableHeadCell({
-      en: 'Digital Overlay',
+      en_us: 'Digital Overlay',
       zh_cn: '数字叠加',
       zh_tw: '數位疊加',
     });
     this.appendTableHeadCell({
-      en: 'Start Number',
+      en_us: 'Start Number',
       zh_cn: '开始值',
       zh_tw: '開始值',
     });
-    this.appendTableHeadCell({ en: 'Count', zh_cn: '数量', zh_tw: '數量' });
+    this.appendTableHeadCell({ en_us: 'Count', zh_cn: '数量', zh_tw: '數量' });
     this.appendTableHeadCell({
-      en: 'Inner Line Style',
+      en_us: 'Inner Line Style',
       zh_cn: '内部线样式',
       zh_tw: '內部線樣式',
     });
     this.appendTableHeadCell({
-      en: 'Outer Line Style',
+      en_us: 'Outer Line Style',
       zh_cn: '外边线样式',
       zh_tw: '外邊線樣式',
     });
     this.appendTableHeadCell({
-      en: 'Text Style',
+      en_us: 'Text Style',
       zh_cn: '文本样式',
       zh_tw: '文字樣式',
     });
@@ -343,7 +343,7 @@ class BrickCore extends BrickWithTableBase {
     const buttonList = [
       {
         nameI18n: {
-          en: 'Hide numbers',
+          en_us: 'Hide numbers',
           zh_cn: '无数字',
           zh_tw: '無數字',
         },
@@ -360,7 +360,7 @@ class BrickCore extends BrickWithTableBase {
       },
       {
         nameI18n: {
-          en: 'Start from zero',
+          en_us: 'Start from zero',
           zh_cn: '从0开始',
           zh_tw: '從0開始',
         },
@@ -377,7 +377,7 @@ class BrickCore extends BrickWithTableBase {
       },
       {
         nameI18n: {
-          en: 'Start from one',
+          en_us: 'Start from one',
           zh_cn: '从1开始',
           zh_tw: '從1開始',
         },
@@ -395,7 +395,7 @@ class BrickCore extends BrickWithTableBase {
     ];
 
     const strongI18n: I18nable = {
-      en: 'Shortcuts',
+      en_us: 'Shortcuts',
       zh_cn: '快捷按钮',
       zh_tw: '快捷按鈕',
     };
