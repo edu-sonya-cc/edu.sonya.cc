@@ -266,7 +266,7 @@ Some of them are turned into dice. See the <a href="?go=brick&id=9">Dice Page</a
 		},
 		summary: {
 			en_us:
-				`Gushi building blocks, originated in Belgium, are often used to teach mathematics. Make this page for the first time and print it on ten color paper to get ten building blocks. After improvement, the top and bottom can be removed to avoid the influence of thickness, and the number can also be stacked to facilitate reciting pithy formula.`,
+				`Gu's building blocks, originated in Belgium, are often used to teach mathematics. Make this page for the first time and print it on ten color paper to get ten building blocks. After improvement, the top and bottom can be removed to avoid the influence of thickness, and the number can also be stacked to facilitate reciting pithy formula.`,
 			zh_cn:
 				`古氏积木，起源于比利时，常用于教数学。初作本页，以十色纸打印，可得十数积木。后作改进，可去顶底，以避厚度影响，亦可叠加计数，以利背诵口诀。`,
 			zh_tw:
@@ -389,8 +389,8 @@ After thinking about football again, due to its complexity and failure, Jin Bo s
 		},
 		summary: {
 			en_us:
-				`Chinese style 99, 99, 80 together, one as one stop, since ancient times, recited: small 99, 45; In the ninth year, there are 81 items. This page is developed because it can be changed into a card and used for games.<br/>
-There is also Western style, multiplying to twelve; There is another print, multiply to nineteen.<br/>
+				`Chinese style, begin from 9 multiplies 9 equals 81, and end at one multiplies one equals 1, since ancient times, recited: small 99, 45; In the ninth year, there are 81 items. This page is developed because it can be changed into a card and used for games.<br/>
+				There is also Western style, multiplying to twelve. There is another India style, multiply to nineteen.<br/>
 And because of the hundred grid game ("hundred grid" page, no digital version, two rows and two columns playing at the same time, you can get 20 × 20 grid), plus horizontal grid and vertical grid, which is convenient for printing, to help the game.`,
 			zh_cn:
 				`中式九九，九九八十一起，一一如一止，自古诵之：小九九者，四十五项；大九九者，八十一项。疑可改为卡片，而为游戏之用，故而开发本页。<br/>
