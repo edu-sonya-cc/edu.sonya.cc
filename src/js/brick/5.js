@@ -285,7 +285,7 @@ var BrickCore = (function (_super) {
         };
         _this.INITIAL_ARRAY = "b,p,m,f,d,t,n,l,g,k,h,j,q,x,zh,ch,sh,r,z,c,s,y,w,"
             .split(",");
-        _this.VOWEL_ARRAY = "a,o,e,i,u,ü,ai,ei,ui,ao,ou,iu,ie,üe,er,an,en_us,in,un,ün,ang,eng,ing,ong"
+        _this.VOWEL_ARRAY = "a,o,e,i,u,ü,ai,ei,ui,ao,ou,iu,ie,üe,er,an,en,in,un,ün,ang,eng,ing,ong"
             .split(",");
         _this.OVERALL_READING_ARRAY = "zhi,chi,shi,ri,zi,ci,si,yi,wu,yu,ye,yue,yuan,yin,yun,ying".split(",");
         _this.THREE_SYLLABLE_SPELLING_AND_TONE_ARRAY = "ia,ua,uo,uai,iao,ian,iang,uan,uang,iong,üan,ˉ,ˊ,ˇ,ˋ,ˉ,ˊ,ˇ,ˋ,".split(",");
