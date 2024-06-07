@@ -27,13 +27,24 @@
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+            ({
+                    __proto__: []
+                }
+                instanceof Array && function (d, b) {
+                    d.__proto__ = b;
+                }) ||
+            function (d, b) {
+                for (var p in b)
+                    if (b.hasOwnProperty(p)) d[p] = b[p];
+            };
         return extendStatics(d, b);
     };
     return function (d, b) {
         extendStatics(d, b);
-        function __() { this.constructor = d; }
+
+        function __() {
+            this.constructor = d;
+        }
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
@@ -93,6 +104,7 @@ var PinyinPokerKindCount = 5;
 var DefaultPinyinPokerKind = 31;
 var BrickCore = /** @class */ (function (_super) {
     __extends(BrickCore, _super);
+
     function BrickCore() {
         var _this = _super.call(this, {
             pokerWidth: 40,
@@ -112,33 +124,45 @@ var BrickCore = /** @class */ (function (_super) {
             pokerCss: "\n      page.forePage{font-family:'KaiTi';}\n      .kaiti{font-family:kaiti;}\n      .normal-weight {font-weight:normal; }\n      "
         }) || this;
         _this.getForePageHtml = function () {
-            var _a = _this, _b = _a.data, paperSize = _b.paperSize, 
-            // isLandscape,
-            MAX_X = _b.maxX, MAX_Y = _b.maxY, 
-            // pageMarginTop,
-            // pageMarginBottom,
-            // pageMarginLeft,
-            // pageMarginRight,
-            CARD_WIDTH = _b.pokerWidth, CARD_HEIGHT = _b.pokerHeight, 
-            // fontSize,
-            // backFontSize
-            // pokerKind,
-            useSameBackCover = _b.useSameBackCover, _c = _a.computedData, 
-            // backCover: COVER,
-            count = _c.count, 
-            // title,
-            chars = _c.chars, charsNotSameBackCover = _c.charsNotSameBackCover, countNotSameBackCover = _c.countNotSameBackCover;
+            var _a = _this,
+                _b = _a.data,
+                paperSize = _b.paperSize,
+                // isLandscape,
+                MAX_X = _b.maxX,
+                MAX_Y = _b.maxY,
+                // pageMarginTop,
+                // pageMarginBottom,
+                // pageMarginLeft,
+                // pageMarginRight,
+                CARD_WIDTH = _b.pokerWidth,
+                CARD_HEIGHT = _b.pokerHeight,
+                // fontSize,
+                // backFontSize
+                // pokerKind,
+                useSameBackCover = _b.useSameBackCover,
+                _c = _a.computedData,
+                // backCover: COVER,
+                count = _c.count,
+                // title,
+                chars = _c.chars,
+                charsNotSameBackCover = _c.charsNotSameBackCover,
+                countNotSameBackCover = _c.countNotSameBackCover;
             var COUNT = useSameBackCover ? count : countNotSameBackCover;
             var CHARS = [];
             (useSameBackCover ? chars : charsNotSameBackCover).forEach(function (char) {
                 return CHARS.push(char);
             });
             var MAX_SYMBOL_INDEX = COUNT - 1;
-            var PAGE_START = "<page class=\"forePage " + paperSize + "\">", PAGE_END = "</page>";
-            var ROW_START = "<row>", ROW_END = "</row>";
-            var CELL_START = "<cell>", CELL_END = "</cell>";
-            var TOP_START = "<top>", TOP_END = "</top>";
-            var BOTTOM_START = "<bottom>", BOTTOM_END = "</bottom>";
+            var PAGE_START = "<page class=\"forePage " + paperSize + "\">",
+                PAGE_END = "</page>";
+            var ROW_START = "<row>",
+                ROW_END = "</row>";
+            var CELL_START = "<cell>",
+                CELL_END = "</cell>";
+            var TOP_START = "<top>",
+                TOP_END = "</top>";
+            var BOTTOM_START = "<bottom>",
+                BOTTOM_END = "</bottom>";
             var TEXT_END = "</text>";
             var TEXT_START_TOP_LEFT = '<text class="top-left">';
             // const TEXT_START_BOTTOM_LEFT  = '<text class="bottom-left">';
@@ -164,9 +188,9 @@ var BrickCore = /** @class */ (function (_super) {
                             // html += (useKaiti ? TEXT_START_TOP_LEFT_USE_KAITI : TEXT_START_TOP_LEFT).concat(char, TEXT_END);
                             // html += (useKaiti ? TEXT_START_BOTTOM_RIGHT_USE_KAITI : TEXT_START_BOTTOM_RIGHT).concat(char, TEXT_END);
                             html += TOP_START.concat(useKaiti ? TEXT_START_TOP_LEFT_USE_KAITI : TEXT_START_TOP_LEFT, char, TEXT_END, TOP_END);
-                            html += BOTTOM_START.concat(useKaiti
-                                ? TEXT_START_BOTTOM_RIGHT_USE_KAITI
-                                : TEXT_START_BOTTOM_RIGHT, char, TEXT_END, BOTTOM_END);
+                            html += BOTTOM_START.concat(useKaiti ?
+                                TEXT_START_BOTTOM_RIGHT_USE_KAITI :
+                                TEXT_START_BOTTOM_RIGHT, char, TEXT_END, BOTTOM_END);
                         }
                         html += CELL_END;
                         ++symbolIndex;
@@ -180,27 +204,39 @@ var BrickCore = /** @class */ (function (_super) {
                 .replace(/([āáǎàōóǒòēéěèīíǐìūúǔùǖǘǚǜ])/gi, '<font class="kaiti normal-weight">$1</font>');
         };
         _this.getBackPageHtml = function () {
-            var _a = _this, _b = _a.data, paperSize = _b.paperSize, 
-            // isLandscape,
-            MAX_X = _b.maxX, MAX_Y = _b.maxY, 
-            // pageMarginTop,
-            // pageMarginBottom,
-            // pageMarginLeft,
-            // pageMarginRight,
-            CARD_WIDTH = _b.pokerWidth, CARD_HEIGHT = _b.pokerHeight, 
-            // fontSize,
-            // backFontSize
-            // pokerKind,
-            useSameBackCover = _b.useSameBackCover, _c = _a.computedData, COVER = _c.backCover, count = _c.count, 
-            // title,
-            // chars,
-            // charsNotSameBackCover,
-            countNotSameBackCover = _c.countNotSameBackCover, backCoversWhenNotSame = _c.backCoversWhenNotSame;
+            var _a = _this,
+                _b = _a.data,
+                paperSize = _b.paperSize,
+                // isLandscape,
+                MAX_X = _b.maxX,
+                MAX_Y = _b.maxY,
+                // pageMarginTop,
+                // pageMarginBottom,
+                // pageMarginLeft,
+                // pageMarginRight,
+                CARD_WIDTH = _b.pokerWidth,
+                CARD_HEIGHT = _b.pokerHeight,
+                // fontSize,
+                // backFontSize
+                // pokerKind,
+                useSameBackCover = _b.useSameBackCover,
+                _c = _a.computedData,
+                COVER = _c.backCover,
+                count = _c.count,
+                // title,
+                // chars,
+                // charsNotSameBackCover,
+                countNotSameBackCover = _c.countNotSameBackCover,
+                backCoversWhenNotSame = _c.backCoversWhenNotSame;
             var COUNT = useSameBackCover ? count : countNotSameBackCover;
-            var PAGE_START = "<page class=\"backPage " + paperSize + "\" dir=\"rtl\">", PAGE_END = "</page>";
-            var ROW_START = "<row>", ROW_END = "</row>";
-            var CELL_START = "<cell>", CELL_END = "</cell>";
-            var CENTER_START = "<center>", CENTER_END = "</center>";
+            var PAGE_START = "<page class=\"backPage " + paperSize + "\" dir=\"rtl\">",
+                PAGE_END = "</page>";
+            var ROW_START = "<row>",
+                ROW_END = "</row>";
+            var CELL_START = "<cell>",
+                CELL_END = "</cell>";
+            var CENTER_START = "<center>",
+                CENTER_END = "</center>";
             var MAX_SYMBOL_INDEX = COUNT - 1;
             var ROW_COUNT = Math.floor(MAX_Y / CARD_HEIGHT);
             var COLUMN_COUNT = Math.floor(MAX_X / CARD_WIDTH);
@@ -230,7 +266,7 @@ var BrickCore = /** @class */ (function (_super) {
         _this.INITIAL_ARRAY = "b,p,m,f,d,t,n,l,g,k,h,j,q,x,zh,ch,sh,r,z,c,s,y,w,"
             .split(",");
         // 24个韵母
-        _this.VOWEL_ARRAY = "a,o,e,i,u,ü,ai,ei,ui,ao,ou,iu,ie,üe,er,an,en_us,in,un,ün,ang,eng,ing,ong"
+        _this.VOWEL_ARRAY = "a,o,e,i,u,ü,ai,ei,ui,ao,ou,iu,ie,üe,er,an,en,in,un,ün,ang,eng,ing,ong"
             .split(",");
         // 16个整体认读
         _this.OVERALL_READING_ARRAY = "zhi,chi,shi,ri,zi,ci,si,yi,wu,yu,ye,yue,yuan,yin,yun,ying".split(",");
@@ -258,7 +294,11 @@ var BrickCore = /** @class */ (function (_super) {
             var zh_cnArray = [];
             var zh_twArray = [];
             var backCover = "";
-            var title = { en_us: en_us, zh_cn: zh_cn, zh_tw: zh_tw };
+            var title = {
+                en_us: en_us,
+                zh_cn: zh_cn,
+                zh_tw: zh_tw
+            };
             var CHARS = [];
             var BACK_COVERS = [];
             var CHARS_NOT_SAME_BACK_COVER = [];
@@ -317,8 +357,7 @@ var BrickCore = /** @class */ (function (_super) {
                         title.en_us += " Mixed_ALL";
                         title.zh_cn += "混合_所有";
                         title.zh_tw += "混合_所有";
-                    }
-                    else {
+                    } else {
                         backCover = getI18nInnerHTML({
                             en_us: enBackCover.concat("<br /><br /><small>", enArray.join("<br />"), "</small>"),
                             zh_cn: zh_cnBackCover.concat("<br /><br /><small>", zh_cnArray.join("<br />"), "</small>"),
@@ -340,7 +379,8 @@ var BrickCore = /** @class */ (function (_super) {
             _this.computedData.backCoversWhenNotSame = BACK_COVERS;
         };
         _this.updateOtherDataOfPoker = function (newData) {
-            var pokerKind = newData.pokerKind, useSameBackCover = newData.useSameBackCover;
+            var pokerKind = newData.pokerKind,
+                useSameBackCover = newData.useSameBackCover;
             for (var pokerKindIndex = 0; pokerKindIndex < PinyinPokerKindCount; ++pokerKindIndex) {
                 var pokerKindValue = Math.pow(2, pokerKindIndex);
                 var checkboxElement = _this
@@ -361,7 +401,9 @@ var BrickCore = /** @class */ (function (_super) {
             _this.initUseSameBackCoverElements(wrapElement);
         };
         _this.initPokerKindElements = function (wrapElement) {
-            var _a = _this, pokerKind = _a.data.pokerKind, pokerKindElementArray = _a.pokerKindElementArray;
+            var _a = _this,
+                pokerKind = _a.data.pokerKind,
+                pokerKindElementArray = _a.pokerKindElementArray;
             // const labelElement = createElement('label') as HTMLLabelElement;
             // wrapElement.appendChild(labelElement);
             // labelElement.innerHTML = getI18nInnerHTML({
@@ -431,7 +473,9 @@ var BrickCore = /** @class */ (function (_super) {
         };
         _this.useSameBackCoverElementArray = [];
         _this.initUseSameBackCoverElements = function (wrapElement) {
-            var _a = _this, useSameBackCover = _a.data.useSameBackCover, useSameBackCoverElementArray = _a.useSameBackCoverElementArray;
+            var _a = _this,
+                useSameBackCover = _a.data.useSameBackCover,
+                useSameBackCoverElementArray = _a.useSameBackCoverElementArray;
             // const labelElement = createElement('label') as HTMLLabelElement;
             // wrapElement.appendChild(labelElement);
             // labelElement.innerHTML = getI18nInnerHTML({

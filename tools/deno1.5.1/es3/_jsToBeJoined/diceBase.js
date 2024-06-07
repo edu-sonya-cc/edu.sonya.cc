@@ -753,7 +753,7 @@ System.register("diceBase", [], function (exports_1, context_1) {
                             id: '',
                             diceKind: DiceKind.twentyFour,
                             sideLength: 20,
-                            contents: 'a,o,e,i,u,ü,ai,ei,ui,ao,ou,iu,ie,üe,er,an,en_us,in,un,ün,ang,eng,ing,ong'
+                            contents: 'a,o,e,i,u,ü,ai,ei,ui,ao,ou,iu,ie,üe,er,an,en,in,un,ün,ang,eng,ing,ong'
                                 .replace(/a/g, 'ɑ')
                                 .replace(/g/g, 'ɡ')
                                 .split(','),
