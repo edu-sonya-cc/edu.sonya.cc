@@ -216,10 +216,10 @@ System.register("version", [], function (exports_1, context_1) {
                 phone: '230120D'
             });
             exports_1("jsVersions", jsVersions = {
-                main: '230525A',
+                main: '240619A',
                 data: '230119D',
                 home: '230120K',
-                bricks: '230525A',
+                bricks: '240619A',
                 brick: '230119D',
                 treasures: '230119D',
                 stories: '230119D',

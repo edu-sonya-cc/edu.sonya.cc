@@ -19,10 +19,10 @@ exports.cssVersions = {
  * <zh_tw>腳本版本</zh_tw>
  */
 exports.jsVersions = {
-    main: '230525A',
+    main: '240619A',
     data: '230119D',
     home: '230120K',
-    bricks: '230525A',
+    bricks: '240619A',
     brick: '230119D',
     treasures: '230119D',
     stories: '230119D',

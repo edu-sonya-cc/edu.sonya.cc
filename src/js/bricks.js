@@ -180,32 +180,32 @@ var BricksPage = (function (_super) {
     __extends(BricksPage, _super);
     function BricksPage() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.mainContentElement = createElement("div");
-        _this.topImageElement = createElement("img");
-        _this.subKindsRowElement = createElement("div");
-        _this.listElement = createElement("div");
-        _this.paginationElement = createElement("div");
+        _this.mainContentElement = createElement('div');
+        _this.topImageElement = createElement('img');
+        _this.subKindsRowElement = createElement('div');
+        _this.listElement = createElement('div');
+        _this.paginationElement = createElement('div');
         _this.initItemElement = function (itemElement, PAGE_NAME) {
-            var aElement = createElement("a");
+            var aElement = createElement('a');
             itemElement.appendChild(aElement);
             aElement.className = PAGE_NAME + "ItemWrap";
-            var imageElement = createElement("img");
-            var rightWrapElement = createElement("div");
+            var imageElement = createElement('img');
+            var rightWrapElement = createElement('div');
             aElement.appendChild(imageElement);
             aElement.appendChild(rightWrapElement);
             imageElement.className = PAGE_NAME + "ItemImage";
             rightWrapElement.className = PAGE_NAME + "ItemRightWrap";
-            var titleElement = createElement("div");
+            var titleElement = createElement('div');
             titleElement.className = PAGE_NAME + "ItemTitle";
             rightWrapElement.appendChild(titleElement);
-            var hrElement = createElement("hr");
+            var hrElement = createElement('hr');
             hrElement.className = PAGE_NAME + "ItemHr";
             rightWrapElement.appendChild(hrElement);
-            var summaryElement = createElement("span");
+            var summaryElement = createElement('span');
             summaryElement.className = PAGE_NAME + "ItemSummary";
             rightWrapElement.appendChild(summaryElement);
-            var moreElement = createElement("div");
-            moreElement.className = "moreButton primary";
+            var moreElement = createElement('div');
+            moreElement.className = 'moreButton primary';
             moreElement.innerHTML = MORE_BUTTON_HTML;
             rightWrapElement.appendChild(moreElement);
         };
@@ -227,7 +227,7 @@ var BricksPage = (function (_super) {
             summaryElement.innerHTML = getI18nInnerHTML(summary);
             aElement.href = "?go=brick&id=" + id;
         };
-        _this.PAGE_NAME = "bricksPage";
+        _this.PAGE_NAME = 'bricksPage';
         _this.fillItem = function (itemElement, data, init) {
             if (init) {
                 _this.initItemElement(itemElement, _this.PAGE_NAME);
@@ -247,14 +247,14 @@ var BricksPage = (function (_super) {
             for (var i = 0; i < bricksSubKindPageSize; ++i) {
                 var subKindElement = subKindsWrapElement.children[i];
                 if (subKindElement.getAttribute(SUB_KIND_NAME_PROPERTY) === subKind) {
-                    subKindElement.setAttribute(ACTIVATED_PROPERTY, "");
+                    subKindElement.setAttribute(ACTIVATED_PROPERTY, '');
                 }
                 else if (subKindElement.hasAttribute(ACTIVATED_PROPERTY)) {
                     subKindElement.removeAttribute(ACTIVATED_PROPERTY);
                 }
             }
             var list = [];
-            if (subKind.length && subKind !== "0") {
+            if (subKind.length && subKind !== '0') {
                 var fitSubKind_1 = BRICK_SUB_KINDS[parseInt(subKind, 0) - 1].name;
                 bricks.filter(function (_a) {
                     var subKind = _a.subKind;
@@ -289,7 +289,7 @@ var BricksPage = (function (_super) {
                     .children[i];
                 var pageIndexProperty = pageNumberElement.getAttribute(PAGE_PROPERTY);
                 if (parseInt(pageIndexProperty, 0) === kind) {
-                    pageNumberElement.setAttribute(ACTIVATED_PROPERTY, "");
+                    pageNumberElement.setAttribute(ACTIVATED_PROPERTY, '');
                 }
                 else if (pageNumberElement.hasAttribute(ACTIVATED_PROPERTY)) {
                     pageNumberElement.removeAttribute(ACTIVATED_PROPERTY);
@@ -301,20 +301,20 @@ var BricksPage = (function (_super) {
             var changeSubKind = _this.changeSubKind;
             var bricksSubKindCount = BRICK_SUB_KINDS.length;
             var bricksSubKindPageSize = PageSize.bricksPage.subKind;
-            var leftArrowElement = createElement("span");
+            var leftArrowElement = createElement('span');
             subKindsRowElement.appendChild(leftArrowElement);
-            leftArrowElement.innerHTML = "&lt;";
-            leftArrowElement.setAttribute("id", "bricksSubKindRowLeftArrow");
-            var subKindsWrapElement = createElement("span");
+            leftArrowElement.innerHTML = '&lt;';
+            leftArrowElement.setAttribute('id', 'bricksSubKindRowLeftArrow');
+            var subKindsWrapElement = createElement('span');
             subKindsRowElement.appendChild(subKindsWrapElement);
-            subKindsWrapElement.setAttribute("id", "bricksSubKindsWrap");
-            var rightArrowElement = createElement("span");
+            subKindsWrapElement.setAttribute('id', 'bricksSubKindsWrap');
+            var rightArrowElement = createElement('span');
             subKindsRowElement.appendChild(rightArrowElement);
-            rightArrowElement.innerHTML = "&gt;";
-            rightArrowElement.setAttribute("id", "bricksSubKindRowRightArrow");
+            rightArrowElement.innerHTML = '&gt;';
+            rightArrowElement.setAttribute('id', 'bricksSubKindRowRightArrow');
             for (var i = 0; i < bricksSubKindPageSize; ++i) {
-                var subKindElement = createElement("span");
-                subKindElement.className = "bricksSubKind";
+                var subKindElement = createElement('span');
+                subKindElement.className = 'bricksSubKind';
                 subKindsWrapElement.appendChild(subKindElement);
             }
             var bricksSubKindPageCount = Math.ceil(bricksSubKindCount / bricksSubKindPageSize);
@@ -323,10 +323,15 @@ var BricksPage = (function (_super) {
                 bricksSubKindPageSize * maxSubKindPageIndex;
             var currentPage = -1;
             var gotoPage = function (pageIndex) {
-                if (pageIndex > maxSubKindPageIndex)
-                    pageIndex = maxSubKindPageIndex;
-                else if (pageIndex < 0)
+                if (typeof pageIndex === 'undefined' || isNaN(pageIndex)) {
                     pageIndex = 0;
+                }
+                if (pageIndex > maxSubKindPageIndex) {
+                    pageIndex = maxSubKindPageIndex;
+                }
+                else if (pageIndex < 0) {
+                    pageIndex = 0;
+                }
                 if (currentPage === pageIndex)
                     return;
                 var bricksSubKindCountOfCurrentPage = pageIndex < maxSubKindPageIndex
@@ -349,7 +354,7 @@ var BricksPage = (function (_super) {
                         if (kindStr === PAGE_SUB_KIND) {
                             return stopEventBubble(event);
                         }
-                        window.location.href = window.location.href.split("&")[0].concat("&kind=" + kindStr + "&page=1");
+                        window.location.href = window.location.href.split('&')[0].concat("&kind=" + kindStr + "&page=1");
                         return stopEventBubble(event);
                     };
                 };
@@ -365,21 +370,21 @@ var BricksPage = (function (_super) {
                 }
                 currentPage = pageIndex;
                 if (pageIndex === 0) {
-                    leftArrowElement.setAttribute("disabled", "");
+                    leftArrowElement.setAttribute('disabled', '');
                 }
-                else if (leftArrowElement.hasAttribute("disabled")) {
-                    leftArrowElement.removeAttribute("disabled");
+                else if (leftArrowElement.hasAttribute('disabled')) {
+                    leftArrowElement.removeAttribute('disabled');
                 }
                 if (pageIndex === maxSubKindPageIndex) {
-                    rightArrowElement.setAttribute("disabled", "");
+                    rightArrowElement.setAttribute('disabled', '');
                 }
-                else if (rightArrowElement.hasAttribute("disabled")) {
-                    rightArrowElement.removeAttribute("disabled");
+                else if (rightArrowElement.hasAttribute('disabled')) {
+                    rightArrowElement.removeAttribute('disabled');
                 }
             };
             if (bricksSubKindPageCount < 2) {
-                leftArrowElement.setAttribute("disabled", "");
-                rightArrowElement.setAttribute("disabled", "");
+                leftArrowElement.setAttribute('disabled', '');
+                rightArrowElement.setAttribute('disabled', '');
             }
             else {
                 leftArrowElement.onclick = function (event) {
@@ -407,9 +412,8 @@ var BricksPage = (function (_super) {
             mainContentElement.appendChild(listElement);
             mainContentElement.appendChild(paginationElement);
             topImageElement.id = PAGE_NAME + "MainImage";
-            topImageElement.className = "topImage";
-            topImageElement.src =
-                SITE_IMAGE_PATH + "2bricks/topImage.jpg?" + mainImageVersions.bricks;
+            topImageElement.className = 'topImage';
+            topImageElement.src = SITE_IMAGE_PATH + "2bricks/topImage.jpg?" + mainImageVersions.bricks;
             var pageSize = PageSize.bricksPage.list;
             pcGlobal.fillListAndPagination(listElement, paginationElement, pageSize, bricks.map(function (item, index) {
                 return __assign({ id: index + 1 }, item);
@@ -424,9 +428,9 @@ var BricksPage = (function (_super) {
     BricksPage.prototype.initTitleElement = function () {
         var titleElement = getTitleElement();
         titleElement.i18n = {
-            en_us: "List of throwing a brick to attract jade",
-            zh_cn: "抛砖引玉清单",
-            zh_tw: "拋磚引玉清單"
+            en_us: 'List of throwing a brick to attract jade',
+            zh_cn: '抛砖引玉清单',
+            zh_tw: '拋磚引玉清單'
         };
     };
     return BricksPage;
